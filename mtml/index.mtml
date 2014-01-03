@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1">
+
+<title>dskd</title>
+
+<link rel="canonical" href="http://dskd.jp/">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="/img/favicon.gif">
+<link rel="alternate" type="application/atom+xml" href="/feed/atom.xml">
+<link rel="stylesheet" type="text/css" href="./css/dskd.css" media="screen">
+
+</head>
+<body>
+<div class="contents">
+	<header class="header">
+		<h1 class="header__logo"><a href="http://dskd.jp/">dskd</a></h1>
+	</header>
+
+	<div class="article">
+		<mt:PageContents count="5">
+		<mt:Entries lastn="999"><mt:Ignore>
+		<mt:SetVarBlock name="pageCount"><mt:PageCount></mt:SetVarBlock>
+		<mt:If name="pageCount" eq="1"><!-- first page --></mt:If></mt:Ignore>
+		<article class="article__item">
+			<header class="article-header">
+				<h2 class="article-header__item"><a href="<mt:EntryPermalink>"><mt:EntryTitle></a></h2>
+			</header>
+			<footer class="article-footer">
+				<time class="article-footer__pubtime" datetime="<mt:EntryDate format_name="iso8601">"><mt:EntryDate format="%Y/%m/%d"><br><mt:EntryDate format="%H:%M"></time>
+				<dl class="article-footer__categories">
+					<dt class="article-footer__categories-title">category :</dt>
+					<dd class="article-footer__categories-item">
+						<mt:If tag="EntryCategory"><mt:EntryCategories glue=", "><a href="<mt:CategoryArchiveLink>"><mt:CategoryLabel></a></mt:EntryCategories></mt:If></dd>
+				</dl>
+			</footer><mt:Ignore>
+			<mt:EntryBody>
+			<mt:If tag="EntryMore">
+			<nav class="article-nav">
+				<a class="article-nav__more" href="<mt:EntryPermalink>">Read more</a>
+			</nav>
+			</mt:If></mt:Ignore>
+		</article>
+		<mt:PageSeparator>
+		</mt:Entries>
+	</mt:PageContents>
+	</div>
+
+	<mt:Pagination>
+	<mt:PaginationHeader>
+	<nav class="neighbor layout--horizon">
+		<div class="neighbor-header layout--horizon__item">
+			<h2 class="neighbor-header__item">Pager</h2>
+		</div>
+		<ol class="neighbor-pager layout--horizon__item">
+		</mt:PaginationHeader>
+			<mt:IfPaginationCurrent>
+			<li class="neighbor-pager__item"><span class="button button--disable"><mt:PaginationLink element="number"></span></li>
+			<mt:Else>
+			<li class="neighbor-pager__item"><a class="button" href="<mt:PaginationLink>"><mt:PaginationLink element="number"></a></li>
+			</mt:IfPaginationCurrent>
+		<mt:PaginationFooter>
+		</ol>
+	</nav>
+	</mt:PaginationFooter>
+	</mt:Pagination>
+
+	<section class="archives layout--horizon">
+		<header class="archives-header layout--horizon__item">
+			<h2 class="archives-header__item">Archives</h2>
+		</header>
+
+		<mt:ArchiveList archive_type="Monthly" sort_order="descend">
+		<mt:ArchiveDateHeader>
+		<nav class="archives-year layout--horizon__item">
+			<h2 class="archives-year__title"><mt:ArchiveDate format="%Y"></h2>
+			<ul class="archives-year__monthly">
+		</mt:ArchiveDateHeader>
+				<li class="archives-year__item"><a href="<mt:ArchiveLink>"><mt:ArchiveDate format="%B" language="en"></a></li>
+		<mt:ArchiveDateFooter>
+			</ul>
+		</nav>
+		</mt:ArchiveDateFooter>
+		</mt:ArchiveList>
+	</section>
+
+	<section class="neighbor layout--horizon">
+		<div class="neighbor-header layout--horizon__item">
+			<h2 class="neighbor-header__item">Categories</h2>
+		</div>
+		<ol class="neighbor-pager layout--horizon__item">
+			<mt:Categories>
+			<li class="neighbor-pager__item"><a class="button" href="<mt:CategoryArchiveLink>"><mt:CategoryLabel></a></li>
+			</mt:Categories>
+		</ol>
+	</section>
+
+	<section class="author layout--horizon">
+		<header class="author-header layout--horizon__item">
+			<h2 class="author-header__item">Author</h2>
+		</header>
+		<p class="author__name layout--horizon__item">越智</p>
+		<address class="author__address layout--horizon__item"><a href="mailto:otiext@gmail.com">otiext@gmail.com</a></address>
+		<ul class="author-accounts layout--horizon__item">
+			<li class="author-accounts__item"><a href="http://twitter.com/o_ti">Twitter</a></li>
+			<li class="author-accounts__item"><a href="http://jsdo.it/o_ti">Jsdo.it</a></li>
+			<li class="author-accounts__item"><a href="http://facebook.com/otiext">Facebook</a></li>
+		</ul>
+	</section>
+
+	<footer class="credit layout--horizon">
+		<div class="credit-header layout--horizon__item">
+			<h2 class="credit-header__item">Copyright</h2>
+		</div>
+		<p class="credit__item layout--horizon__item">
+			<small>&copy; dskd/oti All Rights Reserved.</small>
+		</p>
+	</footer>
+</div>
+<!--#include virtual="/ga.html" -->
+</body>
+</html>
