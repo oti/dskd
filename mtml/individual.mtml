@@ -4,21 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="initial-scale=1">
 
-<title><$mt:EntryTitle$> | dskd</title>
+<title><mt:EntryTitle> | <mt:BlogName></title>
 
 <link rel="canonical" href="<mt:EntryPermalink>">
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon-precomposed" href="/img/favicon.gif">
 <link rel="alternate" type="application/atom+xml" href="/feed/atom.xml">
-<link rel="stylesheet" type="text/css" href="../css/dskd.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/css/dskd.css" media="screen">
 
-<script src="http://dskd.jp/js/rainbow-custom.min.js"></script>
+<script src="<mt:BlogURL>/js/rainbow-custom.min.js"></script>
 
 </head>
 <body>
 <div class="contents">
   <header class="header header--individual">
-    <h1 class="header__logo"><a href="http://dskd.jp">dskd</a></h1>
+    <h1 class="header__logo"><a href="<mt:BlogURL>"><mt:BlogName></a></h1>
   </header>
 
   <div class="article">
@@ -27,7 +27,7 @@
         <h1 class="article-header__item"><a href="<mt:EntryPermalink>"><mt:EntryTitle></a></h1>
       </header>
       <footer class="article-footer">
-        <time class="article-footer__pubtime" datetime="<$mt:EntryDate format_name="iso8601"$>"><mt:EntryDate format="%Y/%m/%d"><br><mt:EntryDate format="%H:%M"></time>
+        <time class="article-footer__pubtime" datetime="<mt:EntryDate format_name="iso8601">"><mt:EntryDate format="%Y/%m/%d"><br><mt:EntryDate format="%H:%M"></time>
         <dl class="article-footer__categories">
           <dt class="article-footer__categories-title">category :</dt>
           <dd class="article-footer__categories-item">
