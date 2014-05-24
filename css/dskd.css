@@ -414,6 +414,26 @@ a.button:hover{
   color: #263540;
 }
 
+.article__item table{
+  border-collapse: collapse;
+  border: 0;
+  text-align: center;
+}
+
+.article__item table th{
+  padding: 2px 3px;
+  border: 1px solid #677d8b;
+  line-height: 1.1;
+  background-color: #a7b4bc;
+}
+
+.article__item table td{
+  padding: 2px 3px;
+  border: 1px solid #677d8b;
+}
+
+
+
 /* Third Party Widget Style Overrides */
 #twitter-widget-0{
   margin: 0 auto 1em !important;
