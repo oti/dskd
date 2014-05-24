@@ -375,10 +375,6 @@ a.button:hover{
   background: #a7b4bc;
 }
 
-.article__item strong{
-  color: #bf0000;
-}
-
 .article__item blockquote{
   position: relative;
   margin: 1em -1em;
@@ -412,45 +408,6 @@ a.button:hover{
 .article__item blockquote footer cite{
   padding-right: 5px;
   font-style: normal;
-}
-
-.replacement--delete,
-.replacement--insert{
-  position: relative;
-  left: 10%;
-  padding-left: 15px;
-  border-left-width: 10px;
-  border-left-style: solid;
-  border-radius: 15px 0 0 15px;
-}
-
-.replacement--delete{
-  border-left-color: #e8e9e3;
-}
-
-.replacement--insert{
-  border-left-color: #263540;
-}
-
-.replacement--delete::before,
-.replacement--insert::before{
-
-  position: absolute;
-  top: 15px;
-  right: 100%;
-  padding: 0 12px 0 5px;
-  border-radius: 0.2em;
-  white-space: nowrap;
-}
-.replacement--delete::before{
-  content: attr(data-insdate);
-  background: #e8e9e3;
-}
-
-.replacement--insert::before{
-  content: attr(data-insdate);
-  color: #ffffff;
-  background: #263540;
 }
 
 .replacement--insert ins{
@@ -526,4 +483,4 @@ pre .support, *[data-language="c"] .function.call {
 
 pre .variable.global, pre .variable.class, pre .variable.instance {
   color: #FF6400;
-}
+}​
