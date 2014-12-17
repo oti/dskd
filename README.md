@@ -1,4 +1,4 @@
-#dskd.jp version 3
+#dskd.jp version 3.4.1
 　dskd.jp は Six Apart 社製の CMS Movable Type 5 を使用してビルドされています。2010年12月に公開し、構造を変更して今回が３バージョン目です。何の変哲もない単純なブログですが、誰かの参考になればと思いリポジトリを公開いたします。
 
 ##使用プラグイン
@@ -21,6 +21,6 @@
 　dskd.jp の BEM はまだ発展途上です。テスト的に BEM を取り入れたため不自然な部分が多分に含まれているかと思います。今後もアップデートしていくつもりですが、疑問に思うこともあるのである日突然 BEM をやめるかもしれません。
 
 ##License
-　Copyright (c) 2013 oti/dskd Licensed under the MIT license.
+　Copyright (c) 2014 oti/dskd Licensed under the MIT license.
 
 　MTML、および CSS ファイルは MIT License の元に公開しています。
