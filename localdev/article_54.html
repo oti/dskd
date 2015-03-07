@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>dskd</title>
+
+  <link href="http://dskd.jp/" rel="canonical">
+  <link href="apple-touch-icon.png" rel="apple-touch-icon-precomposed">
+  <link href="/feed" rel="alternate" type="application/atom+xml">
+
+  <link href="/dest/css/style.css" media="only screen" rel="stylesheet">
+</head>
+<body>
+  <header class="global-header">
+    <nav class="site-navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dest/svg/logo.svg" width="100" height="60"></a>
+
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/archives/demo/">Demo</a></li>
+        <li><a href="/archives/about.html">About</a></li>
+      </ul>
+    </nav>
+
+  </header>
+  
+  <div class="content">
+    <article class="entry">
+      <footer class="entry-footer">
+        <time datetime="2014-12-12T10:37:00+09:00">2014.12.12</time>
+        <p><span class="tag">Advent Calendar</span>,
+        <span class="tag">CSS</span>,
+        <span class="tag">demo</span></p>
+      </footer>
+
+      <h1>style属性でzoomを指定すると特定の状況でzoomが無効になる</h1>
+        
+
+      <p><a href="http://www.adventar.org/calendars/337">CSS Architecture Advent Calendar 2014</a>の10日目。</p>
+
+      <p>それまではけっこう頑張っていた。スタイルガイドも作っていた。デザイナーとコミュニケーションをとり、拡張性のあるパーツを作っていった。新しく触る人にも読み方や使い方を説明できるようにしていた。</p>
+
+      <p>崩壊はUIデザイナーがいなくなった時に始まった。汎用ボタンは使われなくなった。決まったルールのデザインエッセンスはなくなった。要素間の空白は誰かの感覚で変わった。</p>
+
+      <p>なぜ止めることができなかったのか。それは、デザインの改修が<b>少しずつ</b>行われたからだと思う。その改修は<b>いつのまにか始まり、いつ終わるとも決まっていなかった</b>。あらゆるパターンが同居するデザインをCSSは管理できない。改修途中でも平気でブランチが切られていく。デザイナーがやりたい時にやりたいだけ変えると知ったとき、僕はCSSを管理するのをやめた。</p>
+
+      <p>すでに完成形まで共通化されたCSSでは影響範囲が大きすぎた。それでも既存のルールセットに手を加えたのは、「いままでの共通パーツを使いまわせる」という思いこみがあったからだった。結果的に全ページユニークなデザインになったのを見ると、デザインが変わると決まった瞬間に新しいCSSファイルとセレクタを作った方が楽だったのだろう。これは明確に僕の予測ミスだし、途中でもそれに気づいて管理しなおすべきだった。</p>
+
+      <p>見殺しにしたCSSは今もcommonフォルダの中でもがき苦しんでいる。</p>
+
+      <aside class="social-buttons">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=Rhodia%20dotPad%20-%20Weblog%20-%20Hail2u.net&amp;url=http%3A%2F%2Fhail2u.net%2Fblog%2Fgadget%2Frhodia-dotpad.html&amp;via=hail2unet&amp;related=hail2u_">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhail2u.net%2Fblog%2Fgadget%2Frhodia-dotpad.html">Share</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fhail2u.net%2Fblog%2Fgadget%2Frhodia-dotpad.html">Share</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=Rhodia%20dotPad%20-%20Weblog%20-%20Hail2u.net&amp;url=http%3A%2F%2Fhail2u.net%2Fblog%2Fgadget%2Frhodia-dotpad.html">Bookmark</a></li>
+        </ul>
+      </aside>
+    </article>
+  </div>
+
+  <nav class="neighbor">
+    <ul class="old-new-links">
+      <li class="new-link"><a href="">Google Chrome 40でreversed属性のついたol要素のカウンターがおかしい</a></li>
+      <li class="old-link"><a href="">UE BOOMを買った</a></li>
+    </ul>
+  </nav>
+
+  <footer class="global-footer">
+    <section class="author">
+      <p class="author-credit">Made by oti.</p>
+      <address class="author-address"><a href="mailto:otiext@gmail.com">otiext@gmail.com</a></address>
+    </section>
+
+    <ul class="footlinks">
+      <li><a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC</a></li>
+      <li><a href="/feed" rel="alternate" type="application/rss+xml">Feed</a></li>
+    </ul>
+  </footer>
+</body>
+</html>
