@@ -1,0 +1,11 @@
+// site-navigation
+.site-navigation{
+  position: relative;
+  margin-top: 30px;
+
+  &::after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+}

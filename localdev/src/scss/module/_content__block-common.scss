@@ -1,0 +1,39 @@
+// block common
+.global-header,
+.content,
+.neighbor,
+.global-footer{
+  box-sizing: border-box;
+  margin: auto;
+  padding: 0 15px;
+  min-width: 320px;
+  max-width: 640px;
+}
+
+.site-navigation,
+.entry-list,
+.entry-archive,
+.entry-category,
+.neighbor{
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(0,0,0, .15);
+}
+
+.global-footer{
+  margin-bottom: 30px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.global-footer::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.content-heading{
+  float: left;
+  margin: 0;
+  font-size: 16px;
+}

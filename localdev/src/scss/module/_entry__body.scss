@@ -1,0 +1,22 @@
+// entry body
+.entry-body{
+  p{
+    text-indent: 1em;
+    &+p{
+      margin-top: 24px;
+    }
+  }
+
+  pre{
+    font: 14px 'Consolas', monospace;
+    background-image: url(/dest/img/bg2.png);
+  }
+
+  hr{
+    margin: 30px auto;
+    height: 15px;
+    border: none;
+    line-height: 0;
+    background: url(/dest/svg/dash.svg) no-repeat center center;
+  }
+}

@@ -1,0 +1,30 @@
+// entry footer
+.entry-footer{
+  font-size: 12px;
+
+  &::after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  time,p{
+    float: left;
+  }
+
+  p{
+    margin: 0;
+    padding-left: 10px;
+
+    &::before{
+      content: '';
+      display: inline-block;
+      border-radius: 6px;
+      margin-right: 10px;
+      width: 6px;
+      height: 6px;
+      vertical-align: middle;
+      background-color: rgba(0,0,0, .15);
+    }
+  }
+}

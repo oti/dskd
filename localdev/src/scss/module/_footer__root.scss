@@ -1,0 +1,12 @@
+// footer
+.global-footer{
+  margin-bottom: 30px;
+  font-size: 14px;
+  text-align: center;
+
+  &::after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+}

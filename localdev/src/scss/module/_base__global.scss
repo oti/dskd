@@ -1,0 +1,44 @@
+html{
+  -webkit-font-feature-settings: "kern" 1,"liga" 1,"lnum" 1,"pnum" 1;
+  font-feature-settings: "kern" 1,"liga" 1,"lnum" 1,"pnum" 1;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  font: 16px 'Vegur-Regular', Arial, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'ＭＳ Ｐゴシック', Osaka;
+  color: #263540;
+  line-height: 1.5;
+  background: url(/dest/img/bg.png) repeat fixed #d0d8dd;
+}
+
+img{
+  -ms-interpolation-mode: bicubic;
+  border: 0 none;
+  text-decoration: none;
+  vertical-align: top;
+  background: transparent;
+}
+
+a:link{
+  color: #0075a9;
+  text-decoration: none;
+}
+
+
+a:visited{
+  color: #ca176e;
+}
+
+a:hover{
+  color: #629a00;
+  text-decoration: underline;
+}
+
+a:active{
+  color: #ca176e;
+}
+
+a:focus{
+  color: #629a00;
+}

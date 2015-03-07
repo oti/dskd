@@ -1,0 +1,24 @@
+// footer footlinks
+.footlinks{
+  list-style-type: none;
+  list-style-position: inside;
+  float: right;
+  margin: 0;
+  padding: 0;
+
+  li{
+    float: left;
+    padding-left: 10px;
+
+    &+li::before{
+      content: '';
+      display: inline-block;
+      border-radius: 6px;
+      margin-right: 10px;
+      width: 6px;
+      height: 6px;
+      vertical-align: middle;
+      background-color: rgba(0,0,0, .15);
+    }
+  }
+}

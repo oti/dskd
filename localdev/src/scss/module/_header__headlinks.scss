@@ -1,0 +1,32 @@
+// headlinks
+.headlinks{
+  position: absolute;
+  bottom: 30px;
+  right: 0;
+  list-style-type: none;
+  list-style-position: inside;
+  margin: 0;
+  padding-left: 0;
+
+  &::after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  li{
+    float: left;
+    padding-left: 10px;
+
+    &+li::before{
+      content: '';
+      display: inline-block;
+      border-radius: 6px;
+      margin-right: 10px;
+      width: 6px;
+      height: 6px;
+      vertical-align: middle;
+      background-color: rgba(0,0,0, .15);
+    }
+  }
+}
