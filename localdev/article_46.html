@@ -37,79 +37,81 @@
 
       <h1>git filter-branchで過去の全てのcommitから画像ファイルをの追加/変更をなかったことにしてリポジトリを軽量化する</h1>
 
-      <p>表題の通り、分散型バージョン管理システムの<a href="http://git-scm.com/">Git</a>でいわゆる「歴史の書き換え」をする。</p>
+      <div class="entry-body">
+        <p>表題の通り、分散型バージョン管理システムの<a href="http://git-scm.com/">Git</a>でいわゆる「歴史の書き換え」をする。</p>
 
-      <p>この処理を行う想定としては、複数人で進めているプロジェクトで開発の途中までは画像をリポジトリに含めて管理していたけど、今度から画像は別で管理することにしてリポジトリから消したい、などという場合。その後月日が経った状況で画像をcommitしていた頃のlogがとても容量を食っている場合でももちろん可。</p>
+        <p>この処理を行う想定としては、複数人で進めているプロジェクトで開発の途中までは画像をリポジトリに含めて管理していたけど、今度から画像は別で管理することにしてリポジトリから消したい、などという場合。その後月日が経った状況で画像をcommitしていた頃のlogがとても容量を食っている場合でももちろん可。</p>
 
-      <p>写真素材サイトで画像をうっかりGit管理してたとか、ゲーム系でキャラクターや背景の高解像度の画像をGit管理していた頃があるとかだと、新しいbranchをcheckoutしてpushする度にリポジトリはどんどん肥大化していく。そうやってギガバイト単位に膨れ上がったリポジトリでも、filter-branchで劇的に軽量化することができる。</p>
+        <p>写真素材サイトで画像をうっかりGit管理してたとか、ゲーム系でキャラクターや背景の高解像度の画像をGit管理していた頃があるとかだと、新しいbranchをcheckoutしてpushする度にリポジトリはどんどん肥大化していく。そうやってギガバイト単位に膨れ上がったリポジトリでも、filter-branchで劇的に軽量化することができる。</p>
 
-      <p>具体的にはfilter-branchというコマンドを使う。ファイルを持っていた歴史を残しておきたいのであればfilter-branchをする必要なないが、新規メンバーがそのリポジトリをcloneする時間を少しでも短縮したいと考えるなら、試してみる価値はある。</p>
+        <p>具体的にはfilter-branchというコマンドを使う。ファイルを持っていた歴史を残しておきたいのであればfilter-branchをする必要なないが、新規メンバーがそのリポジトリをcloneする時間を少しでも短縮したいと考えるなら、試してみる価値はある。</p>
 
-      <p>これをやる前に注意して欲しいのは、filter-branchを実行した環境以外では、実行後にリポジトリをcloneし直す必要があるということ。なぜなら、filter-branchはcommit自体の書き換えを行うのものなので、revertなどとは違いその書き換え自体のログは残らない。さらにcommitのハッシュも再発行される。そしてこれをリモートのリポジトリに反映するためにgit push -fする。なので、以前とは全く違うリポジトリになると考えた方がいい。<strong>もしfilter-branchに失敗したら、当然ながら、絶対にpushしてはいけない</strong>。やり直したい場合は実行環境ではもうログが失われているので、別のディレクトリに移動してfilter-branch実行前の状態をcloneしてやればいい。</p>
+        <p>これをやる前に注意して欲しいのは、filter-branchを実行した環境以外では、実行後にリポジトリをcloneし直す必要があるということ。なぜなら、filter-branchはcommit自体の書き換えを行うのものなので、revertなどとは違いその書き換え自体のログは残らない。さらにcommitのハッシュも再発行される。そしてこれをリモートのリポジトリに反映するためにgit push -fする。なので、以前とは全く違うリポジトリになると考えた方がいい。<strong>もしfilter-branchに失敗したら、当然ながら、絶対にpushしてはいけない</strong>。やり直したい場合は実行環境ではもうログが失われているので、別のディレクトリに移動してfilter-branch実行前の状態をcloneしてやればいい。</p>
 
-      <p>手順はさほど難しくない。まず最初に、コラボレーターやコミッター全員にその時点での変更（branch含む）を全てpushしてもらい、変更作業を止める。そしてfilter-branchを行う作業者の手元で全てのbranchでpullしておく。push漏れ・pull漏れがあるとワークツリーがデグレードしてしまうので忘れずにやって欲しい。</p>
+        <p>手順はさほど難しくない。まず最初に、コラボレーターやコミッター全員にその時点での変更（branch含む）を全てpushしてもらい、変更作業を止める。そしてfilter-branchを行う作業者の手元で全てのbranchでpullしておく。push漏れ・pull漏れがあるとワークツリーがデグレードしてしまうので忘れずにやって欲しい。</p>
 
-      <p>次にリポジトリから消したいファイルやディレクトリを決める。これは通常のgitコマンドなので複数指定できる。今回はわかりやすいようにXXXフォルダ配下全てとYYY/img/admin-face.jpgファイルを削除してみる。</p>
+        <p>次にリポジトリから消したいファイルやディレクトリを決める。これは通常のgitコマンドなので複数指定できる。今回はわかりやすいようにXXXフォルダ配下全てとYYY/img/admin-face.jpgファイルを削除してみる。</p>
 
-      <p>歴史の書き換えはたったの数個のコマンド実行で済む。</p>
+        <p>歴史の書き換えはたったの数個のコマンド実行で済む。</p>
 
-      <div class="sample_code">
-      <pre><code data-language="shell">$ git filter-branch -f --index-filter "git rm -rf --cached --ignore-unmatch XXX/ YYY/img/admin-face.jpg" --prune-empty -- --all</code></pre>
+        <div class="sample_code">
+        <pre><code data-language="shell">$ git filter-branch -f --index-filter "git rm -rf --cached --ignore-unmatch XXX/ YYY/img/admin-face.jpg" --prune-empty -- --all</code></pre>
+        </div>
+
+        <p>filter-branchの--index-filterオプションで渡しているダブルクォーテーションの中が、各commitに対して行うコマンドになる。git rm -rf なのでフォルダもファイルも対象に消す。見た目わかりづらいがXXX/とYYY/img~の間にはスペースがあり複数指定している。。</p>
+
+        <p>--chacedオプションがあるとcommit logからだけ削除してワークツリーでは残すようになる（つまりファイルが手元に残る）。--cachedオプションがないとワークツリーからも消えるのでそこは注意してほしい。</p>
+
+        <p>--ignore-unmatchで当てはまる対象がない時のエラーを無視できる。</p>
+
+        <p>--prune-emptyがあると、対象のファイルをcommit logから消した時に生まれうる、コメントのみの空commitも消してくれるようになる。前述の２つのオプションはgit rmコマンドで、--prune-emptyはfilter-branchのオプションだ。</p>
+
+        <p>ハイフン2つで前のコマンドのオプションから抜け、--allで全ブランチを対象に同じ処理を行う。</p>
+
+        <p>実行完了には少し時間がかかるかもしれない。ファイル数やcommit数で前後する。</p>
+
+        <p>あとはローカルのキャッシュを消したりゴミ掃除したりしていく。</p>
+
+        <div class="sample_code">
+        <pre><code data-language="shell">$ rm -rf .git/refs/original/
+
+        $ git reflog expire --expire=now --all
+
+        $ git gc --aggressive --prune=now</code></pre>
+        </div>
+
+        <p>掃除し終わったらgit log -pなどで消えていることを確認し、force pushする。</p>
+
+        <div class="sample_code">
+        <pre><code data-language="shell">$ git push -f</code></pre>
+        </div>
+
+        <p>コマンドが$ git push origin &lt;branch-name&rt; -fでないのは、前述では全ブランチに対してfilter-branchを行っているので、これをリポジトリに丸ごと反映したいから。filter-branchをしたのが特定のbranchだけ（あまりないと思うが）ならpush -fする時にbranchを指定しないとそれはそれで事故になるので注意。</p>
+
+        <p>以上となる。リモート反映後に他の作業者にリポジトリをcloneし直してもらえば、以後は重いlogのない軽量なリポジトリとなる。commitがリハッシュされているのは実行環境と別の作業環境でgit logし合って見ればわかる。</p>
+
+        <p>消すファイルの数やcommitの数にもよるので、この歴史の書き換えにかかる時間や軽量化できる容量は一概には言えないが、僕が関わっているプロジェクトで実行したところ8万オブジェクトで1.6GBあったリポジトリが、4万オブジェクトの145MBまで軽量化することができた。すごい威力を感じる。</p>
+
+        <hr>
+
+        <p>filter-branchは別にリポジトリの軽量化を目的とした機能ではない。<a href="http://qiita.com/Spring_MT/items/f60c391b5dbf569a1d12">リポジトリにうっかり含めてしまったセキュリティ上問題あるデータをlogからも消し去りたい場合</a>にも使う。全commitから目的のファイルをホニャララするのがfilter-branchの機能というわけだ。また、--index-filterではなく--tree-fliterを使って同様の処理を行うこともできるが、こちらはcheckoutをbranchごとに行うとのことで--index-filterより低速らしい。--tree-filterでは--allオプションはいらないのかどうか、調べたけどすぐに出てこなかったのでわからない。</p>
+
+        <p>実行するのはgitコマンド以外も可能だ。こちらの記事では<a href="http://qiita.com/wnoguchi/items/62f5e64ef2ae14b4f0ee">--tree-filterオプションで、cp -fコマンドで強制的にファイルを上書きコピー</a>している。</p>
+
+        <hr>
+
+        <p>この記事をある程度書いたところで<a href="http://easyramble.com/git-filter-branch.html">もっとわかりやすく書いているブログ</a>があることを知った。悔しいのでdskdでは--index-filterのオプションの書き方を少しだけ詳しく書いた。</p>
+
+        <p><small><ins datetime="2015-01-07T12:09:00+09:00" data-insdate="※2015/1/7 修正）">本文の表現を加筆修正</ins></small></p>
+
+        <h2>なぜfilter-branchのあとで他の作業者はリポジトリをcloneし直すのか</h2>
+
+        <p>filter-branchが実行されたリポジトリをリモートに反映後、他の作業者がcloneではなくそれまでのディレクトリでpullをするとどうなるかというと、普通にMergeされてpullできる。しかし、この作業環境のリポジトリには<em>削除したかったファイルやそのcommitが残っている</em>ので、pullしたのちに何かを編集してcommitしてpushすると、<strong>消したかったはずの情報がまたリモートに送られてしまい意味がなくなる</strong>。さらに、filter-branchしたあとのリポジトリのcommit messageがfliter-branch前のに混ざって二重にcommitしているように見える。ハッシュは異なるので別の変更履歴として扱われるわけだ。git logするとちょっと耐えられない感じになるだろう。</p>
+
+        <p>履歴はよごれるしpushするとfilter-branchが無意味になので、他の作業環境では必ずcloneし直そう。</p>
+
+        <p><small><ins datetime="2015-01-07T15:37:36+09:00" data-insdate="※2015/1/7 追加）">「なぜfilter-branchのあとで他の作業者はリポジトリをcloneし直すのか」の見出しとその本文を追記</ins></small></p>
       </div>
-
-      <p>filter-branchの--index-filterオプションで渡しているダブルクォーテーションの中が、各commitに対して行うコマンドになる。git rm -rf なのでフォルダもファイルも対象に消す。見た目わかりづらいがXXX/とYYY/img~の間にはスペースがあり複数指定している。。</p>
-
-      <p>--chacedオプションがあるとcommit logからだけ削除してワークツリーでは残すようになる（つまりファイルが手元に残る）。--cachedオプションがないとワークツリーからも消えるのでそこは注意してほしい。</p>
-
-      <p>--ignore-unmatchで当てはまる対象がない時のエラーを無視できる。</p>
-
-      <p>--prune-emptyがあると、対象のファイルをcommit logから消した時に生まれうる、コメントのみの空commitも消してくれるようになる。前述の２つのオプションはgit rmコマンドで、--prune-emptyはfilter-branchのオプションだ。</p>
-
-      <p>ハイフン2つで前のコマンドのオプションから抜け、--allで全ブランチを対象に同じ処理を行う。</p>
-
-      <p>実行完了には少し時間がかかるかもしれない。ファイル数やcommit数で前後する。</p>
-
-      <p>あとはローカルのキャッシュを消したりゴミ掃除したりしていく。</p>
-
-      <div class="sample_code">
-      <pre><code data-language="shell">$ rm -rf .git/refs/original/
-
-      $ git reflog expire --expire=now --all
-
-      $ git gc --aggressive --prune=now</code></pre>
-      </div>
-
-      <p>掃除し終わったらgit log -pなどで消えていることを確認し、force pushする。</p>
-
-      <div class="sample_code">
-      <pre><code data-language="shell">$ git push -f</code></pre>
-      </div>
-
-      <p>コマンドが$ git push origin &lt;branch-name&rt; -fでないのは、前述では全ブランチに対してfilter-branchを行っているので、これをリポジトリに丸ごと反映したいから。filter-branchをしたのが特定のbranchだけ（あまりないと思うが）ならpush -fする時にbranchを指定しないとそれはそれで事故になるので注意。</p>
-
-      <p>以上となる。リモート反映後に他の作業者にリポジトリをcloneし直してもらえば、以後は重いlogのない軽量なリポジトリとなる。commitがリハッシュされているのは実行環境と別の作業環境でgit logし合って見ればわかる。</p>
-
-      <p>消すファイルの数やcommitの数にもよるので、この歴史の書き換えにかかる時間や軽量化できる容量は一概には言えないが、僕が関わっているプロジェクトで実行したところ8万オブジェクトで1.6GBあったリポジトリが、4万オブジェクトの145MBまで軽量化することができた。すごい威力を感じる。</p>
-
-      <hr>
-
-      <p>filter-branchは別にリポジトリの軽量化を目的とした機能ではない。<a href="http://qiita.com/Spring_MT/items/f60c391b5dbf569a1d12">リポジトリにうっかり含めてしまったセキュリティ上問題あるデータをlogからも消し去りたい場合</a>にも使う。全commitから目的のファイルをホニャララするのがfilter-branchの機能というわけだ。また、--index-filterではなく--tree-fliterを使って同様の処理を行うこともできるが、こちらはcheckoutをbranchごとに行うとのことで--index-filterより低速らしい。--tree-filterでは--allオプションはいらないのかどうか、調べたけどすぐに出てこなかったのでわからない。</p>
-
-      <p>実行するのはgitコマンド以外も可能だ。こちらの記事では<a href="http://qiita.com/wnoguchi/items/62f5e64ef2ae14b4f0ee">--tree-filterオプションで、cp -fコマンドで強制的にファイルを上書きコピー</a>している。</p>
-
-      <hr>
-
-      <p>この記事をある程度書いたところで<a href="http://easyramble.com/git-filter-branch.html">もっとわかりやすく書いているブログ</a>があることを知った。悔しいのでdskdでは--index-filterのオプションの書き方を少しだけ詳しく書いた。</p>
-
-      <p><small><ins datetime="2015-01-07T12:09:00+09:00" data-insdate="※2015/1/7 修正）">本文の表現を加筆修正</ins></small></p>
-
-      <h2>なぜfilter-branchのあとで他の作業者はリポジトリをcloneし直すのか</h2>
-
-      <p>filter-branchが実行されたリポジトリをリモートに反映後、他の作業者がcloneではなくそれまでのディレクトリでpullをするとどうなるかというと、普通にMergeされてpullできる。しかし、この作業環境のリポジトリには<em>削除したかったファイルやそのcommitが残っている</em>ので、pullしたのちに何かを編集してcommitしてpushすると、<strong>消したかったはずの情報がまたリモートに送られてしまい意味がなくなる</strong>。さらに、filter-branchしたあとのリポジトリのcommit messageがfliter-branch前のに混ざって二重にcommitしているように見える。ハッシュは異なるので別の変更履歴として扱われるわけだ。git logするとちょっと耐えられない感じになるだろう。</p>
-
-      <p>履歴はよごれるしpushするとfilter-branchが無意味になので、他の作業環境では必ずcloneし直そう。</p>
-
-      <p><small><ins datetime="2015-01-07T15:37:36+09:00" data-insdate="※2015/1/7 追加）">「なぜfilter-branchのあとで他の作業者はリポジトリをcloneし直すのか」の見出しとその本文を追記</ins></small></p>
 
       <aside class="social-buttons">
         <ul>

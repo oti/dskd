@@ -34,37 +34,39 @@
       </footer>
 
       <h1>EDJOなオブジェクトの妄想</h1>
-      
-      <p>ながしまさんのEvery Declaration Just Onceアプローチについてのエントリー２つ（<a href="http://hail2u.net/blog/webdesign/every-declaration-just-once-example.html">Every Declaration Just Onceの例</a>と<a href="http://hail2u.net/blog/webdesign/oocss-drawbacks-and-gifts-of-every-declaration-just-once.html">OOCSSの欠点とEvery Declaration Just Onceのもたらすもの</a>）を興味深く読んだ。</p>
 
-      <p>僕もかねてから、CSSプリプロセッサーはCSSを複雑にするだけして何も楽にならないのではないかと思っていた。変数やmixinは出力されるスタイル宣言郡を型のようなものに設定づけ、再利用が可能な便利なものにしてくれる。しかし書式の限られたスタイル宣言郡を使い回すのは柔軟と言えるだろうか。</p>
+      <div class="entry-body">
+        <p>ながしまさんのEvery Declaration Just Onceアプローチについてのエントリー２つ（<a href="http://hail2u.net/blog/webdesign/every-declaration-just-once-example.html">Every Declaration Just Onceの例</a>と<a href="http://hail2u.net/blog/webdesign/oocss-drawbacks-and-gifts-of-every-declaration-just-once.html">OOCSSの欠点とEvery Declaration Just Onceのもたらすもの</a>）を興味深く読んだ。</p>
 
-      <p><a href="http://dskd.jp/archives/54.html">僕がかつて見殺しにしたCSS</a>は、無限に続く断続的な変更になんとかついていこうとした結果死んだ。現実のCSSのメンテはそういった型の中では収まらないレベルの変更ばかりだと思っている。少しでも違うスタイルが発生したらincludeした宣言ブロック内でmixinに入っているスタイルを上書きするのは賢くないし、かと言ってその都度新しいコンポーネントやそれをmixin化したものを作るのは、既存のパーツを壊さないにしても、メンテナンス性があるとはお世辞にも言えない。それをしていくと出来上がるのは「創業以来継ぎ足してきた秘伝のCSS」であり、次世代への負債でしかない。それをリファクタリングしていく時間がとれるならナシではないのだけど。</p>
+        <p>僕もかねてから、CSSプリプロセッサーはCSSを複雑にするだけして何も楽にならないのではないかと思っていた。変数やmixinは出力されるスタイル宣言郡を型のようなものに設定づけ、再利用が可能な便利なものにしてくれる。しかし書式の限られたスタイル宣言郡を使い回すのは柔軟と言えるだろうか。</p>
 
-      <p>そもそもの宣言ブロックの粒度が小さければそういった問題も起こりにくい。その極限をEvery Declaration Just Onceアプローチという手法が示してくれた。おそらくこういう書き方を素でやっていた人はいるだろう。それに名前がついただけかもしれない。CSS設計に注目が集まっていた近年、回帰したとも言えるこの手法に名前がついたことは大きい。</p>
+        <p><a href="http://dskd.jp/archives/54.html">僕がかつて見殺しにしたCSS</a>は、無限に続く断続的な変更になんとかついていこうとした結果死んだ。現実のCSSのメンテはそういった型の中では収まらないレベルの変更ばかりだと思っている。少しでも違うスタイルが発生したらincludeした宣言ブロック内でmixinに入っているスタイルを上書きするのは賢くないし、かと言ってその都度新しいコンポーネントやそれをmixin化したものを作るのは、既存のパーツを壊さないにしても、メンテナンス性があるとはお世辞にも言えない。それをしていくと出来上がるのは「創業以来継ぎ足してきた秘伝のCSS」であり、次世代への負債でしかない。それをリファクタリングしていく時間がとれるならナシではないのだけど。</p>
 
-      <h2>ふとした妄想</h2>
+        <p>そもそもの宣言ブロックの粒度が小さければそういった問題も起こりにくい。その極限をEvery Declaration Just Onceアプローチという手法が示してくれた。おそらくこういう書き方を素でやっていた人はいるだろう。それに名前がついただけかもしれない。CSS設計に注目が集まっていた近年、回帰したとも言えるこの手法に名前がついたことは大きい。</p>
 
-      <p>EDJOがグルーピングセレクタに対して単一のスタイル宣言が指定されるなら、書き方としては逆もできそうな気がする。例えばこんなフォーマットはどうか。</p>
+        <h2>ふとした妄想</h2>
 
-      <code><pre data-language="javascript">margin: {
-          top: {
-              10px: [".box", ".icon", "#side", ".sideHeading"],
-              30px: [".mainHeading", ".social", "footer"]
-          },
-          bottom: {
-              10px: [".box", ".social"],
-              10px!important: [".icon"]
-          }
-      }</pre></code>
+        <p>EDJOがグルーピングセレクタに対して単一のスタイル宣言が指定されるなら、書き方としては逆もできそうな気がする。例えばこんなフォーマットはどうか。</p>
 
-      <p>スタイルとそのサブプロパティを子に持ち、その値に対して配列でセレクタを渡すオブジェクトのようなもの。<a href="http://morishitter.hatenablog.com/entry/2015/01/16/005343">morishitterさんが書いていたCSSプリプロセッサーのplaceholderとextendを使った手法</a>だと、それぞれのスタイル宣言をすべてplaceholderとして別書きで持って置かなければならず、SCSSファイルがかなり鬱陶しいことになるように思う。<a href="http://sassmeister.com/gist/59645863c7dbe8c23f84">ためしに少し書いてみた</a>。たとえばreset.cssがEDJOで書かれたら......（ライブラリのようなものだからその必要はないけども）。それに対して上記のようなオブジェクトであれば、必要なプロパティの値のところだけにセレクタを書き足すので記述が少なくて済む。仮にEDJOスタイルのCSSコンパイラーが出現するなら、こういうのもありなんではないだろうか。</p>
+        <code><pre data-language="javascript">margin: {
+            top: {
+                10px: [".box", ".icon", "#side", ".sideHeading"],
+                30px: [".mainHeading", ".social", "footer"]
+            },
+            bottom: {
+                10px: [".box", ".social"],
+                10px!important: [".icon"]
+            }
+        }</pre></code>
 
-      <p>まぁ、現実そんなものはないし、オブジェクト形式だと変数とかfor文とかどうすんだってなるし、別途処理を書いていくともうJavaScriptでオブジェクトを手捏ねしているのと変わらない。あまりCSSライクな書き方ではないので見た目の気持ち悪さもすごそう。<a href="http://dskd.jp/archives/23.html">妄想を書き留めておきたくなるのが数年ごとにある</a>ようなので、今回もそんな感じでイーカゲンに聞き流してくれると嬉しい。</p>
+        <p>スタイルとそのサブプロパティを子に持ち、その値に対して配列でセレクタを渡すオブジェクトのようなもの。<a href="http://morishitter.hatenablog.com/entry/2015/01/16/005343">morishitterさんが書いていたCSSプリプロセッサーのplaceholderとextendを使った手法</a>だと、それぞれのスタイル宣言をすべてplaceholderとして別書きで持って置かなければならず、SCSSファイルがかなり鬱陶しいことになるように思う。<a href="http://sassmeister.com/gist/59645863c7dbe8c23f84">ためしに少し書いてみた</a>。たとえばreset.cssがEDJOで書かれたら......（ライブラリのようなものだからその必要はないけども）。それに対して上記のようなオブジェクトであれば、必要なプロパティの値のところだけにセレクタを書き足すので記述が少なくて済む。仮にEDJOスタイルのCSSコンパイラーが出現するなら、こういうのもありなんではないだろうか。</p>
 
-      <hr>
+        <p>まぁ、現実そんなものはないし、オブジェクト形式だと変数とかfor文とかどうすんだってなるし、別途処理を書いていくともうJavaScriptでオブジェクトを手捏ねしているのと変わらない。あまりCSSライクな書き方ではないので見た目の気持ち悪さもすごそう。<a href="http://dskd.jp/archives/23.html">妄想を書き留めておきたくなるのが数年ごとにある</a>ようなので、今回もそんな感じでイーカゲンに聞き流してくれると嬉しい。</p>
 
-      <p>あけましておめでとうございます。</p>
+        <hr>
+
+        <p>あけましておめでとうございます。</p>
+      </div>
 
       <aside class="social-buttons">
         <ul>
