@@ -4,13 +4,13 @@
     margin: 0;
     padding: 0;
     text-align: right;
-  }
 
-  ul::before{
-    content: 'share:';
-    display: inline-block;
-    vertical-align: top;
-    color: rgba(0,0,0,.45);
+    &::before{
+      content: 'share:';
+      display: inline-block;
+      vertical-align: top;
+      color: rgba(0,0,0,.45);
+    }
   }
 
   li{
@@ -27,22 +27,22 @@
     overflow: hidden;
     background: no-repeat center center;
     background-size: 25px;
-  }
 
-  .twitter-tweet{
-    background-image: url(/dest/svg/twitter.svg);
-  }
+    &.twitter-tweet{
+      background-image: url(/dest/svg/twitter.svg);
+    }
 
-  .facebook-share{
-    background-image: url(/dest/svg/facebook.svg);
-  }
+    &.facebook-share{
+      background-image: url(/dest/svg/facebook.svg);
+    }
 
-  .googleplus-share{
-    background-image: url(/dest/svg/googleplus.svg);
-  }
+    &.googleplus-share{
+      background-image: url(/dest/svg/googleplus.svg);
+    }
 
-  .hatena-bookmark{
-    background-image: url(/dest/svg/hatena-bookmark.svg);
+    &.hatena-bookmark{
+      background-image: url(/dest/svg/hatena-bookmark.svg);
+    }
   }
 }
 

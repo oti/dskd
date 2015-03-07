@@ -378,16 +378,16 @@ a:focus {
   background: no-repeat center center;
   background-size: 25px;
 }
-.social-buttons .twitter-tweet {
+.social-buttons a.twitter-tweet {
   background-image: url(/dest/svg/twitter.svg);
 }
-.social-buttons .facebook-share {
+.social-buttons a.facebook-share {
   background-image: url(/dest/svg/facebook.svg);
 }
-.social-buttons .googleplus-share {
+.social-buttons a.googleplus-share {
   background-image: url(/dest/svg/googleplus.svg);
 }
-.social-buttons .hatena-bookmark {
+.social-buttons a.hatena-bookmark {
   background-image: url(/dest/svg/hatena-bookmark.svg);
 }
 
