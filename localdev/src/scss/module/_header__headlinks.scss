@@ -28,5 +28,10 @@
       vertical-align: middle;
       background-color: rgba(0,0,0, .15);
     }
+
+    mark{
+      border-bottom: 3px solid rgba(255,255,255,.5);
+      background-color: transparent;
+    }
   }
 }

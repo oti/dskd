@@ -32,8 +32,13 @@
   clear: both;
 }
 
-.content-heading{
+.content-mainheading{
+  margin: 0;
+  font-size: 22px;
+}
+
+.content-subheading{
   float: left;
   margin: 0;
-  font-size: 16px;
+  font-size: 18px;
 }

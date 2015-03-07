@@ -119,6 +119,10 @@ a:focus {
   vertical-align: middle;
   background-color: rgba(0, 0, 0, 0.15);
 }
+.headlinks li mark {
+  border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+  background-color: transparent;
+}
 
 .global-footer {
   margin-bottom: 30px;
@@ -219,10 +223,15 @@ a:focus {
   clear: both;
 }
 
-.content-heading {
+.content-mainheading {
+  margin: 0;
+  font-size: 22px;
+}
+
+.content-subheading {
   float: left;
   margin: 0;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .entry-list a {
@@ -261,7 +270,7 @@ a:focus {
   list-style-type: none;
   list-style-position: inside;
   margin: 0 0 0 80px;
-  padding-left: 0;
+  padding: 5px 0 0;
   font-size: 14px;
 }
 
@@ -368,7 +377,7 @@ a:focus {
   display: inline-block;
   margin-left: 15px;
 }
-.social-buttons a {
+.social-buttons li a {
   display: block;
   width: 25px;
   height: 25px;
@@ -378,16 +387,16 @@ a:focus {
   background: no-repeat center center;
   background-size: 25px;
 }
-.social-buttons a.twitter-tweet {
+.social-buttons li.twitter-tweet a {
   background-image: url(/dest/svg/twitter.svg);
 }
-.social-buttons a.facebook-share {
+.social-buttons li.facebook-share a {
   background-image: url(/dest/svg/facebook.svg);
 }
-.social-buttons a.googleplus-share {
+.social-buttons li.googleplus-share a {
   background-image: url(/dest/svg/googleplus.svg);
 }
-.social-buttons a.hatena-bookmark {
+.social-buttons li.hatena-bookmark a {
   background-image: url(/dest/svg/hatena-bookmark.svg);
 }
 
