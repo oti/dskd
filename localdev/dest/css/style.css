@@ -361,6 +361,7 @@ a:focus {
   margin-top: 24px;
 }
 .entry-body pre {
+  padding: .5em;
   font: 14px 'Consolas', monospace;
   background-image: url(/dest/img/bg2.png);
 }
@@ -370,6 +371,31 @@ a:focus {
   border: none;
   line-height: 0;
   background: url(/dest/svg/dash.svg) no-repeat center center;
+}
+.entry-body img {
+  max-width: 100%;
+}
+.entry-body img:not(:only-child) {
+  float: left;
+}
+.entry-body img + img {
+  float: left;
+}
+.entry-body table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+.entry-body tr:nth-child(2n+1) {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.entry-body th {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  font: 18px 'Vegur-Bold';
+  background-image: url(/dest/img/bg2.png);
+}
+.entry-body td {
+  border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .social-buttons ul {

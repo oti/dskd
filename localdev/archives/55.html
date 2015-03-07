@@ -37,86 +37,88 @@
 
       <h1>columnプロパティが特定の状況でおかしくなる</h1>
 
-      <p><a href="http://www.adventar.org/calendars/341">CSS 珍百景 Advent Calendar 2014</a>の12日目。</p>
+      <div class="entry-body">
+        <p><a href="http://www.adventar.org/calendars/341">CSS 珍百景 Advent Calendar 2014</a>の12日目。</p>
 
-      <p>colunmプロパティを使った時にいくつかのブラウザで内容物のbreakがおかしくなる。デモは今回はJSFiddleにおいた。閲覧者が自由に加筆できるのはやはり利点。</p>
+        <p>colunmプロパティを使った時にいくつかのブラウザで内容物のbreakがおかしくなる。デモは今回はJSFiddleにおいた。閲覧者が自由に加筆できるのはやはり利点。</p>
 
-      <iframe width="100%" height="300" src="http://jsfiddle.net/o_ti/pcr3pr14/6/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        <iframe width="100%" height="300" src="http://jsfiddle.net/o_ti/pcr3pr14/6/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-      <p>で、このデモは.itemが３つごとに３カラムに別れて表示される想定でスタイルしている。このHTMLだとfloatではこういう表現はできないし、positionでやるのは面倒なだけなのでcolumnプロパティ最高だなと思っていた。PC版のGoogle Chrome 39系とiOS 7系のMobile Safariは期待どおりで問題ない。.caseの高さを目一杯使って.itemがきちんと収まっている。</p>
+        <p>で、このデモは.itemが３つごとに３カラムに別れて表示される想定でスタイルしている。このHTMLだとfloatではこういう表現はできないし、positionでやるのは面倒なだけなのでcolumnプロパティ最高だなと思っていた。PC版のGoogle Chrome 39系とiOS 7系のMobile Safariは期待どおりで問題ない。.caseの高さを目一杯使って.itemがきちんと収まっている。</p>
 
-      <figure>
-      <figcaption>期待通りの表示</figcaption>
-      <a href="/img/column_inner_element_break_bug/yep.png"><img src="/img/column_inner_element_break_bug/yep.png" alt=".itemは.caseの高さにちょうど収まっている。" width="100%"></a>
-      </figure>
+        <figure>
+        <figcaption>期待通りの表示</figcaption>
+        <a href="/img/column_inner_element_break_bug/yep.png"><img src="/img/column_inner_element_break_bug/yep.png" alt=".itemは.caseの高さにちょうど収まっている。" width="100%"></a>
+        </figure>
 
-      <p>しかしFirefox 34やIE11では.caseの高さが.item３つ分より足りないような挙動になり、.itemの一部がbreakされて次のカラムにめり込んでいる。.caseに指定した背景色のlimegreanが出ているように、別に.case自体の高さが小さくなったわけではない。にも関わらず、.itemの一部が次のカラムにbreakしている。さらに不可解なのは中段のデモで、column-widthとcolumn-gapの合計が.caseの幅を超えると.item３つ分の高さがぴったり収まり、一部がbreakされるようなことはなくなるというところ。</p>
+        <p>しかしFirefox 34やIE11では.caseの高さが.item３つ分より足りないような挙動になり、.itemの一部がbreakされて次のカラムにめり込んでいる。.caseに指定した背景色のlimegreanが出ているように、別に.case自体の高さが小さくなったわけではない。にも関わらず、.itemの一部が次のカラムにbreakしている。さらに不可解なのは中段のデモで、column-widthとcolumn-gapの合計が.caseの幅を超えると.item３つ分の高さがぴったり収まり、一部がbreakされるようなことはなくなるというところ。</p>
 
-      <figure>
-      <figcaption>期待通りにいっていない表示</figcaption>
-      <a href="/img/column_inner_element_break_bug/nope.png"><img src="/img/column_inner_element_break_bug/nope.png" alt=".itemは.caseの高さを利用しきれず、次のcolumnに一部だけbreakして表示されている。" width="100%"></a>
-      </figure>
+        <figure>
+        <figcaption>期待通りにいっていない表示</figcaption>
+        <a href="/img/column_inner_element_break_bug/nope.png"><img src="/img/column_inner_element_break_bug/nope.png" alt=".itemは.caseの高さを利用しきれず、次のcolumnに一部だけbreakして表示されている。" width="100%"></a>
+        </figure>
 
-      <p>column-widthとcolumn-gapの合計が.caseを超えた時に、column-rule（黒い帯）の表示位置が変になるのも面白い現象ではある。仕様ではカラム間のちょうど中央に配置されるはずだ。</p>
+        <p>column-widthとcolumn-gapの合計が.caseを超えた時に、column-rule（黒い帯）の表示位置が変になるのも面白い現象ではある。仕様ではカラム間のちょうど中央に配置されるはずだ。</p>
 
-      <p>ややこしいことに、iOS版のGoogle Chrome 39.0.2171.50で見るとiOS 7.1.2では期待通りに表示できるが、iOS 8.1.1では.itemの一部がbreakされてしまう。同じバージョンのブラウザでプラットフォーム別にこういうことが起こるのはちょっと困る<small>（Android OSは怖くて見ていない）</small>。表示の状況をまとめると以下の通りとなる。</p>
+        <p>ややこしいことに、iOS版のGoogle Chrome 39.0.2171.50で見るとiOS 7.1.2では期待通りに表示できるが、iOS 8.1.1では.itemの一部がbreakされてしまう。同じバージョンのブラウザでプラットフォーム別にこういうことが起こるのはちょっと困る<small>（Android OSは怖くて見ていない）</small>。表示の状況をまとめると以下の通りとなる。</p>
 
-      <table style="width: 100%; margin: 1em 0;">
-      <tr>
-          <td></td>
-          <th>Mac</th>
-          <th>Window</th>
-      </tr>
-      <tr>
-          <th>Chrome 39.0.2171.71</th>
-          <td>○</td>
-          <td>○</td>
-      </tr>
-      <tr>
-          <th>Chrome 41.0.2241.0 canary</th>
-          <td>○</td>
-          <td>○</td>
-      </tr>
-      <tr>
-          <th>Firefox 34</th>
-          <td>☓</td>
-          <td>☓</td>
-      </tr>
-      <tr>
-          <th>Firefox 37.0a1 Nightly</th>
-          <td>☓</td>
-          <td>☓</td>
-      </tr>
-      <tr>
-          <th>Internet Explorer 11</th>
-          <td>-</td>
-          <td>☓</td>
-      </tr>
-      </table>
+        <table style="width: 100%; margin: 1em 0;">
+        <tr>
+            <td></td>
+            <th>Mac</th>
+            <th>Window</th>
+        </tr>
+        <tr>
+            <th>Chrome 39.0.2171.71</th>
+            <td>○</td>
+            <td>○</td>
+        </tr>
+        <tr>
+            <th>Chrome 41.0.2241.0 canary</th>
+            <td>○</td>
+            <td>○</td>
+        </tr>
+        <tr>
+            <th>Firefox 34</th>
+            <td>☓</td>
+            <td>☓</td>
+        </tr>
+        <tr>
+            <th>Firefox 37.0a1 Nightly</th>
+            <td>☓</td>
+            <td>☓</td>
+        </tr>
+        <tr>
+            <th>Internet Explorer 11</th>
+            <td>-</td>
+            <td>☓</td>
+        </tr>
+        </table>
 
-      <table style="width: 100%; margin: 1em 0;">
-      <tr>
-          <td></td>
-          <th>iOS 7.1.2</th>
-          <th>iOS 8.1.1</th>
-      </tr>
-      <tr>
-          <th>Mobile Safari</th>
-          <td>○</td>
-          <td>☓</td>
-      </tr>
-      <tr>
-          <th>Chrome 39.0.271.50</th>
-          <td>○</td>
-          <td>☓</td>
-      </tr>
-      </table>
+        <table style="width: 100%; margin: 1em 0;">
+        <tr>
+            <td></td>
+            <th>iOS 7.1.2</th>
+            <th>iOS 8.1.1</th>
+        </tr>
+        <tr>
+            <th>Mobile Safari</th>
+            <td>○</td>
+            <td>☓</td>
+        </tr>
+        <tr>
+            <th>Chrome 39.0.271.50</th>
+            <td>○</td>
+            <td>☓</td>
+        </tr>
+        </table>
 
-      <p>IE12 Platform Previewでどうなっているか気になるけど、<a href="http://www.w3.org/TR/css3-multicol/">CSS Multi-column Layout Module</a>は全然動いてないので期待はできなそう。それに、columnをまたいだ時の内包物のbreak指定はbreak-after, break-before, break-insideというプロパティで指定できるかと思いきや、これらのプロパティの<a href="http://www.w3.org/TR/css3-multicol/#break-before-break-after-break-inside">対応メディアはpaged</a>だった。なのでvisualグループのscreenメディアでは使えない。<a href="http://dev.w3.org/csswg/css-multicol/#break-before-break-after-break-inside">Editor's Draftではメディアがvisualに変わっている</a>ので、このまま行けばbreak-*プロパティで対応していくようになるのかもしれないが、そもそも高さが十分にあるはずなのにbreakされてしまうというバグなので、仕様うんぬんじゃなくcolumnなボックスのレンダリングの問題な気がする。なのでブラウザ頑張れ。</p>
+        <p>IE12 Platform Previewでどうなっているか気になるけど、<a href="http://www.w3.org/TR/css3-multicol/">CSS Multi-column Layout Module</a>は全然動いてないので期待はできなそう。それに、columnをまたいだ時の内包物のbreak指定はbreak-after, break-before, break-insideというプロパティで指定できるかと思いきや、これらのプロパティの<a href="http://www.w3.org/TR/css3-multicol/#break-before-break-after-break-inside">対応メディアはpaged</a>だった。なのでvisualグループのscreenメディアでは使えない。<a href="http://dev.w3.org/csswg/css-multicol/#break-before-break-after-break-inside">Editor's Draftではメディアがvisualに変わっている</a>ので、このまま行けばbreak-*プロパティで対応していくようになるのかもしれないが、そもそも高さが十分にあるはずなのにbreakされてしまうというバグなので、仕様うんぬんじゃなくcolumnなボックスのレンダリングの問題な気がする。なのでブラウザ頑張れ。</p>
 
-      <p>業務ではこの表示をクロスブラウザにすることができずに、結局columnごとにdivを作りそれをfloatさせて対応した。.itemの数が直近のユーザーの操作によって変動するので、合計値からcolumn数と幅だけ算出すれば簡単だなと思ったのだけど、つらい結果になった。</p>
+        <p>業務ではこの表示をクロスブラウザにすることができずに、結局columnごとにdivを作りそれをfloatさせて対応した。.itemの数が直近のユーザーの操作によって変動するので、合計値からcolumn数と幅だけ算出すれば簡単だなと思ったのだけど、つらい結果になった。</p>
 
-      <p>columnこわい。</p>
+        <p>columnこわい。</p>
+      </div>
 
       <aside class="social-buttons">
         <ul>
