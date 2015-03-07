@@ -16,31 +16,31 @@
   li{
     display: inline-block;
     margin-left: 15px;
-  }
 
-  a{
-    display: block;
-    width: 25px;
-    height: 25px;
-    text-indent: 101%;
-    white-space: nowrap;
-    overflow: hidden;
-    background: no-repeat center center;
-    background-size: 25px;
+    a{
+      display: block;
+      width: 25px;
+      height: 25px;
+      text-indent: 101%;
+      white-space: nowrap;
+      overflow: hidden;
+      background: no-repeat center center;
+      background-size: 25px;
+    }
 
-    &.twitter-tweet{
+    &.twitter-tweet a{
       background-image: url(/dest/svg/twitter.svg);
     }
 
-    &.facebook-share{
+    &.facebook-share a{
       background-image: url(/dest/svg/facebook.svg);
     }
 
-    &.googleplus-share{
+    &.googleplus-share a{
       background-image: url(/dest/svg/googleplus.svg);
     }
 
-    &.hatena-bookmark{
+    &.hatena-bookmark a{
       background-image: url(/dest/svg/hatena-bookmark.svg);
     }
   }
