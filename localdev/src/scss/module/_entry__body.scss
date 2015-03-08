@@ -10,7 +10,7 @@
   pre{
     padding: .5em;
     font: 14px 'Consolas', monospace;
-    background-image: url(/dest/img/bg2.png);
+    background-image: url(/dist/img/bg2.png);
   }
 
   hr{
@@ -18,7 +18,7 @@
     height: 15px;
     border: none;
     line-height: 0;
-    background: url(/dest/svg/dash.svg) no-repeat center center;
+    background: url(/dist/svg/dash.svg) no-repeat center center;
   }
 
   img{
@@ -46,7 +46,7 @@
   th{
     border: 1px solid rgba(0,0,0, .15);
     font: 18px 'Vegur-Bold';
-    background-image: url(/dest/img/bg2.png);
+    background-image: url(/dist/img/bg2.png);
   }
 
   td{
