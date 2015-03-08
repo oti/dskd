@@ -1,0 +1,503 @@
+@charset 'UTF-8';
+
+/**
+ * dskd.jp Stylesheet
+ *
+ *  @author  Akiyoshi Oti
+ *  @version 4.0 (2015 Mar.)
+ *  @browser IE12+, Chrome 40+, Firefox 36+, Safari 7+,
+ */
+
+@font-face {
+  font-family: 'Vegur-Regular';
+  src: local('Vegur Regular'), local('VegurRegular'), url(/dest/font/Vegur-Regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Vegur-Light';
+  src: local('Vegur Light'), local('VegurLight'), url(/dest/font/Vegur-Light.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Vegur-Bold';
+  src: local('Vegur Bold'), local('VegurBold'), url(/dest/font/Vegur-Bold.woff) format('woff');
+}
+
+html{
+  -webkit-font-feature-settings: "kern" 1,"liga" 1,"lnum" 1,"pnum" 1;
+  font-feature-settings: "kern" 1,"liga" 1,"lnum" 1,"pnum" 1;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  font: 16px 'Vegur-Regular', Arial, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'ＭＳ Ｐゴシック', Osaka;
+  color: #263540;
+  line-height: 1.5;
+  background: url(/dest/img/bg.png) repeat fixed #d0d8dd;
+}
+
+img{
+  -ms-interpolation-mode: bicubic;
+  border: 0 none;
+  text-decoration: none;
+  vertical-align: top;
+  background: transparent;
+}
+
+a:link{
+  color: #0075a9;
+  text-decoration: none;
+}
+
+
+a:visited{
+  color: #ca176e;
+}
+
+a:hover{
+  color: #629a00;
+  text-decoration: underline;
+}
+
+a:active{
+  color: #ca176e;
+}
+
+a:focus{
+  color: #629a00;
+}
+
+hr{
+  margin: 30px auto;
+  height: 15px;
+  border: none;
+  line-height: 0;
+  background: url(/dest/svg/dash.svg) no-repeat center center;
+}
+
+
+/* common style */
+.global-header,
+.content,
+.neighbor,
+.global-footer{
+  box-sizing: border-box;
+  margin: auto;
+  padding: 0 15px;
+  min-width: 320px;
+  max-width: 640px;
+}
+
+.site-navigation,
+.entry-list,
+.entry-archive,
+.entry-category,
+/*.social-buttons,*/
+.neighbor{
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(0,0,0, .15);
+}
+
+
+
+/* header */
+.site-navigation{
+  position: relative;
+  margin-top: 30px;
+}
+
+.site-navigation::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.logo{
+  float: left;
+  width: 100px;
+  height: 60px;
+  line-height: 60px;
+  background-color: transparent;
+}
+
+.blog-lead{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  font-family: 'Vegur-Light';
+  font-weight: normal;
+  /*text-align: right;*/
+}
+
+.headlinks{
+  position: absolute;
+  bottom: 30px;
+  right: 0;
+  list-style-type: none;
+  list-style-position: inside;
+  margin: 0;
+  padding-left: 0;
+}
+
+.headlinks::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.headlinks li{
+  float: left;
+  padding-left: 10px;
+}
+
+.headlinks li+li::before{
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0,0,0, .15);
+}
+
+
+
+
+
+
+/* entry */
+.content-heading{
+  float: left;
+  margin: 0;
+  font-size: 16px;
+}
+
+.entry-list a{
+  display: block;
+  margin-top: 30px;
+  text-decoration: none;
+}
+
+.entry-list a footer{
+  color: #263540;
+}
+
+.entry-list a:hover h1{
+  text-decoration: underline;
+}
+
+.entry-footer{
+  font-size: 12px;
+}
+
+.entry-footer::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.entry-footer time,
+.entry-footer p{
+  float: left;
+}
+
+.entry-footer p{
+  margin: 0;
+  padding-left: 10px;
+}
+
+.entry-footer p::before{
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0,0,0, .15);
+}
+
+.entry h1{
+  margin: 0;
+  font: 20px 'Vegur-Bold';
+}
+
+.entry-body p{
+  text-indent: 1em;
+}
+
+.entry-body p+p{
+  margin-top: 24px;
+}
+
+.entry-more{
+  margin-top: 60px;
+  font-size: 16px;
+}
+
+.entry-more a{
+  display: inline;
+  padding-left: 5px;
+}
+
+.entry-more a::before{
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0,0,0, .15);
+}
+
+
+
+
+/* index other content */
+.category-list,
+.year-list{
+  list-style-type: none;
+  list-style-position: inside;
+  margin: 0 0 0 80px;
+  padding-left: 0;
+  font-size: 14px;
+}
+
+.year-list::after,
+.category-list::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.year-list > li {
+  box-sizing: border-box;
+  /*display: block;*/
+  float: left;
+  margin-bottom: 1em;
+  width: 20%;
+}
+
+.year-list > li:nth-child(6) {
+  clear:left;
+}
+
+.month-list{
+  list-style-type: disc;
+  padding-left: 0.5em;
+}
+
+.category-list li{
+  float:left;
+}
+
+.category-list li+li{
+  padding-left:10px;
+}
+
+.category-list li+li::before{
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0,0,0, .15);
+}
+
+
+
+
+
+
+/* footer */
+.global-footer{
+  margin-bottom: 30px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.global-footer::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.author{
+  float: left;
+}
+
+.author-credit,
+.authorlinks,
+.authorlinks li{
+  float: left;
+  margin:0;
+  padding:0;
+}
+
+.author-address{
+  float: left;
+  margin-left: 15px;
+  font-style: normal;
+}
+
+.authorlinks li{
+  margin-left: 10px;
+}
+
+.authorlinks li::before{
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0,0,0, .15);
+}
+
+.authorlinks,
+.footlinks{
+  list-style-type: none;
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+.footlinks{
+  float: right;
+  margin: 0;
+}
+
+.footlinks li{
+  float: left;
+  padding-left: 10px;
+}
+
+.footlinks li+li::before{
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0,0,0, .15);
+}
+
+
+
+/* individual */
+/*.social-buttons{
+  margin: 30px 0;
+}*/
+
+/*.social-buttons ul{
+  position: absolute;
+  bottom: 0;
+  left: -50px;
+  margin: 0;
+  padding: 180px 10px 0 0;
+  border-right: 1px solid rgba(0,0,0, .15);
+  width: 25px;
+}
+
+.social-buttons ul::before{
+  content: 'share';
+  display: block;
+  color: rgba(0,0,0,.3);
+  float: right;
+}
+
+.social-buttons ul::after{
+  content: '';
+  display: block;
+  clear: both;
+}*/
+
+.social-buttons ul{
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+.social-buttons ul::before{
+  content: 'share:';
+  display: inline-block;
+  vertical-align: top;
+  color: rgba(0,0,0,.45);
+}
+
+.social-buttons li{
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.social-buttons a{
+  display: block;
+  width: 25px;
+  height: 25px;
+  text-indent: 101%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.twitter-tweet{
+  background: url(/dest/svg/twitter.svg) no-repeat center center;
+  background-size: 25px;
+}
+
+.facebook-share{
+  background: url(/dest/svg/facebook.svg) no-repeat center center;
+  background-size: 25px;
+}
+
+.googleplus-share{
+  background: url(/dest/svg/googleplus.svg) no-repeat center center;
+  background-size: 25px;
+}
+
+.hatena-bookmark{
+  background: url(/dest/svg/hatena-bookmark.svg) no-repeat center center;
+  background-size: 25px;
+}
+
+.neighbor{
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0,0,0, .15);
+}
+
+.old-new-links{
+  position: relative;
+  list-style-type: none;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+
+.old-new-links li{
+  padding: 0;
+}
+
+.old-new-links li::before{
+  color: rgba(0,0,0,.45);
+  display: inline-block;
+  margin-right: 5px;
+  width: 50px;
+  text-align: right;
+}
+
+.old-link::before{
+  content: 'older:';
+}
+.new-link::before{
+  content: 'newer:';
+}

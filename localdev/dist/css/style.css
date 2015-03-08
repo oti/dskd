@@ -1,0 +1,467 @@
+@charset "UTF-8";
+/*
+ * dskd.jp Stylesheet
+ *
+ *  @author  oti(@o_ti)
+ *  @version 4.0.0 (2015.03~)
+ *  @browser IE11+, Chrome 40+, Firefox 36+, Safari 7+,
+ */
+@font-face {
+  font-family: 'Vegur-Regular';
+  src: local("Vegur Regular"), local("VegurRegular"), url(/dest/font/Vegur-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: 'Vegur-Light';
+  src: local("Vegur Light"), local("VegurLight"), url(/dest/font/Vegur-Light.woff) format("woff");
+}
+@font-face {
+  font-family: 'Vegur-Bold';
+  src: local("Vegur Bold"), local("VegurBold"), url(/dest/font/Vegur-Bold.woff) format("woff");
+}
+html {
+  -webkit-font-feature-settings: "kern" 1,"liga" 1,"lnum" 1,"pnum" 1;
+  font-feature-settings: "kern" 1,"liga" 1,"lnum" 1,"pnum" 1;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font: 16px 'Vegur-Regular', Arial, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'ＭＳ Ｐゴシック', Osaka;
+  color: #263540;
+  line-height: 1.5;
+  background: url(/dest/img/bg.png) repeat fixed #d0d8dd;
+}
+
+img {
+  -ms-interpolation-mode: bicubic;
+  border: 0 none;
+  text-decoration: none;
+  vertical-align: top;
+  background: transparent;
+}
+
+a:link {
+  color: #0075a9;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #ca176e;
+}
+
+a:hover {
+  color: #629a00;
+  text-decoration: underline;
+}
+
+a:active {
+  color: #ca176e;
+}
+
+a:focus {
+  color: #629a00;
+}
+
+.site-navigation {
+  position: relative;
+  margin-top: 30px;
+}
+.site-navigation::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.logo {
+  float: left;
+  display: block;
+  width: 100px;
+  height: 60px;
+  line-height: 60px;
+  background-color: transparent;
+}
+
+.blog-lead {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font: 20px 'Vegur-Light';
+  font-weight: normal;
+}
+
+.headlinks {
+  position: absolute;
+  bottom: 30px;
+  right: 0;
+  list-style-type: none;
+  list-style-position: inside;
+  margin: 0;
+  padding-left: 0;
+}
+.headlinks::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.headlinks li {
+  float: left;
+  padding-left: 10px;
+}
+.headlinks li + li::before {
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+.headlinks li mark {
+  border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+  background-color: transparent;
+}
+
+.global-footer {
+  margin-bottom: 30px;
+  font-size: 14px;
+  text-align: center;
+}
+.global-footer::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.author,
+.author-credit,
+.author-address,
+.authorlinks,
+.authorlinks li {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+.author-address {
+  margin-left: 10px;
+  font-style: normal;
+}
+.author-address::before {
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.authorlinks {
+  list-style-type: none;
+  list-style-position: inside;
+}
+.authorlinks li {
+  margin-left: 10px;
+}
+.authorlinks li::before {
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.footlinks {
+  list-style-type: none;
+  list-style-position: inside;
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+.footlinks li {
+  float: left;
+  padding-left: 10px;
+}
+.footlinks li + li::before {
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.global-header,
+.content,
+.neighbor,
+.global-footer {
+  box-sizing: border-box;
+  margin: auto;
+  padding: 0 15px;
+  min-width: 320px;
+  max-width: 640px;
+}
+
+.site-navigation,
+.entry-list,
+.entry-archive,
+.entry-category,
+.neighbor {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.global-footer {
+  margin-bottom: 30px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.global-footer::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.content-mainheading {
+  margin: 0;
+  font-size: 22px;
+}
+
+.content-subheading {
+  float: left;
+  margin: 0;
+  font-size: 18px;
+}
+
+.entry-list a {
+  display: block;
+  margin-top: 30px;
+  text-decoration: none;
+}
+.entry-list a:hover h1 {
+  text-decoration: underline;
+}
+.entry-list a footer {
+  color: #263540;
+}
+
+.entry-more {
+  margin-top: 60px;
+  font-size: 16px;
+}
+.entry-more a {
+  display: inline;
+  padding-left: 5px;
+}
+.entry-more a::before {
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.category-list,
+.year-list {
+  list-style-type: none;
+  list-style-position: inside;
+  margin: 0 0 0 80px;
+  padding: 5px 0 0;
+  font-size: 14px;
+}
+
+.year-list::after,
+.category-list::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.category-list li {
+  float: left;
+}
+.category-list li + li {
+  padding-left: 10px;
+}
+.category-list li + li::before {
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.year-list > li {
+  box-sizing: border-box;
+  float: left;
+  margin-bottom: 1em;
+  width: 20%;
+}
+.year-list > li:nth-child(6) {
+  clear: left;
+}
+
+.month-list {
+  list-style-type: disc;
+  padding-left: 0.5em;
+}
+
+.entry h1 {
+  margin: 0;
+  font: 20px 'Vegur-Bold';
+}
+
+.entry-footer {
+  font-size: 12px;
+}
+.entry-footer::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.entry-footer time, .entry-footer p {
+  float: left;
+}
+.entry-footer p {
+  margin: 0;
+  padding-left: 10px;
+}
+.entry-footer p::before {
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.entry-body p {
+  text-indent: 1em;
+}
+.entry-body p + p {
+  margin-top: 24px;
+}
+.entry-body pre {
+  padding: .5em;
+  font: 14px 'Consolas', monospace;
+  background-image: url(/dest/img/bg2.png);
+}
+.entry-body hr {
+  margin: 30px auto;
+  height: 15px;
+  border: none;
+  line-height: 0;
+  background: url(/dest/svg/dash.svg) no-repeat center center;
+}
+.entry-body img {
+  max-width: 100%;
+}
+.entry-body img:not(:only-child) {
+  float: left;
+}
+.entry-body img + img {
+  float: left;
+}
+.entry-body table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+.entry-body tr:nth-child(2n+1) {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.entry-body th {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  font: 18px 'Vegur-Bold';
+  background-image: url(/dest/img/bg2.png);
+}
+.entry-body td {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.social-buttons ul {
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+.social-buttons ul::before {
+  content: 'share:';
+  display: inline-block;
+  vertical-align: top;
+  color: rgba(0, 0, 0, 0.45);
+}
+.social-buttons li {
+  display: inline-block;
+  margin-left: 15px;
+}
+.social-buttons li a {
+  display: block;
+  width: 25px;
+  height: 25px;
+  text-indent: 101%;
+  white-space: nowrap;
+  overflow: hidden;
+  background: no-repeat center center;
+  background-size: 25px;
+}
+.social-buttons li.twitter-tweet a {
+  background-image: url(/dest/svg/twitter.svg);
+}
+.social-buttons li.facebook-share a {
+  background-image: url(/dest/svg/facebook.svg);
+}
+.social-buttons li.googleplus-share a {
+  background-image: url(/dest/svg/googleplus.svg);
+}
+.social-buttons li.hatena-bookmark a {
+  background-image: url(/dest/svg/hatena-bookmark.svg);
+}
+
+.neighbor {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.old-new-links {
+  position: relative;
+  list-style-type: none;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+.old-new-links li {
+  padding: 0;
+}
+.old-new-links li::before {
+  color: rgba(0, 0, 0, 0.45);
+  display: inline-block;
+  margin-right: 5px;
+  width: 50px;
+  text-align: right;
+}
+.old-new-links .old-link::before {
+  content: 'older:';
+}
+.old-new-links .new-link::before {
+  content: 'newer:';
+}
