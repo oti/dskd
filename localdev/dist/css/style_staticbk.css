@@ -10,17 +10,17 @@
 
 @font-face {
   font-family: 'Vegur-Regular';
-  src: local('Vegur Regular'), local('VegurRegular'), url(/dest/font/Vegur-Regular.woff) format('woff');
+  src: local('Vegur Regular'), local('VegurRegular'), url(/dist/font/Vegur-Regular.woff) format('woff');
 }
 
 @font-face {
   font-family: 'Vegur-Light';
-  src: local('Vegur Light'), local('VegurLight'), url(/dest/font/Vegur-Light.woff) format('woff');
+  src: local('Vegur Light'), local('VegurLight'), url(/dist/font/Vegur-Light.woff) format('woff');
 }
 
 @font-face {
   font-family: 'Vegur-Bold';
-  src: local('Vegur Bold'), local('VegurBold'), url(/dest/font/Vegur-Bold.woff) format('woff');
+  src: local('Vegur Bold'), local('VegurBold'), url(/dist/font/Vegur-Bold.woff) format('woff');
 }
 
 html{
@@ -34,7 +34,7 @@ body{
   font: 16px 'Vegur-Regular', Arial, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'ＭＳ Ｐゴシック', Osaka;
   color: #263540;
   line-height: 1.5;
-  background: url(/dest/img/bg.png) repeat fixed #d0d8dd;
+  background: url(/dist/img/bg.png) repeat fixed #d0d8dd;
 }
 
 img{
@@ -73,7 +73,7 @@ hr{
   height: 15px;
   border: none;
   line-height: 0;
-  background: url(/dest/svg/dash.svg) no-repeat center center;
+  background: url(/dist/svg/dash.svg) no-repeat center center;
 }
 
 
@@ -450,22 +450,22 @@ hr{
 }
 
 .twitter-tweet{
-  background: url(/dest/svg/twitter.svg) no-repeat center center;
+  background: url(/dist/svg/twitter.svg) no-repeat center center;
   background-size: 25px;
 }
 
 .facebook-share{
-  background: url(/dest/svg/facebook.svg) no-repeat center center;
+  background: url(/dist/svg/facebook.svg) no-repeat center center;
   background-size: 25px;
 }
 
 .googleplus-share{
-  background: url(/dest/svg/googleplus.svg) no-repeat center center;
+  background: url(/dist/svg/googleplus.svg) no-repeat center center;
   background-size: 25px;
 }
 
 .hatena-bookmark{
-  background: url(/dest/svg/hatena-bookmark.svg) no-repeat center center;
+  background: url(/dist/svg/hatena-bookmark.svg) no-repeat center center;
   background-size: 25px;
 }
 

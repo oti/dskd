@@ -8,15 +8,15 @@
  */
 @font-face {
   font-family: 'Vegur-Regular';
-  src: local("Vegur Regular"), local("VegurRegular"), url(/dest/font/Vegur-Regular.woff) format("woff");
+  src: local("Vegur Regular"), local("VegurRegular"), url(/dist/font/Vegur-Regular.woff) format("woff");
 }
 @font-face {
   font-family: 'Vegur-Light';
-  src: local("Vegur Light"), local("VegurLight"), url(/dest/font/Vegur-Light.woff) format("woff");
+  src: local("Vegur Light"), local("VegurLight"), url(/dist/font/Vegur-Light.woff) format("woff");
 }
 @font-face {
   font-family: 'Vegur-Bold';
-  src: local("Vegur Bold"), local("VegurBold"), url(/dest/font/Vegur-Bold.woff) format("woff");
+  src: local("Vegur Bold"), local("VegurBold"), url(/dist/font/Vegur-Bold.woff) format("woff");
 }
 html {
   -webkit-font-feature-settings: "kern" 1,"liga" 1,"lnum" 1,"pnum" 1;
@@ -29,7 +29,7 @@ body {
   font: 16px 'Vegur-Regular', Arial, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'ＭＳ Ｐゴシック', Osaka;
   color: #263540;
   line-height: 1.5;
-  background: url(/dest/img/bg.png) repeat fixed #d0d8dd;
+  background: url(/dist/img/bg.png) repeat fixed #d0d8dd;
 }
 
 img {
@@ -363,14 +363,14 @@ a:focus {
 .entry-body pre {
   padding: .5em;
   font: 14px 'Consolas', monospace;
-  background-image: url(/dest/img/bg2.png);
+  background-image: url(/dist/img/bg2.png);
 }
 .entry-body hr {
   margin: 30px auto;
   height: 15px;
   border: none;
   line-height: 0;
-  background: url(/dest/svg/dash.svg) no-repeat center center;
+  background: url(/dist/svg/dash.svg) no-repeat center center;
 }
 .entry-body img {
   max-width: 100%;
@@ -392,7 +392,7 @@ a:focus {
 .entry-body th {
   border: 1px solid rgba(0, 0, 0, 0.15);
   font: 18px 'Vegur-Bold';
-  background-image: url(/dest/img/bg2.png);
+  background-image: url(/dist/img/bg2.png);
 }
 .entry-body td {
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -424,16 +424,16 @@ a:focus {
   background-size: 25px;
 }
 .social-buttons li.twitter-tweet a {
-  background-image: url(/dest/svg/twitter.svg);
+  background-image: url(/dist/svg/twitter.svg);
 }
 .social-buttons li.facebook-share a {
-  background-image: url(/dest/svg/facebook.svg);
+  background-image: url(/dist/svg/facebook.svg);
 }
 .social-buttons li.googleplus-share a {
-  background-image: url(/dest/svg/googleplus.svg);
+  background-image: url(/dist/svg/googleplus.svg);
 }
 .social-buttons li.hatena-bookmark a {
-  background-image: url(/dest/svg/hatena-bookmark.svg);
+  background-image: url(/dist/svg/hatena-bookmark.svg);
 }
 
 .neighbor {
