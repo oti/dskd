@@ -1,15 +1,28 @@
 // entry body
 .entry-body{
+  h2{
+    margin: 30px 0 16px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Vegur-Bold';
+  }
+
   p{
+    margin: 0;
     text-indent: 1em;
     &+p{
       margin-top: 24px;
     }
   }
 
+  .spacing{
+    padding: 0 .3em
+  }
+
   pre{
     padding: .5em;
-    font: 14px 'Consolas', monospace;
+    font-size: 14px;
+    font-family: 'Consolas', monospace;
     background-image: url(/dist/img/bg2.png);
   }
 
@@ -45,7 +58,7 @@
 
   th{
     border: 1px solid rgba(0,0,0, .15);
-    font: 18px 'Vegur-Bold';
+    font-family: 'Vegur-Bold';
     background-image: url(/dist/img/bg2.png);
   }
 

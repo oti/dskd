@@ -15,20 +15,19 @@
 .entry-archive,
 .entry-category,
 .subscribe,
-.neighbor,
-.global-footer{
+.neighbor{
   margin-top: 30px;
   padding-top: 30px;
-  border-top: 1px solid rgba(0,0,0, .15);
+  border-top: 1px solid rgba(0,0,0, .1);
 }
 
 .content-mainheading{
   position: absolute;
-  bottom: -5px;
+  bottom: -10px;
   left: 130px;
   margin: 0;
   padding: 0;
-  font: 30px 'Vegur-Bold';
+  font-size: 28px;
 }
 
 .content-subheading{

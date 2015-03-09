@@ -90,7 +90,8 @@ a:focus {
   right: 0;
   margin: 0;
   padding: 0;
-  font: 20px 'Vegur-Light';
+  font-size: 20px;
+  font-family: 'Vegur-Light';
   font-weight: normal;
 }
 
@@ -143,20 +144,19 @@ a:focus {
 .entry-archive,
 .entry-category,
 .subscribe,
-.neighbor,
-.global-footer {
+.neighbor {
   margin-top: 30px;
   padding-top: 30px;
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .content-mainheading {
   position: absolute;
-  bottom: -5px;
+  bottom: -10px;
   left: 130px;
   margin: 0;
   padding: 0;
-  font: 30px 'Vegur-Bold';
+  font-size: 28px;
 }
 
 .content-subheading {
@@ -263,8 +263,9 @@ a:focus {
 }
 
 .entry-title {
-  margin: 0;
-  font: 20px 'Vegur-Bold';
+  margin: 0 0 24px;
+  font-size: 20px;
+  font-family: 'Vegur-Bold';
 }
 
 .entry-footer {
@@ -293,15 +294,26 @@ a:focus {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
+.entry-body h2 {
+  margin: 30px 0 16px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Vegur-Bold';
+}
 .entry-body p {
+  margin: 0;
   text-indent: 1em;
 }
 .entry-body p + p {
   margin-top: 24px;
 }
+.entry-body .spacing {
+  padding: 0 0.3em;
+}
 .entry-body pre {
   padding: .5em;
-  font: 14px 'Consolas', monospace;
+  font-size: 14px;
+  font-family: 'Consolas', monospace;
   background-image: url(/dist/img/bg2.png);
 }
 .entry-body hr {
@@ -330,7 +342,7 @@ a:focus {
 }
 .entry-body th {
   border: 1px solid rgba(0, 0, 0, 0.15);
-  font: 18px 'Vegur-Bold';
+  font-family: 'Vegur-Bold';
   background-image: url(/dist/img/bg2.png);
 }
 .entry-body td {
@@ -406,7 +418,9 @@ a:focus {
 }
 
 .global-footer {
-  margin-bottom: 30px;
+  margin: 30px auto 45px;
+  padding: 20px 15px 0;
+  border-top: 10px solid rgba(0, 0, 0, 0.05);
   font-size: 14px;
   text-align: center;
 }
