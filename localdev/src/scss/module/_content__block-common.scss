@@ -23,8 +23,12 @@
 }
 
 .content-mainheading{
+  position: absolute;
+  bottom: -5px;
+  left: 130px;
   margin: 0;
-  font-size: 22px;
+  padding: 0;
+  font: 30px 'Vegur-Bold';
 }
 
 .content-subheading{
