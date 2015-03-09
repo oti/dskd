@@ -62,8 +62,11 @@ a:focus {
   color: #629a00;
 }
 
-.site-navigation {
+.global-header {
   position: relative;
+}
+
+.site-navigation {
   margin-top: 30px;
 }
 .site-navigation::after {
@@ -93,7 +96,7 @@ a:focus {
 
 .headlinks {
   position: absolute;
-  bottom: 30px;
+  bottom: 0;
   right: 0;
   list-style-type: none;
   list-style-position: inside;
@@ -124,82 +127,6 @@ a:focus {
   background-color: transparent;
 }
 
-.global-footer {
-  margin-bottom: 30px;
-  font-size: 14px;
-  text-align: center;
-}
-.global-footer::after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
-.author,
-.author-credit,
-.author-address,
-.authorlinks,
-.authorlinks li {
-  float: left;
-  margin: 0;
-  padding: 0;
-}
-
-.author-address {
-  margin-left: 10px;
-  font-style: normal;
-}
-.author-address::before {
-  content: '';
-  display: inline-block;
-  border-radius: 6px;
-  margin-right: 10px;
-  width: 6px;
-  height: 6px;
-  vertical-align: middle;
-  background-color: rgba(0, 0, 0, 0.15);
-}
-
-.authorlinks {
-  list-style-type: none;
-  list-style-position: inside;
-}
-.authorlinks li {
-  margin-left: 10px;
-}
-.authorlinks li::before {
-  content: '';
-  display: inline-block;
-  border-radius: 6px;
-  margin-right: 10px;
-  width: 6px;
-  height: 6px;
-  vertical-align: middle;
-  background-color: rgba(0, 0, 0, 0.15);
-}
-
-.footlinks {
-  list-style-type: none;
-  list-style-position: inside;
-  float: right;
-  margin: 0;
-  padding: 0;
-}
-.footlinks li {
-  float: left;
-  padding-left: 10px;
-}
-.footlinks li + li::before {
-  content: '';
-  display: inline-block;
-  border-radius: 6px;
-  margin-right: 10px;
-  width: 6px;
-  height: 6px;
-  vertical-align: middle;
-  background-color: rgba(0, 0, 0, 0.15);
-}
-
 .global-header,
 .content,
 .neighbor,
@@ -211,27 +138,16 @@ a:focus {
   max-width: 640px;
 }
 
-.site-navigation,
 .entry-list,
+.entry,
 .entry-archive,
 .entry-category,
 .subscribe,
-.neighbor {
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-}
-
+.neighbor,
 .global-footer {
-  margin-bottom: 30px;
-  font-size: 14px;
-  text-align: center;
-}
-
-.global-footer::after {
-  content: '';
-  display: block;
-  clear: both;
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .content-mainheading {
@@ -245,15 +161,15 @@ a:focus {
   font-size: 18px;
 }
 
-.entry-list a {
+.entry-list > a {
   display: block;
-  margin-top: 30px;
+  margin-bottom: 30px;
   text-decoration: none;
 }
-.entry-list a:hover h1 {
+.entry-list > a:hover h1 {
   text-decoration: underline;
 }
-.entry-list a footer {
+.entry-list > a footer {
   color: #263540;
 }
 
@@ -262,7 +178,6 @@ a:focus {
   font-size: 16px;
 }
 .entry-more a {
-  display: inline;
   padding-left: 5px;
 }
 .entry-more a::before {
@@ -343,7 +258,7 @@ a:focus {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
-.entry h1 {
+.entry-title {
   margin: 0;
   font: 20px 'Vegur-Bold';
 }
@@ -484,4 +399,80 @@ a:focus {
 }
 .old-new-links .new-link::before {
   content: 'newer:';
+}
+
+.global-footer {
+  margin-bottom: 30px;
+  font-size: 14px;
+  text-align: center;
+}
+.global-footer::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.author,
+.author-credit,
+.author-address,
+.authorlinks,
+.authorlinks li {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+.author-address {
+  margin-left: 10px;
+  font-style: normal;
+}
+.author-address::before {
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.authorlinks {
+  list-style-type: none;
+  list-style-position: inside;
+}
+.authorlinks li {
+  margin-left: 10px;
+}
+.authorlinks li::before {
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.footlinks {
+  list-style-type: none;
+  list-style-position: inside;
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+.footlinks li {
+  float: left;
+  padding-left: 10px;
+}
+.footlinks li + li::before {
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.15);
 }
