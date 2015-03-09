@@ -215,6 +215,7 @@ a:focus {
 .entry-list,
 .entry-archive,
 .entry-category,
+.subscribe,
 .neighbor {
   margin-bottom: 30px;
   padding-bottom: 30px;
@@ -276,7 +277,8 @@ a:focus {
 }
 
 .category-list,
-.year-list {
+.year-list,
+.subscribe-list {
   list-style-type: none;
   list-style-position: inside;
   margin: 0 0 0 80px;
@@ -285,7 +287,8 @@ a:focus {
 }
 
 .year-list::after,
-.category-list::after {
+.category-list::after,
+.subscribe-list::after {
   content: '';
   display: block;
   clear: both;
@@ -321,6 +324,23 @@ a:focus {
 .month-list {
   list-style-type: disc;
   padding-left: 0.5em;
+}
+
+.subscribe-list li {
+  float: left;
+}
+.subscribe-list li + li {
+  padding-left: 10px;
+}
+.subscribe-list li + li::before {
+  content: '';
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 .entry h1 {

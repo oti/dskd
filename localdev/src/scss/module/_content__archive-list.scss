@@ -1,6 +1,7 @@
 // .category-list, .year-list
 .category-list,
-.year-list{
+.year-list,
+.subscribe-list{
   list-style-type: none;
   list-style-position: inside;
   margin: 0 0 0 80px;
@@ -9,7 +10,8 @@
 }
 
 .year-list::after,
-.category-list::after{
+.category-list::after,
+.subscribe-list::after{
   content: '';
   display: block;
   clear: both;
@@ -52,4 +54,25 @@
 .month-list{
   list-style-type: disc;
   padding-left: 0.5em;
+}
+
+.subscribe-list{
+  li{
+    float:left;
+
+    &+li{
+      padding-left:10px;
+    }
+
+    &+li::before{
+      content: '';
+      display: inline-block;
+      border-radius: 6px;
+      margin-right: 10px;
+      width: 6px;
+      height: 6px;
+      vertical-align: middle;
+      background-color: rgba(0,0,0, .15);
+    }
+  }
 }
