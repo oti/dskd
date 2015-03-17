@@ -1,4 +1,4 @@
-@media screen and (max-width:320px){
+@media screen and (max-width:414px){
 
   body{
     font-size: 14px;
@@ -17,29 +17,17 @@
     line-height: 1.2;
   }
 
-
   .global-header,
   .content,
   .neighbor,
   .global-footer{
     padding: 0 10px;
-    width: 320px;
+    min-width: 320px;
+    max-width: 414px;
   }
 
-  .category-list li{
-    float: none;
-    margin-left: 0;
-
-    &:nth-child(1)::before{
-      content: '';
-      display: inline-block;
-      border-radius: 6px;
-      margin-right: 10px;
-      width: 6px;
-      height: 6px;
-      vertical-align: middle;
-      background-color: rgba(0,0,0, .15);
-    }
+  .category-list{
+    margin-left: 70px;
   }
 
   .year-list {
@@ -57,6 +45,10 @@
 
   .author{
     float: none;
+  }
+
+  .authorlinks{
+    clear: left;
   }
 
   .authorlinks,

@@ -4,9 +4,13 @@
 .subscribe-list{
   list-style-type: none;
   list-style-position: inside;
-  margin: 0 0 0 80px;
+  margin: 0;
   padding: 4px 0 0;
   font-size: 14px;
+}
+
+.year-list{
+  margin-left: 95px;
 }
 
 .year-list::after,
@@ -20,12 +24,9 @@
 .category-list{
   li{
     float:left;
+    padding-left:10px;
 
-    &+li{
-      padding-left:10px;
-    }
-
-    &+li::before{
+    &::before{
       content: '';
       display: inline-block;
       border-radius: 6px;
@@ -59,12 +60,9 @@
 .subscribe-list{
   li{
     float:left;
+    padding-left:10px;
 
-    &+li{
-      padding-left:10px;
-    }
-
-    &+li::before{
+    &::before{
       content: '';
       display: inline-block;
       border-radius: 6px;

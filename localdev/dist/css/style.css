@@ -201,9 +201,13 @@ a:focus {
 .subscribe-list {
   list-style-type: none;
   list-style-position: inside;
-  margin: 0 0 0 80px;
+  margin: 0;
   padding: 4px 0 0;
   font-size: 14px;
+}
+
+.year-list {
+  margin-left: 95px;
 }
 
 .year-list::after,
@@ -216,11 +220,9 @@ a:focus {
 
 .category-list li {
   float: left;
-}
-.category-list li + li {
   padding-left: 10px;
 }
-.category-list li + li::before {
+.category-list li::before {
   content: '';
   display: inline-block;
   border-radius: 6px;
@@ -248,11 +250,9 @@ a:focus {
 
 .subscribe-list li {
   float: left;
-}
-.subscribe-list li + li {
   padding-left: 10px;
 }
-.subscribe-list li + li::before {
+.subscribe-list li::before {
   content: '';
   display: inline-block;
   border-radius: 6px;
@@ -495,7 +495,7 @@ a:focus {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 414px) {
   body {
     font-size: 14px;
   }
@@ -518,22 +518,12 @@ a:focus {
   .neighbor,
   .global-footer {
     padding: 0 10px;
-    width: 320px;
+    min-width: 320px;
+    max-width: 414px;
   }
 
-  .category-list li {
-    float: none;
-    margin-left: 0;
-  }
-  .category-list li:nth-child(1)::before {
-    content: '';
-    display: inline-block;
-    border-radius: 6px;
-    margin-right: 10px;
-    width: 6px;
-    height: 6px;
-    vertical-align: middle;
-    background-color: rgba(0, 0, 0, 0.15);
+  .category-list {
+    margin-left: 70px;
   }
 
   .year-list {
@@ -551,6 +541,10 @@ a:focus {
 
   .author {
     float: none;
+  }
+
+  .authorlinks {
+    clear: left;
   }
 
   .authorlinks,
