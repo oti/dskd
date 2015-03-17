@@ -45,7 +45,7 @@
     margin-bottom: 1em;
     width: 20%;
 
-    &:nth-child(6) {
+    &:nth-child(5n+6) {
       clear:left;
     }
   }
