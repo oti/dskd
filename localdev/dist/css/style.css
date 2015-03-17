@@ -26,8 +26,9 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font: 16px 'Vegur-Regular', Arial, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'ＭＳ Ｐゴシック', Osaka;
   color: #263540;
+  font-size: 16px;
+  font-family: 'Vegur-Regular', Arial, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'ＭＳ Ｐゴシック', Osaka;
   line-height: 1.5;
   background: url(/dist/img/bg.png) repeat fixed #d0d8dd;
 }
@@ -236,7 +237,7 @@ a:focus {
   margin-bottom: 1em;
   width: 20%;
 }
-.year-list > li:nth-child(6) {
+.year-list > li:nth-child(5n+6) {
   clear: left;
 }
 
@@ -313,7 +314,7 @@ a:focus {
 .entry-body pre {
   padding: .5em;
   font-size: 14px;
-  font-family: 'Consolas', monospace;
+  font-family: Consolas, monospace;
   background-image: url(/dist/img/bg2.png);
 }
 .entry-body hr {
@@ -422,7 +423,6 @@ a:focus {
   padding: 20px 15px 0;
   border-top: 10px solid rgba(0, 0, 0, 0.05);
   font-size: 14px;
-  text-align: center;
 }
 .global-footer::after {
   content: '';
@@ -493,4 +493,76 @@ a:focus {
   height: 6px;
   vertical-align: middle;
   background-color: rgba(0, 0, 0, 0.15);
+}
+
+@media screen and (max-width: 320px) {
+  body {
+    font-size: 14px;
+  }
+
+  .logo,
+  .logo img {
+    width: 75px;
+    height: 45px;
+  }
+
+  .blog-lead {
+    top: -5px;
+    margin-left: 95px;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .global-header,
+  .content,
+  .neighbor,
+  .global-footer {
+    padding: 0 10px;
+    width: 320px;
+  }
+
+  .category-list li {
+    float: none;
+    margin-left: 0;
+  }
+  .category-list li:nth-child(1)::before {
+    content: '';
+    display: inline-block;
+    border-radius: 6px;
+    margin-right: 10px;
+    width: 6px;
+    height: 6px;
+    vertical-align: middle;
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+
+  .year-list {
+    margin-left: 0;
+  }
+  .year-list > li {
+    width: 33%;
+  }
+  .year-list > li:nth-child(3n+1) {
+    clear: left;
+  }
+  .year-list > li:nth-child(5n+6) {
+    clear: none;
+  }
+
+  .author {
+    float: none;
+  }
+
+  .authorlinks,
+  .footlinks {
+    margin-top: 10px;
+  }
+
+  .authorlinks li:nth-child(1) {
+    margin-left: 0;
+  }
+  .authorlinks li:nth-child(1)::before {
+    margin-left: 0;
+    content: none;
+  }
 }
