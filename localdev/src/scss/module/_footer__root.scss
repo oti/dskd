@@ -6,8 +6,6 @@
   font-size: 14px;
 
   &::after{
-    content: '';
-    display: block;
-    clear: both;
+    @extend %clearfix;
   }
 }

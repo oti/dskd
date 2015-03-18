@@ -43,3 +43,23 @@ a:active{
 a:focus{
   color: #629a00;
 }
+
+// dot mark
+%clearfix{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+
+// dot mark
+%dotMark{
+  content: '';
+  display: inline-block;
+  margin-right: 8px;
+  border-radius: 6px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0,0,0, .15);
+}

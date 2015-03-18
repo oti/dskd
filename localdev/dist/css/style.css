@@ -63,17 +63,29 @@ a:focus {
   color: #629a00;
 }
 
+.site-navigation::after, .headlinks::after, .entry-footer::after, .global-footer::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.headlinks li + li::before, .entry-more a::before, .category-list li::before, .subscribe-list li::before, .entry-footer p::before, .author-address::before, .authorlinks li::before, .footlinks li + li::before {
+  content: '';
+  display: inline-block;
+  margin-right: 8px;
+  border-radius: 6px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
 .global-header {
   position: relative;
 }
 
 .site-navigation {
   margin-top: 30px;
-}
-.site-navigation::after {
-  content: '';
-  display: block;
-  clear: both;
 }
 
 .logo {
@@ -89,7 +101,7 @@ a:focus {
   position: absolute;
   top: 0;
   right: 0;
-  margin: 0;
+  margin: 0 0 0 115px;
   padding: 0;
   font-size: 20px;
   font-family: 'Vegur-Light';
@@ -105,24 +117,9 @@ a:focus {
   margin: 0;
   padding-left: 0;
 }
-.headlinks::after {
-  content: '';
-  display: block;
-  clear: both;
-}
 .headlinks li {
   float: left;
-  padding-left: 10px;
-}
-.headlinks li + li::before {
-  content: '';
-  display: inline-block;
-  border-radius: 6px;
-  margin-right: 10px;
-  width: 6px;
-  height: 6px;
-  vertical-align: middle;
-  background-color: rgba(0, 0, 0, 0.15);
+  padding-left: 8px;
 }
 .headlinks li mark {
   border-bottom: 3px solid rgba(255, 255, 255, 0.5);
@@ -185,16 +182,6 @@ a:focus {
 .entry-more a {
   padding-left: 5px;
 }
-.entry-more a::before {
-  content: '';
-  display: inline-block;
-  border-radius: 6px;
-  margin-right: 10px;
-  width: 6px;
-  height: 6px;
-  vertical-align: middle;
-  background-color: rgba(0, 0, 0, 0.15);
-}
 
 .category-list,
 .year-list,
@@ -220,17 +207,7 @@ a:focus {
 
 .category-list li {
   float: left;
-  padding-left: 10px;
-}
-.category-list li::before {
-  content: '';
-  display: inline-block;
-  border-radius: 6px;
-  margin-right: 10px;
-  width: 6px;
-  height: 6px;
-  vertical-align: middle;
-  background-color: rgba(0, 0, 0, 0.15);
+  padding-left: 8px;
 }
 
 .year-list > li {
@@ -252,16 +229,6 @@ a:focus {
   float: left;
   padding-left: 10px;
 }
-.subscribe-list li::before {
-  content: '';
-  display: inline-block;
-  border-radius: 6px;
-  margin-right: 10px;
-  width: 6px;
-  height: 6px;
-  vertical-align: middle;
-  background-color: rgba(0, 0, 0, 0.15);
-}
 
 .entry-title {
   margin: 0 0 24px;
@@ -272,27 +239,13 @@ a:focus {
 .entry-footer {
   font-size: 12px;
 }
-.entry-footer::after {
-  content: '';
-  display: block;
-  clear: both;
-}
-.entry-footer time, .entry-footer p {
+.entry-footer time {
   float: left;
 }
 .entry-footer p {
+  float: left;
   margin: 0;
-  padding-left: 10px;
-}
-.entry-footer p::before {
-  content: '';
-  display: inline-block;
-  border-radius: 6px;
-  margin-right: 10px;
-  width: 6px;
-  height: 6px;
-  vertical-align: middle;
-  background-color: rgba(0, 0, 0, 0.15);
+  padding-left: 8px;
 }
 
 .entry-body h2 {
@@ -424,11 +377,6 @@ a:focus {
   border-top: 10px solid rgba(0, 0, 0, 0.05);
   font-size: 14px;
 }
-.global-footer::after {
-  content: '';
-  display: block;
-  clear: both;
-}
 
 .author,
 .author-credit,
@@ -441,18 +389,8 @@ a:focus {
 }
 
 .author-address {
-  margin-left: 10px;
+  padding-left: 8px;
   font-style: normal;
-}
-.author-address::before {
-  content: '';
-  display: inline-block;
-  border-radius: 6px;
-  margin-right: 10px;
-  width: 6px;
-  height: 6px;
-  vertical-align: middle;
-  background-color: rgba(0, 0, 0, 0.15);
 }
 
 .authorlinks {
@@ -460,17 +398,7 @@ a:focus {
   list-style-position: inside;
 }
 .authorlinks li {
-  margin-left: 10px;
-}
-.authorlinks li::before {
-  content: '';
-  display: inline-block;
-  border-radius: 6px;
-  margin-right: 10px;
-  width: 6px;
-  height: 6px;
-  vertical-align: middle;
-  background-color: rgba(0, 0, 0, 0.15);
+  padding-left: 8px;
 }
 
 .footlinks {
@@ -482,17 +410,7 @@ a:focus {
 }
 .footlinks li {
   float: left;
-  padding-left: 10px;
-}
-.footlinks li + li::before {
-  content: '';
-  display: inline-block;
-  border-radius: 6px;
-  margin-right: 10px;
-  width: 6px;
-  height: 6px;
-  vertical-align: middle;
-  background-color: rgba(0, 0, 0, 0.15);
+  padding-left: 8px;
 }
 
 @media screen and (max-width: 414px) {

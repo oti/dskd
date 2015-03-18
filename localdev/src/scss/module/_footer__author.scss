@@ -10,18 +10,11 @@
 }
 
 .author-address {
-  margin-left: 10px;
+  padding-left: 8px;
   font-style: normal;
 
   &::before{
-      content: '';
-      display: inline-block;
-      border-radius: 6px;
-      margin-right: 10px;
-      width: 6px;
-      height: 6px;
-      vertical-align: middle;
-      background-color: rgba(0,0,0, .15);
+      @extend %dotMark;
   }
 }
 
@@ -30,17 +23,10 @@
   list-style-position: inside;
 
   li{
-    margin-left: 10px;
+    padding-left: 8px;
 
     &::before{
-      content: '';
-      display: inline-block;
-      border-radius: 6px;
-      margin-right: 10px;
-      width: 6px;
-      height: 6px;
-      vertical-align: middle;
-      background-color: rgba(0,0,0, .15);
+      @extend %dotMark;
     }
   }
 }
