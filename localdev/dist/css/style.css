@@ -3,8 +3,8 @@
  * dskd.jp Stylesheet
  *
  *  @author  oti(@o_ti)
- *  @version 4.0.0 (2015.03~)
- *  @browser IE11+, Chrome 40+, Firefox 36+, Safari 7+,
+ *  @version 4.0.0 (2015.04~)
+ *  @browser IE11+, Chrome 42+, Firefox 37+, Safari 8.0+,
  */
 @font-face {
   font-family: 'Vegur-Regular';
@@ -85,7 +85,7 @@ a:focus {
   background-color: transparent;
 }
 
-.blog-lead {
+.blog-lede {
   position: absolute;
   top: 0;
   right: 0;
@@ -506,7 +506,7 @@ a:focus {
     height: 45px;
   }
 
-  .blog-lead {
+  .blog-lede {
     top: -5px;
     margin-left: 95px;
     font-size: 14px;
