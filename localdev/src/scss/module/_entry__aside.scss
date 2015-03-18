@@ -1,5 +1,7 @@
+
 // entry aside
 .social-buttons{
+  margin-top: 1em;
   ul{
     margin: 0;
     padding: 0;
@@ -60,14 +62,20 @@
   padding: 0;
 
   li{
+    margin-left: 60px;
     padding: 0;
+    text-indent: -60px;
+
+    &+li{
+      margin-top: 1em;
+    }
   }
 
   li::before{
-    color: rgba(0,0,0,.45);
     display: inline-block;
-    margin-right: 5px;
+    padding-right: 10px;
     width: 50px;
+    color: rgba(0,0,0,.45);
     text-align: right;
   }
 
