@@ -5,6 +5,10 @@
     font-size: 18px;
     font-weight: bold;
     font-family: 'Vegur-Bold';
+
+    &::before{
+      @extend %headMark;
+    }
   }
 
   p{

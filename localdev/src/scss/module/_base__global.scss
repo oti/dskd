@@ -52,7 +52,7 @@ a:focus{
 }
 
 
-// dot mark
+// dividing mark
 %dotMark{
   content: '';
   display: inline-block;
@@ -60,6 +60,19 @@ a:focus{
   border-radius: 6px;
   width: 6px;
   height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0,0,0, .15);
+}
+
+// heading mark
+%headMark{
+  content: '';
+  display: inline-block;
+  margin-left: -.5em;
+  margin-right: .3em;
+  border-radius: 1em;
+  width: 1em;
+  height: .4em;
   vertical-align: middle;
   background-color: rgba(0,0,0, .15);
 }
