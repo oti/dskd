@@ -269,6 +269,7 @@ a:focus {
   font-size: 14px;
   font-family: Consolas, monospace;
   background-image: url(/dist/img/bg2.png);
+  overflow-x: scroll;
 }
 .entry-body hr {
   margin: 30px auto;
@@ -303,6 +304,9 @@ a:focus {
   border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
+.social-buttons {
+  margin-top: 1em;
+}
 .social-buttons ul {
   margin: 0;
   padding: 0;
@@ -355,13 +359,18 @@ a:focus {
   padding: 0;
 }
 .old-new-links li {
+  margin-left: 60px;
   padding: 0;
+  text-indent: -60px;
+}
+.old-new-links li + li {
+  margin-top: 1em;
 }
 .old-new-links li::before {
-  color: rgba(0, 0, 0, 0.45);
   display: inline-block;
-  margin-right: 5px;
+  padding-right: 10px;
   width: 50px;
+  color: rgba(0, 0, 0, 0.45);
   text-align: right;
 }
 .old-new-links .old-link::before {
