@@ -4,7 +4,7 @@
  * dskd.jp Stylesheet take on BEM.
  *
  *   * @author  Akiyoshi Oti
- *   * @version 3.0 (Dec. 2013)
+ *   * @version 3.4.2 (26 Mar. 2015)
  *   * @browser IE9+, Chrome 31+, Firefox 25+, Safari 5.1+,
  */
 
@@ -359,6 +359,11 @@ a.button:hover{
   margin: 0 0 10px;
 }
 
+.article__item em{
+  font-style: normal;
+  font-weight: bold;
+}
+
 .article__item del{
   color: #677d8b;
 }
@@ -415,9 +420,16 @@ a.button:hover{
 }
 
 .article__item table{
+  margin-bottom: 1em;
   border-collapse: collapse;
   border: 0;
   text-align: center;
+}
+
+.article__item table caption{
+  border: 1px solid #677d8b;
+  border-bottom: 0;
+  font-weight: bold;
 }
 
 .article__item table th{
