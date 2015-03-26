@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title><mt:BlogName></title>
+
+  <link href="http://dskd.jp/" rel="canonical">
+  <link href="apple-touch-icon.png" rel="apple-touch-icon-precomposed">
+  <link href="/feed" rel="alternate" type="application/atom+xml">
+
+  <link href="/dist/css/style.css" media="only screen" rel="stylesheet">
+</head>
+<body>
+  <header class="global-header">
+    <nav class="site-navigation">
+      <mark class="logo"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></mark>
+
+
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/archives/demo/">Demo</a></li>
+        <li><a href="/archives/about.html">About</a></li>
+      </ul>
+    </nav>
+
+    <h1 class="blog-lede"><mt:BlogDescription></h1>
+  </header>
+
+  <main class="content">
+    <section class="entry-list">
+
+      <mt:entries lastn="5">
+        <a href="<mt:entrypermalink>">
+          <article>
+            <footer class="entry-footer">
+              <time datetime="<mt:EntryDate format_name="iso8601">"><mt:EntryDate format="%Y.%m.%d"></time>
+              <mt:If tag="entrycategory"><p><mt:EntryCategories glue=", "><span class="tag"><mt:CategoryLabel></span></mt:EntryCategories></p></mt:If>
+            </footer>
+
+            <h1 class="entry-title"><mt:EntryTtitle></h1>
+          </article>
+        </a>
+      </mt:entries>
+
+      <footer class="entry-more"><a href="/archives/">more entries&nbsp;»</a></footer>
+    </section>
+
+    <nav class="entry-category">
+      <h1 class="content-subheading">Category</h1>
+
+      <ul class="category-list">
+        <mt:Categories>
+          <li><a href="<mt:CategoryArchiveLink>"><mt:CategoryLabel></a></li>
+        </mt:Categories>
+      </ul>
+    </nav>
+
+    <nav class="entry-archive">
+      <h1 class="content-subheading">Archive</h1>
+
+      <mt:ArchiveList archive_type="Monthly" sort_order="descend">
+        <mt:ArchiveDateHeader>
+          <ol class="year-list" reversed>
+            <li><mt:ArchiveDate format="%Y">
+        </mt:ArchiveDateHeader>
+              <ol class="month-list" reversed>
+                <li><a href="<mt:ArchiveLink>"><mt:ArchiveDate format="%B" language="en"></a></li>
+        <mt:ArchiveDateFooter>
+              </ol></li>
+            </li>
+          </ol>
+        </mt:ArchiveDateFooter>
+      </mt:ArchiveList>
+    </nav>
+
+    <aside class="subscribe">
+      <h1 class="content-subheading">Subscribe</h1>
+
+      <ul class="subscribe-list">
+        <li><a href="/feed">RSS</a></li>
+        <li><a href="https://twitter.com/dskd_jp">Twitter</a></li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer class="global-footer">
+    <section class="author">
+      <p class="author-credit">Made by oti.</p>
+      <address class="author-address"><a href="mailto:otiext@gmail.com">otiext@gmail.com</a></address>
+
+      <ul class="authorlinks">
+        <li><a href="https://github.com/oti">GitHub</a></li>
+        <li><a href="http://codepen.io/o_ti/">Codepen</a></li>
+      </ul>
+   </section>
+
+    <ul class="footlinks">
+      <li><a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC</a></li>
+      <li><a href="/feed" rel="alternate" type="application/rss+xml">RSS</a></li>
+    </ul>
+  </footer>
+</body>
+</html>
