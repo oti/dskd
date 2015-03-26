@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>dskd</title>
+
+  <link href="http://dskd.jp/" rel="canonical">
+  <link href="apple-touch-icon.png" rel="apple-touch-icon-precomposed">
+  <link href="/feed" rel="alternate" type="application/atom+xml">
+
+  <link href="/dist/css/style.css" media="only screen" rel="stylesheet">
+</head>
+<body>
+  <header class="global-header">
+    <nav class="site-navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/archives/demo/">Demo</a></li>
+        <li><a href="/archives/about.html">About</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <div class="content">
+    <article class="entry">
+      <footer class="entry-footer">
+        <time datetime="2015-01-24T12:18:00+09:00">2015.02.17</time>
+        <p><span class="tag">CSS</span></p>
+      </footer>
+
+      <h1 class="entry-title">Google Chrome 40でreversed属性のついたol要素のカウンターがおかしい</h1>
+
+      <div class="entry-body">
+        <p>親要素に対して子要素を上下左右に中央配置するTRBLメソッドというものがある。</p>
+
+          <pre><code data-language="css">.wrap{
+            position: relative;
+            width: 300px;
+            height: 300px;
+
+            border: 1px solid magenta;
+            resize: both;
+            overflow: hidden;
+          }
+
+          .inner{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+
+            width: 176px;
+            height: 244px;
+
+            background-color: grey;
+          }</code></pre>
+
+          <p><a href="http://dskd.jp/archives/substituting-trbl-method-for-background-size/basic-trbl-method.html">デモで確認できる</a>。</p>
+
+          <p>.innerをimgタグにして、画像の大きさが不定の時でも頑張る方法は<a href="http://dskd.jp/archives/29.html">以前記事にしている</a>ので参考までに。</p>
+
+          <p>このTRBLメソッドでさらに頑張ると、背景指定ではなくimgタグを使いつつも<code>background-size: 100% auto;</code>のような表示が可能になる。</p>
+
+          <p>元ネタは<a href="https://twitter.com/_tsmd/status/580611589939859457">そめさんのツイート</a>から。</p>
+
+          <h2>要件</h2>
+
+          <ul>
+          <li>div > imgの構造</li>
+          <li>divの幅と高さは固定</li>
+          <li>imgの大きさは不定</li>
+          <li>imgはdivに対して横幅いっぱいに表示させたい</li>
+          <li>divに対してimgの高さが大きい時は上下に均等にはみ出させて隠す</li>
+          <li>divに対してimgの高さが小さい時は上下に均等に余白を残す</li>
+          <li>IE8でも表示できる</li>
+          </ul>
+
+          <p>普通に<code>img { width: 100%; }</code>するだけだと上下方向のセンタリングができない。背景画像を指定する方法で幅のフィットだけ（クライアントに）諦めさせたいところだけど、構造が変えられないので不可。background-sizeでやれれば<a href="http://jsfiddle.net/x2nb9o7w/">一番簡単</a>だけどIE8はbackground-sizeプロパティに対応していない。ということでTRBLメソッドを使う。</p>
+
+          <p>画像の横幅が常に親要素にフィットするということは<code>width: 100%;</code>を加えるとできるが、それだけではダメで4辺の値を工夫する必要がある。</p>
+
+          <pre><code data-language="css">.wrap{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+          }
+
+          .wrap img{
+            position: absolute;
+            top: -100%;
+            right: -100%;
+            bottom: -100%;
+            left: -100%;
+            margin: auto;
+            width: 100%;
+          }</code></pre>
+
+          <p><a href="http://dskd.jp/archives/substituting-trbl-method-for-background-size/change-kitten.html">ボタンを押すとねこ画像が切り替わって挿入されるデモ</a>を作った。どのサイズの画像でも<code>background-size: 100% auto;</code>と同じ表示形式になっているのが確認できると思う。画像の読み込みが少し重い。JavaScriptがイーカゲンなのには目をつぶって欲しい。PlaceKittenはサイズの組み合わせによっては表示してくれない場合があり、珍妙なif文を書かざるを得なかった。</p>
+
+          <h2>containもcoverも</h2>
+
+          <p>background-sizeの他の値もTRBLメソッドの応用で代替できる。代表的な値は<code>100% auto</code>, <code>auto 100%</code>, <code>contain</code>, <code>cover</code>だろう。.wrapのルールセットは同じなので、画像のスタイルだけそれぞれまとめると下記のようになる。</p>
+
+          <pre><code data-language="css">/* like background-size: 100% auto; */
+          .wrap img{
+            position: absolute;
+            top: -100%;
+            right: -100%;
+            bottom: -100%;
+            left: -100%;
+            margin: auto;
+
+            width: 100%;
+          }</code></pre>
+
+          <pre><code data-language="css">/* like background-size: auto 100%; */
+          .wrap img{
+            position: absolute;
+            top: -100%;
+            right: -100%;
+            bottom: -100%;
+            left: -100%;
+            margin: auto;
+
+            height: 100%;
+          }</code></pre>
+
+          <pre><code data-language="css">/* like background-size: contain; */
+          .wrap img{
+            position: absolute;
+            top: -100%;
+            right: -100%;
+            bottom: -100%;
+            left: -100%;
+            margin: auto;
+
+            max-width: 100%;
+            max-height: 100%;
+          }</code></pre>
+
+          <pre><code data-language="css">/* like background-size: cover; */
+          .wrap img{
+            position: absolute;
+            top: -100%;
+            right: -100%;
+            bottom: -100%;
+            left: -100%;
+            margin: auto;
+
+            min-width: 100%;
+            min-height: 100%;
+          }</code></pre>
+
+          <p>それぞれの表示を<a href="http://dskd.jp/archives/substituting-trbl-method-for-background-size/check-dynamic.html">ヤンチャに切り替えられるデモ</a>を置いた。JSでクラスを操作する関係でCSSが少し読みづらい。なのでルールセットは上記を参考にしてほしい。</p>
+
+          <h2>TRBL: 0;ではなくTRBL: -100%;</h2>
+
+          <p>containを代替したい時は4辺の値は<code>-100%</code>でも<code>0</code>でよいが、それ以外の時は<code>-100%</code>でないと、ブラウザによっては縦や横方向のセンタリングがうまく効いてくれない場合があった。4辺0値の時の表示でこちらで確認できた組み合わせは以下のとおり。</p>
+
+          <table>
+              <caption>4辺0値のTRBLメソッドでセンタリングができない方向</caption>
+              <tr>
+                  <th>代替したいbackground-size値</th>
+                  <th>Internet Explorer 8</th>
+                  <th>Firefox 36</th>
+                  <th>Chrome 41</th>
+              </tr>
+              <tr>
+                  <th scope="col">100% auto</th>
+                  <td>-</td>
+                  <td>縦</td>
+                  <td>-</td>
+              </tr>
+              <tr>
+                  <th scope="col">auto 100%</th>
+                  <td>横</td>
+                  <td>横</td>
+                  <td>横</td>
+              </tr>
+              <tr>
+                  <th scope="col">contain</th>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+              </tr>
+              <tr>
+                  <th scope="col">cover</th>
+                  <td>横</td>
+                  <td><strong>横と縦</strong></td>
+                  <td>横</td>
+              </tr>
+          </table>
+
+          <p><a href="http://dskd.jp/archives/substituting-trbl-method-for-background-size/check-static.html">チェックはこのページを使った</a>。すこしややこしいのだが、上表の方向はそのまま子要素の画像が縦長か横長かとイコールになっている。つまり、「4辺0値のTRBLメソッドで<code>100% auto</code>を表現しようとすると<em>縦長の画像</em>で<em>縦方向のセンタリング</em>がFirefox 36で効かない」。横長の画像なら縦方向のセンタリングはFirefox 36でもちゃんと効く、ということ。</p>
+
+          <p><code>cover</code>についてはFirefox 36だけは画像のアスペクト比にかかわらず両方向でセンタリングが効かず、<code>top: 0</code>, <code>left: 0</code>だけ指定されたような配置になる。辺指定なしのデフォルトとも見える。</p>
+
+          <h2>互いに引っ張り合う座標指定</h2>
+
+          <p>フィットさせて親要素より上下や左右がはみ出る画像だと、<code>0</code>値ではセンタリングがうまくいかなくなるのは不思議だ。上と左へのマイナス方向の配置が不足している感じがする。<code>-100%</code>値だと、4辺が<em>お互いを大きく引っ張り合う</em>ように座標が指定され、上下も左右もセンタリングしてくれるようになるのということなのだろうか。</p>
+
+          <p>値は4つとも同じであれば<code>-200%</code>でも<code>-1000%</code>でもいいが、子要素の画像の幅や高さは親要素ベースで%計算されているので、<code>-50%</code>より大きな数値にしてしまうと画像サイズによってはズレが生じてくる気がする。<code>-100%</code>にしておくのが無難だと思う。</p>
+
+          <hr />
+
+          <p>2015年になってもTRBLメソッドについて書いた。<a href="http://unformedbuilding.com/articles/firefox-style-center-middle-aligned-css/">2012年にまとりさんが記事にして</a>からだいたい年に１回はネタにしてる。このルールセットには仕事でもずいぶん助けられたし、CSSの面白さも感じられるいいメソッドだと思う。</p>
+
+          <p><small>Special Thanks! <a href="https://twitter.com/understandard">@understandard</a>(検証を手伝ってくれたので今半をおごる可能性が高い)</small></p>
+      </dvi>
+
+      <aside class="social-buttons">
+        <ul>
+          <li class="twitter-tweet"><a href="">Tweet</a></li>
+          <li class="facebook-share"><a href="">Share</a></li>
+          <li class="googleplus-share"><a href="">Share</a></li>
+          <li class="hatena-bookmark"><a href="">Bookmark</a></li>
+        </ul>
+      </aside>
+    </article>
+  </div>
+
+  <nav class="neighbor">
+    <ul class="old-new-links">
+      <li class="old-link"><a href="">EDJOなオブジェクトの妄想</a></li>
+    </ul>
+  </nav>
+
+  <footer class="global-footer">
+    <section class="author">
+      <p class="author-credit">Made by oti.</p>
+      <address class="author-address"><a href="mailto:otiext@gmail.com">otiext@gmail.com</a></address>
+    </section>
+
+    <ul class="footlinks">
+      <li><a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC</a></li>
+      <li><a href="/feed" rel="alternate" type="application/rss+xml">RSS</a></li>
+    </ul>
+  </footer>
+</body>
+</html>
