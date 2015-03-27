@@ -80,6 +80,18 @@ a:focus {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
+.entry-body h2::before {
+  content: '';
+  display: inline-block;
+  margin-left: -.5em;
+  margin-right: .3em;
+  border-radius: 1em;
+  width: 1em;
+  height: .4em;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
 .global-header {
   position: relative;
 }
@@ -288,20 +300,25 @@ a:focus {
   float: left;
 }
 .entry-body table {
+  margin-top: 24px;
+  margin-bottom: 24px;
   width: 100%;
   border-collapse: collapse;
   text-align: center;
 }
-.entry-body tr:nth-child(2n+1) {
-  background-color: rgba(255, 255, 255, 0.15);
-}
-.entry-body th {
-  border: 1px solid rgba(0, 0, 0, 0.15);
+.entry-body caption {
   font-family: 'Vegur-Bold';
+  font-weight: bold;
   background-image: url(/dist/img/bg2.png);
 }
-.entry-body td {
-  border: 1px solid rgba(0, 0, 0, 0.15);
+.entry-body tr {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.entry-body tr:nth-child(2n) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.entry-body th {
+  font-family: 'Vegur-Bold';
 }
 
 .social-buttons {
