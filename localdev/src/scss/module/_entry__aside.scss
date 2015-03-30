@@ -54,7 +54,7 @@
   border-top: 1px solid rgba(0,0,0, .15);
 }
 
-.old-new-links{
+.neighborlinks{
   position: relative;
   list-style-type: none;
   list-style-position: inside;
@@ -79,10 +79,10 @@
     text-align: right;
   }
 
-  .old-link::before{
+  .older::before{
     content: 'older:';
   }
-  .new-link::before{
+  .newer::before{
     content: 'newer:';
   }
 }
