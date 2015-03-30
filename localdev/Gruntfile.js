@@ -20,7 +20,7 @@ module.exports = function(grunt){
                     expand: true,
                     cwd: 'src/',
                     src: ['**/*.{png,jpg,gif,svg}'],
-                    dest: 'dist2/'
+                    dest: 'dist/'
                 }]
             }
         },
@@ -63,7 +63,8 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-    grunt.registerTask('build',['sass', 'autoprefixer']);
-    grunt.registerTask('image',['imagemin']);
+    grunt.registerTask('build-css',['sass', 'autoprefixer']);
+    grunt.registerTask('build-img',['imagemin']);
+    grunt.registerTask('build',['imagemin', 'sass', 'autoprefixer']);
     grunt.registerTask('localdev',['watch']);
 };
