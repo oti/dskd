@@ -39,7 +39,7 @@
               <mt:If tag="entrycategory"><p><mt:EntryCategories glue=", "><span class="tag"><mt:CategoryLabel></span></mt:EntryCategories></p></mt:If>
             </footer>
 
-            <h1 class="entry-title"><mt:EntryTtitle></h1>
+            <h1 class="entry-title"><mt:EntryTitle></h1>
           </article>
         </a>
       </mt:entries>
@@ -60,19 +60,19 @@
     <nav class="entry-archive">
       <h1 class="content-subheading">Archive</h1>
 
+      <ol class="year-list" reversed>
       <mt:ArchiveList archive_type="Monthly" sort_order="descend">
-        <mt:ArchiveDateHeader>
-          <ol class="year-list" reversed>
+          <mt:ArchiveDateHeader>
             <li><mt:ArchiveDate format="%Y">
-        </mt:ArchiveDateHeader>
               <ol class="month-list" reversed>
+          </mt:ArchiveDateHeader>
                 <li><a href="<mt:ArchiveLink>"><mt:ArchiveDate format="%B" language="en"></a></li>
-        <mt:ArchiveDateFooter>
+          <mt:ArchiveDateFooter>
               </ol></li>
             </li>
-          </ol>
-        </mt:ArchiveDateFooter>
+          </mt:ArchiveDateFooter>
       </mt:ArchiveList>
+      </ol>
     </nav>
 
     <aside class="subscribe">
