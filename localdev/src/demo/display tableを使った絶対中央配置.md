@@ -19,4 +19,4 @@ img{
 
 ---
 
-<img src="image.jpg" />
+<img src="https://placekitten.com/g/700/500" />
