@@ -268,10 +268,9 @@ a:focus {
 }
 .entry-body p {
   margin: 0;
-  text-indent: 1em;
 }
 .entry-body p + p {
-  margin-top: 24px;
+  margin-top: 1.5em;
 }
 .entry-body .spacing {
   padding: 0 0.3em;
