@@ -23,6 +23,13 @@
     padding: 0 .3em
   }
 
+  a[href*="demo"]{
+    padding-left: 1.125em;
+    background-image: url(/dist/svg/hyperlink.svg);
+    background-repeat: no-repeat;
+    background-size: 1.125em auto;
+  }
+
   pre{
     padding: .5em;
     font-size: 14px;
