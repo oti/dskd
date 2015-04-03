@@ -261,8 +261,8 @@ a:focus {
 }
 
 .entry-body h2 {
-  margin: 30px 0 16px;
-  font-size: 18px;
+  margin: 1.875em 0 1em;
+  font-size: 1.125em;
   font-weight: bold;
   font-family: 'Vegur-Bold';
 }
@@ -275,16 +275,22 @@ a:focus {
 .entry-body .spacing {
   padding: 0 0.3em;
 }
+.entry-body a[href*="demo"] {
+  padding-left: 1.125em;
+  background-image: url(/dist/svg/hyperlink.svg);
+  background-repeat: no-repeat;
+  background-size: 1.125em auto;
+}
 .entry-body pre {
   padding: .5em;
-  font-size: 14px;
+  font-size: .875em;
   font-family: Consolas, monospace;
   background-image: url(/dist/img/bg2.png);
   overflow-x: scroll;
 }
 .entry-body hr {
-  margin: 30px auto;
-  height: 15px;
+  margin: 1.875em auto;
+  height: 1em;
   border: none;
   line-height: 0;
   background: url(/dist/svg/dash.svg) no-repeat center center;
@@ -299,8 +305,8 @@ a:focus {
   float: left;
 }
 .entry-body table {
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
   width: 100%;
   border-collapse: collapse;
   text-align: center;
