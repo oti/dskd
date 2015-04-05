@@ -81,22 +81,22 @@
   }
 
   ins::before{
-    content: "\3cins\3e";
+    content: "\3c\69\6e\73\3e";
     margin-right: .125em;
   }
 
   ins::after{
-    content: "\3c\2fins\3e";
+    content: "\3c\2f\69\6e\73\3e";
     margin-left: .125em;
   }
 
   del::before{
-    content: "\3cdel\3e";
+    content: "\3c\64\65\6c\3e";
     margin-right: .125em;
   }
 
   del::after{
-    content: "\3c\2fdel\3e";
+    content: "\3c\2f\64\65\6c\3e";
     margin-left: .125em;
   }
 
