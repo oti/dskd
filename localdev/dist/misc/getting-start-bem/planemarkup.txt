@@ -1,0 +1,131 @@
+<div>
+  <header>
+    <h1>dskd</a></h1>
+  </header>
+
+  <div>
+    <article>
+      <header>
+        <h2>記事見出し</a></h2>
+      </header>
+      <footer>
+        <time>0000/00/00<br>00:00</time>
+        <dl>
+          <dt>category :</dt>
+          <dd>
+            <a href="">cate name</a>, <a href="">cate name</a>
+          </dd>
+        </dl>
+      </footer>
+    </article>
+
+    <article>
+      <header>
+        <h2>記事見出し</a></h2>
+      </header>
+      <footer>
+        <time>0000/00/00<br>00:00</time>
+        <dl>
+          <dt>category :</dt>
+          <dd>
+            <a href="">cate name</a>, <a href="">cate name</a>
+          </dd>
+        </dl>
+      </footer>
+    </article>
+
+    <article>
+      <header>
+        <h2>記事見出し</a></h2>
+      </header>
+      <footer>
+        <time>0000/00/00<br>00:00</time>
+        <dl>
+          <dt>category :</dt>
+          <dd>
+            <a href="">cate name</a>, <a href="">cate name</a>
+          </dd>
+        </dl>
+      </footer>
+    </article>
+  </div>
+
+  <nav>
+    <div>
+      <h2>Pager</h2>
+    </div>
+    <ol>
+      <li><a href="">1</span></li>
+      <li><a href="">2</a></li>
+      <li><a href="">3</a></li>
+    </ol>
+  </nav>
+
+  <section>
+    <header>
+      <h2>Archives</h2>
+    </header>
+
+    <nav>
+      <h2>2012</h2>
+      <ul>
+        <li><a href="">Monthly</a></li>
+        <li><a href="">Monthly</a></li>
+        <li><a href="">Monthly</a></li>
+      </ul>
+    </nav>
+
+    <nav>
+      <h2>2011</h2>
+      <ul>
+        <li><a href="">Monthly</a></li>
+        <li><a href="">Monthly</a></li>
+        <li><a href="">Monthly</a></li>
+      </ul>
+    </nav>
+
+    <nav>
+      <h2>2010</h2>
+      <ul>
+        <li><a href="">Monthly</a></li>
+        <li><a href="">Monthly</a></li>
+        <li><a href="">Monthly</a></li>
+      </ul>
+    </nav>
+  </section>
+
+  <section>
+    <header>
+      <h2>Categories</h2>
+    </header>
+    <ol>
+      <li><a href="">category</a></li>
+      <li><a href="">category</a></li>
+      <li><a href="">category</a></li>
+    </ol>
+  </section>
+
+  <section>
+    <header>
+      <h2>Author</h2>
+    </header>
+    <p>越智</p>
+    <address>
+      <a href="mailto:otiext@gmail.com">otiext@gmail.com</a>
+    </address>
+    <ul>
+      <li><a href="">Twitter</a></li>
+      <li><a href="">Jsdo.it</a></li>
+      <li><a href="">Facebook</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <div>
+      <h1>Copyright</h1>
+    </div>
+    <p>
+      <small>&copy; dskd/oti All Rights Reserved.</small>
+    </p>
+  </footer>
+</div>
