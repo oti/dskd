@@ -1,5 +1,6 @@
 AddHandler server-parsed .html
 
+Redirect permanent /archives/img-pointer-events-none/ http://dskd.jp/demo/6.html
 Redirect permanent /archives/absolute-centering/ http://dskd.jp/demo/10.html
 Redirect permanent /archives/css-programing-html5-template-generator/ http://dskd.jp/demo/26.html
 Redirect permanent /archives/image-size-independent-absolute-centering/ http://dskd.jp/demo/31.html
