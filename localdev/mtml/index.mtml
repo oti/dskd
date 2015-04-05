@@ -25,21 +25,17 @@
   <header class="global-header">
     <nav class="site-navigation">
       <mark class="logo"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></mark>
-
-
       <ul class="headlinks">
         <li><a href="/archives/">Archive</a></li>
         <li><a href="/demo/">Demo</a></li>
         <li><a href="/about.html">About</a></li>
       </ul>
     </nav>
-
     <h1 class="blog-lede"><mt:BlogDescription></h1>
   </header>
 
   <main class="content">
     <section class="entry-list">
-
       <mt:entries lastn="5">
         <a href="<mt:entrypermalink>">
           <article>
@@ -47,7 +43,6 @@
               <time datetime="<mt:EntryDate format_name="iso8601">"><mt:EntryDate format="%Y.%m.%d"></time>
               <mt:If tag="entrycategory"><p><mt:EntryCategories glue=", "><span class="tag"><mt:CategoryLabel></span></mt:EntryCategories></p></mt:If>
             </footer>
-
             <h1 class="entry-title"><mt:EntryTitle></h1>
           </article>
         </a>
@@ -56,37 +51,12 @@
       <footer class="entry-more"><a href="/archives/">more entries&nbsp;»</a></footer>
     </section>
 
-    <nav class="entry-category">
-      <h1 class="content-subheading">Category</h1>
+    <!--#include virtual="/category-list.html" -->
 
-      <ul class="category-list">
-        <mt:Categories>
-          <li><a href="<mt:CategoryArchiveLink>"><mt:CategoryLabel></a></li>
-        </mt:Categories>
-      </ul>
-    </nav>
-
-    <nav class="entry-archive">
-      <h1 class="content-subheading">Archive</h1>
-
-      <ol class="year-list" reversed>
-      <mt:ArchiveList archive_type="Monthly" sort_order="descend">
-          <mt:ArchiveDateHeader>
-            <li><mt:ArchiveDate format="%Y">
-              <ol class="month-list" reversed>
-          </mt:ArchiveDateHeader>
-                <li><a href="<mt:ArchiveLink>"><mt:ArchiveDate format="%B" language="en"></a></li>
-          <mt:ArchiveDateFooter>
-              </ol></li>
-            </li>
-          </mt:ArchiveDateFooter>
-      </mt:ArchiveList>
-      </ol>
-    </nav>
+    <!--#include virtual="/year-list.html" -->
 
     <aside class="subscribe">
       <h1 class="content-subheading">Subscribe</h1>
-
       <ul class="subscribe-list">
         <li><a href="<mt:Link template="feed_recent">">RSS</a></li>
         <li><a href="https://twitter.com/dskd_jp">Twitter</a></li>
