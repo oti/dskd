@@ -323,19 +323,19 @@ a:focus {
   background-color: rgba(0, 0, 0, 0.15);
 }
 .entry-body ins::before {
-  content: "\3cins\3e";
+  content: "\3c\69\6e\73\3e";
   margin-right: .125em;
 }
 .entry-body ins::after {
-  content: "\3c\2fins\3e";
+  content: "\3c\2f\69\6e\73\3e";
   margin-left: .125em;
 }
 .entry-body del::before {
-  content: "\3cdel\3e";
+  content: "\3c\64\65\6c\3e";
   margin-right: .125em;
 }
 .entry-body del::after {
-  content: "\3c\2fdel\3e";
+  content: "\3c\2f\64\65\6c\3e";
   margin-left: .125em;
 }
 .entry-body hr {
