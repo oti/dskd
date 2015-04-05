@@ -20,7 +20,7 @@
   }
 
   .spacing{
-    padding: 0 .3em
+    padding: 0 .25em;
   }
 
   a[href*="demo"]{
@@ -28,22 +28,6 @@
     background-image: url(/dist/svg/hyperlink.svg);
     background-repeat: no-repeat;
     background-size: 1.125em auto;
-  }
-
-  pre{
-    padding: .5em;
-    font-size: .875em;
-    font-family: Consolas, monospace;
-    background-image: url(/dist/img/bg2.png);
-    overflow-x: scroll;
-  }
-
-  hr{
-    margin: 1.875em auto;
-    height: 1em;
-    border: none;
-    line-height: 0;
-    background: url(/dist/svg/dash.svg) no-repeat center center;
   }
 
   img{
@@ -56,6 +40,72 @@
 
   img+img{
     float:left;
+  }
+
+  strong{
+    color: #dd0000;
+    font-weight: bold;
+  }
+
+  em{
+    color: #007D88;
+    font-weight: bold;
+  }
+
+  pre{
+    padding: .5em;
+    font-size: .875em;
+    font-family: Consolas, monospace;
+    background-image: url(/dist/img/bg2.png);
+    overflow-x: scroll;
+  }
+
+  ins{
+    text-decoration: none;
+  }
+
+  del{
+    color: #648294;
+  }
+
+  ins::before,
+  ins::after,
+  del::before,
+  del::after{
+    padding: 0 .1875em .0625em;
+    border-radius: .1875em;
+    color: #091117;
+    font-size: .875em;
+    line-height: 1;
+    background-color: rgba(0,0,0,.15);
+  }
+
+  ins::before{
+    content: "\3cins\3e";
+    margin-right: .125em;
+  }
+
+  ins::after{
+    content: "\3c\2fins\3e";
+    margin-left: .125em;
+  }
+
+  del::before{
+    content: "\3cdel\3e";
+    margin-right: .125em;
+  }
+
+  del::after{
+    content: "\3c\2fdel\3e";
+    margin-left: .125em;
+  }
+
+  hr{
+    margin: 1.875em auto;
+    height: 1em;
+    border: none;
+    line-height: 0;
+    background: url(/dist/svg/dash.svg) no-repeat center center;
   }
 
   table{
