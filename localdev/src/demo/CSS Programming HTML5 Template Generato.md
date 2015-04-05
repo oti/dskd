@@ -1,5 +1,4 @@
-<meta name="author" content="http://dskd.jp">
-<link rel="stylesheet" type="text/css" href="css/generator.css" media="all">
+<link rel="stylesheet" href="26/generator.css" media="all">
 
 ___
 
