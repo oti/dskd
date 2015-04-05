@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta content="width=device-width" name="viewport">
 
-  <title><mt:BlogName></title>
+  <title itemprop="name"><mt:BlogName></title>
 
+  <meta content="<mt:BlogDescription>" itemprop="description">
   <meta content="Movable Type <mt:Version>" name="generator">
 
   <meta content="<mt:BlogName>" property="og:title">
@@ -19,11 +20,12 @@
   <!--#include virtual="/head-meta-twittercard.html" -->
 
   <link href="<mt:CanonicalURL>" rel="canonical">
+  <link href="<mt:CanonicalURL>" itemprop="url">
   <!--#include virtual="/head-linkrel.html" -->
 </head>
 <body>
-  <header class="global-header">
-    <nav class="site-navigation">
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
       <mark class="logo"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></mark>
       <ul class="headlinks">
         <li><a href="/archives/">Archive</a></li>
@@ -34,7 +36,7 @@
     <h1 class="blog-lede"><mt:BlogDescription></h1>
   </header>
 
-  <main class="content">
+  <main class="content" role="main">
     <section class="entry-list">
       <mt:entries lastn="5">
         <a href="<mt:entrypermalink>">
@@ -55,11 +57,11 @@
 
     <!--#include virtual="/year-list.html" -->
 
-    <aside class="subscribe">
+    <aside class="subscribe" role="complementary">
       <h1 class="content-subheading">Subscribe</h1>
       <ul class="subscribe-list">
-        <li><a href="<mt:Link template="feed_recent">">RSS</a></li>
         <li><a href="https://twitter.com/dskd_jp">Twitter</a></li>
+        <li><a href="<mt:Link template="feed_recent">" itemprop="sameAs">RSS</a></li>
       </ul>
     </aside>
   </main>

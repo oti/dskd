@@ -20,11 +20,12 @@
   <!--#include virtual="/head-meta-twittercard.html" -->
 
   <link href="<mt:CanonicalURL>" rel="canonical">
+  <link href="<mt:CanonicalURL>" itemprop="url">
   <!--#include virtual="/head-linkrel.html" -->
 </head>
 <body>
-  <header class="global-header">
-    <nav class="site-navigation">
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
       <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
       <ul class="headlinks">
         <li><a href="/archives/">Archive</a></li>
@@ -35,19 +36,23 @@
   </header>
 
   <div class="content">
-    <article class="entry">
+    <article class="entry" role="main">
       <footer class="entry-footer">
         <time datetime="<mt:EntryDate format_name="iso8601">"><mt:EntryDate format="%Y.%m.%d"></time>
-        <mt:If tag="entrycategory"><p><mt:EntryCategories glue=", "><a href="<mt:CategoryArchiveLink>" class="tag"><mt:CategoryLabel></a></mt:EntryCategories></p></mt:If>
+        <mt:If tag="entrycategory"><p itemprop="keywords"><mt:EntryCategories glue=", "><a href="<mt:CategoryArchiveLink>" class="tag"><mt:CategoryLabel></a></mt:EntryCategories></p></mt:If>
       </footer>
 
-      <h1 class="entry-title"><mt:EntryTitle></h1>
-      <div class="entry-body">
-        <mt:EntryBody>
-        <mt:EntryMore>
+      <h1 class="entry-title" itemprop="name"><mt:EntryTitle></h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<mt:EntryBody>
+        </div>
+        <div>
+<mt:EntryMore>
+        </div>
       </div>
 
-      <aside class="social-buttons">
+      <aside class="social-buttons" role="complementary">
         <ul>
           <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=<mt:EntryTitle escape="url">&url=<mt:EntryPermalink escape="url">&via=dskd_jp&related=o_ti">Tweet</a></li>
           <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=<mt:EntryPermalink escape="url">">Share on Facebook</a></li>
