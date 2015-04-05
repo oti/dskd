@@ -4,7 +4,7 @@ html,body{
 }
 body{
     padding: 15px;
-    background: url(bg50px.gif) repeat 15px 15px;
+    background: url(http://dskd.jp/dist/img/double-zoom-bug/bg50px.gif) repeat 15px 15px;
 }
 #ctrl{
     height: 50px;
