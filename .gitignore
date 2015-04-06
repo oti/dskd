@@ -1,4 +1,4 @@
 .DS_Store
 **/.DS_Store
-localdev/.sass-cache
-localdev/ToDo.txt
+.sass-cache
+ToDo.txt
