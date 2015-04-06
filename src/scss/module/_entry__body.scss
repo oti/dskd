@@ -54,8 +54,8 @@
   }
 
   em{
-    color: #007D88;
     font-weight: bold;
+    font-style: normal;
   }
 
   pre{
@@ -69,6 +69,7 @@
     & mark{
       padding-left: 2px;
       padding-right: 2px;
+      background-color: rgba(255, 242, 0, 0.6);
     }
   }
 
