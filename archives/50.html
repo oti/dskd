@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>style属性でzoomを指定すると特定の状況でzoomが無効になる - dskd</title>
+
+  <meta content="CSS 珍百景 Advent Calendar 2014５日目のエントリ。
+" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
+
+  <meta content="style属性でzoomを指定すると特定の状況でzoomが無効になる" property="og:title">
+  <meta content="CSS 珍百景 Advent Calendar 2014５日目のエントリ。
+" property="og:description">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/50.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/50.html" rel="canonical">
+  <link href="http://dskd.jp/archives/50.html" itemprop="url">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry" role="main">
+      <footer class="entry-footer">
+        <time datetime="2014-12-05T13:34:00+09:00">2014.12.05</time>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c17.html" class="tag">Advent Calendar</a>, <a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a>, <a href="http://dskd.jp/archives/c10.html" class="tag">demo</a></p>
+      </footer>
+
+      <h1 class="entry-title" itemprop="name">style属性でzoomを指定すると特定の状況でzoomが無効になる</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p><a href="http://www.adventar.org/calendars/341">CSS 珍百景 Advent Calendar 2014</a>５日目のエントリ。</p>
+
+        </div>
+        <div>
+<p>こちらでの再現ブラウザはGoogle Chrome 39.0.2171.71とiOS 7.1.2 Mobile Safari。状況を詳しく説明すると、外部CSSファイル、及びstyleタグでzoomプロパティがすでに設定してある要素に対して、<strong>CSSで指定されているzoom値と同じ値をstyle属性で指定するとzoomが効かなくなる</strong>というもの。</p>
+
+<p>style属性で指定するzoom値を変更できる<a href="http://dskd.jp/demo/51.html">デモを用意した。</a>テキストエリアに数字を入れて隣のaddボタンを押すとその下の要素に<code>style="zoom: N"</code>が付与されるようになっている。背景に50pxごとのグリッドになっている画像を敷いたので、倍率が少しわかりやすいと思う。ページを開いた時の初期表示ではCSS側の<code>zoom: 2;</code>が効いているはず。</p>
+
+<p>DevToolsを開いて要素のstyle属性を確認しながら、まずは数値を2にしてaddボタンとremoveボタンを押してみて欲しい。zoomがstyle属性でつくと拡大が無効になり、消すと拡大されるのがわかると思う。addしたのに大きくならない。removeしたのに大きくなる。同値での上書きなので表示サイズは変化しないでそのままになるはずだ。数値を2以外（2.0001なども可）にすれば動作は期待通りになる。同じ値の操作の時のみ、珍事が起きる。</p>
+
+<p>少々重いが<a href="http://dskd.jp/dist/img/double-zoom-bug/use-zoom.gif">Gifアニメを用意した</a>ので、再現できない人はこちらを見てほしい。</p>
+
+<p>そもそも同じ値をstyle属性で指定するシチュエーションなんてほぼない。業務で端末の画面サイズから倍率を算出して上書きする必要があって、JS実装のミスで必要がない端末でも上書きがかかったところ、拡大されなくなっているのを見てこのバグに気づいた。IE11では再現しなかったし、zoomプロパティ未実装のFirefoxでも当然起こらない。</p>
+
+<p>気づいたのは2つか3つバージョンが前のChromeでだけど、iOS 7.1.2 Mobile Safariでも再現するのを見るに、もしかしたらChromeがBlinkになる前からWebkitの珍挙動として存在していたかもしれない。ちなみに、<a href="http://dskd.jp/demo/52.html"><code>transform: scale();</code>なら問題ない</a>。</p>
+
+<p>zoomこわい。</p>
+
+        </div>
+      </div>
+
+      <aside class="social-buttons" role="complementary">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=style%E5%B1%9E%E6%80%A7%E3%81%A7zoom%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B%E3%81%A8%E7%89%B9%E5%AE%9A%E3%81%AE%E7%8A%B6%E6%B3%81%E3%81%A7zoom%E3%81%8C%E7%84%A1%E5%8A%B9%E3%81%AB%E3%81%AA%E3%82%8B&url=http%3A%2F%2Fdskd.jp%2Farchives%2F50.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F50.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F50.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=style%E5%B1%9E%E6%80%A7%E3%81%A7zoom%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B%E3%81%A8%E7%89%B9%E5%AE%9A%E3%81%AE%E7%8A%B6%E6%B3%81%E3%81%A7zoom%E3%81%8C%E7%84%A1%E5%8A%B9%E3%81%AB%E3%81%AA%E3%82%8B&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F50.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/54.html">僕はCSSを見殺しにした</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/49.html">適当とテキトー</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

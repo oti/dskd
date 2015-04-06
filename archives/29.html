@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>画像サイズに依存しない絶対中央配置 - dskd</title>
+
+  <meta content="ウェブページ作ってると画像を画面の中央に配置したいし、どんなサイズの画像が来ても真ん中にしたいし、どんなサイズの画面で見ても画像をはみ出させずに表示させたい欲求はよく出てくる。これってもはや人類の欲望" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
+
+  <meta content="画像サイズに依存しない絶対中央配置" property="og:title">
+  <meta content="ウェブページ作ってると画像を画面の中央に配置したいし、どんなサイズの画像が来ても真ん中にしたいし、どんなサイズの画面で見ても画像をはみ出させずに表示させたい欲求はよく出てくる。これってもはや人類の欲望" property="og:description">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/29.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/29.html" rel="canonical">
+  <link href="http://dskd.jp/archives/29.html" itemprop="url">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry" role="main">
+      <footer class="entry-footer">
+        <time datetime="2013-05-14T09:50:00+09:00">2013.05.14</time>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a>, <a href="http://dskd.jp/archives/c10.html" class="tag">demo</a></p>
+      </footer>
+
+      <h1 class="entry-title" itemprop="name">画像サイズに依存しない絶対中央配置</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p>ウェブページ作ってると画像を画面の中央に配置したいし、どんなサイズの画像が来ても真ん中にしたいし、どんなサイズの画面で見ても画像をはみ出させずに表示させたい欲求はよく出てくる。これってもはや人類の欲望と言っても過言ではない。</p>
+
+        </div>
+        <div>
+<h2>要件</h2>
+
+<ul>
+<li>画像を縦方向にも横方向にも画面の中央に配置したい</li>
+<li>画像のサイズに依存したくない</li>
+<li>ウィンドウサイズが画像サイズより小さくなっても画像がはみ出ない</li>
+</ul>
+
+<p>この人類の欲望ををCSSで書くと、こう。</p>
+
+<pre title="人類の欲望を満たしたHMTL"><code data-language="html">&lt;body&gt;
+  &lt;img src="image.jpg" /&gt;
+&lt;/body&gt;</code></pre>
+
+<pre title="人類の欲望を満たしたCSS"><code data-language="css">img{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  <mark>max-width: 100%;</mark>
+  <mark>max-height: 100%;</mark>
+}</code></pre>
+
+<p><a href="http://dskd.jp/archives/11.html">前のエントリ</a>で書いたスニペット（Firefoxで画像を直接見る時のUAスタイル）に、<code>max-width: 100%;</code>と<code>max-height: 100%;</code>を加えただけ。デモで欲望を満たせる。</p>
+
+<p><a href="http://dskd.jp/demo/31.html">人類の欲望を満たしたデモ</a></p>
+
+<p>対応ブラウザはIE8, Chrome 26, Firefox 20, Opera 12.14です。</p>
+
+<p>IE8以上でも縦方向も中央配置するなら<code>display: table;</code>でいけるんじゃないかと思うところけど、３つめの要件「ウィンドウサイズが画像サイズより小さくなっても画像がはみ出ない」が完全には満たせない。タイトルで「画像サイズに依存しない絶対中央配置」なんて言っておいて、それ以上のことも要求する。人類の欲望は果てしないのだ。</p>
+
+<pre title="display: table;では人類の欲望を満たせない"><code data-language="css">html{
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+body{
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+img{
+  max-width: 100%;
+  max-height: 100%;
+}</code></pre>
+
+<p><a href="http://dskd.jp/demo/32.html">人類の欲望を満たせないデモ</a></p>
+
+<p>各ブラウザでアホかってくらいウィンドウサイズを小さくすると画像がはみ出てしまう（不思議なことに、Chrome 26だとdisplay: table;でも横方向の縮小表示がほんの少しだけ効く）。ウィンドウはそんなに小さくしないのが常識人だけど、画像がとても大きい場合は画像サイズ＞画面サイズ になるシチュエーションもありえなくない、ということで。</p>
+
+<p>ただし、親要素に<code>absolute: relative;</code>を指定できないとか、子要素にimg以外に兄弟要素がある場合はこのスニペットは向かないので、あとはJSでがんばろう。</p>
+
+        </div>
+      </div>
+
+      <aside class="social-buttons" role="complementary">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%E7%94%BB%E5%83%8F%E3%82%B5%E3%82%A4%E3%82%BA%E3%81%AB%E4%BE%9D%E5%AD%98%E3%81%97%E3%81%AA%E3%81%84%E7%B5%B6%E5%AF%BE%E4%B8%AD%E5%A4%AE%E9%85%8D%E7%BD%AE&url=http%3A%2F%2Fdskd.jp%2Farchives%2F29.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F29.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F29.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=%E7%94%BB%E5%83%8F%E3%82%B5%E3%82%A4%E3%82%BA%E3%81%AB%E4%BE%9D%E5%AD%98%E3%81%97%E3%81%AA%E3%81%84%E7%B5%B6%E5%AF%BE%E4%B8%AD%E5%A4%AE%E9%85%8D%E7%BD%AE&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F29.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/34.html">CSSの命名規則にBEMを取り入れてみる</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/27.html">次へ前ヘのボタンのどっちがどっちなのか試させないデザイン</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

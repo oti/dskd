@@ -1,0 +1,78 @@
+html{
+  -webkit-font-feature-settings: "kern" 1,"liga" 1,"lnum" 1,"pnum" 1;
+  font-feature-settings: "kern" 1,"liga" 1,"lnum" 1,"pnum" 1;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  color: #263540;
+  font-size: 16px;
+  font-family: 'Vegur-Regular', Arial, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'ＭＳ Ｐゴシック', Osaka;
+  line-height: 1.5;
+  background: url(/dist/img/bg.png) repeat fixed #d0d8dd;
+}
+
+img{
+  -ms-interpolation-mode: bicubic;
+  border: 0 none;
+  text-decoration: none;
+  vertical-align: top;
+  background: transparent;
+}
+
+a:link{
+  color: #0075a9;
+  text-decoration: none;
+}
+
+
+a:visited{
+  color: #ca176e;
+}
+
+a:hover{
+  color: #629a00;
+  text-decoration: underline;
+}
+
+a:active{
+  color: #ca176e;
+}
+
+a:focus{
+  color: #629a00;
+}
+
+// dot mark
+%clearfix{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+
+// dividing mark
+%dotMark{
+  content: '';
+  display: inline-block;
+  margin-right: 8px;
+  border-radius: 6px;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  background-color: rgba(0,0,0, .15);
+}
+
+// heading mark
+%headMark{
+  content: '';
+  display: inline-block;
+  margin-left: -.5em;
+  margin-right: .3em;
+  border-radius: 1em;
+  width: 1em;
+  height: .4em;
+  vertical-align: middle;
+  background-color: rgba(0,0,0, .15);
+}

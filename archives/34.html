@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>CSSの命名規則にBEMを取り入れてみる - dskd</title>
+
+  <meta content="今年もあと一月ということでブログをリデザインしました。ということでこの記事はBEM Advent Calendar 2013 １日目のエントリです。日付過ぎてしまいましたね。
+" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
+
+  <meta content="CSSの命名規則にBEMを取り入れてみる" property="og:title">
+  <meta content="今年もあと一月ということでブログをリデザインしました。ということでこの記事はBEM Advent Calendar 2013 １日目のエントリです。日付過ぎてしまいましたね。
+" property="og:description">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/34.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/34.html" rel="canonical">
+  <link href="http://dskd.jp/archives/34.html" itemprop="url">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry" role="main">
+      <footer class="entry-footer">
+        <time datetime="2013-12-02T01:15:16+09:00">2013.12.02</time>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c17.html" class="tag">Advent Calendar</a>, <a href="http://dskd.jp/archives/c18.html" class="tag">BEM</a>, <a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a>, <a href="http://dskd.jp/archives/c13.html" class="tag">HTML</a></p>
+      </footer>
+
+      <h1 class="entry-title" itemprop="name">CSSの命名規則にBEMを取り入れてみる</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p>今年もあと一月ということでブログをリデザインしました。ということでこの記事は<a href="http://www.adventar.org/calendars/61">BEM Advent Calendar 2013</a> １日目のエントリです。日付過ぎてしまいましたね。</p>
+
+        </div>
+        <div>
+<h2>BEMって何？</h2>
+
+<p>BEMとはBlock, Element, Modifierの頭文字をとったもので、フロントエンド設計において命名規則やモジュールの管理に前述の３種類の区分を取り入れたものを言います。今回はタイトルにもある通り、CSSの命名規則に BEM を取り入れてみるということで、BEMなCSSについて記載します。</p>
+
+<h2>BEMるとどういう良いことがあるの？</h2>
+
+<p>いろんな人がすでに書いているので別エントリを参考になさってください。あるいは、今回のAdvent Calendarに参加した方のエントリも参考になるかと思います。</p>
+
+<ul>
+<li><a href="http://hail2u.net/blog/webdesign/sass-and-bem.html">SassとBEM - Weblog - Hail2u.net</a></li>
+<li><a href="http://blog.ruedap.com/2013/10/29/block-element-modifier">BEMという命名規則とSass 3.3の新しい記法 - アインシュタインの電話番号</a></li>
+<li><a href="https://app.codegrid.net/entry/bem-basic-1">BEMによるフロントエンドの設計 - 基本概念とルール | CodeGrid</a>（有料記事）</li>
+</ul>
+
+<h2>なんとかBEMなCSSを書いた</h2>
+
+<p>ブログのリニューアルに合わせてBEMなCSSを書きました。書いたけど、難しかったです。構造が深くなった時、Blockはどこまで保持するのか、Elementにするのかしないのか、マルチクラスはどこまで許容するのか......。</p>
+
+<p>デザイン上の制約というかやりたいことの実現のために、<code>.layout--horizon</code>というBlockを作ってしまったので自分で見るのがつらいです。さらにHTML側にも規則を作って、<code>.layout--horizon__item &gt; [class*="-header__item"]</code>なんてCSSも書いてしまう始末。もう二度つらい。詳しくはソースをご覧いただければと思います。</p>
+
+<h2>BEM道</h2>
+
+<p>命名規則にBEMストレートなセレクタを作るためにはHTML側を制約する場合もあるかもしれません。BEMのコアである「BEMツリー = DOMツリー」に則れば、BEMツリーを見てDOMを推察できなければそれは命名の仕方が良くないということになります。BEMで説明できないことはHTML側にあってはならない。それがBEM道なのかもしれません。</p>
+
+<h2>そんなにうまくいくわけがない</h2>
+
+<p>前述した通り、BEMで難しいのはElementの取り方です。すんなり書けるのは２階層までで、３階層になると迷いが出ます。Blockを入れ子にしていくのか、Elementをつないでいくのか、やるなら統一しなければ BEM道ではない（部分的にルールが変わると厳格さが失われ、メンテナブルとは言えない）ですね。あるいはElement-blockというような「内包ブロック」なものをつないで、結果<code>.Block__Element-block2__Element2-block3__Element3--Modifier</code>のようなセレクタを受け入れるのか......。</p>
+
+<h2>BEM道を進むために必要なたった１つのこと</h2>
+
+<p>「スタイルを管理しようとすると発狂するので、DOMツリーを説明することだけ考えること」</p>
+
+<hr />
+
+<p>２日目はげこたんさん<del>です</del>が<a href="http://geckotang.tumblr.com/post/68662389684/bem">すでに書いてました</a>！</p>
+
+        </div>
+      </div>
+
+      <aside class="social-buttons" role="complementary">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=CSS%E3%81%AE%E5%91%BD%E5%90%8D%E8%A6%8F%E5%89%87%E3%81%ABBEM%E3%82%92%E5%8F%96%E3%82%8A%E5%85%A5%E3%82%8C%E3%81%A6%E3%81%BF%E3%82%8B&url=http%3A%2F%2Fdskd.jp%2Farchives%2F34.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F34.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F34.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=CSS%E3%81%AE%E5%91%BD%E5%90%8D%E8%A6%8F%E5%89%87%E3%81%ABBEM%E3%82%92%E5%8F%96%E3%82%8A%E5%85%A5%E3%82%8C%E3%81%A6%E3%81%BF%E3%82%8B&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F34.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/35.html">もっと広まって欲しいCSS</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/29.html">画像サイズに依存しない絶対中央配置</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

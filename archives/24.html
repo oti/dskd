@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>@mediaのorientationはviewportの縦横がどっちが長いかであって、デバイスが縦か横かじゃないですよ - dskd</title>
+
+  <meta content="まさかの連日更新という事態に自分で驚いています。昨日が妄想垂れ流しで長かったので、今日は短めに。
+" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
+
+  <meta content="@mediaのorientationはviewportの縦横がどっちが長いかであって、デバイスが縦か横かじゃないですよ" property="og:title">
+  <meta content="まさかの連日更新という事態に自分で驚いています。昨日が妄想垂れ流しで長かったので、今日は短めに。
+" property="og:description">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/24.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/24.html" rel="canonical">
+  <link href="http://dskd.jp/archives/24.html" itemprop="url">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry" role="main">
+      <footer class="entry-footer">
+        <time datetime="2012-11-16T18:00:15+09:00">2012.11.16</time>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a></p>
+      </footer>
+
+      <h1 class="entry-title" itemprop="name">@mediaのorientationはviewportの縦横がどっちが長いかであって、デバイスが縦か横かじゃないですよ</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p>まさかの連日更新という事態に自分で驚いています。昨日が妄想垂れ流しで長かったので、今日は短めに。</p>
+
+        </div>
+        <div>
+<pre title="bodyの背景は何色になるか"><code data-language="css">body{
+  background: white;
+}
+
+@media (orientation: portrait){
+  body{
+    background: blue;
+  }
+}
+
+@media (orientation: landscape){
+  body{
+    background: red;
+  }
+}</code></pre>
+
+<p>さて、上記のようなCSSを読んだページがあったとしてbodyの背景は何色になるだろうか？</p>
+
+<p>デスクトップブラウザ（横長画面）では背景はwhite、スマホやタブレットで縦の時は背景がblueで横の時はred、となると思ったら<em>全然違う</em>。"デバイスの向きを判定する" と思われがちな<code>orientation: portrait | landscape</code>は、本当の所はブラウザのviewportが「縦長か横長か」で判定されるメディアクエリーだ。<a href="http://www.w3.org/TR/css3-mediaqueries/#orientation">仕様書でも「デバイスの向き」とは言っていない</a>。だからデスクトップでもネットブックでも、ブラウザのウィンドウを縦長にしてたら背景はblueになるし、横長にしてたらredになる。そして上記の書き方だとCSSのメディアクエリに対応してるブラウザでは背景がwhiteになることはない。</p>
+
+<p>しかもviewportの縦横が同じピクセルの時は<code>orientation: portrait</code>扱いになる。仕様にも</p>
+
+<blockquote>
+  <p>'portrait' when the value of the 'height' media feature is greater than or equal to the value of the 'width'</p>
+</blockquote>
+
+<p>としてちゃんと書いてある。これは portrait で使うアプリでは、ロケーションバーとかツールバーが上下にあってviewportが縦に狭められて正方形になることもあるだろうっていう解釈でそうなってるのだろうか。</p>
+
+<p><code>orientation: portrait | landscape</code>のCSSメディアクエリはiOS Safariは4.2から、Androidの標準ブラウザで3.0から使えるが、デスクトップブラウザでは<a href="http://caniuse.com/#feat=deviceorientation">かなり早いバージョン（Google Chromeでは7.0から、Firefoxも3.6から）から動作</a>する。</p>
+
+<p>ということで、orientationで分岐するのはちょっと注意が必要だよ、という話。このメディアクエリーを使って本文エリアの文字サイズを変えているブログがあって、デスクトップで見ているのにいかにもタブレットで表示したサイズ感になっていたのが気になった。</p>
+
+        </div>
+      </div>
+
+      <aside class="social-buttons" role="complementary">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%40media%E3%81%AEorientation%E3%81%AFviewport%E3%81%AE%E7%B8%A6%E6%A8%AA%E3%81%8C%E3%81%A9%E3%81%A3%E3%81%A1%E3%81%8C%E9%95%B7%E3%81%84%E3%81%8B%E3%81%A7%E3%81%82%E3%81%A3%E3%81%A6%E3%80%81%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%81%8C%E7%B8%A6%E3%81%8B%E6%A8%AA%E3%81%8B%E3%81%98%E3%82%83%E3%81%AA%E3%81%84%E3%81%A7%E3%81%99%E3%82%88&url=http%3A%2F%2Fdskd.jp%2Farchives%2F24.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F24.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F24.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=%40media%E3%81%AEorientation%E3%81%AFviewport%E3%81%AE%E7%B8%A6%E6%A8%AA%E3%81%8C%E3%81%A9%E3%81%A3%E3%81%A1%E3%81%8C%E9%95%B7%E3%81%84%E3%81%8B%E3%81%A7%E3%81%82%E3%81%A3%E3%81%A6%E3%80%81%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%81%8C%E7%B8%A6%E3%81%8B%E6%A8%AA%E3%81%8B%E3%81%98%E3%82%83%E3%81%AA%E3%81%84%E3%81%A7%E3%81%99%E3%82%88&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F24.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/25.html">CSS Programming HTML5 Template Generator</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/23.html">:hoverしている要素の直前の要素の指定をCSS4の「 ! 」で妄想した</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

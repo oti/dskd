@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>次へ前ヘのボタンのどっちがどっちなのか試させないデザイン - dskd</title>
+
+  <meta content="たまにはデザインのことを。
+" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
+
+  <meta content="次へ前ヘのボタンのどっちがどっちなのか試させないデザイン" property="og:title">
+  <meta content="たまにはデザインのことを。
+" property="og:description">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/27.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/27.html" rel="canonical">
+  <link href="http://dskd.jp/archives/27.html" itemprop="url">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry" role="main">
+      <footer class="entry-footer">
+        <time datetime="2013-02-13T17:30:00+09:00">2013.02.13</time>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c11.html" class="tag">note</a></p>
+      </footer>
+
+      <h1 class="entry-title" itemprop="name">次へ前ヘのボタンのどっちがどっちなのか試させないデザイン</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p>たまにはデザインのことを。</p>
+
+        </div>
+        <div>
+<p>ネットしてるとフォトギャラリーがスライドで作られているのをよく見る。写真だけでなくアイコンとテキストなど、フィーチャーコンテンツへのリンク集なんかをコンパクトなスライドにして実装されているものもわりとよく目にする。あれ系のUIで、前後へスライドするボタンのどっちを押すとどっちに動くのかって、パッと見ですぐにはわからないことが多い。</p>
+
+<p>以下のような感じのスライダーでよく起こる。</p>
+
+<p><a href="http://dskd.jp/dist/img/stated-slider/01.png" title="［２］のコンテンツを見たいとき、どっちのボタンを押せばいい？"><img src="http://dskd.jp/dist/img/stated-slider/01.png" alt="迷うボタン" title="" /></a></p>
+
+<p>初期状態で左右がクリッカブルだととにかく迷う。なので以下のようにして欲しい。</p>
+
+<p><a href="http://dskd.jp/dist/img/stated-slider/02.png" title="機能しない方のボタンをdisableなデザインにする"><img src="http://dskd.jp/dist/img/stated-slider/02.png" alt="迷わないボタン１" title="" /></a></p>
+
+<p>機能するボタンとくらべて半透明にしたりグレーアウトしたりしてコントラストを下げる。これならボタンが機能はあるけど動作は現状しないというのがわかる。</p>
+
+<p><a href="http://dskd.jp/dist/img/stated-slider/04.png" title="機能しない方のボタンをdisableなデザインにする２"><img src="http://dskd.jp/dist/img/stated-slider/04.png" alt="迷わないボタン２" title="" /></a></p>
+
+<p>［３］まで行ったらdisableとenableが切り替わる。</p>
+
+<p><a href="http://dskd.jp/dist/img/stated-slider/03.png" title="enable ならコントラストは同じにする"><img src="http://dskd.jp/dist/img/stated-slider/03.png" alt="両方のボタンがenableになっている" title="" /></a></p>
+
+<p>［２］にフォーカスすると左側のボタンがenableになるので、当然こう変わるようにする。初期表示はスライダーの前後にコンテンツがあるような状態からはじめなければ、操作の文脈でどっちのボタンでどっちにスライドされるのかは覚えていられる。</p>
+
+<p>ボタンに活性か不活性かの状態を持たせるのはどんどんやっていきたい。</p>
+
+<hr />
+
+<p>画像には<a href="http://com4t-fff.seesaa.net/article/248838684.html">片山英樹氏作のフォント「COM4t Rouder Regular」</a>を使わせてもらった。素敵なフォント！</p>
+
+        </div>
+      </div>
+
+      <aside class="social-buttons" role="complementary">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%E6%AC%A1%E3%81%B8%E5%89%8D%E3%83%98%E3%81%AE%E3%83%9C%E3%82%BF%E3%83%B3%E3%81%AE%E3%81%A9%E3%81%A3%E3%81%A1%E3%81%8C%E3%81%A9%E3%81%A3%E3%81%A1%E3%81%AA%E3%81%AE%E3%81%8B%E8%A9%A6%E3%81%95%E3%81%9B%E3%81%AA%E3%81%84%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3&url=http%3A%2F%2Fdskd.jp%2Farchives%2F27.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F27.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F27.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=%E6%AC%A1%E3%81%B8%E5%89%8D%E3%83%98%E3%81%AE%E3%83%9C%E3%82%BF%E3%83%B3%E3%81%AE%E3%81%A9%E3%81%A3%E3%81%A1%E3%81%8C%E3%81%A9%E3%81%A3%E3%81%A1%E3%81%AA%E3%81%AE%E3%81%8B%E8%A9%A6%E3%81%95%E3%81%9B%E3%81%AA%E3%81%84%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F27.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/29.html">画像サイズに依存しない絶対中央配置</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/25.html">CSS Programming HTML5 Template Generator</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

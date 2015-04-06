@@ -1,0 +1,594 @@
+@charset "UTF-8";
+
+/*
+++ Author:  oti
+++ WebSite: http://dskd.jp/
+*/
+
+
+/* Title Design
+================================================== */
+html,body{
+	margin:0;
+	padding:5px;
+	color: #3f3f3f;
+	background: #efeff3;
+}
+
+h1{
+	margin: 0 0 10px;
+	font-size: 125%;
+	line-height: 1.4;
+}
+
+p.desc {
+	margin: 0 0 1em;
+	font-size: 100%;
+	line-height: 1.6;
+}
+
+p.note{
+	margin: 0;
+}
+
+article footer {
+	margin: 10px 0 5px;
+	font-size: 90%;
+}
+
+
+/* Generate Logic
+================================================== */
+/* initialize */
+#gend span{
+/*
+	//Special Thanks @hamashun! https://twitter.com/hamashun/status/268349744659722243
+	position: absolute;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	max-width: .1%;
+	max-height: .1%;
+
+	アニメーションさせたくて display: none; 以外の指定を教えてもらったのはいいものの、
+	なんか上手く動かなくてアニメーション自体を諦めることにしました。
+	はましゅんさん助言を活かせなくてごめんなさ。
+*/
+	display: none;
+}
+
+/*
+ * S_ is "Selected" prefix
+ * G_ is "Generated" prefix
+ * Sorry I have bad taste in LANGUAGE!
+ */
+
+/* empty element closing option */
+#S_empty_option:checked ~ #gend .G_empty_elm,
+
+/* indent width option */
+#S_indent_option_s2:checked ~ #gend .G_indent_s2,
+#S_indent_option_s4:checked ~ #gend .G_indent_s4,
+#S_indent_option_t1:checked ~ #gend .G_indent_t1,
+
+/* html lang */
+#S_lang_ja:checked ~ #gend #G_lang_ja,
+#S_lang_jp:checked ~ #gend #G_lang_ja,
+#S_lang_jp:checked ~ #gend #G_lang_jp,
+
+#S_lang_en:checked ~ #gend #G_lang_en,
+#S_lang_us:checked ~ #gend #G_lang_en,
+#S_lang_us:checked ~ #gend #G_lang_us,
+#S_lang_uk:checked ~ #gend #G_lang_en,
+#S_lang_uk:checked ~ #gend #G_lang_uk,
+
+/* html namsespace */
+#S_ns_xhtml:checked ~ #gend #G_ns_xhtml,
+#S_ns_fbml:checked ~ #gend #G_ns_fbml,
+#S_ns_both:checked ~ #gend #G_ns_xhtml,
+#S_ns_both:checked ~ #gend #G_ns_fbml,
+
+/* head Open Graph */
+#S_ns2_prefix:checked ~ #gend #G_ns_prefix,
+#S_ns2_fb_app:checked ~ #gend #G_ns_prefix,
+#S_ns2_fb_app:checked ~ #gend #G_ns_fb_app,
+
+/* meta charset */
+#S_char_utf8:checked ~ #gend #G_char_utf8,
+#S_char_sjis:checked ~ #gend #G_char_sjis,
+#S_char_euc:checked ~ #gend #G_char_euc,
+
+/* meta viewport */
+#S_vp:checked ~ #gend #G_vp,
+#S_vp_width_320:checked ~ #gend #G_vp_width_320,
+#S_vp_width_device:checked ~ #gend #G_vp_width_device,
+
+#S_vp_height_480:checked ~ #gend #G_vp_height_480,
+#S_vp_height_device:checked ~ #gend #G_vp_height_device,
+
+#S_vp_op_iscale:checked ~ #gend #G_vp_op_iscale,
+#S_vp_op_uscale:checked ~ #gend #G_vp_op_uscale,
+#S_vp_op_minscale:checked ~ #gend #G_vp_op_minscale,
+#S_vp_op_maxscale:checked ~ #gend #G_vp_op_maxscale,
+
+/* attribute seperator */
+input[id^="S_vp_width_"]:checked ~ input[id^="S_vp_height_"]:checked ~ #gend span[id^="G_vp_height_"] .G_sep,
+
+input[id^="S_vp_width_"]:checked ~ input[id^="S_vp_height_"]:checked ~ #gend span[id^="G_vp_op_"] .G_sep,
+input[id^="S_vp_width_"]:checked ~ input[id^="S_vp_height_"]:not(:checked) ~ #gend span[id^="G_vp_op_"] .G_sep,
+input[id^="S_vp_width_"]:not(:checked) ~ input[id^="S_vp_height_"]:checked ~ #gend span[id^="G_vp_op_"] .G_sep,
+
+#S_vp_op_iscale:checked ~ #S_vp_op_uscale:checked ~ #gend #G_vp_op_uscale .G_sep,
+#S_vp_op_iscale:checked ~ #S_vp_op_minscale:checked ~ #gend #G_vp_op_minscale .G_sep,
+#S_vp_op_iscale:checked ~ #S_vp_op_maxscale:checked ~ #gend #G_vp_op_maxscale .G_sep,
+#S_vp_op_uscale:checked ~ #S_vp_op_minscale:checked ~ #gend #G_vp_op_minscale .G_sep,
+#S_vp_op_uscale:checked ~ #S_vp_op_maxscale:checked ~ #gend #G_vp_op_maxscale .G_sep,
+#S_vp_op_minscale:checked ~ #S_vp_op_maxscale:checked ~ #gend #G_vp_op_maxscale .G_sep,
+
+/* meta Facebook Ogp */
+#S_og_fbset:checked ~ #gend #G_og_fbset,
+
+/* meta windows app */
+#S_win_app:checked ~ #gend #G_win_app,
+
+/* meta windows 8 Tile Image */
+#S_win_tile:checked ~ #gend #G_win_tile,
+
+/* meta robots */
+#S_robots:checked ~ #gend #G_robots,
+#S_robots_index:checked ~ #gend #G_robots_index,
+#S_robots_noindex:checked ~ #gend #G_robots_noindex,
+#S_robots_follow:checked ~ #gend #G_robots_follow,
+#S_robots_nofollow:checked ~ #gend #G_robots_nofollow,
+
+#S_robots_index:checked ~ #S_robots_follow:checked ~ #gend #G_robots_follow .G_sep,
+#S_robots_index:checked ~ #S_robots_nofollow:checked ~ #gend #G_robots_nofollow .G_sep,
+#S_robots_noindex:checked ~ #S_robots_follow:checked ~ #gend #G_robots_follow .G_sep,
+#S_robots_noindex:checked ~ #S_robots_nofollow:checked ~ #gend #G_robots_nofollow .G_sep,
+
+/* meta author */
+#S_author:checked ~ #gend #G_author,
+
+/* meta copyright */
+#S_copyright:checked ~ #gend #G_copyright,
+
+/* meta generator */
+#S_generator_wp:checked ~ #gend #G_generator,
+#S_generator_wp:checked ~ #gend #G_generator_wp,
+#S_generator_mt:checked ~ #gend #G_generator,
+#S_generator_mt:checked ~ #gend #G_generator_mt,
+#S_generator_csspg:checked ~ #gend #G_generator,
+#S_generator_csspg:checked ~ #gend #G_generator_csspg,
+
+/* meta description */
+#S_description:checked ~ #gend #G_description,
+
+/* meta keywords */
+#S_keywords:checked ~ #gend #G_keywords,
+
+/* link Canonical */
+#S_canonical:checked ~ #gend #G_canonical,
+
+/* link DNS Prefetch */
+#S_dns_prefetch:checked ~ #gend #G_dns_prefetch,
+
+/* link favicon */
+#S_favicon_ico:checked ~ #gend #G_favicon_ico,
+#S_favicon_touch57:checked ~ #gend #G_favicon_touch57,
+#S_favicon_touch72:checked ~ #gend #G_favicon_touch72,
+#S_favicon_touch114:checked ~ #gend #G_favicon_touch114,
+#S_favicon_touch_precomposed:checked ~ #gend .G_precomposed,
+
+/* link feed */
+#S_feed_atom:checked ~ #gend #G_feed_atom,
+#S_feed_rss1:checked ~ #gend #G_feed_rss1,
+#S_feed_rss2:checked ~ #gend #G_feed_rss2,
+
+/* link stylesheet */
+#S_style_ext1:checked ~ #gend #G_style_ext1,
+#S_style_ext2:checked ~ #gend #G_style_ext2,
+#S_style_ext3:checked ~ #gend #G_style_ext3,
+
+#S_style_media1_all:checked ~ #gend #G_style_media1_all,
+#S_style_media1_screen:checked ~ #gend #G_style_media1_screen,
+#S_style_media1_print:checked ~ #gend #G_style_media1_print,
+
+#S_style_media2_all:checked ~ #gend #G_style_media2_all,
+#S_style_media2_screen:checked ~ #gend #G_style_media2_screen,
+#S_style_media2_print:checked ~ #gend #G_style_media2_print,
+
+#S_style_media3_all:checked ~ #gend #G_style_media3_all,
+#S_style_media3_screen:checked ~ #gend #G_style_media3_screen,
+#S_style_media3_print:checked ~ #gend #G_style_media3_print,
+
+/* inline stylesheet */
+#S_style_inline:checked ~ #gend #G_style_inline,
+
+/* inline javascript */
+#S_js_inline:checked ~ #gend #G_js_inline,
+
+/* external javascript */
+#S_js:checked ~ #gend #G_js_ex,
+#S_js_site:checked ~ #gend #G_js_site,
+#S_js_jq:checked ~ #gend #G_js_jq,
+#S_js_jqui:checked ~ #gend #G_js_jqui,
+#S_js_prototype:checked ~ #gend #G_js_prototype,
+#S_js_modernizr:checked ~ #gend #G_js_modernizr,
+#S_js_cdn_none:checked ~ #gend .G_js_cdn_none,
+#S_js_cdn:checked ~ #gend .G_js_cdn{
+/*
+	position: static;
+	overflow: visible;
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+*/
+	display: inline;
+}
+
+#S_js_cdn_none:checked ~ #gend .G_js_cdn,
+#S_js_cdn:checked ~ #gend .G_js_cdn_noe{
+/*
+	position: absolute;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+*/
+	display: none;
+}
+
+
+/* Generator Design
+================================================== */
+#slct_head{
+	float: left;
+	margin: 15px 0 -1px 10px;
+	padding: 3px 10px 2px;
+	border-radius: .3em .3em 0 0;
+	border: 1px solid #c9c9c9;
+	border-bottom: 0;
+	color: #000000;
+	font-size: 96%;
+	text-shadow: 0 1px 0 rgba(255,255,255, .45);
+	background: #d3d3d3;
+	background: -webkit-linear-gradient(top, #efefef, #d3d3d3);
+	background: linear-gradient(to bottom, #efefef, #d3d3d3);
+}
+
+#generator{
+	clear: both;
+	padding: 5px;
+	border: 1px solid #c9c9c9;
+	border-radius: .45em;
+	background: #d3d3d3;
+	font-size: 80%;
+}
+
+/* 邪魔なので隠す */
+#generator input{display: none;}
+
+/* あたかも div 的なものでボタン群を囲ったような感じにする */
+#generator .Els{
+	float: left;
+	margin: 0 0 15px 10px;
+	padding: 8px 3px 7px 10px;
+	border-radius: .45em 0 0 .45em;
+	color: #3f3f3f;
+	text-align: center;
+	font-weight: bold;
+	line-height: 2em;
+	background: #fdfdfd;
+	background: -webkit-linear-gradient(top, #e0e0e0 0, #fdfdfd 3px);
+	background: linear-gradient(to bottom, #e0e0e0 0, #fdfdfd 3px);
+	/*
+	//Special Thanks @GeckoTang! https://twitter.com/geckotang/status/275406748599341056
+
+	作るのに夢中になると「使う」ことを忘れがちなので、
+	こういうユーザビリティに関する助言はかなりありがたいです。
+	今のところ、Opera以外は対応しているけど prefix が必要。
+	IE10も -ms- で動く。 ref) https://developer.mozilla.org/ja/docs/CSS/user-select
+	*/
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+#generator label{
+	display: block;
+	float: left;
+	margin: 0 0 15px;
+	line-height: 2.5em;
+	background: #fdfdfd;
+	background: -webkit-linear-gradient(top, #e0e0e0 0, #fdfdfd 3px);
+	background: linear-gradient(to bottom, #e0e0e0 0, #fdfdfd 3px);
+	/*
+	IE10では user-select: none; したエリアは選択できないけど（指定通り）、
+	選択できるエリアからドラッグを引っ張っていけば none 部分も選択できてしまう。コピペも可。
+	なので全領域 none からの部分的に auto へ戻すってやり方はIE10だと無理。
+	（最初は #generator 内を全部 user-select: none; にしてから、#gend pre だけ auto に戻してた）
+	仕方ないので、選択させたくない要素にそれぞれ user-select: none; を指定する。
+	*/
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+/* button design */
+#generator label span{
+	display: block;
+	float: left;
+	position: relative;
+	margin: 3px 0 12px;
+	padding: 0 8px;
+	min-width: 2em;
+	text-align: center;
+	line-height: 2em;
+	text-shadow: 0 1px 0 rgba(255,255,255, .45);
+	background: #e3e3e3;
+	background: -webkit-linear-gradient(top, #e3e3e3 0, #f6f6f6 100%);
+	background: linear-gradient(to bottom, #e3e3e3 0, #f6f6f6 100%);
+	box-shadow: 0 5px 0 #acacac;
+}
+
+#generator input[type="radio"]:checked+label span{
+	top: 4px;
+	color: #ffffff;
+	text-shadow: 0 1px 0 #0033cc;
+	background: #0099ff;
+	background: -webkit-linear-gradient(top, #0033cc 0, #0099ff 100%);
+	background: linear-gradient(to bottom, #0033cc 0, #0099ff 100%);
+	box-shadow: 0 1px 0 #0033cc,0 1px 3px #0099ff;
+/*
+	text-shadow: 0 1px 0 #062270;
+	background: -webkit-linear-gradient(top, #062270 0, #6996d3 100%);
+	background: linear-gradient(to bottom, #062270 0, #6996d3 100%);
+	box-shadow: 0 1px 0 #062270,0 1px 3px #6996d3;
+*/
+}
+
+#generator input[type="checkbox"]:checked+label span{
+	top: 4px;
+	color: #ffffff;
+	text-shadow: 0 1px 0 #ff5f00;
+	background: #ff5f00;
+	background: -webkit-linear-gradient(top, #ff5f00 0, #ff9f40 100%);
+	background: linear-gradient(to bottom, #ff5f00 0, #ff9f40 100%);
+	box-shadow: 0 1px 0 #ff5f00,0 1px 3px #ff9f40;
+}
+
+/* buttons round corner */
+#generator .B_l{
+	border-radius: 0 .45em .45em 0;
+}
+
+#generator .B_f span{
+	margin-left: 7px;
+	border-radius: .3em 0 0 .3em;
+}
+
+#generator .B_ span{
+	border-left: 1px solid rgba(0,0,0, .25);
+}
+
+#generator .B_l span{
+	margin-right: 7px;
+	border-left: 1px solid rgba(0,0,0, .25);
+	border-radius: 0 .3em .3em 0;
+}
+
+#generator .B_f.B_l span{
+	border: 0;
+	border-radius: .3em;
+}
+
+/* label layout / 適度に float を解除する */
+#generator #E_lang,
+#generator #E_ns2,
+#generator #E_vp,
+#generator #E_win_app,
+#generator #E_style,
+#generator #E_robots,
+#generator #E_author,
+#generator #E_description,
+#generator #E_favicon,
+#generator #E_style,
+#generator #E_style_inline,
+#generator #E_js,
+#generator #E_js_inline,
+#generator #E_empty{
+	clear: both;
+	margin: 0;
+}
+
+/* viewport label layout / [無し]:checked になってる時はいろいろ隠す  */
+#S_vp_none:checked ~ input[name="S_vp1"] + label span,
+#S_vp_none:checked ~ input[name="S_vp2"] + label span,
+#S_vp_none:checked ~ input[name="S_vp3"] + label span{
+	display: none;
+}
+
+#generator label[for^="S_vp"]{
+	margin: 0;
+}
+
+#generator label[for^="S_vp_"] span{
+	min-width: 9em;
+}
+
+#generator label[for="S_vp_none"] span{
+/*
+	min-width: auto;
+
+	［無し］ボタンの幅を auto に戻そうとしたが、safari6.0.2 だと auto で上書きできない。（Chrome23はできた）
+	というか、仕様では min- の初期値は "auto" ではなく "0" であった。知らなかった。
+	http://www.w3.org/TR/css3-box/#min-max
+
+	min- では仕様上は auto 値を取れない。
+	ちなみに、max- の初期値は none に変わってる。2002年では auto だった。
+
+	そんでもって、各ブラウザでも実装が違う。
+
+	Safari 6.0.2 | auto =✕ | 0 =◯ | initial =◯ |
+	Chrome 23    | auto =◯ | 0 =◯ | initial =◯ |
+	Firefox 17   | auto =◯ | 0 =◯ | initial =✕ |
+	Opera 12.11  | auto =◯ | 0 =◯ | initial =✕ |
+
+	そんなわけで、現在の仕様通り min-width: 0; で初期化することにする。
+
+
+	あと Firefox 18 では min- は auto を初期値に取るらしい。
+	//Special Thanks @teramako! https://twitter.com/teramako/status/274349773853696000
+	ただ、"min-width、min-height 両プロパティが初期値として auto キーワードを取るようになりました。
+	Firefox 18 で実装された フレキシブルボックス (flexbox、初期設定無効) では、
+	この auto キーワードは最小アイテムのサイズである min-content を示します。
+	それ以外の要素では、従来通り 0 と計算されるため影響はありません。" とのことなので、
+	フレキシブルボックスでないなら 0 を指定しているのと同じ動作になるということみたい。
+*/
+	min-width: 0;
+}
+
+#S_vp:checked + label[for="S_vp"]{
+	border-radius: 0;
+}
+
+#generator label[for="S_vp_width_device"]{
+	border-radius: 0 .45em 0 0;
+}
+
+#generator label[for^="S_vp_height"]{
+	background: #fdfdfd;
+}
+
+#generator label[for="S_vp_height"]{
+	clear: both;
+	margin-left: 175px;
+	border-radius: 0;
+}
+
+#generator label[for="S_vp_height_device"]{
+	border-radius: 0;
+}
+
+#generator label[for^="S_vp_op_"]{
+	margin: 0 0 15px;
+	background: #fdfdfd;
+}
+
+#generator label[for="S_vp_op_iscale"]{
+	clear: both;
+	margin-left: 175px;
+	border-radius: 0 0 0 .45em;
+}
+
+#generator label[for="S_vp_op_maxscale"]{
+	border-radius: 0 .45em .45em 0;
+}
+
+/* robots label layout / [無し]:checked になってる時はいろいろ隠す  */
+#S_robots_none:checked ~ input[name="S_robots1"] + label span,
+#S_robots_none:checked ~ input[name="S_robots2"] + label span{
+	display: none;
+}
+
+#S_robots:checked + label[for="S_robots"],
+#S_robots:checked ~ label[for="S_robots_noindex"]{
+	border-radius: 0;
+}
+
+
+/* Stylesheet labe layput */
+#generator label[for="S_style_ext2"],
+#generator label[for="S_style_ext3"]{
+	margin-left: 10px;
+	border-radius: .45em;
+}
+
+/* [無し]:checked になってる時はいろいろ隠す  */
+#S_style_ext1_none:checked ~ input[name^="S_style_media"] + label span,
+#S_style_ext1_none:checked ~ input[name="S_style_ext2"] + label span,
+#S_style_ext1_none:checked ~ input[name="S_style_ext3"] + label span,
+
+#S_style_ext1:checked ~ input[name="S_style_ext3"] + label span,
+#S_style_ext1:checked ~ input[name^="S_style_media2"] + label span,
+#S_style_ext1:checked ~ input[name^="S_style_media3"] + label span{
+	display: none;
+}
+
+#S_style_ext2:checked ~ input[name="S_style_media2"] + label span,
+#S_style_ext2:checked ~ input[name="S_style_ext3"] + label span,
+
+#S_style_ext3:checked ~ input[name="S_style_media3"] + label span{
+	display: inline;
+}
+
+#S_style_ext1:checked ~ label[for="S_style_ext1"]{
+	border-radius: 0;
+}
+
+#S_style_ext2:checked ~ label[for="S_style_ext2"],
+#S_style_ext3:checked ~ label[for="S_style_ext3"]{
+	border-radius: .45em 0 0 .45em;
+}
+
+/* JavaScript label layout / [無し]:checked になってる時はいろいろ隠す  */
+#S_js_none:checked ~ input[name^="S_js_"] + label span{
+	display: none;
+}
+
+#S_js_none:checked ~ input[name^="S_js_inline"] + label span{
+	display: inline;
+}
+
+#S_js:checked + label[for="S_js"],
+#S_js:checked ~ label[for="S_js_modernizr"]{
+	border-radius: 0;
+}
+
+
+/* Generated Area Design */
+#gend_head{
+	clear:both;
+	float: left;
+	position: relative;
+	margin: 15px 0 0 6px;
+	padding: 3px 10px 2px;
+	border-radius: .3em .3em 0 0;
+	background: #ffffff;
+	box-shadow: 0 0 5px rgba(0,0,0, .25)
+}
+
+#gend_head::after{
+	/* box-shadow が次のボックスにかかってラベルっぽくないので、白いテープで隠す的なやつ */
+	content: "";
+	display: block;
+	width: 100%;
+	height: 6px;
+	position: absolute;
+	left: 0;
+	bottom: -4px;
+	background: #ffffff;
+}
+
+#gend{
+	clear:both;
+	margin: 0 0 7px;
+	padding: 10px 0;
+	border-radius: .3em;
+	background: #ffffff;
+	box-shadow: 0 0 5px rgba(0,0,0, .25);
+}
+
+#gend pre{
+	margin: 0;
+	padding: 0 10px;
+	font-size: 14px;
+	line-height: 1;
+	font-family: Consolas,monospace;
+	background: #ffffff;
+	background: -webkit-linear-gradient(top, #efeff3 0, #efeff3 50%, #ffffff 50%, #ffffff 100%);
+	background: linear-gradient(to bottom, #efeff3 0, #efeff3 50%, #ffffff 50%, #ffffff 100%);
+	background-size: 1em 2em;
+}

@@ -1,0 +1,64 @@
+<div class="contents">
+  <header class="header header--individual">
+  <h1 class="header__logo"><a href="http://dskd.jp/">dskd</a></h1>
+  </header>
+
+  <div class="article">
+    <article class="article__item article__imte--individual">
+      <header class="article-header">
+        <h2 class="article-header__item">記事見出し</a></h2>
+      </header>
+      <footer class="article-footer">
+        <time class="article-footer__pubtime">0000/00/00<br>00:00</time>
+        <dl class="article-footer__categories">
+          <dt class="article-footer__categories-title">category :</dt>
+          <dd class="article-footer__categories-item">
+            <a href="">cate name</a>, <a href="">cate name</a>
+          </dd>
+        </dl>
+      </footer>
+    </article>
+  </div>
+
+  <nav class="neighbor layout--horizon">
+    <div class="neighbor-header layout--horizon__item">
+      <h2 class="neighbor-header__item">Older</h2>
+    </div>
+    <a class="neighbor__item layout--horizon__item" href="#">記事見出し</a>
+  </nav>
+
+  <section class="archives layout--horizon">
+    <header class="archives-header layout--horizon__item">
+      <h2 class="archives-header__item">Archives</h2>
+    </header>
+
+    <nav class="archives-year layout--horizon__item">
+      <h2 class="archives-year__title">2012</h2>
+      <ul class="archives-year__monthly">
+        <li class="archives-year__item"><a href="">Monthly</a></li>
+        <li class="archives-year__item"><a href="">Monthly</a></li>
+        <li class="archives-year__item"><a href="">Monthly</a></li>
+      </ul>
+    </nav>
+  </section>
+
+  <section class="neighbor layout--horizon">
+    <header class="neighbor-header layout--horizon__item">
+      <h2 class="neighbor-header__item">Categories</h2>
+    </header>
+    <ol class="neighbor-pager layout--horizon__item">
+      <li class="neighbor-pager__item"><a class="button" href="">Category</a></li>
+      <li class="neighbor-pager__item"><a class="button" href="">Category</a></li>
+      <li class="neighbor-pager__item"><a class="button" href="">Category</a></li>
+    </ol>
+  </section>
+
+  <footer class="credit layout--horizon">
+    <div class="credit-header layout--horizon__item">
+      <h2 class="credit-header__item">Copyright</h2>
+    </div>
+    <p class="credit__item layout--horizon__item">
+      <small>© dskd/oti All Rights Reserved.</small>
+    </p>
+  </footer>
+</div>

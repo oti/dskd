@@ -1,0 +1,35 @@
+// footer author
+.author,
+.author-credit,
+.author-address,
+.authorlinks,
+.authorlinks li{
+  float: left;
+  margin:0;
+  padding:0;
+}
+
+.author-address {
+  padding-left: 8px;
+  font-style: normal;
+
+  &::before{
+      @extend %dotMark;
+  }
+}
+
+.authorlinks{
+  list-style-type: none;
+  list-style-position: inside;
+
+  li{
+    padding-left: 8px;
+
+    &::before{
+      @extend %dotMark;
+    }
+  }
+}
+
+
+

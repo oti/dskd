@@ -1,0 +1,22 @@
+AddHandler server-parsed .html
+
+<FilesMatch "feed$">
+ForceType text/xml
+</FilesMatch>
+
+Redirect permanent /feed/atom.xml http://dskd.jp/feed
+Redirect permanent /archives/img-pointer-events-none/ http://dskd.jp/demo/6.html
+Redirect permanent /archives/absolute-centering/ http://dskd.jp/demo/10.html
+Redirect permanent /archives/css-programing-html5-template-generator/ http://dskd.jp/demo/26.html
+Redirect permanent /archives/image-size-independent-absolute-centering/ http://dskd.jp/demo/31.html
+Redirect permanent /archives/image-size-independent-absolute-centering/use-display-table.html http://dskd.jp/demo/32.html
+Redirect permanent /archives/attach-zoom-by-style-attribute-bug/use-zoom.html http://dskd.jp/demo/51.html
+Redirect permanent /archives/attach-zoom-by-style-attribute-bug/use-scale.html http://dskd.jp/demo/52.html
+Redirect permanent /archives/substituting-trbl-method-for-backgroundsize/basic-trbl-method.html http://dskd.jp/demo/59.html
+Redirect permanent /archives/substituting-trbl-method-for-backgroundsize/change-kitten.html http://dskd.jp/demo/60.html
+Redirect permanent /archives/substituting-trbl-method-for-backgroundsize/check-dynamic.html http://dskd.jp/demo/61.html
+Redirect permanent /archives/substituting-trbl-method-for-backgroundsize/check-static.html http://dskd.jp/demo/62.html
+Redirect permanent /archives/substituting-trbl-method-for-background-size/basic-trbl-method.html http://dskd.jp/demo/59.html
+Redirect permanent /archives/substituting-trbl-method-for-background-size/change-kitten.html http://dskd.jp/demo/60.html
+Redirect permanent /archives/substituting-trbl-method-for-background-size/check-dynamic.html http://dskd.jp/demo/61.html
+Redirect permanent /archives/substituting-trbl-method-for-background-size/check-static.html http://dskd.jp/demo/62.html

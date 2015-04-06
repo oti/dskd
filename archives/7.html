@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>img要素にpointer-events: none;を指定する - dskd</title>
+
+  <meta content="CSS TRICKにpointer-eventsのCSSプロパティを使って、ナビゲーションにあるカレントページのリンクをクリック不能にするデモがあった。
+
+http://css-tricks.com/" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
+
+  <meta content="img要素にpointer-events: none;を指定する" property="og:title">
+  <meta content="CSS TRICKにpointer-eventsのCSSプロパティを使って、ナビゲーションにあるカレントページのリンクをクリック不能にするデモがあった。
+
+http://css-tricks.com/" property="og:description">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/7.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/7.html" rel="canonical">
+  <link href="http://dskd.jp/archives/7.html" itemprop="url">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry" role="main">
+      <footer class="entry-footer">
+        <time datetime="2011-10-12T19:02:06+09:00">2011.10.12</time>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a>, <a href="http://dskd.jp/archives/c10.html" class="tag">demo</a></p>
+      </footer>
+
+      <h1 class="entry-title" itemprop="name">img要素にpointer-events: none;を指定する</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p>CSS TRICKにpointer-eventsのCSSプロパティを使って、ナビゲーションにあるカレントページのリンクをクリック不能にするデモがあった。</p>
+
+<p><a href="http://css-tricks.com/pointer-events-current-nav/">http://css-tricks.com/pointer-events-current-nav/</a></p>
+
+<p>これを見て、このプロパティをimg要素に使ったらどうなるのと思って試してみた。</p>
+
+        </div>
+        <div>
+<pre><code data-language="html">&lt;img src="https://placekitten.com/g/250/250" alt="img tag with pointer-event:none;" style="<mark>pointer-events: none;</mark>"&gt;</code></pre>
+
+<p><a href="http://dskd.jp/demo/6.html">pointer-events: none;つきのimg要素</a></p>
+
+<p>どうやらPC版ブラウザでは画像上での右クリックや画像のD&amp;Dが不可能になるようだ。コンテクストメニューから保存したりブラウザから別タブにD&amp;Dがその画面上からはできない、ということになる。</p>
+
+<p>もちろんソースを表示して画像のURLを直接参照したり、ブックマークレットなどを使えば画像を保存することはできる。そして当然ながら、CSS3のpointer-eventsプロパティに対応していないブラウザでは無意味。</p>
+
+<p>さらにスマートフォン版のブラウザではほとんど制限をかけられないようで、たとえばiOSだと長タップで開くコンテクストメニューからの画像保存はできないものの、範囲選択で画像を含めてコピーすれば「メール」アプリなどのドキュメントに画像ごと貼り付けることができた。リッチテキストを扱えるアプリなら多くが可能かもしれない。また、Android 2.3.3の既存ブラウザではコンテクストメニューの内容に制限がかからなかった。このプロパティ自体が無効のようだ。</p>
+
+<p>画像に直接指定せず、divでワンクッション置いたりするとまた違った挙動なのかもしれないが試していない。</p>
+
+<p>版権のある写真やイラストを扱う場合、このルールを適用することで権利者の利益を少し守ることができそう。ルールをstyle属性で指定しても外部CSSで指定しても効果は同じなので、PC向けコンテンツで局所的に右クリックを禁止させたい場合にはお手軽な手法かもしれない。</p>
+
+        </div>
+      </div>
+
+      <aside class="social-buttons" role="complementary">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=img%E8%A6%81%E7%B4%A0%E3%81%ABpointer-events%3A%20none%3B%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B&url=http%3A%2F%2Fdskd.jp%2Farchives%2F7.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F7.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F7.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=img%E8%A6%81%E7%B4%A0%E3%81%ABpointer-events%3A%20none%3B%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F7.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/11.html">絶対中央配置のCSS</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/1.html">よくわかんないんですけど</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

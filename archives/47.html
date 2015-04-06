@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>左右marginで任意の比率を保つ - dskd</title>
+
+  <meta content="元ネタはながしまさんのツイートから。
+" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
+
+  <meta content="左右marginで任意の比率を保つ" property="og:title">
+  <meta content="元ネタはながしまさんのツイートから。
+" property="og:description">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/47.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/47.html" rel="canonical">
+  <link href="http://dskd.jp/archives/47.html" itemprop="url">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry" role="main">
+      <footer class="entry-footer">
+        <time datetime="2014-07-12T22:33:37+09:00">2014.07.12</time>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a></p>
+      </footer>
+
+      <h1 class="entry-title" itemprop="name">左右marginで任意の比率を保つ</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p>元ネタは<a href="https://twitter.com/hail2u_/status/487903628665970691">ながしまさんのツイート</a>から。</p>
+
+        </div>
+        <div>
+<p>固定幅の要素の左右marginでauto値っぽい挙動を保ちつつ、その比率を任意のものにしたいとのこと。実現するには<a href="http://www.w3.org/TR/css-values/#calc">CSS Values and Units Module Level3のcalc()</a>しかない。</p>
+
+<p>とりあえず、適応したい要素を200*150pxのdivとして、<code>margin-left</code>と<code>margin-right</code>の比２対３になるように書いてみた。</p>
+
+<pre title="CSS"><code data-language="css">div{
+    margin: 0;
+    margin-left:  calc(100%*2/5 - 200px*2/5);
+    margin-right: calc(100%*3/5 - 200px*3/5);
+    width: 200px;
+    height: 150px;
+    background: red;
+}</code></pre>
+
+<p>できた。</p>
+
+<iframe width="100%" height="300" src="http://jsfiddle.net/n68QV/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>２対３なら合計分を分母にとった数を100% - 200pxの式にそれぞれ掛けてあげる。</p>
+
+<p>その後、いろいろ検証的なことをして以下で<a href="https://twitter.com/hail2u_/status/487928879793721344">FTW</a>となった。</p>
+
+<pre title="CSS"><code data-language="css">div{
+    margin: 0;
+
+    margin-left:  calc((100% - 200px) * 2 / 5);
+    margin-right: calc((100% - 200px) * 3 / 5);
+
+    width: 200px;
+    height: 150px;
+    background: red;
+}</code></pre>
+
+<p>上記のように四則演算で丸括弧を使って計算を優先させる構文がcalc()でも使える。</p>
+
+<p>実はながしまさんに最初のリプライを送るときに<code>calc()</code>の中で<code>()</code>を使うのは試していたんだけど、<code>(100% - 200px)</code>の部分を以下のようにスペースなしで書いていて、それだと動かなかったのでやめていた。</p>
+
+<pre title="CSS"><code data-language="css">div{
+    margin-left:  calc((100%-200px) * 2 / 5);
+    margin-right: calc((100%-200px) * 3 / 5);
+}</code></pre>
+
+<iframe width="100%" height="500" src="http://jsfiddle.net/n68QV/5/embedded/result,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>加減式の場合、<a href="https://twitter.com/hail2u_/status/487940265684897792">負の値への対応で前後にスペースが必要</a>なのだとか。言われてみれば確かにそうだ。CSS Variablesで<a href="https://twitter.com/xl1blue/status/487937984524591104">変数にハイフンが入った時に区別できないから</a>、という意見ももらった。どちらもなるほどですね。</p>
+
+<hr />
+
+<p><ins datetime="2014-07-13T17:03:00+09:00" data-insdate="※2014/7/13 17:03">追記。</ins></p>
+
+<p>marginの左右両方でcalc()を指定しているけど、<a href="http://hail2u.net/blog/webdesign/split-margin-with-ratio.html">どちらかでcalc()していればもう一方はauto値でよい</a>ようだ。</p>
+
+<pre title="CSS"><code data-language="css">div{
+    margin-left:  calc((100% - 200px) * 4 / 5 );
+    margin-right: calc((100% - 200px) / 5 );
+}</code></pre>
+
+<pre title="CSS"><code data-language="css">div{
+    margin-left: auto;
+    margin-right:  calc((100% - 200px) / 5 );
+}</code></pre>
+
+<pre title="CSS"><code data-language="css">div{
+    margin-left:  calc((100% - 200px) * 4 / 5 );
+    margin-right: auto;
+}</code></pre>
+
+<p>上記３パターンは全て同じことになる。</p>
+
+<iframe width="100%" height="550" src="http://jsfiddle.net/n68QV/6/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>僕にはもう一歩二歩先までコードを簡略化する発想がどうもできないっぽい。なのでCSSおじさんは名乗れない。</p>
+
+        </div>
+      </div>
+
+      <aside class="social-buttons" role="complementary">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%E5%B7%A6%E5%8F%B3margin%E3%81%A7%E4%BB%BB%E6%84%8F%E3%81%AE%E6%AF%94%E7%8E%87%E3%82%92%E4%BF%9D%E3%81%A4&url=http%3A%2F%2Fdskd.jp%2Farchives%2F47.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F47.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F47.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=%E5%B7%A6%E5%8F%B3margin%E3%81%A7%E4%BB%BB%E6%84%8F%E3%81%AE%E6%AF%94%E7%8E%87%E3%82%92%E4%BF%9D%E3%81%A4&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F47.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/48.html">overflow: overlay;</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/46.html">git filter-branchで過去の全てのcommitから画像ファイルの追加/変更をなかったことにしてリポジトリを軽量化する</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

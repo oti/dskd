@@ -1,0 +1,89 @@
+
+// entry aside
+.social-buttons{
+  ul{
+    margin: 0;
+    padding: 0;
+    text-align: right;
+
+    &::before{
+      content: 'share:';
+      display: inline-block;
+      vertical-align: top;
+      color: rgba(0,0,0,.45);
+    }
+  }
+
+  li{
+    display: inline-block;
+    margin-left: 15px;
+
+    a{
+      display: block;
+      width: 25px;
+      height: 25px;
+      text-indent: 101%;
+      white-space: nowrap;
+      overflow: hidden;
+      background: no-repeat center center;
+      background-size: 25px;
+    }
+
+    &.twitter-tweet a{
+      background-image: url(/dist/svg/twitter.svg);
+    }
+
+    &.facebook-share a{
+      background-image: url(/dist/svg/facebook.svg);
+    }
+
+    &.googleplus-share a{
+      background-image: url(/dist/svg/googleplus.svg);
+    }
+
+    &.hatena-bookmark a{
+      background-image: url(/dist/svg/hatena-bookmark.svg);
+    }
+  }
+}
+
+.neighbor{
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0,0,0, .15);
+}
+
+.neighborlinks{
+  position: relative;
+  list-style-type: none;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+
+  li{
+    margin-left: 60px;
+    padding: 0;
+    text-indent: -60px;
+
+    &+li{
+      margin-top: 1em;
+    }
+  }
+
+  li::before{
+    display: inline-block;
+    padding-right: 10px;
+    width: 50px;
+    color: rgba(0,0,0,.45);
+    text-align: right;
+  }
+
+  .older::before{
+    content: 'older:';
+  }
+  .newer::before{
+    content: 'newer:';
+  }
+}
+
+

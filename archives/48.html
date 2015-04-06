@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>overflow: overlay; - dskd</title>
+
+  <meta content="Google ChromeのDeveloper Toolsで要素のスタイルをいじっていたら、overflowプロパティにoverlayなる値があることを知った。インターネットをざっと検索した感じだとど" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
+
+  <meta content="overflow: overlay;" property="og:title">
+  <meta content="Google ChromeのDeveloper Toolsで要素のスタイルをいじっていたら、overflowプロパティにoverlayなる値があることを知った。インターネットをざっと検索した感じだとど" property="og:description">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/48.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/48.html" rel="canonical">
+  <link href="http://dskd.jp/archives/48.html" itemprop="url">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry" role="main">
+      <footer class="entry-footer">
+        <time datetime="2014-07-17T18:42:00+09:00">2014.07.17</time>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a></p>
+      </footer>
+
+      <h1 class="entry-title" itemprop="name">overflow: overlay;</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p>Google ChromeのDeveloper Toolsで要素のスタイルをいじっていたら、overflowプロパティにoverlayなる値があることを知った。インターネットをざっと検索した感じだとどうやらWebkit系のみで使えるようだ。</p>
+
+        </div>
+        <div>
+<p><a href="http://dskd.jp/dist/img/overflow-overlay/dev_tools.png" title="overflowのサジェストにoverlay値が出てくる"><img src="http://dskd.jp/dist/img/overflow-overlay/dev_tools.png" alt="Developer Toolsでoverlay値を表示したキャプチャ" title="" /></a></p>
+
+<p>W3Cのoverflowの仕様（<a href="http://www.w3.org/TR/CSS21/visufx.html#propdef-overflow">CSS2.1 Visual Effects</a>、<a href="http://www.w3.org/TR/css-overflow-3/#overflow-properties">CSS Overflow Module Level 3</a>、<a href="http://www.w3.org/TR/css3-box/#overflow1">CSS basic box model</a>）を見てもoverlay値に関する記述はない。</p>
+
+<p>検索結果を追っていくと、2009年にWebkit Bugzillaに投稿された<a href="https://bugs.webkit.org/show_bug.cgi?id=32388">overlay値に対する提案</a>が見つかる。標準仕様になくWebkitでしか動かないなら削除するか-webkit-overlayのようにプリフィックスをつけてはどうかという主旨だが、やりとりの中で<a href="http://trac.webkit.org/changeset/14968/trunk/WebCore/css/CSSValueKeywords.in">2006年に-webkit-overlayをアンプリフィックスした</a>よというコメントがあって驚いた。８年前！えっじゃあ-webkit-overlayが実装されたのいつなんだろう。さらに、overlayはスクロールバーが発生しないので、イベントをトリガーしないという興味深いコメントもある。</p>
+
+<p>Webkit Bugzillaでは2009年の投稿から2013年まで放置されてて、その後<a href="http://jsfiddle.net/rNxgD/">JSFiddleにデモが置かれた</a>のがきっかけかわからないけど、W3Cのスタイルのフォーラムにも<a href="http://w3-org.9356.n7.nabble.com/css3-ui-Proposal-for-an-quot-overlay-quot-value-for-overflow-td244662.html">overlayの話題</a>が投稿された。</p>
+
+<p>W3Cのフォーラムではなかなか盛り上がっていたようで<a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh441298.aspx">マイクロソフトの独自実装</a>のことも紹介されている（これも知らなかった！）。イベントのトリガーの件も議論されそうになったものの、overflowプロパティだけじゃなく他の仕様のことも併せて考えたほうがいいのではみたいな流れになって、最後にスクロールバーの計算方法についての提案のリンクが貼られてスレッドは終わっている。それから１年半ほど経つが、結局overlay値が標準化するでもなく、Webkitから削除されるでもリネームされるでもなく、現在も指定可能になっているという状況のようだ。</p>
+
+<h2>ブラウザで確認</h2>
+
+<p>さっそく一通りのブラウザで表示確認する。前提として、標準設定のMac OSとモバイルブラウザはスクロールバーがデフォルトで非表示であり、コンテンツがスクロール可能な場合はスクロールするとオーバーレイでスクロールバーが表示される。なのでそちらのキャプチャは撮っていない。Macで確認したい場合は<a href="http://dskd.jp/dist/img/overflow-overlay/mac_preferences.png">環境設定 -&gt; 一般からスクロールバーを「常に表示」にする</a>と良い。</p>
+
+<p>JSFiddleの最初のデモはあまり見やすくないので、フォークしたもので確認した。左のボックスがoverlay、右はauto値が指定されている。JSFiddleの埋め込みが何も表示されていない場合はResultのタブを押せば出てくるはず。</p>
+
+<iframe width="100%" height="150" style="margin-bottom: 1em" src="http://jsfiddle.net/rNxgD/18/embedded/result,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p><a href="dskd.jp/dist/img/overflow-overlay/mac_safari_7_0_5.png" title="Mac / Safari 7.0.5"><img src="http://dskd.jp/dist/img/overflow-overlay/mac_safari_7_0_5.png" alt="Mac / Safari 7.0.5でのキャプチャ" title="" /></a></p>
+
+<p><a href="http://dskd.jp/dist/img/overflow-overlay/mac_chrome_35.png" title="Mac / Google Chrome 35"><img src="http://dskd.jp/dist/img/overflow-overlay/mac_chrome_35.png" alt="Mac / Google Chrome 35でのキャプチャ" title="" /></a></p>
+
+<p><a href="http://dskd.jp/dist/img/overflow-overlay/mac_firefox_30.png" title="Mac / Firefox 30"><img src="http://dskd.jp/dist/img/overflow-overlay/mac_firefox_30.png" alt="Mac / Firefox 30でのキャプチャ" title="" /></a></p>
+
+<p><a href="http://dskd.jp/dist/img/overflow-overlay/win_ie_11.png" title="Win / IE11"><img src="http://dskd.jp/dist/img/overflow-overlay/win_ie_11.png" alt="Win / IE11でのキャプチャ" title="" /></a></p>
+
+<p><a href="http://dskd.jp/dist/img/overflow-overlay/win_chrome_35.png" title="Win / Google Chrome 35"><img src="http://dskd.jp/dist/img/overflow-overlay/win_chrome_35.png" alt="Win / Google Chrome35でのキャプチャ" title="" /></a></p>
+
+<p><a href="http://dskd.jp/dist/img/overflow-overlay/win_firefox_30.png" title="Win / Firefox 30"><img src="http://dskd.jp/dist/img/overflow-overlay/win_firefox_30.png" alt="Win / Firefox 30でのキャプチャ" title="" /></a></p>
+
+<p>Mac Chrome 35のキャプチャが一番わかりやすい。通常、overflowのスクロールバーはその要素幅の内側に表示されて、コンテンツ部分の幅が狭まる。しかしoverlay値を指定するとスクロールバーがコンテンツにかぶさるようになる。SafariやWin Chromeのキャプチャではわかりにくいが、改行された数字が１つ飛んでいる。上記に埋め込んだjsfiddleのデモではresizeをつけているので、左右に動かしてみるとコンテンツにスクロールバーがかぶさる様子がわかると思う。</p>
+
+<p>FirefoxとIEでは適応されていないが、その場合の挙動はautoではなくvisibleのようだ。overflowの初期値になるのではなく、無効なプロパティと解釈されてoverflowが宣言されていない状態かつ高さは100pxなのでコンテンツは下にはみ出る状態になる。規定のレンダリング。</p>
+
+<p>ついでに<a href="http://jsfiddle.net/rNxgD/21/">-ms-autohiding-scrollbarも書いてみた</a>。IE11で見たキャプチャは割愛するが、スクロールバーは出ずにvisible値と同じように表示されているように思う。これが正しい描画なのかわからない...。</p>
+
+<h2>イベントをトリガーしない？</h2>
+
+<p>イベントの件はどうだろうか。そもそも何のイベントについてなのかわからない。おそらくresizeだろうとあたりをつけてコードを書いたけどresizeイベントはwindow（viewport）しか持てないようで検出できなかった。そこでoverflowしているdivの中にもう１つdivを用意してDeveloper Toolsで確認したところ、auto値の方はスクロールバーが出現すると内包しているdivのwidthは小さくなり、overlay値の方はoverlayがない時とwidthが変わらなかった。</p>
+
+<p>となれば、overlayを指定した要素は内包物の変化でwidthとheightが変わらないことになり、ブラウザレンダーのレベルで描画コストが低いと言えるような気がする。</p>
+
+<p>任意の要素でresizeイベントが取れれば検証も簡単なのに。都度サイズを調査する関数を呼んでもいいけどなんか微妙な感じがするので書くのをやめた。</p>
+
+<h2>そもそもWebkit系のみ</h2>
+
+<p>overflow: overlay;があって嬉しい人はあまりいない気がする。現状ではすでにデフォルト設定のMac、iPhoneやAndroidではすでにスクロールバーは非表示だし、スクロールバーが表示される環境のChromeやSafariでもコンテンツ幅が狭まらないとは言え、要素がその分だけ隠れてしまう。さらに横スクロールも発生しないし、領域をドラッグしても隠れている部分を見ることはできず、閲覧者に優しくない。いったいどういう理由でこの値は生まれたんだろうか。</p>
+
+<p>overlay値は2006年にすでに使用可能だったわけだが、その頃はMacもまだスクロールバーはオーバーレイ表示ではなかった頃だったと思う。となるとスクロールバーを表示しなければならなくたった時にコンテンツ幅に不都合が生じる状況に対応するために都合主義的に実装されたのかもしれない。</p>
+
+<hr />
+
+<p>効果と現状から言ってoverlay値がW3Cで標準化されることはなさそう。今回ふとしたきっかけでプロパティの値についての議論を追ってみたが、けっこう面白かったので何かでまたやりたい。</p>
+
+        </div>
+      </div>
+
+      <aside class="social-buttons" role="complementary">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=overflow%3A%20overlay%3B&url=http%3A%2F%2Fdskd.jp%2Farchives%2F48.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F48.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F48.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=overflow%3A%20overlay%3B&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F48.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/49.html">適当とテキトー</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/47.html">左右marginで任意の比率を保つ</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

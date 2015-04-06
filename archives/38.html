@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>ブログを初めてBEM化した時の流れの続き - dskd</title>
+
+  <meta content="BEM Advent Calendar 2013 ６日目のエントリです。前回の記事に引き続き、BEM道をがんばって進みたいと思います。
+" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
+
+  <meta content="ブログを初めてBEM化した時の流れの続き" property="og:title">
+  <meta content="BEM Advent Calendar 2013 ６日目のエントリです。前回の記事に引き続き、BEM道をがんばって進みたいと思います。
+" property="og:description">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/38.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/38.html" rel="canonical">
+  <link href="http://dskd.jp/archives/38.html" itemprop="url">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry" role="main">
+      <footer class="entry-footer">
+        <time datetime="2013-12-06T10:05:00+09:00">2013.12.06</time>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c17.html" class="tag">Advent Calendar</a>, <a href="http://dskd.jp/archives/c18.html" class="tag">BEM</a>, <a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a>, <a href="http://dskd.jp/archives/c13.html" class="tag">HTML</a></p>
+      </footer>
+
+      <h1 class="entry-title" itemprop="name">ブログを初めてBEM化した時の流れの続き</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p><a href="http://www.adventar.org/calendars/61">BEM Advent Calendar 2013</a> ６日目のエントリです。<a href="http://dskd.jp/archives/36.html" title="ブログを初めて BEM 化した時の流れ">前回の記事</a>に引き続き、BEM道をがんばって進みたいと思います。</p>
+
+        </div>
+        <div>
+<h2>前回のおさらい</h2>
+
+<p>記事リストBlockをこんな感じにBEMりました。</p>
+
+<pre><code data-language="html">&lt;div class="article"&gt;
+  &lt;article class="article__item"&gt;
+    &lt;header class="article-header"&gt;
+      &lt;h2 class="article-header__item"&gt;記事見出し&lt;/a&gt;&lt;/h2&gt;
+    &lt;/header&gt;
+    &lt;footer class="article-footer"&gt;
+      &lt;time class="article-footer__pubtime"&gt;0000/00/00&lt;br&gt;00:00&lt;/time&gt;
+      &lt;dl class="article-footer__categories"&gt;
+        &lt;dt class="article-footer__categories-title"&gt;category :&lt;/dt&gt;
+        &lt;dd class="article-footer__categories-item"&gt;
+          &lt;a href=""&gt;cate name&lt;/a&gt;, &lt;a href=""&gt;cate name&lt;/a&gt;
+        &lt;/dd&gt;
+      &lt;/dl&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  :
+  略
+&lt;/div&gt;</code></pre>
+
+<p>BEM化前の<a href="http://dskd.jp/dist/misc/getting-start-bem/planemarkup.txt">クラスなしマークアップはこちら</a>です。</p>
+
+<ul>
+<li>ヘッダー</li>
+<li><s>記事リスト</s></li>
+<li>ページャー</li>
+<li>アーカイブス</li>
+<li>カテゴリー</li>
+<li>オーサー</li>
+<li>コピーライト</li>
+</ul>
+
+<p>さて、どんどん進んで行きましょう。</p>
+
+<h2>アーカイブスBlock</h2>
+
+<p>ページャーとカテゴリーは後述します。</p>
+
+<pre><code data-language="html">&lt;section class="archives layout--horizon"&gt;
+  &lt;header class="archives-header layout--horizon__item"&gt;
+    &lt;h2 class="archives-header__item"&gt;Archives&lt;/h2&gt;
+  &lt;/header&gt;
+
+  &lt;nav class="archives-year layout--horizon__item"&gt;
+    &lt;h2 class="archives-year__title"&gt;2012&lt;/h2&gt;
+    &lt;ul class="archives-year__monthly"&gt;
+      &lt;li class="archives-year__item"&gt;&lt;a href=""&gt;Monthly&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="archives-year__item"&gt;&lt;a href=""&gt;Monthly&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="archives-year__item"&gt;&lt;a href=""&gt;Monthly&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+  :
+  略
+  :
+&lt;/section&gt;</code></pre>
+
+<p>記事リスト同様、<code>archives-</code>接頭句を設けて<code>archives</code>内に<code>archives-header</code>と<code>archives-year</code> Blockを定義します。Elementは適当に。ここで<code>layout--horizon</code>というBlockができていますが、これについては後述します。</p>
+
+<h2>オーサー、コピーライトBlock</h2>
+
+<pre><code data-language="html">&lt;section class="author layout--horizon"&gt;
+  &lt;header class="author-header layout--horizon__item"&gt;
+    &lt;h2 class="author-header__item"&gt;Author&lt;/h2&gt;
+  &lt;/header&gt;
+  &lt;p class="author__name layout--horizon__item"&gt;越智&lt;/p&gt;
+  &lt;address class="author__address layout--horizon__item"&gt;&lt;a href="mailto:otiext@gmail.com"&gt;otiext@gmail.com&lt;/a&gt;&lt;/address&gt;
+  &lt;ul class="author-accounts layout--horizon__item"&gt;
+    &lt;li class="author-accounts__item"&gt;&lt;a href="http://twitter.com/o_ti"&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="author-accounts__item"&gt;&lt;a href="http://jsdo.it/o_ti"&gt;Jsdo.it&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="author-accounts__item"&gt;&lt;a href="http://facebook.com/otiext"&gt;Facebook&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/section&gt;
+
+&lt;footer class="credit layout--horizon"&gt;
+  &lt;div class="credit-header layout--horizon__item"&gt;
+    &lt;h2 class="credit-header__item"&gt;Copyright&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;p class="credit__item layout--horizon__item"&gt;
+    &lt;small&gt;&copy; dskd/oti All Rights Reserved.&lt;/small&gt;
+  &lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+
+<p>ここでも<code>author-</code>接頭句を使って<code>author-accounts</code> Blockを定義しています。</p>
+
+<h2>カテゴリーBlock</h2>
+
+<pre><code data-language="html">&lt;section class="neighbor layout--horizon"&gt;
+  &lt;header class="neighbor-header layout--horizon__item"&gt;
+    &lt;h2 class="neighbor-header__item"&gt;Categories&lt;/h2&gt;
+  &lt;/header&gt;
+  &lt;ol class="neighbor-pager layout--horizon__item"&gt;
+    &lt;li class="neighbor-pager__item"&gt;&lt;a class="button" href=""&gt;Category&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="neighbor-pager__item"&gt;&lt;a class="button" href=""&gt;Category&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="neighbor-pager__item"&gt;&lt;a class="button" href=""&gt;Category&lt;/a&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/section&gt;</code></pre>
+
+<p>カテゴリーのBlock名は<code>neighbor</code>としています。「隣人」という意味ですね。インデックスの隣にカテゴリー？と思われるかもしれませんが、記事リストを内包するリンク集同士は隣の人っぽい感じがするのでそうしてます。僕がそう思うんでそうです。僕の中では。</p>
+
+<p>ここでも<code>neighbor-</code>接頭句で<code>neighbor-header</code>と<code>neighbor-pager</code>を定義しています。</p>
+
+<h2>ページャーBlock</h2>
+
+<pre><code data-language="html">&lt;nav class="neighbor layout--horizon"&gt;
+  &lt;div class="neighbor-header layout--horizon__item"&gt;
+    &lt;h2 class="neighbor-header__item"&gt;Pager&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;ol class="neighbor-pager layout--horizon__item"&gt;
+    &lt;li class="neighbor-pager__item"&gt;&lt;span class="button button--disable"&gt;1&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="neighbor-pager__item"&gt;&lt;a class="button" href=""&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="neighbor-pager__item"&gt;&lt;a class="button" href=""&gt;3&lt;/a&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+
+<p>あと回しにしていたページャーです。<code>&lt;h2&gt;</code>を<code>&lt;div&gt;</code>で挟んでいます。<code>&lt;div&gt;</code>がない場合、</p>
+
+<pre><code data-language="html">&lt;nav class="neighbor layout--horizon"&gt;
+  &lt;h2 class="neighbor__header"&gt;Pager&lt;/h2&gt;
+  &lt;ol class="neighbor-pager layout--horizon__item"&gt;
+    略
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+
+<p>という具合になるかと思います。BEMとしては全然かまわないのですが、レイアウトの都合上<code>layout--horizon__item</code>の中に<code>*-header__item</code>という構造が欲しかったので<code>&lt;div&gt;</code>をつけました。先のアーカイブスとカテゴリーとオーサーが<code>&lt;h2&gt;</code>を<code>&lt;header&gt;</code>に入れているので、Elementの階層に互換性を持たせるため、といういうことで。</p>
+
+<h2>layout--horizon Blockについて</h2>
+
+<p>これは「ラベルが左、コンテンツが右」の水平レイアウトというBlockです（horizonをModifierにしているのは、もしかしたら今後<code>--table</code>とか<code>--stack</code>とか作るかもしれないと思ったからなのですが、たぶんないです）。他のBlockがコンテンツやドキュメント上のセマンティクスにそって命名されている「文脈準拠BEM」に対し、layoutはデザイン準拠なBEM」です。このようなものを作るのはBEM道に反していると言われそうですが、何に準拠していようと命名がBEM methodで管理されているかぎりBEMが目指すメンテナンス性からそう外れはしないだろうと思っています。</p>
+
+<p>また、<code>button</code>というBlockがあります。名前の通りボタンなスタイルが適応されています。ここが<code>neighbor</code> Blockを継承していないのは<code>button</code>がサイトに点在する可能性を鑑みた結果です。実際にページャーとカテゴリーだけでなく、個別記事ページのリンクにも<code>button</code>なスタイルは登場しています。</p>
+
+<p><code>layout</code>や<code>button</code>は、いうなればコンテンツに依存しないスタイルの管理を簡易化するためのBlockです。dskd.jpにはデザイン要素はとても少ないですが、大規模なサイトやUI重視のコンテンツになるとどのBlockやElementの中に現れても変わらないCSSルールセットがもっと出てくると思います。タブ、リストマークの画像、背景のパターン、テキストの装飾などです。こういったものはBEMではModifierに吸収されてしまうところですが、テーマカラーやレギュレーションを微調整する必要が出た際、この「デザイン準拠なBEM」も有効なのではないかと思います。</p>
+
+<p>今回も長くなってしまったので次回に続きます。次はインデックス以外のページについてです。</p>
+
+<hr />
+
+<p>７日目は５日ぶり２日目、まぼろしの<a href="http://www.adventar.org/users/86">小林</a>さんです。よろしくお願いします。</p>
+
+        </div>
+      </div>
+
+      <aside class="social-buttons" role="complementary">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E5%88%9D%E3%82%81%E3%81%A6BEM%E5%8C%96%E3%81%97%E3%81%9F%E6%99%82%E3%81%AE%E6%B5%81%E3%82%8C%E3%81%AE%E7%B6%9A%E3%81%8D&url=http%3A%2F%2Fdskd.jp%2Farchives%2F38.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F38.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F38.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E5%88%9D%E3%82%81%E3%81%A6BEM%E5%8C%96%E3%81%97%E3%81%9F%E6%99%82%E3%81%AE%E6%B5%81%E3%82%8C%E3%81%AE%E7%B6%9A%E3%81%8D&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F38.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/39.html">ブログを初めてBEM化した時の流れの最後</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/37.html">内包要素の数が変動しても僕には擬似クラスと間接セレクタがある</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

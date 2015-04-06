@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>:hoverしている要素の直前の要素の指定をCSS4の「 ! 」で妄想した - dskd</title>
+
+  <meta content="※これは「そうなったらいいなあ、こういうふうにできたら僕は都合がいいなぁ」という妄想であり、CSSの仕様を解説する記事ではありません
+
+CodePenにあったStairway NavというサンプルがF" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
+
+  <meta content=":hoverしている要素の直前の要素の指定をCSS4の「 ! 」で妄想した" property="og:title">
+  <meta content="※これは「そうなったらいいなあ、こういうふうにできたら僕は都合がいいなぁ」という妄想であり、CSSの仕様を解説する記事ではありません
+
+CodePenにあったStairway NavというサンプルがF" property="og:description">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/23.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/23.html" rel="canonical">
+  <link href="http://dskd.jp/archives/23.html" itemprop="url">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry" role="main">
+      <footer class="entry-footer">
+        <time datetime="2012-11-15T17:38:18+09:00">2012.11.15</time>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a></p>
+      </footer>
+
+      <h1 class="entry-title" itemprop="name">:hoverしている要素の直前の要素の指定をCSS4の「 ! 」で妄想した</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p><strong>※これは「そうなったらいいなあ、こういうふうにできたら僕は都合がいいなぁ」という妄想であり、CSSの仕様を解説する記事ではありません</strong></p>
+
+<p>CodePenにあった<a href="http://codepen.io/chriscoyier/pen/hgplm">Stairway Nav</a>というサンプルがFlashぽくて格好よいのだけど、:hoverしてる前の要素の取得にJavaScriptを使っているのを見て、これがCSSだけでできたらいいのにと思った。<a href="http://www.w3.org/TR/2012/WD-selectors4-20120823/#overview">2012/8/23時点のSelector Level 4のWorking Draft</a>でももちろんそんな都合のいいセレクタは存在していない。あったらいいのに。</p>
+
+        </div>
+        <div>
+<p>ということで妄想してみた。やるとしたら<code>E! &gt; F</code>で「Fを直接の子要素にもつE要素」をスタイリング対象にできるという「!」マークを使う。</p>
+
+<pre title="HTML"><code data-language="html">&lt;ul&gt;
+  &lt;li&gt;たまご&lt;/li&gt;
+  &lt;li&gt;ごはん&lt;/li&gt;
+  &lt;li&gt;しょうゆ&lt;/li&gt;
+  &lt;li&gt;かつおぶし&lt;/li&gt;
+  &lt;li&gt;食べたい気持ち&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>このようなHTMLがあったとして、</p>
+
+<pre title="CSS"><code data-language="css">li! + li:hover{...}</code></pre>
+
+<p>このように書けば、「li:hoverを隣接要素に持つli」という解釈になり、見た目として:hoverしているliの直前のliをスタイリング対象にすることができるのではないだろうか。さらに、:hoverの２つ前のliを対象にしたい時はこんな具合か。</p>
+
+<pre title="CSS"><code data-language="css">li! + li + li:hover{...}</code></pre>
+
+<p>:hoverしたli以前の全てのliを対象にしたい場合はこうか。</p>
+
+<pre title="CSS"><code data-language="css">li! ~ li:hover{...}</code></pre>
+
+<p>実現できたら素晴らしいが、それにしてもli要素に!マークは視認性が悪すぎる！</p>
+
+<p>......妄想は以上です。</p>
+
+<p>ところでこの!マークはなんて呼べばいいのだろう。<a href="http://www.w3.org/TR/2012/WD-selectors4-20120823/#subject">冒頭リンクのWorking Draft</a>だと「Determining the Subject of a Selector」として解説されている。Subjectは英文法SVOのSだから、「セレクターの主部の決定」と訳せる。そうなると「主部決定符号」とか？　なんだかしっくりこない。プロパティを適応する対象を決定するのだから「対象符号」と呼ぶのはどうだろうか。うん、それがいいと思う。</p>
+
+<p>対象符号は <a href="http://www.w3.org/TR/2011/WD-selectors4-20110929/#overview">2011年のWorking Draft</a>では「$」マークで要素の前に設定されていたけど、「!」に変わり付加位置も要素の後ろに変わった。そのおかげでこんなISSUがあがっている。</p>
+
+<blockquote>
+  <p>Should the exclamation mark be prepended or appended to the subject? Or both? Or prepend two, to avoid the "! = not" issue?</p>
+</blockquote>
+
+<p>抄訳： !マークは対象要素の前と後ろ、どっちにつける？　前と後ろの両方に付ける？　もしくは、"◯◯でない" という意味にならないように要素の前に２つ付ける？</p>
+
+<p>要素を!で挟む形になるのも気持ち悪いし、!を２個つけるのも気持ち悪い。</p>
+
+<pre title="CSS"><code data-language="css"> $E > F {...} /* Old Draft */
+ !E > F {...} /* looks like "!=not" */
+!E! > F {...} /* OMG */
+!!E > F {...} /* is mean not not-E? */
+ E! > F {...} /* Working Draft in 2013-5-2 */</code></pre>
+
+<p>「!=not」はプログラムやる人にはお馴染みのやつで、そう言われればたしかに違和感ある。ちなみにE:notという擬似クラスセレクタはすでにある。</p>
+
+<p>最初の「$」でいいじゃんと思っていたけど、Sassとの衝突を避けるため別の記号にしたんだっけか。主要な記号はそういったプリプロセッサで使われているから上手いの考えるのが難しそう。かと言って!importantみたいなのは止めて欲しい。<a href="http://css-tricks.com/parent-selectors-in-css/">:parent</a>なんていう書き方を妄想してる人もいた（2010/10/21）。:parentでは隣接セレクタには対応できない。倣うなら<code>:sibling</code>だろうか。つらそう。</p>
+
+<p>最終的に「Determining the Subject of a Selector」はどんな仕様になるんだろう。早く使いたい。</p>
+
+<p><ins datetime="2013-05-25T13:00+09:00"><a href="http://www.w3.org/TR/2013/WD-selectors4-20130502/#subject">2013/5/2にSelectors Level 4のWorking Draftが更新され</a>ているが、Determining the Subject of a Selectorについては変更はないようだ。</ins></p>
+
+        </div>
+      </div>
+
+      <aside class="social-buttons" role="complementary">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%3Ahover%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E8%A6%81%E7%B4%A0%E3%81%AE%E7%9B%B4%E5%89%8D%E3%81%AE%E8%A6%81%E7%B4%A0%E3%81%AE%E6%8C%87%E5%AE%9A%E3%82%92CSS4%E3%81%AE%E3%80%8C%20%21%20%E3%80%8D%E3%81%A7%E5%A6%84%E6%83%B3%E3%81%97%E3%81%9F&url=http%3A%2F%2Fdskd.jp%2Farchives%2F23.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F23.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F23.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=%3Ahover%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E8%A6%81%E7%B4%A0%E3%81%AE%E7%9B%B4%E5%89%8D%E3%81%AE%E8%A6%81%E7%B4%A0%E3%81%AE%E6%8C%87%E5%AE%9A%E3%82%92CSS4%E3%81%AE%E3%80%8C%20%21%20%E3%80%8D%E3%81%A7%E5%A6%84%E6%83%B3%E3%81%97%E3%81%9F&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F23.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/24.html">@mediaのorientationはviewportの縦横がどっちが長いかであって、デバイスが縦か横かじゃないですよ</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/14.html">「終わん寝」の提唱</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

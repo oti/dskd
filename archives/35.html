@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>もっと広まって欲しいCSS - dskd</title>
+
+  <meta content="CSS Property Advent Calendar 2013 ２日目のエントリです。
+" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
+
+  <meta content="もっと広まって欲しいCSS" property="og:title">
+  <meta content="CSS Property Advent Calendar 2013 ２日目のエントリです。
+" property="og:description">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/35.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/35.html" rel="canonical">
+  <link href="http://dskd.jp/archives/35.html" itemprop="url">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry" role="main">
+      <footer class="entry-footer">
+        <time datetime="2013-12-02T16:25:55+09:00">2013.12.02</time>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c17.html" class="tag">Advent Calendar</a>, <a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a></p>
+      </footer>
+
+      <h1 class="entry-title" itemprop="name">もっと広まって欲しいCSS</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p><a href="http://www.adventar.org/calendars/57">CSS Property Advent Calendar 2013</a> ２日目のエントリです。</p>
+
+        </div>
+        <div>
+<p>何度も同じことを書いているのでいいかげんにしろっていう感じがしますが、僕がこの１年半くらいで「なぜ使われないのだ！ もっと広まってくれ！」と思っているCSSについて記載します。</p>
+
+<h2>position: absolute; を使った絶対中央配置</h2>
+
+<p>ある要素を包含ブロックのど真ん中に置きたい時はとにかく<code>position: absolute;</code>を使った絶対中央配置が便利です。大まかな書き方は親要素に<code>position: relative;</code>を指定したのち、配置したい子要素に対して下記を適応するというものです。</p>
+
+<pre ><code data-language="css">.child {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: ***;
+  height: ***;
+}</code></pre>
+
+<p><code>width</code>, <code>height</code>については必ず大きさを指定してください。指定なしでもいけるのは絶対中央配置したい要素がimgの時だけです。画像のサイズに依存しない方法や、<code>margin</code>にネガティブ値を指定した時の挙動などは下記エントリにまとめています。</p>
+
+<ul>
+<li><a href="http://dskd.jp/archives/11.html">絶対中央配置のCSS</a></li>
+<li><a href="http://dskd.jp/archives/12.html">絶対中央配置のCSSの続き</a></li>
+<li><a href="http://dskd.jp/archives/29.html">画像サイズに依存しない絶対中央配置</a></li>
+</ul>
+
+<p>このルールセットは  Firefox 11、Google Chrome 18、Opera 11.62、Internet Explorer 8から対応しています。</p>
+
+<h2>絶対中央配置の応用</h2>
+
+<p>特に上下の中央配置が便利な上記 CSS ですが、左右に関しては中央ではなくてもいいという場面もあるかと思います。そんな時でももちろん簡単な変更で対応可能です。</p>
+
+<p>例えば、上下は中央、右から 5px だけずらしたい時。</p>
+
+<pre><code data-language="css">.child2 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  <mark>right: 5px;</mark>
+  margin: auto;
+  width: ***;
+  height: ***;
+}</code></pre>
+
+<p>この様に書けば良いです。左から 10px ずらしたいなら、上記ルールセットから<code>right: 5px;</code>を消して、<code>left: 10px;</code>を加えればOKです。左右中央で<code>bottom: 10px;</code>ももちろん出来ます。topからいくつずらしたい、とかは普通に<code>text-align: center;</code>と<code>margin-top</code>でやった方が簡単なので絶対中央配置の応用でやることはないと思いますが、まぁそれもできます。</p>
+
+<h2>どんな時に使う？</h2>
+
+<p><img src="http://dskd.jp/dist/img/lets-trbl-method/linklist.png" alt="リンクリストのサンプル画像" title="リンクリストの disclosure アイコン" /></p>
+
+<p>リンクリストが２行取りになって高さが変わっても安心！　ただし画像を使っているなら background でやる方が圧倒的に楽。パフォーマンスを追求してアイコンを div 図形にした場合などは今回のテクニックが有効。</p>
+
+<p><img src="http://dskd.jp/dist/img/lets-trbl-method/bubble.png" alt="吹き出しのサンプル画像" title="吹き出しのカラス口" /></p>
+
+<p>吹き出しの大きさが変わってもカラス口の配置は常に中央にできる。</p>
+
+<p><img src="http://dskd.jp/dist/img/lets-trbl-method/inline.png" alt="入力エリアのようなもののサンプル画像" title="なんかの UI のなんかのボタン" /></p>
+
+<p><img src="http://dskd.jp/dist/img/lets-trbl-method/slider.png" alt="入力エリアのようなもののサンプル画像" title="汎用的なコントローラー" /></p>
+
+<p>高さが固定だったとしても、とにかく考えるのが面倒な時にも効果を発揮する</p>
+
+<p>ということで、もっと広まって欲しい CSS でした。</p>
+
+<p>Special Thanks! <a href="http://unformedbuilding.com/articles/firefox-style-center-middle-aligned-css/">Firefox で使われている上下左右中央配置のスタイルシート | Unformed Building</a> by @ub_pnr</p>
+
+<hr />
+
+<p>position と四辺からの 0 値指定 を使った絶対中央配置、なんか呼び名はないかと思って探していたら、<a href="http://css-tricks.com/centering-percentage-widthheight-elements/#comment-478226">CSS TRICKSのコメント欄に "TRBL" methodというフレーズがありました</a>。top, right, bottom, left の頭文字でTRBLでしょうか。もし他の呼び名を知っている方がいたら<a href="https://twitter.com/o_ti">教えて</a>いただければと思います。</p>
+
+        </div>
+      </div>
+
+      <aside class="social-buttons" role="complementary">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%E3%82%82%E3%81%A3%E3%81%A8%E5%BA%83%E3%81%BE%E3%81%A3%E3%81%A6%E6%AC%B2%E3%81%97%E3%81%84CSS&url=http%3A%2F%2Fdskd.jp%2Farchives%2F35.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F35.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F35.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=%E3%82%82%E3%81%A3%E3%81%A8%E5%BA%83%E3%81%BE%E3%81%A3%E3%81%A6%E6%AC%B2%E3%81%97%E3%81%84CSS&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F35.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/36.html">ブログを初めてBEM化した時の流れ</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/34.html">CSSの命名規則にBEMを取り入れてみる</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>僕はCSSを見殺しにした - dskd</title>
+
+  <meta content="CSS Architecture Advent Calendar 2014の10日目。
+" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
+
+  <meta content="僕はCSSを見殺しにした" property="og:title">
+  <meta content="CSS Architecture Advent Calendar 2014の10日目。
+" property="og:description">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/54.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/54.html" rel="canonical">
+  <link href="http://dskd.jp/archives/54.html" itemprop="url">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry" role="main">
+      <footer class="entry-footer">
+        <time datetime="2014-12-10T10:30:30+09:00">2014.12.10</time>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c17.html" class="tag">Advent Calendar</a>, <a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a></p>
+      </footer>
+
+      <h1 class="entry-title" itemprop="name">僕はCSSを見殺しにした</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p><a href="http://www.adventar.org/calendars/337">CSS Architecture Advent Calendar 2014</a>の10日目。</p>
+
+        </div>
+        <div>
+<p>それまではけっこう頑張っていた。スタイルガイドも作っていた。デザイナーとコミュニケーションをとり、拡張性のあるパーツを作っていった。新しく触る人にも読み方や使い方を説明できるようにしていた。</p>
+
+<p>崩壊はUIデザイナーがいなくなった時に始まった。汎用ボタンは使われなくなった。決まったルールのデザインエッセンスはなくなった。要素間の空白は誰かの感覚で変わった。</p>
+
+<p>なぜ止めることができなかったのか。それは、デザインの改修が<em>少しずつ</em>行われたからだと思う。その改修は<em>いつのまにか始まり、いつ終わるとも決まっていなかった</em>。あらゆるパターンが同居するデザインをCSSは管理できない。改修途中でも平気でブランチが切られていく。デザイナーがやりたい時にやりたいだけ変えると知ったとき、僕はCSSを管理するのをやめた。</p>
+
+<p>すでに完成形まで共通化されたCSSでは影響範囲が大きすぎた。それでも既存のルールセットに手を加えたのは、「いままでの共通パーツを使いまわせる」という思いこみがあったからだった。結果的に全ページユニークなデザインになったのを見ると、デザインが変わると決まった瞬間に新しいCSSファイルとセレクタを作った方が楽だったのだろう。これは明確に僕の予測ミスだし、途中でもそれに気づいて管理しなおすべきだった。</p>
+
+<p>見殺しにしたCSSは今もcommonフォルダの中でもがき苦しんでいる。</p>
+
+        </div>
+      </div>
+
+      <aside class="social-buttons" role="complementary">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%E5%83%95%E3%81%AFCSS%E3%82%92%E8%A6%8B%E6%AE%BA%E3%81%97%E3%81%AB%E3%81%97%E3%81%9F&url=http%3A%2F%2Fdskd.jp%2Farchives%2F54.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F54.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F54.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=%E5%83%95%E3%81%AFCSS%E3%82%92%E8%A6%8B%E6%AE%BA%E3%81%97%E3%81%AB%E3%81%97%E3%81%9F&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F54.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/55.html">columnプロパティが特定の状況でおかしくなる</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/50.html">style属性でzoomを指定すると特定の状況でzoomが無効になる</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

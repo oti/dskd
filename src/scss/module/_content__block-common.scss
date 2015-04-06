@@ -1,0 +1,37 @@
+// block common
+.global-header,
+.content,
+.neighbor,
+.global-footer{
+  box-sizing: border-box;
+  margin: auto;
+  padding: 0 15px;
+  min-width: 320px;
+  max-width: 640px;
+}
+
+.entry-list,
+.entry,
+.entry-archive,
+.entry-category,
+.subscribe,
+.neighbor{
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0,0,0, .1);
+}
+
+.content-mainheading{
+  position: absolute;
+  bottom: -10px;
+  left: 130px;
+  margin: 0;
+  padding: 0;
+  font-size: 28px;
+}
+
+.content-subheading{
+  float: left;
+  margin: 0;
+  font-size: 18px;
+}
