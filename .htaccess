@@ -1,5 +1,10 @@
 AddHandler server-parsed .html
 
+<FilesMatch "feed$">
+ForceType text/xml
+</FilesMatch>
+
+Redirect permanent /feed/atom.xml http://dskd.jp/feed
 Redirect permanent /archives/img-pointer-events-none/ http://dskd.jp/demo/6.html
 Redirect permanent /archives/absolute-centering/ http://dskd.jp/demo/10.html
 Redirect permanent /archives/css-programing-html5-template-generator/ http://dskd.jp/demo/26.html
