@@ -1,92 +1,75 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="initial-scale=1">
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
 
-<title><mt:EntryTitle> | <mt:BlogName></title>
+  <title><mt:EntryTitle> - <mt:BlogName></title>
 
-<link rel="canonical" href="<mt:EntryPermalink>">
-<link rel="shortcut icon" href="/favicon.ico">
-<link rel="apple-touch-icon-precomposed" href="/img/favicon.gif">
-<link rel="alternate" type="application/atom+xml" href="/feed/atom.xml">
-<link rel="stylesheet" type="text/css" href="/css/dskd.css" media="screen">
+  <meta content="<mt:EntryBody remove_html="1" trim_to="100">" name="description">
+  <meta content="Movable Type <mt:Version>" name="generator">
 
-<script src="<mt:BlogURL>/js/rainbow-custom.min.js"></script>
+  <meta content="<mt:EntryTitle>" property="og:title">
+  <meta content="<mt:EntryBody remove_html="1" trim_to="100">" property="og:description">
+  <meta content="<mt:BlogURL>apple-touch-icon.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="<mt:EntryPermalink>" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="<mt:BlogName>" property="og:site_name">
 
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="<mt:CanonicalURL>" rel="canonical">
+  <link href="<mt:CanonicalURL>" itemprop="url">
+  <!--#include virtual="/head-linkrel.html" -->
 </head>
 <body>
-<div class="contents">
-  <header class="header header--individual">
-    <h1 class="header__logo"><a href="<mt:BlogURL>"><mt:BlogName></a></h1>
-  </header>
-
-  <div class="article">
-    <article class="article__item article__item--individual">
-      <header class="article-header">
-        <h1 class="article-header__item"><a href="<mt:EntryPermalink>"><mt:EntryTitle></a></h1>
-      </header>
-      <footer class="article-footer">
-        <time class="article-footer__pubtime" datetime="<mt:EntryDate format_name="iso8601">"><mt:EntryDate format="%Y/%m/%d"><br><mt:EntryDate format="%H:%M"></time>
-        <dl class="article-footer__categories">
-          <dt class="article-footer__categories-title">category :</dt>
-          <dd class="article-footer__categories-item">
-            <mt:If tag="EntryCategory"><mt:EntryCategories glue=", "><a href="<mt:CategoryArchiveLink>"><mt:CategoryLabel></a></mt:EntryCategories></mt:If></dd>
-        </dl>
-      </footer>
-      <mt:EntryBody>
-      <mt:EntryMore>
-    </article>
-  </div>
-
-  <mt:EntryPrevious>
-  <nav class="neighbor layout--horizon">
-    <div class="neighbor-header layout--horizon__item">
-      <h2 class="neighbor-header__item">Older</h2>
-    </div>
-    <a class="neighbor__item layout--horizon__item" href="<mt:EntryPermalink>"><mt:EntryTitle></a>
-  </nav>
-  </mt:EntryPrevious>
-
-  <section class="archives layout--horizon">
-    <header class="archives-header layout--horizon__item">
-      <h2 class="archives-header__item">Archives</h2>
-    </header>
-
-    <mt:ArchiveList archive_type="Monthly" sort_order="descend">
-    <mt:ArchiveDateHeader>
-    <nav class="archives-year layout--horizon__item">
-      <h2 class="archives-year__title"><mt:ArchiveDate format="%Y"></h2>
-      <ul class="archives-year__monthly">
-    </mt:ArchiveDateHeader>
-        <li class="archives-year__item"><a href="<mt:ArchiveLink>"><mt:ArchiveDate format="%B" language="en"></a></li>
-    <mt:ArchiveDateFooter>
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
       </ul>
     </nav>
-    </mt:ArchiveDateFooter>
-    </mt:ArchiveList>
-  </section>
+  </header>
 
-  <section class="neighbor layout--horizon">
-    <div class="neighbor-header layout--horizon__item">
-      <h2 class="neighbor-header__item">Categories</h2>
-    </div>
-    <ol class="neighbor-pager layout--horizon__item">
-      <mt:Categories>
-      <li class="neighbor-pager__item"><a class="button" href="<mt:CategoryArchiveLink>"><mt:CategoryLabel></a></li>
-      </mt:Categories>
-    </ol>
-  </section>
+  <div class="content">
+    <article class="entry" role="main">
+      <footer class="entry-footer">
+        <time datetime="<mt:EntryDate format_name="iso8601">"><mt:EntryDate format="%Y.%m.%d"></time>
+        <mt:If tag="entrycategory"><p itemprop="keywords"><mt:EntryCategories glue=", "><a href="<mt:CategoryArchiveLink>" class="tag"><mt:CategoryLabel></a></mt:EntryCategories></p></mt:If>
+      </footer>
 
-  <footer class="credit layout--horizon">
-    <div class="credit-header layout--horizon__item">
-      <h2 class="credit-header__item">Copyright</h2>
-    </div>
-    <p class="credit__item layout--horizon__item">
-      <small>&copy; dskd/oti All Rights Reserved.</small>
-    </p>
-  </footer>
-</div>
-<!--#include virtual="/ga.html" -->
+      <h1 class="entry-title" itemprop="name"><mt:EntryTitle></h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<mt:EntryBody>
+        </div>
+        <div>
+<mt:EntryMore>
+        </div>
+      </div>
+
+      <aside class="social-buttons" role="complementary">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=<mt:EntryTitle escape="url">&url=<mt:EntryPermalink escape="url">&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=<mt:EntryPermalink escape="url">">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=<mt:EntryPermalink escape="url">">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=<mt:EntryTitle escape="url">&amp;url=<mt:EntryPermalink escape="url">">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <mt:EntryNext><li class="newer"><a href="<mt:EntryPermalink>"><mt:EntryTitle></a></li></mt:EntryNext>
+        <mt:EntryPrevious><li class="older"><a href="<mt:EntryPermalink>"><mt:EntryTitle></a></li></mt:EntryPrevious>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
 </body>
 </html>
