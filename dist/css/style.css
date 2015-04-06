@@ -266,12 +266,6 @@ a:focus {
   font-weight: bold;
   font-family: 'Vegur-Bold';
 }
-.entry-body p {
-  margin: 0;
-}
-.entry-body p + p {
-  margin-top: 1.5em;
-}
 .entry-body .spacing {
   padding: 0 .25em;
 }
@@ -348,9 +342,6 @@ a:focus {
   font-family: 'Vegur-Bold';
 }
 
-.social-buttons {
-  margin-top: 1em;
-}
 .social-buttons ul {
   margin: 0;
   padding: 0;

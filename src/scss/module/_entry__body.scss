@@ -11,14 +11,6 @@
     }
   }
 
-  p{
-    margin: 0;
-    // text-indent: 1em;
-    &+p{
-      margin-top: 1.5em;
-    }
-  }
-
   .spacing{
     padding: 0 .25em;
   }
