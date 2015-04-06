@@ -6,11 +6,11 @@
 
   <title><mt:PageTitle> - <mt:BlogName></title>
 
-  <meta content="<mt:PageBody remove_html="1" trim_to="100">" name="description">
+  <meta content="<mt:PageMore remove_html="1" trim_to="100">" name="description">
   <meta content="Movable Type <mt:Version>" name="generator">
 
   <meta content="<mt:PageTitle>" property="og:title">
-  <meta content="<mt:PageBody remove_html="1" trim_to="100">" property="og:description">
+  <meta content="<mt:PageMore remove_html="1" trim_to="100">" property="og:description">
   <meta content="<mt:BlogURL>apple-touch-icon.png" property="og:image">
   <meta content="article" property="og:type">
   <meta content="<mt:PagePermalink>" property="og:url">
@@ -20,6 +20,8 @@
   <!--#include virtual="/head-meta-twittercard.html" -->
 
   <link href="<mt:CanonicalURL>" rel="canonical">
+  <link href="<mt:CanonicalURL>" itemprop="url">
+  <link href="/apple-touch-icon.png" rel="apple-touch-icon-precomposed">
   <mt:PageBody convert_breaks="0">
 </head>
 <body>
@@ -28,7 +30,5 @@
 </footer>
 
 <mt:PageMore convert_breaks="0">
-
-<mt:PageExcerpt convert_breaks="0">
 </body>
 </html>
