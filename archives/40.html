@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>BEMに向いているデザイン、向いていないデザイン - dskd</title>
+
+  <meta content="BEM Advent Calendar 2013 21日目のエントリです。
+" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+
+  <meta content="BEMに向いているデザイン、向いていないデザイン" property="og:title">
+  <meta content="BEM Advent Calendar 2013 21日目のエントリです。
+" property="og:description">
+  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/40.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/40.html" rel="canonical">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header">
+    <nav class="site-navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry">
+      <footer class="entry-footer">
+        <time datetime="2013-12-22T23:12:50+09:00">2013.12.22</time>
+        <p><a href="http://dskd.jp/archives/c17.html" class="tag">Advent Calendar</a>, <a href="http://dskd.jp/archives/c18.html" class="tag">BEM</a>, <a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a></p>
+      </footer>
+
+      <h1 class="entry-title">BEMに向いているデザイン、向いていないデザイン</h1>
+      <div class="entry-body">
+        <p><a href="http://www.adventar.org/calendars/61">BEM Advent Calendar 2013</a> 21日目のエントリです。</p>
+
+        <p>BEMについてツーイッタなどでぼやいていると、「BEMは向いているデザインと向いてないデザインがある感じする」みたいなエアリーツーイットを観測することがあります。BEMに向いているデザイン、それってつまりデザインからHTMLを起こす時にBlock, Elementのツリー構築がしやすそうで、Modifier管理にできそうな状態の違いを含んでるデザインってことでしょうか。向いていないデザインというとその逆ですかね。そうだなと思わないでもないのですが、よくよく考えてみるとBEMには向き不向きなデザインというものが本当にあるのか、疑問なのでポエムを綴ります。</p>
+
+<p>そもそもBEMってスタイルをしやすくするためにあるのではないと思うんです。以前、こんなツーイットをしました。</p>
+
+<blockquote class="twitter-tweet" lang="ja">BEM、発祥がプロジェクトにおいてチームメンバーが変わった時でも、エンジニアがアサインしやすい構造を提供するためと、併せてメンテナンス性も提供するためっていうのがあるので、デザインからHTML起こす時のイニシャルコストは考えられていない。&mdash; 越智 (@o_ti) <a href="https://twitter.com/o_ti/statuses/410800531091640320">2013, 12月 11</a></blockquote>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>これはBEMに関してもっとも世間に勘違いされていると感じるところなのですが、BEMはOOCSSなどとは違ってスタイルをモジュール化しようとか目的のデザインに最速でたどり着けるようなルール作りをするためのものではありません。BEMにおけるデザインへのアドバンテージはせいぜい「CSSセレクタからHTML要素への適応範囲をできるだけ確実に予測できる」程度のものでしかないと思います。こういった面から見ても、BEMに向いているデザイン・向いていないデザインというものは存在しないと思う次第です。</p>
+
+<p>では何のためにBEMを導入するのか、というと上記でも書いているとおりなのですが、言い換えれば「メンバーが入れ替わってもメンテナンス性が損なわれない構造づくりのため」ということになるかと思います。BEMという厳格なルールの中にあえて閉じこもることで、メンバーが何か新しいことを<em>しでかさないように</em>しているのです。新しいことを取り入れたメンバーがいなくなった時、残されたメンバー全員の学習コストが上がらないように。BEMにはあまり自由度はありませんが、ふわふわになりがちなクラス付けに強い縛りがあれば、既存サイトでの要素追加や変更の時はもちろん、メンバー単位、プロジェクト単位で引き継ぎが発生したとしても、そのサイトの有り様を説明するコストをもっとも抑えることができるのです。</p>
+
+<p>BEMがYandexという検索サイトで使われているのも興味深いです。検索サイトといえば使い勝手とサイト内回遊率がサービスの存続に直結していますから、マイナーアップデートなどは頻繁に行われているでしょう。トレンドの移り変わりの早いWebにおいて何度するかもわからないリニューアルに耐え、朝令暮改な指示にも屈することなく、今日自分が突然死のうと明日知らない人が突然来ようと、その後のメンバーに与える影響を最小限に抑える命名規則、それがBEMです。</p>
+
+<p>BEMにとってサイトのデザインなんてものは飾りです。区切り文字がキモいとかどうでもいいのです。みなさんもっとBEM神の声を聞いてください。</p>
+
+<hr />
+
+<p>22日目は<a href="http://www.adventar.org/users/1640">s12bt</a>さんが<a href="http://blog.obentoba.co/entry/2013/12/22/bem">既に書いていました</a>。広がるBEMerの輪。</p>
+
+      </div>
+
+      <aside class="social-buttons">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=BEM%E3%81%AB%E5%90%91%E3%81%84%E3%81%A6%E3%81%84%E3%82%8B%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%80%81%E5%90%91%E3%81%84%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3&url=http%3A%2F%2Fdskd.jp%2Farchives%2F40.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F40.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F40.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=BEM%E3%81%AB%E5%90%91%E3%81%84%E3%81%A6%E3%81%84%E3%82%8B%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%80%81%E5%90%91%E3%81%84%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F40.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/41.html">BEMのロゴが個性的で面白い</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/39.html">ブログを初めてBEM化した時の流れの最後</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>ブログを初めてBEM化した時の流れの最後 - dskd</title>
+
+  <meta content="BEM Advent Calendar 2013 ９日目のエントリです。前回の記事の続きです。
+" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+
+  <meta content="ブログを初めてBEM化した時の流れの最後" property="og:title">
+  <meta content="BEM Advent Calendar 2013 ９日目のエントリです。前回の記事の続きです。
+" property="og:description">
+  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/39.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/39.html" rel="canonical">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header">
+    <nav class="site-navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry">
+      <footer class="entry-footer">
+        <time datetime="2013-12-09T21:56:00+09:00">2013.12.09</time>
+        <p><a href="http://dskd.jp/archives/c17.html" class="tag">Advent Calendar</a>, <a href="http://dskd.jp/archives/c18.html" class="tag">BEM</a>, <a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a>, <a href="http://dskd.jp/archives/c13.html" class="tag">HTML</a></p>
+      </footer>
+
+      <h1 class="entry-title">ブログを初めてBEM化した時の流れの最後</h1>
+      <div class="entry-body">
+        <p><a href="http://www.adventar.org/calendars/61">BEM Advent Calendar 2013</a> ９日目のエントリです。<a href="http://dskd.jp/archives/38.html" title="ブログを初めてBEM化した時の流れの続き">前回の記事</a>の続きです。</p>
+
+        <h2>前回のおさらい</h2>
+
+<p>インデックスについて、ヘッダー以外のBlockをBEMりました。</p>
+
+<p>BEM化前の<a href="http://dskd.jp/dist/misc/getting-start-bem/planemarkup.txt">クラスなしマークアップはこちら</a>です。</p>
+
+<p>ヘッダーはさくっとこんな感じです。</p>
+
+<pre><code data-language="html">&lt;header class="header"&gt;
+  &lt;h1 class="header__logo"&gt;&lt;a href="http://dskd.jp"&gt;dskd&lt;/a&gt;&lt;/h1&gt;
+&lt;/header&gt;</code></pre>
+
+<p>特に説明はいらないと思いますが、インデックスのロゴとなる部分にホームへのリンクはいるのかというBEMとは関係ない問題はあります。僕はつける派なのでつけました。SEOについて考えたことはありません。</p>
+
+<p>インデックスとそれ以外では<code>&lt;header&gt;</code>に入れている文言が違うので、それぞれにModifierをつけています。</p>
+
+<pre><code data-language="html">&lt;!-- 全アーカイブ --&GT;
+&lt;header class="header <mark>header--archives</mark>"&gt;...&lt;/header&gt;
+
+&lt;!-- カテゴリー --&GT;
+&lt;header class="header <mark>header--category</mark>"&gt;...&lt;/header&gt;
+
+&lt;!-- 月別 --&GT;
+&lt;header class="header <mark>header--monthly</mark>"&gt;...&lt;/header&gt;
+
+&lt;!-- 個別 --&GT;
+&lt;header class="header <mark>header--individual</mark>"&gt;...&lt;/header&gt;</code></pre>
+
+<p>ですが、今のところデザインに反映されていないのでつける意味がない気がします。</p>
+
+<h2>インデックス以外のページのBlock</h2>
+
+<p>dskd.jpにはインデックスの他に全アーカイブ一覧、カテゴリーアーカイブ、月別アーカイブ、個別記事ページがあり、個別記事ページ以外はほぼインデックスと同じです。</p>
+
+<ul>
+<li>ヘッダー</li>
+<li>記事リスト</li>
+<li>アーカイブス</li>
+<li>カテゴリー</li>
+<li>コピーライト</li>
+</ul>
+
+<p>個別記事ページも特筆すべきBlockはありません。</p>
+
+<ul>
+<li>ヘッダー</li>
+<li>記事リスト</li>
+<li>一つ前の記事</li>
+<li>アーカイブス</li>
+<li>カテゴリー</li>
+<li>コピーライト</li>
+</ul>
+
+<p>「一つ前の記事」は前回エントリでも触れた<code>neighbor</code> Blockとして以下のようにしています。</p>
+
+<pre><code data-language="html">&lt;nav class="neighbor layout--horizon"&gt;
+  &lt;div class="neighbor-header layout--horizon__item"&gt;
+    &lt;h2 class="neighbor-header__item"&gt;Older&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;a class="neighbor__item layout--horizon__item" href="#"&gt;記事見出し&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+
+<p>カテゴリーはページャースタイルだったため<code>neighbor &gt; neighbor-pager &gt; neighbor-pager__item</code>という構造でしたが、一つ前の記事Blockでは直接の子Elementとして<code>neighbor__item</code>にしてみました。</p>
+
+<p>......。とまぁこんな具合にBEM化は一応終わりました。搾りかすのような記事ですみません。BEM化したインデックスの<code>&lt;body&gt;</code>内のソースは<a href="http://dskd.jp/dist/misc/getting-start-bem/bemmarkup_index.txt">インデックスがこちら</a>、<a href="http://dskd.jp/dist/misc/getting-start-bem/bemmarkup_individual.txt">個別記事ページがこちら</a>です。</p>
+
+<p>終えた感想については初回のBEM Advent Calendar の記事で書いている通り「難しかったー」というものなんですけど、dskd.jpがシングルカラムでなかったらもっと苦労したように思います。振り返って繰り返し認識するのが、階層が深くなった時にBlockとElementをどうつないでいくのかの判断がとても難しい、ということです。どんなに深い構造でも完璧にBEMれる強さ、持ちたいですね。</p>
+
+<p>そう言えば今日、こんなツイートをしました。</p>
+
+<blockquote class="twitter-tweet" lang="ja">小規模 BEM しかやってないので BEM の機微を語ることができない&mdash; 越智 (@o_ti) <a href="https://twitter.com/o_ti/statuses/409978207471804417">2013, 12月 9</a></blockquote>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>僕の力不足であまり役に立たない記事を量産してしまいました！　BEMerへの道は険しい！　TKGが食べたい！</p>
+
+<hr />
+
+<p>10日目は<a href="http://www.adventar.org/users/2">げこたん</a>さん（２日ぶり４度目）です。よろしくお願いします。</p>
+
+      </div>
+
+      <aside class="social-buttons">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E5%88%9D%E3%82%81%E3%81%A6BEM%E5%8C%96%E3%81%97%E3%81%9F%E6%99%82%E3%81%AE%E6%B5%81%E3%82%8C%E3%81%AE%E6%9C%80%E5%BE%8C&url=http%3A%2F%2Fdskd.jp%2Farchives%2F39.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F39.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F39.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E5%88%9D%E3%82%81%E3%81%A6BEM%E5%8C%96%E3%81%97%E3%81%9F%E6%99%82%E3%81%AE%E6%B5%81%E3%82%8C%E3%81%AE%E6%9C%80%E5%BE%8C&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F39.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/40.html">BEMに向いているデザイン、向いていないデザイン</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/38.html">ブログを初めてBEM化した時の流れの続き</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

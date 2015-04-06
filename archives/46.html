@@ -4,143 +4,147 @@
   <meta charset="UTF-8">
   <meta content="width=device-width" name="viewport">
 
-  <title>dskd</title>
+  <title>git filter-branchで過去の全てのcommitから画像ファイルの追加/変更をなかったことにしてリポジトリを軽量化する - dskd</title>
 
-  <link href="http://dskd.jp/" rel="canonical">
-  <link href="apple-touch-icon.png" rel="apple-touch-icon-precomposed">
-  <link href="/feed" rel="alternate" type="application/atom+xml">
+  <meta content="表題の通り、分散型バージョン管理システムのGitでいわゆる「歴史の書き換え」をする。
+" name="description">
+  <meta content="Movable Type 6.1" name="generator">
 
-  <link href="/dist/css/style.css" media="only screen" rel="stylesheet">
+  <meta content="git filter-branchで過去の全てのcommitから画像ファイルの追加/変更をなかったことにしてリポジトリを軽量化する" property="og:title">
+  <meta content="表題の通り、分散型バージョン管理システムのGitでいわゆる「歴史の書き換え」をする。
+" property="og:description">
+  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/46.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/46.html" rel="canonical">
+  <!--#include virtual="/head-linkrel.html" -->
 </head>
 <body>
   <header class="global-header">
     <nav class="site-navigation">
       <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
-
       <ul class="headlinks">
         <li><a href="/archives/">Archive</a></li>
-        <li><a href="/archives/demo/">Demo</a></li>
-        <li><a href="/archives/about.html">About</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
       </ul>
     </nav>
-
   </header>
 
   <div class="content">
     <article class="entry">
       <footer class="entry-footer">
-        <time datetime="2014-12-12T10:37:00+09:00">2014.12.12</time>
-        <p><span class="tag">Advent Calendar</span>,
-        <span class="tag">CSS</span>,
-        <span class="tag">demo</span></p>
+        <time datetime="2014-07-07T01:45:00+09:00">2014.07.07</time>
+        <p><a href="http://dskd.jp/archives/c20.html" class="tag">Git</a></p>
       </footer>
 
-      <h1 class="entry-title">git filter-branchで過去の全てのcommitから画像ファイルをの追加/変更をなかったことにしてリポジトリを軽量化する</h1>
-
+      <h1 class="entry-title">git filter-branchで過去の全てのcommitから画像ファイルの追加/変更をなかったことにしてリポジトリを軽量化する</h1>
       <div class="entry-body">
         <p>表題の通り、分散型バージョン管理システムの<a href="http://git-scm.com/">Git</a>でいわゆる「歴史の書き換え」をする。</p>
 
         <p>この処理を行う想定としては、複数人で進めているプロジェクトで開発の途中までは画像をリポジトリに含めて管理していたけど、今度から画像は別で管理することにしてリポジトリから消したい、などという場合。その後月日が経った状況で画像をcommitしていた頃のlogがとても容量を食っている場合でももちろん可。</p>
 
-        <p>写真素材サイトで画像をうっかりGit管理してたとか、ゲーム系でキャラクターや背景の高解像度の画像をGit管理していた頃があるとかだと、新しいbranchをcheckoutしてpushする度にリポジトリはどんどん肥大化していく。そうやってギガバイト単位に膨れ上がったリポジトリでも、filter-branchで劇的に軽量化することができる。</p>
+<p>写真素材サイトで画像をうっかりGit管理してたとか、ゲーム系でキャラクターや背景の高解像度の画像をGit管理していた頃があるとかだと、新しいbranchをcheckoutしてpushする度にリポジトリはどんどん肥大化していく。そうやってギガバイト単位に膨れ上がったリポジトリでも、filter-branchで劇的に軽量化することができる。</p>
 
-        <p>具体的にはfilter-branchというコマンドを使う。ファイルを持っていた歴史を残しておきたいのであればfilter-branchをする必要なないが、新規メンバーがそのリポジトリをcloneする時間を少しでも短縮したいと考えるなら、試してみる価値はある。</p>
+<p>具体的には<code>filter-branch</code>というコマンドを使う。ファイルを持っていた歴史を残しておきたいのであればfilter-branchをする必要なないが、新規メンバーがそのリポジトリをcloneする時間を少しでも短縮したいと考えるなら、試してみる価値はある。</p>
 
-        <p>これをやる前に注意して欲しいのは、filter-branchを実行した環境以外では、実行後にリポジトリをcloneし直す必要があるということ。なぜなら、filter-branchはcommit自体の書き換えを行うのものなので、revertなどとは違いその書き換え自体のログは残らない。さらにcommitのハッシュも再発行される。そしてこれをリモートのリポジトリに反映するためにgit push -fする。なので、以前とは全く違うリポジトリになると考えた方がいい。<strong>もしfilter-branchに失敗したら、当然ながら、絶対にpushしてはいけない</strong>。やり直したい場合は実行環境ではもうログが失われているので、別のディレクトリに移動してfilter-branch実行前の状態をcloneしてやればいい。</p>
+<p>これをやる前に注意して欲しいのは、filter-branchを実行した環境以外では、実行後にリポジトリをcloneし直す必要があるということ。なぜなら、filter-branchはcommit自体の書き換えを行うのものなので、revertなどとは違いその書き換え自体のログは残らない。さらにcommitのハッシュも再発行される。そしてこれをリモートのリポジトリに反映するために<code>git push -f</code>する。なので、以前とは全く違うリポジトリになると考えた方がいい。<strong>もしfilter-branchに失敗したら、当然ながら、絶対にpushしてはいけない</strong>。やり直したい場合は実行環境ではもうログが失われているので、別のディレクトリに移動してfilter-branch実行前の状態をcloneしてやればいい。</p>
 
-        <p>手順はさほど難しくない。まず最初に、コラボレーターやコミッター全員にその時点での変更（branch含む）を全てpushしてもらい、変更作業を止める。そしてfilter-branchを行う作業者の手元で全てのbranchでpullしておく。push漏れ・pull漏れがあるとワークツリーがデグレードしてしまうので忘れずにやって欲しい。</p>
+<p>手順はさほど難しくない。まず最初に、コラボレーターやコミッター全員にその時点での変更（branch含む）を全てpushしてもらい、変更作業を止める。そしてを行う作業者の手元で全てのbranchでpullしておく。push漏れ・pull漏れがあるとワークツリーがデグレードしてしまうので忘れずにやって欲しい。</p>
 
-        <p>次にリポジトリから消したいファイルやディレクトリを決める。これは通常のgitコマンドなので複数指定できる。今回はわかりやすいようにXXXフォルダ配下全てとYYY/img/admin-face.jpgファイルを削除してみる。</p>
+<p>次にリポジトリから消したいファイルやディレクトリを決める。これは通常のgitコマンドなので複数指定できる。今回はわかりやすいようにXXXフォルダ配下全てとYYY/img/admin-face.jpgファイルを削除してみる。</p>
 
-        <p>歴史の書き換えはたったの数個のコマンド実行で済む。</p>
+<p>歴史の書き換えはたったの数個のコマンド実行で済む。</p>
 
-        <div class="sample_code">
-        <pre><code data-language="shell">$ git filter-branch -f --index-filter "git rm -rf --cached --ignore-unmatch XXX/ YYY/img/admin-face.jpg" --prune-empty -- --all</code></pre>
-        </div>
+<pre title="Gitコマンド"><code data-language="shell">$ git filter-branch -f --index-filter "git rm -rf --cached --ignore-unmatch XXX/ YYY/img/admin-face.jpg" --prune-empty -- --all</code></pre>
 
-        <p>filter-branchの--index-filterオプションで渡しているダブルクォーテーションの中が、各commitに対して行うコマンドになる。git rm -rf なのでフォルダもファイルも対象に消す。見た目わかりづらいがXXX/とYYY/img~の間にはスペースがあり複数指定している。。</p>
+<p><code>filter-branch</code>の<code>--index-filter</code>オプションで渡しているダブルクォーテーションの中が、各commitに対して行うコマンドになる。<code>git rm -rf</code>なのでフォルダもファイルも対象に消す。見た目わかりづらいが<code>XXX/とYYY/img~</code>の間にはスペースがあり複数指定している。</p>
 
-        <p>--chacedオプションがあるとcommit logからだけ削除してワークツリーでは残すようになる（つまりファイルが手元に残る）。--cachedオプションがないとワークツリーからも消えるのでそこは注意してほしい。</p>
+<p><code>--chaced</code>オプションがあるとcommit logからだけ削除してワークツリーでは残すようになる（つまりファイルが手元に残る）。<code>--cached</code>オプションがないとワークツリーからも消えるのでそこは注意してほしい。</p>
 
-        <p>--ignore-unmatchで当てはまる対象がない時のエラーを無視できる。</p>
+<p><code>--ignore-unmatch</code>で当てはまる対象がない時のエラーを無視できる。</p>
 
-        <p>--prune-emptyがあると、対象のファイルをcommit logから消した時に生まれうる、コメントのみの空commitも消してくれるようになる。前述の２つのオプションはgit rmコマンドで、--prune-emptyはfilter-branchのオプションだ。</p>
+<p><code>--prune-empty</code>があると、対象のファイルをcommit logから消した時に生まれうる、コメントのみの空commitも消してくれるようになる。前述の２つのオプションは<code>git rm</code>コマンドで、<code>--prune-empty</code>は<code>filter-branch</code>のオプションだ。</p>
 
-        <p>ハイフン2つで前のコマンドのオプションから抜け、--allで全ブランチを対象に同じ処理を行う。</p>
+<p>ハイフン2つで前のコマンドのオプションから抜け、<code>--all</code>で全ブランチを対象に同じ処理を行う。</p>
 
-        <p>実行完了には少し時間がかかるかもしれない。ファイル数やcommit数で前後する。</p>
+<p>実行完了には少し時間がかかるかもしれない。ファイル数やcommit数で前後する。</p>
 
-        <p>あとはローカルのキャッシュを消したりゴミ掃除したりしていく。</p>
+<p>あとはローカルのキャッシュを消したりゴミ掃除したりしていく。</p>
 
-        <div class="sample_code">
-        <pre><code data-language="shell">$ rm -rf .git/refs/original/
+<pre title="Gitコマンド"><code data-language="shell">$ rm -rf .git/refs/original/
+$ git reflog expire --expire=now --all
+$ git gc --aggressive --prune=now</code></pre>
 
-        $ git reflog expire --expire=now --all
+<p>掃除し終わったら<code>git log -p</code>などで消えていることを確認し、force pushする。</p>
 
-        $ git gc --aggressive --prune=now</code></pre>
-        </div>
+<pre title="Gitコマンド"><code data-language="shell">$ git push -f</code></pre>
 
-        <p>掃除し終わったらgit log -pなどで消えていることを確認し、force pushする。</p>
+<p>コマンドが<code>$ git push origin &amp;lt;branch-name&amp;gt; -f</code>でないのは、前述では全ブランチに対してfilter-branchを行っているので、これをリポジトリに丸ごと反映したいから。filter-branchをしたのが特定のbranchだけ（あまりないと思うが）ならpush -fする時にbranchを指定しないとそれはそれで事故になるので注意。</p>
 
-        <div class="sample_code">
-        <pre><code data-language="shell">$ git push -f</code></pre>
-        </div>
+<p>以上となる。リモート反映後に他の作業者にリポジトリをcloneし直してもらえば、以後は重いlogのない軽量なリポジトリとなる。commitがリハッシュされているのは実行環境と別の作業環境でgit logし合って見ればわかる。</p>
 
-        <p>コマンドが$ git push origin &lt;branch-name&rt; -fでないのは、前述では全ブランチに対してfilter-branchを行っているので、これをリポジトリに丸ごと反映したいから。filter-branchをしたのが特定のbranchだけ（あまりないと思うが）ならpush -fする時にbranchを指定しないとそれはそれで事故になるので注意。</p>
+<p>消すファイルの数やcommitの数にもよるので、この歴史の書き換えにかかる時間や軽量化できる容量は一概には言えないが、僕が関わっているプロジェクトで実行したところ8万オブジェクトで1.6GBあったリポジトリが、4万オブジェクトの145MBまで軽量化することができた。すごい威力を感じる。</p>
 
-        <p>以上となる。リモート反映後に他の作業者にリポジトリをcloneし直してもらえば、以後は重いlogのない軽量なリポジトリとなる。commitがリハッシュされているのは実行環境と別の作業環境でgit logし合って見ればわかる。</p>
+<hr />
 
-        <p>消すファイルの数やcommitの数にもよるので、この歴史の書き換えにかかる時間や軽量化できる容量は一概には言えないが、僕が関わっているプロジェクトで実行したところ8万オブジェクトで1.6GBあったリポジトリが、4万オブジェクトの145MBまで軽量化することができた。すごい威力を感じる。</p>
+<p><code>filter-branch</code>は別にリポジトリの軽量化を目的とした機能ではない。<a href="http://qiita.com/Spring_MT/items/f60c391b5dbf569a1d12">リポジトリにうっかり含めてしまったセキュリティ上問題あるデータをlogからも消し去りたい場合</a>にも使う。全commitから目的のファイルをホニャララするのがfilter-branchの機能というわけだ。また、<code>--index-filter</code>ではなく<code>--tree-fliter</code>を使って同様の処理を行うこともできるが、こちらはcheckoutをbranchごとに行うとのことで<code>--index-filter</code>より低速らしい。<code>--tree-filter</code>では<code>--all</code>オプションはいらないのかどうか、調べたけどすぐに出てこなかったのでわからない。</p>
 
-        <hr>
+<p>実行するのはgitコマンド以外も可能だ。こちらの記事では<a href="http://qiita.com/wnoguchi/items/62f5e64ef2ae14b4f0ee"><code>--tree-filter</code>オプションで、<code>cp -f</code>コマンドで強制的にファイルを上書きコピー</a>している。</p>
 
-        <p>filter-branchは別にリポジトリの軽量化を目的とした機能ではない。<a href="http://qiita.com/Spring_MT/items/f60c391b5dbf569a1d12">リポジトリにうっかり含めてしまったセキュリティ上問題あるデータをlogからも消し去りたい場合</a>にも使う。全commitから目的のファイルをホニャララするのがfilter-branchの機能というわけだ。また、--index-filterではなく--tree-fliterを使って同様の処理を行うこともできるが、こちらはcheckoutをbranchごとに行うとのことで--index-filterより低速らしい。--tree-filterでは--allオプションはいらないのかどうか、調べたけどすぐに出てこなかったのでわからない。</p>
+<hr />
 
-        <p>実行するのはgitコマンド以外も可能だ。こちらの記事では<a href="http://qiita.com/wnoguchi/items/62f5e64ef2ae14b4f0ee">--tree-filterオプションで、cp -fコマンドで強制的にファイルを上書きコピー</a>している。</p>
+<p>この記事をある程度書いたところで<a href="http://easyramble.com/git-filter-branch.html">もっとわかりやすく書いているブログ</a>があることを知った。悔しいのでdskdでは--index-filterのオプションの書き方を少しだけ詳しく書いた。</p>
 
-        <hr>
+<p><small><ins datetime="2015-01-07T12:09:00+09:00">本文の表現を加筆修正</ins></small></p>
 
-        <p>この記事をある程度書いたところで<a href="http://easyramble.com/git-filter-branch.html">もっとわかりやすく書いているブログ</a>があることを知った。悔しいのでdskdでは--index-filterのオプションの書き方を少しだけ詳しく書いた。</p>
+<h2>なぜfilter-branchのあとで他の作業者はリポジトリをcloneし直すのか</h2>
 
-        <p><small><ins datetime="2015-01-07T12:09:00+09:00" data-insdate="※2015/1/7 修正）">本文の表現を加筆修正</ins></small></p>
+<p><code>filter-branch</code>が実行されたリポジトリをリモートに反映後、他の作業者がcloneではなくそれまでのディレクトリでpullをするとどうなるかというと、普通にMergeされてpullできる。しかし、この作業環境のリポジトリには<strong>削除したかったファイルやそのcommitが残っている</strong>ので、pullしたのちに何かを編集してcommitしてpushすると、<strong><em>消したかったはずの情報がまたリモートに送られてしまい意味がなくなる</em></strong>。さらに、filter-branchしたあとのリポジトリのcommit messageがfilter-branch前のに混ざって二重にcommitしているように見える。ハッシュは異なるので別の変更履歴として扱われるわけだ。<code>git log</code>するとちょっと耐えられない感じになるだろう。</p>
 
-        <h2>なぜfilter-branchのあとで他の作業者はリポジトリをcloneし直すのか</h2>
+<p>履歴はよごれるしpushするとfilter-branchが無意味になので、他の作業環境では必ずcloneし直そう。</p>
 
-        <p>filter-branchが実行されたリポジトリをリモートに反映後、他の作業者がcloneではなくそれまでのディレクトリでpullをするとどうなるかというと、普通にMergeされてpullできる。しかし、この作業環境のリポジトリには<em>削除したかったファイルやそのcommitが残っている</em>ので、pullしたのちに何かを編集してcommitしてpushすると、<strong>消したかったはずの情報がまたリモートに送られてしまい意味がなくなる</strong>。さらに、filter-branchしたあとのリポジトリのcommit messageがfliter-branch前のに混ざって二重にcommitしているように見える。ハッシュは異なるので別の変更履歴として扱われるわけだ。git logするとちょっと耐えられない感じになるだろう。</p>
+<p><small><ins datetime="2015-01-07T15:37:36+09:00">「なぜfilter-branchのあとで他の作業者はリポジトリをcloneし直すのか」の見出しとその本文を追記</ins></small></p>
 
-        <p>履歴はよごれるしpushするとfilter-branchが無意味になので、他の作業環境では必ずcloneし直そう。</p>
+<hr />
 
-        <p><small><ins datetime="2015-01-07T15:37:36+09:00" data-insdate="※2015/1/7 追加）">「なぜfilter-branchのあとで他の作業者はリポジトリをcloneし直すのか」の見出しとその本文を追記</ins></small></p>
+<p>下記は自分用のメモ：</p>
+
+<pre title="authorやcommiterを書き換える"><code data-language="shell">$ git filter-branch --commit-filter '
+ GIT_AUTHOR_NAME="oti"
+ GIT_AUTHOR_EMAIL="otiext@gmail.com"
+ GIT_COMMITTER_NAME="oti"
+ GIT_COMMITTER_EMAIL="otiext@gmail.com"
+ git commit-tree "$@"
+' -- --all</code></pre>
+
+<p>authorやcommiterで秘匿情報が混ざったら<code>--commit-filter</code>を使う。改行は削除してｶﾀｶﾀｯﾀｰﾝすること。</p>
+
       </div>
 
       <aside class="social-buttons">
         <ul>
-          <li class="twitter-tweet"><a href="">Tweet</a></li>
-          <li class="facebook-share"><a href="">Share</a></li>
-          <li class="googleplus-share"><a href="">Share</a></li>
-          <li class="hatena-bookmark"><a href="">Bookmark</a></li>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=git%20filter-branch%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%85%A8%E3%81%A6%E3%81%AEcommit%E3%81%8B%E3%82%89%E7%94%BB%E5%83%8F%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E8%BF%BD%E5%8A%A0%2F%E5%A4%89%E6%9B%B4%E3%82%92%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8%E3%81%AB%E3%81%97%E3%81%A6%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%82%92%E8%BB%BD%E9%87%8F%E5%8C%96%E3%81%99%E3%82%8B&url=http%3A%2F%2Fdskd.jp%2Farchives%2F46.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F46.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F46.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=git%20filter-branch%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%85%A8%E3%81%A6%E3%81%AEcommit%E3%81%8B%E3%82%89%E7%94%BB%E5%83%8F%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E8%BF%BD%E5%8A%A0%2F%E5%A4%89%E6%9B%B4%E3%82%92%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8%E3%81%AB%E3%81%97%E3%81%A6%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%82%92%E8%BB%BD%E9%87%8F%E5%8C%96%E3%81%99%E3%82%8B&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F46.html">Bookmark on Hatena</a></li>
         </ul>
       </aside>
     </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/47.html">左右marginで任意の比率を保つ</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/45.html">人には難しい気がする機械の真偽</a></li>
+      </ul>
+    </nav>
   </div>
 
-  <nav class="neighbor">
-    <ul class="neighborlinks">
-      <li class="newer"><a href="">Google Chrome 40でreversed属性のついたol要素のカウンターがおかしい</a></li>
-      <li class="older"><a href="">UE BOOMを買った</a></li>
-    </ul>
-  </nav>
-
-  <footer class="global-footer">
-    <section class="author">
-      <p class="author-credit">Made by oti.</p>
-      <address class="author-address"><a href="mailto:otiext@gmail.com">otiext@gmail.com</a></address>
-    </section>
-
-    <ul class="footlinks">
-      <li><a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC</a></li>
-      <li><a href="/feed" rel="alternate" type="application/rss+xml">RSS</a></li>
-    </ul>
-  </footer>
+  <!--#include virtual="/global-footer.html" -->
 </body>
 </html>

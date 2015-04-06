@@ -4,132 +4,130 @@
   <meta charset="UTF-8">
   <meta content="width=device-width" name="viewport">
 
-  <title>dskd</title>
+  <title>Google Chrome 40でreversed属性のついたol要素のカウンターがおかしい - dskd</title>
 
-  <link href="http://dskd.jp/" rel="canonical">
-  <link href="apple-touch-icon.png" rel="apple-touch-icon-precomposed">
-  <link href="/feed" rel="alternate" type="application/atom+xml">
+  <meta content="※2015/3/3 追記あり
+" name="description">
+  <meta content="Movable Type 6.1" name="generator">
 
-  <link href="/dist/css/style.css" media="only screen" rel="stylesheet">
+  <meta content="Google Chrome 40でreversed属性のついたol要素のカウンターがおかしい" property="og:title">
+  <meta content="※2015/3/3 追記あり
+" property="og:description">
+  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/58.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/58.html" rel="canonical">
+  <!--#include virtual="/head-linkrel.html" -->
 </head>
 <body>
   <header class="global-header">
     <nav class="site-navigation">
       <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
-
       <ul class="headlinks">
         <li><a href="/archives/">Archive</a></li>
-        <li><a href="/archives/demo/">Demo</a></li>
-        <li><a href="/archives/about.html">About</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
       </ul>
     </nav>
-
   </header>
 
   <div class="content">
     <article class="entry">
       <footer class="entry-footer">
-        <time datetime="2015-01-24T12:18:00+09:00">2015.02.17</time>
-        <p><span class="tag">CSS</span></p>
+        <time datetime="2015-02-17T13:14:00+09:00">2015.02.17</time>
+        <p><a href="http://dskd.jp/archives/c13.html" class="tag">HTML</a></p>
       </footer>
 
       <h1 class="entry-title">Google Chrome 40でreversed属性のついたol要素のカウンターがおかしい</h1>
-
       <div class="entry-body">
-        <p>別にバグ報告ブログをやっているつもりはないのだけどたまたま見つけたので記事にする。<ins datetime="2015-03-03T12:00:00+09:00">※2015/3/3 追記あり</ins></p>
+        <p><ins datetime="2015-03-03T12:00:00+09:00">※2015/3/3 追記あり</ins></p>
 
-        <p>HTML5ではol要素にreversed属性をつけるとリストが降順のものとして意味づけられ、list-itemのカウンターの数値が逆順で表示されるようになる。</p>
+        <p>別にバグ報告ブログをやっているつもりはないのだけどたまたま見つけたので記事にする。</p>
 
-        <p>この「reversedのついたol」が入れ子のリストを持つとき、Google Chrome 40でカウンターの表示がおかしくなるバグに気づいた。言葉で説明すると、入れ子にしているliの個数も全て合計した数値で降順にカウンターが表示されるというもの。わかりづらい。</p>
+<p>HTML5ではol要素にreversed属性をつけるとリストが降順のものとして意味づけられ、list-itemのカウンターの数値が逆順で表示されるようになる。</p>
 
-        <p>問題のマークアップはこう。</p>
+<p>この「<code>reversed</code>のついたol」が入れ子のリストを持つとき、Google Chrome 40でカウンターの表示がおかしくなるバグに気づいた。言葉で説明すると、入れ子にしているliの個数も全て合計した数値で降順にカウンターが表示されるというもの。わかりづらい。</p>
 
-        <code>
-        <pre data-language="html">&lt;ol reversed&gt;
-          &lt;li&gt;快晴&lt;/li&gt;
-          &lt;li&gt;晴れ
-            &lt;ol reversed&gt;
-              &lt;li&gt;薄曇&lt;/li&gt;
-              &lt;li&gt;曇り
-                &lt;ol&gt;
-                  &lt;li&gt;煙霧&lt;/li&gt;
-                  &lt;li&gt;砂塵嵐&lt;/li&gt;
-                  &lt;li&gt;地吹雪&lt;/li&gt;
-                &lt;/ol&gt;
-              &lt;/li&gt;
-              &lt;li&gt;霧&lt;/li&gt;
-              &lt;li&gt;霧雨&lt;/li&gt;
-            &lt;/ol&gt;
-          &lt;/li&gt;
-          &lt;li&gt;雨
-            &lt;ol&gt;
-              &lt;li&gt;みぞれ&lt;/li&gt;
-              &lt;li&gt;雪&lt;/li&gt;
-              &lt;li&gt;霰&lt;/li&gt;
-              &lt;li&gt;ひょう&lt;/li&gt;
-            &lt;/ol&gt;
-          &lt;/li&gt;
-          &lt;li&gt;雷&lt;/li&gt;
-        &lt;/ol&gt;</pre>
-        </code>
+<p>問題のマークアップはこう。</p>
 
-        <p>Google Chrome 40.0.2214.94 (64-bit)とFirefox 35.0.1で表示したスクリーンショットを以下に載せる。</p>
+<p><code><pre data-language="html">&lt;ol <mark>reversed</mark>&gt;
+  &lt;li&gt;快晴&lt;/li&gt;
+  &lt;li&gt;晴れ
+    &lt;ol <mark>reversed</mark>&gt;
+      &lt;li&gt;薄曇&lt;/li&gt;
+      &lt;li&gt;曇り
+        &lt;ol&gt;
+          &lt;li&gt;煙霧&lt;/li&gt;
+          &lt;li&gt;砂塵嵐&lt;/li&gt;
+          &lt;li&gt;地吹雪&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;霧&lt;/li&gt;
+      &lt;li&gt;霧雨&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;雨
+    &lt;ol&gt;
+      &lt;li&gt;みぞれ&lt;/li&gt;
+      &lt;li&gt;雪&lt;/li&gt;
+      &lt;li&gt;霰&lt;/li&gt;
+      &lt;li&gt;ひょう&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;雷&lt;/li&gt;
+&lt;/ol&gt;</pre></code></p>
 
-        <figure>
-        <a href="/img/reversed_order_list-counter_bug/ss_chrome40.png"><img src="/img/reversed_order_list-counter_bug/ss_chrome40.png" alt="counterの数値が大きい"></a>
-        <a href="/img/reversed_order_list-counter_bug/ss_firefox35.png"><img src="/img/reversed_order_list-counter_bug/ss_firefox35.png" alt="counterの数値が適切"></a>
-        </figure>
+<p>Google Chrome 40.0.2214.94 (64-bit)とFirefox 35.0.1で表示したスクリーンショットを以下に載せる。</p>
 
-        <p>Chromeでは一番親となるolのカウンターが15から始まり12で終わっている。Firefoxだと一番親のolのカウンターは上から4,3,2,1となっている。15はこのol要素の中の全てのli要素の合計数だ。liをどこかに増やすとその分カウンターの数値も増える。</p>
+<p><a href="http://dskd.jp/dist/img/reversed-order-list-counter-bug/ss_chrome40.png?float=left" title="counterの数値が大きい"><img src="http://dskd.jp/dist/img/reversed-order-list-counter-bug/ss_chrome40.png" alt="counterの数値が大きい" title="" /></a></p>
 
-        <p>他のブラウザでは見ていないが、reversedがついていない通常の昇順リストで考えれば、一番親のolのカウンターが12から始まって15で終わっていたらおかしいのだから、やはり入れ子分のliは数えずに同階層のliの個数分だけがカウンターの数値になるのが正しい表示だと思う。</p>
+<p><a href="http://dskd.jp/dist/img/reversed-order-list-counter-bug/ss_firefox35.png?float=left" title="counterの数値が適切"><img src="http://dskd.jp/dist/img/reversed-order-list-counter-bug/ss_firefox35.png" alt="counterの数値が適切" title="" /></a></p>
 
-        <p><a href="http://www.w3.org/TR/html5/grouping-content.html#attr-ol-reversed">HTML5のreversed属性をもつolの仕様</a>（<a href="http://momdo.github.io/html5/grouping-content.html#attr-ol-reversed">日本語訳</a>）を見てみたけど入れ子した時のカウンターについての記述は特にないようだ。入れ子にしているolをulに変えたりしてもかわらなかった。とにかくreversedを持つolに入れ子リストがあるとGoogle Chrome 40でおかしくなる。42.0.2306.0 canaryでも同様の現象が確認できた。</p>
+<p>Chromeでは一番親となるolのカウンターが15から始まり12で終わっている。Firefoxだと一番親のolのカウンターは上から4,3,2,1となっている。15はこのol要素の中の全てのli要素の合計数だ。liをどこかに増やすとその分カウンターの数値も増える。</p>
 
-        <hr>
+<p>他のブラウザでは見ていないが、<code>reversed</code>がついていない通常の昇順リストで考えれば、一番親のolのカウンターが12から始まって15で終わっていたらおかしいのだから、やはり入れ子分のliは数えずに同階層のliの個数分だけがカウンターの数値になるのが正しい表示だと思う。</p>
 
-        <p>一般的なウェブ制作ではリスト要素のカウンターやマーカー表示をそのまま使うことはあまりないし、さらにreversedのついたolで入れ子でリストを含むとなると巷での再現性はさらに下がるだろう。カウンターも<code>list-style-tyle: none;</code>にしてしまっている場合がほとんどだと思う。印刷用CSSでlist-itemのカウンターをリセット（ノーマライズ？）して初めて露見する程度だろうか。Chrome限定のバグっぽいので今後も気にする必要は出てこない気がする。</p>
+<p><a href="http://www.w3.org/TR/html5/grouping-content.html#attr-ol-reversed">HTML5のreversed属性をもつolの仕様</a>（<a href="http://momdo.github.io/html5/grouping-content.html#attr-ol-reversed">日本語訳</a>）を見てみたけど入れ子した時のカウンターについての記述は特にないようだ。入れ子にしているolをulに変えたりしてもかわらなかった。とにかく<code>reversed</code>を持つolに入れ子リストがあるとGoogle Chrome 40でおかしくなる。42.0.2306.0 canaryでも同様の現象が確認できた。</p>
 
-        <p><a href="http://dskd.jp/archives/50.html">zoomのバグ</a>のように発生条件がレアなものは修正されずに長い間放置されてもおかしくないが、Chromium Projectのissueで探したら<a href="https://code.google.com/p/chromium/issues/detail?id=432054&can=1&q=reversed&colspec=ID%20Pri%20M%20Week%20ReleaseBlock%20Cr%20Status%20Owner%20Summary%20OS%20Modified">バグレポートはちゃんとあった</a>。2014年11月11日にレポートがあり、当時のChorme 41とChrome 38で再現可能だったようだ。ステータスは今年の1月6日ですでにfixedになっている。手元のcanaryで再現するのはChrome 42にマージが間に合わなかったからだろうか。43で直っていたら忘れずに追記したい。</p>
+<hr />
 
-        <p>ちなみに先のissueでは<a href="http://jsbin.com/dodicecoha/1/edit?html,output">このサンプルHTMLがリンクされていた</a>。Chromeでみてもらえば、上記のスクリーンショットのようにカウンターがおかしいのが確認できる。reversedがつくだけでこうなってしまうんだからブラウザも大変なんだなと思った。</p>
+<p>一般的なウェブ制作ではリスト要素のカウンターやマーカー表示をそのまま使うことはあまりないし、さらにreversedのついたolで入れ子でリストを含むとなると巷での再現性はさらに下がるだろう。カウンターも<code>list-style-tyle: none;</code>にしてしまっている場合がほとんどだと思う。印刷用CSSでlist-itemのカウンターをリセット（ノーマライズ？）して初めて露見する程度だろうか。Chrome限定のバグっぽいので今後も気にする必要は出てこない気がする。</p>
 
-        <hr>
+<p><a href="http://dskd.jp/archives/50.html">zoomのバグ</a>のように発生条件がレアなものは修正されずに長い間放置されてもおかしくないが、Chromium Projectのissueで探したら<a href="https://code.google.com/p/chromium/issues/detail?id=432054&amp;can=1&amp;q=reversed&amp;colspec=ID%20Pri%20M%20Week%20ReleaseBlock%20Cr%20Status%20Owner%20Summary%20OS%20Modified">バグレポートはちゃんとあった</a>。2014年11月11日にレポートがあり、当時のChorme 41とChrome 38で再現可能だったようだ。ステータスは今年の1月6日ですでにfixedになっている。手元のcanaryで再現するのはChrome 42にマージが間に合わなかったからだろうか。43で直っていたら忘れずに追記したい。</p>
 
-        <p><ins datetime="2015-03-03T12:00:00+09:00" data-insdate="※2015/3/3 追記）">Google Chrome 43 canaryが公開されたので確認したところ、バグは修正されていた。めでたしめでたし。</ins></p>
+<p>ちなみに先のISSUEでは<a href="http://jsbin.com/dodicecoha/1/edit?html,output">このサンプルHTMLがリンクされていた</a>。Chromeでみてもらえば、上記のスクリーンショットのようにカウンターがおかしいのが確認できる。reversedがつくだけでこうなってしまうんだからブラウザも大変なんだなと思った。</p>
 
-        <!-- <figure>
-        <a href="/img/reversed_order_list-counter_bug/ss_chrome43.png"><img src="/img/reversed_order_list-counter_bug/ss_chrome43.png" alt="counterの数値が適切に表示されるようになったGoogle Chrome 43 canary" style="width: 100%;margin: 10px 0;"></a>
-        </figure> -->
-      </dvi>
+<hr />
+
+<p><ins datetime="2015-03-03T12:00:00+09:00">※2015/3/3追記。Google Chrome 43 canaryが公開されたので確認したところ、バグは修正されていた。めでたしめでたし。</ins></p>
+
+<p><a href="http://dskd.jp/dist/img/reversed-order-list-counter-bug/ss_chrome43.png" title="counterの数値が適切に表示されるようになったGoogle Chrome 43 canary"><img src="http://dskd.jp/dist/img/reversed-order-list-counter-bug/ss_chrome43.png" alt="counterの数値が適切に表示されるようになったGoogle Chrome 43 canary" title="" /></a></p>
+
+      </div>
 
       <aside class="social-buttons">
         <ul>
-          <li class="twitter-tweet"><a href="">Tweet</a></li>
-          <li class="facebook-share"><a href="">Share</a></li>
-          <li class="googleplus-share"><a href="">Share</a></li>
-          <li class="hatena-bookmark"><a href="">Bookmark</a></li>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=Google%20Chrome%2040%E3%81%A7reversed%E5%B1%9E%E6%80%A7%E3%81%AE%E3%81%A4%E3%81%84%E3%81%9Fol%E8%A6%81%E7%B4%A0%E3%81%AE%E3%82%AB%E3%82%A6%E3%83%B3%E3%82%BF%E3%83%BC%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%84&url=http%3A%2F%2Fdskd.jp%2Farchives%2F58.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F58.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F58.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=Google%20Chrome%2040%E3%81%A7reversed%E5%B1%9E%E6%80%A7%E3%81%AE%E3%81%A4%E3%81%84%E3%81%9Fol%E8%A6%81%E7%B4%A0%E3%81%AE%E3%82%AB%E3%82%A6%E3%83%B3%E3%82%BF%E3%83%BC%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%84&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F58.html">Bookmark on Hatena</a></li>
         </ul>
       </aside>
     </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/63.html">TRBLメソッドでbackground-sizeを代替する</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/57.html">EDJOなオブジェクトの妄想</a></li>
+      </ul>
+    </nav>
   </div>
 
-  <nav class="neighbor">
-    <ul class="neighborlinks">
-      <li class="older"><a href="">EDJOなオブジェクトの妄想</a></li>
-    </ul>
-  </nav>
-
-  <footer class="global-footer">
-    <section class="author">
-      <p class="author-credit">Made by oti.</p>
-      <address class="author-address"><a href="mailto:otiext@gmail.com">otiext@gmail.com</a></address>
-    </section>
-
-    <ul class="footlinks">
-      <li><a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC</a></li>
-      <li><a href="/feed" rel="alternate" type="application/rss+xml">RSS</a></li>
-    </ul>
-  </footer>
+  <!--#include virtual="/global-footer.html" -->
 </body>
 </html>

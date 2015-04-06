@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>内包要素の数が変動しても僕には擬似クラスと間接セレクタがある - dskd</title>
+
+  <meta content="CSS Property Advent Calendar 2013 ４日目のエントリです。
+" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+
+  <meta content="内包要素の数が変動しても僕には擬似クラスと間接セレクタがある" property="og:title">
+  <meta content="CSS Property Advent Calendar 2013 ４日目のエントリです。
+" property="og:description">
+  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/37.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/37.html" rel="canonical">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header">
+    <nav class="site-navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry">
+      <footer class="entry-footer">
+        <time datetime="2013-12-04T11:15:00+09:00">2013.12.04</time>
+        <p><a href="http://dskd.jp/archives/c17.html" class="tag">Advent Calendar</a>, <a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a></p>
+      </footer>
+
+      <h1 class="entry-title">内包要素の数が変動しても僕には擬似クラスと間接セレクタがある</h1>
+      <div class="entry-body">
+        <p><a href="http://www.adventar.org/calendars/57">CSS Property Advent Calendar 2013</a> ４日目のエントリです。</p>
+
+        <p>昨日、げこたんさんに BEM Advent Calendar を手伝ってもらったら、</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>おや？プロパティの方に恩返しがありませんね？</p>&mdash; げこたん (@GeckoTang) <a href="https://twitter.com/GeckoTang/statuses/407367908268834816">2013, 12月 2</a></blockquote>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>と言われてしまったので２回目を登録しました。</p>
+
+<h2>要件</h2>
+
+<p>「データがある時はリンクを出したい」などのニーズで内包要素の数がページによって増えたり減ったりすること、けっこうありますよね。それが普通のテキストリンクではなくタブだとかサムネだとかでレイアウトにも関わるとき、要素の数によってスタイルを切り分けなきゃいけないわけですが、タブが２つの時には<code>.tabs2</code>。５つの時には<code>.tabs5</code>とかいちいちクラス付与させるのも面倒くさいわけです。</p>
+
+<p>どういうことかというと、このようなHTMLがあったとして、</p>
+
+<pre title="HTML"><code data-language="html">&lt;div class="tabs"&gt;
+  &lt;a class="tabs__item"&gt;タブ１&lt;/a&gt;
+  &lt;a class="tabs__item"&gt;タブ２&lt;/a&gt;
+  &lt;a class="tabs__item"&gt;タブ３&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+
+<p><code>.tabs__item</code>がページによっては２つだったり５つだったりする時、という想定です。図示すると以下のような感じです。</p>
+
+<p><img src="http://dskd.jp/dist/img/multiple-tabs/01.png" alt="タブの数が異なるけど親要素内に収まるようにしたい" title="タブの数が異なるけど幅はそれぞれ親要素内に収まるようにしたい" /></p>
+
+<p>親の<code>.tabs</code>は幅が決まっていて、操作性を考えて<code>.tabs__item</code>の大きさは常にいっぱいまで広げておきたいな〜とかいう時、擬似クラスと間接セレクタを使うと内包要素の数ごとにクラスを作らなくて済むようになります。</p>
+
+<h2>擬似クラスと間接セレクタの合わせ技</h2>
+
+<pre title="CSS"><code data-language="css">.tabs{
+  box-sizing: border-box;
+  padding: 0 10px;
+  width: 320px;
+}
+
+.tabs__item{
+  box-sizing: border-box;
+}
+
+/* 2 tab */
+.tabs .tabs__item:first-child<mark>:nth-last-child(2)</mark>,
+.tabs .tabs__item:first-child<mark>:nth-last-child(2)</mark> <mark>~</mark> .tabs__item {
+  width: 50%;
+}
+
+/* 3 tab */
+.tabs .tabs__item:first-child<mark>:nth-last-child(3)</mark>,
+.tabs .tabs__item:first-child<mark>:nth-last-child(3)</mark> <mark>~</mark> .tabs__item {
+  width: 33.3%;
+}
+
+/* 4 tab */
+.tabs .tabs__item:first-child<mark>:nth-last-child(4)</mark>,
+.tabs .tabs__item:first-child<mark>:nth-last-child(4)</mark> <mark>~</mark> .tabs__item {
+  width: 25%;
+}
+
+/* 5 tab */
+.tabs .tabs__item:first-child<mark>:nth-last-child(5)</mark>,
+.tabs .tabs__item:first-child<mark>:nth-last-child(5)</mark> <mark>~</mark> .tabs__item {
+  width: 20%;
+}</code></pre>
+
+<p>ミソは<code>:first-child:nth-last-child(n)</code>の部分です。<code>:first-child</code>は「最初の子要素」という意味ですね。<code>:nth-last-child(n)</code>は「最後からｎ番目の子要素」という意味です。<code>:nth-last-child(n)</code>は、たとえば子要素が全部で３つあった時、最初の子要素が<code>:nth-last-child(3)</code>、二番目の子要素が<code>:nth-last-child(2)</code>、三番目の子要素は<code>:nth-last-child(1)</code>となっていきます。先のHTMLで言うと、</p>
+
+<pre title="HTML"><code data-language="html">&lt;div class="tabs"&gt;
+  &lt;div class="tabs__item"&gt;:nth-last-child(3)&lt;/div&gt;
+  &lt;div class="tabs__item"&gt;:nth-last-child(2)&lt;/div&gt;
+  &lt;div class="tabs__item"&gt;:nth-last-child(1)&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+<p>こうですね。<code>.tabs__item</code>が５つの時は</p>
+
+<pre title="HTML"><code data-language="html">&lt;div class="tabs"&gt;
+  &lt;div class="tabs__item"&gt;:nth-last-child(5)&lt;/div&gt;
+  &lt;div class="tabs__item"&gt;:nth-last-child(4)&lt;/div&gt;
+  &lt;div class="tabs__item"&gt;:nth-last-child(3)&lt;/div&gt;
+  &lt;div class="tabs__item"&gt;:nth-last-child(2)&lt;/div&gt;
+  &lt;div class="tabs__item"&gt;:nth-last-child(1)&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+<p>こういうことになります。で、これに<code>:first-child</code>を重ねるとどうなるかというと、<code>:first-child</code>は子要素の数にかかわらず１番目にマッチするので</p>
+
+<pre title="HTML"><code data-language="html">&lt;div class="tabs"&gt;
+  &lt;div class="tabs__item"&gt;:nth-last-child(3)<mark>:first-child</mark>&lt;/div&gt;
+  &lt;div class="tabs__item"&gt;:nth-last-child(2)&lt;/div&gt;
+  &lt;div class="tabs__item"&gt;:nth-last-child(1)&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="tabs"&gt;
+  &lt;div class="tabs__item"&gt;:nth-last-child(5)<mark>:first-child</mark>&lt;/div&gt;
+  &lt;div class="tabs__item"&gt;:nth-last-child(4)&lt;/div&gt;
+  &lt;div class="tabs__item"&gt;:nth-last-child(3)&lt;/div&gt;
+  &lt;div class="tabs__item"&gt;:nth-last-child(2)&lt;/div&gt;
+  &lt;div class="tabs__item"&gt;:nth-last-child(1)&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+<p>ということになります。擬似クラスの組み合わせで子要素の数に応じてスタイルを切り分けることができました。</p>
+
+<p>しかし、<code>.tabs .tabs__item:first-child:nth-last-child(5)</code>と指定しただけでは<code>.tabs__item</code>が５つのときの最初の要素にしかスタイルが適応されません。そこで間接セレクタ<code>~</code>を使います。</p>
+
+<p>例えば<code>.box1 ~ .box2{...}</code>とすると、<code>.box1</code>と兄弟関係にある弟要素の<code>.box2</code>がスタイル適用対象となります。</p>
+
+<pre title="CSS"><code data-language="css">.box1 ~ .box2{
+  background: tomato;
+}</code></pre>
+
+<pre title="HTML"><code data-language="html">&lt;div class="box2"&gt;テキスート.box2&lt;/div&gt;
+&lt;div class="box1"&gt;テキスート.box1&lt;/div&gt;
+<mark>&lt;div class="box2"&gt;テキスート.box2&lt;/div&gt;</mark>
+<mark>&lt;div class="box2"&gt;テキスート.box2&lt;/div&gt;</mark>
+&lt;div class="heading"&gt;ヘッディーン.heading&lt;/div&gt;
+<mark>&lt;div class="box2"&gt;テキスート.box2&lt;/div&gt;</mark></code></pre>
+
+<p>上記のようなHTMLの場合、３行目の<code>.box2</code>からが適応対象です。１行目の<code>.box2</code>は<code>.box1</code>の兄弟関係にありますが、<code>.box1</code>より先に記述されており弟要素でないのでスタイル適応外となります。また、途中に<code>.heading</code>が挟まっていすが、そのあとに出てくる<code>.box2</code>は先の<code>.box1</code>の弟要素なのでスタイルは適応されます。<a href="http://codepen.io/anon/pen/FHbGe">CodePen</a>にデモを置いたので参考にどうぞ。</p>
+
+<h2>間接セレクタで間にある兄弟要素をカバーしたら勝ったも同然</h2>
+
+<p><code>.tabs</code>のHTMLに戻りましょう。</p>
+
+<pre title="CSS"><code data-language="css">.tabs .tabs__item:first-child:nth-last-child(5) ~ .tabs__item</code></pre>
+
+<p>これを見ると、最後から５番目かつ最初の<code>.tabs__item</code>の兄弟要素な<code>.tabs__item</code>となります。これだと<code>.tabs__item:first-child</code>にはスタイルが適応されないので、<code>.tabs__item:first-child:nth-last-child(5)</code>をグルーピングして同じルールセットを適用させます。</p>
+
+<pre title="CSS"><code data-language="css">.tabs .tabs__item:first-child:nth-last-child(5),
+.tabs .tabs__item:first-child:nth-last-child(5) ~ .tabs__item{...}</code></pre>
+
+<p>というわけです。<code>:nth-last-child(n)</code>の値を変えれば内包要素が何個になっても対応できます。便利ですね！</p>
+
+<p>で、<code>:nth-last-child(n)</code>と<code>~</code>に対応しているブラウザは</p>
+
+<ul>
+<li>Internet Explorer 9+</li>
+<li>Firefox 4+</li>
+<li>Google Chrome 9+</li>
+<li>Safari 5+</li>
+<li>Opera 10+</li>
+</ul>
+
+<p>モダンブラウザなら戦えそうですね！</p>
+
+<hr />
+
+<p>今気づいたんですけど、CSS Property Advent CalendarなのにCSSセレクタのことを書いてしまいました。まぁいいかな？と思ってAdvent Calendarを改めて見てみると......。</p>
+
+<blockquote>
+  <p>CSSのプロパティに関することだったら何でもOKです！
+  <footer><cite><a href="http://www.adventar.org/calendars/57">CSS Property Advent Calendar 2013 - Adventar</a></cite>から</footer></p>
+</blockquote>
+
+<p>セレクタ、ダメです！</p>
+
+<p>５日目は<a href="http://www.adventar.org/users/2313">maechabin</a>さんです。よろしくお願いします。</p>
+
+      </div>
+
+      <aside class="social-buttons">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%E5%86%85%E5%8C%85%E8%A6%81%E7%B4%A0%E3%81%AE%E6%95%B0%E3%81%8C%E5%A4%89%E5%8B%95%E3%81%97%E3%81%A6%E3%82%82%E5%83%95%E3%81%AB%E3%81%AF%E6%93%AC%E4%BC%BC%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%A8%E9%96%93%E6%8E%A5%E3%82%BB%E3%83%AC%E3%82%AF%E3%82%BF%E3%81%8C%E3%81%82%E3%82%8B&url=http%3A%2F%2Fdskd.jp%2Farchives%2F37.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F37.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F37.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=%E5%86%85%E5%8C%85%E8%A6%81%E7%B4%A0%E3%81%AE%E6%95%B0%E3%81%8C%E5%A4%89%E5%8B%95%E3%81%97%E3%81%A6%E3%82%82%E5%83%95%E3%81%AB%E3%81%AF%E6%93%AC%E4%BC%BC%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%A8%E9%96%93%E6%8E%A5%E3%82%BB%E3%83%AC%E3%82%AF%E3%82%BF%E3%81%8C%E3%81%82%E3%82%8B&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F37.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/38.html">ブログを初めてBEM化した時の流れの続き</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/36.html">ブログを初めてBEM化した時の流れ</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

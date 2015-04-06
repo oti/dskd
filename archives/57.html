@@ -4,98 +4,97 @@
   <meta charset="UTF-8">
   <meta content="width=device-width" name="viewport">
 
-  <title>dskd</title>
+  <title>EDJOなオブジェクトの妄想 - dskd</title>
 
-  <link href="http://dskd.jp/" rel="canonical">
-  <link href="apple-touch-icon.png" rel="apple-touch-icon-precomposed">
-  <link href="/feed" rel="alternate" type="application/atom+xml">
+  <meta content="ながしまさんのEvery Declaration Just Onceアプローチについてのエントリー２つ（Every Declaration Just Onceの例とOOCSSの欠点とEvery Dec" name="description">
+  <meta content="Movable Type 6.1" name="generator">
 
-  <link href="/dist/css/style.css" media="only screen" rel="stylesheet">
+  <meta content="EDJOなオブジェクトの妄想" property="og:title">
+  <meta content="ながしまさんのEvery Declaration Just Onceアプローチについてのエントリー２つ（Every Declaration Just Onceの例とOOCSSの欠点とEvery Dec" property="og:description">
+  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/57.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/57.html" rel="canonical">
+  <!--#include virtual="/head-linkrel.html" -->
 </head>
 <body>
   <header class="global-header">
     <nav class="site-navigation">
       <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
-
       <ul class="headlinks">
         <li><a href="/archives/">Archive</a></li>
-        <li><a href="/archives/demo/">Demo</a></li>
-        <li><a href="/archives/about.html">About</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
       </ul>
     </nav>
-
   </header>
 
   <div class="content">
     <article class="entry">
       <footer class="entry-footer">
-        <time datetime="2015-01-24T12:18:00+09:00">2015.01.24</time>
-        <p><span class="tag">CSS</span></p>
+        <time datetime="2015-01-24T12:18:20+09:00">2015.01.24</time>
+        <p><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a></p>
       </footer>
 
       <h1 class="entry-title">EDJOなオブジェクトの妄想</h1>
-
       <div class="entry-body">
         <p>ながしまさんのEvery Declaration Just Onceアプローチについてのエントリー２つ（<a href="http://hail2u.net/blog/webdesign/every-declaration-just-once-example.html">Every Declaration Just Onceの例</a>と<a href="http://hail2u.net/blog/webdesign/oocss-drawbacks-and-gifts-of-every-declaration-just-once.html">OOCSSの欠点とEvery Declaration Just Onceのもたらすもの</a>）を興味深く読んだ。</p>
 
         <p>僕もかねてから、CSSプリプロセッサーはCSSを複雑にするだけして何も楽にならないのではないかと思っていた。変数やmixinは出力されるスタイル宣言郡を型のようなものに設定づけ、再利用が可能な便利なものにしてくれる。しかし書式の限られたスタイル宣言郡を使い回すのは柔軟と言えるだろうか。</p>
 
-        <p><a href="http://dskd.jp/archives/54.html">僕がかつて見殺しにしたCSS</a>は、無限に続く断続的な変更になんとかついていこうとした結果死んだ。現実のCSSのメンテはそういった型の中では収まらないレベルの変更ばかりだと思っている。少しでも違うスタイルが発生したらincludeした宣言ブロック内でmixinに入っているスタイルを上書きするのは賢くないし、かと言ってその都度新しいコンポーネントやそれをmixin化したものを作るのは、既存のパーツを壊さないにしても、メンテナンス性があるとはお世辞にも言えない。それをしていくと出来上がるのは「創業以来継ぎ足してきた秘伝のCSS」であり、次世代への負債でしかない。それをリファクタリングしていく時間がとれるならナシではないのだけど。</p>
+<p><a href="http://dskd.jp/archives/54.html">僕がかつて見殺しにしたCSS</a>は、無限に続く断続的な変更になんとかついていこうとした結果死んだ。現実のCSSのメンテはそういった型の中では収まらないレベルの変更ばかりだと思っている。少しでも違うスタイルが発生したらincludeした宣言ブロック内でmixinに入っているスタイルを上書きするのは賢くないし、かと言ってその都度新しいコンポーネントやそれをmixin化したものを作るのは、既存のパーツを壊さないにしても、メンテナンス性があるとはお世辞にも言えない。それをしていくと出来上がるのは「創業以来継ぎ足してきた秘伝のCSS」であり、次世代への負債でしかない。それをリファクタリングしていく時間がとれるならナシではないのだけど。</p>
 
-        <p>そもそもの宣言ブロックの粒度が小さければそういった問題も起こりにくい。その極限をEvery Declaration Just Onceアプローチという手法が示してくれた。おそらくこういう書き方を素でやっていた人はいるだろう。それに名前がついただけかもしれない。CSS設計に注目が集まっていた近年、回帰したとも言えるこの手法に名前がついたことは大きい。</p>
+<p>そもそもの宣言ブロックの粒度が小さければそういった問題も起こりにくい。その極限をEvery Declaration Just Onceアプローチという手法が示してくれた。おそらくこういう書き方を素でやっていた人はいるだろう。それに名前がついただけかもしれない。CSS設計に注目が集まっていた近年、回帰したとも言えるこの手法に名前がついたことは大きい。</p>
 
-        <h2>ふとした妄想</h2>
+<h2>ふとした妄想</h2>
 
-        <p>EDJOがグルーピングセレクタに対して単一のスタイル宣言が指定されるなら、書き方としては逆もできそうな気がする。例えばこんなフォーマットはどうか。</p>
+<p>EDJOがグルーピングセレクタに対して単一のスタイル宣言が指定されるなら、書き方としては逆もできそうな気がする。例えばこんなフォーマットはどうか。</p>
 
-        <code><pre data-language="javascript">margin: {
-            top: {
-                10px: [".box", ".icon", "#side", ".sideHeading"],
-                30px: [".mainHeading", ".social", "footer"]
-            },
-            bottom: {
-                10px: [".box", ".social"],
-                10px!important: [".icon"]
-            }
-        }</pre></code>
+<p><code><pre data-language="javascript">font-family: {
+  monospace: ["pre", "code", "kbd", "xmp", ".aa"],
+  sanserif: [".content"],
+  serif: [".mainHeading", "sideHeading"]
+},
+margin: {
+    top: {
+        10px: [".box", ".icon", "#side", ".sideHeading"],
+        30px: [".mainHeading", ".social", "footer"]
+    },
+    bottom: {
+        10px: [".box", ".social"],
+        10px!important: [".icon"]
+    }
+}</pre></code></p>
 
-        <p>スタイルとそのサブプロパティを子に持ち、その値に対して配列でセレクタを渡すオブジェクトのようなもの。<a href="http://morishitter.hatenablog.com/entry/2015/01/16/005343">morishitterさんが書いていたCSSプリプロセッサーのplaceholderとextendを使った手法</a>だと、それぞれのスタイル宣言をすべてplaceholderとして別書きで持って置かなければならず、SCSSファイルがかなり鬱陶しいことになるように思う。<a href="http://sassmeister.com/gist/59645863c7dbe8c23f84">ためしに少し書いてみた</a>。たとえばreset.cssがEDJOで書かれたら......（ライブラリのようなものだからその必要はないけども）。それに対して上記のようなオブジェクトであれば、必要なプロパティの値のところだけにセレクタを書き足すので記述が少なくて済む。仮にEDJOスタイルのCSSコンパイラーが出現するなら、こういうのもありなんではないだろうか。</p>
+<p>プロパティがキーで、値に配列でセレクタが入っているオブジェクトのようなもの。サブプロパティを持つ場合は入れ子になる。<a href="http://morishitter.hatenablog.com/entry/2015/01/16/005343">morishitterさんが書いていたCSSプリプロセッサーのplaceholderとextendを使った手法</a>だと、それぞれのスタイル宣言をすべてplaceholderとして別書きで持って置かなければならず、SCSSファイルがかなり鬱陶しいことになるように思う。<a href="http://sassmeister.com/gist/59645863c7dbe8c23f84">ためしに少し書いてみた</a>。たとえばreset.cssがEDJOで書かれたら、ちょっと見ていられない感じになる。あれはライブラリのようなものだからEDJOに置き換える必要はないけど。それに対して上記のようなオブジェクトであれば、必要なプロパティの値のところだけにセレクタを書き足すので記述が少なくて済む。仮にEDJOスタイルのCSSコンパイラーが出現するなら、こういうのもありなんではないだろうか。</p>
 
-        <p>まぁ、現実そんなものはないし、オブジェクト形式だと変数とかfor文とかどうすんだってなるし、別途処理を書いていくともうJavaScriptでオブジェクトを手捏ねしているのと変わらない。あまりCSSライクな書き方ではないので見た目の気持ち悪さもすごそう。<a href="http://dskd.jp/archives/23.html">妄想を書き留めておきたくなるのが数年ごとにある</a>ようなので、今回もそんな感じでイーカゲンに聞き流してくれると嬉しい。</p>
+<p>まぁ、現実そんなものはないし、オブジェクト形式だと変数とかfor文とかどうすんだってなるし、別途処理を書いていくともうJavaScriptでオブジェクトを手捏ねしているのと変わらない。あまりCSSライクな書き方ではないので見た目の気持ち悪さもすごそう。<a href="http://dskd.jp/archives/23.html">妄想を書き留めておきたくなるのが数年ごとにある</a>ようなので、今回もそんな感じでイーカゲンに聞き流してくれると嬉しい。</p>
 
-        <hr>
-
-        <p>あけましておめでとうございます。</p>
       </div>
 
       <aside class="social-buttons">
         <ul>
-          <li class="twitter-tweet"><a href="">Tweet</a></li>
-          <li class="facebook-share"><a href="">Share</a></li>
-          <li class="googleplus-share"><a href="">Share</a></li>
-          <li class="hatena-bookmark"><a href="">Bookmark</a></li>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=EDJO%E3%81%AA%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E5%A6%84%E6%83%B3&url=http%3A%2F%2Fdskd.jp%2Farchives%2F57.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F57.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F57.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=EDJO%E3%81%AA%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E5%A6%84%E6%83%B3&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F57.html">Bookmark on Hatena</a></li>
         </ul>
       </aside>
     </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/58.html">Google Chrome 40でreversed属性のついたol要素のカウンターがおかしい</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/56.html">UE BOOMを買った</a></li>
+      </ul>
+    </nav>
   </div>
 
-  <nav class="neighbor">
-    <ul class="neighborlinks">
-      <li class="newer"><a href="">Google Chrome 40でreversed属性のついたol要素のカウンターがおかしい</a></li>
-      <li class="older"><a href="">UE BOOMを買った</a></li>
-    </ul>
-  </nav>
-
-  <footer class="global-footer">
-    <section class="author">
-      <p class="author-credit">Made by oti.</p>
-      <address class="author-address"><a href="mailto:otiext@gmail.com">otiext@gmail.com</a></address>
-    </section>
-
-    <ul class="footlinks">
-      <li><a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC</a></li>
-      <li><a href="/feed" rel="alternate" type="application/rss+xml">RSS</a></li>
-    </ul>
-  </footer>
+  <!--#include virtual="/global-footer.html" -->
 </body>
 </html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>人には難しい気がする機械の真偽 - dskd</title>
+
+  <meta content="自分が良く書くJavaScriptでは、ある値があるかないかを簡素なif文にして処理を切り分けることがある。結論は型までちゃんと評価しろという話なのだけど、何度もハマってしまうから記事に残しておくこと" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+
+  <meta content="人には難しい気がする機械の真偽" property="og:title">
+  <meta content="自分が良く書くJavaScriptでは、ある値があるかないかを簡素なif文にして処理を切り分けることがある。結論は型までちゃんと評価しろという話なのだけど、何度もハマってしまうから記事に残しておくこと" property="og:description">
+  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/45.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/45.html" rel="canonical">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header">
+    <nav class="site-navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry">
+      <footer class="entry-footer">
+        <time datetime="2014-05-24T13:51:12+09:00">2014.05.24</time>
+        <p><a href="http://dskd.jp/archives/c19.html" class="tag">JS</a></p>
+      </footer>
+
+      <h1 class="entry-title">人には難しい気がする機械の真偽</h1>
+      <div class="entry-body">
+        <p>自分が良く書くJavaScriptでは、ある値があるかないかを簡素なif文にして処理を切り分けることがある。結論は型までちゃんと評価しろという話なのだけど、何度もハマってしまうから記事に残しておくことにする。タイトルは覚えられていなかった言い訳。</p>
+
+        <p>極端にいうと、だいたいこんな感じのJavaScriptとなる。</p>
+
+<pre title="JavaScript"><code data-language="javascripte">var n = 0;
+
+function func(){
+    // hoge を huga したりする
+};
+
+if(n){
+    func(); // 実行されない
+}
+</code></pre>
+
+<p><code>n</code>、あるじゃないか！ <code>n = 0</code>じゃないか！なんでや！って思って夜中にハマって泣く泣く寝るに至ったけど、<code>else</code>を書いたらそっちが通ったので数値の0はJavaScriptでは偽扱いになるのだということをまた忘れていたことを今朝嘆いた。</p>
+
+<p>この真偽について何度もハマったと冒頭に書いたとおりなので、自分で一覧にしておくことにした。</p>
+
+<table>
+  <tr>
+    <th scope="col">値</th>
+    <th scope="col">true</th>
+    <th scope="col">false</th>
+    <th scope="col">整数の0</th>
+    <th scope="col">整数の1</th>
+    <th scope="col">少数の0.0</th>
+    <th scope="col">文字列の0</th>
+    <th scope="col">空文字</th>
+    <th scope="col">空配列</th>
+    <th scope="col">空オブジェクト</th>
+    <th scope="col">null</th>
+    <th scope="col">undefined</th>
+    <th scope="col">NaN</th>
+  </tr>
+  <tr>
+    <th scope="row">真偽</th>
+    <td>真</td>
+    <td>偽</td>
+    <td>偽</td>
+    <td>真</td>
+    <td>偽</td>
+    <td>真</td>
+    <td>偽</td>
+    <td>真</td>
+    <td>真</td>
+    <td>偽</td>
+    <td>偽</td>
+    <td>偽</td>
+  </tr>
+</table>
+
+<p>表が見づらい。</p>
+
+<p>JSFiddleで確認できるようにもしてみた。Resultのタブから各値のボタンをクリックすると真偽が出るようにしている。検証コード側はあまりスマートではない。正常にテストできているかもちょっとわからない。</p>
+
+<iframe width="100%" height="400" src="http://jsfiddle.net/s43Qk/embedded/result,js/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>これでハマった時は自分のブログを見れば良くなった。自分が楽になることはどんどんやっていきたい。</p>
+
+<hr />
+
+<p>JavaScriptに限らず、どの値で真か偽かは他言語でもそれぞれ決まりがあり、言語間でそれほどご互換性があるようには見えない。その差異は設計思想の差異と言うことでこのブログでは議論をしないが、こういった真偽の扱いについては誰しもが一度はハマり、憤りを覚え、目を濁らせて、やがて鋼の心を手に入れるのだ、いわばそのためのダンジョンなのだと、前職のJSerが言っていたのを思い出した。レベルが上ってからも行けるダンジョンは楽しい。</p>
+
+      </div>
+
+      <aside class="social-buttons">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%E4%BA%BA%E3%81%AB%E3%81%AF%E9%9B%A3%E3%81%97%E3%81%84%E6%B0%97%E3%81%8C%E3%81%99%E3%82%8B%E6%A9%9F%E6%A2%B0%E3%81%AE%E7%9C%9F%E5%81%BD&url=http%3A%2F%2Fdskd.jp%2Farchives%2F45.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F45.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F45.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=%E4%BA%BA%E3%81%AB%E3%81%AF%E9%9B%A3%E3%81%97%E3%81%84%E6%B0%97%E3%81%8C%E3%81%99%E3%82%8B%E6%A9%9F%E6%A2%B0%E3%81%AE%E7%9C%9F%E5%81%BD&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F45.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/46.html">git filter-branchで過去の全てのcommitから画像ファイルの追加/変更をなかったことにしてリポジトリを軽量化する</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/44.html">Autoprefixerの@keyframes animation の処理に違和感があったけど、僕が間違っていた</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

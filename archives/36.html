@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>ブログを初めてBEM化した時の流れ - dskd</title>
+
+  <meta content="BEM Advent Calendar 2013 ４日目のエントリです。前回の記事があまりBEMれてないというBEM神の声を聞いたので、当ブログをBEM化した時の流れを書いていきます。
+" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+
+  <meta content="ブログを初めてBEM化した時の流れ" property="og:title">
+  <meta content="BEM Advent Calendar 2013 ４日目のエントリです。前回の記事があまりBEMれてないというBEM神の声を聞いたので、当ブログをBEM化した時の流れを書いていきます。
+" property="og:description">
+  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/36.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/36.html" rel="canonical">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header">
+    <nav class="site-navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry">
+      <footer class="entry-footer">
+        <time datetime="2013-12-04T09:54:00+09:00">2013.12.04</time>
+        <p><a href="http://dskd.jp/archives/c17.html" class="tag">Advent Calendar</a>, <a href="http://dskd.jp/archives/c18.html" class="tag">BEM</a>, <a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a>, <a href="http://dskd.jp/archives/c13.html" class="tag">HTML</a></p>
+      </footer>
+
+      <h1 class="entry-title">ブログを初めてBEM化した時の流れ</h1>
+      <div class="entry-body">
+        <p><a href="http://www.adventar.org/calendars/61">BEM Advent Calendar 2013</a> ４日目のエントリです。前回の記事があまりBEMれてないというBEM神の声を聞いたので、当ブログをBEM化した時の流れを書いていきます。</p>
+
+        <p>まずはデザインを決めないとねということで、シングルカラムを継承しつつ、以前より色を明るくしてコントラストも抑えてみました。カラースキームなどは深く考えていないので<code>:visited</code>にピンク系とか<code>:hover</code>に黄緑とか唐突に出てきます。センスなくてつらい。</p>
+
+<h2>Blockを決める</h2>
+
+<p>デザインを決めたあと、まずBEMにおけるBlockとなるエリアを考えます。</p>
+
+<ul>
+<li>ヘッダー</li>
+<li>記事リスト</li>
+<li>ページャー</li>
+<li>アーカイブス</li>
+<li>カテゴリー</li>
+<li>オーサー</li>
+<li>コピーライト</li>
+</ul>
+
+<p>デザインはシングルカラムのスタック構造なのでここは簡単でした。dskd.jpは検索フォームやメニューなんていう便利なものはないです。一般的なサイトですと、</p>
+
+<ul>
+<li>検索フォーム</li>
+<li>メニュー</li>
+<li>サブメニュー</li>
+<li>左カラム</li>
+<li>右ラム</li>
+<li>ソーシャルツール</li>
+<li>レコメンド</li>
+<li>ランキング</li>
+<li>フィードバック</li>
+<li>広告</li>
+<li>フッター</li>
+</ul>
+
+<p>などいろいろなBlockが考えられます。いずれにしてもトップレベルBlockを作るだけならさほど難しくありません。この時点では「BEM余裕じゃね？」て思っていたのですがそんなに甘くはありませんでした。</p>
+
+<h2>Elementを決める</h2>
+
+<p>Blockの次はElementです。</p>
+
+<ul>
+<li>ヘッダー
+<ul>
+<li>ロゴ</li>
+</ul></li>
+<li>記事リスト
+<ul>
+<li>記事
+<ul>
+<li>タイトル</li>
+<li>日付</li>
+<li>カテゴリ</li>
+</ul></li>
+</ul></li>
+<li>ページャー
+<ul>
+<li>ラベル</li>
+<li>ページリスト</li>
+<li>ページリンク</li>
+</ul></li>
+<li>カテゴリー
+<ul>
+<li>ラベル</li>
+<li>カテゴリーリスト
+<ul>
+<li>カテゴリーリンク</li>
+</ul></li>
+</ul></li>
+<li>オーサー
+<ul>
+<li>ラベル</li>
+<li>名前</li>
+<li>メアド</li>
+<li>アカウントリスト
+<ul>
+<li>アカウントリンク</li>
+</ul></li>
+</ul></li>
+<li>コピーライト
+<ul>
+<li>ラベル</li>
+<li>記載</li>
+</ul></li>
+</ul>
+
+<p>普通ですね。一旦、クラス名を考えて行きます。</p>
+
+<ul>
+<li>ヘッダー：<code>header</code>
+<ul>
+<li>ロゴ：<code>header__logo</code></li>
+</ul></li>
+<li>記事リスト：<code>article</code>
+<ul>
+<li>記事：<code>article__item</code>
+<ul>
+<li>タイトル：<code>article__item__title</code></li>
+<li>日付：<code>article__item__pubtime</code></li>
+<li>カテゴリ：<code>article__item__category</code></li>
+</ul></li>
+</ul></li>
+<li>ページャー：<code>pager</code>
+<ul>
+<li>ラベル：<code>pager__head</code></li>
+<li>ページリスト：<code>pager__list</code>
+<ul>
+<li>ページリンク：<code>pager__list__item</code></li>
+</ul></li>
+</ul></li>
+<li>カテゴリー：<code>category</code>
+<ul>
+<li>ラベル：<code>category__head</code></li>
+<li>カテゴリーリスト：<code>category__list</code>
+<ul>
+<li>カテゴリーリンク：<code>category__list__item</code></li>
+</ul></li>
+</ul></li>
+<li>オーサー：<code>author</code>
+<ul>
+<li>ラベル：<code>author__head</code></li>
+<li>名前：<code>author__name</code></li>
+<li>メアド：<code>author__mail</code></li>
+<li>アカウントリスト：<code>author__account</code>
+<ul>
+<li>アカウントリンク：<code>author__account__item</code></li>
+</ul></li>
+</ul></li>
+<li>コピーライト：<code>credit</code>
+<ul>
+<li>ラベル：<code>credit__head</code></li>
+<li>記載：<code>credit__item</code></li>
+</ul></li>
+</ul>
+
+<p>とりあえずクラスを振り終えたましたが、階層を２つ潜った時に Block<strong>Element</strong>Element となっているのがムズムズします。しかし歯ぎしりするにはまだ早い。次はマークアップへ移りましょう。</p>
+
+<h2>とりあえずマークアップでデザインを完成させる。</h2>
+
+<p>デザインを反映させて<code>&lt;body&gt;</code>内を<a href="http://dskd.jp/dist/misc/getting-start-bem/planemarkup.txt">クラスなしでマークアップしたものはこちら</a>です。</p>
+
+<p>前述で準備しておいたElementとは構造がかなり違いますね。デザインの制約もあるので当たり前ですね。コンテンツ構造だけではBEMれないのがBEMの歯ぎしりポイントでもあります。特に記事リストではセマンティック要素を多用しているせいもあり、カテゴリーリンクは６階層も潜ってしまっています。</p>
+
+<p>記事リストBlockを抜粋してみます。</p>
+
+<pre><code data-language="html">&lt;div&gt;
+  &lt;article&gt;
+    &lt;header&gt;
+      &lt;h2&gt;記事見出し&lt;/a&gt;&lt;/h2&gt;
+    &lt;/header&gt;
+    &lt;footer&gt;
+      &lt;time&gt;0000/00/00&lt;br&gt;00:00&lt;/time&gt;
+      &lt;dl&gt;
+        &lt;dt&gt;category :&lt;/dt&gt;
+        &lt;dd&gt;
+          &lt;a href=""&gt;cate name&lt;/a&gt;, &lt;a href=""&gt;cate name&lt;/a&gt;
+        &lt;/dd&gt;
+      &lt;/dl&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  :
+  :
+&lt;/div&gt;</code></pre>
+
+<p>これら全てをBEMツリーで説明できるようにしようと考えると、発狂しそうになりますね。</p>
+
+<p>いろいろ考えた結果、こうしました。</p>
+
+<pre><code data-language="html">&lt;div class="article"&gt;
+  &lt;article class="article__item"&gt;
+    &lt;header class="article-header"&gt;
+      &lt;h2 class="article-header__item"&gt;記事見出し&lt;/a&gt;&lt;/h2&gt;
+    &lt;/header&gt;
+    &lt;footer class="article-footer"&gt;
+      &lt;time class="article-footer__pubtime"&gt;0000/00/00&lt;br&gt;00:00&lt;/time&gt;
+      &lt;dl class="article-footer__categories"&gt;
+        &lt;dt class="article-footer__categories-title"&gt;category :&lt;/dt&gt;
+        &lt;dd class="article-footer__categories-item"&gt;
+          &lt;a href=""&gt;cate name&lt;/a&gt;, &lt;a href=""&gt;cate name&lt;/a&gt;
+        &lt;/dd&gt;
+      &lt;/dl&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  :
+  :
+&lt;/div&gt;</code></pre>
+
+<p><code>&amp;lt;header&amp;gt;</code>と<code>&amp;lt;footer&amp;gt;</code>を<code>.article-header</code>,<code>.article-footer</code>としました。Block<strong>Element</strong>Elementをやめ、Block > Block__ElementのようにElementの上は必ず Block とするようにしました。</p>
+
+<p>このようなルールを適応してもいいのか、少し疑問が残っています。というのも、<code>.article-header__item</code>だけ抜き出した時、<code>.article-header</code>という親要素と子要素である<code>__item</code>があることは説明できますが、<code>.article-header</code>の親に<code>.article</code>があるかどうかは説明できないように思うからです。しかし、<code>.article</code>内のBlockは<code>.article-</code>だよという接頭句を作ったと見れば、少なくともそのマークアップ構造が守られている間はBEM道を歩いていると言えるのではないでしょうか。試しにクラス名だけ抜き出してみます。</p>
+
+<pre><code data-language="css">.article
+.article__item
+.article-header
+.article-header__item
+.article-footer
+.article-footer__pubtime
+.article-footer__categories
+.article-footer__categories-title
+.article-footer__categories-item</code></pre>
+
+<p>そんなに悪い感じはしないように思います。長くなってしまったので続きは明後日に！</p>
+
+<hr />
+
+<p>５日目は<a href="http://www.adventar.org/users/2">げこたん</a>さん（２日ぶり２度目）です。よろしくお願いします。</p>
+
+      </div>
+
+      <aside class="social-buttons">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E5%88%9D%E3%82%81%E3%81%A6BEM%E5%8C%96%E3%81%97%E3%81%9F%E6%99%82%E3%81%AE%E6%B5%81%E3%82%8C&url=http%3A%2F%2Fdskd.jp%2Farchives%2F36.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F36.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F36.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E5%88%9D%E3%82%81%E3%81%A6BEM%E5%8C%96%E3%81%97%E3%81%9F%E6%99%82%E3%81%AE%E6%B5%81%E3%82%8C&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F36.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/37.html">内包要素の数が変動しても僕には擬似クラスと間接セレクタがある</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/35.html">もっと広まって欲しいCSS</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

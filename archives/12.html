@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>絶対中央配置のCSSの続き - dskd</title>
+
+  <meta content="前記事のデモのおまけ１で、サイズ指定をしないインライン要素の絶対中央配置で、四辺の値を%指定にすると、ブラウザによって縦方向の位置取りが違うことに気づいたので、せっかくなのでもうちょっと検証してみた。" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+
+  <meta content="絶対中央配置のCSSの続き" property="og:title">
+  <meta content="前記事のデモのおまけ１で、サイズ指定をしないインライン要素の絶対中央配置で、四辺の値を%指定にすると、ブラウザによって縦方向の位置取りが違うことに気づいたので、せっかくなのでもうちょっと検証してみた。" property="og:description">
+  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/12.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/12.html" rel="canonical">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header">
+    <nav class="site-navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry">
+      <footer class="entry-footer">
+        <time datetime="2012-05-02T16:06:00+09:00">2012.05.02</time>
+        <p><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a></p>
+      </footer>
+
+      <h1 class="entry-title">絶対中央配置のCSSの続き</h1>
+      <div class="entry-body">
+        <p><a href="http://dskd.jp/archives/11.html">前記事</a>の<a href="http://dskd.jp/demo/10.html#omk1">デモのおまけ１</a>で、サイズ指定をしないインライン要素の絶対中央配置で、四辺の値を%指定にすると、ブラウザによって縦方向の位置取りが違うことに気づいたので、せっかくなのでもうちょっと検証してみた。</p>
+
+        <h2>インライン要素の絶対中央配置</h2>
+
+<pre title="HTML"><code data-language="html">&lt;div class="wrap2"&gt;
+  &lt;span class="target2"&gt;インライン要素&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+
+<pre title="CSS"><code data-language="css">.wrap2 {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.target2 {
+  margin: <mark>-25%</mark>;
+  position: absolute;
+  top: <mark>50%</mark>;
+  bottom: <mark>50%</mark>;
+  left: <mark>50%</mark>;
+  right: <mark>50%</mark>;
+}</code></pre>
+
+<p>span.target2はサイズが固定されていないインライン要素だ。インライン要素でも<code>position:absolute; top:0; bottom:0; left:0; right 0; margin:auto;</code>を指定すると、親要素いっぱいに要素が拡張されてビタビタになるのは前回のデモの通り。で、四辺からの距離を<code>50%</code>とし、その半分の値（25%）を ネガティブマージンで指定すると、たぶん中央になるんじゃないの、と思ってやったのが前回デモのおまけ１の上記スニペット。</p>
+
+<h2>ブラウザ別のスクリーンショット</h2>
+
+<p><a href="http://dskd.jp/dist/img/inline-element-with-pointer-events-none/chrome_thin.png"><img src="http://dskd.jp/dist/img/inline-element-with-pointer-events-none/chrome_thin.png" alt="Chromeで幅狭い時" title="Google Chrome 18、ブラウザ幅を狭くした場合" /></a></p>
+
+<p><a href="http://dskd.jp/dist/img/inline-element-with-pointer-events-none/chrome_wide.png"><img src="http://dskd.jp/dist/img/inline-element-with-pointer-events-none/chrome_wide.png" alt="Chromeで幅広い時" title="Google Chrome 18、ブラウザ幅を広くした場合" /></a></p>
+
+<p>Google Chromeでは縦方向の位置取りはイメージ通りになっています。.wrap2の上辺と下辺からの距離とspan.target2の高さが<em>25%-50%-25%</em>になっている。</p>
+
+<p>ところが、Chrome以外のブラウザだと幅が広い時に上下方向の位置取りがおかしくなる。</p>
+
+<p><a href="http://dskd.jp/dist/img/inline-element-with-pointer-events-none/ff_thin.png"><img src="http://dskd.jp/dist/img/inline-element-with-pointer-events-none/ff_thin.png" alt="Firefoxで幅狭い時" title="Firefox 12、ブラウザ幅を狭くした場合" /></a></p>
+
+<p><a href="http://dskd.jp/dist/img/inline-element-with-pointer-events-none/ff_wide.png"><img src="http://dskd.jp/dist/img/inline-element-with-pointer-events-none/ff_wide.png" alt="Firefoxで幅広い時" title="Firefox 12、ブラウザ幅を広くした場合" /></a></p>
+
+<p><a href="http://dskd.jp/dist/img/inline-element-with-pointer-events-none/opera_thin.png"><img src="http://dskd.jp/dist/img/inline-element-with-pointer-events-none/opera_thin.png" alt="Operaで幅狭い時" title="Opera 11.62、ブラウザ幅を狭くした場合" /></a></p>
+
+<p><a href="http://dskd.jp/dist/img/inline-element-with-pointer-events-none/opera_wide.png"><img src="http://dskd.jp/dist/img/inline-element-with-pointer-events-none/opera_wide.png" alt="Operaで幅広い時" title="Opera 11.62、ブラウザ幅を広くした場合" /></a></p>
+
+<p><a href="http://dskd.jp/dist/img/inline-element-with-pointer-events-none/ie9_thin.png"><img src="http://dskd.jp/dist/img/inline-element-with-pointer-events-none/ie9_thin.png" alt="IE9で幅狭い時" title="Internet Explorer 9、ブラウザ幅を狭くした場合" /></a></p>
+
+<p><a href="http://dskd.jp/dist/img/inline-element-with-pointer-events-none/ie9_wide.png"><img src="http://dskd.jp/dist/img/inline-element-with-pointer-events-none/ie9_wide.png" alt="IE9で幅広い時" title="Internet Explorer 9、ブラウザ幅を広くした場合" /></a></p>
+
+<p>見ての通り、Firefox, Opera, IE9ではブラウザの表示幅が広いと上下方向にもボックスが拡張してしまう。幅が狭い状態から少しずつウィンドウを広げていくと、span.target2は正方形を保って拡縮されるのがわかる。この正方形のレンダリングは何に由来しているだろう？（対応ブラウザでのみ確認）</p>
+
+<h2>よくわかんないんですけど</h2>
+
+<p>個人的にはChromeのレンダリングが自然だと感じる。Chrome以外が同じ表示なので、どっちが仕様にそっているのかよくわからない。とりあえずはサイズを明示しないならインライン要素をこの方法で絶対中央配置にするのはやめたほうがよさそうだ。そもそもインライン要素を絶対中央配置したいニーズがあるのか疑問ではある。</p>
+
+      </div>
+
+      <aside class="social-buttons">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%E7%B5%B6%E5%AF%BE%E4%B8%AD%E5%A4%AE%E9%85%8D%E7%BD%AE%E3%81%AECSS%E3%81%AE%E7%B6%9A%E3%81%8D&url=http%3A%2F%2Fdskd.jp%2Farchives%2F12.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F12.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F12.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=%E7%B5%B6%E5%AF%BE%E4%B8%AD%E5%A4%AE%E9%85%8D%E7%BD%AE%E3%81%AECSS%E3%81%AE%E7%B6%9A%E3%81%8D&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F12.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        <li class="newer"><a href="http://dskd.jp/archives/13.html">GW</a></li>
+        <li class="older"><a href="http://dskd.jp/archives/11.html">絶対中央配置のCSS</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>画像パターン別の一覧 - dskd</title>
+
+  <meta content="background-size: 100% auto;の代替
+
+
+
+
+    
+
+
+
+    
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+
+background-size: auto 100%の代替;" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+
+  <meta content="画像パターン別の一覧" property="og:title">
+  <meta content="background-size: 100% auto;の代替
+
+
+
+
+    
+
+
+
+    
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+
+background-size: auto 100%の代替;" property="og:description">
+  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/demo/62.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/demo/62.html" rel="canonical">
+  <link href="http://dskd.jp/demo/62.html" itemprop="url">
+  <link href="/apple-touch-icon.png" rel="apple-touch-icon-precomposed">
+  <style>
+.wrap{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.wrap img{
+    position: absolute;
+    margin: auto;
+}
+
+.type1 img{
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.type2 img{
+    top: -100%;
+    right: -100%;
+    bottom: -100%;
+    left: -100%;
+}
+
+.bgs_100auto img{
+    width: 100%;
+}
+
+.bgs_auto100 img{
+    height: 100%;
+}
+
+.bgs_contain img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.bgs_cover img{
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* for Debug */
+.wrap{
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.type1{
+    border: 2px solid crimson;
+}
+
+.type2{
+    border: 2px solid navy;
+}
+
+.type1:after{
+    content: 'TRBL: 0';
+}
+
+.type2:after{
+    content: 'TRBL: -100%';
+}
+
+.type1:after,
+.type2:after{
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    text-shadow:
+        -1px -1px 0 #000,
+        -1px 1px 0 #000,
+        -1px 0 0 #000,
+        1px -1px 0 #000,
+        1px 1px 0 #000,
+        1px 0 0 #000,
+        0 -1px 0 #000,
+        0 1px 0 #000;
+    -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=-1, OffY=-1, Color=#000000)progid:DXImageTransform.Microsoft.dropshadow(OffX=-1, OffY=1, Color=#000000)progid:DXImageTransform.Microsoft.dropshadow(OffX=-1, OffY=0, Color=#000000)progid:DXImageTransform.Microsoft.dropshadow(OffX=1, OffY=-1, Color=#000000)progid:DXImageTransform.Microsoft.dropshadow(OffX=1, OffY=1, Color=#000000)progid:DXImageTransform.Microsoft.dropshadow(OffX=1, OffY=0, Color=#000000)progid:DXImageTransform.Microsoft.dropshadow(OffX=0, OffY=-1, Color=#000000)progid:DXImageTransform.Microsoft.dropshadow(OffX=0, OffY=1, Color=#000000)";
+    filter: progid:DXImageTransform.Microsoft.Glow(Color=#000000,Strength=1);
+}
+</style>
+</head>
+<body>
+<footer>
+  <small>published by <a href="/">dskd</a> on <time datetime="2015-03-26T16:16:50+09:00">2015.3.26</time></small>
+</footer>
+
+<p>background-size: 100% auto;の代替</p>
+
+<img src="https://placekitten.com/g/350/450" />
+
+<div class="wrap bgs_100auto type1">
+    <img src="https://placekitten.com/g/350/450" />
+</div>
+
+<div class="wrap bgs_100auto type2">
+    <img src="https://placekitten.com/g/350/450" />
+</div>
+
+<img src="https://placekitten.com/g/450/350" />
+
+<div class="wrap bgs_100auto type1">
+    <img src="https://placekitten.com/g/450/350" />
+</div>
+
+<div class="wrap bgs_100auto type2">
+    <img src="https://placekitten.com/g/450/350" />
+</div>
+
+<hr>
+
+<p>background-size: auto 100%の代替;</p>
+
+<img src="https://placekitten.com/g/350/450" />
+
+<div class="wrap bgs_auto100 type1">
+    <img src="https://placekitten.com/g/350/450" />
+</div>
+
+<div class="wrap bgs_auto100 type2">
+    <img src="https://placekitten.com/g/350/450" />
+</div>
+
+<img src="https://placekitten.com/g/450/350" />
+
+<div class="wrap bgs_auto100 type1">
+    <img src="https://placekitten.com/g/450/350" />
+</div>
+
+<div class="wrap bgs_auto100 type2">
+    <img src="https://placekitten.com/g/450/350" />
+</div>
+
+<hr>
+
+<p>background-size: contatin;の代替</p>
+
+<img src="https://placekitten.com/g/350/450" />
+
+<div class="wrap bgs_contain type1">
+    <img src="https://placekitten.com/g/350/450" />
+</div>
+
+<div class="wrap bgs_contain type2">
+    <img src="https://placekitten.com/g/350/450" />
+</div>
+
+<img src="https://placekitten.com/g/450/350" />
+
+<div class="wrap bgs_contain type1">
+    <img src="https://placekitten.com/g/450/350" />
+</div>
+
+<div class="wrap bgs_contain type2">
+    <img src="https://placekitten.com/g/450/350" />
+</div>
+
+<hr>
+
+<p>background-size: cover;の代替</p>
+
+<img src="https://placekitten.com/g/350/450" />
+
+<div class="wrap bgs_cover type1">
+    <img src="https://placekitten.com/g/350/450" />
+</div>
+
+<div class="wrap bgs_cover type2">
+    <img src="https://placekitten.com/g/350/450" />
+</div>
+
+<img src="https://placekitten.com/g/450/350" />
+
+<div class="wrap bgs_cover type1">
+    <img src="https://placekitten.com/g/450/350" />
+</div>
+
+<div class="wrap bgs_cover type2">
+    <img src="https://placekitten.com/g/450/350" />
+</div>
+</body>
+</html>
