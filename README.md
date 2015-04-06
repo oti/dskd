@@ -1,6 +1,6 @@
 # dskd version 4
 
-dskd.js is a memorandum of simple front-end technology.
+dskd.jp is a memorandum of simple front-end technology.
 
 dskdはフロントエンドについての簡単なメモブログです。2010年12月に公開し、何回かのデザインやマークアップをアップデートを経て４バージョン目となりました。複雑さのない単純な構成ですが、誰かの参考になればと思いリポジトリを公開しています。
 
