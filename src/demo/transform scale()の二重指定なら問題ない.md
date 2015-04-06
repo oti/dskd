@@ -52,5 +52,4 @@ function removeScale(){
         width: 300px;
         border: 1px solid magenta;
     }</xmp>
-    <p><a href="http://dskd.jp/archives/50.html">記事に戻る</a></p>
 </div>
