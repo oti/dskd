@@ -9,11 +9,12 @@
   <meta content="ポストプロセッサーのAutoprefixer、大変強力で素晴らしく便利なのだけど、@keyframesの処理には違和感があった。
 " name="description">
   <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
 
   <meta content="Autoprefixerの@keyframes animation の処理に違和感があったけど、僕が間違っていた" property="og:title">
   <meta content="ポストプロセッサーのAutoprefixer、大変強力で素晴らしく便利なのだけど、@keyframesの処理には違和感があった。
 " property="og:description">
-  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
   <meta content="article" property="og:type">
   <meta content="http://dskd.jp/archives/44.html" property="og:url">
   <meta content="ja_JP" property="og:locale">
@@ -22,11 +23,12 @@
   <!--#include virtual="/head-meta-twittercard.html" -->
 
   <link href="http://dskd.jp/archives/44.html" rel="canonical">
+  <link href="http://dskd.jp/archives/44.html" itemprop="url">
   <!--#include virtual="/head-linkrel.html" -->
 </head>
 <body>
-  <header class="global-header">
-    <nav class="site-navigation">
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
       <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
       <ul class="headlinks">
         <li><a href="/archives/">Archive</a></li>
@@ -37,17 +39,20 @@
   </header>
 
   <div class="content">
-    <article class="entry">
+    <article class="entry" role="main">
       <footer class="entry-footer">
         <time datetime="2014-05-07T11:47:45+09:00">2014.05.07</time>
-        <p><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a></p>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a></p>
       </footer>
 
-      <h1 class="entry-title">Autoprefixerの@keyframes animation の処理に違和感があったけど、僕が間違っていた</h1>
-      <div class="entry-body">
-        <p>ポストプロセッサーの<a href="https://github.com/ai/autoprefixer">Autoprefixer</a>、大変強力で素晴らしく便利なのだけど、<code>@keyframes</code>の処理には違和感があった。</p>
+      <h1 class="entry-title" itemprop="name">Autoprefixerの@keyframes animation の処理に違和感があったけど、僕が間違っていた</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p>ポストプロセッサーの<a href="https://github.com/ai/autoprefixer">Autoprefixer</a>、大変強力で素晴らしく便利なのだけど、<code>@keyframes</code>の処理には違和感があった。</p>
 
-        <p>以下の様なCSSルールセットがあるとする。<code>translate</code>で要素のY座標を+300pxするだけの簡単なアニメーション。<code>animation-deday</code>, <code>animation-iteration-count</code>, <code>animation-direction</code>は規定値ということでショートハンドで省略している。</p>
+        </div>
+        <div>
+<p>以下の様なCSSルールセットがあるとする。<code>translate</code>で要素のY座標を+300pxするだけの簡単なアニメーション。<code>animation-deday</code>, <code>animation-iteration-count</code>, <code>animation-direction</code>は規定値ということでショートハンドで省略している。</p>
 
 <pre><code data-language="css">.ugoku {
   animation: ugoku 0.5s ease-in;
@@ -127,9 +132,10 @@
 
 <p>Autoprefixer賢い！ Autoprefixerｻｲｺｰ!!</p>
 
+        </div>
       </div>
 
-      <aside class="social-buttons">
+      <aside class="social-buttons" role="complementary">
         <ul>
           <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=Autoprefixer%E3%81%AE%40keyframes%20animation%20%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AB%E9%81%95%E5%92%8C%E6%84%9F%E3%81%8C%E3%81%82%E3%81%A3%E3%81%9F%E3%81%91%E3%81%A9%E3%80%81%E5%83%95%E3%81%8C%E9%96%93%E9%81%95%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F&url=http%3A%2F%2Fdskd.jp%2Farchives%2F44.html&via=dskd_jp&related=o_ti">Tweet</a></li>
           <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F44.html">Share on Facebook</a></li>

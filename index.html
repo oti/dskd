@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <meta content="width=device-width" name="viewport">
 
-  <title>dskd</title>
+  <title itemprop="name">dskd</title>
 
+  <meta content="dskd.jp is a memorandum of simple front-end technology." itemprop="description">
   <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
 
   <meta content="dskd" property="og:title">
   <meta content="dskd.jp is a memorandum of simple front-end technology." property="og:description">
-  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
   <meta content="website" property="og:type">
   <meta content="http://dskd.jp/" property="og:url">
   <meta content="ja_JP" property="og:locale">
@@ -19,11 +21,12 @@
   <!--#include virtual="/head-meta-twittercard.html" -->
 
   <link href="http://dskd.jp/" rel="canonical">
+  <link href="http://dskd.jp/" itemprop="url">
   <!--#include virtual="/head-linkrel.html" -->
 </head>
 <body>
-  <header class="global-header">
-    <nav class="site-navigation">
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
       <mark class="logo"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></mark>
       <ul class="headlinks">
         <li><a href="/archives/">Archive</a></li>
@@ -34,7 +37,7 @@
     <h1 class="blog-lede">dskd.jp is a memorandum of simple front-end technology.</h1>
   </header>
 
-  <main class="content">
+  <main class="content" role="main">
     <section class="entry-list">
       
         <a href="http://dskd.jp/archives/63.html">
@@ -95,11 +98,11 @@
 
     <!--#include virtual="/year-list.html" -->
 
-    <aside class="subscribe">
+    <aside class="subscribe" role="complementary">
       <h1 class="content-subheading">Subscribe</h1>
       <ul class="subscribe-list">
-        <li><a href="http://dskd.jp/feed">RSS</a></li>
         <li><a href="https://twitter.com/dskd_jp">Twitter</a></li>
+        <li><a href="http://dskd.jp/feed" itemprop="sameAs">RSS</a></li>
       </ul>
     </aside>
   </main>

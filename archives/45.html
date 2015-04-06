@@ -8,10 +8,11 @@
 
   <meta content="自分が良く書くJavaScriptでは、ある値があるかないかを簡素なif文にして処理を切り分けることがある。結論は型までちゃんと評価しろという話なのだけど、何度もハマってしまうから記事に残しておくこと" name="description">
   <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
 
   <meta content="人には難しい気がする機械の真偽" property="og:title">
   <meta content="自分が良く書くJavaScriptでは、ある値があるかないかを簡素なif文にして処理を切り分けることがある。結論は型までちゃんと評価しろという話なのだけど、何度もハマってしまうから記事に残しておくこと" property="og:description">
-  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
   <meta content="article" property="og:type">
   <meta content="http://dskd.jp/archives/45.html" property="og:url">
   <meta content="ja_JP" property="og:locale">
@@ -20,11 +21,12 @@
   <!--#include virtual="/head-meta-twittercard.html" -->
 
   <link href="http://dskd.jp/archives/45.html" rel="canonical">
+  <link href="http://dskd.jp/archives/45.html" itemprop="url">
   <!--#include virtual="/head-linkrel.html" -->
 </head>
 <body>
-  <header class="global-header">
-    <nav class="site-navigation">
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
       <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
       <ul class="headlinks">
         <li><a href="/archives/">Archive</a></li>
@@ -35,17 +37,20 @@
   </header>
 
   <div class="content">
-    <article class="entry">
+    <article class="entry" role="main">
       <footer class="entry-footer">
         <time datetime="2014-05-24T13:51:12+09:00">2014.05.24</time>
-        <p><a href="http://dskd.jp/archives/c19.html" class="tag">JS</a></p>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c19.html" class="tag">JS</a></p>
       </footer>
 
-      <h1 class="entry-title">人には難しい気がする機械の真偽</h1>
-      <div class="entry-body">
-        <p>自分が良く書くJavaScriptでは、ある値があるかないかを簡素なif文にして処理を切り分けることがある。結論は型までちゃんと評価しろという話なのだけど、何度もハマってしまうから記事に残しておくことにする。タイトルは覚えられていなかった言い訳。</p>
+      <h1 class="entry-title" itemprop="name">人には難しい気がする機械の真偽</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p>自分が良く書くJavaScriptでは、ある値があるかないかを簡素なif文にして処理を切り分けることがある。結論は型までちゃんと評価しろという話なのだけど、何度もハマってしまうから記事に残しておくことにする。タイトルは覚えられていなかった言い訳。</p>
 
-        <p>極端にいうと、だいたいこんな感じのJavaScriptとなる。</p>
+        </div>
+        <div>
+<p>極端にいうと、だいたいこんな感じのJavaScriptとなる。</p>
 
 <pre title="JavaScript"><code data-language="javascripte">var n = 0;
 
@@ -107,9 +112,10 @@ if(n){
 
 <p>JavaScriptに限らず、どの値で真か偽かは他言語でもそれぞれ決まりがあり、言語間でそれほどご互換性があるようには見えない。その差異は設計思想の差異と言うことでこのブログでは議論をしないが、こういった真偽の扱いについては誰しもが一度はハマり、憤りを覚え、目を濁らせて、やがて鋼の心を手に入れるのだ、いわばそのためのダンジョンなのだと、前職のJSerが言っていたのを思い出した。レベルが上ってからも行けるダンジョンは楽しい。</p>
 
+        </div>
       </div>
 
-      <aside class="social-buttons">
+      <aside class="social-buttons" role="complementary">
         <ul>
           <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%E4%BA%BA%E3%81%AB%E3%81%AF%E9%9B%A3%E3%81%97%E3%81%84%E6%B0%97%E3%81%8C%E3%81%99%E3%82%8B%E6%A9%9F%E6%A2%B0%E3%81%AE%E7%9C%9F%E5%81%BD&url=http%3A%2F%2Fdskd.jp%2Farchives%2F45.html&via=dskd_jp&related=o_ti">Tweet</a></li>
           <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F45.html">Share on Facebook</a></li>

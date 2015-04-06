@@ -8,10 +8,11 @@
 
   <meta content="ウェブページ作ってると画像を画面の中央に配置したいし、どんなサイズの画像が来ても真ん中にしたいし、どんなサイズの画面で見ても画像をはみ出させずに表示させたい欲求はよく出てくる。これってもはや人類の欲望" name="description">
   <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
 
   <meta content="画像サイズに依存しない絶対中央配置" property="og:title">
   <meta content="ウェブページ作ってると画像を画面の中央に配置したいし、どんなサイズの画像が来ても真ん中にしたいし、どんなサイズの画面で見ても画像をはみ出させずに表示させたい欲求はよく出てくる。これってもはや人類の欲望" property="og:description">
-  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
   <meta content="article" property="og:type">
   <meta content="http://dskd.jp/archives/29.html" property="og:url">
   <meta content="ja_JP" property="og:locale">
@@ -20,11 +21,12 @@
   <!--#include virtual="/head-meta-twittercard.html" -->
 
   <link href="http://dskd.jp/archives/29.html" rel="canonical">
+  <link href="http://dskd.jp/archives/29.html" itemprop="url">
   <!--#include virtual="/head-linkrel.html" -->
 </head>
 <body>
-  <header class="global-header">
-    <nav class="site-navigation">
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
       <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
       <ul class="headlinks">
         <li><a href="/archives/">Archive</a></li>
@@ -35,17 +37,20 @@
   </header>
 
   <div class="content">
-    <article class="entry">
+    <article class="entry" role="main">
       <footer class="entry-footer">
         <time datetime="2013-05-14T09:50:00+09:00">2013.05.14</time>
-        <p><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a>, <a href="http://dskd.jp/archives/c10.html" class="tag">demo</a></p>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a>, <a href="http://dskd.jp/archives/c10.html" class="tag">demo</a></p>
       </footer>
 
-      <h1 class="entry-title">画像サイズに依存しない絶対中央配置</h1>
-      <div class="entry-body">
-        <p>ウェブページ作ってると画像を画面の中央に配置したいし、どんなサイズの画像が来ても真ん中にしたいし、どんなサイズの画面で見ても画像をはみ出させずに表示させたい欲求はよく出てくる。これってもはや人類の欲望と言っても過言ではない。</p>
+      <h1 class="entry-title" itemprop="name">画像サイズに依存しない絶対中央配置</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p>ウェブページ作ってると画像を画面の中央に配置したいし、どんなサイズの画像が来ても真ん中にしたいし、どんなサイズの画面で見ても画像をはみ出させずに表示させたい欲求はよく出てくる。これってもはや人類の欲望と言っても過言ではない。</p>
 
-        <h2>要件</h2>
+        </div>
+        <div>
+<h2>要件</h2>
 
 <ul>
 <li>画像を縦方向にも横方向にも画面の中央に配置したい</li>
@@ -101,9 +106,10 @@ img{
 
 <p>ただし、親要素に<code>absolute: relative;</code>を指定できないとか、子要素にimg以外に兄弟要素がある場合はこのスニペットは向かないので、あとはJSでがんばろう。</p>
 
+        </div>
       </div>
 
-      <aside class="social-buttons">
+      <aside class="social-buttons" role="complementary">
         <ul>
           <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%E7%94%BB%E5%83%8F%E3%82%B5%E3%82%A4%E3%82%BA%E3%81%AB%E4%BE%9D%E5%AD%98%E3%81%97%E3%81%AA%E3%81%84%E7%B5%B6%E5%AF%BE%E4%B8%AD%E5%A4%AE%E9%85%8D%E7%BD%AE&url=http%3A%2F%2Fdskd.jp%2Farchives%2F29.html&via=dskd_jp&related=o_ti">Tweet</a></li>
           <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F29.html">Share on Facebook</a></li>

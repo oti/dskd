@@ -9,11 +9,12 @@
   <meta content="今年もあと一月ということでブログをリデザインしました。ということでこの記事はBEM Advent Calendar 2013 １日目のエントリです。日付過ぎてしまいましたね。
 " name="description">
   <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
 
   <meta content="CSSの命名規則にBEMを取り入れてみる" property="og:title">
   <meta content="今年もあと一月ということでブログをリデザインしました。ということでこの記事はBEM Advent Calendar 2013 １日目のエントリです。日付過ぎてしまいましたね。
 " property="og:description">
-  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
   <meta content="article" property="og:type">
   <meta content="http://dskd.jp/archives/34.html" property="og:url">
   <meta content="ja_JP" property="og:locale">
@@ -22,11 +23,12 @@
   <!--#include virtual="/head-meta-twittercard.html" -->
 
   <link href="http://dskd.jp/archives/34.html" rel="canonical">
+  <link href="http://dskd.jp/archives/34.html" itemprop="url">
   <!--#include virtual="/head-linkrel.html" -->
 </head>
 <body>
-  <header class="global-header">
-    <nav class="site-navigation">
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
       <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
       <ul class="headlinks">
         <li><a href="/archives/">Archive</a></li>
@@ -37,17 +39,20 @@
   </header>
 
   <div class="content">
-    <article class="entry">
+    <article class="entry" role="main">
       <footer class="entry-footer">
         <time datetime="2013-12-02T01:15:16+09:00">2013.12.02</time>
-        <p><a href="http://dskd.jp/archives/c17.html" class="tag">Advent Calendar</a>, <a href="http://dskd.jp/archives/c18.html" class="tag">BEM</a>, <a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a>, <a href="http://dskd.jp/archives/c13.html" class="tag">HTML</a></p>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c17.html" class="tag">Advent Calendar</a>, <a href="http://dskd.jp/archives/c18.html" class="tag">BEM</a>, <a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a>, <a href="http://dskd.jp/archives/c13.html" class="tag">HTML</a></p>
       </footer>
 
-      <h1 class="entry-title">CSSの命名規則にBEMを取り入れてみる</h1>
-      <div class="entry-body">
-        <p>今年もあと一月ということでブログをリデザインしました。ということでこの記事は<a href="http://www.adventar.org/calendars/61">BEM Advent Calendar 2013</a> １日目のエントリです。日付過ぎてしまいましたね。</p>
+      <h1 class="entry-title" itemprop="name">CSSの命名規則にBEMを取り入れてみる</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p>今年もあと一月ということでブログをリデザインしました。ということでこの記事は<a href="http://www.adventar.org/calendars/61">BEM Advent Calendar 2013</a> １日目のエントリです。日付過ぎてしまいましたね。</p>
 
-        <h2>BEMって何？</h2>
+        </div>
+        <div>
+<h2>BEMって何？</h2>
 
 <p>BEMとはBlock, Element, Modifierの頭文字をとったもので、フロントエンド設計において命名規則やモジュールの管理に前述の３種類の区分を取り入れたものを言います。今回はタイトルにもある通り、CSSの命名規則に BEM を取り入れてみるということで、BEMなCSSについて記載します。</p>
 
@@ -83,9 +88,10 @@
 
 <p>２日目はげこたんさん<del>です</del>が<a href="http://geckotang.tumblr.com/post/68662389684/bem">すでに書いてました</a>！</p>
 
+        </div>
       </div>
 
-      <aside class="social-buttons">
+      <aside class="social-buttons" role="complementary">
         <ul>
           <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=CSS%E3%81%AE%E5%91%BD%E5%90%8D%E8%A6%8F%E5%89%87%E3%81%ABBEM%E3%82%92%E5%8F%96%E3%82%8A%E5%85%A5%E3%82%8C%E3%81%A6%E3%81%BF%E3%82%8B&url=http%3A%2F%2Fdskd.jp%2Farchives%2F34.html&via=dskd_jp&related=o_ti">Tweet</a></li>
           <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F34.html">Share on Facebook</a></li>

@@ -10,12 +10,13 @@
 
 CodePenにあったStairway NavというサンプルがF" name="description">
   <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
 
   <meta content=":hoverしている要素の直前の要素の指定をCSS4の「 ! 」で妄想した" property="og:title">
   <meta content="※これは「そうなったらいいなあ、こういうふうにできたら僕は都合がいいなぁ」という妄想であり、CSSの仕様を解説する記事ではありません
 
 CodePenにあったStairway NavというサンプルがF" property="og:description">
-  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
   <meta content="article" property="og:type">
   <meta content="http://dskd.jp/archives/23.html" property="og:url">
   <meta content="ja_JP" property="og:locale">
@@ -24,11 +25,12 @@ CodePenにあったStairway NavというサンプルがF" property="og:descripti
   <!--#include virtual="/head-meta-twittercard.html" -->
 
   <link href="http://dskd.jp/archives/23.html" rel="canonical">
+  <link href="http://dskd.jp/archives/23.html" itemprop="url">
   <!--#include virtual="/head-linkrel.html" -->
 </head>
 <body>
-  <header class="global-header">
-    <nav class="site-navigation">
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
       <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
       <ul class="headlinks">
         <li><a href="/archives/">Archive</a></li>
@@ -39,19 +41,22 @@ CodePenにあったStairway NavというサンプルがF" property="og:descripti
   </header>
 
   <div class="content">
-    <article class="entry">
+    <article class="entry" role="main">
       <footer class="entry-footer">
         <time datetime="2012-11-15T17:38:18+09:00">2012.11.15</time>
-        <p><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a></p>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a></p>
       </footer>
 
-      <h1 class="entry-title">:hoverしている要素の直前の要素の指定をCSS4の「 ! 」で妄想した</h1>
-      <div class="entry-body">
-        <p><strong>※これは「そうなったらいいなあ、こういうふうにできたら僕は都合がいいなぁ」という妄想であり、CSSの仕様を解説する記事ではありません</strong></p>
+      <h1 class="entry-title" itemprop="name">:hoverしている要素の直前の要素の指定をCSS4の「 ! 」で妄想した</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p><strong>※これは「そうなったらいいなあ、こういうふうにできたら僕は都合がいいなぁ」という妄想であり、CSSの仕様を解説する記事ではありません</strong></p>
 
 <p>CodePenにあった<a href="http://codepen.io/chriscoyier/pen/hgplm">Stairway Nav</a>というサンプルがFlashぽくて格好よいのだけど、:hoverしてる前の要素の取得にJavaScriptを使っているのを見て、これがCSSだけでできたらいいのにと思った。<a href="http://www.w3.org/TR/2012/WD-selectors4-20120823/#overview">2012/8/23時点のSelector Level 4のWorking Draft</a>でももちろんそんな都合のいいセレクタは存在していない。あったらいいのに。</p>
 
-        <p>ということで妄想してみた。やるとしたら<code>E! &gt; F</code>で「Fを直接の子要素にもつE要素」をスタイリング対象にできるという「!」マークを使う。</p>
+        </div>
+        <div>
+<p>ということで妄想してみた。やるとしたら<code>E! &gt; F</code>で「Fを直接の子要素にもつE要素」をスタイリング対象にできるという「!」マークを使う。</p>
 
 <pre title="HTML"><code data-language="html">&lt;ul&gt;
   &lt;li&gt;たまご&lt;/li&gt;
@@ -104,9 +109,10 @@ CodePenにあったStairway NavというサンプルがF" property="og:descripti
 
 <p><ins datetime="2013-05-25T13:00+09:00"><a href="http://www.w3.org/TR/2013/WD-selectors4-20130502/#subject">2013/5/2にSelectors Level 4のWorking Draftが更新され</a>ているが、Determining the Subject of a Selectorについては変更はないようだ。</ins></p>
 
+        </div>
       </div>
 
-      <aside class="social-buttons">
+      <aside class="social-buttons" role="complementary">
         <ul>
           <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%3Ahover%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E8%A6%81%E7%B4%A0%E3%81%AE%E7%9B%B4%E5%89%8D%E3%81%AE%E8%A6%81%E7%B4%A0%E3%81%AE%E6%8C%87%E5%AE%9A%E3%82%92CSS4%E3%81%AE%E3%80%8C%20%21%20%E3%80%8D%E3%81%A7%E5%A6%84%E6%83%B3%E3%81%97%E3%81%9F&url=http%3A%2F%2Fdskd.jp%2Farchives%2F23.html&via=dskd_jp&related=o_ti">Tweet</a></li>
           <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F23.html">Share on Facebook</a></li>

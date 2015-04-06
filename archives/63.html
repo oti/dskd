@@ -13,6 +13,7 @@
   width: 300px;
   height: 300p" name="description">
   <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
 
   <meta content="TRBLメソッドでbackground-sizeを代替する" property="og:title">
   <meta content="親要素に対して子要素を上下左右に中央配置するTRBLメソッドというものがある。
@@ -21,7 +22,7 @@
   position: relative;
   width: 300px;
   height: 300p" property="og:description">
-  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
   <meta content="article" property="og:type">
   <meta content="http://dskd.jp/archives/63.html" property="og:url">
   <meta content="ja_JP" property="og:locale">
@@ -30,11 +31,12 @@
   <!--#include virtual="/head-meta-twittercard.html" -->
 
   <link href="http://dskd.jp/archives/63.html" rel="canonical">
+  <link href="http://dskd.jp/archives/63.html" itemprop="url">
   <!--#include virtual="/head-linkrel.html" -->
 </head>
 <body>
-  <header class="global-header">
-    <nav class="site-navigation">
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
       <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
       <ul class="headlinks">
         <li><a href="/archives/">Archive</a></li>
@@ -45,15 +47,16 @@
   </header>
 
   <div class="content">
-    <article class="entry">
+    <article class="entry" role="main">
       <footer class="entry-footer">
         <time datetime="2015-03-26T18:08:21+09:00">2015.03.26</time>
-        <p><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a>, <a href="http://dskd.jp/archives/c10.html" class="tag">demo</a></p>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a>, <a href="http://dskd.jp/archives/c10.html" class="tag">demo</a></p>
       </footer>
 
-      <h1 class="entry-title">TRBLメソッドでbackground-sizeを代替する</h1>
-      <div class="entry-body">
-        <p>親要素に対して子要素を上下左右に中央配置するTRBLメソッドというものがある。</p>
+      <h1 class="entry-title" itemprop="name">TRBLメソッドでbackground-sizeを代替する</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p>親要素に対して子要素を上下左右に中央配置するTRBLメソッドというものがある。</p>
 
 <pre title="CSS"><code data-language="css">.wrap{
   <mark>position: relative;</mark>
@@ -85,7 +88,9 @@
 
 <p>このTRBLメソッドでさらに頑張ると、背景指定ではなくimgタグを使いつつも<code>background-size: 100% auto;</code>のような表示が可能になる。</p>
 
-        <p>元ネタは<a href="https://twitter.com/_tsmd/status/580611589939859457">そめさんのツイート</a>から。</p>
+        </div>
+        <div>
+<p>元ネタは<a href="https://twitter.com/_tsmd/status/580611589939859457">そめさんのツイート</a>から。</p>
 
 <h2>要件</h2>
 
@@ -232,9 +237,10 @@
 
 <p><small>Special Thanks! <a href="https://twitter.com/understandard">@understandard</a>(検証を手伝ってくれたので今半をおごる可能性が高い)</small></p>
 
+        </div>
       </div>
 
-      <aside class="social-buttons">
+      <aside class="social-buttons" role="complementary">
         <ul>
           <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=TRBL%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%A7background-size%E3%82%92%E4%BB%A3%E6%9B%BF%E3%81%99%E3%82%8B&url=http%3A%2F%2Fdskd.jp%2Farchives%2F63.html&via=dskd_jp&related=o_ti">Tweet</a></li>
           <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F63.html">Share on Facebook</a></li>

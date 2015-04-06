@@ -8,10 +8,11 @@
 
   <meta content="Google ChromeのDeveloper Toolsで要素のスタイルをいじっていたら、overflowプロパティにoverlayなる値があることを知った。インターネットをざっと検索した感じだとど" name="description">
   <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
 
   <meta content="overflow: overlay;" property="og:title">
   <meta content="Google ChromeのDeveloper Toolsで要素のスタイルをいじっていたら、overflowプロパティにoverlayなる値があることを知った。インターネットをざっと検索した感じだとど" property="og:description">
-  <meta content="http://dskd.jp/apple-touch-icon.png" property="og:image">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
   <meta content="article" property="og:type">
   <meta content="http://dskd.jp/archives/48.html" property="og:url">
   <meta content="ja_JP" property="og:locale">
@@ -20,11 +21,12 @@
   <!--#include virtual="/head-meta-twittercard.html" -->
 
   <link href="http://dskd.jp/archives/48.html" rel="canonical">
+  <link href="http://dskd.jp/archives/48.html" itemprop="url">
   <!--#include virtual="/head-linkrel.html" -->
 </head>
 <body>
-  <header class="global-header">
-    <nav class="site-navigation">
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
       <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
       <ul class="headlinks">
         <li><a href="/archives/">Archive</a></li>
@@ -35,17 +37,20 @@
   </header>
 
   <div class="content">
-    <article class="entry">
+    <article class="entry" role="main">
       <footer class="entry-footer">
         <time datetime="2014-07-17T18:42:00+09:00">2014.07.17</time>
-        <p><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a></p>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c9.html" class="tag">CSS</a></p>
       </footer>
 
-      <h1 class="entry-title">overflow: overlay;</h1>
-      <div class="entry-body">
-        <p>Google ChromeのDeveloper Toolsで要素のスタイルをいじっていたら、overflowプロパティにoverlayなる値があることを知った。インターネットをざっと検索した感じだとどうやらWebkit系のみで使えるようだ。</p>
+      <h1 class="entry-title" itemprop="name">overflow: overlay;</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p>Google ChromeのDeveloper Toolsで要素のスタイルをいじっていたら、overflowプロパティにoverlayなる値があることを知った。インターネットをざっと検索した感じだとどうやらWebkit系のみで使えるようだ。</p>
 
-        <p><a href="http://dskd.jp/dist/img/overflow-overlay/dev_tools.png" title="overflowのサジェストにoverlay値が出てくる"><img src="http://dskd.jp/dist/img/overflow-overlay/dev_tools.png" alt="Developer Toolsでoverlay値を表示したキャプチャ" title="" /></a></p>
+        </div>
+        <div>
+<p><a href="http://dskd.jp/dist/img/overflow-overlay/dev_tools.png" title="overflowのサジェストにoverlay値が出てくる"><img src="http://dskd.jp/dist/img/overflow-overlay/dev_tools.png" alt="Developer Toolsでoverlay値を表示したキャプチャ" title="" /></a></p>
 
 <p>W3Cのoverflowの仕様（<a href="http://www.w3.org/TR/CSS21/visufx.html#propdef-overflow">CSS2.1 Visual Effects</a>、<a href="http://www.w3.org/TR/css-overflow-3/#overflow-properties">CSS Overflow Module Level 3</a>、<a href="http://www.w3.org/TR/css3-box/#overflow1">CSS basic box model</a>）を見てもoverlay値に関する記述はない。</p>
 
@@ -99,9 +104,10 @@
 
 <p>効果と現状から言ってoverlay値がW3Cで標準化されることはなさそう。今回ふとしたきっかけでプロパティの値についての議論を追ってみたが、けっこう面白かったので何かでまたやりたい。</p>
 
+        </div>
       </div>
 
-      <aside class="social-buttons">
+      <aside class="social-buttons" role="complementary">
         <ul>
           <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=overflow%3A%20overlay%3B&url=http%3A%2F%2Fdskd.jp%2Farchives%2F48.html&via=dskd_jp&related=o_ti">Tweet</a></li>
           <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F48.html">Share on Facebook</a></li>
