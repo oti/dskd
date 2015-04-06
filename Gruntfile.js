@@ -3,18 +3,6 @@ module.exports = function(grunt){
         pkg: grunt.file.readJSON('package.json'),
 
         imagemin: {
-            // static: {
-            //     options: {
-            //         optimizationLevel: 3,
-            //         svgoPlugins: [{ removeViewBox: false }],
-            //         use: [mozjpeg()]
-            //     },
-            //     files: {
-            //         'dist/img.png': 'src/img.png',
-            //         'dist/img.jpg': 'src/img.jpg',
-            //         'dist/img.gif': 'src/img.gif'
-            //     }
-            // },
             dynamic: {
                 files: [{
                     expand: true,
@@ -66,5 +54,5 @@ module.exports = function(grunt){
     grunt.registerTask('build-css',['sass', 'autoprefixer']);
     grunt.registerTask('build-img',['imagemin']);
     grunt.registerTask('build',['imagemin', 'sass', 'autoprefixer']);
-    grunt.registerTask('localdev',['watch']);
+    grunt.registerTask('sass-watach',['watch']);
 };
