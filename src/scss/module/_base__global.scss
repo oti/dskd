@@ -13,6 +13,10 @@ body{
   background: url(/dist/img/bg.png) repeat fixed #d0d8dd;
 }
 
+main{
+  display: block;
+}
+
 img{
   -ms-interpolation-mode: bicubic;
   border: 0 none;
