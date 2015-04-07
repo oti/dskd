@@ -56,7 +56,7 @@
     font-size: .875em;
     font-family: Consolas, monospace;
     background-image: url(/dist/img/bg2.png);
-    overflow-x: scroll;
+    overflow-x: auto;
 
     & mark{
       padding-left: 2px;
