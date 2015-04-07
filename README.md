@@ -4,9 +4,9 @@ dskd.jp is a memorandum of simple front-end technology.
 
 dskdはフロントエンドについての簡単なメモブログです。2010年12月に公開し、何回かのデザインやマークアップをアップデートを経て４バージョン目となりました。複雑さのない単純な構成ですが、誰かの参考になればと思いリポジトリを公開しています。
 
-## Build by Movable Type 6
+## Build by Movable Type 6.1
 
-dskdはSix Apart 社製のCMSであるMovable Type 6を使用してビルドされています。MT本体をリポジトリに含めることはできませんが、テンプレートファイルのMTMLを同梱してあります。
+dskdはSix Apart 社製のCMSであるMovable Type 6.1を使用してビルドされています。MT本体をリポジトリに含めることはできませんが、テンプレートファイルのMTMLを同梱してあります。
 
 ## MTプラグイン
 
