@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>Launch dskd v4 - dskd</title>
+
+  <meta content="数日前にブログをバージョンアップした。
+" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" itemprop="image">
+
+  <meta content="Launch dskd v4" property="og:title">
+  <meta content="数日前にブログをバージョンアップした。
+" property="og:description">
+  <meta content="http://dskd.jp/dist/img/blog-cover.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/65.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/65.html" rel="canonical">
+  <link href="http://dskd.jp/archives/65.html" itemprop="url">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry" role="main">
+      <footer class="entry-footer">
+        <time datetime="2015-04-09T16:28:45+09:00">2015.04.09</time>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c11.html" class="tag">note</a></p>
+      </footer>
+
+      <h1 class="entry-title" itemprop="name">Launch dskd v4</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p>数日前にブログをバージョンアップした。</p>
+
+        </div>
+        <div>
+<p>トピックとしてはマークアップの刷新とBEM離れくらい。あとは内部的にMarkdownにしたとかビルド環境も一緒に含めるようにしたとかCC BY-NCライセンスにしたとかその辺。MTの本体はリポジトリに含めることができないので、このリポジトリをクローンしてもサイトはビルドできないのがつらい。GitHubに課金してプライベートリポジトリにしようかとか考えたけどリポジトリをCCで公開するのも目的の一つだったのでやめた。</p>
+
+<p>ビジュアル面も多少のリニューアルはした。ブログの背景はバージョンを重ねるごとに明るくなっていってる。ロゴとhr要素の装飾にSVGを使っているのと、<a href="http://dotcolon.net/font/vegur/">Vegur</a>というフォントをWeb Fontsにしている。polyfillを読み込んでいないので必然的に古いブラウザには対応しなくなった。それとメディアクエリーで幅の狭いブラウザでの表示も最低限は作っている。記事をMarkdown記法で管理するようにしたので、画像挿入のスタイルがだいぶ甘いのは勘弁してほしい。</p>
+
+<p>Advent Calendarを作ってがんばったBEMも一旦さようならした。このブログがBEM管理する規模じゃないからくらいの理由。</p>
+
+<p>v4の構想は2014年の夏頃からあった。リポジトリにbranchを作ったのが2015年3月の初めだから、ひと月ほどでバージョンアップできた。細部を見ると甘いところはまだまだある。そういうところはマイナーアップデートでこっそり直していこうと思う。</p>
+
+<p>v4ではMTによるビルドがひたすらつらかった。v5では違うビルドツールを採用したい。MTやめるやめる詐欺の可能性はなくはない。</p>
+
+        </div>
+      </div>
+
+      <aside class="social-buttons" role="complementary">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=Launch%20dskd%20v4&url=http%3A%2F%2Fdskd.jp%2Farchives%2F65.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F65.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F65.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=Launch%20dskd%20v4&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F65.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        
+        <li class="older"><a href="http://dskd.jp/archives/64.html">SKAGEN BLUE DIALS</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>
