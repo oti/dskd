@@ -157,8 +157,7 @@ a:focus {
 .entry,
 .entry-archive,
 .entry-category,
-.subscribe,
-.neighbor {
+.subscribe {
   margin-top: 30px;
   padding-top: 30px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -385,8 +384,8 @@ a:focus {
 }
 
 .neighbor {
-  margin-top: 30px;
-  padding-top: 30px;
+  margin: 30px 0 0;
+  padding: 30px 0 0;
   border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
@@ -413,10 +412,10 @@ a:focus {
   text-align: right;
 }
 .neighborlinks .older::before {
-  content: 'older:';
+  content: '\6f\6c\64\65\72\3a';
 }
 .neighborlinks .newer::before {
-  content: 'newer:';
+  content: '\6e\65\77\65\72\3a';
 }
 
 .global-footer {
@@ -487,7 +486,6 @@ a:focus {
 
   .global-header,
   .content,
-  .neighbor,
   .global-footer {
     padding: 0 10px;
     min-width: 320px;
