@@ -173,9 +173,9 @@ a:focus {
 }
 
 .content-subheading {
-  float: left;
-  margin: 0;
-  font-size: 18px;
+  margin: 0 0 24px;
+  font-size: 20px;
+  font-family: 'Vegur-Bold';
 }
 
 .entry-list > a {
