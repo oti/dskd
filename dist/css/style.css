@@ -27,7 +27,7 @@ body {
   padding: 0;
   color: #263540;
   font-size: 16px;
-  font-family: 'Vegur-Regular', san-serif;
+  font-family: 'Vegur-Regular', sans-serif;
   line-height: 1.5;
   background: url(/dist/img/bg.png) repeat fixed #d0d8dd;
 }
