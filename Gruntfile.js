@@ -54,5 +54,5 @@ module.exports = function(grunt){
     grunt.registerTask('build-css',['sass', 'autoprefixer']);
     grunt.registerTask('build-img',['imagemin']);
     grunt.registerTask('build',['imagemin', 'sass', 'autoprefixer']);
-    grunt.registerTask('sass-watach',['watch']);
+    grunt.registerTask('sass-watch',['watch']);
 };
