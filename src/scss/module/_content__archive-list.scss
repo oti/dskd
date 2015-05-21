@@ -9,10 +9,6 @@
   font-size: 14px;
 }
 
-.year-list{
-  margin-left: 95px;
-}
-
 .year-list::after,
 .category-list::after,
 .subscribe-list::after{
@@ -37,11 +33,7 @@
     box-sizing: border-box;
     float: left;
     margin-bottom: 1em;
-    width: 20%;
-
-    &:nth-child(5n+6) {
-      clear:left;
-    }
+    width: 16.5%;
   }
 }
 
