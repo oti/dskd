@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width" name="viewport">
+
+  <title>キーバインドの競合 - dskd</title>
+
+  <meta content="自分はSublime Text 2（以下ST2）をメインのエディターにしている。
+" name="description">
+  <meta content="Movable Type 6.1" name="generator">
+  <meta content="/dist/img/blog-cover.png" itemprop="image">
+
+  <meta content="キーバインドの競合" property="og:title">
+  <meta content="自分はSublime Text 2（以下ST2）をメインのエディターにしている。
+" property="og:description">
+  <meta content="/dist/img/blog-cover.png" property="og:image">
+  <meta content="article" property="og:type">
+  <meta content="http://dskd.jp/archives/67.html" property="og:url">
+  <meta content="ja_JP" property="og:locale">
+  <meta content="dskd" property="og:site_name">
+
+  <!--#include virtual="/head-meta-twittercard.html" -->
+
+  <link href="http://dskd.jp/archives/67.html" rel="canonical">
+  <link href="http://dskd.jp/archives/67.html" itemprop="url">
+  <!--#include virtual="/head-linkrel.html" -->
+</head>
+<body>
+  <header class="global-header" role="banner">
+    <nav class="site-navigation" role="navigation">
+      <a class="logo" href="/"><img alt="dskd" src="/dist/svg/logo.svg" width="100" height="60"></a>
+      <ul class="headlinks">
+        <li><a href="/archives/">Archive</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <article class="entry" role="main">
+      <footer class="entry-footer">
+        <time datetime="2015-06-02T00:43:28+09:00">2015.06.02</time>
+        <p itemprop="keywords"><a href="http://dskd.jp/archives/c11.html" class="tag">note</a></p>
+      </footer>
+
+      <h1 class="entry-title" itemprop="name">キーバインドの競合</h1>
+      <div class="entry-body" itemprop="articleBody">
+        <div itemprop="description">
+<p>自分はSublime Text 2（以下ST2）をメインのエディターにしている。</p>
+
+        </div>
+        <div>
+<p>ST2にはMacだと<kbd>command</kbd>+<kbd>control</kbd>+<kbd>↑</kbd> or <kbd>↓</kbd>でキャレットのある行を前後の行と入れ替える機能がある。大変便利なので重宝していたのだけど、このキーバインドで煩わしい問題が起きたので記念ポエムを書く。</p>
+
+<p>使用マシンがMacBook Air 11-inchで画面に余裕がない人生を強いられているから、<a href="http://spectacleapp.com/">Spectacle</a>というカレントウィンドウをリサイズできるユーティリティーソフトを入れてみた。しかし前述の<kbd>command</kbd>+<kbd>control</kbd>+<kbd>↑</kbd> or <kbd>↓</kbd>のキーバインドがSpectacleと競合し、ST2の方の機能が使えないということが起こった。</p>
+
+<p>SpectacleもキーバインドはカスタマイズできるのでST2とかぶらないように変更しST2の行入れ替えも動作してウハウハと思ったのは束の間、今度はPhotoshopと競合した。なのでまたSpectacleの方を変更したら、今度は<a href="http://theolabrothers.com/">Sip</a>というカラーピッカーと競合した。思わず舌打ちした。</p>
+
+<p>ST2とPhotshopはアプリケーションが互いに干渉することはないが、SpectacleやSipといったものは他のアプリケーションを使っている間でも操作ができるようにキーバインドの影響するレイヤーが上位になっている。Alfredもこの類だ。</p>
+
+<p>こういった上位レイヤーのアプリケーションにたくさんのキーバインドが設定されていると、下位レイヤーのアプリケーションにもろに影響してそれらの便利機能が失われてしまう。</p>
+
+<p>インストールしたてではキーバインドを知っていることはなく、またキーバインドというのは使ってるアプリケーションと強く紐付いて認識しているため、カスタマイズ中でも「あ、この組み合わせはあっちのアプリで使ってるな」などとすぐに思い至ることは少ない。Macのシステムのキーバインドとも競合していたりでキー設定のループからなかなか抜け出せない。</p>
+
+<p>ST2はそのあたり賢くて、半分くらいは<kbd>command</kbd>+<kbd>k</kbd>の後に連続でキーを入力する方式で豊富なキーバインドを実現している。この連続入力式のキーバインドができるアプリケーションは少ないと思う。</p>
+
+<p>前ポストの話にも繋がるが、こういう設定をちまちまやるのは本当に時間の無駄に感じてしまう。なのでこういった設定ファイルはすべからくエクスポートできるようになっていると嬉しい。</p>
+
+        </div>
+      </div>
+
+      <aside class="social-buttons" role="complementary">
+        <ul>
+          <li class="twitter-tweet"><a href="https://twitter.com/intent/tweet?text=%E3%82%AD%E3%83%BC%E3%83%90%E3%82%A4%E3%83%B3%E3%83%89%E3%81%AE%E7%AB%B6%E5%90%88&url=http%3A%2F%2Fdskd.jp%2Farchives%2F67.html&via=dskd_jp&related=o_ti">Tweet</a></li>
+          <li class="facebook-share"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdskd.jp%2Farchives%2F67.html">Share on Facebook</a></li>
+          <li class="googleplus-share"><a href="https://plus.google.com/share?url=http%3A%2F%2Fdskd.jp%2Farchives%2F67.html">Share on google+</a></li>
+          <li class="hatena-bookmark"><a href="http://b.hatena.ne.jp/my/add.confirm?title=%E3%82%AD%E3%83%BC%E3%83%90%E3%82%A4%E3%83%B3%E3%83%89%E3%81%AE%E7%AB%B6%E5%90%88&amp;url=http%3A%2F%2Fdskd.jp%2Farchives%2F67.html">Bookmark on Hatena</a></li>
+        </ul>
+      </aside>
+    </article>
+
+    <nav class="neighbor">
+      <ul class="neighborlinks">
+        
+        <li class="older"><a href="http://dskd.jp/archives/66.html">開発環境構築作業の理想</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--#include virtual="/global-footer.html" -->
+</body>
+</html>
