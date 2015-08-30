@@ -4,9 +4,35 @@
     <link rel="alternate" type="text/html" href="http://dskd.jp/" />
     <link rel="self" type="application/atom+xml" href="http://dskd.jp/feed" />
     <id>tag:dskd.jp,2011-07-14://2</id>
-    <updated>2015-06-01T15:43:32Z</updated>
+    <updated>2015-08-15T13:38:20Z</updated>
     <subtitle>dskd.jp is a memorandum of simple front-end technology.</subtitle>
     <generator uri="http://www.sixapart.com/movabletype/">Movable Type Pro 6.1</generator>
+
+<entry>
+    <title>yargsを使ってタスク自動化ツールのコマンドにオプションを指定する</title>
+    <link rel="alternate" type="text/html" href="http://dskd.jp/archives/68.html" />
+    <id>tag:dskd.jp,2015://2.68</id>
+
+    <published>2015-08-13T16:26:24Z</published>
+    <updated>2015-08-15T13:38:20Z</updated>
+
+    <summary>Gruntやgulpを使っていると、タスクにオプションを渡して処理を切り分けたい...</summary>
+    <author>
+        <name>o_ti</name>
+        
+    </author>
+    
+        <category term="npm" scheme="http://www.sixapart.com/ns/types#category" />
+    
+    
+    <content type="html" xml:lang="ja" xml:base="http://dskd.jp/">
+        <![CDATA[<p>Gruntやgulpを使っていると、タスクにオプションを渡して処理を切り分けたいっていう欲求が出てくる。そういう時は<a href="https://www.npmjs.com/package/yargs">yargs</a>を使えば、コマンドにオプションを指定することでそれをタスク側で受け取ることができるようになる。</p>
+]]>
+    
+    <a href="http://dskd.jp/archives/68.html">[read more...]</a>
+    
+    </content>
+</entry>
 
 <entry>
     <title>キーバインドの競合</title>
@@ -176,7 +202,7 @@
     <id>tag:dskd.jp,2015://2.58</id>
 
     <published>2015-02-17T04:14:00Z</published>
-    <updated>2015-04-06T09:08:25Z</updated>
+    <updated>2015-08-17T11:32:48Z</updated>
 
     <summary>※2015/3/3 追記あり ...</summary>
     <author>
@@ -274,34 +300,6 @@
 ]]>
     
     <a href="http://dskd.jp/archives/55.html">[read more...]</a>
-    
-    </content>
-</entry>
-
-<entry>
-    <title>僕はCSSを見殺しにした</title>
-    <link rel="alternate" type="text/html" href="http://dskd.jp/archives/54.html" />
-    <id>tag:dskd.jp,2014://2.54</id>
-
-    <published>2014-12-10T01:30:30Z</published>
-    <updated>2015-04-06T05:50:46Z</updated>
-
-    <summary>CSS Architecture Advent Calendar 2014の10...</summary>
-    <author>
-        <name>o_ti</name>
-        
-    </author>
-    
-        <category term="Advent Calendar" scheme="http://www.sixapart.com/ns/types#category" />
-    
-        <category term="CSS" scheme="http://www.sixapart.com/ns/types#category" />
-    
-    
-    <content type="html" xml:lang="ja" xml:base="http://dskd.jp/">
-        <![CDATA[<p><a href="http://www.adventar.org/calendars/337">CSS Architecture Advent Calendar 2014</a>の10日目。</p>
-]]>
-    
-    <a href="http://dskd.jp/archives/54.html">[read more...]</a>
     
     </content>
 </entry>
