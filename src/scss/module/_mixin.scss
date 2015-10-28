@@ -1,0 +1,18 @@
+// inline list
+@mixin horizontal-list($child) {
+  display: block;
+  @at-root #{$child} {
+    display: inline;
+  }
+}
+
+@mixin circle-separator() {
+  content: "";
+  display: inline-block;
+  margin: 0 0.5rem;
+  border-radius: 1rem;
+  border: 2px solid $color--alphablack;
+  width: 0.75rem;
+  height: 0.75rem;
+  vertical-align: baseline;
+}
