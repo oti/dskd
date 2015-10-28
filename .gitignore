@@ -1,4 +1,5 @@
 .DS_Store
-**/.DS_Store
 .sass-cache
-ToDo.txt
+node_modules
+test
+htdocs
