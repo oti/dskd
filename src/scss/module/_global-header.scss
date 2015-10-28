@@ -1,0 +1,28 @@
+.global-header {
+  text-align: center;
+}
+
+.logo {
+  margin: auto;
+  width: 100px;
+  height: 60px;
+}
+
+.lede {
+  font-family: "Vegur-Light";
+}
+
+.site-nav-list {
+  padding: 0;
+  font-size: 0;
+  @include horizontal-list(".site-nav-list__item");
+}
+
+.site-nav-list__item {
+  font-size: $fs--sub;
+  & + & {
+    &:before {
+      @include circle-separator();
+    }
+  }
+}
