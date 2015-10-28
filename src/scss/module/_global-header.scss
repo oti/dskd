@@ -1,4 +1,6 @@
 .global-header {
+  position: relative;
+  padding: 15px 0;
   text-align: center;
 }
 
@@ -8,18 +10,29 @@
   height: 60px;
 }
 
+.logo + .site-nav {
+  margin-top: 20px;
+}
+
 .lede {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  // bottom: 0;
+  left: 0;
+  margin: auto;
+  // color: rgba(0,0,0, 0.75);
   font-family: "Vegur-Light";
 }
 
 .site-nav-list {
   padding: 0;
   font-size: 0;
-  @include horizontal-list(".site-nav-list__item");
+  @include horizontal-list(&);
 }
 
 .site-nav-list__item {
-  font-size: $fs--sub;
+  font-size: $fs--small;
   & + & {
     &:before {
       @include circle-separator();
