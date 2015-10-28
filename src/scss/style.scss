@@ -1,8 +1,9 @@
 @charset 'UTF-8';
 
+@import 'module/var';
+@import 'module/mixin';
+@import 'module/banner';
+@import 'module/web-fonts';
 @import 'module/base';
-@import 'module/header';
-@import 'module/content';
-@import 'module/entry';
-@import 'module/footer';
-@import 'module/responsive';
+@import 'module/global-header';
+@import 'module/placeholder';
