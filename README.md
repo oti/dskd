@@ -1,44 +1,53 @@
-# dskd version 4
+# dskd version 5
 
 dskd.jp is a memorandum of simple front-end technology.
 
-dskdはフロントエンドについての簡単なメモブログです。2010年12月に公開し、何回かのデザインやマークアップをアップデートを経て４バージョン目となりました。複雑さのない単純な構成ですが、誰かの参考になればと思いリポジトリを公開しています。
+dskdはフロントエンドについての簡単なメモブログです。2010年12月に公開し、何回かのデザインやマークアップをアップデートを経て5バージョン目となりました。複雑さのない単純な構成ですが、誰かの参考になればと思いリポジトリを公開しています。
 
-## Build by Movable Type 6.1
+## Build by gulp
 
-dskdはSix Apart 社製のCMSであるMovable Type 6.1を使用してビルドされています。MT本体をリポジトリに含めることはできませんが、テンプレートファイルのMTMLを同梱してあります。
+dskdはタスクランナーのgulpを使ってビルドしています。HTMLはJade、CSSはSassを利用しています。使用プラグインは以下の通りです。
 
-## MTプラグイン
++ gulp-jade
++ gulp-sass
++ gulp-autoprefixer
++ gulp-imagemin
++ gulp-plumber
++ gulp-watch
++ gulp-sourcemap
++ run-sequence
++ browser-sync
 
-dskdではMT用のプラグインを２つ使用しています。年別のアーカイブを目的のHTMLで出力するために使用しています。
+## 生成物は .gitignore
+タスクランナーの生成物は `htdocs/` に出力されます。このディレクトリはブログのドキュメントルートの想定です。
 
-+ [ArchiveDateHeader](http://kalsey.com/2002/08/archive_date_header_plugin/)
-+ [ArchiveDateFooter](http://www.koikikukan.com/archives/2006/06/19-010000.php)
+`htdocs/` の中身は `.gitignore` してあり、masterブランチには含まれません。`htdocs/` ルートとしたpublishブランチを作っています。
 
-MTMLファイルをクローンした際は構築に注意してください。
+このpublishブランチはGitHubのウェブフックを利用し、dskd.jpのサーバーに同期されています。
 
-## Server Side Include
+```
+dskd/ <master branch>
+ ┠.gitignore
+ ┠package.json
+ ┠gulpfile.js
+ ┠README.md
+ ┠src/
+ ┗htdocs/ <ignoired dir> && <publish branch>
+  ┠css/
+  ┠img/
+  ┗index.html
+```
 
-dskdではMTで出力したHTMLをSSIを利用してインクルードしています。HTMLファイルでSSIを利用するために.htaccessファイルにAddHandlerをつけています。.htaccessはApacheでしか動作しないので注意してください。
+この方法はhail2u.netの[サブディレクトリ－をgh-pagesへ向ける運用](http://hail2u.net/blog/software/pointing-sub-directory-to-gh-pages.html)を参考にしました。
 
-## BEMではない
 
-version 3系ではHTMLのスタイル管理に[BEM](http://bem.info/)の命名規則を取り入れていましたが、version 4ではやめています。若者のBEM離れです。
+## 再びBEM
 
-## Gruntによるリソースファイルのビルド
-
-タスクランナーのGruntを使ってリソースファイルをビルドしています。
-
-+ grunt-autoprefixer
-+ grunt-contrib-sass
-+ grunt-contrib-watch
-+ grunt-contrib-imagemin
-
-CSSはSassで作り、grunt-contrib-sassでコンパイルしています。JPG,GIF,PNG,SVGファイルはgrunt-contrib-imageminで最適化しています。
+version 4でさよならしたBEMですが、再び戻ってきました。これは成功かもしれないし、失敗かもしれません。
 
 ## ウェブフォント
 
-[Vegur](http://dotcolon.net/font/vegur/)を導入し、欧文書体に適用しています。フォントファイルのライセンスはCC0です。
+[Route 159](http://dotcolon.net/font/route159/)を導入し、欧文書体に適用しています。フォントファイルのライセンスはCC0です。
 
 Thank you [Sora Sagano](https://twitter.com/sorasagano) for your great font!
 
