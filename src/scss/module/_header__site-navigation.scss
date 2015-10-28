@@ -1,8 +1,0 @@
-// site-navigation
-.site-navigation{
-  margin-top: 30px;
-
-  &::after{
-    @extend %clearfix;
-  }
-}
