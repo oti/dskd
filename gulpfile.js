@@ -14,13 +14,15 @@ var $ = require('gulp-load-plugins')({
 var config = {
   src: './src/',
   dist: './htdocs/',
-  browserSupport: ['last 3 versions', 'ie >= 8']
+  browserSupport: ['last 3 versions', 'ie >= 8'],
+  proxy: 'localhost:7002'
 };
 
 // server & browser sync
-gulp.task('bs', function() {
+gulp.task('server', function() {
   $.browserSync({
-    baseDir: config.dist
+    baseDir: config.dist,
+    proxy: config.proxy
   });
 });
 
@@ -37,9 +39,18 @@ gulp.task('jade', function () {
     .pipe(gulp.dest(config.dist))
 });
 
-// imagemin
-gulp.task('imagemin', function() {
+// imagemin:img
+gulp.task('imagemin:img', function() {
   return gulp.src(config.src + 'img/**/*')
+    .pipe($.plumber())
+    .pipe($.imagemin())
+    .pipe(gulp.dest(config.dist + 'img'))
+    .pipe($.browserSync.stream());
+});
+
+// imagemin:svg
+gulp.task('imagemin:svg', function() {
+  return gulp.src(config.src + 'svg/**/*')
     .pipe($.plumber())
     .pipe($.imagemin())
     .pipe(gulp.dest(config.dist + 'img'))
@@ -48,16 +59,31 @@ gulp.task('imagemin', function() {
 
 // sass
 gulp.task('sass', function() {
-  return gulp.src(config.src + 'sass/**/*.scss')
+  return gulp.src(config.src + 'scss/style.scss')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.sass().on('error', $.sass.logError))
     .pipe($.autoprefixer({
       browsers: config.browserSupport
     }))
-    .pipe($.cssmin())
     .pipe($.sourcemaps.write('./'))
-    .pipe(gulp.dest(config.htdocs + 'css'))
+    .pipe(gulp.dest(config.dist + 'css'))
+    .pipe($.browserSync.stream());
+});
+
+// copy:font
+gulp.task('copy:font', function() {
+  return gulp.src(config.src + 'font/**/*')
+    .pipe($.plumber())
+    .pipe(gulp.dest(config.dist + 'font'))
+    .pipe($.browserSync.stream());
+});
+
+// copy:misc
+gulp.task('copy:misc', function() {
+  return gulp.src(config.src + 'misc/**/*')
+    .pipe($.plumber())
+    .pipe(gulp.dest(config.dist + 'misc'))
     .pipe($.browserSync.stream());
 });
 
@@ -67,7 +93,7 @@ gulp.task('watch', function() {
     gulp.start(['jade']);
   });
 
-  $.watch([config.src + 'sass/**/*.scss'], function(e) {
+  $.watch([config.src + 'scss/**/*.scss'], function(e) {
     gulp.start(['sass']);
   });
 });
@@ -75,11 +101,11 @@ gulp.task('watch', function() {
 // build
 // - only compile
 gulp.task('build', function() {
-  $.runSequence('jade', 'sass', 'imagemin', 'copy');
+  $.runSequence('jade', 'sass', 'imagemin:img', 'imagemin:svg', 'copy:font', 'copy:misc');
 });
 
 // default
 //  - local development task
 gulp.task('default', function() {
-  $.runSequence(['build'], ['watch']);
+  $.runSequence(['build'], ['server'], ['watch']);
 });
