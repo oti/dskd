@@ -1,3 +1,52 @@
-@import 'base__banner';
-@import 'base__web-fonts';
-@import 'base__global';
+:root {
+  font-size: $fs--root;
+}
+
+html{
+  font-feature-settings: "kern" 1,"liga" 1,"lnum" 1,"pnum" 1;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  color: #263540;
+  font-size: $fs--body;
+  font-family: 'Vegur-Regular', sans-serif;
+  line-height: 1.5;
+  background: url(/img/bg.png) repeat fixed #d0d8dd;
+}
+
+main{
+  display: block;
+}
+
+img{
+  -ms-interpolation-mode: bicubic;
+  border: 0 none;
+  text-decoration: none;
+  vertical-align: top;
+  background: transparent;
+}
+
+a:link{
+  color: $color--link;
+  text-decoration: none;
+}
+
+
+a:visited{
+  color: $color--visited;
+}
+
+a:hover{
+  color: $color--hover;
+  text-decoration: underline;
+}
+
+a:active{
+  color: $color--active;
+}
+
+a:focus{
+  color: $color--focus;
+}
