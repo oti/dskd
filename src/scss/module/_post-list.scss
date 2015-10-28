@@ -1,0 +1,45 @@
+// post-list
+// in index, archive, demo
+.post-list {
+  @include sectioning-border-solid(&);
+
+  &__link {
+    display: block;
+
+    & + & {
+      margin-top: 15px;
+    }
+  }
+}
+
+
+.post-footer {
+  @include clearfix();
+  font-size: $fs--small;
+  line-height: $lh--minimal;
+
+  &__timestamp {
+    float: left;
+  }
+
+  &__timestamp + &__tag {
+    &:before {
+      @include circle-separator();
+    }
+  }
+
+  & &__timestamp,
+  & &__tag {
+    margin: 0;
+  }
+}
+
+.post-article {
+  &__title {
+    font-size: $fs--huge;
+  }
+
+  @at-root .post-list &__title {
+    margin: 0 0 30px;
+  }
+}
