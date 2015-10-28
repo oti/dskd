@@ -1,0 +1,13 @@
+// clearfix
+%clearfix {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+%horizontal-list {
+  display: block;
+  &__item {
+    display: inline;
+  }
+}
