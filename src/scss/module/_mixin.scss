@@ -1,18 +1,39 @@
-// inline list
-@mixin horizontal-list($child) {
+// clearfix
+@mixin clearfix {
+  content: '';
   display: block;
-  @at-root #{$child} {
+  clear: both;
+}
+
+// inline list
+@mixin horizontal-list($self) {
+  display: block;
+
+  // Elementはinline化する
+  @at-root #{$self}__item {
     display: inline;
   }
 }
 
+// ○の区切り記号をbeforeで出す
 @mixin circle-separator() {
   content: "";
   display: inline-block;
   margin: 0 0.5rem;
-  border-radius: 1rem;
-  border: 2px solid $color--alphablack;
-  width: 0.75rem;
-  height: 0.75rem;
+  border-radius: 0.5rem;
+  border: 2px solid $color--black--clear;
+  width: 0.5rem;
+  height: 0.5rem;
   vertical-align: baseline;
+}
+
+// 要素間のボーダー
+@mixin sectioning-border-solid($self) {
+  padding-bottom: 30px;
+  border-bottom: 1px solid $color--black--clear;
+
+  // 自身の隣接要素にpadding-topをつける
+  @at-root #{$self} + * {
+    padding-top: 30px;
+  }
 }
