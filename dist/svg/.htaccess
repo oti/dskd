@@ -1,4 +1,0 @@
-SetEnvIf Referer "^http://dskd\.jp" ref_ok
-order deny,allow
-deny from all
-allow from env=ref_ok
