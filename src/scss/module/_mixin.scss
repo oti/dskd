@@ -27,6 +27,19 @@
   vertical-align: baseline;
 }
 
+// -の区切り記号をbeforeで出す
+@mixin line-separator() {
+  content: "";
+  // box-sizing: content-box;
+  display: inline-block;
+  margin: 0 0.5rem;
+  border-radius: 3px;
+  width: 0.6rem;
+  height: 3px;
+  vertical-align: 3px;
+  background-color: $color--black--clear;
+}
+
 // 要素間のボーダー
 @mixin sectioning-border-solid($self) {
   padding-bottom: 30px;
