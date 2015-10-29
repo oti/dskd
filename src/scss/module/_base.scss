@@ -2,6 +2,16 @@
   font-size: $fs--root;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  &,
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}
+
 html{
   font-feature-settings: "kern" 1,"liga" 1,"lnum" 1,"pnum" 1;
 }
@@ -9,7 +19,7 @@ html{
 body{
   margin: 0;
   padding: 0;
-  color: #263540;
+  color: $color--base;
   font-size: $fs--medium;
   font-family: 'Vegur-Regular', sans-serif;
   line-height: 1.5;
