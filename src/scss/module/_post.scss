@@ -1,0 +1,56 @@
+// post-list
+// in index, archive, demo
+.post-list {
+  @include sectioning-border-solid(&);
+
+  &__link {
+    display: block;
+
+    & + & {
+      margin: 45px 0;
+    }
+  }
+}
+
+.post {
+
+}
+
+.post-footer {
+  @include clearfix();
+  font-size: $fs--small;
+  line-height: $lh--minimal;
+
+  a & {
+    color: $color--base;
+  }
+
+  a:hover & {
+    &__timestamp,
+    &__tag {
+      text-decoration: none;
+    }
+  }
+
+  // 構造依存スタイル
+  &__timestamp,
+  &__tag {
+    float: left;
+    margin: 0;
+  }
+
+  &__timestamp + &__tag {
+    &:before {
+      @include line-separator();
+    }
+  }
+}
+
+.post-article {
+  &__title {
+    font-size: $fs--huge;
+    .post-footer + & {
+      clear: both;
+    }
+  }
+}
