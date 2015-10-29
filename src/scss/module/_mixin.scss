@@ -18,8 +18,9 @@
 // ○の区切り記号をbeforeで出す
 @mixin circle-separator() {
   content: "";
+  box-sizing: content-box;
   display: inline-block;
-  margin: 0 0.5rem;
+  margin: 0 1rem;
   border-radius: 0.5rem;
   border: 2px solid $color--black--clear;
   width: 0.5rem;
