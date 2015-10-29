@@ -1,0 +1,35 @@
+// tag block
+// only in index
+.tag {
+  @include sectioning-border-solid(&);
+  font-size: 0;
+
+  &__heading {
+    font-size: $fs--large;
+    &:after {
+      content: ":";
+      padding-right: 0.5em;
+    }
+  }
+
+  &-list {
+    padding: 0;
+    font-size: 0;
+    @include horizontal-list(&);
+
+    &__item {
+      font-size: $fs--medium;
+      & + & {
+        &:before {
+          @include line-separator();
+        }
+      }
+    }
+  }
+
+  // 構造依存スタイル
+  & &__heading,
+  & &-list {
+    display: inline;
+  }
+}
