@@ -1,0 +1,34 @@
+// archive block
+// only in index
+.archive {
+  @include sectioning-border-solid(&);
+  font-size: 0;
+
+  &__heading {
+    font-size: $fs--large;
+    &:after {
+      content: " : ";
+    }
+  }
+
+  &-year-list {
+    padding: 0;
+    font-size: 0;
+    @include horizontal-list(&);
+
+    &__item {
+      font-size: $fs--medium;
+      & + & {
+        &:before {
+          @include line-separator();
+        }
+      }
+    }
+  }
+
+  // 構造依存スタイル
+  & &__heading,
+  & &-year-list {
+    display: inline;
+  }
+}
