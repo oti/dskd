@@ -53,7 +53,7 @@
 }
 
 //
-@mixin sectioning-heading($self) {
+@mixin section-heading($self) {
   font-size: $fs--large;
   font-weight: bold;
   #{$self}:after {
