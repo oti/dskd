@@ -5,6 +5,14 @@
   clear: both;
 }
 
+// base-width
+@mixin base-width($padding-vals) {
+  margin: auto;
+  padding: #{$padding-vals};
+  min-width: 320px;
+  max-width: 640px;
+}
+
 // inline list
 @mixin horizontal-list($self) {
   display: block;

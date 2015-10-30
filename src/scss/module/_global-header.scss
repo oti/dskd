@@ -1,7 +1,7 @@
 // global-header
 .global-header {
   position: relative;
-  padding: 30px 0;
+  @include base-width('30px 0');
   text-align: center;
 }
 

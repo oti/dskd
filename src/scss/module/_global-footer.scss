@@ -1,12 +1,7 @@
 // global-footer
 .global-footer {
-  position: relative;
-  margin: auto;
-  padding: 30px 15px;
-  min-width: 320px;
-  max-width: 640px;
+  @include base-width('0 15px');
   font-size: $fs--small;
-  font-style: normal;
 
   // 構造依存スタイル
   & .author {

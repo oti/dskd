@@ -1,7 +1,4 @@
 // contents area
 .contents {
-  margin: auto;
-  padding: 0 15px;
-  min-width: 320px;
-  max-width: 640px;
+  @include base-width('0 15px');
 }
