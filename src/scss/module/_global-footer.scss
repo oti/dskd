@@ -1,0 +1,43 @@
+// global-footer
+.global-footer {
+  position: relative;
+  margin: auto;
+  padding: 30px 15px;
+  min-width: 320px;
+  max-width: 640px;
+  font-size: $fs--small;
+  font-style: normal;
+
+  // 構造依存スタイル
+  & .author {
+    float: left;
+
+    &__signature,
+    &__address {
+      display: inline;
+    }
+  }
+
+  & .subinfo {
+    float: right;
+  }
+}
+
+.subinfo {
+  padding: 0;
+  font-size: 0;
+  @include horizontal-list(&);
+
+  &__item {
+    font-size: $fs--small;
+    & + & {
+      &:before {
+        @include circle-separator();
+      }
+    }
+  }
+}
+
+.subinfo-license {
+  font-size: inherit;
+}
