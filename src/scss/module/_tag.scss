@@ -1,7 +1,7 @@
 // tag block
 // only in index
 .tag {
-  @include section-border-solid(&);
+  // @include section-border-solid(&);
   font-size: 0;
 
   &__heading {
