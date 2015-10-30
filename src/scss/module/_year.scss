@@ -1,6 +1,6 @@
-// archive block
+// year block
 // only in index
-.archive {
+.year {
   @include sectioning-border-solid(&);
   font-size: 0;
 
@@ -8,7 +8,7 @@
     @include sectioning-heading(&);
   }
 
-  &-year-list {
+  &-list {
     padding: 0;
     font-size: 0;
     @include horizontal-list(&);
@@ -25,7 +25,7 @@
 
   // 構造依存スタイル
   & &__heading,
-  & &-year-list {
+  & &-list {
     display: inline;
   }
 }
