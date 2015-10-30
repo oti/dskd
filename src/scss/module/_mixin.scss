@@ -52,7 +52,7 @@
   }
 }
 
-//
+// セクションの見出し
 @mixin section-heading($self) {
   margin-bottom: 15px;
   font-family: 'Vegur-Bold';
@@ -61,4 +61,18 @@
   // @at-root #{$self}:after {
   //   content: " : ";
   // }
+}
+
+// セクションの見出しとリストを横並びにする
+// $selfには呼び出し側で&が指定される。＆と子要素の構造に依存したスタイルモジュール
+@mixin horizontal-contents($self) {
+  #{$self}__heading {
+    padding-right: 15px;
+    width: 100px;
+    // text-align: right;
+  }
+  #{$self}__heading,
+  #{$self}-list {
+    display: inline-block;
+  }
 }
