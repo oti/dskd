@@ -5,10 +5,7 @@
   font-size: 0;
 
   &__heading {
-    font-size: $fs--large;
-    &:after {
-      content: " : ";
-    }
+    @include sectioning-heading(&);
   }
 
   &-list {

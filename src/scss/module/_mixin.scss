@@ -51,3 +51,12 @@
     padding-top: 30px;
   }
 }
+
+//
+@mixin sectioning-heading($self) {
+  font-size: $fs--large;
+  font-weight: bold;
+  #{$self}:after {
+    content: " : ";
+  }
+}
