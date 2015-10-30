@@ -54,9 +54,11 @@
 
 //
 @mixin section-heading($self) {
+  margin-bottom: 15px;
+  font-family: 'Vegur-Bold';
   font-size: $fs--large;
   font-weight: bold;
-  #{$self}:after {
-    content: " : ";
-  }
+  // @at-root #{$self}:after {
+  //   content: " : ";
+  // }
 }
