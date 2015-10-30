@@ -24,11 +24,5 @@
   }
 
   // 構造依存スタイル
-  & &__heading {
-    padding-right: 15px;
-  }
-  & &__heading,
-  & &-list {
-    display: inline;
-  }
+  @include horizontal-contents(&);
 }
