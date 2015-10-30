@@ -1,7 +1,7 @@
 // post-list
 // in index, archive, demo
 .post-list {
-  @include sectioning-border-solid(&);
+  @include section-border-solid(&);
 
   &__link {
     display: block;

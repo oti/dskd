@@ -42,7 +42,7 @@
 }
 
 // 要素間のボーダー
-@mixin sectioning-border-solid($self) {
+@mixin section-border-solid($self) {
   padding-bottom: 30px;
   border-bottom: 1px solid $color--black--clear;
 
