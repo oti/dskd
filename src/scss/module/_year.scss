@@ -25,4 +25,8 @@
 
   // 構造依存スタイル
   @include horizontal-contents(&);
+
+  .tag + & {
+    padding-top: 15px;
+  }
 }
