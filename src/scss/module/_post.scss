@@ -24,12 +24,10 @@
   // post
   // .post-list > .post-link > .post
   // .post > .post-article
-  & {
-    &__title {
-      font-size: $fs--huge;
-      .post-footer + & {
-        clear: both;
-      }
+  &__title {
+    font-size: $fs--huge;
+    .post-footer + & {
+      clear: both;
     }
   }
 
