@@ -1,9 +1,40 @@
 // global-footer
 .global-footer {
+  &:after {
+    @include clearfix();
+  }
+
   @include base-width('0 15px');
   font-size: $fs--small;
 
+  @at-root .subinfo {
+    padding: 0;
+    font-size: 0;
+    @include horizontal-list(&);
+
+    &__item {
+      font-size: $fs--small;
+      & + & {
+        &:before {
+          @include circle-separator();
+        }
+      }
+    }
+  }
+
+  @at-root .subinfo-license {
+    font-size: inherit;
+  }
+
+
   // 構造依存スタイル
+  @at-root .contents + & {
+    margin-top: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 1px solid $color--black--clear;
+  }
+
   & .author {
     float: left;
 
@@ -18,21 +49,3 @@
   }
 }
 
-.subinfo {
-  padding: 0;
-  font-size: 0;
-  @include horizontal-list(&);
-
-  &__item {
-    font-size: $fs--small;
-    & + & {
-      &:before {
-        @include circle-separator();
-      }
-    }
-  }
-}
-
-.subinfo-license {
-  font-size: inherit;
-}
