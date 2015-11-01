@@ -21,10 +21,10 @@
   }
 
 
-  // post-article
-  // .post-list > .post-link > .post-article
+  // post
+  // .post-list > .post-link > .post
   // .post > .post-article
-  &-article {
+  & {
     &__title {
       font-size: $fs--huge;
       .post-footer + & {
