@@ -26,14 +26,14 @@
   // .post > .post-article
   &__title {
     font-size: $fs--huge;
-    .post-footer + & {
+    .post__footer + & {
       clear: both;
     }
   }
 
   // post-footer
   // in .post-article > .post-footer
-  &-footer {
+  &__footer {
     @include clearfix();
     font-size: $fs--small;
     line-height: $lh--minimal;
@@ -43,20 +43,20 @@
     }
 
     a:hover & {
-      &__timestamp,
-      &__tag {
+      .post-timestamp,
+      .post-tag {
         text-decoration: none;
       }
     }
 
     // 構造依存スタイル
-    &__timestamp,
-    &__tag {
+    & .post-timestamp,
+    & .post-tag {
       float: left;
       margin: 0;
     }
 
-    &__timestamp + &__tag {
+    & .post-timestamp + .post-tag {
       &:before {
         @include line-separator();
       }
