@@ -1,8 +1,8 @@
 // clearfix
-@mixin clearfix {
+@mixin clearfix() {
   content: '';
-  display: block;
   clear: both;
+  display: block;
 }
 
 // base-width
@@ -47,17 +47,6 @@
   height: 3px;
   vertical-align: 3px;
   background-color: $color--black--clear;
-}
-
-// 要素間のボーダー
-@mixin section-border-solid($self) {
-  padding-bottom: 30px;
-  border-bottom: 1px solid $color--black--clear;
-
-  // 自身の隣接要素にpadding-topをつける
-  @at-root #{$self} + * {
-    padding-top: 30px;
-  }
 }
 
 // セクションの見出し

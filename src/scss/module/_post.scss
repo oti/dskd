@@ -1,8 +1,7 @@
 // post-list
 // in index, archive, demo
 .post-list {
-  @include section-border-solid(&);
-
+  // 構造依存スタイル
   &__link {
     display: block;
 
