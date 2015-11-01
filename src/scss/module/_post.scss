@@ -1,55 +1,67 @@
-// post-list
-// in index, archive, demo
-.post-list {
-  // 構造依存スタイル
-  &__link {
+.post {
+  // post-list
+  // in index, archive, demo
+  &-list {
+  }
+
+  // post-link
+  &-link {
     display: block;
 
     & + & {
-      margin: 45px 0;
+      margin-top: 45px;
     }
   }
-}
 
-.post {
-
-}
-
-.post-footer {
-  @include clearfix();
-  font-size: $fs--small;
-  line-height: $lh--minimal;
-
-  a & {
-    color: $color--base;
+  // more link
+  &-more {
+    @at-root .post-list .post-link + & {
+      margin-top: 30px;
+    }
   }
 
-  a:hover & {
+
+  // post-article
+  // .post-list > .post-link > .post-article
+  // .post > .post-article
+  &-article {
+    &__title {
+      font-size: $fs--huge;
+      .post-footer + & {
+        clear: both;
+      }
+    }
+  }
+
+  // post-footer
+  // in .post-article > .post-footer
+  &-footer {
+    @include clearfix();
+    font-size: $fs--small;
+    line-height: $lh--minimal;
+
+    a & {
+      color: $color--base;
+    }
+
+    a:hover & {
+      &__timestamp,
+      &__tag {
+        text-decoration: none;
+      }
+    }
+
+    // 構造依存スタイル
     &__timestamp,
     &__tag {
-      text-decoration: none;
+      float: left;
+      margin: 0;
     }
-  }
 
-  // 構造依存スタイル
-  &__timestamp,
-  &__tag {
-    float: left;
-    margin: 0;
-  }
-
-  &__timestamp + &__tag {
-    &:before {
-      @include line-separator();
-    }
-  }
-}
-
-.post-article {
-  &__title {
-    font-size: $fs--huge;
-    .post-footer + & {
-      clear: both;
+    &__timestamp + &__tag {
+      &:before {
+        @include line-separator();
+      }
     }
   }
 }
