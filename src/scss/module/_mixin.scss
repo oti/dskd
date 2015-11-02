@@ -77,3 +77,10 @@
     display: inline-block;
   }
 }
+
+// セクションの区切りborder
+@mixin section-border($val) {
+  margin-top: $val;
+  padding-top: $val;
+  border-top: 1px solid $color--black--clear;
+}
