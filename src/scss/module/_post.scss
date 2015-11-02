@@ -2,6 +2,15 @@
   // post-list
   // in index, archive, demo
   &-list {
+    // .post-listの隣接要素ならボーダーをつける
+    .contents & {
+      + .tag,
+      + .year {
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 1px solid $color--black--clear;
+      }
+    }
   }
 
   // post-link

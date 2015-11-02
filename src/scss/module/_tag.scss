@@ -24,10 +24,4 @@
 
   // 構造依存スタイル
   @include horizontal-contents(&);
-
-  @at-root .contents & {
-    margin-top: 30px;
-    padding-top: 30px;
-    border-top: 1px solid $color--black--clear;
-  }
 }
