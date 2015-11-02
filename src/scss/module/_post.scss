@@ -6,9 +6,7 @@
     .contents & {
       + .tag,
       + .year {
-        margin-top: 30px;
-        padding-top: 30px;
-        border-top: 1px solid $color--black--clear;
+        @include section-border($fs--medium*2);
       }
     }
   }
