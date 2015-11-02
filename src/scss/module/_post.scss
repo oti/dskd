@@ -129,6 +129,14 @@
     ins {
       text-decoration: none;
     }
+
+    hr {
+      margin: 1.875em auto;
+      height: 1em;
+      border: none;
+      line-height: 0;
+      background: url("/img/dash.svg") no-repeat center center;
+    }
   }
 
 
