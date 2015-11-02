@@ -4,7 +4,7 @@
     @include clearfix();
   }
 
-  @include base-width('0 15px');
+  @include base-width("0 15px");
   font-size: $fs--small;
 
   @at-root .subinfo {
