@@ -29,17 +29,20 @@
   background-size: 3rem 3rem;
 
   @at-root {
-    .social-list__item--twitter & {
-      background-image: url("/img/twitter.svg");
-    }
-    .social-list__item--facebook & {
-      background-image: url("/img/facebook.svg");
-    }
-    .social-list__item--gplus & {
-      background-image: url("/img/googleplus.svg");
-    }
-    .social-list__item--hatebu & {
-      background-image: url("/img/hatena-bookmark.svg");
+    $sl = &;
+    .social-list__item {
+      &--twitter #{$sl} {
+        background-image: url("/img/twitter.svg");
+      }
+      &--facebook #{$sl} {
+        background-image: url("/img/facebook.svg");
+      }
+      &--gplus #{$sl} {
+        background-image: url("/img/googleplus.svg");
+      }
+      &--hatebu #{$sl} {
+        background-image: url("/img/hatena-bookmark.svg");
+      }
     }
   }
 }
