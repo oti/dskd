@@ -49,4 +49,16 @@
     font-family: "Vegur-Bold";
     border-bottom: 3px solid $color--white--medium;
   }
+
+  // .site-nav-list > mark.site-nav-list-link--current
+  &-link {
+    &--current {
+      pointer-events: none;
+      border-bottom: 3px solid $color--white--medium;
+      &:link,
+      &:visited {
+        color: $color--base;
+      }
+    }
+  }
 }
