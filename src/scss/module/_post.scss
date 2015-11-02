@@ -62,4 +62,11 @@
       }
     }
   }
+
+  & &__social {
+    display: block;
+    &:after {
+      @include clearfix();
+    }
+  }
 }
