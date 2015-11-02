@@ -29,7 +29,7 @@
   background-size: 3rem 3rem;
 
   @at-root {
-    $sl = &;
+    $sl: &;
     .social-list__item {
       &--twitter #{$sl} {
         background-image: url("/img/twitter.svg");
