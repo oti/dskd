@@ -81,6 +81,13 @@
       margin-top: $fs--medium;
       margin-bottom: $fs--medium;
       line-height: 1.6;
+
+      > code {
+        padding: 0 2px;
+        border-radius: 3px;
+        font-size: inherit;
+        background-color: $color--white--light;
+      }
     }
   }
 
