@@ -111,6 +111,20 @@
       font-weight: bold;
       font-style: normal;
     }
+
+    pre {
+      padding: ($fs--minimal/1.5);
+      border-radius: 3px;
+      font-size: $fs--small;
+      font-family: Consolas, monospace;
+      background-image: url("/img/bg2.png");
+      overflow-x: auto;
+      & mark {
+        padding-left: 2px;
+        padding-right: 2px;
+        background-color: $color--mark;
+      }
+    }
   }
 
 
