@@ -78,8 +78,9 @@
       font-size: $fs--large;
     }
     p {
+      margin-top: $fs--medium;
       margin-bottom: $fs--medium;
-      margin-left: $fs--minimal;
+      line-height: 1.6;
     }
   }
 
