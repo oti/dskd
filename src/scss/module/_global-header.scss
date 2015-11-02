@@ -43,4 +43,10 @@
       }
     }
   }
+
+  // .site-nav-list > mark.site-nav-list-current
+  &-current {
+    font-family: "Vegur-Bold";
+    border-bottom: 3px solid $color--white--medium;
+  }
 }
