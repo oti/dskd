@@ -31,10 +31,16 @@
     }
   }
 
+  &__footer + &__title {
+    margin-top: ($fs--minimal/2);
+  }
+
   // post-footer
   // in .post-article > .post-footer
   &__footer {
-    @include clearfix();
+    &:after {
+      @include clearfix();
+    }
     font-size: $fs--small;
     line-height: $lh--minimal;
 
@@ -53,7 +59,6 @@
     & .post-timestamp,
     & .post-tag {
       float: left;
-      margin: 0;
     }
 
     & .post-timestamp + .post-tag {
@@ -63,6 +68,22 @@
     }
   }
 
+  // .post__body
+  &__body {
+    margin-top: $fs--huge;
+    h2 {
+      margin-top: $fs--large;
+      margin-bottom: $fs--small;
+      font-size: $fs--large;
+    }
+    p {
+      margin-bottom: $fs--medium;
+      margin-left: $fs--minimal;
+    }
+  }
+
+
+  // social
   & &__social {
     display: block;
     &:after {
