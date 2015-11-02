@@ -1,8 +1,15 @@
 // clearfix
 @mixin clearfix() {
-  content: '';
+  content: "";
   clear: both;
   display: block;
+}
+
+// image replacement
+@mixin ir() {
+  text-indent: 101%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 // base-width
