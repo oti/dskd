@@ -1,0 +1,40 @@
+// social buttons
+.social-list {
+  &:after {
+    @include clearfix();
+  }
+  float: right;
+  display: block;
+
+  &__item {
+    float: left;
+    display: block;
+    & + & {
+      margin-left: 1.5rem;
+    }
+  }
+}
+
+.social-link {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  @include ir();
+  background: no-repeat center center;
+  background-size: 3rem 3rem;
+
+  @at-root {
+    .social-list__item--twitter & {
+      background-image: url("/img/twitter.svg");
+    }
+    .social-list__item--facebook & {
+      background-image: url("/img/facebook.svg");
+    }
+    .social-list__item--gplus & {
+      background-image: url("/img/googleplus.svg");
+    }
+    .social-list__item--hatebu & {
+      background-image: url("/img/hatena-bookmark.svg");
+    }
+  }
+}
