@@ -3,7 +3,6 @@
   &:after {
     @include clearfix();
   }
-  float: right;
   display: block;
 
   &__item {
@@ -12,6 +11,12 @@
     & + & {
       margin-left: 1.5rem;
     }
+  }
+
+  // 構造依存スタイル
+  .post & {
+    margin-top: 15px;
+    float: right;
   }
 }
 
