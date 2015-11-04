@@ -1,6 +1,19 @@
 {
-    "global": {
-        "name": "dskd",
-        "version": "5"
+  "global": {
+    "name": "dskd",
+    "version": "5",
+    "url": "http://dskd.jp/",
+    "description": "dskd.jp is a memorandum of simple front-end technology.",
+    "author": "oti",
+    "address": "otiext.gmail.com",
+    "feed": "http://dskd.jp/feed"
+  },
+  "archives": {
+    "base": "archives/",
+    "title_suffix": " - dskd",
+    "name": {
+      "index": "archives.html",
+      "about": "about.html"
     }
+  }
 }
