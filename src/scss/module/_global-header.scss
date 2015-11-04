@@ -47,14 +47,16 @@
   // .site-nav-list > mark.site-nav-list-current
   &-current {
     font-family: "Vegur-Bold";
-    border-bottom: 3px solid $color--white--medium;
+    // border-bottom: 3px solid $color--white--medium;
+    background-image: linear-gradient(to top, $color--white--medium 7px, rgba(255,255,255, 0) 7px);
   }
 
   // .site-nav-list > mark.site-nav-list-link--current
   &-link {
     &--current {
       pointer-events: none;
-      border-bottom: 3px solid $color--white--medium;
+      // border-bottom: 3px solid $color--white--medium;
+      background-image: linear-gradient(to top, $color--white--medium 7px, rgba(255,255,255, 0) 7px);
       &:link,
       &:visited {
         color: $color--base;
