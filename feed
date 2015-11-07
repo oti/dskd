@@ -4,9 +4,35 @@
     <link rel="alternate" type="text/html" href="http://dskd.jp/" />
     <link rel="self" type="application/atom+xml" href="http://dskd.jp/feed" />
     <id>tag:dskd.jp,2011-07-14://2</id>
-    <updated>2015-10-19T16:36:39Z</updated>
+    <updated>2015-11-07T08:13:25Z</updated>
     <subtitle>dskd.jp is a memorandum of simple front-end technology.</subtitle>
     <generator uri="http://www.sixapart.com/movabletype/">Movable Type Pro 6.1</generator>
+
+<entry>
+    <title>小さく持つ</title>
+    <link rel="alternate" type="text/html" href="http://dskd.jp/archives/71.html" />
+    <id>tag:dskd.jp,2015://2.71</id>
+
+    <published>2015-11-07T07:40:29Z</published>
+    <updated>2015-11-07T08:13:25Z</updated>
+
+    <summary>3年くらい使っていた2つ折りの皮財布から、Belloyの小さい財布に替えた。 ...</summary>
+    <author>
+        <name>o_ti</name>
+        
+    </author>
+    
+        <category term="note" scheme="http://www.sixapart.com/ns/types#category" />
+    
+    
+    <content type="html" xml:lang="ja" xml:base="http://dskd.jp/">
+        <![CDATA[<p>3年くらい使っていた2つ折りの皮財布から、Belloyの<a href="http://bellroy.com/wallets/card-pocket#charcoal">小さい財布</a>に替えた。</p>
+]]>
+    
+    <a href="http://dskd.jp/archives/71.html">[read more...]</a>
+    
+    </content>
+</entry>
 
 <entry>
     <title>translate属性による翻訳の制御</title>
@@ -270,32 +296,6 @@
 ]]>
     
     <a href="http://dskd.jp/archives/57.html">[read more...]</a>
-    
-    </content>
-</entry>
-
-<entry>
-    <title>UE BOOMを買った</title>
-    <link rel="alternate" type="text/html" href="http://dskd.jp/archives/56.html" />
-    <id>tag:dskd.jp,2014://2.56</id>
-
-    <published>2014-12-14T15:21:55Z</published>
-    <updated>2015-04-06T05:52:31Z</updated>
-
-    <summary> ...</summary>
-    <author>
-        <name>o_ti</name>
-        
-    </author>
-    
-        <category term="note" scheme="http://www.sixapart.com/ns/types#category" />
-    
-    
-    <content type="html" xml:lang="ja" xml:base="http://dskd.jp/">
-        <![CDATA[<p><img src="http://dskd.jp/dist/img/hello-ue-boom/01.jpg" alt="パッケージが好き。" title="" /></p>
-]]>
-    
-    <a href="http://dskd.jp/archives/56.html">[read more...]</a>
     
     </content>
 </entry>
