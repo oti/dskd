@@ -26,8 +26,10 @@ var config = {
   proxy: 'localhost:7002'
 };
 
-// ブログオブジェクト作成
 
+// 記事作成タスク ====================
+
+// ブログオブジェクト作成（*.md -> blog.json）
 gulp.task('build:json', function(cb) {
   return gulp.src('./src/post/**/*.md')
     //mdをまとめて読み込む奴
@@ -51,10 +53,7 @@ gulp.task('build:json', function(cb) {
     .pipe(gulp.dest('.'))
 });
 
-
-// 記事作成タスク ====================
-
-// 全記事作成
+// 全記事作成（post_id.md -> post_id.html）
 gulp.task('post', function() {
   return gulp.src(config.src + 'post/1.md')
     .pipe($.frontMatter())
