@@ -30,6 +30,7 @@
     "gulp-html-prettify": "0.0.1",
     "gulp-imagemin": "^2.3.0",
     "gulp-jade": "^1.1.0",
+    "gulp-layout": "0.0.3",
     "gulp-load-plugins": "^1.0.0",
     "gulp-plumber": "^1.0.1",
     "gulp-sass": "^2.1.0",
