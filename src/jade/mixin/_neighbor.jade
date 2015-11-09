@@ -1,0 +1,16 @@
+//- _social.jade
+mixin neighbor(neighbor, page_id)
+  - var old_title = neighbor[Number(page_id)-1].old.title
+  - var old_url = neighbor[Number(page_id)-1].old.url
+  - var new_title = neighbor[Number(page_id)+1].new.title
+  - var new_url = neighbor[Number(page_id)+1].new.url
+  nav.neighbor
+      ul.neighbor-list
+      if(new_url.length > 0) {
+        li.neighbor-list__item.neighbor-list__item--newer
+          a.neighbor-link(href=new_url)=new_title
+      }
+      if(old_url > 0) {
+        li.neighbor-list__item.neighbor-list__item--older
+          a.neighbor-link(href=old_url)=old_title
+      }

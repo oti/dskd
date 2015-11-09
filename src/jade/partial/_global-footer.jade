@@ -1,0 +1,13 @@
+//- _global-footer.jade
+//-
+footer.global-footer
+  section.autor
+    p.autor__signature=('Made by '+blog_author+'.')
+    adress.author__address
+      a(href=blog_address)=blog_address
+  ul.subinfo
+    li.subinfo__item
+      a.subinfo-link(href='http://creativecommons.org/licenses/by-nc/4.0/', rel='license')
+        small.subinfo-license CC BY-NC
+    li.subinfo__item
+      a.subinfo-link(href=blog_feed, alternate='application/rss+xml') RSS

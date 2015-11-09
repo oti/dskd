@@ -1,0 +1,20 @@
+//- _post.jade
+//- 個別記事用テンプレート
+extends _layout
+- page_permalink = blog_url+archives_base+page_id+'.html'
+//-
+block contents
+  article.post
+    footer.post__footer
+      +timestamp(page_datetime)
+      +tag(page_tag)
+
+    h1.post__title(itemprop='name')=page_title
+    p=page_tag
+    p=page_datetime
+    div.post__body(itemprop='articleBody')
+      != contents
+
+    +social(page_title, page_permalink)
+
+  +neighbor(neighbor, page_id)

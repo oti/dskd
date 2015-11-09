@@ -1,0 +1,5 @@
+//- _tag.jade
+mixin tag(page_tag)
+  p.post-tag
+    each val, index in page_tag
+      a.tag-link(href=(archives_base+val+'.html'))=val

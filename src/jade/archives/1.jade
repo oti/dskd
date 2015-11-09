@@ -1,0 +1,26 @@
+//- index.jade
+extends ../_layout.jade
+include ../_partial/_timestamp.jade
+include ../_partial/_tag.jade
+include ../_partial/_social.jade
+include ../_partial/_neighbor.jade
+block vars
+  - var page_type = 'entry'
+  - var page_id = '68'
+  - var page_datetime = '2015-10-20T01:32:46'
+  - var page_tag = ['HTML','node','js']
+  - var page_title = 'yargsを使ってよしなにする'
+  - var page_description = 'yargsのありがたみ〜〜☆'
+  - var page_path = global.url+archives.base+page_id+'.html'
+
+block contents
+  article.post
+    footer.post__footer
+      +timestamp(page_datetime)
+      +tag(page_tag)
+
+    h1.post__title(itemprop='name')=page_title
+    div.post__body(itemprop='articleBody')
+      include:markdown ../../entry/69.md
+    +social(page_title, page_path)
+  +neighbor(older_title, older_url, newer_title, newer_url)
