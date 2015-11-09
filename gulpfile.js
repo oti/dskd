@@ -26,6 +26,32 @@ var config = {
   proxy: 'localhost:7002'
 };
 
+// ブログオブジェクト作成
+
+gulp.task('build:json', function(cb) {
+  return gulp.src('./src/post/**/*.md')
+    //mdをまとめて読み込む奴
+    .pipe($.util.buffer())
+    .pipe($.markdownToJson('blog.json'))
+    //mdからjsonを作り、それぞれの記事データに対して処理をする
+    .pipe($.through.obj(function (file, enc, cb) {
+      //バッファから文字列に変化してJSONを作成する
+      var result = {};
+      var json = JSON.parse(String(file.contents));
+      //デフォルトの設定を継承させる
+      $._.each(json, function(data, filename){
+        json[filename] = $._.assign({}, blogConf, data);
+      });
+      result['post'] = json
+      //バッファに戻す
+      file.contents = new Buffer(JSON.stringify(result));
+      cb(null, file);
+    }))
+    //jsonを配置する
+    .pipe(gulp.dest('.'))
+});
+
+
 // 記事作成タスク ====================
 
 // 全記事作成
