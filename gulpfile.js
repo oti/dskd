@@ -10,6 +10,14 @@ var $ = require('gulp-load-plugins')({
   ]
 });
 
+$.yargs = require('yargs').argv;
+$.through = require('through2');
+$.yaml = require('js-yaml');
+$.fs = require('fs');
+$._ = require('lodash');
+
+var blogConf = $.yaml.safeLoad($.fs.readFileSync('blog-conf.yml', 'utf8'));
+
 // config
 var config = {
   src: './src/',
