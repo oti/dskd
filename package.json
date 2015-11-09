@@ -37,6 +37,7 @@
     "gulp-plumber": "^1.0.1",
     "gulp-sass": "^2.1.0",
     "gulp-sourcemaps": "^1.5.2",
+    "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
     "run-sequence": "^1.1.2"
   },
