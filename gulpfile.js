@@ -18,6 +18,23 @@ var config = {
   proxy: 'localhost:7002'
 };
 
+// 記事作成タスク ====================
+
+// 全記事作成
+gulp.task('post', function() {
+  return gulp.src(config.src + 'post/1.md')
+    .pipe($.frontMatter())
+    .pipe($.markdown())
+    .pipe($.layout(function(file) {
+      var data_pre = $._.assign({}, blogConf, file.frontMatter);
+      var data = $._.assign({}, neighborConf, data_pre);
+      return data;
+    }))
+    .pipe($.htmlPrettify({indent_char: ' ', indent_size: 2}))
+    .pipe(gulp.dest(config.dist + 'archives/'));
+});
+
+
 // サイト開発タスク ====================
 
 // server & browser sync
