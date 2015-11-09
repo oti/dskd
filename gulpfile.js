@@ -1,6 +1,6 @@
 'use strict';
 
-// load plugins
+// load plugins ====================
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')({
   pattern: [
@@ -18,6 +18,8 @@ var config = {
   proxy: 'localhost:7002'
 };
 
+// サイト開発タスク ====================
+
 // server & browser sync
 gulp.task('server', function() {
   $.browserSync({
@@ -31,6 +33,7 @@ gulp.task('jade', function () {
   gulp.src([config.src + 'jade/**/*.jade', '!' + config.src + 'jade/**/_*.jade'])
     .pipe($.plumber())
     .pipe($.data(function(file) {
+      // console.log($.frontMatter(String(file.contents)))
       return require('./blog-conf.json');
     }))
     .pipe($.jade({
