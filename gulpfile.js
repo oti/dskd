@@ -12,11 +12,12 @@ var $ = require('gulp-load-plugins')({
 
 $.yargs = require('yargs').argv;
 $.through = require('through2');
-$.yaml = require('js-yaml');
+// $.yaml = require('js-yaml'); // yaml使わなくなったからあとで消す
 $.fs = require('fs');
 $._ = require('lodash');
 
-var blogConf = $.yaml.safeLoad($.fs.readFileSync('blog-conf.yml', 'utf8'));
+// var blogConf = $.yaml.safeLoad($.fs.readFileSync('blog-conf.yml', 'utf8'));
+var blogConf = $.fs.readFileSync('./blog-conf.json', 'utf8');
 
 // config
 var config = {
