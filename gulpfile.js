@@ -63,7 +63,7 @@ var createArchivesJson = function(postsObj) {
     distArr.push(post);
   });
 
-  fs.writeFile(config.src + 'json/artchives.json', JSON.stringify(distArr));
+  fs.writeFile(config.src + 'json/archives.json', JSON.stringify(distArr));
 };
 
 
