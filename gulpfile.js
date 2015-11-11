@@ -38,7 +38,7 @@ var createArchivesJson = function(postsObj) {
   // var json = JSON.parse(fs.readFileSync(config.src + 'json/posts.json', 'utf8'));
   // var json = posts;
   var cache = {};
-  var tags = [];
+  var distArr = [];
 
   // ソートするためのキーを追加しつつ必要なデータだけ抽出
   _.forEach(postsObj, function(post, i){
@@ -59,11 +59,11 @@ var createArchivesJson = function(postsObj) {
 
   _.forEach(cache, function(post, i){
     delete post.sort_key;
-    tags.push(post);
+    distArr.push(post);
   });
 
-  fs.writeFile(config.src + 'json/artchives.json', JSON.stringify(tags));
-}
+  fs.writeFile(config.src + 'json/artchives.json', JSON.stringify(distArr));
+};
 
 
 // 記事作成タスク ====================
@@ -84,6 +84,7 @@ gulp.task('build:json', function(cb) {
       // file.contents = new Buffer(JSON.stringify(postsObj));
 
       createArchivesJson(postsObj);
+      createTagsJson(postsObj);
     }))
     .pipe(gulp.dest(config.src + 'json/'))
 });
