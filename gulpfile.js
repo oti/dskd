@@ -55,13 +55,12 @@ gulp.task('build:json', function(cb) {
 });
 
 // 全記事作成（post_id.md -> post_id.html）
-gulp.task('post', function() {
-  return gulp.src(config.src + 'post/1.md')
+gulp.task('build:post', function() {
+  return gulp.src(config.src + 'post/**/*.md')
     .pipe($.frontMatter())
     .pipe($.markdown())
     .pipe($.layout(function(file) {
-      var data_pre = $._.assign({}, blogConf, file.frontMatter);
-      var data = $._.assign({}, neighborConf, data_pre);
+      var data = $._.assign({}, blogConf, file.frontMatter);
       return data;
     }))
     .pipe($.htmlPrettify({indent_char: ' ', indent_size: 2}))
