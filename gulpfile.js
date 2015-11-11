@@ -66,6 +66,59 @@ var createArchivesJson = function(postsObj) {
   fs.writeFile(config.src + 'json/archives.json', JSON.stringify(distArr));
 };
 
+// タグごとのjsonを作る
+var createTagsJson = function(postsObj) {
+  var posts = JSON.parse(fs.readFileSync(config.src + 'json/posts.json', 'utf8'));
+  var archives = JSON.parse(fs.readFileSync(config.src + 'json/archives.json', 'utf8'));
+  var tags_map = [];
+  var tags_post_list = {};
+
+  // タグとpage_idの対応オブジェクトを抽出
+  // tags_map = [{'CSS': '1'}, {'CSS': '12'}, {'note': '7'},...]
+  // tags_post_list = {'CSS': [], 'note': [],...}
+  _.forEach(archives, function(post, i){
+    // postsをeachしても同じデータは作れるけど、archivesは降順ソートされているのでこっちを使う
+    // posts.jsonを作る時にソート済みの入れつにすれば、archives.jsonはいらないなぁ…
+    var post_tag_arr = post.page_tag;
+    _.forEach(post_tag_arr, function(tag_name, i){
+      var set = {};
+      set[tag_name] = post.page_id;
+      tags_map.push(set);
+      // あとで使うので空の配列をキーごとに持たせる
+      tags_post_list[tag_name] = [];
+    });
+  });
+
+  // タグごとに該当するpage_idを配列に入れる
+  // {'CSS': ['12', '1'], note: ['1'],...}
+  _.forEach(tags_map, function(set, i){
+    var tag_name = _.keys(set);
+    tags_post_list[tag_name].push(set[tag_name]);
+  });
+
+  console.log('tags_post_list ->', tags_post_list);
+
+  // タグごとにjsonを作る
+  _.forEach(tags_post_list, function(id_arr, tag_name){
+    var post_arr = [];
+    _.forEach(id_arr, function(id, i){
+      // posts.jsonからpage_idを添え字にして記事の情報を取り出す
+      var post_data = {
+        page_datetime: posts[id].page_datetime,
+        page_id: posts[id].page_id,
+        page_title: posts[id].page_title,
+        page_tag: posts[id].page_tag,
+        page_title: posts[id].page_title
+      };
+      post_arr.push(post_data);
+    });
+
+    // tags_name（tags_post_listのキー）ごとにwriteFile
+    fs.writeFile(config.src + 'json/'+tag_name+'.json', JSON.stringify(post_arr));
+  });
+
+};
+
 
 // 記事作成タスク ====================
 
