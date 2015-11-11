@@ -30,28 +30,22 @@ var config = {
 
 // 記事作成タスク ====================
 
-// ブログオブジェクト作成（*.md -> blog.json）
+// 各種ブログオブジェクト作成（*.md -> posts.json）
 gulp.task('build:json', function(cb) {
-  return gulp.src('./src/post/**/*.md')
-    //mdをまとめて読み込む奴
+  return gulp.src(config.src + 'post/**/*.md')
     .pipe($.util.buffer())
-    .pipe($.markdownToJson('blog.json'))
-    //mdからjsonを作り、それぞれの記事データに対して処理をする
+    .pipe($.markdownToJson('posts.json'))
     .pipe($.through.obj(function (file, enc, cb) {
-      //バッファから文字列に変化してJSONを作成する
-      var result = {};
-      var json = JSON.parse(String(file.contents));
+      //バッファから文字列に変化させてJSONに戻す
+      var postsObj = JSON.parse(String(file.contents));
+
       //デフォルトの設定を継承させる
-      $._.each(json, function(data, filename){
-        json[filename] = $._.assign({}, blogConf, data);
-      });
-      result['post'] = json
-      //バッファに戻す
-      file.contents = new Buffer(JSON.stringify(result));
-      cb(null, file);
+      // postsObj = $._.assign({}, blogConf, postsObj);
+
+      // バッファに戻す
+      // file.contents = new Buffer(JSON.stringify(postsObj));
     }))
-    //jsonを配置する
-    .pipe(gulp.dest('.'))
+    .pipe(gulp.dest(config.src + 'json/'))
 });
 
 // 全記事作成（post_id.md -> post_id.html）
