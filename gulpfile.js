@@ -137,10 +137,18 @@ gulp.task('build:json', function(cb) {
       // バッファに戻す
       // file.contents = new Buffer(JSON.stringify(postsObj));
 
-      createArchivesJson(postsObj);
-      createTagsJson(postsObj);
+      // createArchivesJson(postsObj);
+      // createTagsJson(postsObj);
     }))
     .pipe(gulp.dest(config.src + 'json/'))
+});
+
+gulp.task('build:archives', function(){
+  createArchivesJson();
+});
+
+gulp.task('build:tags', function(){
+  createTagsJson();
 });
 
 // 全記事作成（post_id.md -> post_id.html）
