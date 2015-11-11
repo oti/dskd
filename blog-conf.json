@@ -1,19 +1,11 @@
 {
-  "global": {
-    "name": "dskd",
-    "version": "5",
-    "url": "http://dskd.jp/",
-    "description": "dskd.jp is a memorandum of simple front-end technology.",
-    "author": "oti",
-    "address": "otiext.gmail.com",
-    "feed": "http://dskd.jp/feed"
-  },
-  "archives": {
-    "base": "archives/",
-    "title_suffix": " - dskd",
-    "name": {
-      "index": "archives.html",
-      "about": "about.html"
-    }
-  }
+  "blog_name": "dsld",
+  "blog_version": "5",
+  "blog_url": "http://dskd.jp/",
+  "blog_description": "dskd.jp is a memorandum of simple front-end technology.",
+  "blog_author": "oti",
+  "blog_address": "otiext.gmail.com",
+  "blog_feed": "http://dskd.jp/feed",
+  "archives_base": "archives/",
+  "archives_title_suffix": " - dskd"
 }
