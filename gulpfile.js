@@ -34,14 +34,15 @@ var config = {
   proxy: 'localhost:7002'
 };
 
+// 日付で降順ソートされたarchives.jsonを作る
 var createArchivesJson = function(postsObj) {
-  // var json = JSON.parse(fs.readFileSync(config.src + 'json/posts.json', 'utf8'));
-  // var json = posts;
+  var posts = JSON.parse(fs.readFileSync(config.src + 'json/posts.json', 'utf8'));
+  // var posts = postsObj;
   var cache = {};
   var distArr = [];
 
   // ソートするためのキーを追加しつつ必要なデータだけ抽出
-  _.forEach(postsObj, function(post, i){
+  _.forEach(posts, function(post, i){
     // 記事の日付を連続した数値に変換
     var sort_val = post.page_datetime.split('-').join('').split('T').join('').split(':').join('');
     cache[post.page_id] = {
