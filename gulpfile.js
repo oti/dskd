@@ -12,13 +12,13 @@ var imagemin       = require('gulp-imagemin');
 var jade           = require('gulp-jade');
 var layout         = require('gulp-layout');
 var markdown       = require('gulp-markdown');
-var markdownToJson = require('gulp-markdown-to-json');
+var markdown2Json  = require('gulp-markdown-to-json');
 var plumber        = require('gulp-plumber');
 var sass           = require('gulp-sass');
 var sourcemaps     = require('gulp-sourcemaps');
 var util           = require('gulp-util');
 var watch          = require('gulp-watch');
-var lodash         = require('lodash');
+var _              = require('lodash');
 var runSequence    = require('run-sequence');
 var through        = require('through2');
 var yargs          = require('yargs').argv;
@@ -72,7 +72,7 @@ var createArchivesJson = function(postsObj) {
 gulp.task('build:json', function(cb) {
   return gulp.src(config.src + 'post/**/*.md')
     .pipe(util.buffer())
-    .pipe(markdownToJson('posts.json'))
+    .pipe(markdown2Json('posts.json'))
     .pipe(through.obj(function (file, enc, cb) {
       //バッファから文字列に変化させてJSONに戻す
       var postsObj = JSON.parse(String(file.contents));
