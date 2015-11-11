@@ -27,6 +27,37 @@ var config = {
   proxy: 'localhost:7002'
 };
 
+var createArchivesJson = function(postsObj) {
+  // var json = JSON.parse($.fs.readFileSync(config.src + 'json/posts.json', 'utf8'));
+  // var json = posts;
+  var cache = {};
+  var tags = [];
+
+  // ソートするためのキーを追加しつつ必要なデータだけ抽出
+  $._.forEach(postsObj, function(post, i){
+    // 記事の日付を連続した数値に変換
+    var sort_val = post.page_datetime.split('-').join('').split('T').join('').split(':').join('');
+    cache[post.page_id] = {
+      sort_key: sort_val,
+      page_datetime: post.page_datetime,
+      page_id: post.page_id,
+      page_title: post.page_title,
+      page_tag: post.page_tag,
+      page_title: post.page_title
+    }
+  });
+
+  // 日付でに降順ソート
+  cache = $._.sortByAll(cache, cache.sort_key, function(val){return -val});
+
+  $._.forEach(cache, function(post, i){
+    delete post.sort_key;
+    tags.push(post);
+  });
+
+  $.fs.writeFile(config.src + 'json/artchives.json', JSON.stringify(tags));
+}
+
 
 // 記事作成タスク ====================
 
@@ -44,6 +75,8 @@ gulp.task('build:json', function(cb) {
 
       // バッファに戻す
       // file.contents = new Buffer(JSON.stringify(postsObj));
+
+      createArchivesJson(postsObj);
     }))
     .pipe(gulp.dest(config.src + 'json/'))
 });
