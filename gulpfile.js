@@ -236,14 +236,14 @@ gulp.task('watch', function() {
   });
 });
 
-// build
+// dev
 // - only compile
-gulp.task('build', function() {
+gulp.task('dev', function() {
   runSequence(/*'jade', */'sass', 'imagemin:img', 'imagemin:svg', 'copy:font', 'copy:misc');
 });
 
 // default
 //  - local development task
 gulp.task('default', function() {
-  runSequence(['build'], ['server'], ['watch']);
+  runSequence(['dev'], ['server'], ['watch']);
 });
