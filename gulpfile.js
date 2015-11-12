@@ -120,33 +120,23 @@ var createTagsJson = function(posts) {
 
 // 記事作成タスク ====================
 
-// 各種ブログオブジェクト作成（*.md -> posts.json）
-gulp.task('build:json', function(cb) {
+// 　オブジェクト作成（*.md -> posts.json, archives.json, <tag-name>.json）
+gulp.task('build:json', function(callback) {
   return gulp.src(config.src + 'post/**/*.md')
     .pipe(util.buffer())
     .pipe(markdown2Json('posts.json'))
-    .pipe(through.obj(function (file, enc, cb) {
+    .pipe(through.obj(function (file, enc, callback) {
       //バッファから文字列に変化させてJSONに戻す
-      var postsObj = JSON.parse(String(file.contents));
+      var posts = JSON.parse(String(file.contents));
 
-      //デフォルトの設定を継承させる
-      // postsObj = _.assign({}, blogConf, postsObj);
+      createArchivesJson(posts);
+      createTagsJson(posts);
 
-      // バッファに戻す
-      // file.contents = new Buffer(JSON.stringify(postsObj));
-
-      // createArchivesJson(postsObj);
-      // createTagsJson(postsObj);
+      // バッファに戻してpipeに渡す
+      file.contents = new Buffer(JSON.stringify(posts));
+      callback(null, file);
     }))
     .pipe(gulp.dest(config.src + 'json/'))
-});
-
-gulp.task('build:archives', function(){
-  createArchivesJson();
-});
-
-gulp.task('build:tags', function(){
-  createTagsJson();
 });
 
 // 全記事作成（post_id.md -> post_id.html）
