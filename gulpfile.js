@@ -35,71 +35,70 @@ var config = {
 };
 
 // 日付で降順ソートされたarchives.jsonを作る
-var createArchivesJson = function(postsObj) {
-  var posts = JSON.parse(fs.readFileSync(config.src + 'json/posts.json', 'utf8'));
-  // var posts = postsObj;
-  var cache = {};
-  var distArr = [];
+var createArchivesJson = function(posts) {
+  // var posts = JSON.parse(fs.readFileSync(config.src + 'json/posts.json', 'utf8'));
+  var cache_arr = [];
+  var posts_arr = [];
 
   // ソートするためのキーを追加しつつ必要なデータだけ抽出
   _.forEach(posts, function(post, i){
     // 記事の日付を連続した数値に変換
     var sort_val = post.page_datetime.split('-').join('').split('T').join('').split(':').join('');
-    cache[post.page_id] = {
+    var drip = {
       sort_key: sort_val,
-      page_datetime: post.page_datetime,
       page_id: post.page_id,
+      page_datetime: post.page_datetime,
       page_title: post.page_title,
       page_tag: post.page_tag,
       page_title: post.page_title
-    }
+    };
+    cache_arr.push(drip);
   });
 
-  // 日付でに降順ソート
-  cache = _.sortByAll(cache, cache.sort_key, function(val){return -val});
+  // 日付で降順ソート
+  cache_arr = _.sortByAll(cache_arr, cache_arr.sort_key, function(val){return -val});
 
-  _.forEach(cache, function(post, i){
+  // ソート用のキーを削除
+  _.forEach(cache_arr, function(post, i){
     delete post.sort_key;
-    distArr.push(post);
+    posts_arr.push(post);
   });
 
-  fs.writeFile(config.src + 'json/archives.json', JSON.stringify(distArr));
+  fs.writeFile(config.src + 'json/archives.json', JSON.stringify(posts_arr));
 };
 
 // タグごとのjsonを作る
-var createTagsJson = function(postsObj) {
-  var posts = JSON.parse(fs.readFileSync(config.src + 'json/posts.json', 'utf8'));
-  var archives = JSON.parse(fs.readFileSync(config.src + 'json/archives.json', 'utf8'));
-  var tags_map = [];
+var createTagsJson = function(posts) {
+  // var posts = JSON.parse(fs.readFileSync(config.src + 'json/posts.json', 'utf8'));
+  // var archives = JSON.parse(fs.readFileSync(config.src + 'json/archives.json', 'utf8'));
+  var tags_post_map = [];
   var tags_post_list = {};
 
   // タグとpage_idの対応オブジェクトを抽出
-  // tags_map = [{'CSS': '1'}, {'CSS': '12'}, {'note': '7'},...]
+  // tags_post_map = [{'CSS': '1'}, {'CSS': '12'}, {'note': '7'},...]
   // tags_post_list = {'CSS': [], 'note': [],...}
-  _.forEach(archives, function(post, i){
+  _.forEach(posts, function(post, i){
     // postsをeachしても同じデータは作れるけど、archivesは降順ソートされているのでこっちを使う
-    // posts.jsonを作る時にソート済みの入れつにすれば、archives.jsonはいらないなぁ…
     var post_tag_arr = post.page_tag;
     _.forEach(post_tag_arr, function(tag_name, i){
       var set = {};
       set[tag_name] = post.page_id;
-      tags_map.push(set);
+      tags_post_map.push(set);
       // あとで使うので空の配列をキーごとに持たせる
       tags_post_list[tag_name] = [];
     });
   });
 
   // タグごとに該当するpage_idを配列に入れる
-  // {'CSS': ['12', '1'], note: ['1'],...}
-  _.forEach(tags_map, function(set, i){
+  // tags_post_list = {'CSS': ['12', '1'], note: ['1'],...}
+  _.forEach(tags_post_map, function(set, i){
     var tag_name = _.keys(set);
     tags_post_list[tag_name].push(set[tag_name]);
   });
 
-  console.log('tags_post_list ->', tags_post_list);
-
   // タグごとにjsonを作る
-  _.forEach(tags_post_list, function(id_arr, tag_name){
+  _.forEach(tags_post_list, function(id_arr, i){
+    var tag_name = i;
     var post_arr = [];
     _.forEach(id_arr, function(id, i){
       // posts.jsonからpage_idを添え字にして記事の情報を取り出す
@@ -116,7 +115,6 @@ var createTagsJson = function(postsObj) {
     // tags_name（tags_post_listのキー）ごとにwriteFile
     fs.writeFile(config.src + 'json/'+tag_name+'.json', JSON.stringify(post_arr));
   });
-
 };
 
 
