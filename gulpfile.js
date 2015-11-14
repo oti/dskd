@@ -40,6 +40,8 @@ var createArchivesJson = function(posts) {
   var cache_arr = [];
   var posts_arr = [];
 
+  var dist = {archives: []};
+
   // ソートするためのキーを追加しつつ必要なデータだけ抽出
   _.forEach(posts, function(post, i){
     // 記事の日付を連続した数値に変換
@@ -64,7 +66,9 @@ var createArchivesJson = function(posts) {
     posts_arr.push(post);
   });
 
-  fs.writeFile(config.src + 'json/archives.json', JSON.stringify(posts_arr));
+  dist.archives = posts_arr;
+
+  fs.writeFile(config.src + 'json/archives.json', JSON.stringify(dist));
 };
 
 // タグごとのjsonを作る
@@ -73,6 +77,8 @@ var createTagsJson = function(posts) {
   // var archives = JSON.parse(fs.readFileSync(config.src + 'json/archives.json', 'utf8'));
   var tags_post_map = [];
   var tags_post_list = {};
+
+  var dist = {tags: []};
 
   // タグとpage_idの対応オブジェクトを抽出
   // tags_post_map = [{'CSS': '1'}, {'CSS': '12'}, {'note': '7'},...]
@@ -103,8 +109,8 @@ var createTagsJson = function(posts) {
     _.forEach(id_arr, function(id, i){
       // posts.jsonからpage_idを添え字にして記事の情報を取り出す
       var post_data = {
-        page_datetime: posts[id].page_datetime,
         page_id: posts[id].page_id,
+        page_datetime: posts[id].page_datetime,
         page_title: posts[id].page_title,
         page_tag: posts[id].page_tag,
         page_title: posts[id].page_title
@@ -112,8 +118,10 @@ var createTagsJson = function(posts) {
       post_arr.push(post_data);
     });
 
+    dist.tags = post_arr;
+
     // tags_name（tags_post_listのキー）ごとにwriteFile
-    fs.writeFile(config.src + 'json/'+tag_name+'.json', JSON.stringify(post_arr));
+    fs.writeFile(config.src + 'json/'+tag_name+'.json', JSON.stringify(dist));
   });
 };
 
