@@ -10,12 +10,10 @@ var frontMatter    = require('gulp-front-matter');
 var htmlPrettify   = require('gulp-html-prettify');
 var imagemin       = require('gulp-imagemin');
 var jade           = require('gulp-jade');
-var jsonTransform  = require('gulp-json-transform');
 var layout         = require('gulp-layout');
 var markdown       = require('gulp-markdown');
 var markdown2Json  = require('gulp-markdown-to-json');
 var plumber        = require('gulp-plumber');
-var rename         = require('gulp-rename');
 var sass           = require('gulp-sass');
 var sourcemaps     = require('gulp-sourcemaps');
 var util           = require('gulp-util');
@@ -169,6 +167,7 @@ var createNeighborsJson = function(archives) {
 // オブジェクト作成（*.md -> posts.json, archives.json, <tag-name>.json）
 gulp.task('build:json', function(callback) {
   return gulp.src(devConfig.src + 'post/**/*.md')
+    .pipe(plumber())
     .pipe(util.buffer())
     .pipe(markdown2Json('posts.json'))
     .pipe(through.obj(function (file, enc, callback) {
@@ -190,6 +189,7 @@ gulp.task('build:json', function(callback) {
 // 全記事作成（post_id.md -> post_id.html）
 gulp.task('build:posts', function() {
   return gulp.src(devConfig.src + 'post/**/*.md')
+    .pipe(plumber())
     .pipe(frontMatter())
     .pipe(markdown())
     .pipe(layout(function(file) {
@@ -205,6 +205,7 @@ gulp.task('build:posts', function() {
 // 記事一覧作成（archives.json -> archives.html）
 gulp.task('build:archives', function() {
   return gulp.src(devConfig.src + 'post/**/*.md')
+    .pipe(plumber())
     .pipe(frontMatter())
     .pipe(markdown())
     .pipe(layout(function(file) {
