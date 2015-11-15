@@ -222,8 +222,10 @@ gulp.task('build:archives', function() {
 // server & browser sync
 gulp.task('server', function() {
   browserSync({
-    baseDir: config.dist,
-    proxy: config.proxy
+    server: {
+      baseDir: devConfig.dist,
+      proxy: devConfig.proxy
+    }
   });
 });
 
