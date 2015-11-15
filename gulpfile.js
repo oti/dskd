@@ -23,10 +23,10 @@ var watch          = require('gulp-watch');
 var _              = require('lodash');
 var runSequence    = require('run-sequence');
 var through        = require('through2');
+var yaml           = require('js-yaml');
 var yargs          = require('yargs').argv;
 
-// var blogConf = $.yaml.safeLoad($.fs.readFileSync('blog-conf.yml', 'utf8'));
-var blogConf = fs.readFileSync('./blog-conf.json', 'utf8');
+var blogConfig = yaml.safeLoad(fs.readFileSync('./blogconfig.yml', 'utf8'));
 
 // config
 var config = {
