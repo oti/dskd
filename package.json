@@ -35,6 +35,7 @@
     "gulp-markdown": "^1.1.0",
     "gulp-markdown-to-json": "^0.2.1",
     "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.0",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-util": "^3.0.7",
