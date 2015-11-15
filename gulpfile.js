@@ -26,7 +26,8 @@ var through        = require('through2');
 var yaml           = require('js-yaml');
 var yargs          = require('yargs').argv;
 
-var blogConfig = yaml.safeLoad(fs.readFileSync('./blogconfig.yml', 'utf8'));
+// configs
+var blogConfig = require('./blogconfig.json', 'utf8');
 
 // config
 var config = {

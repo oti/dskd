@@ -1,0 +1,22 @@
+{
+  "blog_name": "dsld",
+  "blog_version": "5",
+  "blog_url": "http://dskd.jp/",
+  "blog_description": "dskd.jp is a memorandum of simple front-end technology.",
+  "blog_author": "oti",
+  "blog_address": "otiext.gmail.com",
+  "blog_feed": "http://dskd.jp/feed",
+  "archives_base": "archives/",
+  "archives_title_suffix": " - dskd",
+  "tag_id": {
+    "Advent Calendar": "ac",
+    "BEM": "bem",
+    "CSS": "css",
+    "demo": "demo",
+    "Git": "git",
+    "HTML": "html",
+    "JavaScript": "js",
+    "Node": "node",
+    "note": "note"
+  }
+}
