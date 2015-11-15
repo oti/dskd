@@ -1,16 +1,24 @@
-//- _social.jade
-//-mixin neighbor(neighbor, page_id)
-  - var old_title = neighbor[Number(page_id)-1].old.title
-  - var old_url = neighbor[Number(page_id)-1].old.url
-  - var new_title = neighbor[Number(page_id)+1].new.title
-  - var new_url = neighbor[Number(page_id)+1].new.url
+//- _neighbor.jade
+mixin neighbor(neighbors, page_id, blog_url, archives_base)
+  - var old_title;
+  - var old_id;
+  - var new_title;
+  - var new_id;
+  - if(neighbors[page_id].older) {
+      - old_title = neighbors[page_id].older.page_title;
+      - old_id    = neighbors[page_id].older.page_id
+  - }
+  - if(neighbors[page_id].newer) {
+      - new_title = neighbors[page_id].newer.page_title;
+      - new_id    = neighbors[page_id].newer.page_id
+  - }
   nav.neighbor
       ul.neighbor-list
-      if(new_url.length > 0) {
+      - if(new_title) {
         li.neighbor-list__item.neighbor-list__item--newer
-          a.neighbor-link(href=new_url)=new_title
-      }
-      if(old_url > 0) {
+          a.neighbor-link(href=(blog_url+archives_base+new_id+'.html'))=new_title
+      - }
+      - if(old_title) {
         li.neighbor-list__item.neighbor-list__item--older
-          a.neighbor-link(href=old_url)=old_title
-      }
+          a.neighbor-link(href=(blog_url+archives_base+old_id+'.html'))=old_title
+      - }
