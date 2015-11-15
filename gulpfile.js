@@ -15,6 +15,7 @@ var layout         = require('gulp-layout');
 var markdown       = require('gulp-markdown');
 var markdown2Json  = require('gulp-markdown-to-json');
 var plumber        = require('gulp-plumber');
+var rename         = require('gulp-rename');
 var sass           = require('gulp-sass');
 var sourcemaps     = require('gulp-sourcemaps');
 var util           = require('gulp-util');
@@ -241,7 +242,11 @@ gulp.task('archives', function() {
       // fs.writeFile(config.src + 'json/archives.json', JSON.stringify(dist));
       return dist;
     }))
-    .pipe(gulp.dest(config.src + 'json/archives.json'));
+    .pipe(rename({
+      dirname: 'json',
+      basename: 'archives'
+    }))
+    .pipe(gulp.dest(config.src));
 });
 
 gulp.task('tags', function() {
