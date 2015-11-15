@@ -1,12 +1,10 @@
 //- _social.jade
 mixin social(title, permalink)
-  //- エスケープしたり専用パラメータに変えたりは後で書く
   - var escaped_title = encodeURIComponent(title)
   - var escaped_permalink = encodeURIComponent(permalink)
-  - var tw_href = 'https://twitter.com/intent/tweet?text='+escaped_title+'&'+escaped_permalink+'&via=dskd_jp&related=o_ti"'
+  - var tw_href = 'https://twitter.com/intent/tweet?text='+escaped_title+'&url='+escaped_permalink+'&via=dskd_jp&related=o_ti"'
   - var fb_href = 'https://www.facebook.com/sharer/sharer.php?u='+escaped_permalink
-  - var gp_href = 'https://plus.google.com/share?url='+escaped_permalink
-  - var hb_href = 'http://b.hatena.ne.jp/my/add.confirm?title='+escaped_permalink
+  - var hb_href = 'http://b.hatena.ne.jp/my/add.confirm?title='+escaped_title+'&url='+escaped_permalink
   aside.post__social(role='complementary')
     ul.social-list
       li.social-list__item.social-list__item--twitter
