@@ -23,7 +23,6 @@ var watch          = require('gulp-watch');
 var _              = require('lodash');
 var runSequence    = require('run-sequence');
 var through        = require('through2');
-var yaml           = require('js-yaml');
 var yargs          = require('yargs').argv;
 
 // configs
