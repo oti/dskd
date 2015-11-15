@@ -1,0 +1,6 @@
+{
+  "src": "./src/",
+  "dist": "./htdocs/",
+  "browserSupport": ["last 3 versions", "ie >= 8"],
+  "proxy": "localhost:9000"
+}
