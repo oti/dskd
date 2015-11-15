@@ -10,6 +10,7 @@ var frontMatter    = require('gulp-front-matter');
 var htmlPrettify   = require('gulp-html-prettify');
 var imagemin       = require('gulp-imagemin');
 var jade           = require('gulp-jade');
+var jsonTransform  = require('gulp-json-transform');
 var layout         = require('gulp-layout');
 var markdown       = require('gulp-markdown');
 var markdown2Json  = require('gulp-markdown-to-json');
@@ -69,6 +70,7 @@ var createArchivesJson = function(posts) {
   dist.archives = posts_arr;
 
   fs.writeFile(config.src + 'json/archives.json', JSON.stringify(dist));
+  return dist;
 };
 
 // タグごとのjsonを作る
@@ -123,6 +125,10 @@ var createTagsJson = function(posts) {
     // tags_name（tags_post_listのキー）ごとにwriteFile
     fs.writeFile(config.src + 'json/'+tag_name+'.json', JSON.stringify(dist));
   });
+
+  return;
+};
+
 // 記事ごとに前後の記事情報をもったjsonを作る
 var createNeighborsJson = function(archives) {
   // var posts = JSON.parse(fs.readFileSync(config.src + 'json/archives.json', 'utf8'));
@@ -173,17 +179,14 @@ gulp.task('build:json', function(callback) {
   return gulp.src(config.src + 'post/**/*.md')
     .pipe(util.buffer())
     .pipe(markdown2Json('posts.json'))
-    .pipe(through.obj(function (file, enc, callback) {
-      //バッファから文字列に変化させてJSONに戻す
-      var posts = JSON.parse(String(file.contents));
-
-      createArchivesJson(posts);
-      createTagsJson(posts);
-
-      // バッファに戻してpipeに渡す
-      file.contents = new Buffer(JSON.stringify(posts));
-      callback(null, file);
-    }))
+    // .pipe(through.obj(function (file, enc, callback) {
+    //   //バッファから文字列に変化させてJSONに戻す
+    //   var posts = JSON.parse(String(file.contents));
+    //   //do something
+    //   // バッファに戻してpipeに渡す
+    //   file.contents = new Buffer(JSON.stringify(posts));
+    //   callback(null, file);
+    // }))
     .pipe(gulp.dest(config.src + 'json/'))
 });
 
@@ -198,6 +201,51 @@ gulp.task('build:post', function() {
     }))
     .pipe(htmlPrettify({indent_char: ' ', indent_size: 2}))
     .pipe(gulp.dest(config.dist + 'archives/'));
+});
+
+gulp.task('archives', function() {
+  return gulp.src(config.src + 'json/posts.json')
+    .pipe(jsonTransform(function(data) {
+      var posts = data;
+      var cache_arr = [];
+      var posts_arr = [];
+
+      var dist = {archives: []};
+
+      // ソートするためのキーを追加しつつ必要なデータだけ抽出
+      _.forEach(posts, function(post, i){
+        // 記事の日付を連続した数値に変換
+        var sort_val = post.page_datetime.split('-').join('').split('T').join('').split(':').join('');
+        var drip = {
+          sort_key: sort_val,
+          page_id: post.page_id,
+          page_datetime: post.page_datetime,
+          page_title: post.page_title,
+          page_tag: post.page_tag,
+          page_title: post.page_title
+        };
+        cache_arr.push(drip);
+      });
+
+      // 日付で降順ソート
+      cache_arr = _.sortByAll(cache_arr, cache_arr.sort_key, function(val){return -val});
+
+      // ソート用のキーを削除
+      _.forEach(cache_arr, function(post, i){
+        delete post.sort_key;
+        posts_arr.push(post);
+      });
+
+      dist.archives = posts_arr;
+
+      // fs.writeFile(config.src + 'json/archives.json', JSON.stringify(dist));
+      return dist;
+    }))
+    .pipe(gulp.dest(config.src + 'json/archives.json'));
+});
+
+gulp.task('tags', function() {
+  createTagsJson();
 });
 
 gulp.task('neighbors', function() {
