@@ -37,7 +37,7 @@ var config = {
 };
 
 // 日付で降順ソートされたarchives.jsonを作る
-var createArchivesJson = function(posts) {
+var createArchivesJson = function(posts, callback) {
   // var posts = JSON.parse(fs.readFileSync(config.src + 'json/posts.json', 'utf8'));
   var cache_arr = [];
   var posts_arr = [];
@@ -69,15 +69,16 @@ var createArchivesJson = function(posts) {
   });
 
   dist.archives = posts_arr;
-
   fs.writeFile(config.src + 'json/archives.json', JSON.stringify(dist));
-  return dist;
+
+  if(callback) {
+    callback(dist);
+  }
 };
 
 // タグごとのjsonを作る
 var createTagsJson = function(posts) {
   // var posts = JSON.parse(fs.readFileSync(config.src + 'json/posts.json', 'utf8'));
-  // var archives = JSON.parse(fs.readFileSync(config.src + 'json/archives.json', 'utf8'));
   var tags_post_map = [];
   var tags_post_list = {};
 
@@ -87,7 +88,6 @@ var createTagsJson = function(posts) {
   // tags_post_map = [{'CSS': '1'}, {'CSS': '12'}, {'note': '7'},...]
   // tags_post_list = {'CSS': [], 'note': [],...}
   _.forEach(posts, function(post, i){
-    // postsをeachしても同じデータは作れるけど、archivesは降順ソートされているのでこっちを使う
     var post_tag_arr = post.page_tag;
     _.forEach(post_tag_arr, function(tag_name, i){
       var set = {};
@@ -132,7 +132,7 @@ var createTagsJson = function(posts) {
 
 // 記事ごとに前後の記事情報をもったjsonを作る
 var createNeighborsJson = function(archives) {
-  // var posts = JSON.parse(fs.readFileSync(config.src + 'json/archives.json', 'utf8'));
+  // var data = JSON.parse(fs.readFileSync(config.src + 'json/archives.json', 'utf8'));
   // var archives = data.archives;
   var neighbors_arr = [];
 
@@ -170,24 +170,30 @@ var createNeighborsJson = function(archives) {
   dist.neighbors = neighbors_arr;
 
   fs.writeFile(config.src + 'json/neighbors.json', JSON.stringify(dist));
+  return dist;
 };
 
 
 // 記事作成タスク ====================
 
-// 　オブジェクト作成（*.md -> posts.json, archives.json, <tag-name>.json）
+// オブジェクト作成（*.md -> posts.json, archives.json, <tag-name>.json）
 gulp.task('build:json', function(callback) {
   return gulp.src(config.src + 'post/**/*.md')
     .pipe(util.buffer())
     .pipe(markdown2Json('posts.json'))
-    // .pipe(through.obj(function (file, enc, callback) {
-    //   //バッファから文字列に変化させてJSONに戻す
-    //   var posts = JSON.parse(String(file.contents));
-    //   //do something
-    //   // バッファに戻してpipeに渡す
-    //   file.contents = new Buffer(JSON.stringify(posts));
-    //   callback(null, file);
-    // }))
+    .pipe(through.obj(function (file, enc, callback) {
+      //バッファから文字列に変化させてJSONに戻す
+      var posts = JSON.parse(String(file.contents));
+
+      createArchivesJson(posts, function(data){
+        createNeighborsJson(data.archives);
+      });
+      createTagsJson(posts);
+
+      // バッファに戻してpipeに渡す
+      file.contents = new Buffer(JSON.stringify(posts));
+      callback(null, file);
+    }))
     .pipe(gulp.dest(config.src + 'json/'))
 });
 
@@ -197,64 +203,24 @@ gulp.task('build:post', function() {
     .pipe(frontMatter())
     .pipe(markdown())
     .pipe(layout(function(file) {
-      var data = _.assign({}, blogConf, file.frontMatter);
+      var data = _.assign({}, blogConfig, file.frontMatter);
       return data;
     }))
     .pipe(htmlPrettify({indent_char: ' ', indent_size: 2}))
     .pipe(gulp.dest(config.dist + 'archives/'));
 });
 
-gulp.task('archives', function() {
-  return gulp.src(config.src + 'json/posts.json')
-    .pipe(jsonTransform(function(data) {
-      var posts = data;
-      var cache_arr = [];
-      var posts_arr = [];
-
-      var dist = {archives: []};
-
-      // ソートするためのキーを追加しつつ必要なデータだけ抽出
-      _.forEach(posts, function(post, i){
-        // 記事の日付を連続した数値に変換
-        var sort_val = post.page_datetime.split('-').join('').split('T').join('').split(':').join('');
-        var drip = {
-          sort_key: sort_val,
-          page_id: post.page_id,
-          page_datetime: post.page_datetime,
-          page_title: post.page_title,
-          page_tag: post.page_tag,
-          page_title: post.page_title
-        };
-        cache_arr.push(drip);
-      });
-
-      // 日付で降順ソート
-      cache_arr = _.sortByAll(cache_arr, cache_arr.sort_key, function(val){return -val});
-
-      // ソート用のキーを削除
-      _.forEach(cache_arr, function(post, i){
-        delete post.sort_key;
-        posts_arr.push(post);
-      });
-
-      dist.archives = posts_arr;
-
-      // fs.writeFile(config.src + 'json/archives.json', JSON.stringify(dist));
-      return dist;
+// 記事一覧作成（archives.json -> archives.html）
+gulp.task('build:archives', function() {
+  return gulp.src(config.src + 'post/**/*.md')
+    .pipe(frontMatter())
+    .pipe(markdown())
+    .pipe(layout(function(file) {
+      var data = _.assign({}, blogConfig, file.frontMatter);
+      return data;
     }))
-    .pipe(rename({
-      dirname: 'json',
-      basename: 'archives'
-    }))
-    .pipe(gulp.dest(config.src));
-});
-
-gulp.task('tags', function() {
-  createTagsJson();
-});
-
-gulp.task('neighbors', function() {
-  createNeighborsJson();
+    .pipe(htmlPrettify({indent_char: ' ', indent_size: 2}))
+    .pipe(gulp.dest(config.dist + 'archives/'));
 });
 
 
