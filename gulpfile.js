@@ -234,7 +234,9 @@ gulp.task('jade', function () {
   gulp.src([devConfig.src + 'jade/**/*.jade', '!' + devConfig.src + 'jade/**/_*.jade'])
     .pipe(plumber())
     .pipe(data(function(file) {
-      return require('./blogconfig.json');
+      var blog_conf = require('./blogconfig.json');
+      var archives = require(devConfig.src + 'json/archives.json');
+      return _.assign({}, blog_conf, archives);
     }))
     .pipe(jade({
       pretty: true
