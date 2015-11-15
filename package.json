@@ -30,6 +30,7 @@
     "gulp-html-prettify": "0.0.1",
     "gulp-imagemin": "^2.4.0",
     "gulp-jade": "^1.1.0",
+    "gulp-json-transform": "^0.3.0",
     "gulp-layout": "0.0.3",
     "gulp-markdown": "^1.1.0",
     "gulp-markdown-to-json": "^0.2.1",
