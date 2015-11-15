@@ -28,18 +28,12 @@ var yargs          = require('yargs').argv;
 
 // configs
 var blogConfig = require('./blogconfig.json', 'utf8');
+var devConfig  = require('./devconfig.json', 'utf8');
 
-// config
-var config = {
-  src: './src/',
-  dist: './htdocs/',
-  browserSupport: ['last 3 versions', 'ie >= 8'],
-  proxy: 'localhost:7002'
-};
 
 // 日付で降順ソートされたarchives.jsonを作る
 var createArchivesJson = function(posts, callback) {
-  // var posts = JSON.parse(fs.readFileSync(config.src + 'json/posts.json', 'utf8'));
+  // var posts = JSON.parse(fs.readFileSync(devConfig.src + 'json/posts.json', 'utf8'));
   var cache_arr = [];
   var posts_arr = [];
 
@@ -70,7 +64,7 @@ var createArchivesJson = function(posts, callback) {
   });
 
   dist.archives = posts_arr;
-  fs.writeFile(config.src + 'json/archives.json', JSON.stringify(dist));
+  fs.writeFile(devConfig.src + 'json/archives.json', JSON.stringify(dist));
 
   if(callback) {
     callback(dist);
@@ -79,7 +73,7 @@ var createArchivesJson = function(posts, callback) {
 
 // タグごとのjsonを作る
 var createTagsJson = function(posts) {
-  // var posts = JSON.parse(fs.readFileSync(config.src + 'json/posts.json', 'utf8'));
+  // var posts = JSON.parse(fs.readFileSync(devConfig.src + 'json/posts.json', 'utf8'));
   var tags_post_map = [];
   var tags_post_list = {};
 
@@ -125,7 +119,7 @@ var createTagsJson = function(posts) {
     dist.tags = post_arr;
 
     // tags_name（tags_post_listのキー）ごとにwriteFile
-    fs.writeFile(config.src + 'json/'+tag_name+'.json', JSON.stringify(dist));
+    fs.writeFile(devConfig.src + 'json/'+tag_name+'.json', JSON.stringify(dist));
   });
 
   return;
@@ -133,7 +127,7 @@ var createTagsJson = function(posts) {
 
 // 記事ごとに前後の記事情報をもったjsonを作る
 var createNeighborsJson = function(archives) {
-  // var data = JSON.parse(fs.readFileSync(config.src + 'json/archives.json', 'utf8'));
+  // var data = JSON.parse(fs.readFileSync(devConfig.src + 'json/archives.json', 'utf8'));
   // var archives = data.archives;
   var neighbors_arr = [];
 
@@ -166,8 +160,7 @@ var createNeighborsJson = function(archives) {
     }
   });
 
-
-  fs.writeFile(config.src + 'json/neighbors.json', JSON.stringify(dist));
+  fs.writeFile(devConfig.src + 'json/neighbors.json', JSON.stringify(dist));
   return dist;
 };
 
@@ -176,7 +169,7 @@ var createNeighborsJson = function(archives) {
 
 // オブジェクト作成（*.md -> posts.json, archives.json, <tag-name>.json）
 gulp.task('build:json', function(callback) {
-  return gulp.src(config.src + 'post/**/*.md')
+  return gulp.src(devConfig.src + 'post/**/*.md')
     .pipe(util.buffer())
     .pipe(markdown2Json('posts.json'))
     .pipe(through.obj(function (file, enc, callback) {
@@ -192,25 +185,28 @@ gulp.task('build:json', function(callback) {
       file.contents = new Buffer(JSON.stringify(posts));
       callback(null, file);
     }))
-    .pipe(gulp.dest(config.src + 'json/'))
+    .pipe(gulp.dest(devConfig.src + 'json/'))
 });
 
 // 全記事作成（post_id.md -> post_id.html）
 gulp.task('build:posts', function() {
-  return gulp.src(config.src + 'post/**/*.md')
+  return gulp.src(devConfig.src + 'post/**/*.md')
     .pipe(frontMatter())
     .pipe(markdown())
     .pipe(layout(function(file) {
-      var data = _.assign({}, blogConfig, file.frontMatter);
+      var neighbors = JSON.parse(fs.readFileSync(devConfig.src + 'json/neighbors.json', 'utf8'));
+      data = _.assign({}, blogConfig, neighbors);
+      data = _.assign({}, data, file.frontMatter);
+      console.log(data);
       return data;
     }))
     .pipe(htmlPrettify({indent_char: ' ', indent_size: 2}))
-    .pipe(gulp.dest(config.dist + 'archives/'));
+    .pipe(gulp.dest(devConfig.dist + 'archives/'));
 });
 
 // 記事一覧作成（archives.json -> archives.html）
 gulp.task('build:archives', function() {
-  return gulp.src(config.src + 'post/**/*.md')
+  return gulp.src(devConfig.src + 'post/**/*.md')
     .pipe(frontMatter())
     .pipe(markdown())
     .pipe(layout(function(file) {
@@ -218,7 +214,7 @@ gulp.task('build:archives', function() {
       return data;
     }))
     .pipe(htmlPrettify({indent_char: ' ', indent_size: 2}))
-    .pipe(gulp.dest(config.dist + 'archives/'));
+    .pipe(gulp.dest(devConfig.dist + 'archives/'));
 });
 
 
@@ -234,7 +230,7 @@ gulp.task('server', function() {
 
 // jade
 gulp.task('jade', function () {
-  gulp.src([config.src + 'jade/**/*.jade', '!' + config.src + 'jade/**/_*.jade'])
+  gulp.src([devConfig.src + 'jade/**/*.jade', '!' + devConfig.src + 'jade/**/_*.jade'])
     .pipe(plumber())
     .pipe(data(function(file) {
       // console.log(frontMatter(String(file.contents)))
@@ -243,64 +239,64 @@ gulp.task('jade', function () {
     .pipe(jade({
       pretty: true
     }))
-    .pipe(gulp.dest(config.dist))
+    .pipe(gulp.dest(devConfig.dist))
 });
 
 // imagemin:img
 gulp.task('imagemin:img', function() {
-  return gulp.src(config.src + 'img/**/*')
+  return gulp.src(devConfig.src + 'img/**/*')
     .pipe(plumber())
     .pipe(imagemin())
-    .pipe(gulp.dest(config.dist + 'img'))
+    .pipe(gulp.dest(devConfig.dist + 'img'))
     .pipe(browserSync.stream());
 });
 
 // imagemin:svg
 gulp.task('imagemin:svg', function() {
-  return gulp.src(config.src + 'svg/**/*')
+  return gulp.src(devConfig.src + 'svg/**/*')
     .pipe(plumber())
     .pipe(imagemin())
-    .pipe(gulp.dest(config.dist + 'img'))
+    .pipe(gulp.dest(devConfig.dist + 'img'))
     .pipe(browserSync.stream());
 });
 
 // sass
 gulp.task('sass', function() {
-  return gulp.src(config.src + 'scss/style.scss')
+  return gulp.src(devConfig.src + 'scss/style.scss')
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
-      browsers: config.browserSupport
+      browsers: devConfig.browserSupport
     }))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(config.dist + 'css'))
+    .pipe(gulp.dest(devConfig.dist + 'css'))
     .pipe(browserSync.stream());
 });
 
 // copy:font
 gulp.task('copy:font', function() {
-  return gulp.src(config.src + 'font/**/*')
+  return gulp.src(devConfig.src + 'font/**/*')
     .pipe(plumber())
-    .pipe(gulp.dest(config.dist + 'font'))
+    .pipe(gulp.dest(devConfig.dist + 'font'))
     .pipe(browserSync.stream());
 });
 
 // copy:misc
 gulp.task('copy:misc', function() {
-  return gulp.src(config.src + 'misc/**/*')
+  return gulp.src(devConfig.src + 'misc/**/*')
     .pipe(plumber())
-    .pipe(gulp.dest(config.dist + 'misc'))
+    .pipe(gulp.dest(devConfig.dist + 'misc'))
     .pipe(browserSync.stream());
 });
 
 // watch
 gulp.task('watch', function() {
-  watch([config.src + 'jade/**/*.jade'], function(e) {
+  watch([devConfig.src + 'jade/**/*.jade'], function(e) {
     gulp.start(['jade']);
   });
 
-  watch([config.src + 'scss/**/*.scss'], function(e) {
+  watch([devConfig.src + 'scss/**/*.scss'], function(e) {
     gulp.start(['sass']);
   });
 });
