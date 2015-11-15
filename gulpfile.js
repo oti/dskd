@@ -137,10 +137,9 @@ var createNeighborsJson = function(archives) {
   // var archives = data.archives;
   var neighbors_arr = [];
 
-  var dist = {neighbors: []};
+  var dist = {neighbors: {}};
 
   _.forEach(archives, function(post, i){
-    var set = {};
     var old_set = {};
     var new_set = {};
 
@@ -161,14 +160,12 @@ var createNeighborsJson = function(archives) {
     }
 
     // postごとに持つ
-    set[post.page_id] = {
+    dist.neighbors[post.page_id] = {
       older: old_set,
       newer: new_set
     }
-    neighbors_arr.push(set);
   });
 
-  dist.neighbors = neighbors_arr;
 
   fs.writeFile(config.src + 'json/neighbors.json', JSON.stringify(dist));
   return dist;
