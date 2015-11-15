@@ -29,8 +29,8 @@
 
   // 構造依存スタイル
   @at-root .contents + & {
-    margin-top: 30px;
-    @include section-border($fs--medium);
+    margin-bottom: $fs--medium*2;
+    @include section-border($fs--medium*2);
   }
 
   & .author {
