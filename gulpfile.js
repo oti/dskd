@@ -193,10 +193,9 @@ gulp.task('build:posts', function() {
     .pipe(frontMatter())
     .pipe(markdown())
     .pipe(layout(function(file) {
-      var neighbors = JSON.parse(fs.readFileSync(devConfig.src + 'json/neighbors.json', 'utf8'));
+      var neighbors = require(devConfig.src + 'json/neighbors.json');
       data = _.assign({}, blogConfig, neighbors);
       data = _.assign({}, data, file.frontMatter);
-      console.log(data);
       return data;
     }))
     .pipe(htmlPrettify({indent_char: ' ', indent_size: 2}))
