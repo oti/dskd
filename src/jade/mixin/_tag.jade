@@ -1,5 +1,12 @@
 //- _tag.jade
-mixin tag(page_tag)
+mixin tag(page_tag, tag_map)
   p.post-tag
     each val, index in page_tag
-      a.tag-link(href=(archives_base+val+'.html'))=val
+      - var tag_name;
+      //- 最後以外は「, 」をつける
+      - if(index < page_tag.length-1) {
+        - tag_name = val+', '
+      - } else {
+        - tag_name = val
+      - }
+      a.tag-link(href=(archives_base+tag_map[val]+'.html'))=tag_name

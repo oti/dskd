@@ -8,7 +8,7 @@
   "blog_feed": "http://dskd.jp/feed",
   "archives_base": "archives/",
   "archives_title_suffix": " - dskd",
-  "tag_id": {
+  "tag_map": {
     "Advent Calendar": "ac",
     "BEM": "bem",
     "CSS": "css",
