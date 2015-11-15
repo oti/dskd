@@ -198,7 +198,7 @@ gulp.task('build:json', function(callback) {
 });
 
 // 全記事作成（post_id.md -> post_id.html）
-gulp.task('build:post', function() {
+gulp.task('build:posts', function() {
   return gulp.src(config.src + 'post/**/*.md')
     .pipe(frontMatter())
     .pipe(markdown())
@@ -307,14 +307,14 @@ gulp.task('watch', function() {
   });
 });
 
-// dev
+// build:static
 // - only compile
-gulp.task('dev', function() {
+gulp.task('build:blog', function() {
   runSequence(/*'jade', */'sass', 'imagemin:img', 'imagemin:svg', 'copy:font', 'copy:misc');
 });
 
-// default
+// dev
 //  - local development task
-gulp.task('default', function() {
-  runSequence(['dev'], ['server'], ['watch']);
+gulp.task('dev', function() {
+  runSequence(['build:blog'], ['server'], ['watch']);
 });
