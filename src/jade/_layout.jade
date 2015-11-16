@@ -1,13 +1,22 @@
 //- _layout.jade
 //-
 doctype html
-- var page_permalink = blog_url+archives_base+page_id+'.html'
+- var page_permalink
+- if(page_type==='entry') {
+-   page_permalink = blog_url+archives_base+page_id+'.html'
+- } else if(page_type==='index') {
+-   page_permalink = blog_url
+-   page_title = blog_name
+-   page_description = blog_description
+- } else {
+-   page_permalink = blog_url+arhives_base
+- }
 include _mixin
 html(lang='ja')
   head
     meta(charset='UTF-8')
     meta(content='width=device-width', name='viewport')
-    title=(page_type==='top') ? page_title : page_title+archives_title_suffix
+    title=(page_type==='index') ? page_title : page_title+archives_title_suffix
     meta(content='/img/blog-cover.png', itemprop='image')
     meta(content='Jade -node template engine-', name='generator')
     meta(content=page_description, name='description')
