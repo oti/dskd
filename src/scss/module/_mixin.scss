@@ -27,6 +27,7 @@
   // Elementはinline化する
   @at-root #{$self}__item {
     display: inline;
+    // line-height: $lh--medium;
   }
 }
 
@@ -67,15 +68,22 @@
 // セクションの見出しとリストを横並びにする
 // $selfには呼び出し側で&が指定される。＆と子要素の構造に依存したスタイルモジュール
 @mixin horizontal-contents($self) {
+  // 見出し部をfloatし、後続のリストを横並びにする
   #{$self}__heading {
+    float: left;
     padding-right: 15px;
     width: 100px;
     // text-align: right;
   }
-  #{$self}__heading,
+
   #{$self}-list {
-    display: inline-block;
+    // 折り返し対応
+    overflow: hidden;
   }
+  // #{$self}__heading,
+  // #{$self}-list {
+  //   display: inline-block;
+  // }
 }
 
 // セクションの区切りborder
