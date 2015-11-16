@@ -116,7 +116,7 @@ var createTagsJson = function(posts) {
     dist.tags = post_arr;
 
     // tags_name（tags_post_listのキー）ごとにwriteFile
-    fs.writeFile(devConfig.src + 'json/'+tag_name+'.json', JSON.stringify(dist));
+    fs.writeFile(devConfig.src + 'json/'+tag_name.toLowerCase().replace(' ', '_')+'.json', JSON.stringify(dist));
   });
 
   return;
