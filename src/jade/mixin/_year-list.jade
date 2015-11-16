@@ -1,0 +1,15 @@
+//- _year-list.jade
+mixin year-list(archives, archives_base)
+  ol.year-list(reversed='')
+    - var years_cache = []
+    - var years
+    //- 重複しているであろう配列を作る
+    each post, i in archives
+      - years_cache.push(post.page_datetime.substring(0,4))
+    //- ユニークにする
+    - years = years_cache.filter(function (x, i, self) {
+    -   return self.indexOf(x) === i;
+    - });
+    each val, i in years
+      li.year-list__item
+        a.year-link(href='/'+archives_base+val+'.html')=val
