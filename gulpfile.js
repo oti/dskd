@@ -184,6 +184,7 @@ gulp.task('build:json', function(callback) {
       callback(null, file);
     }))
     .pipe(gulp.dest(devConfig.src + 'json/'))
+    .pipe(browserSync.stream());
 });
 
 // 全記事作成（post_id.md -> post_id.html）
@@ -194,12 +195,13 @@ gulp.task('build:posts', function() {
     .pipe(markdown())
     .pipe(layout(function(file) {
       var neighbors = require(devConfig.src + 'json/neighbors.json');
-      data = _.assign({}, blogConfig, neighbors);
+      var data = _.assign({}, blogConfig, neighbors);
       data = _.assign({}, data, file.frontMatter);
       return data;
     }))
     .pipe(htmlPrettify({indent_char: ' ', indent_size: 2}))
-    .pipe(gulp.dest(devConfig.dist + 'archives/'));
+    .pipe(gulp.dest(devConfig.dist + 'archives/'))
+    .pipe(browserSync.stream());;
 });
 
 // 記事一覧作成（archives.json -> archives.html）
@@ -231,17 +233,19 @@ gulp.task('server', function() {
 
 // jade
 gulp.task('jade', function () {
-  gulp.src([devConfig.src + 'jade/**/*.jade', '!' + devConfig.src + 'jade/**/_*.jade'])
+  return gulp.src([devConfig.src + 'jade/**/*.jade', '!' + devConfig.src + 'jade/**/_*.jade'])
     .pipe(plumber())
     .pipe(data(function(file) {
       var blog_conf = require('./blogconfig.json');
       var archives = require(devConfig.src + 'json/archives.json');
-      return _.assign({}, blog_conf, archives);
+      var data = _.assign({}, blog_conf, archives);
+      return data;
     }))
     .pipe(jade({
       pretty: true
     }))
     .pipe(gulp.dest(devConfig.dist))
+    .pipe(browserSync.stream());
 });
 
 // imagemin:img
@@ -295,7 +299,9 @@ gulp.task('copy:misc', function() {
 // watch
 gulp.task('watch', function() {
   watch([devConfig.src + 'jade/**/*.jade'], function(e) {
-    gulp.start(['jade']);
+    gulp.start(['jade'], function(e){
+      browserSync.reload();
+    });
   });
 
   watch([devConfig.src + 'scss/**/*.scss'], function(e) {
@@ -306,11 +312,11 @@ gulp.task('watch', function() {
 // build:static
 // - only compile
 gulp.task('build:blog', function() {
-  runSequence(/*'jade', */'sass', 'imagemin:img', 'imagemin:svg', 'copy:font', 'copy:misc');
+  runSequence(['jade', 'sass', 'imagemin:img', 'imagemin:svg', 'copy:font', 'copy:misc']);
 });
 
 // dev
 //  - local development task
 gulp.task('dev', function() {
-  runSequence(['build:blog'], ['server'], ['watch']);
+  runSequence('build:blog', 'server', 'watch');
 });
