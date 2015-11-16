@@ -1,0 +1,46 @@
+//- index.jade
+//- ブログトップ
+extends _layout
+//-
+block contents
+  section.post-list
+    - var list_limit = 0;
+    - if(page_type === 'index') {
+    -   list_limit = 5
+    - } else {
+    -   list_limit = 1000
+    - }
+
+    //- 全記事一覧の時は見出しを出す
+    - if(page_type === 'archives') {
+        h1.archives-heading Archives
+    - }
+    each post, i in archives
+      - if(i === list_limit) return
+      a.post-link(href='/'+archives_base+post.page_id+'.html')
+        article.post
+          footer.post__footer
+            +timestamp(post.page_datetime)
+            +tag(post.page_tag, post.page_type)
+          h1.post__title=post.page_title
+
+    - if(page_type === 'index') {
+        footer.post-more
+          a(href='/'+archives_base) more »
+    - }
+
+  nav.tag
+    h1.tag__heading Tag
+    +tag-list(archives, archives_base)
+
+  nav.year
+    h1.year__heading Year
+    +year-list(archives, archives_base)
+
+  aside.subscribe(role='complementary')
+    h1.subscribe__heading Subscribe
+    ul.subscribe-list
+      li.subscribe-list__item
+        a.subscribe-link(href='https://twitter.com/'+blog_twitter) Twitter
+      li.subscribe-list__item
+        a.subscribe-link(href=blog_url+blog_feed, itemprop='sameAs') RSS
