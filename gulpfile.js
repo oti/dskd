@@ -311,12 +311,12 @@ gulp.task('watch', function() {
 
 // build:static
 // - only compile
-gulp.task('build:blog', function() {
-  runSequence(['jade', 'sass', 'imagemin:img', 'imagemin:svg', 'copy:font', 'copy:misc']);
+gulp.task('build:blog', function(callback) {
+  runSequence(['jade', 'sass', 'imagemin:img', 'imagemin:svg', 'copy:font', 'copy:misc'], callback);
 });
 
 // dev
 //  - local development task
-gulp.task('dev', function() {
-  runSequence('build:blog', 'server', 'watch');
+gulp.task('dev', function(callback) {
+  runSequence(['build:blog', 'server', 'watch'], callback);
 });
