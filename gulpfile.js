@@ -74,7 +74,7 @@ var createTagsJson = function(posts) {
   var tags_post_map = [];
   var tags_post_list = {};
 
-  var dist = {tags: []};
+  var dist = {tags: {}};
 
   // タグとpage_idの対応オブジェクトを抽出
   // tags_post_map = [{'CSS': '1'}, {'CSS': '12'}, {'note': '7'},...]
@@ -91,6 +91,7 @@ var createTagsJson = function(posts) {
   });
 
   // タグごとに該当するpage_idを配列に入れる
+  // tags_post_map = [{'CSS': '1'}, {'CSS': '12'}, {'note': '7'},...]
   // tags_post_list = {'CSS': ['12', '1'], note: ['1'],...}
   _.forEach(tags_post_map, function(set, i){
     var tag_name = _.keys(set);
@@ -113,11 +114,14 @@ var createTagsJson = function(posts) {
       post_arr.push(post_data);
     });
 
-    dist.tags = post_arr;
+    // dist.tags = post_arr;
+    dist.tags[tag_name] = post_arr;
 
     // tags_name（tags_post_listのキー）ごとにwriteFile
-    fs.writeFile(devConfig.src + 'json/'+tag_name.toLowerCase().replace(' ', '_')+'.json', JSON.stringify(dist));
+    // fs.writeFile(devConfig.src + 'json/'+tag_name.toLowerCase().replace(' ', '_')+'.json', JSON.stringify(dist));
   });
+
+  fs.writeFile(devConfig.src + 'json/tags.json', JSON.stringify(dist));
 
   return;
 };
@@ -166,7 +170,7 @@ var createNeighborsJson = function(archives) {
 
 // オブジェクト作成（*.md -> posts.json, archives.json, <tag-name>.json）
 gulp.task('build:json', function(callback) {
-  return gulp.src(devConfig.src + 'post/**/*.md')
+  return gulp.src(devConfig.src + 'md/post/**/*.md')
     .pipe(plumber())
     .pipe(util.buffer())
     .pipe(markdown2Json('posts.json'))
@@ -189,7 +193,7 @@ gulp.task('build:json', function(callback) {
 
 // 全記事作成（post_id.md -> post_id.html）
 gulp.task('build:posts', function() {
-  return gulp.src(devConfig.src + 'post/**/*.md')
+  return gulp.src(devConfig.src + 'md/post/**/*.md')
     .pipe(plumber())
     .pipe(frontMatter())
     .pipe(markdown())
@@ -204,18 +208,41 @@ gulp.task('build:posts', function() {
     .pipe(browserSync.stream());;
 });
 
-// 記事一覧作成（archives.json -> archives.html）
-gulp.task('build:archives', function() {
-  return gulp.src(devConfig.src + 'post/**/*.md')
+// ブログインデックス作成（index.md -> index.html）
+gulp.task('build:index', function() {
+  return gulp.src(devConfig.src + 'archives/index.md')
     .pipe(plumber())
     .pipe(frontMatter())
     .pipe(markdown())
     .pipe(layout(function(file) {
-      var data = _.assign({}, blogConfig, file.frontMatter);
+      var archives  = require(devConfig.src + 'json/archives.json');
+      var data = _.assign({}, blogConfig, archives);
+      data = _.assign({}, data, file.frontMatter);
       return data;
     }))
     .pipe(htmlPrettify({indent_char: ' ', indent_size: 2}))
-    .pipe(gulp.dest(devConfig.dist + 'archives/'));
+    .pipe(gulp.dest(devConfig.dist))
+    .pipe(browserSync.stream());;
+});
+
+//
+gulp.task('build:html', function() {
+  return gulp.src(devConfig.src + 'md/**/*.md')
+    .pipe(plumber())
+    .pipe(frontMatter())
+    .pipe(markdown())
+    .pipe(layout(function(file) {
+      var data;
+      var archives  = require(devConfig.src + 'json/archives.json');
+      var neighbors = require(devConfig.src + 'json/neighbors.json');
+      data = _.assign({}, blogConfig, archives);
+      data = _.assign({}, data, neighbors);
+      data = _.assign({}, data, file.frontMatter);
+      return data;
+    }))
+    .pipe(htmlPrettify({indent_char: ' ', indent_size: 2}))
+    .pipe(gulp.dest(devConfig.dist))
+    .pipe(browserSync.stream());;
 });
 
 
@@ -307,7 +334,18 @@ gulp.task('watch', function() {
   watch([devConfig.src + 'scss/**/*.scss'], function(e) {
     gulp.start(['sass']);
   });
+
+  watch([devConfig.src + 'md/**/*.md'], function(e) {
+    gulp.start(['build:html'], function(e){
+      browserSync.reload();
+    });
+  });
 });
+
+gulp.task('test', function() {
+  runSequence('build:html', 'server', 'watch');
+});
+
 
 // build:static
 // - only compile
