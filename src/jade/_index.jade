@@ -1,4 +1,4 @@
-//- index.jade
+//- _index.jade
 //- ブログトップ
 extends _layout
 //-
@@ -29,13 +29,9 @@ block contents
           a(href='/'+archives_base) more »
     - }
 
-  nav.tag
-    h1.tag__heading Tag
-    +tag-list(archives, archives_base)
+  +tag-list(archives, archives_base)
 
-  nav.year
-    h1.year__heading Year
-    +year-list(archives, archives_base)
+  +year-list(archives, archives_base)
 
   aside.subscribe(role='complementary')
     h1.subscribe__heading Subscribe

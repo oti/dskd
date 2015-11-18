@@ -16,9 +16,9 @@ mixin neighbor(neighbors, page_id, blog_url, archives_base)
       ul.neighbor-list
         - if(new_title) {
             li.neighbor-list__item.neighbor-list__item--newer
-              a.neighbor-link(href=(blog_url+archives_base+new_id+'.html'))=new_title
+              a.neighbor-link(href=('/'+archives_base+new_id+'.html'))=new_title
         - }
         - if(old_title) {
             li.neighbor-list__item.neighbor-list__item--older
-              a.neighbor-link(href=(blog_url+archives_base+old_id+'.html'))=old_title
+              a.neighbor-link(href=('/'+archives_base+old_id+'.html'))=old_title
         - }

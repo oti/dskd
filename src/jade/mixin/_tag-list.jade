@@ -15,7 +15,10 @@ mixin tag-list(archives, archives_base)
   - tags = tags_pool.sort(function(a, b){
   -   return a.localeCompare(b);
   - });
-  ul.tag-list
-    each tag, i in tags
-      li.tag-list__item
-        a.tag-link(href='/'+archives_base+tag.toLowerCase().replace(' ', '_')+'.html')=tag
+
+  nav.tag
+    h1.tag__heading Tag
+    ul.tag-list
+      each tag, i in tags
+        li.tag-list__item
+          a.tag-link(href='/'+archives_base+tag.toLowerCase().replace(' ', '_')+'.html')=tag

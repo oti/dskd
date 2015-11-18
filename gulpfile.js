@@ -195,7 +195,7 @@ gulp.task('build:json', function(callback) {
 // HTML作成タスク ====================
 
 // 全記事作成（post_id.md -> post_id.html）
-gulp.task('build:html:posts', function() {
+gulp.task('build:html:post', function() {
   return gulp.src(devConfig.src + 'md/post/**/*.md')
     .pipe(plumber())
     .pipe(frontMatter())

@@ -9,7 +9,7 @@ mixin tag(page_tag, page_type)
       - } else {
         - tag_name = val
       - }
-      - if(page_type==='entry') {
+      - if(page_type === 'post') {
           a.tag-link(href=('/'+archives_base+val.toLowerCase().replace(' ', '_')+'.html'))=tag_name
       - } else {
           | #{tag_name}

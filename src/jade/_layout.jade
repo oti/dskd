@@ -2,21 +2,26 @@
 //-
 doctype html
 - var page_permalink
-- if(page_type==='entry') {
+- if(page_type === 'post') {
 -   page_permalink = blog_url+archives_base+page_id+'.html'
-- } else if(page_type==='index') {
+- } else if(page_type === 'index') {
 -   page_permalink = blog_url
 -   page_title = blog_name
 -   page_description = blog_description
 - } else {
 -   page_permalink = blog_url+arhives_base
 - }
-include _mixin
+include mixin/_timestamp
+include mixin/_tag
+include mixin/_social
+include mixin/_neighbor
+include mixin/_tag-list
+include mixin/_year-list
 html(lang='ja')
   head
     meta(charset='UTF-8')
     meta(content='width=device-width', name='viewport')
-    title=(page_type==='index') ? page_title : page_title+archives_title_suffix
+    title=(page_type === 'index') ? page_title : page_title+archives_title_suffix
     meta(content='/img/blog-cover.png', itemprop='image')
     meta(content='Jade -node template engine-', name='generator')
     meta(content=page_description, name='description')
@@ -31,8 +36,39 @@ html(lang='ja')
     link(href='/dist/img/blog-icon.png', rel='apple-touch-icon-precomposed')
     link(href='/feed', rel='alternate', type='application/atom+xml')
     link(href='/css/style.css', rel='stylesheet', media='only screen')
+
   body
-    include ./partial/_global-header
+    header.global-header(role='banner')
+      h1.logo
+        a.logo-link(href='/')
+          img.logo__img(alt='dskd', src='/img/logo.svg', width='100', height='60')
+
+      nav.site-nav(role='navigation')
+        ul.site-nav-list
+          li.site-nav-list__item
+            a.site-nav-list-link(href='/archives/') ARCHIVES
+          li.site-nav-list__item
+            a.site-nav-list-link(href='/archives/demo/') DEMO
+          li.site-nav-list__item
+            a.site-nav-list-link(href='/about/') ABOUT
+
+      - if(page_type === 'index') {
+        p.lede dskd.jp is a memorandum of simple front-end technology.
+      - }
+
     main.contents
       block contents
-    include ./partial/_global-footer
+
+    footer.global-footer
+      section.autor
+        p.author__signature=('Made by '+blog_author+'.')
+        adress.author__address
+          a(href=blog_address)=blog_address
+
+      ul.subinfo
+        li.subinfo__item
+          a.subinfo-link(href='http://creativecommons.org/licenses/by-nc/4.0/', rel='license')
+            small.subinfo-license CC BY-NC
+        li.subinfo__item
+          a.subinfo-link(href=blog_feed, alternate='application/rss+xml') RSS
+
