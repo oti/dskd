@@ -101,21 +101,34 @@ var createTagsJson = function(posts) {
   // タグごとにjsonを作る
   _.forEach(tags_post_list, function(id_arr, i){
     var tag_name = i;
-    var post_arr = [];
+    var cache_arr = [];
+    var posts_arr = [];
     _.forEach(id_arr, function(id, i){
+      // 記事の日付を連続した数値に変換
+      var sort_val = posts[id].page_datetime.split('-').join('').split('T').join('').split(':').join('');
       // posts.jsonからpage_idを添え字にして記事の情報を取り出す
-      var post_data = {
+      var drip = {
+        sort_key: sort_val,
         page_id: posts[id].page_id,
         page_datetime: posts[id].page_datetime,
         page_title: posts[id].page_title,
         page_tag: posts[id].page_tag,
         page_title: posts[id].page_title
       };
-      post_arr.push(post_data);
+      cache_arr.push(drip);
     });
 
-    // dist.tags = post_arr;
-    dist.tags[tag_name] = post_arr;
+    // 日付で降順ソート
+    cache_arr = _.sortByAll(cache_arr, cache_arr.sort_key, function(val){return -val});
+
+    // ソート用のキーを削除
+    _.forEach(cache_arr, function(post, i){
+      delete post.sort_key;
+      posts_arr.push(post);
+    });
+
+    // 対応するタグネームに入れる
+    dist.tags[tag_name] = posts_arr;
 
     // tags_name（tags_post_listのキー）ごとにwriteFile
     // fs.writeFile(devConfig.src + 'json/'+tag_name.toLowerCase().replace(' ', '_')+'.json', JSON.stringify(dist));
