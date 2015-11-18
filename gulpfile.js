@@ -166,7 +166,7 @@ var createNeighborsJson = function(archives) {
 };
 
 
-// 記事作成タスク ====================
+// 記事オブジェクト作成タスク ====================
 
 // オブジェクト作成（*.md -> posts.json, archives.json, <tag-name>.json）
 gulp.task('build:json', function(callback) {
@@ -191,8 +191,11 @@ gulp.task('build:json', function(callback) {
     .pipe(browserSync.stream());
 });
 
+
+// HTML作成タスク ====================
+
 // 全記事作成（post_id.md -> post_id.html）
-gulp.task('build:posts', function() {
+gulp.task('build:html:posts', function() {
   return gulp.src(devConfig.src + 'md/post/**/*.md')
     .pipe(plumber())
     .pipe(frontMatter())
@@ -208,35 +211,34 @@ gulp.task('build:posts', function() {
     .pipe(browserSync.stream());;
 });
 
-// ブログインデックス作成（index.md -> index.html）
-gulp.task('build:index', function() {
-  return gulp.src(devConfig.src + 'archives/index.md')
-    .pipe(plumber())
-    .pipe(frontMatter())
-    .pipe(markdown())
-    .pipe(layout(function(file) {
-      var archives  = require(devConfig.src + 'json/archives.json');
-      var data = _.assign({}, blogConfig, archives);
-      data = _.assign({}, data, file.frontMatter);
-      return data;
-    }))
-    .pipe(htmlPrettify({indent_char: ' ', indent_size: 2}))
-    .pipe(gulp.dest(devConfig.dist))
-    .pipe(browserSync.stream());;
-});
-
-//
-gulp.task('build:html', function() {
-  return gulp.src(devConfig.src + 'md/**/*.md')
+// 記事一覧ページ作成（archives_name.md -> archives_name.html）
+gulp.task('build:html:archives', function() {
+  return gulp.src(devConfig.src + 'md/archives/**/*.md')
     .pipe(plumber())
     .pipe(frontMatter())
     .pipe(markdown())
     .pipe(layout(function(file) {
       var data;
       var archives  = require(devConfig.src + 'json/archives.json');
-      var neighbors = require(devConfig.src + 'json/neighbors.json');
-      data = _.assign({}, blogConfig, archives);
-      data = _.assign({}, data, neighbors);
+      var tags  = require(devConfig.src + 'json/tags.json');
+      data = _.assign({}, blogConfig, tags);
+      data = _.assign({}, data, file.frontMatter);
+      return data;
+    }))
+    .pipe(htmlPrettify({indent_char: ' ', indent_size: 2}))
+    .pipe(gulp.dest(devConfig.dist + 'archives/'))
+    .pipe(browserSync.stream());;
+});
+
+// ブログインデックス作成（index.md -> index.html）
+gulp.task('build:html:index', function() {
+  return gulp.src(devConfig.src + 'md/index.md')
+    .pipe(plumber())
+    .pipe(frontMatter())
+    .pipe(markdown())
+    .pipe(layout(function(file) {
+      var archives  = require(devConfig.src + 'json/archives.json');
+      var data = _.assign({}, blogConfig, archives);
       data = _.assign({}, data, file.frontMatter);
       return data;
     }))
