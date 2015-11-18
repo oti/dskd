@@ -221,7 +221,8 @@ gulp.task('build:html:archives', function() {
       var data;
       var archives  = require(devConfig.src + 'json/archives.json');
       var tags  = require(devConfig.src + 'json/tags.json');
-      data = _.assign({}, blogConfig, tags);
+      data = _.assign({}, blogConfig, archives);
+      data = _.assign({}, data, tags);
       data = _.assign({}, data, file.frontMatter);
       return data;
     }))
