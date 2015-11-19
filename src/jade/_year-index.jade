@@ -8,7 +8,7 @@ block contents
 
     h1.archives-heading=page_title
 
-    each post, i in tags[page_title]
+    each post, i in years[page_title]
       - if(i === list_limit) return
       a.post-link(href='/'+archives_base+post.page_id+'.html')
         article.post
