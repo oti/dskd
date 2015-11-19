@@ -98,7 +98,7 @@ var createTagsJson = function(posts) {
     tags_post_list[tag_name].push(set[tag_name]);
   });
 
-  // タグごとにjsonを作る
+  // タグ別に記事が配列になったjsonを作る
   _.forEach(tags_post_list, function(id_arr, i){
     var tag_name = i;
     var cache_arr = [];
@@ -135,6 +135,71 @@ var createTagsJson = function(posts) {
   });
 
   fs.writeFile(devConfig.src + 'json/tags.json', JSON.stringify(dist));
+
+  return;
+};
+
+// 年ごとのjsonを作る
+var createYearsJson = function(posts) {
+  var years_post_map = [];
+  var years_post_list = {};
+
+  var dist = {years: {}};
+
+  // 年とpage_idの対応オブジェクトを抽出
+  // years_post_map = [{'2010': '1'}, {'2011': '7'}, {'2011': '11'},...]
+  // years_post_list = {'2010': [], '2011': [],...}
+  _.forEach(posts, function(post, i){
+    var yyyy = post.page_datetime.split('-')[0];
+    var set = {};
+    set[yyyy] = post.page_id;
+    years_post_map.push(set);
+    // あとで使うので空の配列をキーごとに持たせる
+    years_post_list[yyyy] = [];
+  });
+
+  // 年ごとに該当するpage_idを配列に入れる
+  // years_post_map = [{'2010': '1'}, {'2011': '7'}, {'2011': '11'},...]
+  // years_post_list = {'2010': [], '2011': [],...}
+  _.forEach(years_post_map, function(set, i){
+    var yyyy = _.keys(set);
+    years_post_list[yyyy].push(set[yyyy]);
+  });
+
+  // 年別に記事が配列になったjsonを作る
+  _.forEach(years_post_list, function(id_arr, i){
+    var yyyy = i;
+    var cache_arr = [];
+    var posts_arr = [];
+    _.forEach(id_arr, function(id, i){
+      // 記事の日付を連続した数値に変換
+      var sort_val = posts[id].page_datetime.split('-').join('').split('T').join('').split(':').join('');
+      // posts.jsonからpage_idを添え字にして記事の情報を取り出す
+      var drip = {
+        sort_key: sort_val,
+        page_id: posts[id].page_id,
+        page_datetime: posts[id].page_datetime,
+        page_title: posts[id].page_title,
+        page_tag: posts[id].page_tag,
+        page_title: posts[id].page_title
+      };
+      cache_arr.push(drip);
+    });
+
+    // 日付で降順ソート
+    cache_arr = _.sortByAll(cache_arr, cache_arr.sort_key, function(val){return -val});
+
+    // ソート用のキーを削除
+    _.forEach(cache_arr, function(post, i){
+      delete post.sort_key;
+      posts_arr.push(post);
+    });
+
+    // 対応する年キーに入れる
+    dist.years[yyyy] = posts_arr;
+  });
+
+  fs.writeFile(devConfig.src + 'json/years.json', JSON.stringify(dist));
 
   return;
 };
@@ -195,6 +260,7 @@ gulp.task('build:json', function(callback) {
         createNeighborsJson(data.archives);
       });
       createTagsJson(posts);
+      createYearsJson(posts);
 
       // バッファに戻してpipeに渡す
       file.contents = new Buffer(JSON.stringify(posts));
@@ -233,8 +299,10 @@ gulp.task('build:html:archives', function() {
     .pipe(layout(function(file) {
       var data;
       var archives  = require(devConfig.src + 'json/archives.json');
+      var years  = require(devConfig.src + 'json/years.json');
       var tags  = require(devConfig.src + 'json/tags.json');
       data = _.assign({}, blogConfig, archives);
+      data = _.assign({}, data, years);
       data = _.assign({}, data, tags);
       data = _.assign({}, data, file.frontMatter);
       return data;
