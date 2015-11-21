@@ -8,8 +8,12 @@ doctype html
 -   page_permalink = blog_url
 -   page_title = blog_name
 -   page_description = blog_description
-- } else {
--   page_permalink = blog_url+arhives_base
+- } else if(page_type === 'tag' || page_type === 'year'){
+-   page_permalink = blog_url+archives_base+page_title.toLowerCase().replace(' ', '_')+'.html'
+- } else if(page_type === 'tag'){
+-   page_description = page_title+'カテゴリの記事一覧'
+- } else if(page_type === 'year'){
+-   page_description = page_title+'年公開の記事一覧'
 - }
 include mixin/_timestamp
 include mixin/_tag
@@ -50,7 +54,7 @@ html(lang='ja')
           li.site-nav-list__item
             a.site-nav-list-link(href='/archives/demo.html') DEMO
           li.site-nav-list__item
-            a.site-nav-list-link(href='/about/') ABOUT
+            a.site-nav-list-link(href='/about.html') ABOUT
 
       - if(page_type === 'index') {
         p.lede dskd.jp is a memorandum of simple front-end technology.
