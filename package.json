@@ -43,6 +43,9 @@
     "through2": "^2.0.0"
   },
   "scripts": {
-    "build:post": "gulp build:html --gulpfile postfile.js"
+    "build:site": "gulp build",
+    "build:post": "gulp build:html:post --gulpfile postfile.js",
+    "build:demo": "gulp build:html:demo --gulpfile postfile.js",
+    "build:html": "gulp build:html --gulpfile postfile.js"
   }
 }
