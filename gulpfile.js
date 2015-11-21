@@ -45,8 +45,7 @@ var createArchivesJson = function(posts, callback) {
       page_id: post.page_id,
       page_datetime: post.page_datetime,
       page_title: post.page_title,
-      page_tag: post.page_tag,
-      page_title: post.page_title
+      page_tag: post.page_tag
     };
     cache_arr.push(drip);
   });
@@ -114,8 +113,7 @@ var createTagsJson = function(posts) {
         page_id: posts[id].page_id,
         page_datetime: posts[id].page_datetime,
         page_title: posts[id].page_title,
-        page_tag: posts[id].page_tag,
-        page_title: posts[id].page_title
+        page_tag: posts[id].page_tag
       };
       cache_arr.push(drip);
     });
@@ -184,8 +182,7 @@ var createYearsJson = function(posts) {
         page_id: posts[id].page_id,
         page_datetime: posts[id].page_datetime,
         page_title: posts[id].page_title,
-        page_tag: posts[id].page_tag,
-        page_title: posts[id].page_title
+        page_tag: posts[id].page_tag
       };
       cache_arr.push(drip);
     });
@@ -252,7 +249,7 @@ var createNeighborsJson = function(archives) {
 
 // 記事オブジェクト作成タスク ====================
 
-// オブジェクト作成（*.md -> posts.json, archives.json, <tag-name>.json）
+// オブジェクト作成（post/*.md -> posts.json, archives.json, <tag-name>.json）
 gulp.task('build:json', function(callback) {
   return gulp.src(devConfig.src + 'md/post/**/*.md')
     .pipe(plumber())
@@ -261,6 +258,11 @@ gulp.task('build:json', function(callback) {
     .pipe(through.obj(function (file, enc, callback) {
       //バッファから文字列に変化させてJSONに戻す
       var posts = JSON.parse(String(file.contents));
+
+      // いらない気がするので本文部分を削除
+      _.forEach(posts, function(v,i){
+        delete v.body;
+      });
 
       createArchivesJson(posts, function(data){
         createNeighborsJson(data.archives);
