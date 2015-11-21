@@ -7,7 +7,7 @@ var browserSync    = require('browser-sync');
 var autoprefixer   = require('gulp-autoprefixer');
 var data           = require('gulp-data');
 var frontMatter    = require('gulp-front-matter');
-var htmlPrettify   = require('gulp-html-prettify');
+var prettify       = require('gulp-prettify');
 var imagemin       = require('gulp-imagemin');
 var jade           = require('gulp-jade');
 var layout         = require('gulp-layout');
@@ -291,7 +291,7 @@ gulp.task('build:html:post', function() {
       data = _.assign({}, data, file.frontMatter);
       return data;
     }))
-    .pipe(htmlPrettify({indent_char: ' ', indent_size: 2}))
+    .pipe(prettify({indent_char: ' ', indent_size: 2}))
     .pipe(gulp.dest(devConfig.dist + 'archives/'))
     .pipe(browserSync.stream());;
 });
@@ -313,7 +313,7 @@ gulp.task('build:html:archives', function() {
       data = _.assign({}, data, file.frontMatter);
       return data;
     }))
-    .pipe(htmlPrettify({indent_char: ' ', indent_size: 2}))
+    .pipe(prettify({indent_char: ' ', indent_size: 2}))
     .pipe(gulp.dest(devConfig.dist + 'archives/'))
     .pipe(browserSync.stream());;
 });
@@ -330,7 +330,7 @@ gulp.task('build:html:index', function() {
       data = _.assign({}, data, file.frontMatter);
       return data;
     }))
-    .pipe(htmlPrettify({indent_char: ' ', indent_size: 2}))
+    .pipe(prettify({indent_char: ' ', indent_size: 2}))
     .pipe(gulp.dest(devConfig.dist))
     .pipe(browserSync.stream());;
 });
