@@ -22,12 +22,21 @@ var devConfig  = require('./devconfig.json', 'utf8');
 
 
 // 日付で降順ソートされたarchives.jsonを作る
-var createArchivesJson = function(posts, callback) {
+var createArchivesJson = function(posts, type, callback) {
   // var posts = JSON.parse(fs.readFileSync(devConfig.src + 'json/posts.json', 'utf8'));
   var cache_arr = [];
   var posts_arr = [];
+  var dist = {};
+  var target_key = '';
+  var file_name = '';
 
-  var dist = {archives: []};
+  if(type === 'post') {
+    target_key = 'archives';
+    file_name = 'archives'
+  } else if(type === 'demo') {
+    target_key = 'demos';
+    file_name = 'demo-archives'
+  }
 
   // ソートするためのキーを追加しつつ必要なデータだけ抽出
   _.forEach(posts, function(post, i){
@@ -54,8 +63,8 @@ var createArchivesJson = function(posts, callback) {
     posts_arr.push(post);
   });
 
-  dist.archives = posts_arr;
-  fs.writeFile(devConfig.src + 'json/archives.json', JSON.stringify(dist));
+  dist[target_key] = posts_arr;
+  fs.writeFile(devConfig.src + 'json/'+file_name+'.json', JSON.stringify(dist));
 
   if(callback) {
     callback(dist);
@@ -243,8 +252,8 @@ var createNeighborsJson = function(archives) {
 // 記事オブジェクト作成タスク ====================
 
 // オブジェクト作成（post/*.md -> posts.json, archives.json, <tag-name>.json）
-gulp.task('build:json', function(callback) {
-  return gulp.src(devConfig.src + 'md/post/**/*.md')
+gulp.task('build:json:posts', function(callback) {
+  return gulp.src(devConfig.src + 'md/post/*.md')
     .pipe(plumber())
     .pipe(util.buffer())
     .pipe(markdown2Json('posts.json'))
@@ -257,7 +266,7 @@ gulp.task('build:json', function(callback) {
         delete v.body;
       });
 
-      createArchivesJson(posts, function(data){
+      createArchivesJson(posts, 'post', function(data){
         createNeighborsJson(data.archives);
       });
       createTagsJson(posts);
@@ -270,12 +279,36 @@ gulp.task('build:json', function(callback) {
     .pipe(gulp.dest(devConfig.src + 'json/'))
 });
 
+// オブジェクト作成（demo/*.md -> ）
+gulp.task('build:json:demos', function(callback) {
+  return gulp.src(devConfig.src + 'md/demo/page/*.md')
+    .pipe(plumber())
+    .pipe(util.buffer())
+    .pipe(markdown2Json('demos.json'))
+    .pipe(through.obj(function (file, enc, callback) {
+      //バッファから文字列に変化させてJSONに戻す
+      var demos = JSON.parse(String(file.contents));
+
+      // いらない気がするので本文部分を削除
+      _.forEach(demos, function(v,i){
+        delete v.body;
+      });
+
+      createArchivesJson(demos, 'demo');
+
+      // バッファに戻してpipeに渡す
+      file.contents = new Buffer(JSON.stringify(demos));
+      callback(null, file);
+    }))
+    .pipe(gulp.dest(devConfig.src + 'json/'))
+});
+
 
 // HTML作成タスク ====================
 
 // 全記事作成（post_id.md -> post_id.html）
-gulp.task('build:html:post', function() {
-  return gulp.src(devConfig.src + 'md/post/**/*.md')
+gulp.task('build:post:page', function() {
+  return gulp.src(devConfig.src + 'md/post/*.md')
     .pipe(plumber())
     .pipe(frontMatter())
     .pipe(markdown())
@@ -290,8 +323,8 @@ gulp.task('build:html:post', function() {
 });
 
 // 記事一覧ページ作成（archives_name.md -> archives_name.html）
-gulp.task('build:html:archives', function() {
-  return gulp.src(devConfig.src + 'md/archives/**/*.md')
+gulp.task('build:post:archives', function() {
+  return gulp.src(devConfig.src + 'md/archives/*.md')
     .pipe(plumber())
     .pipe(frontMatter())
     .pipe(markdown())
@@ -311,7 +344,7 @@ gulp.task('build:html:archives', function() {
 });
 
 // ブログインデックス作成（index.md -> index.html）
-gulp.task('build:html:index', function() {
+gulp.task('build:post:index', function() {
   return gulp.src(devConfig.src + 'md/*.md')
     .pipe(plumber())
     .pipe(frontMatter())
@@ -326,7 +359,49 @@ gulp.task('build:html:index', function() {
     .pipe(gulp.dest(devConfig.dist))
 });
 
+// デモ個別ページ作成（md/demo/pages/*.md -> demo/*.html）
+gulp.task('build:demo:page', function() {
+  return gulp.src(devConfig.src + 'md/demo/page/*.md')
+    .pipe(plumber())
+    .pipe(frontMatter())
+    .pipe(markdown())
+    .pipe(layout(function(file) {
+      var data = _.assign({}, blogConfig, file.frontMatter);
+      return data;
+    }))
+    .pipe(prettify({indent_char: ' ', indent_size: 2}))
+    .pipe(gulp.dest(devConfig.dist + 'demo/'))
+});
+
+// デモインデックス作成（md/demo/index.md -> demo/index.html）
+gulp.task('build:demo:index', function() {
+  return gulp.src(devConfig.src + 'md/demo/index.md')
+    .pipe(plumber())
+    .pipe(frontMatter())
+    .pipe(markdown())
+    .pipe(layout(function(file) {
+      var demos  = require(devConfig.src + 'json/demo-archives.json');
+      var data = _.assign({}, blogConfig, demos);
+      data = _.assign({}, data, file.frontMatter);
+      return data;
+    }))
+    .pipe(prettify({indent_char: ' ', indent_size: 2}))
+    .pipe(gulp.dest(devConfig.dist + 'demo/'))
+});
+
+
+
+// 全記事作成
+gulp.task('build:html:post', function(callback) {
+  runSequence(['build:json:posts'], ['build:post:page', 'build:post:archives', 'build:post:index'], callback);
+});
+
+// 全デモ作成
+gulp.task('build:html:demo', function(callback) {
+  runSequence(['build:json:demos'], ['build:demo:page', 'build:demo:index'], callback);
+});
+
 // 全HTML作成
 gulp.task('build:html', function(callback) {
-  runSequence('build:json', ['build:html:post', 'build:html:archives', 'build:html:index'], callback);
+  runSequence('build:html:post', 'build:html:demo', callback);
 });
