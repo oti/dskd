@@ -8,5 +8,6 @@
   "blog_feed": "feed",
   "blog_twitter": "dskd_jp",
   "archives_base": "archives/",
-  "archives_title_suffix": " - dskd"
+  "demo_base": "demo/",
+  "title_suffix": " - dskd"
 }

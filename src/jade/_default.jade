@@ -25,7 +25,7 @@ html(lang='ja')
   head
     meta(charset='UTF-8')
     meta(content='width=device-width', name='viewport')
-    title=(page_type === 'index') ? page_title : page_title+archives_title_suffix
+    title=(page_type === 'index') ? page_title : page_title+title_suffix
     meta(content='/img/blog-cover.png', itemprop='image')
     //- meta(content='Jade -node template engine-', name='generator')
     meta(content=page_description, name='description')
@@ -52,7 +52,7 @@ html(lang='ja')
           li.site-nav-list__item
             a.site-nav-list-link(href='/archives/') ARCHIVES
           li.site-nav-list__item
-            a.site-nav-list-link(href='/archives/demo.html') DEMO
+            a.site-nav-list-link(href='/demo/') DEMO
           li.site-nav-list__item
             a.site-nav-list-link(href='/about.html') ABOUT
 
