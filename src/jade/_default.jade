@@ -23,17 +23,17 @@ html(lang='ja')
     meta(content='width=device-width', name='viewport')
     title=(page_type === 'index') ? page_title : page_title+archives_title_suffix
     meta(content='/img/blog-cover.png', itemprop='image')
-    meta(content='Jade -node template engine-', name='generator')
+    //- meta(content='Jade -node template engine-', name='generator')
     meta(content=page_description, name='description')
-    meta(content=page_permalink, property='og:url')
-    meta(content=page_title, property='og:title')
-    meta(content=page_description, property='og:description')
-    meta(content='/img/blog-cover.png', property='og:image')
-    meta(content='article', property='og:type')
-    meta(content='ja_JP', property='og:locale')
-    meta(content='dskd', property='og:site_name')
+    //- meta(content=page_permalink, property='og:url')
+    //- meta(content=page_title, property='og:title')
+    //- meta(content=page_description, property='og:description')
+    //- meta(content='/img/blog-cover.png', property='og:image')
+    //- meta(content='article', property='og:type')
+    //- meta(content='ja_JP', property='og:locale')
+    //- meta(content='dskd', property='og:site_name')
     link(href=page_permalink, rel='canonical' itemprop='url')
-    link(href='/dist/img/blog-icon.png', rel='apple-touch-icon-precomposed')
+    link(href='/img/blog-icon.png', rel='apple-touch-icon-precomposed')
     link(href='/feed', rel='alternate', type='application/atom+xml')
     link(href='/css/style.css', rel='stylesheet', media='only screen')
 
@@ -48,7 +48,7 @@ html(lang='ja')
           li.site-nav-list__item
             a.site-nav-list-link(href='/archives/') ARCHIVES
           li.site-nav-list__item
-            a.site-nav-list-link(href='/archives/demo/') DEMO
+            a.site-nav-list-link(href='/archives/demo.html') DEMO
           li.site-nav-list__item
             a.site-nav-list-link(href='/about/') ABOUT
 
