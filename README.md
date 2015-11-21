@@ -8,7 +8,6 @@ dskdはフロントエンドについての簡単なメモブログです。2010
 
 dskdはタスクランナーのgulpを使ってビルドしています。HTMLはJade、CSSはSassを利用しています。使用プラグインは以下の通りです。
 
-+ gulp-jade
 + gulp-sass
 + gulp-autoprefixer
 + gulp-imagemin
@@ -17,6 +16,24 @@ dskdはタスクランナーのgulpを使ってビルドしています。HTML�
 + gulp-sourcemap
 + run-sequence
 + browser-sync
+
+## gulpfile.jsは「ブログのビルド」
+
+ウェブサイトとしてのブログをビルドするタスクはgulpfile.jsに集められています。gulpfile.jsはSassのコンパイルと画像の最適化処理、およびそれらをwatchするのみです。
+
+ローカルサーバーを立ち上げ、Sassをwatchするタスクは `gulp default` です。
+
+```
+$ gulp
+```
+
+## postfile.jsは「記事のビルド」
+
+記事をHTMLへコンパイルするタスクはpostfile.jsに集めました。posfile.jsでは `md/post/*.md` と `md/demo/page/*.md` を全てあさってさまざまなjsonファイルを作り、frontMatterでそれらのjsonをマージしながらHTMLを書き出しています。
+
+```
+$ gulp build:html --gulpfile postfile.js
+```
 
 ## 生成物は .gitignore
 タスクランナーの生成物は `htdocs/` に出力されます。このディレクトリはブログのドキュメントルートの想定です。
@@ -30,6 +47,7 @@ dskd/ <master branch>
  ┠.gitignore
  ┠package.json
  ┠gulpfile.js
+ ┠postfile.js
  ┠README.md
  ┠src/
  ┗htdocs/ <ignoired dir> && <publish branch>
@@ -45,9 +63,11 @@ dskd/ <master branch>
 
 version 4でさよならしたBEMですが、再び戻ってきました。これは成功かもしれないし、失敗かもしれません。
 
+v5の試みとして、モジュールとなるスタイルセットをSassのmixinで持ち、必要なところにincludeする方式をとっています。BEMの命名規則にスタイルの仕事を兼任させないことが目的で、これによりクラス名とモジュールの結びつきをゼロにして、詳細度の高いセレクタでの上書きの必要をなくしています。
+
 ## ウェブフォント
 
-[Route 159](http://dotcolon.net/font/route159/)を導入し、欧文書体に適用しています。フォントファイルのライセンスはCC0です。
+[Vegur](http://dotcolon.net/font/vegur/)を導入し、欧文書体に適用しています。フォントファイルのライセンスはCC0です。
 
 Thank you [Sora Sagano](https://twitter.com/sorasagano) for your great font!
 
@@ -55,4 +75,4 @@ Thank you [Sora Sagano](https://twitter.com/sorasagano) for your great font!
 
 licensed by [CC BY-NC](http://creativecommons.org/licenses/by-nc/4.0/).
 
-このリポジトリは*非営利目的に限り*自由に使用することができます。ただしその際にはこのリポジトリへのリンクとわたしの名前をクレジットに記さなければなりません。
+このリポジトリは*非営利目的に限り*自由に使用することができます。
