@@ -79,14 +79,14 @@ gulp.task('watch', function() {
 });
 
 
-// build:static
+// build
 // - only compile
-gulp.task('build:blog', function(callback) {
+gulp.task('build', function(callback) {
   runSequence(['jade', 'sass', 'imagemin:img', 'imagemin:svg', 'copy:font', 'copy:misc'], callback);
 });
 
-// dev
+// default
 //  - local development task
-gulp.task('dev', function(callback) {
-  runSequence(['build:blog', 'server', 'watch'], callback);
+gulp.task('default', function(callback) {
+  runSequence(['build', 'server', 'watch'], callback);
 });
