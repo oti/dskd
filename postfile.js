@@ -390,15 +390,14 @@ gulp.task('build:demo:index', function() {
 });
 
 
-
 // 全記事作成
 gulp.task('build:html:post', function(callback) {
-  runSequence(['build:json:posts'], ['build:post:page', 'build:post:archives', 'build:post:index'], callback);
+  runSequence('build:json:posts', ['build:post:page', 'build:post:archives', 'build:post:index'], callback);
 });
 
 // 全デモ作成
 gulp.task('build:html:demo', function(callback) {
-  runSequence(['build:json:demos'], ['build:demo:page', 'build:demo:index'], callback);
+  runSequence('build:json:demos', ['build:demo:page', 'build:demo:index'], callback);
 });
 
 // 全HTML作成
