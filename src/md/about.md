@@ -19,7 +19,7 @@ dskdは「ですけど」と読みます。「〜ですけど」が口癖なの�
 
 記事リストをAtom形式で配信しています。Twitterでパーマリンクをツイートしてもいますが、こちらは手動なのでタイムラグがあります。
 
-- [RSS](http://dskd.jp/feed)
+- [RSS](/feed)
 - [Twitter](https://twitter.com/dskd_jp)
 
 ## ライセンス
