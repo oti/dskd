@@ -52,7 +52,9 @@ var createArchivesJson = function(posts, callback) {
   });
 
   // 日付で降順ソート
-  cache_arr = _.sortByAll(cache_arr, cache_arr.sort_key, function(val){return -val});
+  cache_arr = _.sortBy(cache_arr ,function(val){
+    return -Number(val.sort_key);
+  });
 
   // ソート用のキーを削除
   _.forEach(cache_arr, function(post, i){
@@ -119,7 +121,9 @@ var createTagsJson = function(posts) {
     });
 
     // 日付で降順ソート
-    cache_arr = _.sortByAll(cache_arr, cache_arr.sort_key, function(val){return -val});
+    cache_arr = _.sortBy(cache_arr ,function(val){
+      return -Number(val.sort_key);
+    });
 
     // ソート用のキーを削除
     _.forEach(cache_arr, function(post, i){
@@ -187,7 +191,9 @@ var createYearsJson = function(posts) {
     });
 
     // 日付で降順ソート
-    cache_arr = _.sortByAll(cache_arr, cache_arr.sort_key, function(val){return -val});
+    cache_arr = _.sortBy(cache_arr ,function(val){
+      return -Number(val.sort_key);
+    });
 
     // ソート用のキーを削除
     _.forEach(cache_arr, function(post, i){
