@@ -47,7 +47,9 @@ var createArchivesJson = function(posts, type, callback) {
       page_id: post.page_id,
       page_datetime: post.page_datetime,
       page_title: post.page_title,
+      page_description: post.page_description,
       page_tag: post.page_tag
+      // page_body: post.body
     };
     cache_arr.push(drip);
   });
@@ -115,6 +117,7 @@ var createTagsJson = function(posts) {
         page_id: posts[id].page_id,
         page_datetime: posts[id].page_datetime,
         page_title: posts[id].page_title,
+        page_description: posts[id].page_description,
         page_tag: posts[id].page_tag
       };
       cache_arr.push(drip);
@@ -184,6 +187,7 @@ var createYearsJson = function(posts) {
         page_id: posts[id].page_id,
         page_datetime: posts[id].page_datetime,
         page_title: posts[id].page_title,
+        page_description: posts[id].page_description,
         page_tag: posts[id].page_tag
       };
       cache_arr.push(drip);
@@ -262,9 +266,9 @@ gulp.task('build:json:posts', function(callback) {
       var posts = JSON.parse(String(file.contents));
 
       // いらない気がするので本文部分を削除
-      _.forEach(posts, function(v,i){
-        delete v.body;
-      });
+      // _.forEach(posts, function(v,i){
+      //   delete v.body;
+      // });
 
       createArchivesJson(posts, 'post', function(data){
         createNeighborsJson(data.archives);
