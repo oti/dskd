@@ -389,10 +389,23 @@ gulp.task('build:demo:index', function() {
     .pipe(gulp.dest(devConfig.dist + 'demo/'))
 });
 
+// RSS作成（feed.html -> feed）
+gulp.task('rename:feed', function() {
+  return gulp.src(devConfig.dist + 'feed.html')
+    .pipe(rename({
+      dirname: '',
+      basename: 'feed',
+      prefix: '',
+      suffix: '',
+      extname: ''
+    }))
+    .pipe(gulp.dest(devConfig.dist))
+});
+
 
 // 全記事作成
 gulp.task('build:html:post', function(callback) {
-  runSequence('build:json:posts', ['build:post:page', 'build:post:archives', 'build:post:index'], callback);
+  runSequence('build:json:posts', ['build:post:page', 'build:post:archives', 'build:post:index'], 'rename:feed', callback);
 });
 
 // 全デモ作成
