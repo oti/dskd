@@ -3,7 +3,6 @@
 // load plugins ====================
 var fs             = require('fs');
 var gulp           = require('gulp');
-var data           = require('gulp-data');
 var frontMatter    = require('gulp-front-matter');
 var prettify       = require('gulp-prettify');
 var imagemin       = require('gulp-imagemin');
@@ -11,6 +10,7 @@ var layout         = require('gulp-layout');
 var markdown       = require('gulp-markdown');
 var markdown2Json  = require('gulp-markdown-to-json');
 var plumber        = require('gulp-plumber');
+var rename         = require('gulp-rename');
 var util           = require('gulp-util');
 var _              = require('lodash');
 var runSequence    = require('run-sequence');
