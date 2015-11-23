@@ -393,9 +393,19 @@ gulp.task('build:demo:index', function() {
     .pipe(gulp.dest(devConfig.dist + 'demo/'))
 });
 
-// RSS作成（feed.html -> feed）
-gulp.task('rename:feed', function() {
-  return gulp.src(devConfig.dist + 'feed.html')
+// RSS作成（feed.md -> feed）
+gulp.task('build:post:feed', function() {
+  return gulp.src(devConfig.src + 'md/feed.md')
+    .pipe(plumber())
+    .pipe(frontMatter())
+    .pipe(markdown())
+    .pipe(layout(function(file) {
+      var archives  = require(devConfig.src + 'json/archives.json');
+      var data = _.assign({}, blogConfig, archives);
+      data = _.assign({}, data, file.frontMatter);
+      return data;
+    }))
+    .pipe(prettify({indent_char: ' ', indent_size: 2}))
     .pipe(rename({
       dirname: '',
       basename: 'feed',
@@ -409,7 +419,7 @@ gulp.task('rename:feed', function() {
 
 // 全記事作成
 gulp.task('build:html:post', function(callback) {
-  runSequence('build:json:posts', ['build:post:page', 'build:post:archives', 'build:post:index'], 'rename:feed', callback);
+  runSequence('build:json:posts', ['build:post:page', 'build:post:archives', 'build:post:index'], 'build:post:feed', callback);
 });
 
 // 全デモ作成
