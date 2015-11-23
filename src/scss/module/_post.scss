@@ -148,6 +148,11 @@
       background: url("/img/dash.svg") no-repeat center center;
     }
 
+    ul,ol {
+      list-style-position: inside;
+      line-height: $lh--medium;
+    }
+
     table {
       margin-top: $fs--medium;
       margin-bottom: $fs--medium;
