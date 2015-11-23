@@ -2,6 +2,7 @@
 .neighbor {
   &-list {
     list-style-type: none;
+    line-height: $lh--small;
 
     // .neighbor-list__item
     &__item {
