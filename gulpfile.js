@@ -8,6 +8,7 @@ var imagemin       = require('gulp-imagemin');
 var plumber        = require('gulp-plumber');
 var sass           = require('gulp-sass');
 var sourcemaps     = require('gulp-sourcemaps');
+var runSequence    = require('run-sequence');
 var watch          = require('gulp-watch');
 
 // configs
@@ -82,7 +83,7 @@ gulp.task('watch', function() {
 // build
 // - only compile
 gulp.task('build', function(callback) {
-  runSequence(['jade', 'sass', 'imagemin:img', 'imagemin:svg', 'copy:font', 'copy:misc'], callback);
+  runSequence(['sass', 'imagemin:img', 'imagemin:svg', 'copy:font', 'copy:misc'], callback);
 });
 
 // default
