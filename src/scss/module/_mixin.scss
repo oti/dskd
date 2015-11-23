@@ -51,10 +51,11 @@
   display: inline-block;
   margin: 0 0.5rem;
   border-radius: 3px;
+  border: 1px solid $color--black--clear;
   width: 0.6rem;
   height: 3px;
   vertical-align: 3px;
-  background-color: $color--black--clear;
+  // background-color: $color--black--clear;
 }
 
 // セクションの見出し
