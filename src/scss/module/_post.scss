@@ -33,6 +33,7 @@
   // .post > .post-article
   &__title {
     font-size: $fs--huge;
+    line-height: $lh--small;
     .post__footer + & {
       clear: both;
     }
