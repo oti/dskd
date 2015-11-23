@@ -349,7 +349,7 @@ gulp.task('build:post:archives', function() {
 
 // ブログインデックス作成（index.md -> index.html）
 gulp.task('build:post:index', function() {
-  return gulp.src(devConfig.src + 'md/*.md')
+  return gulp.src([devConfig.src + 'md/index.md', devConfig.src + 'md/about.md'])
     .pipe(plumber())
     .pipe(frontMatter())
     .pipe(markdown())
