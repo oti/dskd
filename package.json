@@ -44,6 +44,7 @@
   },
   "scripts": {
     "build:site": "gulp build",
+    "build:json": "gulp build:json:posts --gulpfile postfile.js & gulp build:json:demos --gulpfile postfile.js",
     "build:post": "gulp build:html:post --gulpfile postfile.js",
     "build:demo": "gulp build:html:demo --gulpfile postfile.js",
     "build:html": "gulp build:html --gulpfile postfile.js"
