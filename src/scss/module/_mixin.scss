@@ -20,6 +20,14 @@
   max-width: 640px;
 }
 
+// mobile-width
+@mixin mobile-width($padding-vals) {
+  margin: auto;
+  padding: #{$padding-vals};
+  min-width: 320px;
+  max-width: 414px;
+}
+
 // inline list
 @mixin horizontal-list($self) {
   display: block;
