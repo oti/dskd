@@ -76,10 +76,11 @@ html(lang='ja')
       block contents
 
     footer.global-footer
-      section.autor
-        p.author__signature=('Made by '+blog_author+'.')
+      p.author
+        | Made by 
         adress.author__address
-          a(href=blog_address)=blog_address
+          a(href=('mailto:'+blog_address))=blog_author
+        | .
 
       ul.subinfo
         li.subinfo__item
