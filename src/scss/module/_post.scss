@@ -151,6 +151,9 @@
     ul,ol {
       list-style-position: inside;
       line-height: $lh--medium;
+      ul,ol {
+        margin-left: $fs--medium;
+      }
     }
 
     table {
