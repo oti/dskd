@@ -32,7 +32,7 @@
   // .post-list > .post-link > .post
   // .post > .post-article
   &__title {
-    font-family: 'Vegur-Bold';
+    font-family: "Vegur-Bold";
     font-size: $fs--huge;
     line-height: $lh--small;
     .post__footer + & {
@@ -84,7 +84,7 @@
     h2 {
       margin-top: $fs--maximal;
       margin-bottom: $fs--small;
-      font-family: 'Vegur-Bold';
+      font-family: "Vegur-Bold";
       font-size: $fs--large;
     }
 
