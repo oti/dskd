@@ -18,7 +18,7 @@ html(lang='ja')
           time(datetime=(page_datetime+'+09:00'))=page_datetime.substring(0,10)
         if related_id
           p
-          | related to 
-          a(href=blog_url+archives_base+related_id+'.html')=blog_url+archives_base+related_id+'.html'
+            | related to 
+            a(href=blog_url+archives_base+related_id+'.html')=blog_url+archives_base+related_id+'.html'
 
     != contents
