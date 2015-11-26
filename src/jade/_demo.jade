@@ -5,6 +5,13 @@ html(lang='ja')
   head
     meta(charset='UTF-8')
     meta(content='width=device-width', name='viewport')
+    meta(content=blog_url+demo_base+page_id+'.html', property='og:url')
+    meta(content=page_title, property='og:title')
+    meta(content=page_description, property='og:description')
+    meta(content='/img/blog-cover.png', property='og:image')
+    meta(content='article', property='og:type')
+    meta(content='ja_JP', property='og:locale')
+    meta(content='dskd', property='og:site_name')
     title=page_title+title_suffix
     link(href=blog_url+demo_base+page_id+'.html', rel='canonical' itemprop='url')
 
