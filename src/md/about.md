@@ -1,9 +1,8 @@
 ---
 layout: ./src/jade/_page.jade
-page_type: 'webpage'
+page_type: 'about'
 page_title: 'このブログについて'
-page_permalink: '/about.html'
-page_description: 'このブログについて'
+page_description: 'about dskd.jp'
 nav_cr: 'about'
 ---
 dskdは「ですけど」と読みます。「〜ですけど」が口癖なのでそれを文字りました。ドメインは2010年12月22日から所有していますが、ご覧のとおり記事数は多くありません。更新頻度は月に1記事程度です。意欲がないです。
