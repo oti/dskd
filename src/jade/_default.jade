@@ -8,12 +8,20 @@ doctype html
 -   page_permalink = blog_url
 -   page_title = blog_name
 -   page_description = blog_description
+- } else if(page_type === 'archives'){
+-   page_permalink = blog_url+archives_base
+- } else if(page_type === 'about'){
+-   page_permalink = blog_url+'about.html'
 - } else if(page_type === 'tag' || page_type === 'year'){
 -   page_permalink = blog_url+archives_base+page_title.toLowerCase().replace(' ', '_')+'.html'
 - } else if(page_type === 'tag'){
 -   page_description = page_title+'カテゴリの記事一覧'
 - } else if(page_type === 'year'){
 -   page_description = page_title+'年公開の記事一覧'
+- } else if(page_type === 'demo-index'){
+-   page_permalink = blog_url+demo_base
+- } else if(page_type === 'demo'){
+-   page_permalink = blog_url+demo_base+page_id+'.html'
 - }
 include mixin/_timestamp
 include mixin/_tag
