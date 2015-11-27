@@ -406,13 +406,7 @@ gulp.task('build:post:feed', function() {
       return data;
     }))
     .pipe(prettify({indent_char: ' ', indent_size: 2}))
-    .pipe(rename({
-      dirname: '',
-      basename: 'feed',
-      prefix: '',
-      suffix: '',
-      extname: ''
-    }))
+    .pipe(rename({extname: '.xml'}))
     .pipe(gulp.dest(devConfig.dist))
 });
 
