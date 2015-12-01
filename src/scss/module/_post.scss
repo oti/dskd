@@ -112,6 +112,25 @@
       max-width: 100%;
     }
 
+    .post-image {
+      &.is-alignCenter {
+        text-align: center;
+      }
+      &.is-alignRight {
+        text-align: right;
+      }
+
+      // img {
+        .is-framed {
+          padding: 10px;
+          border-radius: 3px;
+        }
+        .is-whitefill {
+          background-color: #fff;
+        }
+      // }
+    }
+
     strong {
       color: #dd0000;
       font-weight: bold;
