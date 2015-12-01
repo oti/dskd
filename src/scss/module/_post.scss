@@ -159,6 +159,14 @@
       text-decoration: none;
     }
 
+    aside {
+      margin-top: $fs--medium;
+      margin-bottom: $fs--medium;
+      margin-left: 25%;
+      font-size: $fs--small;
+      line-height: $lh--small;
+    }
+
     hr {
       margin: 1.875em auto;
       height: 1em;
