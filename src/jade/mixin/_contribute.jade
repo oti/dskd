@@ -1,0 +1,5 @@
+//- _social.jade
+mixin contribute(github, page_id)
+  - var contoribute_url = github+page_id+'.md'
+  aside.post__contribute
+    a.contribute(href=contoribute_url) Patches welcome!

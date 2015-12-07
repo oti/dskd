@@ -14,6 +14,8 @@ block contents
     div.post__body(itemprop='articleBody')
       != contents
 
+    +contribute(post_contribute, page_id)
+
     +social(page_title, page_permalink)
 
   +neighbor(neighbors, page_id, blog_url, archives_base)
