@@ -1,0 +1,11 @@
+// contribution link
+.contribute {
+  margin-top: 15px;
+  display: block;
+  width: 3.6rem;
+  height: 3.6rem;
+  @include ir();
+  background: no-repeat center center;
+  background-size: 3.6rem 3.6rem;
+  background-image: url("/img/github.svg");
+}
