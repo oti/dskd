@@ -93,14 +93,14 @@
       margin-bottom: $fs--medium;
       line-height: 1.6;
 
-      > code {
+      code {
         padding: 0 2px;
         border-radius: 3px;
         font-size: inherit;
         background-color: $color--white--light;
       }
 
-      > .demo-link {
+      .demo-link {
         padding-left: $fs--large;
         background-image: url("/img/hyperlink.svg");
         background-repeat: no-repeat;
