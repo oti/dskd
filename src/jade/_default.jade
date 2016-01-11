@@ -4,6 +4,9 @@ doctype html
 - var page_permalink
 - if(page_type === 'post') {
 -   page_permalink = blog_url+archives_base+page_id+'.html'
+-   if (!page_cover) {
+-     page_cover = '/img/blog-cover.png'
+-   }
 - } else if(page_type === 'index') {
 -   page_permalink = blog_url
 -   page_title = blog_name
@@ -41,7 +44,7 @@ html(lang='ja')
     meta(content=page_permalink, property='og:url')
     meta(content=page_title, property='og:title')
     meta(content=page_description, property='og:description')
-    meta(content='/img/blog-cover.png', property='og:image')
+    meta(content=page_cover, property='og:image')
     meta(content='article', property='og:type')
     meta(content='ja_JP', property='og:locale')
     meta(content='dskd', property='og:site_name')
