@@ -4,9 +4,6 @@ doctype html
 - var page_permalink
 - if(page_type === 'post') {
 -   page_permalink = blog_url+archives_base+page_id+'.html'
--   if (!page_cover) {
--     page_cover = '/img/blog-cover.png'
--   }
 - } else if(page_type === 'index') {
 -   page_permalink = blog_url
 -   page_title = blog_name
@@ -25,6 +22,9 @@ doctype html
 -   page_permalink = blog_url+demo_base
 - } else if(page_type === 'demo'){
 -   page_permalink = blog_url+demo_base+page_id+'.html'
+- }
+- if (!page_cover) {
+-   page_cover = '/img/blog-cover.png'
 - }
 include mixin/_timestamp
 include mixin/_tag
