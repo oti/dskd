@@ -42,6 +42,7 @@ $ gulp
 
 - gulp-sass
 - gulp-autoprefixer
+- gulp-merge-media-queries
 - gulp-imagemin
 - gulp-plumber
 - gulp-watch
