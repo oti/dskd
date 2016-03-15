@@ -47,9 +47,7 @@
   // post-footer
   // in .post-article > .post-footer
   &__footer {
-    &:after {
-      @include clearfix();
-    }
+    @include clearfix();
     font-size: $fs--small;
     line-height: $lh--minimal;
 
@@ -232,9 +230,7 @@
 
   // social
   & &__social {
+    @include clearfix();
     display: block;
-    &:after {
-      @include clearfix();
-    }
   }
 }

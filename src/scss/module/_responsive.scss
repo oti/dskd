@@ -1,9 +1,0 @@
-@media screen and (max-width:414px) {
-  .global-header {
-    @include mobile-width("30px 0");
-  }
-  .contents,
-  .global-footer {
-    @include mobile-width("0 15px");
-  }
-}

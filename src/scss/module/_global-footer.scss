@@ -1,11 +1,13 @@
 // global-footer
 .global-footer {
-  &:after {
-    @include clearfix();
-  }
+  @include clearfix();
 
   @include base-width("0 15px");
   font-size: $fs--small;
+
+  @include max-screen($screen-phone) {
+    @include mobile-width("0 15px");
+  }
 
   @at-root .subinfo {
     padding: 0;
