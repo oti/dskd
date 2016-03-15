@@ -10,6 +10,7 @@ var sass           = require('gulp-sass');
 var sourcemaps     = require('gulp-sourcemaps');
 var runSequence    = require('run-sequence');
 var watch          = require('gulp-watch');
+var cmq            = require('gulp-merge-media-queries');
 var bsServer       = browserSync.create()
 
 // configs
@@ -50,6 +51,7 @@ gulp.task('sass', function() {
     .pipe(autoprefixer({
       browsers: devConfig.browserSupport
     }))
+    .pipe(cmq())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(devConfig.dist + 'css'))
 });
