@@ -1,8 +1,6 @@
 // social buttons
 .social-list {
-  &:after {
-    @include clearfix();
-  }
+  @include clearfix();
   display: block;
 
   &__item {

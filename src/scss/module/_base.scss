@@ -22,7 +22,7 @@ body{
   border-top: 5px solid $color--black--clear;
   color: $color--base;
   font-size: 1.6em;
-  font-family: "Vegur-Regular", sans-serif;
+  font-family: $vegur-r, sans-serif;
   line-height: $lh--minimal;
   background: url(/img/bg.png) repeat fixed #d0d8dd;
 }

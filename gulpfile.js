@@ -10,13 +10,15 @@ var sass           = require('gulp-sass');
 var sourcemaps     = require('gulp-sourcemaps');
 var runSequence    = require('run-sequence');
 var watch          = require('gulp-watch');
+var cmq            = require('gulp-merge-media-queries');
+var bsServer       = browserSync.create()
 
 // configs
 var devConfig  = require('./devconfig.json', 'utf8');
 
 // server & browser sync
 gulp.task('server', function() {
-  browserSync({
+  bsServer.init({
     server: {
       baseDir: devConfig.dist,
       proxy: devConfig.proxy
@@ -30,7 +32,6 @@ gulp.task('imagemin:img', function() {
     .pipe(plumber())
     .pipe(imagemin())
     .pipe(gulp.dest(devConfig.dist + 'img'))
-    .pipe(browserSync.stream());
 });
 
 // imagemin:svg
@@ -39,7 +40,6 @@ gulp.task('imagemin:svg', function() {
     .pipe(plumber())
     .pipe(imagemin())
     .pipe(gulp.dest(devConfig.dist + 'img'))
-    .pipe(browserSync.stream());
 });
 
 // sass
@@ -51,9 +51,9 @@ gulp.task('sass', function() {
     .pipe(autoprefixer({
       browsers: devConfig.browserSupport
     }))
+    .pipe(cmq())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(devConfig.dist + 'css'))
-    .pipe(browserSync.stream());
 });
 
 // copy:font
@@ -61,7 +61,6 @@ gulp.task('copy:font', function() {
   return gulp.src(devConfig.src + 'font/**/*')
     .pipe(plumber())
     .pipe(gulp.dest(devConfig.dist + 'font'))
-    .pipe(browserSync.stream());
 });
 
 // copy:misc
@@ -69,13 +68,12 @@ gulp.task('copy:misc', function() {
   return gulp.src(devConfig.src + 'misc/**/*')
     .pipe(plumber())
     .pipe(gulp.dest(devConfig.dist + 'misc'))
-    .pipe(browserSync.stream());
 });
 
 // watch
 gulp.task('watch', function() {
   watch([devConfig.src + 'scss/**/*.scss'], function(e) {
-    gulp.start(['sass']);
+    gulp.start(['sass', bsServer.reload()]);
   });
 });
 

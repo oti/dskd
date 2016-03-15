@@ -3,6 +3,9 @@
   position: relative;
   @include base-width("30px 0");
   text-align: center;
+  @include max-screen($screen-phone) {
+    @include mobile-width("30px 0");
+  }
 }
 
 .logo {
@@ -26,7 +29,7 @@
   left: 0;
   margin: auto;
   color: rgba(0,0,0, 0.75);
-  font-family: "Vegur-Light";
+  font-family: $vegur-l;
 }
 
 .site-nav-list {
@@ -45,7 +48,7 @@
 
   // .site-nav-list > mark.site-nav-list-current
   &-current {
-    font-family: "Vegur-Bold";
+    font-family: $vegur-b;
     // border-bottom: 3px solid $color--white--medium;
     background-image: linear-gradient(to top, $color--white--medium 7px, rgba(255,255,255, 0) 7px);
   }

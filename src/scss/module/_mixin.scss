@@ -1,8 +1,27 @@
+// MediaQueries
+@mixin max-screen($break-point) {
+  @media screen and (max-width: $break-point) {
+    @content;
+  }
+}
+@mixin min-screen($break-point) {
+  @media screen and (min-width: $break-point) {
+    @content;
+  }
+}
+@mixin screen($break-point-min, $break-point-max) {
+  @media screen and (min-width: $break-point-min) and (max-width: $break-point-max) {
+    @content;
+  }
+}
+
 // clearfix
 @mixin clearfix() {
-  content: "";
-  clear: both;
-  display: block;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 
 // image replacement
@@ -16,7 +35,7 @@
 @mixin base-width($padding-vals) {
   margin: auto;
   padding: #{$padding-vals};
-  min-width: 320px;
+  // min-width: 320px;
   max-width: 640px;
 }
 
@@ -24,8 +43,8 @@
 @mixin mobile-width($padding-vals) {
   margin: auto;
   padding: #{$padding-vals};
-  min-width: 320px;
-  max-width: 414px;
+  // min-width: 320px;
+  max-width: $screen-phone;
 }
 
 // inline list
