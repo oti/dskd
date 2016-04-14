@@ -11,7 +11,7 @@ var sourcemaps     = require('gulp-sourcemaps');
 var runSequence    = require('run-sequence');
 var watch          = require('gulp-watch');
 var cmq            = require('gulp-merge-media-queries');
-var bsServer       = browserSync.create()
+var bsServer       = browserSync.create();
 
 // configs
 var devConfig  = require('./devconfig.json', 'utf8');
