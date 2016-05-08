@@ -13,7 +13,7 @@ doctype html
 - } else if(page_type === 'about'){
 -   page_permalink = blog_url+'about.html'
 - } else if(page_type === 'tag' || page_type === 'year'){
--   page_permalink = blog_url+archives_base+page_title.toLowerCase().replace(' ', '_')+'.html'
+-   page_permalink = blog_url+archives_base+page_title.toLowerCase().replace(' ', '_').replace('.', '_')+'.html'
 - } else if(page_type === 'tag'){
 -   page_description = page_title+'カテゴリの記事一覧'
 - } else if(page_type === 'year'){
