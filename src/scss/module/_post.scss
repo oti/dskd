@@ -176,6 +176,14 @@
     ul,ol {
       list-style-position: inside;
       line-height: $lh--medium;
+
+      code {
+        padding: 0 2px;
+        border-radius: 3px;
+        font-size: inherit;
+        background-color: $color--white--light;
+      }
+
       ul,ol {
         margin-left: $fs--medium;
       }
