@@ -21,4 +21,4 @@ mixin tag-list(archives, archives_base)
     ul.tag-list
       each tag, i in tags
         li.tag-list__item
-          a.tag-link(href='/'+archives_base+tag.toLowerCase().replace(' ', '_')+'.html')=tag
+          a.tag-link(href='/'+archives_base+tag.toLowerCase().replace(' ', '_').replace('.', '_')+'.html')=tag
