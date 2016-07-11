@@ -34,7 +34,7 @@ GitHubにてこのブログのリポジトリを[公開](https://github.com/oti/
 
 質問やクレームがある場合はEメールかTwitterでリプライをください。
 
-- [otiext@gmail.com](otiext@gmail.com)
+- [otiext@gmail.com](mailto:otiext@gmail.com)
 - [@dskd_jp](https://twitter.com/dskd_jp)
 
 メールでの問い合わせ内容は原則として外部に公開されません。
