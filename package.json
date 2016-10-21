@@ -43,6 +43,7 @@
     "gulp-watch": "^4.3.10",
     "jade": "^1.11.0",
     "lodash": "^4.16.4",
+    "marked": "^0.3.6",
     "run-sequence": "^1.2.2",
     "through2": "^2.0.1"
   },

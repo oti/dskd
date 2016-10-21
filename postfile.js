@@ -15,6 +15,7 @@ var util           = require('gulp-util');
 var _              = require('lodash');
 var runSequence    = require('run-sequence');
 var through        = require('through2');
+var mkd            = require('marked');
 
 // configs
 var blogConfig = require('./blogconfig.json', 'utf8');
@@ -260,7 +261,7 @@ gulp.task('build:json:posts', function(callback) {
   return gulp.src(devConfig.src + 'md/post/*.md')
     .pipe(plumber())
     .pipe(util.buffer())
-    .pipe(markdown2Json('posts.json'))
+    .pipe(markdown2Json(mkd, 'posts.json'))
     .pipe(through.obj(function (file, enc, callback) {
       //バッファから文字列に変化させてJSONに戻す
       var posts = JSON.parse(String(file.contents));
@@ -288,7 +289,7 @@ gulp.task('build:json:demos', function(callback) {
   return gulp.src(devConfig.src + 'md/demo/page/*.md')
     .pipe(plumber())
     .pipe(util.buffer())
-    .pipe(markdown2Json('demos.json'))
+    .pipe(markdown2Json(mkd, 'demos.json'))
     .pipe(through.obj(function (file, enc, callback) {
       //バッファから文字列に変化させてJSONに戻す
       var demos = JSON.parse(String(file.contents));
