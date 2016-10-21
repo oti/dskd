@@ -1,24 +1,29 @@
 //- _tag-list.jade
 mixin tag-list(archives, archives_base)
-  - var tags_cache = []
-  - var tags_pool = []
-  - var tags = []
+  -
+    var tags_pool   = []
+    var tags_unique = []
+    var tags_sorted = []
+
   //- 重複しているであろうタグの配列を作る
   each post, i in archives
-    each one, j in post.page_tag
-      - tags_cache.push(one)
+    each tag, j in post.page_tag
+      - tags_pool.push(tag)
+
   //- ユニークにする
-  - tags_pool = tags_cache.filter(function (x, i, self) {
-  -   return self.indexOf(x) === i;
+  - tags_unique = tags_pool.filter(function (tag, i, arr) {
+    - return arr.indexOf(tag) === i;
   - });
+
   //- アルファベット順に並び替える
-  - tags = tags_pool.sort(function(a, b){
-  -   return a.localeCompare(b);
+  - tags_sorted = tags_unique.sort(function(a, b){
+    - return a.localeCompare(b);
   - });
 
   nav.tag
     h1.tag__heading Tag
     ul.tag-list
-      each tag, i in tags
+      each tag, i in tags_sorted
+        - var href = '/'+archives_base+tag.toLowerCase().replace(' ', '_').replace('.', '_')+'.html'
         li.tag-list__item
-          a.tag-link(href='/'+archives_base+tag.toLowerCase().replace(' ', '_').replace('.', '_')+'.html')=tag
+          a.tag-link(href=href)=tag

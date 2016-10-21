@@ -256,7 +256,7 @@ var createNeighborsJson = function(archives) {
 
 // 記事オブジェクト作成タスク ====================
 
-// オブジェクト作成（post/*.md -> posts.json, archives.json, <tag-name>.json）
+// post（post/*.md -> posts.json -> archives.json, tags.json, year.json）
 gulp.task('build:json:posts', function(callback) {
   return gulp.src(devConfig.src + 'md/post/*.md')
     .pipe(plumber())
@@ -284,7 +284,7 @@ gulp.task('build:json:posts', function(callback) {
     .pipe(gulp.dest(devConfig.src + 'json/'))
 });
 
-// オブジェクト作成（demo/*.md -> ）
+// demo（demo/*.md -> demos.json -> demos-archives.json）
 gulp.task('build:json:demos', function(callback) {
   return gulp.src(devConfig.src + 'md/demo/page/*.md')
     .pipe(plumber())
@@ -411,6 +411,8 @@ gulp.task('build:post:feed', function() {
     .pipe(gulp.dest(devConfig.dist))
 });
 
+
+// ラッパータスク ====================
 
 // 全記事作成
 gulp.task('build:html:post', function(callback) {
