@@ -1,18 +1,19 @@
 //- _social.jade
 mixin social(title, permalink)
-  - var escaped_title = encodeURIComponent(title)
-  - var escaped_permalink = encodeURIComponent(permalink)
-  - var tw_href = 'https://twitter.com/intent/tweet?text='+escaped_title+'&url='+escaped_permalink+'&via=dskd_jp&related=o_ti"'
-  - var fb_href = 'https://www.facebook.com/sharer/sharer.php?u='+escaped_permalink
-  //- - var gp_href = 'https://plus.google.com/share?url='+escaped_permalink
-  - var hb_href = 'http://b.hatena.ne.jp/my/add.confirm?title='+escaped_title+'&url='+escaped_permalink
+  -
+    var escaped_title = encodeURIComponent(title)
+    var escaped_permalink = encodeURIComponent(permalink)
+    var tw_href = 'https://twitter.com/intent/tweet?text='+escaped_title+'&url='+escaped_permalink+'&via=dskd_jp&related=o_ti"'
+    var fb_href = 'https://www.facebook.com/sharer/sharer.php?u='+escaped_permalink
+    //- var gp_href = 'https://plus.google.com/share?url='+escaped_permalink
+    var hb_href = 'http://b.hatena.ne.jp/my/add.confirm?title='+escaped_title+'&url='+escaped_permalink
   aside.post__social(role='complementary')
     ul.social-list
       li.social-list__item.social-list__item--twitter
-        a.social-link(href=tw_href) Tweet
+        a.social-link(href='https://twitter.com/intent/tweet?text=#{escaped_title}&url=#{escaped_permalink}&via=dskd_jp&related=o_ti') Tweet
       li.social-list__item.social-list__item--facebook
-        a.social-link(href=fb_href) Share on Facebook
+        a.social-link(href='https://www.facebook.com/sharer/sharer.php?u=#{escaped_permalink}') Share on Facebook
       //- li.social-list__item.social-list__item--gplus
-      //-   a.social-link(href=gp_href) Share on google+
+      //-   a.social-link(href='https://plus.google.com/share?url=#{escaped_permalink}') Share on google+
       li.social-list__item.social-list__item--hatebu
-        a.social-link(href=hb_href) Bookmark on Hatena
+        a.social-link(href='http://b.hatena.ne.jp/my/add.confirm?title=#{escaped_title}&url=#{escaped_permalink}') Bookmark on Hatena
