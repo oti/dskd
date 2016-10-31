@@ -9,8 +9,7 @@ block contents
       h1.archives-heading Archives
 
     each post, i in archives
-      if page_type === 'index' && i > 5
-        return
+      - if (page_type === 'index' && i === 5) {return}
       a.post-link(href='/'+archives_base+post.page_id+'.html')
         article.post
           footer.post__footer
