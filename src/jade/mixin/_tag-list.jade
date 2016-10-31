@@ -11,7 +11,7 @@ mixin tag-list(archives, archives_base)
       - tags_pool.push(tag)
 
   //- ユニークにする
-  - tags_unique = tags_pool.filter(function (tag, i, arr) {
+  - tags_unique = tags_pool.filter(function(tag, i, arr){
     - return arr.indexOf(tag) === i;
   - });
 
