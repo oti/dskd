@@ -95,6 +95,7 @@
         padding: 0 2px;
         border-radius: 3px;
         font-size: inherit;
+        font-family: monospace;
         background-color: $color--white--light;
       }
 
@@ -140,13 +141,13 @@
     }
 
     pre {
-      padding: ($fs--minimal/1.5);
+      padding: ($fs--minimal/3);
       border-radius: 3px;
       font-size: $fs--small;
-      font-family: Consolas, monospace;
+      font-family: monospace;
       background-image: url("/img/bg2.png");
       overflow-x: auto;
-      & mark {
+      mark {
         padding-left: 2px;
         padding-right: 2px;
         background-color: $color--mark;
