@@ -27,23 +27,15 @@ gulp.task('server', function() {
 });
 
 // imagemin:img
-gulp.task('imagemin:img', function() {
-  return gulp.src(devConfig.src + 'img/**/*')
-    .pipe(plumber())
-    .pipe(imagemin())
-    .pipe(gulp.dest(devConfig.dist + 'img'))
-});
-
-// imagemin:svg
-gulp.task('imagemin:svg', function() {
-  return gulp.src(devConfig.src + 'svg/**/*')
+gulp.task('image', function() {
+  return gulp.src(devConfig.src + '{img,svg}/**/*')
     .pipe(plumber())
     .pipe(imagemin())
     .pipe(gulp.dest(devConfig.dist + 'img'))
 });
 
 // sass
-gulp.task('sass', function() {
+gulp.task('css', function() {
   return gulp.src(devConfig.src + 'scss/style.scss')
     .pipe(plumber())
     .pipe(sourcemaps.init())
@@ -81,7 +73,7 @@ gulp.task('watch', function() {
 // build
 // - only compile
 gulp.task('build', function(callback) {
-  runSequence(['sass', 'imagemin:img', 'imagemin:svg', 'copy:font', 'copy:misc'], callback);
+  runSequence(['css', 'image', 'copy:font', 'copy:misc'], callback);
 });
 
 // default

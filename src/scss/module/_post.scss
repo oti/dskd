@@ -141,10 +141,11 @@
     }
 
     pre {
-      padding: ($fs--minimal/3);
+      padding: $fs--minimal;
       border-radius: 3px;
-      font-size: $fs--small;
-      font-family: monospace;
+      font-size: $fs--medium;
+      font-family: "Consolas", monospace;
+      line-height: 1.1;
       background-image: url("/img/bg2.png");
       overflow-x: auto;
       mark {
