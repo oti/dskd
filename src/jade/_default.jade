@@ -63,19 +63,19 @@ html(lang='ja')
         ul.site-nav-list
           li.site-nav-list__item
             if nav_cr === 'archives'
-              mark.site-nav-list-current ARCHIVES
+              mark.site-nav-list-current all posts
             else
-              a.site-nav-list-link(href='/archives/') ARCHIVES
-          li.site-nav-list__item
-            if nav_cr === 'demo'
-              mark.site-nav-list-current DEMO
-            else
-              a.site-nav-list-link(href='/demo/') DEMO
+              a.site-nav-list-link(href='/archives/') all posts
+          //- li.site-nav-list__item
+          //-   if nav_cr === 'demo'
+          //-     mark.site-nav-list-current DEMO
+          //-   else
+          //-     a.site-nav-list-link(href='/demo/') DEMO
           li.site-nav-list__item
             if nav_cr === 'about'
-              mark.site-nav-list-current ABOUT
+              mark.site-nav-list-current what's dskd?
             else
-              a.site-nav-list-link(href='/about.html') ABOUT
+              a.site-nav-list-link(href='/about.html') what's dskd?
 
       if page_type === 'index'
         p.lede dskd.jp is a memorandum of simple front-end technology.
