@@ -176,7 +176,6 @@
     }
 
     ul,ol {
-      list-style-position: inside;
       line-height: $lh--medium;
 
       code {
@@ -184,6 +183,10 @@
         border-radius: 3px;
         font-size: inherit;
         background-color: $color--white--light;
+      }
+
+      > li {
+        margin-left: 3rem;
       }
 
       ul,ol {
