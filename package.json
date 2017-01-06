@@ -1,6 +1,6 @@
 {
   "name": "dskd-v5",
-  "version": "5.5.0",
+  "version": "5.5.1",
   "license": "SEE LICENSE IN license.md",
   "author": "oti (twitter.com/o_ti)",
   "description": "I love TKG",
@@ -22,7 +22,7 @@
   },
   "main": "index.html",
   "engines": {
-    "node": ">=6.9.0"
+    "node": ">=6.9.3"
   },
   "devDependencies": {
     "browser-sync": "^2.18.6",

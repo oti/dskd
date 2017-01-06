@@ -28,7 +28,15 @@ gulp.task('server', function() {
 
 // imagemin:img
 gulp.task('image', function() {
-  return gulp.src(devConfig.src + '{img,svg}/**/*')
+  return gulp.src(devConfig.src + 'img/**/*')
+    .pipe(plumber())
+    .pipe(imagemin())
+    .pipe(gulp.dest(devConfig.dist + 'img'))
+});
+
+// imagemin:svg
+gulp.task('svg', function() {
+  return gulp.src(devConfig.src + 'svg/**/*')
     .pipe(plumber())
     .pipe(imagemin())
     .pipe(gulp.dest(devConfig.dist + 'img'))
@@ -64,8 +72,14 @@ gulp.task('copy:misc', function() {
 
 // watch
 gulp.task('watch', function() {
-  watch([devConfig.src + 'scss/**/*.scss'], function(e) {
-    gulp.start(['sass', bsServer.reload()]);
+  watch([devConfig.src + 'scss/**/*'], function(e) {
+    gulp.start(['css', bsServer.reload()]);
+  });
+  watch([devConfig.src + 'img/**/*'], function(e) {
+    gulp.start(['image', bsServer.reload()]);
+  });
+  watch([devConfig.src + 'svg/**/*'], function(e) {
+    gulp.start(['svg', bsServer.reload()]);
   });
 });
 
@@ -73,7 +87,7 @@ gulp.task('watch', function() {
 // build
 // - only compile
 gulp.task('build', function(callback) {
-  runSequence(['css', 'image', 'copy:font', 'copy:misc'], callback);
+  runSequence(['css', 'image', 'svg', 'copy:font', 'copy:misc'], callback);
 });
 
 // default
