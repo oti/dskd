@@ -16,22 +16,22 @@ html{
   font-feature-settings: "kern" 1,"liga" 1,"lnum" 1,"pnum" 1;
 }
 
-body{
+body {
   margin: 0;
   padding: 0;
   border-top: 5px solid $color--black--clear;
   color: $color--base;
-  font-size: 1.6em;
+  font-size: $fs--medium;
   font-family: $vegur-r, sans-serif;
   line-height: $lh--minimal;
   background: url(/img/bg.png) repeat fixed #d0d8dd;
 }
 
-main{
+main {
   display: block;
 }
 
-img{
+img {
   -ms-interpolation-mode: bicubic;
   border: 0 none;
   text-decoration: none;
@@ -43,25 +43,25 @@ mark {
   background-color: transparent;
 }
 
-a:link{
+a:link {
   color: $color--link;
   text-decoration: none;
 }
 
 
-a:visited{
+a:visited {
   color: $color--visited;
 }
 
-a:hover{
+a:hover {
   color: $color--hover;
   text-decoration: underline;
 }
 
-a:active{
+a:active {
   color: $color--active;
 }
 
-a:focus{
+a:focus {
   color: $color--focus;
 }
