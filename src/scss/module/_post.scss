@@ -175,7 +175,7 @@
       background: url("/img/dash.svg") no-repeat center center;
     }
 
-    ul,ol {
+    ul, ol {
       line-height: $lh--medium;
 
       code {
@@ -189,7 +189,7 @@
         margin-left: 3rem;
       }
 
-      ul,ol {
+      ul, ol {
         margin-left: $fs--medium;
       }
     }
@@ -235,14 +235,14 @@
   }
 
   // contribute
-  & &__contribute {
+  &__contribute {
     display: block;
     float: left;
   }
 
 
   // social
-  & &__social {
+  &__social {
     @include clearfix();
     display: block;
   }

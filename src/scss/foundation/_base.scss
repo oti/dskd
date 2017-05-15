@@ -2,18 +2,8 @@
   font-size: $fs--root;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  &,
-  &:before,
-  &:after {
-    box-sizing: border-box;
-  }
-}
-
 html{
-  font-feature-settings: "kern" 1,"liga" 1,"lnum" 1,"pnum" 1;
+  font-feature-settings: "kern", "liga", "lnum", "pnum";
 }
 
 body {
@@ -43,25 +33,27 @@ mark {
   background-color: transparent;
 }
 
-a:link {
-  color: $color--link;
-  text-decoration: none;
-}
+a {
+  &:link {
+    color: $color--link;
+    text-decoration: none;
+  }
 
+  &:visited {
+    color: $color--visited;
+  }
 
-a:visited {
-  color: $color--visited;
-}
+  &:hover {
+    color: $color--hover;
+    text-decoration: underline;
+  }
 
-a:hover {
-  color: $color--hover;
-  text-decoration: underline;
-}
+  &:active {
+    color: $color--active;
+  }
 
-a:active {
-  color: $color--active;
-}
-
-a:focus {
-  color: $color--focus;
+  &:focus {
+    color: $color--focus;
+    text-decoration: underline;
+  }
 }

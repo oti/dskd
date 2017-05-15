@@ -1,19 +1,31 @@
 @charset "UTF-8";
 
+// scssコンパイル用メタファイル
 @import "config/var";
 @import "config/placeholder";
 @import "config/mixin";
+
+// バナー
 @import "config/banner";
-@import "component/web-fonts";
-@import "component/base";
-@import "component/global-header";
-@import "component/global-footer";
-@import "component/contents";
-@import "component/post";
-@import "component/tag";
-@import "component/year";
-@import "component/subscribe";
-@import "component/contribute";
-@import "component/social";
-@import "component/neighbor";
-@import "component/archives";
+
+// Vegur
+@import "foundation/web-fonts";
+
+// 男は黙ってMinimum Reset CSS
+@import "foundation/reset";
+
+// 下地
+@import "foundation/base";
+
+// モジュールたち
+@import "module/global-header";
+@import "module/global-footer";
+@import "module/contents";
+@import "module/post";
+@import "module/tag";
+@import "module/year";
+@import "module/subscribe";
+@import "module/contribute";
+@import "module/social";
+@import "module/neighbor";
+@import "module/archives-heading";
