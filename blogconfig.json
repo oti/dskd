@@ -1,8 +1,8 @@
 {
   "blog_name": "dskd",
-  "blog_version": "5",
+  "blog_version": "5.6.0",
   "blog_url": "http://dskd.jp/",
-  "blog_description": "dskd.jp is a memorandum of simple front-end technology.",
+  "blog_description": "dskd.jp is a weblog about website coding.",
   "blog_author": "oti",
   "blog_address": "otiext@gmail.com",
   "blog_feed": "feed",

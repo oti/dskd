@@ -19,12 +19,11 @@ var mkd            = require('marked');
 
 // configs
 var blogConfig = require('./blogconfig.json', 'utf8');
-var devConfig  = require('./devconfig.json', 'utf8');
 
 
 // 日付で降順ソートされたarchives.jsonを作る
 var createArchivesJson = function(posts, type, callback) {
-  // var posts = JSON.parse(fs.readFileSync(devConfig.src + 'json/posts.json', 'utf8'));
+  // var posts = JSON.parse(fs.readFileSync('./src/json/posts.json', 'utf8'));
   var cache_arr = [];
   var posts_arr = [];
   var dist = {};
@@ -67,7 +66,7 @@ var createArchivesJson = function(posts, type, callback) {
   });
 
   dist[target_key] = posts_arr;
-  fs.writeFile(devConfig.src + 'json/'+file_name+'.json', JSON.stringify(dist));
+  fs.writeFile('./src/json/'+file_name+'.json', JSON.stringify(dist));
 
   if(callback) {
     callback(dist);
@@ -76,7 +75,7 @@ var createArchivesJson = function(posts, type, callback) {
 
 // タグごとのjsonを作る
 var createTagsJson = function(posts) {
-  // var posts = JSON.parse(fs.readFileSync(devConfig.src + 'json/posts.json', 'utf8'));
+  // var posts = JSON.parse(fs.readFileSync('./src/json/posts.json', 'utf8'));
   var tags_post_map = [];
   var tags_post_list = {};
 
@@ -139,10 +138,10 @@ var createTagsJson = function(posts) {
     dist.tags[tag_name] = posts_arr;
 
     // tags_name（tags_post_listのキー）ごとにwriteFile
-    // fs.writeFile(devConfig.src + 'json/'+tag_name.toLowerCase().replace(' ', '_')+'.json', JSON.stringify(dist));
+    // fs.writeFile('./src/json/'+tag_name.toLowerCase().replace(' ', '_')+'.json', JSON.stringify(dist));
   });
 
-  fs.writeFile(devConfig.src + 'json/tags.json', JSON.stringify(dist));
+  fs.writeFile('./src/json/tags.json', JSON.stringify(dist));
 
   return;
 };
@@ -209,14 +208,14 @@ var createYearsJson = function(posts) {
     dist.years[yyyy] = posts_arr;
   });
 
-  fs.writeFile(devConfig.src + 'json/years.json', JSON.stringify(dist));
+  fs.writeFile('./src/json/years.json', JSON.stringify(dist));
 
   return;
 };
 
 // 記事ごとに前後の記事情報をもったjsonを作る
 var createNeighborsJson = function(archives) {
-  // var data = JSON.parse(fs.readFileSync(devConfig.src + 'json/archives.json', 'utf8'));
+  // var data = JSON.parse(fs.readFileSync('./src/json/archives.json', 'utf8'));
   // var archives = data.archives;
   var neighbors_arr = [];
 
@@ -249,7 +248,7 @@ var createNeighborsJson = function(archives) {
     }
   });
 
-  fs.writeFile(devConfig.src + 'json/neighbors.json', JSON.stringify(dist));
+  fs.writeFile('./src/json/neighbors.json', JSON.stringify(dist));
   return dist;
 };
 
@@ -258,7 +257,7 @@ var createNeighborsJson = function(archives) {
 
 // post（post/*.md -> posts.json -> archives.json, tags.json, year.json）
 gulp.task('build:json:posts', function(callback) {
-  return gulp.src(devConfig.src + 'md/post/*.md')
+  return gulp.src('./src/md/post/*.md')
     .pipe(plumber())
     .pipe(util.buffer())
     .pipe(markdown2Json(mkd, 'posts.json'))
@@ -281,12 +280,12 @@ gulp.task('build:json:posts', function(callback) {
       file.contents = new Buffer(JSON.stringify(posts));
       callback(null, file);
     }))
-    .pipe(gulp.dest(devConfig.src + 'json/'))
+    .pipe(gulp.dest('./src/json/'))
 });
 
 // demo（demo/*.md -> demos.json -> demos-archives.json）
 gulp.task('build:json:demos', function(callback) {
-  return gulp.src(devConfig.src + 'md/demo/page/*.md')
+  return gulp.src('./src/md/demo/page/*.md')
     .pipe(plumber())
     .pipe(util.buffer())
     .pipe(markdown2Json(mkd, 'demos.json'))
@@ -305,7 +304,7 @@ gulp.task('build:json:demos', function(callback) {
       file.contents = new Buffer(JSON.stringify(demos));
       callback(null, file);
     }))
-    .pipe(gulp.dest(devConfig.src + 'json/'))
+    .pipe(gulp.dest('./src/json/'))
 });
 
 
@@ -313,31 +312,31 @@ gulp.task('build:json:demos', function(callback) {
 
 // 全記事作成（post_id.md -> post_id.html）
 gulp.task('build:post:page', function() {
-  return gulp.src(devConfig.src + 'md/post/*.md')
+  return gulp.src('./src/md/post/*.md')
     .pipe(plumber())
     .pipe(frontMatter())
     .pipe(markdown())
     .pipe(layout(function(file) {
-      var neighbors = require(devConfig.src + 'json/neighbors.json');
+      var neighbors = require('./src/json/neighbors.json');
       var data = _.assign({}, blogConfig, neighbors);
       data = _.assign({}, data, file.frontMatter);
       return data;
     }))
     .pipe(prettify({indent_char: ' ', indent_size: 2}))
-    .pipe(gulp.dest(devConfig.dist + 'archives/'))
+    .pipe(gulp.dest('./htdocs/archives/'))
 });
 
 // 記事一覧ページ作成（archives_name.md -> archives_name.html）
 gulp.task('build:post:archives', function() {
-  return gulp.src(devConfig.src + 'md/archives/*.md')
+  return gulp.src('./src/md/archives/*.md')
     .pipe(plumber())
     .pipe(frontMatter())
     .pipe(markdown())
     .pipe(layout(function(file) {
       var data;
-      var archives  = require(devConfig.src + 'json/archives.json');
-      var years  = require(devConfig.src + 'json/years.json');
-      var tags  = require(devConfig.src + 'json/tags.json');
+      var archives  = require('./src/json/archives.json');
+      var years  = require('./src/json/years.json');
+      var tags  = require('./src/json/tags.json');
       data = _.assign({}, blogConfig, archives);
       data = _.assign({}, data, years);
       data = _.assign({}, data, tags);
@@ -345,28 +344,28 @@ gulp.task('build:post:archives', function() {
       return data;
     }))
     .pipe(prettify({indent_char: ' ', indent_size: 2}))
-    .pipe(gulp.dest(devConfig.dist + 'archives/'))
+    .pipe(gulp.dest('./htdocs/archives/'))
 });
 
 // ブログインデックス作成（index.md -> index.html）
 gulp.task('build:post:index', function() {
-  return gulp.src([devConfig.src + 'md/index.md', devConfig.src + 'md/about.md'])
+  return gulp.src(['./src/md/index.md', './src/md/about.md'])
     .pipe(plumber())
     .pipe(frontMatter())
     .pipe(markdown())
     .pipe(layout(function(file) {
-      var archives  = require(devConfig.src + 'json/archives.json');
+      var archives  = require('./src/json/archives.json');
       var data = _.assign({}, blogConfig, archives);
       data = _.assign({}, data, file.frontMatter);
       return data;
     }))
     .pipe(prettify({indent_char: ' ', indent_size: 2}))
-    .pipe(gulp.dest(devConfig.dist))
+    .pipe(gulp.dest('./htdocs/'))
 });
 
 // デモ個別ページ作成（md/demo/pages/*.md -> demo/*.html）
 gulp.task('build:demo:page', function() {
-  return gulp.src(devConfig.src + 'md/demo/page/*.md')
+  return gulp.src('./src/md/demo/page/*.md')
     .pipe(plumber())
     .pipe(frontMatter())
     .pipe(markdown())
@@ -375,40 +374,40 @@ gulp.task('build:demo:page', function() {
       return data;
     }))
     .pipe(prettify({indent_char: ' ', indent_size: 2}))
-    .pipe(gulp.dest(devConfig.dist + 'demo/'))
+    .pipe(gulp.dest('./htdocs/demo/'))
 });
 
 // デモインデックス作成（md/demo/index.md -> demo/index.html）
 gulp.task('build:demo:index', function() {
-  return gulp.src(devConfig.src + 'md/demo/index.md')
+  return gulp.src('./src/md/demo/index.md')
     .pipe(plumber())
     .pipe(frontMatter())
     .pipe(markdown())
     .pipe(layout(function(file) {
-      var demos  = require(devConfig.src + 'json/demo-archives.json');
+      var demos  = require('./src/json/demo-archives.json');
       var data = _.assign({}, blogConfig, demos);
       data = _.assign({}, data, file.frontMatter);
       return data;
     }))
     .pipe(prettify({indent_char: ' ', indent_size: 2}))
-    .pipe(gulp.dest(devConfig.dist + 'demo/'))
+    .pipe(gulp.dest('./htdocs/demo/'))
 });
 
 // RSS作成（feed.md -> feed）
 gulp.task('build:post:feed', function() {
-  return gulp.src(devConfig.src + 'md/feed.md')
+  return gulp.src('./src/md/feed.md')
     .pipe(plumber())
     .pipe(frontMatter())
     .pipe(markdown())
     .pipe(layout(function(file) {
-      var archives  = require(devConfig.src + 'json/archives.json');
+      var archives  = require('./src/json/archives.json');
       var data = _.assign({}, blogConfig, archives);
       data = _.assign({}, data, file.frontMatter);
       return data;
     }))
     .pipe(prettify({indent_char: ' ', indent_size: 2}))
     .pipe(rename({extname: '.xml'}))
-    .pipe(gulp.dest(devConfig.dist))
+    .pipe(gulp.dest('./htdocs/'))
 });
 
 
