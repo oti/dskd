@@ -91,20 +91,20 @@
       margin-bottom: $fs--medium;
       line-height: 1.6;
 
-      code {
-        padding: 0 2px;
-        border-radius: 3px;
-        font-size: inherit;
-        font-family: monospace;
-        background-color: $color--white--light;
-      }
-
       .demo-link {
         padding-left: $fs--large;
         background-image: url("/img/hyperlink.svg");
         background-repeat: no-repeat;
         background-size: $fs--large auto;
       }
+    }
+
+    code {
+      padding: 0 2px;
+      border-radius: 3px;
+      font-size: inherit;
+      font-family: monospace;
+      background-color: $color--white--light;
     }
 
     img {
