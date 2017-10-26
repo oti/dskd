@@ -1,5 +1,5 @@
 ---
-layout: ./src/jade/_demo-index.jade
+layout: ./src/pug/_demo-index.pug
 page_type: 'demo-index'
 page_title: 'Demo'
 page_description: 'デモページ一覧'

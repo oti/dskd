@@ -1,4 +1,4 @@
 ---
-layout: ./src/jade/_index.jade
+layout: ./src/pug/_index.pug
 page_type: 'index'
 ---

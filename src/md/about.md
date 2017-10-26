@@ -1,5 +1,5 @@
 ---
-layout: ./src/jade/_page.jade
+layout: ./src/pug/_page.pug
 page_type: 'about'
 page_title: 'このブログについて'
 page_description: 'about dskd.jp'
