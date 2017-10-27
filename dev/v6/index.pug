@@ -1,0 +1,124 @@
+doctype html
+html(lang='ja')
+  head
+    meta(charset='UTF-8')
+    meta(content='width=device-width', name='viewport')
+    title dskd
+    meta(content='/img/blog-cover.png', itemprop='image')
+    meta(content='dskd.jp is a weblog about website coding.', name='description')
+    meta(content='http://dskd.jp/', property='og:url')
+    meta(content='dskd', property='og:title')
+    meta(content='dskd.jp is a weblog about website coding.', property='og:description')
+    meta(content='/img/blog-cover.png', property='og:image')
+    meta(content='article', property='og:type')
+    meta(content='ja_JP', property='og:locale')
+    meta(content='dskd', property='og:site_name')
+    link(href='http://dskd.jp/', rel='canonical', itemprop='url')
+    link(href='/img/blog-icon.png', rel='apple-touch-icon-precomposed')
+    link(href='/feed', rel='alternate', type='application/rss+xml')
+    link(href='/css/style.css', rel='stylesheet', media='only screen')
+  body
+    header.global-header(role='banner')
+      h1.logo
+        a.logo-link(href='/')
+          img.logo__img(alt='dskd', src='/img/logo.svg', width='100', height='60')
+      nav.site-nav(role='navigation')
+        ul.site-nav-list
+          li.site-nav-list__item
+            a.site-nav-list-link(href='/archives/') all posts
+          li.site-nav-list__item
+            a.site-nav-list-link(href='/about.html') what's dskd?
+      p.lede dskd.jp is a weblog about website coding.
+    main.contents
+      section.post-list
+        a.post-link(href='/archives/89.html')
+          article.post
+            footer.post__footer
+              time.post-timestamp(datetime='2017-08-16T18:58:17+09:00') 2017-08-16
+              p.post-tag note
+            h1.post__title 夢
+        a.post-link(href='/archives/88.html')
+          article.post
+            footer.post__footer
+              time.post-timestamp(datetime='2017-04-21T20:51:34+09:00') 2017-04-21
+              p.post-tag note
+            h1.post__title バグは出る
+        a.post-link(href='/archives/87.html')
+          article.post
+            footer.post__footer
+              time.post-timestamp(datetime='2017-01-03T22:05:10+09:00') 2017-01-03
+              p.post-tag CSS
+            h1.post__title CSSで行頭の約物を半角にする
+        a.post-link(href='/archives/86.html')
+          article.post
+            footer.post__footer
+              time.post-timestamp(datetime='2016-12-23T22:38:32+09:00') 2016-12-23
+              p.post-tag Advent Calendar, note
+            h1.post__title ベストオブ2016
+        a.post-link(href='/archives/85.html')
+          article.post
+            footer.post__footer
+              time.post-timestamp(datetime='2016-12-22T17:00:00+09:00') 2016-12-22
+              p.post-tag Advent Calendar, CSS
+            h1.post__title CSS pointer-events 2016
+        footer.post-more
+          a(href='/archives/') more »
+      nav.tag
+        h1.tag__heading Tag
+        ul.tag-list
+          li.tag-list__item
+            a.tag-link(href='/archives/advent_calendar.html') Advent Calendar
+          li.tag-list__item
+            a.tag-link(href='/archives/bem.html') BEM
+          li.tag-list__item
+            a.tag-link(href='/archives/css.html') CSS
+          li.tag-list__item
+            a.tag-link(href='/archives/git.html') Git
+          li.tag-list__item
+            a.tag-link(href='/archives/html.html') HTML
+          li.tag-list__item
+            a.tag-link(href='/archives/javascript.html') JavaScript
+          li.tag-list__item
+            a.tag-link(href='/archives/node_js.html') Node.js
+          li.tag-list__item
+            a.tag-link(href='/archives/note.html') note
+          li.tag-list__item
+            a.tag-link(href='/archives/tkg.html') TKG
+      nav.year
+        h1.year__heading Year
+        ol.year-list(reversed='')
+          li.year-list__item
+            a.year-link(href='/archives/2017.html') 2017
+          li.year-list__item
+            a.year-link(href='/archives/2016.html') 2016
+          li.year-list__item
+            a.year-link(href='/archives/2015.html') 2015
+          li.year-list__item
+            a.year-link(href='/archives/2014.html') 2014
+          li.year-list__item
+            a.year-link(href='/archives/2013.html') 2013
+          li.year-list__item
+            a.year-link(href='/archives/2012.html') 2012
+          li.year-list__item
+            a.year-link(href='/archives/2011.html') 2011
+          li.year-list__item
+            a.year-link(href='/archives/2010.html') 2010
+      aside.subscribe(role='complementary')
+        h1.subscribe__heading Subscribe
+        ul.subscribe-list
+          li.subscribe-list__item
+            a.subscribe-link(href='https://twitter.com/dskd_jp') Twitter
+          li.subscribe-list__item
+            a.subscribe-link(href='http://dskd.jp/feed', itemprop='sameAs') RSS
+    footer.global-footer
+      p.author
+        | Made by
+        adress.author__address
+          a(href='mailto:otiext@gmail.com') oti
+        | .
+      ul.subinfo
+        li.subinfo__item
+          a.subinfo-link(href='http://creativecommons.org/licenses/by-nc/4.0/', rel='license')
+            small.subinfo-license CC BY-NC
+        li.subinfo__item
+          a.subinfo-link(href='/feed', alternate='application/rss+xml') RSS
