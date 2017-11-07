@@ -6,6 +6,10 @@
  *  @browser
  */
 
+// 1em = 16px
+@function s($px)
+  @return #{$px / 16 + em}
+
 *
   margin: 0
   padding: 0
@@ -13,12 +17,18 @@
 body
   color: #263540
   background-color: #d0d8dd
-  text-align: center
+
+.block
+  display: block
+  &.-v30
+    height: s(30)
+  &.-v60
+    height: s(60)
 
 
 .header
   margin: auto
-  width: 64ch
+  width: s(640)
 
 
 .logo
@@ -28,12 +38,27 @@ body
 .nav
 
 .nav__list
+  display: flex
+  justify-content: center
+  align-items: center
 
 .nav__item
+  display: flex
+  justify-content: center
+  align-items: center
+  & + &
+    &::before
+      content: "";
+      margin: 0 1em
+      width: .5em
+      height: .5em
+      background-color: rgba(#263540, .25)
+      border-radius: 100em
+
 
 .container
   margin: auto
-  width: 64ch
+  width: s(640)
 
 .postList
 
@@ -51,7 +76,7 @@ body
 
 .pos__tagg
 
-.post-more
+.postMore
 
 .tag
 
@@ -83,7 +108,7 @@ body
 
 .footer
   margin: auto
-  width: 64ch
+  width: s(640)
 
 .author
 

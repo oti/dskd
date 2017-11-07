@@ -11,20 +11,43 @@
 
 body {
   color: #263540;
-  background-color: #d0d8dd;
-  text-align: center; }
+  background-color: #d0d8dd; }
+
+.block {
+  display: block; }
+  .block.-v30 {
+    height: 1.875em; }
+  .block.-v60 {
+    height: 3.75em; }
 
 .header {
   margin: auto;
-  width: 64ch; }
+  width: 40em; }
 
 .logo a {
   display: block; }
 
+.nav__list {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.nav__item {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .nav__item + .nav__item::before {
+    content: "";
+    margin: 0 1em;
+    width: .5em;
+    height: .5em;
+    background-color: rgba(38, 53, 64, 0.25);
+    border-radius: 100em; }
+
 .container {
   margin: auto;
-  width: 64ch; }
+  width: 40em; }
 
 .footer {
   margin: auto;
-  width: 64ch; }
+  width: 40em; }

@@ -21,8 +21,10 @@ html(lang='ja')
         ul.nav__list
           li.nav__item
             a(href='/archives/') all posts
-          li.nav__list
+          li.nav__item
             a(href='/about.html') what's dskd?
+
+    space.block.-v60
 
     main.container
       section.postList
@@ -32,31 +34,36 @@ html(lang='ja')
               time.post__time(datetime='2017-08-16T18:58:17+09:00') 2017-08-16
               p.post__tag note
             h1.post__title 夢
+        space.block.-v30
         a.postList__item(href='/archives/88.html')
           article.post
             footer.post__footer
               time.post__time(datetime='2017-04-21T20:51:34+09:00') 2017-04-21
               p.post__tag note
             h1.post__title バグは出る
+        space.block.-v30
         a.postList__item(href='/archives/87.html')
           article.post
             footer.post__footer
               time.post__time(datetime='2017-01-03T22:05:10+09:00') 2017-01-03
               p.pos__tagg CSS
             h1.post__title CSSで行頭の約物を半角にする
+        space.block.-v30
         a.postList__item(href='/archives/86.html')
           article.post
             footer.post__footer
               time.post__time(datetime='2016-12-23T22:38:32+09:00') 2016-12-23
               p.post__tag Advent Calendar, note
             h1.post__title ベストオブ2016
+        space.block.-v30
         a.postList__item(href='/archives/85.html')
           article.post
             footer.post__footer
               time.post__time(datetime='2016-12-22T17:00:00+09:00') 2016-12-22
               p.post__tag Advent Calendar, CSS
             h1.post__title CSS pointer-events 2016
-        footer.post-more
+        space.block.-v30
+        footer.postMore
           a(href='/archives/') more »
 
       nav.tag
