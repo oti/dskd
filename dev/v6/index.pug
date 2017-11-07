@@ -9,13 +9,13 @@ html(lang='ja')
     link(href='http://dskd.jp/', rel='canonical', itemprop='url')
     link(href='/img/blog-icon.png', rel='apple-touch-icon-precomposed')
     link(href='/feed', rel='alternate', type='application/rss+xml')
-    link(href='/css/style.css', rel='stylesheet', media='only screen')
+    link(href='style.css', rel='stylesheet', media='only screen')
 
   body
 
     header.header
       h1.logo
-        a.logo__link(href='/')
+        a(href='/')
           svg
       nav.nav
         ul.nav__list
@@ -60,7 +60,7 @@ html(lang='ja')
           a(href='/archives/') more »
 
       nav.tag
-        h1.tag__heading Tag
+        h1.tag__heading tags
         ul.tag__list
           li.tag__item
             a(href='/archives/advent_calendar.html') Advent Calendar
@@ -82,7 +82,7 @@ html(lang='ja')
             a.tag__link(href='/archives/tkg.html') TKG
 
       nav.year
-        h1.year__heading Year
+        h1.year__heading year nav
         ol.year__list(reversed)
           li.year__item
             a(href='/archives/2017.html') 2017
@@ -102,7 +102,7 @@ html(lang='ja')
             a(href='/archives/2010.html') 2010
 
       aside.subscribe(role='complementary')
-        h1.subscribe__heading Subscribe
+        h1.subscribe__heading subscribe links
         ul.subscribe-list
           li.subscribe-list__item
             a.subscribe-link(href='https://twitter.com/dskd_jp') Twitter
