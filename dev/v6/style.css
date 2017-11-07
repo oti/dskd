@@ -1,0 +1,30 @@
+/*
+ * dskd.jp Stylesheet
+ *
+ *  @author  oti(@o_ti)
+ *  @version 6.0.0
+ *  @browser
+ */
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  color: #263540;
+  background-color: #d0d8dd;
+  text-align: center; }
+
+.header {
+  margin: auto;
+  width: 64ch; }
+
+.logo a {
+  display: block; }
+
+.container {
+  margin: auto;
+  width: 64ch; }
+
+.footer {
+  margin: auto;
+  width: 64ch; }
