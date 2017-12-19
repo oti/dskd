@@ -154,6 +154,10 @@
         padding-right: 2px;
         background-color: $color--mark;
       }
+      code {
+        padding: 0;
+        background-color: transparent;
+      }
     }
 
     ins {
