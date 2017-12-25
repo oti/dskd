@@ -50,7 +50,7 @@
   "scripts": {
     "start": "gulp",
     "server": "gulp server",
-    "dev": "python -m SimpleHTTPServer 8888 & node-sass style.sass style.css -w & pug index.pug -Pw",
+    "dev": "python -m SimpleHTTPServer 8888 & node-sass dev/v6/style.sass dev/v6/style.css -w & pug dev/v6/*.pug -Pw",
     "json": "gulp build:json:posts --gulpfile postfile.js & gulp build:json:demos --gulpfile postfile.js",
     "post": "gulp build:html:post --gulpfile postfile.js",
     "demo": "gulp build:html:demo --gulpfile postfile.js",
