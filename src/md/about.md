@@ -1,5 +1,5 @@
 ---
-layout: ./src/pug/_page.pug
+layout: ./src/html/_page.pug
 page_type: 'about'
 page_title: 'このブログについて'
 page_description: 'ブログのこととわたしのことと。'
