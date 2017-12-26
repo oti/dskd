@@ -6,6 +6,9 @@
  *  @browser
  */
 
+$content_width: 768px
+$hang_width: 120px
+
 // 1em = 16px
 @function s($px)
   @return #{$px / 16 + em}
@@ -15,20 +18,41 @@
   padding: 0
 
 body
+  font-family: Arial, sans-serif
   color: #263540
+  font-size: 16px
   background-color: #d0d8dd
 
-.block
+a
+  &:link
+    color: #0075a9
+    text-decoration: none
+  &:visited
+    text-decoration: none
+  &:focus
+    text-decoration: underline
+  &:hover
+    text-decoration: underline
+  &:active
+    text-decoration: none
+
+.space
   display: block
   &.-v30
-    height: s(30)
+    height: 30px
+  &.-v45
+    height: 45px
   &.-v60
-    height: s(60)
+    height: 60px
 
+.border
+  display: block
+  height: 0
+  border-top: 1px solid rgba(0,0,0, .15)
 
 .header
   margin: auto
-  width: s(640)
+  width: $content_width
 
 
 .logo
@@ -48,7 +72,7 @@ body
   align-items: center
   & + &
     &::before
-      content: "";
+      content: ""
       margin: 0 1em
       width: .5em
       height: .5em
@@ -56,66 +80,229 @@ body
       border-radius: 100em
 
 
-.container
+.contents
   margin: auto
-  width: s(640)
+  width: $content_width
 
-.postList
+.hang
+  display: flex
+  align-items: baseline
 
-.postList__item
+.hang__heading
+  flex: 0 0 auto
+  width: $hang_width
+  font-size: 18px
+  text-transform: capitalize
+
+
+.stackList
+  flex: 1 0 auto
+  max-width: $content_width - $hang_width
+  list-style: inside none
+
+.stackList__item
+  display: flex
+  justify-content: space-between
+  align-items: baseline
+  & + &
+    margin-top: 30px
+
+.stackList__main
+  margin-top: 5px
+  font-size: 18px
+  line-height: 1.6
+
+.stackList__sub
+  display: flex
+  align-items: baseline
+  margin-left: 20px
+  font-size: 13px
+  white-space: nowrap
+  .brackets
+    margin-left: .5em
+
+.flowList
+  list-style: inside none
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  line-height: 1.6
+
+.flowList__item
+  &:not(:last-child)::after
+    content: ','
+    margin-right: .5em
+
+.brackets
+  display: flex
+  align-items: baseline
+  &::before
+    content: '['
+  &::after
+    content: ']'
+
+.postMore
+  margin-left: $hang_width
+
+
+.tagList,
+.yearList,
+.subscribeList
+  list-style: inside none
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  line-height: 1.6
+
+
+.footer
+  display: flex
+  justify-content: space-between
+  align-items: baseline
+  margin: auto
+  width: $content_width
+  font-size: 14px
+
+.subinfo
+  list-style: inside none
+  display: flex
+
+.subinfo__item
+  & + &
+    margin-left: 2em
+
+.subinfo__license
+  font-size: inherit
+
 
 .post
 
 .post__footer
+  display: flex
+  align-items: baseline
+  font-size: 14px
 
-.post__time
-
+.post__timestamp
 .post__tag
+  @extend .brackets
+  margin-left: .5em
 
 .post__title
+  margin-top: 1em
+  margin-bottom: 2em
+  font-size: 28px
+  line-height: 1.6
 
-.pos__tagg
+.post__body
+  h2
+    margin-top: 1.5em
+    font-size: 22px
 
-.postMore
+  p
+    margin: 1em 0
+    line-height: 1.6
 
-.tag
+  code
+    padding: 0 2px
+    border-radius: 3px
+    font-size: inherit
+    font-family: monospace
+    word-break: break-all
+    background-color: rgba(white, 0.15)
 
-.tag__heading
+  img
+    max-width: 100%
 
-.tag__list
+    strong
+      color: #dd0000
+      font-weight: bold
 
-.tag__item
+    em
+      font-weight: bold
+      font-style: normal
 
-.tag__link
+    pre
+      padding: 10px
+      border-radius: 3px
+      font-size: 14px
+      font-family: "Consolas", monospace
+      line-height: 1.1
+      background-image: url("/img/bg2.png")
+      overflow-x: auto
+      mark
+        padding-left: 2px
+        padding-right: 2px
+        background-color: rgba(255, 242, 0, .9)
 
-.year
+    ins
+      text-decoration: none
 
-.year__heading
+    aside
+      margin: 1em 0 1em 25%
+      font-size: 14px
 
-.year__list
+    hr
+      margin: 2em auto
+      height: 1em
+      border: none
+      line-height: 0
+      background: url("/img/dash.svg") no-repeat center center
 
-.year__item
+    ul,
+    ol
+      line-height: 1.4
 
-.subscribe
+      code
+        padding: 0 2px
+        border-radius: 3px
+        font-size: inherit
+        background-color: rgba(white, 0.15)
 
-.subscribe__heading
+      > li
+        margin-left: 3rem
 
-.subscribe-list
+      ul, ol
+        margin-left: 2em
 
-.subscribe-list__item
+    table
+      margin: 1em 0
+      width: 100%
+      border-collapse: collapse
+      font-size: 14px
+      text-align: center
+      line-height: 1.4
 
-.subscribe-link
+    caption
+      font-weight: bold
+      background-image: url("/img/bg2.png")
 
-.footer
-  margin: auto
-  width: s(640)
+    tr
+      border-top: 1px solid rgba(0,0,0, .1)
 
-.author
+    tr:nth-child(2n)
+      background-color: rgba(255,255,255,.1)
 
-.author__address
+    blockquote
+      padding: 10px
+      border-radius: 3px
+      background-color: rgba(255,255,255,.2)
 
-.subinfo
+      footer
+        font-size: 14px
+        text-align: right
 
-.subinfo__item
+.post__external
+  display: flex
+  justify-content: space-between
+  align-items: baseline
 
-.subinfo__license
+
+.contribute
+
+.social
+  list-style: inside none
+  display: flex
+
+.social__item
+  & + &
+    margin-left: 1em
