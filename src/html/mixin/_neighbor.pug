@@ -1,0 +1,19 @@
+//- _neighbor.pug
+mixin neighbor(neighbors, page_id, archives_base)
+  -
+    var page        = neighbors[page_id];
+    var older       = page.older;
+    var newer       = page.newer;
+    var older_title = (older && older !== 'undefined') ? older.page_title : null;
+    var older_id    = (older && older !== 'undefined') ? older.page_id    : null;
+    var newer_title = (newer && newer !== 'undefined') ? newer.page_title : null;
+    var newer_id    = (newer && newer !== 'undefined') ? newer.page_id    : null;
+
+  nav.neighbor
+    ul.neighbor__list
+      if newer_title
+        li.neighbor__item.-newer
+          a(href=('/'+archives_base+newer_id+'.html'))=newer_title
+      if older_title
+        li.neighbor__item.-older
+          a(href=('/'+archives_base+older_id+'.html'))=older_title
