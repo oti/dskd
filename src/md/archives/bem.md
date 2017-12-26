@@ -1,5 +1,5 @@
 ---
-layout: ./src/pug/_tag-index.pug
+layout: ./src/pug/_index.pug
 page_type: 'tag'
 page_title: 'BEM'
 ---
