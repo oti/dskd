@@ -1,0 +1,18 @@
+.social
+  list-style: inside none
+  display: flex
+  align-items: baseline
+
+.social__item
+  & + &
+    margin-left: 1em
+
+.social__link
+  display: block
+
+.social__icon
+  path
+    fill: rgba(c(text), .5)
+    transition: all .15s ease-out
+    &:hover
+      fill: c(hover)

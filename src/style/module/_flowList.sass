@@ -1,0 +1,11 @@
+.flowList
+  list-style: inside none
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  line-height: 1.6
+
+.flowList__item
+  &:not(:last-child)::after
+    content: ','
+    margin-right: .5em

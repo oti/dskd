@@ -1,0 +1,19 @@
+.nav
+
+.nav__list
+  display: flex
+  justify-content: center
+  align-items: center
+
+.nav__item
+  display: flex
+  justify-content: center
+  align-items: center
+  & + &
+    &::before
+      content: ""
+      margin: 0 1em
+      width: .5em
+      height: .5em
+      background-color: rgba(#263540, .25)
+      border-radius: 100em
