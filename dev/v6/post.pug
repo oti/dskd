@@ -30,7 +30,7 @@ html(lang='ja')
           li.nav__item
             a(href='/about.html') what's dskd?
 
-    space.space.-v60
+    .space(style='--h: 60px')
 
     main.contents
       article.post
@@ -41,7 +41,8 @@ html(lang='ja')
             | ,
             a(href='/archives/note.html') note
 
-        h1.post__title(itemprop='name') ベストオブ2017
+        header.post__header
+          h1.post__title(itemprop='name') ベストオブ2017
 
         .post__body(itemprop='articleBody')
           p
@@ -111,7 +112,7 @@ html(lang='ja')
           p 振り返るとなんだかんだでいろいろやっていた。去年立てた今年の目標はそれなりに実践できたと思う。来年はいかに引きこもれるかを目標にするつもりでる。
           p 来年もよろしくお願いします。
 
-        space.space.-v30
+        .space
 
         aside.post__external
           .contribute
@@ -176,11 +177,11 @@ html(lang='ja')
                     208 284 C 232 288 240 312 228 332 C 220 348 204 348 188 348 L 144 348 L 144 280 z M 404 328 A 44 44 0 0 0 360 372 A 44 44 0 0 0 404\
                     416 A 44 44 0 0 0 448 372 A 44 44 0 0 0 404 328 z')
 
-      space.space.-v45
+      .space(style='--h: 30px')
 
-      border.border
+      .border
 
-      space.space.-v45
+      .space(style='--h: 30px')
 
       nav.neighbor
         ul.neighbor__list
@@ -189,14 +190,14 @@ html(lang='ja')
           li.neighbor__item.-older
             a.neighbor-link(href='/archives/91.html') SVG pointer-events 2017
 
-      space.space.-v45
+      .space(style='--h: 30px')
 
-      border.border
+      .border
 
-    space.space.-v45
+    .space(style='--h: 30px')
 
     footer.footer
-      p.author Made by #[adress.author__address: a(href='mailto:otiext@gmail.com') oti].
+      p.author dskd.jp made by #[adress.author__address: a(href='mailto:otiext@gmail.com') oti].
       ul.subinfo
         li.subinfo__item
           a(href='http://creativecommons.org/licenses/by-nc/4.0/', rel='license')
@@ -204,4 +205,4 @@ html(lang='ja')
         li.subinfo__item
           a(href='/feed', alternate='application/rss+xml') RSS
 
-    space.space.-v60
+    .space(style='--h: 30px')

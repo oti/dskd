@@ -3,7 +3,7 @@ html(lang='ja')
   head
     meta(charset='UTF-8')
     meta(content='width=device-width', name='viewport')
-    title Archive - dskd
+    title Archives | dskd
     meta(content='/img/blog-cover.png', itemprop='image')
     meta(content='dskd.jsは主にウェブサイトコーディングについての話題を扱うブログです', name='description')
     link(href='http://dskd.jp/', rel='canonical', itemprop='url')
@@ -20,15 +20,16 @@ html(lang='ja')
       nav.nav
         ul.nav__list
           li.nav__item
-            a(href='/archives/') all posts
+            a.-current(href='/archives/') all posts
           li.nav__item
             a(href='/about.html') what's dskd?
 
-    space.space.-v60
+    .space(style='--h: 60px')
+
     main.contents
       section
         .hang
-          h1.hang__heading archive
+          h1.hang__heading archives
           ul.stackList
             li.stackList__item
               a.stackList__main(href='/archives/89.html') 夢
@@ -117,70 +118,12 @@ html(lang='ja')
               .stackList__sub
                 time(datetime='2016-12-22T17:00:00+09:00') 2016-12-22
                 span.brackets Advent Calendar, CSS
-            li.stackList__item
-              a.stackList__main(href='/archives/89.html') 夢
-              .stackList__sub
-                time(datetime='2017-08-16T18:58:17+09:00') 2017-08-16
-                span.brackets note
 
-            li.stackList__item
-              a.stackList__main(href='/archives/88.html') バグは出る
-              .stackList__sub
-                time(datetime='2017-04-21T20:51:34+09:00') 2017-04-21
-                span.brackets note
+      .space(style='--h: 30px')
 
-            li.stackList__item
-              a.stackList__main(href='/archives/87.html') CSSで行頭の約物を半角にする
-              .stackList__sub
-                time(datetime='2017-01-03T22:05:10+09:00') 2017-01-03
-                span.brackets CSS
+      .border
 
-            li.stackList__item
-              a.stackList__main(href='/archives/86.html') ベストオブ2016
-              .stackList__sub
-                time(datetime='2016-12-23T22:38:32+09:00') 2016-12-23
-                span.brackets Advent Calendar, note
-
-            li.stackList__item
-              a.stackList__main(href='/archives/85.html') CSS pointer-events 2016
-              .stackList__sub
-                time(datetime='2016-12-22T17:00:00+09:00') 2016-12-22
-                span.brackets Advent Calendar, CSS
-            li.stackList__item
-              a.stackList__main(href='/archives/89.html') 夢
-              .stackList__sub
-                time(datetime='2017-08-16T18:58:17+09:00') 2017-08-16
-                span.brackets note
-
-            li.stackList__item
-              a.stackList__main(href='/archives/88.html') バグは出る
-              .stackList__sub
-                time(datetime='2017-04-21T20:51:34+09:00') 2017-04-21
-                span.brackets note
-
-            li.stackList__item
-              a.stackList__main(href='/archives/87.html') CSSで行頭の約物を半角にする
-              .stackList__sub
-                time(datetime='2017-01-03T22:05:10+09:00') 2017-01-03
-                span.brackets CSS
-
-            li.stackList__item
-              a.stackList__main(href='/archives/86.html') ベストオブ2016
-              .stackList__sub
-                time(datetime='2016-12-23T22:38:32+09:00') 2016-12-23
-                span.brackets Advent Calendar, note
-
-            li.stackList__item
-              a.stackList__main(href='/archives/85.html') CSS pointer-events 2016
-              .stackList__sub
-                time(datetime='2016-12-22T17:00:00+09:00') 2016-12-22
-                span.brackets Advent Calendar, CSS
-
-      space.space.-v45
-
-      border.border
-
-      space.space.-v45
+      .space(style='--h: 30px')
 
       nav.hang
         h1.hang__heading tag
@@ -204,7 +147,7 @@ html(lang='ja')
           li.flowList__item
             a.tag__link(href='/archives/tkg.html') TKG
 
-      space.space.-v30
+      .space(style='--h: 30px')
 
       nav.hang
         h1.hang__heading year
@@ -228,7 +171,7 @@ html(lang='ja')
           li.flowList__item
             a(href='/archives/2010.html') 2010
 
-      space.space.-v30
+      .space(style='--h: 30px')
 
       aside.hang(role='complementary')
         h1.hang__heading subscribe
@@ -238,11 +181,11 @@ html(lang='ja')
           li.flowList__item
             a.subscribe-link(href='http://dskd.jp/feed', itemprop='sameAs') RSS
 
-      space.space.-v45
+      .space(style='--h: 30px')
 
-      border.border
+      .border
 
-    space.space.-v45
+    .space(style='--h: 30px')
 
     footer.footer
       p.author Made by #[adress.author__address: a(href='mailto:otiext@gmail.com') oti].
@@ -253,4 +196,4 @@ html(lang='ja')
         li.subinfo__item
           a(href='/feed', alternate='application/rss+xml') RSS
 
-    space.space.-v60
+    .space(style='--h: 30px')

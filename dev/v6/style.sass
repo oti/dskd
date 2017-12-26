@@ -7,9 +7,9 @@
  */
 
 $content_width: 768px
-$hang_width: 120 / 768 * 100 + '%'
+$hang_width: 120px
 
-$colors: (base: #d0d8dd, text: #263540, link: #0075a9, visited: #ca176e, hover: #629a00, focus: #629a00, active: #ca176e)
+$colors: (base: #ecf0f3, text: #263540, link: #0075a9, visited: #ca176e, hover: #629a00, focus: #629a00, active: #ca176e)
 
 // 1em = 16px
 @function s($px)
@@ -47,13 +47,9 @@ a
     text-decoration: none
 
 .space
+  --h: 15px
   display: block
-  &.-v30
-    height: 30px
-  &.-v45
-    height: 45px
-  &.-v60
-    height: 60px
+  height: var(--h)
 
 .border
   display: block
@@ -227,83 +223,78 @@ a
   img
     max-width: 100%
 
-    strong
-      color: #dd0000
-      font-weight: bold
+  strong
+    color: #dd0000
+    font-weight: bold
 
-    em
-      font-weight: bold
-      font-style: normal
+  em
+    font-weight: bold
+    font-style: normal
 
-    pre
-      padding: 10px
-      border-radius: 3px
+  pre
+    padding: 10px
+    border-radius: 3px
+    font-size: 14px
+    font-family: "Consolas", monospace
+    line-height: 1.1
+    background-image: url("/img/bg2.png")
+    overflow-x: auto
+
+  mark
+    padding-left: 2px
+    padding-right: 2px
+    background-color: rgba(255, 242, 0, .9)
+
+  ins
+    text-decoration: none
+
+  aside
+    margin: 1em 0 1em 25%
+    font-size: 14px
+
+  hr
+    margin: 2em auto
+    height: 1em
+    border: none
+    line-height: 0
+    // background: url("/img/dash.svg") no-repeat center center
+
+  ul,
+  ol
+    line-height: 1.4
+
+    > li
+      margin-left: 3rem
+
+    ul, ol
+      margin-left: 2em
+
+  table
+    margin: 1em 0
+    width: 100%
+    border-collapse: collapse
+    font-size: 14px
+    text-align: center
+    line-height: 1.4
+
+  caption
+    font-weight: bold
+    background-image: url("/img/bg2.png")
+
+  tr
+    border-top: 1px solid rgba(0,0,0, .1)
+
+  tr:nth-child(2n)
+    background-color: rgba(255,255,255,.1)
+
+  blockquote
+    padding: 10px
+    border-radius: 3px
+    background-color: rgba(255,255,255,.2)
+
+    footer
       font-size: 14px
-      font-family: "Consolas", monospace
-      line-height: 1.1
-      background-image: url("/img/bg2.png")
-      overflow-x: auto
-      mark
-        padding-left: 2px
-        padding-right: 2px
-        background-color: rgba(255, 242, 0, .9)
-
-    ins
-      text-decoration: none
-
-    aside
-      margin: 1em 0 1em 25%
-      font-size: 14px
-
-    hr
-      margin: 2em auto
-      height: 1em
-      border: none
-      line-height: 0
-      background: url("/img/dash.svg") no-repeat center center
-
-    ul,
-    ol
-      line-height: 1.4
-
-      code
-        padding: 0 2px
-        border-radius: 3px
-        font-size: inherit
-        background-color: rgba(white, 0.15)
-
-      > li
-        margin-left: 3rem
-
-      ul, ol
-        margin-left: 2em
-
-    table
-      margin: 1em 0
-      width: 100%
-      border-collapse: collapse
-      font-size: 14px
-      text-align: center
-      line-height: 1.4
-
-    caption
-      font-weight: bold
-      background-image: url("/img/bg2.png")
-
-    tr
-      border-top: 1px solid rgba(0,0,0, .1)
-
-    tr:nth-child(2n)
-      background-color: rgba(255,255,255,.1)
-
-    blockquote
-      padding: 10px
-      border-radius: 3px
-      background-color: rgba(255,255,255,.2)
-
-      footer
-        font-size: 14px
-        text-align: right
+      text-align: right
 
 .post__external
   display: flex
@@ -343,3 +334,25 @@ a
     transition: all .15s ease-out
     &:hover
       fill: c(hover)
+
+.neighbor
+
+.neighbor__list
+  list-style: inside none
+  font-size: 14px
+  line-height: 1.4
+
+.neighbor__item
+  display: flex
+  align-items: baseline
+  &::before
+    width: 3em
+    margin-right: 1em
+    color: rgba(c(text), .75)
+    text-align: right
+  &.-newer::before
+    content: 'newer:'
+  &.-older::before
+    content: 'older:'
+  & + &
+    margin-top: 1em
