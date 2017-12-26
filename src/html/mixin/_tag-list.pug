@@ -1,0 +1,28 @@
+//- _tag-list.pug
+mixin tag-list(archives, archives_base)
+  -
+    var tags_pool   = []
+    var tags_unique = []
+    var tags_sorted = []
+
+    // 重複しているであろうタグの配列を作る
+    each post, i in archives
+      each tag, j in post.page_tag
+        tags_pool.push(tag)
+
+    // ユニークにする
+    tags_unique = tags_pool.filter(function(tag, i, arr){
+      return arr.indexOf(tag) === i;
+    });
+
+    // アルファベット順に並び替える
+    tags_sorted = tags_unique.sort(function(a, b){
+      return a.localeCompare(b);
+    });
+
+  nav.hang
+    h1.hang__heading tag
+    ul.flowList
+      each tag, i in tags_sorted
+        li.flowList__item
+          a(href='/'+archives_base+tag.toLowerCase().replace(' ', '_').replace('.', '_')+'.html')= tag
