@@ -24,7 +24,7 @@ html(lang='ja')
           li.nav__item
             a(href='/about.html') what's dskd?
 
-    space.space.-v60
+    .space(style='--h: 60px')
 
     main.contents
       section
@@ -64,13 +64,13 @@ html(lang='ja')
         space.space.-v30
 
         footer.more
-          a(href='/archives.pug', aria-label='全記事リストを見る') more posts »
+          a(href='archive.html', aria-label='全記事リストを見る') more posts »
 
-      space.space.-v45
+      .space(style='--h: 30px')
 
-      border.border
+      .border
 
-      space.space.-v45
+      .space(style='--h: 30px')
 
       nav.hang
         h1.hang__heading tag
@@ -94,7 +94,7 @@ html(lang='ja')
           li.flowList__item
             a.tag__link(href='/archives/tkg.html') TKG
 
-      space.space.-v30
+      .space(style='--h: 30px')
 
       nav.hang
         h1.hang__heading year
@@ -118,7 +118,7 @@ html(lang='ja')
           li.flowList__item
             a(href='/archives/2010.html') 2010
 
-      space.space.-v30
+      .space(style='--h: 30px')
 
       aside.hang(role='complementary')
         h1.hang__heading subscribe
@@ -128,11 +128,11 @@ html(lang='ja')
           li.flowList__item
             a.subscribe-link(href='http://dskd.jp/feed', itemprop='sameAs') RSS
 
-      space.space.-v45
+      .space(style='--h: 30px')
 
-      border.border
+      .border
 
-    space.space.-v45
+    .space(style='--h: 30px')
 
     footer.footer
       p.author Made by #[adress.author__address: a(href='mailto:otiext@gmail.com') oti].
@@ -143,4 +143,4 @@ html(lang='ja')
         li.subinfo__item
           a(href='/feed', alternate='application/rss+xml') RSS
 
-    space.space.-v60
+    .space(style='--h: 30px')
