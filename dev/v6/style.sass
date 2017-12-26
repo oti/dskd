@@ -21,6 +21,8 @@ $colors: (base: #ecf0f3, text: #263540, link: #0075a9, visited: #ca176e, hover: 
 *
   margin: 0
   padding: 0
+  &,&::before,&::after
+    box-sizing: border-box
 
 body
   font-family: Arial, sans-serif
@@ -46,6 +48,11 @@ a
     color: c(active)
     text-decoration: none
 
+.container
+  margin: auto
+  padding: 0 15px
+  max-width: $content_width
+
 .space
   --h: 15px
   display: block
@@ -57,9 +64,6 @@ a
   border-top: 1px solid rgba(c(text), .25)
 
 .header
-  margin: auto
-  padding: 0 15px
-  max-width: $content_width
 
 
 .logo
@@ -86,11 +90,8 @@ a
       background-color: rgba(#263540, .25)
       border-radius: 100em
 
-
 .contents
-  margin: auto
-  padding: 0 15px
-  max-width: $content_width
+  display: block
 
 .hang
   display: flex
@@ -153,24 +154,10 @@ a
   margin-left: $hang_width
   font-size: 14px
 
-
-.tagList,
-.yearList,
-.subscribeList
-  list-style: inside none
-  display: flex
-  flex-wrap: wrap
-  align-items: center
-  line-height: 1.6
-
-
 .footer
   display: flex
   justify-content: space-between
   align-items: baseline
-  margin: auto
-  padding: 0 15px
-  max-width: $content_width
   font-size: 14px
 
 .subinfo
