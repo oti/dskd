@@ -15,21 +15,23 @@ body {
   font-size: 16px;
   background-color: #d0d8dd; }
 
-a:link {
-  color: #0075a9;
-  text-decoration: none; }
-
-a:visited {
-  text-decoration: none; }
-
-a:focus {
-  text-decoration: underline; }
-
-a:hover {
-  text-decoration: underline; }
-
-a:active {
-  text-decoration: none; }
+a {
+  transition: all .15s ease-out; }
+  a:link {
+    color: #0075a9;
+    text-decoration: none; }
+  a:visited {
+    color: #ca176e;
+    text-decoration: none; }
+  a:focus {
+    color: #629a00;
+    text-decoration: underline; }
+  a:hover {
+    color: #629a00;
+    text-decoration: underline; }
+  a:active {
+    color: #ca176e;
+    text-decoration: none; }
 
 .space {
   display: block; }
@@ -43,11 +45,12 @@ a:active {
 .border {
   display: block;
   height: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.15); }
+  border-top: 1px solid rgba(38, 53, 64, 0.25); }
 
 .header {
   margin: auto;
-  width: 768px; }
+  padding: 0 15px;
+  max-width: 768px; }
 
 .logo a {
   display: block; }
@@ -71,7 +74,8 @@ a:active {
 
 .contents {
   margin: auto;
-  width: 768px; }
+  padding: 0 15px;
+  max-width: 768px; }
 
 .hang {
   display: flex;
@@ -79,13 +83,13 @@ a:active {
 
 .hang__heading {
   flex: 0 0 auto;
-  width: 120px;
+  width: "15.625%";
   font-size: 18px;
   text-transform: capitalize; }
 
 .stackList {
   flex: 1 0 auto;
-  max-width: 648px;
+  max-width: 768px-"15.625%";
   list-style: inside none; }
 
 .stackList__item {
@@ -128,8 +132,9 @@ a:active {
   .brackets::after, .post__tag::after {
     content: ']'; }
 
-.postMore {
-  margin-left: 120px; }
+.more {
+  margin-left: "15.625%";
+  font-size: 14px; }
 
 .tagList,
 .yearList,
@@ -145,7 +150,8 @@ a:active {
   justify-content: space-between;
   align-items: baseline;
   margin: auto;
-  width: 768px;
+  padding: 0 15px;
+  max-width: 768px;
   font-size: 14px; }
 
 .subinfo {
@@ -262,9 +268,32 @@ a:active {
   justify-content: space-between;
   align-items: baseline; }
 
+.contribute {
+  display: flex;
+  align-items: baseline; }
+
+.contribute__item {
+  display: block; }
+
+.contribute__icon path {
+  fill: rgba(38, 53, 64, 0.5);
+  transition: all .15s ease-out; }
+  .contribute__icon path:hover {
+    fill: #629a00; }
+
 .social {
   list-style: inside none;
-  display: flex; }
+  display: flex;
+  align-items: baseline; }
 
 .social__item + .social__item {
   margin-left: 1em; }
+
+.social__link {
+  display: block; }
+
+.social__icon path {
+  fill: rgba(38, 53, 64, 0.5);
+  transition: all .15s ease-out; }
+  .social__icon path:hover {
+    fill: #629a00; }

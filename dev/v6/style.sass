@@ -7,11 +7,16 @@
  */
 
 $content_width: 768px
-$hang_width: 120px
+$hang_width: 120 / 768 * 100 + '%'
+
+$colors: (base: #d0d8dd, text: #263540, link: #0075a9, visited: #ca176e, hover: #629a00, focus: #629a00, active: #ca176e)
 
 // 1em = 16px
 @function s($px)
   @return #{$px / 16 + em}
+
+@function c($name)
+  @return map-get($colors, $name)
 
 *
   margin: 0
@@ -19,21 +24,26 @@ $hang_width: 120px
 
 body
   font-family: Arial, sans-serif
-  color: #263540
+  color: c(text)
   font-size: 16px
-  background-color: #d0d8dd
+  background-color: c(base)
 
 a
+  transition: all .15s ease-out
   &:link
-    color: #0075a9
+    color: c(link)
     text-decoration: none
   &:visited
+    color: c(visited)
     text-decoration: none
   &:focus
+    color: c(focus)
     text-decoration: underline
   &:hover
+    color: c(hover)
     text-decoration: underline
   &:active
+    color: c(active)
     text-decoration: none
 
 .space
@@ -48,11 +58,12 @@ a
 .border
   display: block
   height: 0
-  border-top: 1px solid rgba(0,0,0, .15)
+  border-top: 1px solid rgba(c(text), .25)
 
 .header
   margin: auto
-  width: $content_width
+  padding: 0 15px
+  max-width: $content_width
 
 
 .logo
@@ -82,7 +93,8 @@ a
 
 .contents
   margin: auto
-  width: $content_width
+  padding: 0 15px
+  max-width: $content_width
 
 .hang
   display: flex
@@ -141,8 +153,9 @@ a
   &::after
     content: ']'
 
-.postMore
+.more
   margin-left: $hang_width
+  font-size: 14px
 
 
 .tagList,
@@ -160,7 +173,8 @@ a
   justify-content: space-between
   align-items: baseline
   margin: auto
-  width: $content_width
+  padding: 0 15px
+  max-width: $content_width
   font-size: 14px
 
 .subinfo
@@ -296,13 +310,36 @@ a
   justify-content: space-between
   align-items: baseline
 
-
 .contribute
+  display: flex
+  align-items: baseline
+
+.contribute__item
+  display: block
+
+.contribute__icon
+  path
+    fill: rgba(c(text), .5)
+    transition: all .15s ease-out
+    &:hover
+      fill: c(hover)
 
 .social
   list-style: inside none
   display: flex
+  align-items: baseline
 
 .social__item
   & + &
     margin-left: 1em
+
+.social__link
+  display: block
+
+
+.social__icon
+  path
+    fill: rgba(c(text), .5)
+    transition: all .15s ease-out
+    &:hover
+      fill: c(hover)
