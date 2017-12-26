@@ -74,16 +74,16 @@ gulp.task('css', function() {
     .pipe(browserSync.stream());
 });
 
-// copy:font
-gulp.task('copy:font', function() {
+// font
+gulp.task('font', function() {
   return gulp.src('./src/font/**/*')
     .pipe(plumber())
     .pipe(gulp.dest('./htdocs/font/'))
     .pipe(browserSync.stream());
 });
 
-// copy:misc
-gulp.task('copy:misc', function() {
+// misc
+gulp.task('misc', function() {
   return gulp.src('./src/misc/**/*')
     .pipe(plumber())
     .pipe(gulp.dest('./htdocs/misc/'))
@@ -503,7 +503,7 @@ gulp.task('build_html', function(callback) {
 // build
 // - only compile
 gulp.task('build_asset', function(callback) {
-  runSequence(['css', 'image', 'svg', 'copy:font', 'copy:misc'], callback);
+  runSequence(['css', 'image', 'svg', 'font', 'misc'], callback);
 });
 
 // default
@@ -525,6 +525,10 @@ gulp.task('watch', function() {
 
   watch(['./src/svg/**/*'], function(e) {
     gulp.start(['svg']);
+  });
+
+  watch(['./src/misc/**/*'], function(e) {
+    gulp.start(['misc']);
   });
 
   watch(['./src/md/**/*'], function(e) {
