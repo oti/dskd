@@ -4,24 +4,24 @@ extends default
 
 block contents
   -
-    // section h1
-    var index_title = '';
-    if (page_type === 'index')
+    //- section h1
+    var index_title = ''
+    if page_type === 'index'
       index_title = 'post'
-    else if (page_type === 'archives')
+    else if page_type === 'archives'
       index_title = 'archives'
-    else if (page_type === 'tag' || page_type === 'year' || page_type === 'demo-index')
+    else if page_type === 'tag' || page_type === 'year' || page_type === 'demo-index'
       index_title = page_title
 
-    // ループする記事リスト
-    var post_list = [];
-    if (page_type === 'index' || page_type === 'archives')
+    //- ループする記事リスト
+    var post_list = null
+    if page_type === 'index' || page_type === 'archives'
       post_list = archives
-    else if (page_type === 'tag')
+    else if page_type === 'tag'
       post_list = tags[page_title]
-    else if(page_type === 'year')
+    else if page_type === 'year'
       post_list = years[page_title]
-    else if(page_type === 'demo-index')
+    else if page_type === 'demo-index'
       post_list = demos
 
   section
@@ -30,7 +30,8 @@ block contents
       ul.stackList
         each post, i in post_list
           //- indexでは5件出力したら抜ける
-          - if (page_type === 'index' && i === 5) {return}
+          if page_type === 'index' && i === 5
+            return
           li.stackList__item
             a.stackList__main(href='/'+archives_base+post.page_id+'.html')= post.page_title
             .stackList__sub
