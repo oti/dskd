@@ -1,29 +1,28 @@
--
-  var page_permalink
+- var page_permalink
 
-  if page_type === 'post'
-    page_permalink = blog_url+archives_base+page_id+'.html'
-  else if page_type === 'index'
-    page_permalink = blog_url
-    page_title = blog_name
-    page_description = blog_description
-  else if page_type === 'archives'
-    page_permalink = blog_url+archives_base
-  else if page_type === 'about'
-    page_permalink = blog_url+'about.html'
-  else if page_type === 'tag'
-    page_permalink = blog_url+archives_base+page_title.toLowerCase().replace(' ', '_').replace('.', '_')+'.html'
-    page_description = page_title+'カテゴリの記事一覧'
-  else if page_type === 'year'
-    page_permalink = blog_url+archives_base+page_title+'.html'
-    page_description = page_title+'年公開の記事一覧'
-  else if page_type === 'demo-index'
-    page_permalink = blog_url+demo_base
-  else if page_type === 'demo'
-    page_permalink = blog_url+demo_base+page_id+'.html'
+if page_type === 'post'
+  - page_permalink = blog_url+archives_base+page_id+'.html'
+else if page_type === 'index'
+  - page_permalink = blog_url
+  - page_title = blog_name
+  - page_description = blog_description
+else if page_type === 'archives'
+  - page_permalink = blog_url+archives_base
+else if page_type === 'about'
+  - page_permalink = blog_url+'about.html'
+else if page_type === 'tag'
+  - page_permalink = blog_url+archives_base+page_title.toLowerCase().replace(' ', '_').replace('.', '_')+'.html'
+  - page_description = page_title+'カテゴリの記事一覧'
+else if page_type === 'year'
+  - page_permalink = blog_url+archives_base+page_title+'.html'
+  - page_description = page_title+'年公開の記事一覧'
+else if page_type === 'demo-index'
+  - page_permalink = blog_url+demo_base
+else if page_type === 'demo'
+  - page_permalink = blog_url+demo_base+page_id+'.html'
 
-  if !page_cover
-    page_cover = '/img/blog-cover.png'
+if !page_cover
+  - page_cover = '/img/blog-cover.png'
 
 include mixin/timestamp
 include mixin/tag
@@ -38,19 +37,19 @@ html(lang='ja')
     meta(charset='UTF-8')
     meta(content='width=device-width,viewport-fit=cover' name='viewport')
     title= (page_type === 'index') ? page_title : page_title+title_suffix
-    meta(content='/img/blog-cover.png' itemprop='image')
-    meta(content='#{page_description}' name='description')
-    meta(content='#{page_permalink}' property='og:url')
-    meta(content='#{page_title}' property='og:title')
-    meta(content='#{page_description}' property='og:description')
-    meta(content='#{page_cover}' property='og:image:secure_url')
-    meta(content='article' property='og:type')
-    meta(content='ja_JP' property='og:locale')
-    meta(content='dskd' property='og:site_name')
-    link(href='#{page_permalink}' rel='canonical' itemprop='url')
-    link(href='/img/blog-icon.png' rel='apple-touch-icon-precomposed')
-    link(href='/feed' rel='alternate' type='application/rss+xml')
-    link(href='/css/style.css' rel='stylesheet' media='only screen')
+    meta(content='/img/blog-cover.png', itemprop='image')
+    meta(content=page_description, name='description')
+    meta(content=page_permalink, property='og:url')
+    meta(content=page_title, property='og:title')
+    meta(content=page_description, property='og:description')
+    meta(content=page_cover, property='og:image:secure_url')
+    meta(content='article', property='og:type')
+    meta(content='ja_JP', property='og:locale')
+    meta(content='dskd', property='og:site_name')
+    link(href='#{page_permalink}', rel='canonical', itemprop='url')
+    link(href='/img/blog-icon.png', rel='apple-touch-icon-precomposed')
+    link(href='/feed', rel='alternate', type='application/rss+xml')
+    link(href='/css/style.css', rel='stylesheet', media='only screen')
 
   body
     .container
@@ -83,7 +82,10 @@ html(lang='ja')
       .space(style='--h: 30px')
 
       footer.footer
-        p.author Made by #[adress.author__address: a(href='mailto:'+blog_address)= blog_author].
+        p.author
+          | Made by
+          adress.author__address
+            a(href='mailto:'+blog_address)= blog_author
         ul.subinfo
           li.subinfo__item
             a(href='http://creativecommons.org/licenses/by-nc/4.0/', rel='license')
