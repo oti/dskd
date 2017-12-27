@@ -1,14 +1,14 @@
 //- _year-list.pug
 mixin year-list(archives, archives_base)
+  - var years_pool   = []
+  - var years_unique = []
+
+  //- 重複しているであろう配列を作る
+  each post, i in archives
+    years_pool.push(post.page_datetime.substring(0,4))
+
   -
-    var years_pool   = []
-    var years_unique = []
-
-    // 重複しているであろう配列を作る
-    each post, i in archives
-      years_pool.push(post.page_datetime.substring(0,4))
-
-    // ユニークにする
+    //- ユニークにする
     years_unique = years_pool.filter(function(year, i, arr){
       return arr.indexOf(year) === i
     });
