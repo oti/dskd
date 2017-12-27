@@ -45,6 +45,7 @@
     "lodash": "^4.17.4",
     "marked": "^0.3.6",
     "node-sass": "^4.7.1",
+    "pug": "^2.0.0-rc.4",
     "pug-cli": "^1.0.0-alpha6",
     "run-sequence": "^1.2.2",
     "through2": "^2.0.3"
