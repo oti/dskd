@@ -23,6 +23,7 @@ var _              = require('lodash');
 var runSequence    = require('run-sequence');
 var through        = require('through2');
 var mkd            = require('marked');
+var jsonStringify  = require('json-pretty');
 
 // configs
 var blogConfig = require('./blogconfig.json', 'utf8');
@@ -137,7 +138,7 @@ function createArchivesJson(posts, type, callback) {
   });
 
   dist[target_key] = posts_arr;
-  fs.writeFile('./src/json/'+file_name+'.json', JSON.stringify(dist));
+  fs.writeFile('./src/json/'+file_name+'.json', jsonStringify(dist));
 
   if(callback) {
     callback(dist);
@@ -209,10 +210,10 @@ function createTagsJson(posts) {
     dist.tags[tag_name] = posts_arr;
 
     // tags_name（tags_post_listのキー）ごとにwriteFile
-    // fs.writeFile('./src/json/'+tag_name.toLowerCase().replace(' ', '_')+'.json', JSON.stringify(dist));
+    // fs.writeFile('./src/json/'+tag_name.toLowerCase().replace(' ', '_')+'.json', jsonStringify(dist));
   });
 
-  fs.writeFile('./src/json/tags.json', JSON.stringify(dist));
+  fs.writeFile('./src/json/tags.json', jsonStringify(dist));
 
   return;
 };
@@ -279,7 +280,7 @@ function createYearsJson(posts) {
     dist.years[yyyy] = posts_arr;
   });
 
-  fs.writeFile('./src/json/years.json', JSON.stringify(dist));
+  fs.writeFile('./src/json/years.json', jsonStringify(dist));
 
   return;
 };
@@ -319,7 +320,7 @@ function createNeighborsJson(archives) {
     }
   });
 
-  fs.writeFile('./src/json/neighbors.json', JSON.stringify(dist));
+  fs.writeFile('./src/json/neighbors.json', jsonStringify(dist));
   return dist;
 };
 
@@ -348,7 +349,7 @@ gulp.task('json_post', function(callback) {
       createYearsJson(posts);
 
       // バッファに戻してpipeに渡す
-      file.contents = new Buffer(JSON.stringify(posts));
+      file.contents = new Buffer(jsonStringify(posts));
       callback(null, file);
     }))
     .pipe(gulp.dest('./src/json/'))
@@ -372,7 +373,7 @@ gulp.task('json_demo', function(callback) {
       createArchivesJson(demos, 'demo');
 
       // バッファに戻してpipeに渡す
-      file.contents = new Buffer(JSON.stringify(demos));
+      file.contents = new Buffer(jsonStringify(demos));
       callback(null, file);
     }))
     .pipe(gulp.dest('./src/json/'))
