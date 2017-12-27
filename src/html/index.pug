@@ -1,29 +1,29 @@
 //- _index.pug
 //- ブログトップ
-extends _default
-
--
-  // section h1
-  var index_title = '';
-  if (page_type === 'index')
-    index_title = 'post'
-  else if (page_type === 'archives')
-    index_title = 'archives'
-  else if (page_type === 'tag' || page_type === 'year' || page_type === 'demo')
-    index_title = page_title
-
-  // ループする記事リスト
-  var post_list = [];
-  if (page_type === 'index' || page_type === 'archives')
-    post_list = archives
-  else if (page_type === 'tag')
-    post_list = tags[page_title]
-  else if(page_type === 'year')
-    post_list = years[page_title]
-  else if(page_type === 'demo')
-    post_list = demos
+extends default
 
 block contents
+  -
+    // section h1
+    var index_title = '';
+    if (page_type === 'index')
+      index_title = 'post'
+    else if (page_type === 'archives')
+      index_title = 'archives'
+    else if (page_type === 'tag' || page_type === 'year' || page_type === 'demo-index')
+      index_title = page_title
+
+    // ループする記事リスト
+    var post_list = [];
+    if (page_type === 'index' || page_type === 'archives')
+      post_list = archives
+    else if (page_type === 'tag')
+      post_list = tags[page_title]
+    else if(page_type === 'year')
+      post_list = years[page_title]
+    else if(page_type === 'demo-index')
+      post_list = demos
+
   section
     .hang
       h1.hang__heading= index_title

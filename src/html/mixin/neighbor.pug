@@ -13,7 +13,7 @@ mixin neighbor(neighbors, page_id, archives_base)
     ul.neighbor__list
       if newer_title
         li.neighbor__item.-newer
-          a(href=('/'+archives_base+newer_id+'.html'))=newer_title
+          a(href='/'+archives_base+newer_id+'.html')= newer_title
       if older_title
         li.neighbor__item.-older
-          a(href=('/'+archives_base+older_id+'.html'))=older_title
+          a(href='/'+archives_base+older_id+'.html')= older_title

@@ -1,5 +1,5 @@
 ---
-layout: ./src/html/_index.pug
+layout: ./src/html/index.pug
 page_type: 'tag'
 page_title: 'Node.js'
 ---
