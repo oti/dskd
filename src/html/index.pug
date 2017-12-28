@@ -25,10 +25,8 @@ block contents
     .hang
       h1.hang__heading= index_title
       ul.stackList
-        each post, i in post_list
-          //- indexでは5件出力したら抜ける
-          if page_type === 'index' && i === 5
-            - return
+        //- indexでは5件出力したら抜ける
+        each post, i in (page_type === 'index') ? post_list.slice(0,5) : post_list
           li.stackList__item
             a.stackList__main(href='/'+archives_base+post.page_id+'.html')= post.page_title
             .stackList__sub
