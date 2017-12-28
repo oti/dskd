@@ -20,9 +20,7 @@ mixin tag-list(archives, archives_base)
       return a.localeCompare(b);
     });
 
-  nav.hang
-    h1.hang__heading tag
-    ul.flowList
-      each tag, i in tags_sorted
-        li.flowList__item
-          a(href='/'+archives_base+tag.toLowerCase().replace(' ', '_').replace('.', '_')+'.html')= tag
+  ul.tagList
+    each tag, i in tags_sorted
+      li.tagList__item
+        a(href='/'+archives_base+tag.toLowerCase().replace(' ', '_').replace('.', '_')+'.html')= tag

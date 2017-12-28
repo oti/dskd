@@ -1,0 +1,19 @@
+=flowList
+  list-style: inside none
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  line-height: 1.6
+
+  &__item
+    display: flex
+    justify-content: center
+    align-items: center
+    & + &
+      &::before
+        content: ""
+        margin: 0 .5em
+        width: 5px
+        height: 5px
+        background-color: rgba(c(text), .25)
+        border-radius: 5px

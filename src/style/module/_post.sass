@@ -2,13 +2,21 @@
 
 .post__footer
   display: flex
-  align-items: baseline
+  align-items: center
   font-size: 14px
 
 .post__timestamp
+
 .post__tag
-  @extend .brackets
-  margin-left: .5em
+  display: flex
+  align-items: center
+  &::before
+    content: ""
+    margin: 0 .5em
+    width: .3em
+    height: .3em
+    background-color: rgba(c(text), .25)
+    border-radius: 100em
 
 .post__title
   margin-top: 1em
@@ -48,10 +56,12 @@
     padding: 10px
     border-radius: 3px
     font-size: 14px
-    font-family: "Consolas", monospace
+    font-family: monospace
     line-height: 1.1
-    background-image: url("/img/bg2.png")
     overflow-x: auto
+    @extend %baseBg2;
+    code
+      background-color: transparent
 
   mark
     padding-left: 2px
@@ -92,7 +102,7 @@
 
   caption
     font-weight: bold
-    background-image: url("/img/bg2.png")
+    @extend %baseBg2;
 
   tr
     border-top: 1px solid rgba(0,0,0, .1)
