@@ -46,15 +46,15 @@ block contents
 
     .space(style='--h: 30px')
 
-    +tag-list(archives, archives_base)
-
     +year-list(archives, archives_base)
 
     .space(style='--h: 30px')
 
-  if page_type === 'index'
+    +tag-list(archives, archives_base)
 
     .space(style='--h: 30px')
+
+  if page_type === 'index'
 
     aside.hang(role='complementary')
       h1.hang__heading subscribe
