@@ -13,7 +13,14 @@
     &::before
       content: ""
       margin: 0 1em
-      width: .5em
-      height: .5em
+      width: 10px
+      height: 10px
       background-color: rgba(c(text), .25)
-      border-radius: 100em
+      border-radius: 10px
+
+.nav__link
+  &.-current
+    pointer-events: none
+    color: c(text)
+      pointer-events: none;
+    background-image: linear-gradient(to top, rgba(c(mark), .75) 7px, rgba(255,255,255, 0) 7px)
