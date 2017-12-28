@@ -13,9 +13,7 @@ mixin year-list(archives, archives_base)
       return arr.indexOf(year) === i
     });
 
-  nav.hang
-    h1.hang__heading year
-    ol.flowList(reversed='')
-      each year, i in years_unique
-        li.flowList__item
-          a(href='/'+archives_base+year+'.html')= year
+  ol.yearList(reversed='')
+    each year, i in years_unique
+      li.yearList__item
+        a(href='/'+archives_base+year+'.html')= year

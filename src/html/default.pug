@@ -25,9 +25,10 @@ if !page_cover
   - page_cover = '/img/blog-cover.png'
 
 include mixin/timestamp
-include mixin/tag
+include mixin/tagging
 include mixin/tag-list
 include mixin/year-list
+include mixin/subscribe-list
 include mixin/contribute
 include mixin/social
 include mixin/neighbor
@@ -75,22 +76,22 @@ html(lang='ja')
       main.contents
         block contents
 
-      .space(style='--h: 30px')
+      .space
 
       .border
 
-      .space(style='--h: 30px')
+      .space
 
       footer.footer
         p.author
           | Made by
           adress.author__address
-            a(href='mailto:'+blog_address)= blog_author
-        ul.flowList
-          li.flowList__item
+            a(href='mailto:'+blog_address) 越智
+        ul.subinfo
+          li.subinfo__item
             a(href='http://creativecommons.org/licenses/by-nc/4.0/', rel='license')
               small.license CC BY-NC
-          li.flowList__item
+          li.subinfo__item
             a(href='/'+blog_feed, alternate='application/rss+xml') RSS
 
-      .space(style='--h: 30px')
+      .space

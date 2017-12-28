@@ -24,42 +24,43 @@ block contents
   section
     .hang
       h1.hang__heading= index_title
-      ul.stackList
+      ul.postList
         //- indexでは5件出力したら抜ける
         each post, i in (page_type === 'index') ? post_list.slice(0,5) : post_list
-          li.stackList__item
-            a.stackList__main(href='/'+archives_base+post.page_id+'.html')= post.page_title
-            .stackList__sub
+          li.postList__item(id='post-'+post.page_id)
+            a.postList__title(href='/'+archives_base+post.page_id+'.html')= post.page_title
+            .postList__time
               +timestamp(post.page_datetime)
-              +tag(post.page_tag, post.page_type)
+            .postList__tag
+              +tagging(post.page_tag, post.page_type)
+
+    .space
 
     if page_type === 'index'
-      .space(style='--h: 30px')
 
       footer.more
         a(href='/'+archives_base, aria-label='全記事リストを見る') more posts »
 
   if page_type !== 'demo-index'
-    .space(style='--h: 30px')
+    .space
 
     .border
 
-    .space(style='--h: 30px')
+    .space
 
-    +year-list(archives, archives_base)
+    nav.hang
+      h1.hang__heading year
+      +year-list(archives, archives_base)
 
-    .space(style='--h: 30px')
+    .space
 
-    +tag-list(archives, archives_base)
-
-    .space(style='--h: 30px')
+    nav.hang
+      h1.hang__heading tag
+      +tag-list(archives, archives_base)
 
   if page_type === 'index'
+    .space
 
     aside.hang(role='complementary')
       h1.hang__heading subscribe
-      ul.flowList
-        li.flowList__item
-          a(href='https://twitter.com/'+blog_twitter) Twitter
-        li.flowList__item
-          a(href=blog_url+blog_feed, itemprop='sameAs') RSS
+      +subscribe-list()

@@ -5,8 +5,10 @@ extends default
 block contents
   article.post
     footer.post__footer
-      +timestamp(page_datetime)
-      +tag(page_tag, page_type)
+      .post__timestamp
+        +timestamp(page_datetime)
+      .post__tag
+        +tagging(page_tag, page_type)
 
     header.post__header
       h1.post__title(itemprop='name')= page_title
@@ -21,10 +23,10 @@ block contents
 
       +social(page_title, blog_url+archives_base+page_id+'.html')
 
-  .space(style='--h: 30px')
+  .space
 
   .border
 
-  .space(style='--h: 30px')
+  .space
 
   +neighbor(neighbors, page_id, archives_base)
