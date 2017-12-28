@@ -6,6 +6,14 @@
   line-height: 1.6
 
 .flowList__item
-  &:not(:last-child)::after
-    content: ','
-    margin-right: .5em
+  display: flex
+  justify-content: center
+  align-items: center
+  & + &
+    &::before
+      content: ""
+      margin: 0 .5em
+      width: .3em
+      height: .3em
+      background-color: rgba(c(text), .25)
+      border-radius: 100em
