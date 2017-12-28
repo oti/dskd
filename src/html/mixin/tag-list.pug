@@ -7,7 +7,7 @@ mixin tag-list(archives, archives_base)
   //- 重複しているであろうタグの配列を作る
   each post, i in archives
     each tag, j in post.page_tag
-      tags_pool.push(tag)
+      - tags_pool.push(tag)
 
   -
     //- ユニークにする

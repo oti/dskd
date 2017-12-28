@@ -5,7 +5,7 @@ mixin year-list(archives, archives_base)
 
   //- 重複しているであろう配列を作る
   each post, i in archives
-    years_pool.push(post.page_datetime.substring(0,4))
+    - years_pool.push(post.page_datetime.substring(0,4))
 
   -
     //- ユニークにする
