@@ -1,6 +1,6 @@
 {
   "name": "dskd",
-  "version": "6.0.0-alpha",
+  "version": "6.0.0",
   "license": "SEE LICENSE IN license.md",
   "author": "oti (twitter.com/o_ti)",
   "description": "I love TKG",
@@ -53,6 +53,9 @@
   "scripts": {
     "start": "gulp",
     "server": "gulp server",
+    "post": "gulp build_html_post",
+    "demo": "gulp build_html_demo",
+    "blog": "gulp build_html",
     "deploy": "git push origin master && cd htdocs/ && git push origin publish && cd ..",
     "dev": "cd dev/v6 && python -m SimpleHTTPServer 8888 & node-sass dev/v6/style.sass dev/v6/style.css -w & pug dev/v6/*.pug -Pw"
   }
