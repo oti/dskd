@@ -1,9 +1,0 @@
-// get color
-@function c($key) {
-  @return map-get($color-map, $key);
-}
-
-// get size
-@function s($key, $unit: '') {
-  @return #{map-get($size-map, $key) + $unit};
-}
