@@ -504,7 +504,7 @@ gulp.task('build_html', function(callback) {
 // build
 // - only compile
 gulp.task('build_asset', function(callback) {
-  runSequence(['css', 'image', 'svg', 'font', 'misc'], callback);
+  runSequence(['css', 'image', 'font', 'misc'], callback);
 });
 
 // default
@@ -524,9 +524,9 @@ gulp.task('watch', function() {
     gulp.start(['image']);
   });
 
-  watch(['./src/svg/**/*'], function(e) {
-    gulp.start(['svg']);
-  });
+  // watch(['./src/svg/**/*'], function(e) {
+  //   gulp.start(['svg']);
+  // });
 
   watch(['./src/misc/**/*'], function(e) {
     gulp.start(['misc']);
