@@ -1,3 +1,17 @@
 .logo
-  a
-    display: block
+  display: flex
+  justify-content: center
+  align-items: center
+
+.logo__link
+  line-height: 0
+  vertical-align: bottom
+
+.logo__icon
+  path
+    transition: all .15s ease-out
+    fill: rgba(c(text), 1)
+
+  &:hover
+    path
+      fill: rgba(c(text), .75)

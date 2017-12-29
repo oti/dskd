@@ -16,4 +16,4 @@ mixin year-list(archives, archives_base)
   ol.yearList(reversed='')
     each year, i in years_unique
       li.yearList__item
-        a(href='/'+archives_base+year+'.html')= year
+        a(class=(page_title === year) ? '-current' : '', href='/'+archives_base+year+'.html')= year
