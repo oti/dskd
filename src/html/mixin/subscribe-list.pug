@@ -1,0 +1,7 @@
+//- _subscribe-list.pug
+mixin subscribe-list()
+  ul.subscribeList
+    li.subscribeList__item
+      a(href='https://twitter.com/'+blog_twitter) Twitter
+    li.subscribeList__item
+      a(href=blog_url+blog_feed, itemprop='sameAs') RSS

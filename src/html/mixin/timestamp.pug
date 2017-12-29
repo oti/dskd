@@ -1,0 +1,3 @@
+//- _timestamp.pug
+mixin timestamp(time)
+  time(datetime=time+'+09:00')= time.substring(0,10)

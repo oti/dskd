@@ -1,0 +1,32 @@
+//- _post.pug
+//- 個別記事用テンプレート
+extends default
+
+block contents
+  article.post
+    footer.post__footer
+      .post__timestamp
+        +timestamp(page_datetime)
+      .post__tag
+        +tagging(page_tag, page_type)
+
+    header.post__header
+      h1.post__title(itemprop='name')= page_title
+
+    .post__body(itemprop='articleBody')
+      != contents
+
+    .space(style='--var: 15px')
+
+    aside.post__external
+      +contribute(post_contribute, page_id)
+
+      +social(page_title, blog_url+archives_base+page_id+'.html')
+
+  .space
+
+  .border
+
+  .space
+
+  +neighbor(neighbors, page_id, archives_base)

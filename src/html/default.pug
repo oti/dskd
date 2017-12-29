@@ -1,0 +1,96 @@
+- var page_permalink
+
+if page_type === 'post'
+  - page_permalink = blog_url+archives_base+page_id+'.html'
+else if page_type === 'index'
+  - page_permalink = blog_url
+  - page_title = blog_name
+  - page_description = blog_description
+else if page_type === 'archives'
+  - page_permalink = blog_url+archives_base
+else if page_type === 'about'
+  - page_permalink = blog_url+'about.html'
+else if page_type === 'tag'
+  - page_permalink = blog_url+archives_base+page_title.toLowerCase().replace(' ', '_').replace('.', '_')+'.html'
+  - page_description = page_title+'カテゴリの記事一覧'
+else if page_type === 'year'
+  - page_permalink = blog_url+archives_base+page_title+'.html'
+  - page_description = page_title+'年公開の記事一覧'
+else if page_type === 'demo-index'
+  - page_permalink = blog_url+demo_base
+else if page_type === 'demo'
+  - page_permalink = blog_url+demo_base+page_id+'.html'
+
+if !page_cover
+  - page_cover = '/img/blog-cover.png'
+
+include mixin/timestamp
+include mixin/tagging
+include mixin/tag-list
+include mixin/year-list
+include mixin/subscribe-list
+include mixin/contribute
+include mixin/social
+include mixin/neighbor
+doctype html
+html(lang='ja')
+  head
+    meta(charset='UTF-8')
+    meta(content='width=device-width,viewport-fit=cover' name='viewport')
+    title= (page_type === 'index') ? page_title : page_title+title_suffix
+    meta(content='/img/blog-cover.png', itemprop='image')
+    meta(content=page_description, name='description')
+    meta(content=page_permalink, property='og:url')
+    meta(content=page_title, property='og:title')
+    meta(content=page_description, property='og:description')
+    meta(content=page_cover, property='og:image:secure_url')
+    meta(content='article', property='og:type')
+    meta(content='ja_JP', property='og:locale')
+    meta(content='dskd', property='og:site_name')
+    link(href=page_permalink, rel='canonical', itemprop='url')
+    link(href='/img/blog-icon.png', rel='apple-touch-icon-precomposed')
+    link(href='/feed', rel='alternate', type='application/rss+xml')
+    link(href='/css/style.css', rel='stylesheet', media='only screen')
+
+  body(class= page_type)
+    .container
+      .space
+      header.header(role='banner')
+        .header__item
+          h1.logo
+            a.logo__link(href='/')
+              svg.logo__icon(version='1.1', xmlns='http://www.w3.org/2000/svg', width='45', height='35' viewBox='0 0 85 65.2')
+                title= blog_name
+                path(d='M52.5,65.2c-0.1,0-0.2,0-0.3,0c-5.7-0.8-10-2.5-13.6-4.7c-6.1,2.8-12.4,4.4-18.6,4.4c-14.4,0-18.4-5.8-19.4-8.3 C-0.6,53.7,0,50.5,2.5,48c3.4-3.4,10.9-5.6,21.6-1.2c4.1,1.8,7.4,4,10.5,6.2c1.4,1,2.7,2,4.2,2.9c18-9,36.2-29.3,42.4-54.2 c0.3-1.1,2.3-1.5,2.3-1.5s1.7,1.4,1.5,2.3C79.6,24.2,62.7,47.3,43,58.4c2.7,1.4,6,2.3,9.9,2.9c1.1,0.1,1.7,2.2,1.7,2.2 S53.5,65.2,52.5,65.2z M12.7,48.3c-3.6,0-6.1,1.1-7.5,2.5c-1.3,1.3-1.7,2.8-1.1,4.4c1.2,2.8,6,5.9,15.8,5.9c4.6,0,9.5-1.1,14.5-3.1 c-0.8-0.5-1.6-1.1-2.2-1.6c-3.1-2.2-6-4.3-9.8-5.9C18.7,48.9,15.5,48.3,12.7,48.3z')
+        .header__item
+          nav.nav(role='navigation')
+            ul.nav__list
+              li.nav__item
+                a.nav__link(class=(nav_cr === 'archives') ? '-current' : '', href='/archives/') all posts
+              li.nav__item
+                a.nav__link(class=(nav_cr === 'about') ? '-current' : '', href='/about.html') what's dskd?
+
+      .space(style='--h: 60px')
+
+      main.contents
+        block contents
+
+      .space
+
+      .border
+
+      .space
+
+      footer.footer
+        p.author
+          | Made by
+          adress.author__address
+            a(href='mailto:'+blog_address) 越智
+        ul.subinfo
+          li.subinfo__item
+            a(href='http://creativecommons.org/licenses/by-nc/4.0/', rel='license')
+              small.license CC BY-NC
+          li.subinfo__item
+            a(href='/'+blog_feed, alternate='application/rss+xml') RSS
+
+      .space

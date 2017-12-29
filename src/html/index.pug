@@ -1,0 +1,66 @@
+//- _index.pug
+//- ブログトップ
+extends default
+
+block contents
+  - var index_title = ''
+  if page_type === 'index'
+    - index_title = 'post'
+  else if page_type === 'archives'
+    - index_title = 'archives'
+  else if page_type === 'tag' || page_type === 'year' || page_type === 'demo-index'
+    - index_title = page_title
+
+  - var post_list
+  if page_type === 'index' || page_type === 'archives'
+    - post_list = archives
+  else if page_type === 'tag'
+    - post_list = tags[page_title]
+  else if page_type === 'year'
+    - post_list = years[page_title]
+  else if page_type === 'demo-index'
+    - post_list = demos
+
+  section
+    .hang
+      h1.hang__heading= index_title
+      ul.postList
+        //- indexでは5件出力したら抜ける
+        each post, i in (page_type === 'index') ? post_list.slice(0,5) : post_list
+          li.postList__item(id='post-'+post.page_id)
+            a.postList__title(href='/'+archives_base+post.page_id+'.html')= post.page_title
+            .postList__time
+              +timestamp(post.page_datetime)
+            .postList__tag
+              +tagging(post.page_tag, post.page_type)
+
+    .space
+
+    if page_type === 'index'
+
+      footer.more
+        a(href='/'+archives_base, aria-label='全記事リストを見る') more posts »
+
+  if page_type !== 'demo-index'
+    .space
+
+    .border
+
+    .space
+
+    nav.hang
+      h1.hang__heading year
+      +year-list(archives, archives_base)
+
+    .space
+
+    nav.hang
+      h1.hang__heading tag
+      +tag-list(archives, archives_base)
+
+  if page_type === 'index'
+    .space
+
+    aside.hang(role='complementary')
+      h1.hang__heading subscribe
+      +subscribe-list()

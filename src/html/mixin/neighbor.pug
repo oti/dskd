@@ -1,0 +1,14 @@
+//- _neighbor.pug
+mixin neighbor(neighbors, page_id, archives_base)
+  - var page        = neighbors[page_id]
+  - var older       = page.older
+  - var newer       = page.newer
+
+  nav.neighbor
+    ul.neighbor__list
+      if newer.page_title
+        li.neighbor__item.-newer
+          a(href='/'+archives_base+newer.page_id+'.html')= newer.page_title
+      if older.page_title
+        li.neighbor__item.-older
+          a(href='/'+archives_base+older.page_id+'.html')= older.page_title

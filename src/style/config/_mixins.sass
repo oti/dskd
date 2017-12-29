@@ -1,0 +1,29 @@
+=sp
+  @media (max-width: $breakpoint - 1)
+    @content
+
+
+=flowList
+  list-style: inside none
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  line-height: 1.6
+
+  &__item
+    display: flex
+    justify-content: center
+    align-items: center
+    & + &
+      &::before
+        content: ""
+        margin: 0 .5em
+        width: 5px
+        height: 5px
+        background-color: rgba(c(text), .25)
+        border-radius: 5px
+
+    a.-current
+      pointer-events: none
+      color: c(text)
+      background-image: linear-gradient(to top, rgba(c(mark), .75) 7px, rgba(255,255,255, 0) 7px)

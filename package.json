@@ -1,6 +1,6 @@
 {
-  "name": "dskd-v5",
-  "version": "5.6.0",
+  "name": "dskd",
+  "version": "6.0.0",
   "license": "SEE LICENSE IN license.md",
   "author": "oti (twitter.com/o_ti)",
   "description": "I love TKG",
@@ -22,39 +22,41 @@
   },
   "main": "index.html",
   "engines": {
-    "node": ">=6.9.3"
+    "node": ">=8.8.1"
   },
   "devDependencies": {
-    "browser-sync": "^2.18.6",
+    "browser-sync": "^2.21.0",
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-front-matter": "^1.3.0",
-    "gulp-imagemin": "^3.1.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-front-matter": "^2.0.0-2",
+    "gulp-imagemin": "^4.0.0",
     "gulp-layout": "0.0.4",
     "gulp-markdown": "^1.2.0",
-    "gulp-markdown-to-json": "^1.0.1",
+    "gulp-markdown-to-json": "^1.0.3",
     "gulp-merge-media-queries": "^0.2.1",
     "gulp-plumber": "^1.1.0",
     "gulp-prettify": "^0.5.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.0.0",
-    "gulp-sourcemaps": "^2.1.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.2",
     "gulp-util": "^3.0.8",
     "gulp-watch": "^4.3.11",
     "jade": "^1.11.0",
+    "json-pretty": "0.0.1",
     "lodash": "^4.17.4",
-    "marked": "^0.3.6",
-    "run-sequence": "^1.2.2",
+    "marked": "^0.3.9",
+    "node-sass": "^4.7.2",
+    "pug-cli": "^1.0.0-alpha6",
+    "run-sequence": "^2.2.0",
     "through2": "^2.0.3"
   },
   "scripts": {
     "start": "gulp",
     "server": "gulp server",
-    "dev": "gulp build",
-    "json": "gulp build:json:posts --gulpfile postfile.js & gulp build:json:demos --gulpfile postfile.js",
-    "post": "gulp build:html:post --gulpfile postfile.js",
-    "demo": "gulp build:html:demo --gulpfile postfile.js",
-    "archives": "gulp build:html --gulpfile postfile.js",
-    "deploy": "git push origin master && cd htdocs/ && git push origin publish && cd .."
+    "post": "gulp build_html_post",
+    "demo": "gulp build_html_demo",
+    "blog": "gulp build_html",
+    "deploy": "git push origin master && cd htdocs/ && git push origin publish && cd ..",
+    "dev": "cd dev/v6 && python -m SimpleHTTPServer 8888 & node-sass dev/v6/style.sass dev/v6/style.css -w & pug dev/v6/*.pug -Pw"
   }
 }

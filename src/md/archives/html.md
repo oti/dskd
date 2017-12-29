@@ -1,5 +1,5 @@
 ---
-layout: ./src/jade/_tag-index.jade
+layout: ./src/html/index.pug
 page_type: 'tag'
 page_title: 'HTML'
 ---

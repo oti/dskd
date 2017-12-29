@@ -1,3 +1,3 @@
 ---
-layout: ./src/jade/_rss.jade
+layout: ./src/html/rss.pug
 ---
