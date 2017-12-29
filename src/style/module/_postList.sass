@@ -1,13 +1,16 @@
 .postList
+  list-style: inside none
   flex: 1 0 auto
   max-width: $content_width - $content_gutter*2 - $hang_width
-  list-style: inside none
 
 .postList__item
   position: relative;
   display: flex
   justify-content: space-between
   align-items: baseline
+  +sp
+    justify-content: flex-start
+    flex-direction: column
   & + &
     margin-top: 45px
 
@@ -15,16 +18,24 @@
   flex: 0 1 auto
   font-size: 18px
   line-height: 1.6
+  +sp
+    flex: 1 1 auto
 
 .postList__tag
   position: absolute
   bottom: 100%
   font-size: 13px
   line-height: 1
+  +sp
+    position: static
+    order: -1
 
 .postList__time
   flex: 0 0 auto
   margin-left: 1em
   font-size: 15px
   line-height: 1
-  // white-space: nowrap
+  +sp
+    flex: 1 1 auto
+    margin-left: 0
+    font-size: 13px
