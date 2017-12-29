@@ -1,0 +1,147 @@
+doctype html
+html(lang='ja')
+  head
+    meta(charset='UTF-8')
+    meta(content='width=device-width', name='viewport')
+    title dskd
+    meta(content='/img/blog-cover.png', itemprop='image')
+    meta(content='dskd.jsは主にウェブサイトコーディングについての話題を扱うブログです', name='description')
+    link(href='http://dskd.jp/', rel='canonical', itemprop='url')
+    link(href='/img/blog-icon.png', rel='apple-touch-icon-precomposed')
+    link(href='/feed', rel='alternate', type='application/rss+xml')
+    link(href='style.css', rel='stylesheet', media='only screen')
+
+  body
+    .container
+
+      header.header
+        h1.logo
+          a(href='/')
+            svg
+        nav.nav
+          ul.nav__list
+            li.nav__item
+              a(href='/archives/') all posts
+            li.nav__item
+              a(href='/about.html') what's dskd?
+
+      .space(style='--h: 60px')
+
+      main.contents
+        section
+          .hang
+            h1.hang__heading post
+            ul.stackList
+              li.stackList__item
+                a.stackList__main(href='/archives/89.html') 夢
+                .stackList__sub
+                  time(datetime='2017-08-16T18:58:17+09:00') 2017-08-16
+                  span.brackets note
+
+              li.stackList__item
+                a.stackList__main(href='/archives/88.html') バグは出る
+                .stackList__sub
+                  time(datetime='2017-04-21T20:51:34+09:00') 2017-04-21
+                  span.brackets note
+
+              li.stackList__item
+                a.stackList__main(href='/archives/87.html') CSSで行頭の約物を半角にする
+                .stackList__sub
+                  time(datetime='2017-01-03T22:05:10+09:00') 2017-01-03
+                  span.brackets CSS
+
+              li.stackList__item
+                a.stackList__main(href='/archives/86.html') ベストオブ2016
+                .stackList__sub
+                  time(datetime='2016-12-23T22:38:32+09:00') 2016-12-23
+                  span.brackets Advent Calendar, note
+
+              li.stackList__item
+                a.stackList__main(href='/archives/85.html') CSS pointer-events 2016
+                .stackList__sub
+                  time(datetime='2016-12-22T17:00:00+09:00') 2016-12-22
+                  span.brackets Advent Calendar, CSS
+
+          space.space.-v30
+
+          footer.more
+            a(href='archive.html', aria-label='全記事リストを見る') more posts »
+
+        .space
+
+        .border
+
+        .space
+
+        nav.hang
+          h1.hang__heading tag
+          ul.flowList
+            li.flowList__item
+              a(href='/archives/advent_calendar.html') Advent Calendar
+            li.flowList__item
+              a(href='/archives/bem.html') BEM
+            li.flowList__item
+              a(href='/archives/css.html') CSS
+            li.flowList__item
+              a(href='/archives/git.html') Git
+            li.flowList__item
+              a(href='/archives/html.html') HTML
+            li.flowList__item
+              a(href='/archives/javascript.html') JavaScript
+            li.flowList__item
+              a(href='/archives/node_js.html') Node.js
+            li.flowList__item
+              a(href='/archives/note.html') note
+            li.flowList__item
+              a(href='/archives/tkg.html') TKG
+
+        .space
+
+        nav.hang
+          h1.hang__heading year
+          ol.flowList(reversed)
+            li.flowList__item
+              a(href='/archives/2017.html') 2018
+            li.flowList__item
+              a(href='/archives/2017.html') 2017
+            li.flowList__item
+              a(href='/archives/2016.html') 2016
+            li.flowList__item
+              a(href='/archives/2015.html') 2015
+            li.flowList__item
+              a(href='/archives/2014.html') 2014
+            li.flowList__item
+              a(href='/archives/2013.html') 2013
+            li.flowList__item
+              a(href='/archives/2012.html') 2012
+            li.flowList__item
+              a(href='/archives/2011.html') 2011
+            li.flowList__item
+              a(href='/archives/2010.html') 2010
+
+        .space
+
+        aside.hang(role='complementary')
+          h1.hang__heading subscribe
+          ul.flowList
+            li.flowList__item
+              a(href='https://twitter.com/dskd_jp') Twitter
+            li.flowList__item
+              a(href='http://dskd.jp/feed', itemprop='sameAs') RSS
+
+      .space
+
+      .border
+
+      .space
+
+      footer.footer
+        p.author Made by #[adress.author__address: a(href='mailto:otiext@gmail.com') oti].
+        ul.subinfo
+          li.subinfo__item
+            a(href='http://creativecommons.org/licenses/by-nc/4.0/', rel='license')
+              small.subinfo__license CC BY-NC
+          li.subinfo__item
+            a(href='/feed', alternate='application/rss+xml') RSS
+
+      .space

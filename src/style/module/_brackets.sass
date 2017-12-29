@@ -1,0 +1,10 @@
+.brackets
+  display: flex
+  align-items: baseline
+  &::before
+    content: '['
+  &::after
+    content: ']'
+
+  .stackList__sub &
+    margin-left: .5em

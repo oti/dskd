@@ -1,7 +1,0 @@
-// contents area
-.contents {
-  @include base-width("0 15px");
-  @include max-screen($screen-phone) {
-    @include mobile-width("0 15px");
-  }
-}

@@ -1,0 +1,35 @@
+body
+  border-top: 8px solid rgba(c(text), .15)
+  font-family: Arial, sans-serif
+  color: c(text)
+  font-size: 16px
+  background-color: c(base)
+  @extend %baseBg
+
+img
+  -ms-interpolation-mode: bicubic
+  border: 0 none
+  text-decoration: none
+  vertical-align: top
+  background: transparent
+
+mark
+  background-color: transparent
+
+a
+  transition: all .15s ease-out
+  &:link
+    color: c(link)
+    text-decoration: none
+  &:visited
+    color: c(visited)
+    text-decoration: none
+  &:focus
+    color: c(focus)
+    text-decoration: underline
+  &:hover
+    color: c(hover)
+    text-decoration: underline
+  &:active
+    color: c(active)
+    text-decoration: none
