@@ -524,10 +524,6 @@ gulp.task('watch', function() {
     gulp.start(['image']);
   });
 
-  // watch(['./src/svg/**/*'], function(e) {
-  //   gulp.start(['svg']);
-  // });
-
   watch(['./src/misc/**/*'], function(e) {
     gulp.start(['misc']);
   });
@@ -537,6 +533,10 @@ gulp.task('watch', function() {
   });
 
   watch(['./src/html/**/*'], function(e) {
+    gulp.start(['build_html']);
+  });
+
+  watch(['./blogconfig.json'], function(e) {
     gulp.start(['build_html']);
   });
 });
