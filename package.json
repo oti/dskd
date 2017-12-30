@@ -1,8 +1,8 @@
 {
   "name": "dskd",
-  "version": "6.0.0",
-  "license": "SEE LICENSE IN license.md",
-  "author": "oti (twitter.com/o_ti)",
+  "version": "6.0.1",
+  "license": "CC BY-NC",
+  "author": "@oti(https://twitter.com/o_ti)",
   "description": "I love TKG",
   "keywords": [
     "dskd",
@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/oti/dskd/issues"
   },
-  "main": "index.html",
+  "main": "gulpfile.js",
   "engines": {
     "node": ">=8.8.1"
   },
@@ -41,7 +41,6 @@
     "gulp-sourcemaps": "^2.6.2",
     "gulp-util": "^3.0.8",
     "gulp-watch": "^4.3.11",
-    "jade": "^1.11.0",
     "json-pretty": "0.0.1",
     "lodash": "^4.17.4",
     "marked": "^0.3.9",
