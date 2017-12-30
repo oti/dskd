@@ -22,7 +22,7 @@ v6の特徴の一つとして、記事本文で利用する画像以外は全て
 
 dskdはタスクランナーのgulpを使ってビルドしています。環境を整えるには少々特殊なリポジトリのクローン方法が必要です。
 
-```
+```bash
 $ git clone git@github.com:oti/dskd dskd
 $ cd dskd
 $ git clone -b publish git@github.com:oti/dskd htdocs
@@ -51,7 +51,7 @@ dskd/ <master branch>
 
 ## 開発
 
-```
+```bash
 $ npm i
 $ npm start
 ```
@@ -78,7 +78,7 @@ $ npm start
 
 ## デプロイ
 
-```
+```bash
 $ git commit -am 'Add post 72'
 $ git push origin master
 $ cd htdocs/
