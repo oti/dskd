@@ -608,10 +608,20 @@
       }
     },
     "92": {
-      "newer": {},
+      "newer": {
+        "page_id": "93",
+        "page_title": "初夢"
+      },
       "older": {
         "page_id": "91",
         "page_title": "SVG pointer-events 2017"
+      }
+    },
+    "93": {
+      "newer": {},
+      "older": {
+        "page_id": "92",
+        "page_title": "ベストオブ2017"
       }
     }
   }
