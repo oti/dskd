@@ -8,10 +8,27 @@
   vertical-align: bottom
 
 .logo__icon
-  path
-    transition: all .15s ease-out
-    fill: rgba(c(text), 1)
+  fill: none
+  stroke: rgba(c(text), 1)
+  stroke-width: 3
+  stroke-linecap: round
+  stroke-linejoin: round
+  stroke-miterlimit: 10
+  transition: stroke .15s ease-out
+  .index &
+    stroke-dasharray: 180
+    stroke-dashoffset: 180
+    animation-name: logo_show
+    animation-duration: .5s
+    animation-timing-function: ease-out
+    animation-delay: .5s
+    animation-fill-mode: forwards
+
+  @keyframes logo_show
+    0%
+      stroke-dashoffset: 180
+    100%
+      stroke-dashoffset: 0
 
   &:hover
-    path
-      fill: rgba(c(text), .75)
+    stroke: rgba(c(text), .75)
