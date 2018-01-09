@@ -3,7 +3,6 @@ mixin neighbor(neighbors, page_id, archives_base)
   - var page        = neighbors[page_id]
   - var older       = page.older
   - var newer       = page.newer
-  - console.log(page)
   nav.neighbor
     ul.neighbor__list
       if newer.page_title
