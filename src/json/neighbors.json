@@ -618,10 +618,20 @@
       }
     },
     "93": {
-      "newer": {},
+      "newer": {
+        "page_id": "94",
+        "page_title": "280blockerはiOS Safariにユーザースタイルを追加する"
+      },
       "older": {
         "page_id": "92",
         "page_title": "ベストオブ2017"
+      }
+    },
+    "94": {
+      "newer": {},
+      "older": {
+        "page_id": "93",
+        "page_title": "初夢"
       }
     }
   }
