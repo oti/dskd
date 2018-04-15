@@ -628,10 +628,20 @@
       }
     },
     "94": {
-      "newer": {},
+      "newer": {
+        "page_id": "95",
+        "page_title": "CSSのカスタムイージングをSass関数化した"
+      },
       "older": {
         "page_id": "93",
         "page_title": "初夢"
+      }
+    },
+    "95": {
+      "newer": {},
+      "older": {
+        "page_id": "94",
+        "page_title": "280blockerはiOS Safariにユーザースタイルを追加する"
       }
     }
   }
