@@ -61,7 +61,6 @@ $ npm start
 ## 記事追加手順
 
 1. `src/md/post/` に `<post-id>.md` ファイルを追加
-2. 記事のタグが新規の場合、 `src/md/archives/` に `<tag-name>.md` ファイルを追加
 3. `npm run build_html_post`
 
 ## デモ追加手順
@@ -70,11 +69,6 @@ $ npm start
 2. `npm run build_html_demo`
 
 `<post-id>` は記事とデモで一意な通し番号です。重複すると不具合を起こす可能性があります。
-
-`<tag-name>` はSafe URLな文字列です。全て小文字で、タグ名のスペースやピリオドは `_` に変換してください。
-
-- `Advent Calendar` -> `advent_calender`
-- `Node.js` -> `node_js`
 
 ## デプロイ
 
