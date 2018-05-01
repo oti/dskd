@@ -94,20 +94,17 @@ gulp.task('misc', function() {
 
 // ----
 // // 日付で降順ソートされたarchives.jsonを作る
-function createArchivesJson(posts, type, callback) {
+function createArchivesJson(posts, type) {
   // var posts = JSON.parse(fs.readFileSync('./src/json/posts.json', 'utf8'));
   var cache_arr = [];
   var posts_arr = [];
   var dist = {};
   var target_key = '';
-  var file_name = '';
 
   if(type === 'post') {
     target_key = 'archives';
-    file_name = 'archives'
   } else if(type === 'demo') {
     target_key = 'demos';
-    file_name = 'demo-archives'
   }
 
   // ソートするためのキーを追加しつつ必要なデータだけ抽出
@@ -138,11 +135,8 @@ function createArchivesJson(posts, type, callback) {
   });
 
   dist[target_key] = posts_arr;
-  fs.writeFile('./src/json/'+file_name+'.json', jsonStringify(dist));
 
-  if(callback) {
-    callback(dist);
-  }
+  return dist;
 };
 
 // タグごとのjsonを作る
@@ -209,13 +203,14 @@ function createTagsJson(posts) {
     // 対応するタグネームに入れる
     dist.tags[tag_name] = posts_arr;
 
-    // tags_name（tags_post_listのキー）ごとにwriteFile
-    // fs.writeFile('./src/json/'+tag_name.toLowerCase().replace(' ', '_')+'.json', jsonStringify(dist));
+    // tags_nameごとにmdファイルをwriteFile
+    var tag_yaml = `---\nlayout: ./src/html/index.pug\npage_type: 'tag'\npage_title: '${tag_name}'\n---`;
+    var safe_tag_name = tag_name.toLowerCase().replace(' ', '_').replace(' ', '_').replace(' ', '_');
+    safe_tag_name = safe_tag_name.replace('.', '_').replace('.', '_').replace('.', '_');
+    fs.writeFile('./src/md/archives/'+safe_tag_name+'.md', tag_yaml);
   });
 
-  fs.writeFile('./src/json/tags.json', jsonStringify(dist));
-
-  return;
+  return dist;
 };
 
 // 年ごとのjsonを作る
@@ -278,11 +273,13 @@ function createYearsJson(posts) {
 
     // 対応する年キーに入れる
     dist.years[yyyy] = posts_arr;
+
+    // yearごとにmdファイルをwriteFile
+    var year_yaml = `---\nlayout: ./src/html/index.pug\npage_type: 'year'\npage_title: '${yyyy}'\n---`
+    fs.writeFile('./src/md/archives/'+yyyy+'.md', year_yaml);
   });
 
-  fs.writeFile('./src/json/years.json', jsonStringify(dist));
-
-  return;
+  return dist;
 };
 
 // 記事ごとに前後の記事情報をもったjsonを作る
@@ -320,7 +317,6 @@ function createNeighborsJson(archives) {
     }
   });
 
-  fs.writeFile('./src/json/neighbors.json', jsonStringify(dist));
   return dist;
 };
 
@@ -342,11 +338,12 @@ gulp.task('json_post', function(callback) {
       //   delete v.body;
       // });
 
-      createArchivesJson(posts, 'post', function(data){
-        createNeighborsJson(data.archives);
-      });
-      createTagsJson(posts);
-      createYearsJson(posts);
+      var archives_json = createArchivesJson(posts, 'post');
+
+      fs.writeFile('./src/json/archives.json', jsonStringify(archives_json));
+      fs.writeFile('./src/json/neighbors.json', jsonStringify(createNeighborsJson(archives_json.archives)));
+      fs.writeFile('./src/json/tags.json', jsonStringify(createTagsJson(posts)));
+      fs.writeFile('./src/json/years.json', jsonStringify(createYearsJson(posts)));
 
       // バッファに戻してpipeに渡す
       file.contents = new Buffer(jsonStringify(posts));
@@ -370,7 +367,7 @@ gulp.task('json_demo', function(callback) {
         delete v.body;
       });
 
-      createArchivesJson(demos, 'demo');
+      fs.writeFile('./src/json/demo-archives.json', jsonStringify(createArchivesJson(demos, 'demo')));
 
       // バッファに戻してpipeに渡す
       file.contents = new Buffer(jsonStringify(demos));
@@ -528,15 +525,7 @@ gulp.task('watch', function() {
     gulp.start(['misc']);
   });
 
-  watch(['./src/md/**/*'], function(e) {
-    gulp.start(['build_html']);
-  });
-
   watch(['./src/html/**/*'], function(e) {
-    gulp.start(['build_html']);
-  });
-
-  watch(['./blogconfig.json'], function(e) {
     gulp.start(['build_html']);
   });
 });
