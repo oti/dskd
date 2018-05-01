@@ -638,10 +638,20 @@
       }
     },
     "95": {
-      "newer": {},
+      "newer": {
+        "page_id": "96",
+        "page_title": "Facebook Graph APIで自分の投稿をJSONで取得するためのアクセストークンを発行する旅"
+      },
       "older": {
         "page_id": "94",
         "page_title": "280blockerはiOS Safariにユーザースタイルを追加する"
+      }
+    },
+    "96": {
+      "newer": {},
+      "older": {
+        "page_id": "95",
+        "page_title": "CSSのカスタムイージングをSass関数化した"
       }
     }
   }
