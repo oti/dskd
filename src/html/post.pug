@@ -8,6 +8,7 @@ block contents
       .post__timestamp
         +timestamp(page_datetime)
       .post__tag
+        span.visuallyHidden この記事につけられたタグ
         +tagging(page_tag, page_type)
 
     header.post__header
@@ -18,10 +19,13 @@ block contents
 
     .space(style='--var: 15px')
 
-    aside.post__external
-      +contribute(post_contribute, page_id)
-
-      +social(page_title, blog_url+archives_base+page_id+'.html')
+    .post__external
+      aside
+        h1.visuallyHidden GitHubでパッチを送る
+        +contribute(post_contribute, page_id)
+      aside
+        h1.visuallyHidden SNSでシェア
+        +social(page_title, blog_url+archives_base+page_id+'.html')
 
   .space
 

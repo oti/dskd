@@ -1,6 +1,6 @@
 //- _tagging.pug
 mixin tagging(page_tag, page_type)
-  ul.tagging(aria-label="記事につけられたタグ")
+  ul.tagging
     each tag, i in page_tag
       if page_type === 'post'
         li.tagging__item
