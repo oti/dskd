@@ -26,7 +26,7 @@ dskdは「ですけど」と読みます。「〜ですけど」が口癖なの�
 
 ## ライセンス
 
-このブログ内の全てのデータは、特記事項が付随および明記されていない限りは[Creative Commons — Attribution-NonCommercial(CC BY-NC)](http://creativecommons.org/licenses/by-nc/4.0/)の元で公開されています。
+このブログ内の全てのデータは、特記事項が付随および明記されていない限りは[Creative Commons — Attribution-NonCommercial(CC BY-NC)](https://creativecommons.org/licenses/by-nc/4.0/deed.ja)の元で公開されています。
 
 このライセンスでは、非営利目的に限りこのブログ内のデータを自由に使用することができます。
 
