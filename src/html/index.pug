@@ -23,7 +23,9 @@ block contents
 
   section
     .hang
-      h1.hang__heading= index_title
+      h1.hang__heading
+        span.visuallyHidden 最新記事
+        span(aria-hidden='true')= index_title
       ul.postList
         //- indexでは5件出力したら抜ける
         each post, i in (page_type === 'index') ? post_list.slice(0,5) : post_list
@@ -32,6 +34,7 @@ block contents
             .postList__time
               +timestamp(post.page_datetime)
             .postList__tag
+              span.visuallyHidden この記事につけられたタグ
               +tagging(post.page_tag, post.page_type)
 
     .space
@@ -39,7 +42,7 @@ block contents
     if page_type === 'index'
 
       footer.more
-        a(href='/'+archives_base, aria-label='全記事リストを見る') more posts »
+        a(href='/'+archives_base, aria-label='全記事一覧') more posts »
 
   if page_type !== 'demo-index'
     .space
@@ -49,18 +52,24 @@ block contents
     .space
 
     nav.hang
-      h1.hang__heading year
+      h1.hang__heading
+        span.visuallyHidden 年別記事一覧
+        span(aria-hidden='true') year
       +year-list(archives, archives_base)
 
     .space
 
     nav.hang
-      h1.hang__heading tag
+      h1.hang__heading
+        span.visuallyHidden タグ別記事一覧
+        span(aria-hidden='true') tag
       +tag-list(archives, archives_base)
 
   if page_type === 'index'
     .space
 
     aside.hang(role='complementary')
-      h1.hang__heading subscribe
+      h1.hang__heading
+        span.visuallyHidden 記事購読
+        span(aria-hidden='true') subscribe
       +subscribe-list()
