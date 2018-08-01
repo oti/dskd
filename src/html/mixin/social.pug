@@ -5,7 +5,7 @@ mixin social(title, permalink)
   - var tw_href = 'https://twitter.com/intent/tweet?text='+escaped_title+'&url='+escaped_permalink+'&via=dskd_jp&related=o_ti"'
   - var fb_href = 'https://www.facebook.com/sharer/sharer.php?u='+escaped_permalink
   - var hb_href = 'http://b.hatena.ne.jp/my/add.confirm?title='+escaped_title+'&url='+escaped_permalink
-  ul.social(role='complementary')
+  ul.social
     li.social__item
       a.social__link(href= tw_href, aria-label='この記事をツイートする', target='_blank')
         svg.social__icon(xmlns='http://www.w3.org/2000/svg', version='1.1', width='30', height='30', viewBox='0 0 512 512')
