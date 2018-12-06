@@ -25,29 +25,27 @@
     "node": ">=8.8.1"
   },
   "devDependencies": {
-    "browser-sync": "^2.21.0",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.0.0",
-    "gulp-front-matter": "^2.0.0-2",
-    "gulp-imagemin": "^4.0.0",
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-front-matter": "^2.0.0-7",
+    "gulp-imagemin": "^5.0.3",
     "gulp-layout": "0.0.4",
     "gulp-markdown": "^1.2.0",
-    "gulp-markdown-to-json": "^1.0.3",
+    "gulp-markdown-to-json": "^1.1.0",
     "gulp-merge-media-queries": "^0.2.1",
-    "gulp-plumber": "^1.1.0",
+    "gulp-plumber": "^1.2.1",
     "gulp-prettify": "^0.5.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.2",
-    "gulp-util": "^3.0.8",
-    "gulp-watch": "^4.3.11",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^3.2.1",
+    "gulp-sourcemaps": "^2.6.4",
     "json-pretty": "0.0.1",
-    "lodash": "^4.17.4",
-    "marked": "^0.3.9",
-    "node-sass": "^4.7.2",
+    "list-stream": "^1.0.1",
+    "lodash": "^4.17.11",
+    "marked": "^0.3.19",
+    "node-sass": "^4.10.0",
     "pug-cli": "^1.0.0-alpha6",
-    "run-sequence": "^2.2.0",
-    "through2": "^2.0.3"
+    "through2": "^2.0.5"
   },
   "scripts": {
     "start": "gulp",
@@ -57,5 +55,6 @@
     "blog": "gulp build_html",
     "deploy": "git push origin master && git push origin master --tag && cd htdocs && git pull origin publish && git push origin publish && cd ..",
     "dev": "cd dev/v6 && python -m SimpleHTTPServer 8888 & node-sass dev/v6/style.sass dev/v6/style.css -w & pug dev/v6/*.pug -Pw"
-  }
+  },
+  "dependencies": {}
 }
