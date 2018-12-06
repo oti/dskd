@@ -11,14 +11,12 @@ const cmq = require('gulp-merge-media-queries')
 const frontMatter = require('gulp-front-matter')
 const prettify = require('gulp-prettify')
 const layout = require('gulp-layout')
-const markdown = require('gulp-markdown')
-const markdown2Json = require('gulp-markdown-to-json')
+const md = require('gulp-markdown')
+const md2json = require('gulp-markdown-to-json')
 const rename = require('gulp-rename')
-const util = require('gulp-util')
-const _ = require('lodash')
-const through = require('through2')
+const through2 = require('through2')
 const mkd = require('marked')
-const jsonStringify = require('json-pretty')
+const jsonPretty = require('json-pretty')
 const listStream = require('list-stream');
 
 // config
@@ -286,20 +284,20 @@ const json_post = (callback) => {
   return gulp.src('./src/md/post/*.md')
     .pipe(plumber())
     .pipe(listStream.obj())
-    .pipe(markdown2Json(mkd, 'posts.json'))
-    .pipe(through.obj(function (file, enc, callback) {
+    .pipe(md2json(mkd, 'posts.json'))
+    .pipe(through2.obj((file, enc, callback) => {
       //バッファから文字列に変化させてJSONに戻す
       const posts = JSON.parse(String(file.contents))
 
       const archives_json = createArchivesJson(posts, 'post')
 
-      fs.writeFile('./src/json/archives.json', jsonStringify(archives_json))
-      fs.writeFile('./src/json/neighbors.json', jsonStringify(createNeighborsJson(archives_json.archives)))
-      fs.writeFile('./src/json/tags.json', jsonStringify(createTagsJson(posts)))
-      fs.writeFile('./src/json/years.json', jsonStringify(createYearsJson(posts)))
+      fs.writeFile('./src/json/archives.json', jsonPretty(archives_json))
+      fs.writeFile('./src/json/neighbors.json', jsonPretty(createNeighborsJson(archives_json.archives)))
+      fs.writeFile('./src/json/tags.json', jsonPretty(createTagsJson(posts)))
+      fs.writeFile('./src/json/years.json', jsonPretty(createYearsJson(posts)))
 
       // バッファに戻してpipeに渡す
-      file.contents = new Buffer(jsonStringify(posts))
+      file.contents = new Buffer(jsonPretty(posts))
       callback(null, file)
     }))
     .pipe(gulp.dest('./src/json/'))
@@ -310,8 +308,8 @@ const json_demo = (callback) => {
   return gulp.src('./src/md/demo/page/*.md')
     .pipe(plumber())
     .pipe(listStream.obj())
-    .pipe(markdown2Json(mkd, 'demos.json'))
-    .pipe(through.obj(function (file, enc, callback) {
+    .pipe(md2json(mkd, 'demos.json'))
+    .pipe(through2.obj((file, enc, callback) => {
       //バッファから文字列に変化させてJSONに戻す
       const demos = JSON.parse(String(file.contents))
 
@@ -320,10 +318,10 @@ const json_demo = (callback) => {
         delete v.body
       })
 
-      fs.writeFile('./src/json/demo-archives.json', jsonStringify(createArchivesJson(demos, 'demo')))
+      fs.writeFile('./src/json/demo-archives.json', jsonPretty(createArchivesJson(demos, 'demo')))
 
       // バッファに戻してpipeに渡す
-      file.contents = new Buffer(jsonStringify(demos))
+      file.contents = new Buffer(jsonPretty(demos))
       callback(null, file)
     }))
     .pipe(gulp.dest('./src/json/'))
@@ -337,7 +335,7 @@ const html_post = () => {
   return gulp.src('./src/md/post/*.md')
     .pipe(plumber())
     .pipe(frontMatter())
-    .pipe(markdown())
+    .pipe(md())
     .pipe(layout(function(file) {
       const neighbors = require('./src/json/neighbors.json')
       return Object.assign(blogConfig, neighbors, file.frontMatter)
@@ -351,7 +349,7 @@ const html_archives = () => {
   return gulp.src('./src/md/archives/*.md')
     .pipe(plumber())
     .pipe(frontMatter())
-    .pipe(markdown())
+    .pipe(md())
     .pipe(layout(function(file) {
       const archives = require('./src/json/archives.json')
       const years = require('./src/json/years.json')
@@ -367,7 +365,7 @@ const html_page = () => {
   return gulp.src(['./src/md/index.md', './src/md/about.md'])
     .pipe(plumber())
     .pipe(frontMatter())
-    .pipe(markdown())
+    .pipe(md())
     .pipe(layout(function(file) {
       const archives = require('./src/json/archives.json')
       return Object.assign(blogConfig, archives, file.frontMatter)
@@ -381,7 +379,7 @@ const html_demo = () => {
   return gulp.src('./src/md/demo/page/*.md')
     .pipe(plumber())
     .pipe(frontMatter())
-    .pipe(markdown())
+    .pipe(md())
     .pipe(layout(function(file) {
       return Object.assign(blogConfig, file.frontMatter)
     }))
@@ -394,7 +392,7 @@ const html_demo_index = () => {
   return gulp.src('./src/md/demo/index.md')
     .pipe(plumber())
     .pipe(frontMatter())
-    .pipe(markdown())
+    .pipe(md())
     .pipe(layout(function(file) {
       const demos = require('./src/json/demo-archives.json')
       return Object.assign(blogConfig, demos, file.frontMatter)
@@ -408,7 +406,7 @@ const feed = () => {
   return gulp.src('./src/md/feed.md')
     .pipe(plumber())
     .pipe(frontMatter())
-    .pipe(markdown())
+    .pipe(md())
     .pipe(layout(function(file) {
       const archives = require('./src/json/archives.json')
       return Object.assign(blogConfig, archives, file.frontMatter)
