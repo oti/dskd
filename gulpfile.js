@@ -21,7 +21,7 @@ const mkd = require('marked')
 const jsonStringify = require('json-pretty')
 const listStream = require('list-stream');
 
-// configs
+// config
 const blogConfig = require('./blogconfig.json')
 
 // server & browser sync
@@ -85,24 +85,16 @@ const misc = () => {
 
 // 日付で降順ソートされたarchives.jsonを作る
 const createArchivesJson = (posts, type) => {
-  // let posts = require('./src/json/posts.json')
-  let cache_arr = []
-  let posts_arr = []
-  let dist = {}
-  let target_key = ''
-
-  if(type === 'post') {
-    target_key = 'archives'
-  } else if(type === 'demo') {
-    target_key = 'demos'
+  const obj = {}
+  const key = (type === 'post') ? 'archives' : (type === 'demo') ? 'demos' : null
+  if (!key) {
+    new Error('unexpected arg. `type` is', type)
+    return
   }
 
-  // ソートするためのキーを追加しつつ必要なデータだけ抽出
-  _.forEach(posts, function(post, i){
-    // 記事の日付を連続した数値に変換
-    let sort_val = post.page_datetime.split('-').join('').split('T').join('').split(':').join('')
-    let drip = {
-      sort_key: sort_val,
+  // 必要なデータだけ抽出
+  const drip = posts.map((post) => {
+    return {
       page_id: post.page_id,
       page_datetime: post.page_datetime,
       page_title: post.page_title,
@@ -110,40 +102,36 @@ const createArchivesJson = (posts, type) => {
       page_tag: post.page_tag
       // page_body: post.body
     }
-    cache_arr.push(drip)
   })
 
   // 日付で降順ソート
-  cache_arr = _.sortBy(cache_arr ,function(val){
-    return -Number(val.sort_key)
+  drip.sort((a, b) => {
+    const date_a = Number(a.page_datetime.replace(/[-T:]/g, ''))
+    const date_b = Number(b.page_datetime.replace(/[-T:]/g, ''))
+    if (date_a > date_b) return -1
+    if (date_a < date_b) return 1
+    return 0
   })
 
-  // ソート用のキーを削除
-  _.forEach(cache_arr, function(post, i){
-    delete post.sort_key
-    posts_arr.push(post)
-  })
+  // obj = {'arthives': [{post}, {post}, {post}...]}
+  obj[key] = drip
 
-  dist[target_key] = posts_arr
-
-  return dist
+  return obj
 }
 
 // タグごとのjsonを作る
 const createTagsJson = (posts) => {
-  // let posts = require('./src/json/posts.json')
-  let tags_post_map = []
-  let tags_post_list = {}
+  const tags_post_map = []
+  const tags_post_list = {}
 
-  let dist = {tags: {}}
+  const obj = {tags: {}}
 
   // タグとpage_idの対応オブジェクトを抽出
   // tags_post_map = [{'CSS': '1'}, {'CSS': '12'}, {'note': '7'},...]
   // tags_post_list = {'CSS': [], 'note': [],...}
-  _.forEach(posts, function(post, i){
-    var post_tag_arr = post.page_tag
-    _.forEach(post_tag_arr, function(tag_name, i){
-      var set = {}
+  posts.forEach((post, i) => {
+    post.page_tag.forEach((tag_name, i) => {
+      const set = {}
       set[tag_name] = post.page_id
       tags_post_map.push(set)
       // あとで使うので空の配列をキーごとに持たせる
@@ -153,69 +141,61 @@ const createTagsJson = (posts) => {
 
   // タグごとに該当するpage_idを配列に入れる
   // tags_post_map = [{'CSS': '1'}, {'CSS': '12'}, {'note': '7'},...]
-  // tags_post_list = {'CSS': ['12', '1'], note: ['1'],...}
-  _.forEach(tags_post_map, function(set, i){
-    var tag_name = _.keys(set)
+  // tags_post_list = {'CSS': ['1', '12'], note: ['7'],...}
+  tags_post_map.forEach((set, i) => {
+    const tag_name = Object.keys(set)[0]
     tags_post_list[tag_name].push(set[tag_name])
   })
 
   // タグ別に記事が配列になったjsonを作る
-  _.forEach(tags_post_list, function(id_arr, i){
-    var tag_name = i
-    var cache_arr = []
-    var posts_arr = []
-    _.forEach(id_arr, function(id, i){
-      // 記事の日付を連続した数値に変換
-      var sort_val = posts[id].page_datetime.split('-').join('').split('T').join('').split(':').join('')
+  for(let key of Object.keys(tags_post_list)) {
+
+    const drip = tags_post_list[key].map((id) => {
       // posts.jsonからpage_idを添え字にして記事の情報を取り出す
-      var drip = {
-        sort_key: sort_val,
+      return {
         page_id: posts[id].page_id,
         page_datetime: posts[id].page_datetime,
         page_title: posts[id].page_title,
         page_description: posts[id].page_description,
         page_tag: posts[id].page_tag
       }
-      cache_arr.push(drip)
     })
 
     // 日付で降順ソート
-    cache_arr = _.sortBy(cache_arr ,function(val){
-      return -Number(val.sort_key)
-    })
-
-    // ソート用のキーを削除
-    _.forEach(cache_arr, function(post, i){
-      delete post.sort_key
-      posts_arr.push(post)
+    drip.sort((a, b) => {
+      const date_a = Number(a.page_datetime.replace(/[-T:]/g, ''))
+      const date_b = Number(b.page_datetime.replace(/[-T:]/g, ''))
+      if (date_a > date_b) return -1
+      if (date_a < date_b) return 1
+      return 0
     })
 
     // 対応するタグネームに入れる
-    dist.tags[tag_name] = posts_arr
+    // obj = {'tags': {'CSS': [{post}, {post}...], 'note': [{post}, {post}...]}}
+    obj.tags[key] = drip
 
     // tags_nameごとにmdファイルをwriteFile
-    var tag_yaml = `---\nlayout: ./src/html/index.pug\npage_type: 'tag'\npage_title: '${tag_name}'\n---`
-    var safe_tag_name = tag_name.toLowerCase().replace(' ', '_').replace(' ', '_').replace(' ', '_')
-    safe_tag_name = safe_tag_name.replace('.', '_').replace('.', '_').replace('.', '_')
-    fs.writeFile('./src/md/archives/'+safe_tag_name+'.md', tag_yaml)
-  })
+    const yaml_block = `---\nlayout: ./src/html/index.pug\npage_type: 'tag'\npage_title: '${key}'\n---`
+    const safe_tag_name = key.toLowerCase().replace(/[ .-]/g, '_')
+    fs.writeFile('./src/md/archives/'+safe_tag_name+'.md', yaml_block)
+  }
 
-  return dist
+  return obj
 }
 
 // 年ごとのjsonを作る
 const createYearsJson = (posts) => {
-  var years_post_map = []
-  var years_post_list = {}
+  const years_post_map = []
+  const years_post_list = {}
 
-  var dist = {years: {}}
+  const obj = {years: {}}
 
   // 年とpage_idの対応オブジェクトを抽出
   // years_post_map = [{'2010': '1'}, {'2011': '7'}, {'2011': '11'},...]
   // years_post_list = {'2010': [], '2011': [],...}
-  _.forEach(posts, function(post, i){
-    var yyyy = post.page_datetime.split('-')[0]
-    var set = {}
+  posts.forEach((post, i) => {
+    const yyyy = post.page_datetime.split('-')[0]
+    const set = {}
     set[yyyy] = post.page_id
     years_post_map.push(set)
     // あとで使うので空の配列をキーごとに持たせる
@@ -225,21 +205,15 @@ const createYearsJson = (posts) => {
   // 年ごとに該当するpage_idを配列に入れる
   // years_post_map = [{'2010': '1'}, {'2011': '7'}, {'2011': '11'},...]
   // years_post_list = {'2010': [], '2011': [],...}
-  _.forEach(years_post_map, function(set, i){
-    var yyyy = _.keys(set)
+  years_post_map.forEach((set, i) => {
+    const yyyy = Object.keys(set)[0]
     years_post_list[yyyy].push(set[yyyy])
   })
 
   // 年別に記事が配列になったjsonを作る
-  _.forEach(years_post_list, function(id_arr, i){
-    var yyyy = i
-    var cache_arr = []
-    var posts_arr = []
-    _.forEach(id_arr, function(id, i){
-      // 記事の日付を連続した数値に変換
-      var sort_val = posts[id].page_datetime.split('-').join('').split('T').join('').split(':').join('')
-      // posts.jsonからpage_idを添え字にして記事の情報を取り出す
-      var drip = {
+  for(let key of Object.keys(years_post_list)) {
+    const drip = years_post_list[key].map(id => {
+      return {
         sort_key: sort_val,
         page_id: posts[id].page_id,
         page_datetime: posts[id].page_datetime,
@@ -247,42 +221,36 @@ const createYearsJson = (posts) => {
         page_description: posts[id].page_description,
         page_tag: posts[id].page_tag
       }
-      cache_arr.push(drip)
     })
 
     // 日付で降順ソート
-    cache_arr = _.sortBy(cache_arr ,function(val){
-      return -Number(val.sort_key)
-    })
-
-    // ソート用のキーを削除
-    _.forEach(cache_arr, function(post, i){
-      delete post.sort_key
-      posts_arr.push(post)
+    drip.sort((a, b) => {
+      const date_a = Number(a.page_datetime.replace(/[-T:]/g, ''))
+      const date_b = Number(b.page_datetime.replace(/[-T:]/g, ''))
+      if (date_a > date_b) return -1
+      if (date_a < date_b) return 1
+      return 0
     })
 
     // 対応する年キーに入れる
-    dist.years[yyyy] = posts_arr
+    // obj = {'years': {'2010': [{post}, {post}...], '2011': [{post}, {post}...], '2012': [{post}, {post}...]}}
+    obj.years[key] = drip
 
     // yearごとにmdファイルをwriteFile
-    var year_yaml = `---\nlayout: ./src/html/index.pug\npage_type: 'year'\npage_title: '${yyyy}'\n---`
-    fs.writeFile('./src/md/archives/'+yyyy+'.md', year_yaml)
-  })
+    const yaml_block = `---\nlayout: ./src/html/index.pug\npage_type: 'year'\npage_title: '${key}'\n---`
+    fs.writeFile('./src/md/archives/'+key+'.md', yaml_block)
+  }
 
-  return dist
+  return obj
 }
 
 // 記事ごとに前後の記事情報をもったjsonを作る
 const createNeighborsJson = (archives) => {
-  // var data = require('./src/json/archives.json')
-  // var archives = data.archives
-  var neighbors_arr = []
+  const obj = {neighbors: {}}
 
-  var dist = {neighbors: {}}
-
-  _.forEach(archives, function(post, i){
-    var old_set = {}
-    var new_set = {}
+  archives.forEach((post, i) => {
+    const old_set = {}
+    const new_set = {}
 
     // olderがあれば作る
     if(archives[i+1]) {
@@ -301,13 +269,13 @@ const createNeighborsJson = (archives) => {
     }
 
     // postごとに持つ
-    dist.neighbors[post.page_id] = {
+    obj.neighbors[post.page_id] = {
       older: old_set,
       newer: new_set
     }
   })
 
-  return dist
+  return obj
 }
 
 
@@ -321,9 +289,9 @@ const json_post = (callback) => {
     .pipe(markdown2Json(mkd, 'posts.json'))
     .pipe(through.obj(function (file, enc, callback) {
       //バッファから文字列に変化させてJSONに戻す
-      var posts = JSON.parse(String(file.contents))
+      const posts = JSON.parse(String(file.contents))
 
-      var archives_json = createArchivesJson(posts, 'post')
+      const archives_json = createArchivesJson(posts, 'post')
 
       fs.writeFile('./src/json/archives.json', jsonStringify(archives_json))
       fs.writeFile('./src/json/neighbors.json', jsonStringify(createNeighborsJson(archives_json.archives)))
@@ -345,10 +313,10 @@ const json_demo = (callback) => {
     .pipe(markdown2Json(mkd, 'demos.json'))
     .pipe(through.obj(function (file, enc, callback) {
       //バッファから文字列に変化させてJSONに戻す
-      var demos = JSON.parse(String(file.contents))
+      const demos = JSON.parse(String(file.contents))
 
       // いらない気がするので本文部分を削除
-      _.forEach(demos, function(v,i){
+      demos.forEach(v => {
         delete v.body
       })
 
@@ -463,28 +431,30 @@ const watch = () => {
 }
 
 
-
 gulp.task('default', gulp.series(
-  // buld asset
-  css,
-  image,
-  misc,
-  // buld post
-  json_post,
+  gulp.parallel(
+    css,
+    image,
+    misc
+  ),
+
+  gulp.parallel(
+    json_post,
+    json_demo
+  ),
+
   gulp.parallel(
     html_post,
     html_archives,
     html_page
+    feed,
   ),
-  feed,
-  // build demo
-  json_demo,
+
   gulp.parallel(
     html_demo,
     html_demo_index
   ),
-  // local server
+
   server,
-  // file watcher
   watch
 ))
