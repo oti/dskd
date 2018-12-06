@@ -446,8 +446,8 @@ gulp.task('default', gulp.series(
   gulp.parallel(
     html_post,
     html_archives,
-    html_page
-    feed,
+    html_page,
+    feed
   ),
 
   gulp.parallel(
