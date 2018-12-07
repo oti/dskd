@@ -2,12 +2,13 @@
 const fs = require('fs')
 const gulp = require('gulp')
 const browserSync = require('browser-sync')
-const autoprefixer = require('gulp-autoprefixer')
+const postcss = require('gulp-postcss')
+const autoprefixer = require('autoprefixer')
+const csswring = require('csswring')
+const mqpacker = require('css-mqpacker')
 const imagemin = require('gulp-imagemin')
 const plumber = require('gulp-plumber')
 const sass = require('gulp-sass')
-const sourcemaps = require('gulp-sourcemaps')
-const cmq = require('gulp-merge-media-queries')
 const frontMatter = require('gulp-front-matter')
 const prettify = require('gulp-prettify')
 const layout = require('gulp-layout')
@@ -58,13 +59,12 @@ const image = () => {
 const css = () => {
   return gulp.src('./src/style/style.sass')
     .pipe(plumber())
-    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer({
-      browsers: ["last 2 versions", "ie >= 10", "iOS >= 9", "Android >= 4.4"]
-    }))
-    .pipe(cmq())
-    .pipe(sourcemaps.write('./'))
+    .pipe(postcss([
+      autoprefixer({grid: true}),
+      mqpacker(),
+      csswring()
+    ]))
     .pipe(gulp.dest('./htdocs/css/'))
     .pipe(browserSync.stream())
 }
