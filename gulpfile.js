@@ -12,10 +12,7 @@ const frontMatter = require('gulp-front-matter')
 const prettify = require('gulp-prettify')
 const layout = require('gulp-layout')
 const md = require('gulp-markdown')
-const md2json = require('gulp-markdown-to-json')
 const rename = require('gulp-rename')
-const through2 = require('through2')
-const mkd = require('marked')
 const jsonPretty = require('json-pretty')
 const listStream = require('list-stream');
 
@@ -83,27 +80,21 @@ const misc = () => {
 
 // 日付で降順ソートされたarchives.jsonを作る
 const createArchivesJson = (posts, type) => {
-  const obj = {}
-  const key = (type === 'post') ? 'archives' : (type === 'demo') ? 'demos' : null
-  if (!key) {
-    new Error('unexpected arg. `type` is', type)
-    return
-  }
+  const dripped = []
 
   // 必要なデータだけ抽出
-  const drip = posts.map((post) => {
-    return {
-      page_id: post.page_id,
-      page_datetime: post.page_datetime,
-      page_title: post.page_title,
-      page_description: post.page_description,
-      page_tag: post.page_tag
-      // page_body: post.body
-    }
-  })
+  for(let key of Object.keys(posts)) {
+    dripped.push({
+      page_id: posts[key].page_id,
+      page_datetime: posts[key].page_datetime,
+      page_title: posts[key].page_title,
+      page_description: posts[key].page_description,
+      page_tag: posts[key].page_tag
+    })
+  }
 
   // 日付で降順ソート
-  drip.sort((a, b) => {
+  dripped.sort((a, b) => {
     const date_a = Number(a.page_datetime.replace(/[-T:]/g, ''))
     const date_b = Number(b.page_datetime.replace(/[-T:]/g, ''))
     if (date_a > date_b) return -1
@@ -111,44 +102,39 @@ const createArchivesJson = (posts, type) => {
     return 0
   })
 
-  // obj = {'arthives': [{post}, {post}, {post}...]}
-  obj[key] = drip
-
-  return obj
+  // json = {'arthives': [{post}, {post}, {post}...]}
+  // json = {'demos': [{post}, {post}, {post}...]}
+  return {[type]: dripped}
 }
 
 // タグごとのjsonを作る
 const createTagsJson = (posts) => {
   const tags_post_map = []
   const tags_post_list = {}
-
-  const obj = {tags: {}}
+  const json = {tags: {}}
 
   // タグとpage_idの対応オブジェクトを抽出
   // tags_post_map = [{'CSS': '1'}, {'CSS': '12'}, {'note': '7'},...]
   // tags_post_list = {'CSS': [], 'note': [],...}
-  posts.forEach((post, i) => {
-    post.page_tag.forEach((tag_name, i) => {
-      const set = {}
-      set[tag_name] = post.page_id
-      tags_post_map.push(set)
+  for(let key of Object.keys(posts)) {
+    posts[key].page_tag.forEach(tag_name => {
+      tags_post_map.push({[tag_name]: posts[key].page_id})
       // あとで使うので空の配列をキーごとに持たせる
       tags_post_list[tag_name] = []
     })
-  })
+  }
 
   // タグごとに該当するpage_idを配列に入れる
   // tags_post_map = [{'CSS': '1'}, {'CSS': '12'}, {'note': '7'},...]
   // tags_post_list = {'CSS': ['1', '12'], note: ['7'],...}
-  tags_post_map.forEach((set, i) => {
+  tags_post_map.forEach(set => {
     const tag_name = Object.keys(set)[0]
     tags_post_list[tag_name].push(set[tag_name])
   })
 
   // タグ別に記事が配列になったjsonを作る
   for(let key of Object.keys(tags_post_list)) {
-
-    const drip = tags_post_list[key].map((id) => {
+    let dripped = tags_post_list[key].map(id => {
       // posts.jsonからpage_idを添え字にして記事の情報を取り出す
       return {
         page_id: posts[id].page_id,
@@ -160,7 +146,7 @@ const createTagsJson = (posts) => {
     })
 
     // 日付で降順ソート
-    drip.sort((a, b) => {
+    dripped.sort((a, b) => {
       const date_a = Number(a.page_datetime.replace(/[-T:]/g, ''))
       const date_b = Number(b.page_datetime.replace(/[-T:]/g, ''))
       if (date_a > date_b) return -1
@@ -169,41 +155,39 @@ const createTagsJson = (posts) => {
     })
 
     // 対応するタグネームに入れる
-    // obj = {'tags': {'CSS': [{post}, {post}...], 'note': [{post}, {post}...]}}
-    obj.tags[key] = drip
+    // json = {'tags': {'CSS': [{post}, {post}...], 'note': [{post}, {post}...]}}
+    json.tags[key] = dripped
 
     // tags_nameごとにmdファイルをwriteFile
     const yaml_block = `---\nlayout: ./src/html/index.pug\npage_type: 'tag'\npage_title: '${key}'\n---`
     const safe_tag_name = key.toLowerCase().replace(/[ .-]/g, '_')
-    fs.writeFile('./src/md/archives/'+safe_tag_name+'.md', yaml_block)
+    fs.writeFileSync('./src/md/archives/'+safe_tag_name+'.md', yaml_block)
   }
 
-  return obj
+  return json
 }
 
 // 年ごとのjsonを作る
 const createYearsJson = (posts) => {
   const years_post_map = []
   const years_post_list = {}
-
-  const obj = {years: {}}
+  const json = {years: {}}
 
   // 年とpage_idの対応オブジェクトを抽出
   // years_post_map = [{'2010': '1'}, {'2011': '7'}, {'2011': '11'},...]
   // years_post_list = {'2010': [], '2011': [],...}
-  posts.forEach((post, i) => {
-    const yyyy = post.page_datetime.split('-')[0]
-    const set = {}
-    set[yyyy] = post.page_id
-    years_post_map.push(set)
+  for(let key of Object.keys(posts)) {
+    const yyyy = posts[key].page_datetime.split('-')[0]
+
+    years_post_map.push({[yyyy]: posts[key].page_id})
     // あとで使うので空の配列をキーごとに持たせる
     years_post_list[yyyy] = []
-  })
+  }
 
   // 年ごとに該当するpage_idを配列に入れる
   // years_post_map = [{'2010': '1'}, {'2011': '7'}, {'2011': '11'},...]
   // years_post_list = {'2010': [], '2011': [],...}
-  years_post_map.forEach((set, i) => {
+  years_post_map.forEach(set => {
     const yyyy = Object.keys(set)[0]
     years_post_list[yyyy].push(set[yyyy])
   })
@@ -212,7 +196,6 @@ const createYearsJson = (posts) => {
   for(let key of Object.keys(years_post_list)) {
     const drip = years_post_list[key].map(id => {
       return {
-        sort_key: sort_val,
         page_id: posts[id].page_id,
         page_datetime: posts[id].page_datetime,
         page_title: posts[id].page_title,
@@ -231,20 +214,20 @@ const createYearsJson = (posts) => {
     })
 
     // 対応する年キーに入れる
-    // obj = {'years': {'2010': [{post}, {post}...], '2011': [{post}, {post}...], '2012': [{post}, {post}...]}}
-    obj.years[key] = drip
+    // json = {'years': {'2010': [{post}, {post}...], '2011': [{post}, {post}...], '2012': [{post}, {post}...]}}
+    json.years[key] = drip
 
     // yearごとにmdファイルをwriteFile
     const yaml_block = `---\nlayout: ./src/html/index.pug\npage_type: 'year'\npage_title: '${key}'\n---`
-    fs.writeFile('./src/md/archives/'+key+'.md', yaml_block)
+    fs.writeFileSync('./src/md/archives/'+key+'.md', yaml_block)
   }
 
-  return obj
+  return json
 }
 
 // 記事ごとに前後の記事情報をもったjsonを作る
 const createNeighborsJson = (archives) => {
-  const obj = {neighbors: {}}
+  const json = {neighbors: {}}
 
   archives.forEach((post, i) => {
     const old_set = {}
@@ -252,28 +235,24 @@ const createNeighborsJson = (archives) => {
 
     // olderがあれば作る
     if(archives[i+1]) {
-      old_set = {
-        page_id: archives[i+1].page_id,
-        page_title: archives[i+1].page_title
-      }
+      old_set.page_id    = archives[i+1].page_id
+      old_set.page_title = archives[i+1].page_title
     }
 
     // newerがあれば作る
     if(archives[i-1]) {
-      new_set = {
-        page_id: archives[i-1].page_id,
-        page_title: archives[i-1].page_title
-      }
+      new_set.page_id    = archives[i-1].page_id,
+      new_set.page_title = archives[i-1].page_title
     }
 
     // postごとに持つ
-    obj.neighbors[post.page_id] = {
+    json.neighbors[post.page_id] = {
       older: old_set,
       newer: new_set
     }
   })
 
-  return obj
+  return json
 }
 
 
@@ -283,48 +262,38 @@ const createNeighborsJson = (archives) => {
 const json_post = (callback) => {
   return gulp.src('./src/md/post/*.md')
     .pipe(plumber())
-    .pipe(listStream.obj())
-    .pipe(md2json(mkd, 'posts.json'))
-    .pipe(through2.obj((file, enc, callback) => {
-      //バッファから文字列に変化させてJSONに戻す
-      const posts = JSON.parse(String(file.contents))
+    .pipe(frontMatter())
+    .pipe(listStream.obj((err, data) => {
+      const posts_json = {}
+      data.forEach(post => {
+        posts_json[post.frontMatter.page_id] = post.frontMatter
+      })
 
-      const archives_json = createArchivesJson(posts, 'post')
+      fs.writeFileSync('./src/json/posts.json', jsonPretty(posts_json))
 
-      fs.writeFile('./src/json/archives.json', jsonPretty(archives_json))
-      fs.writeFile('./src/json/neighbors.json', jsonPretty(createNeighborsJson(archives_json.archives)))
-      fs.writeFile('./src/json/tags.json', jsonPretty(createTagsJson(posts)))
-      fs.writeFile('./src/json/years.json', jsonPretty(createYearsJson(posts)))
+      const archives_json = createArchivesJson(posts_json, 'archives')
 
-      // バッファに戻してpipeに渡す
-      file.contents = new Buffer(jsonPretty(posts))
-      callback(null, file)
+      fs.writeFileSync('./src/json/archives.json', jsonPretty(archives_json))
+      fs.writeFileSync('./src/json/neighbors.json', jsonPretty(createNeighborsJson(archives_json.archives)))
+      fs.writeFileSync('./src/json/tags.json', jsonPretty(createTagsJson(posts_json)))
+      fs.writeFileSync('./src/json/years.json', jsonPretty(createYearsJson(posts_json)))
     }))
-    .pipe(gulp.dest('./src/json/'))
 }
 
 // demo（demo/*.md -> demos.json -> demos-archives.json）
 const json_demo = (callback) => {
   return gulp.src('./src/md/demo/page/*.md')
     .pipe(plumber())
-    .pipe(listStream.obj())
-    .pipe(md2json(mkd, 'demos.json'))
-    .pipe(through2.obj((file, enc, callback) => {
-      //バッファから文字列に変化させてJSONに戻す
-      const demos = JSON.parse(String(file.contents))
-
-      // いらない気がするので本文部分を削除
-      demos.forEach(v => {
-        delete v.body
+    .pipe(frontMatter())
+    .pipe(listStream.obj((err, data) => {
+      const demos_json = {}
+      data.forEach(demo => {
+        demos_json[demo.frontMatter.page_id] = demo.frontMatter
       })
 
-      fs.writeFile('./src/json/demo-archives.json', jsonPretty(createArchivesJson(demos, 'demo')))
-
-      // バッファに戻してpipeに渡す
-      file.contents = new Buffer(jsonPretty(demos))
-      callback(null, file)
+      fs.writeFileSync('./src/json/demos.json', jsonPretty(demos_json))
+      fs.writeFileSync('./src/json/demo-archives.json', jsonPretty(createArchivesJson(demos_json, 'demos')))
     }))
-    .pipe(gulp.dest('./src/json/'))
 }
 
 
