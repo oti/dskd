@@ -759,7 +759,8 @@
     "page_description": "結論めんどい",
     "page_id": "96",
     "page_tag": [
-      "Graph API"
+      "Graph API",
+      "JavaScript"
     ],
     "page_title": "Facebook Graph APIで自分の投稿をJSONで取得するためのアクセストークンを発行する旅",
     "page_type": "post"

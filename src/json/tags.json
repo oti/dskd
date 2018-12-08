@@ -687,7 +687,8 @@
         "page_title": "Facebook Graph APIで自分の投稿をJSONで取得するためのアクセストークンを発行する旅",
         "page_description": "結論めんどい",
         "page_tag": [
-          "Graph API"
+          "Graph API",
+          "JavaScript"
         ]
       }
     ],
@@ -760,6 +761,16 @@
       }
     ],
     "JavaScript": [
+      {
+        "page_id": "96",
+        "page_datetime": "2018-05-01T19:25:48",
+        "page_title": "Facebook Graph APIで自分の投稿をJSONで取得するためのアクセストークンを発行する旅",
+        "page_description": "結論めんどい",
+        "page_tag": [
+          "Graph API",
+          "JavaScript"
+        ]
+      },
       {
         "page_id": "45",
         "page_datetime": "2014-05-24T13:51:12",
