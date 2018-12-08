@@ -2,6 +2,16 @@
   "tags": {
     "Advent Calendar": [
       {
+        "page_id": "97",
+        "page_datetime": "2018-12-08T23:51:20",
+        "page_title": "自宅作業にして半年くらい経った",
+        "page_description": "今日も出社してません。",
+        "page_tag": [
+          "Advent Calendar",
+          "note"
+        ]
+      },
+      {
         "page_id": "92",
         "page_datetime": "2017-12-21T12:00:00",
         "page_title": "ベストオブ2017",
@@ -852,6 +862,16 @@
       }
     ],
     "note": [
+      {
+        "page_id": "97",
+        "page_datetime": "2018-12-08T23:51:20",
+        "page_title": "自宅作業にして半年くらい経った",
+        "page_description": "今日も出社してません。",
+        "page_tag": [
+          "Advent Calendar",
+          "note"
+        ]
+      },
       {
         "page_id": "93",
         "page_datetime": "2018-01-03T19:18:05",

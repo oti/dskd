@@ -1,6 +1,16 @@
 {
   "archives": [
     {
+      "page_id": "97",
+      "page_datetime": "2018-12-08T23:51:20",
+      "page_title": "自宅作業にして半年くらい経った",
+      "page_description": "今日も出社してません。",
+      "page_tag": [
+        "Advent Calendar",
+        "note"
+      ]
+    },
+    {
       "page_id": "96",
       "page_datetime": "2018-05-01T19:25:48",
       "page_title": "Facebook Graph APIで自分の投稿をJSONで取得するためのアクセストークンを発行する旅",

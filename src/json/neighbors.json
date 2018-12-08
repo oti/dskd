@@ -648,10 +648,20 @@
       }
     },
     "96": {
-      "newer": {},
+      "newer": {
+        "page_id": "97",
+        "page_title": "自宅作業にして半年くらい経った"
+      },
       "older": {
         "page_id": "95",
         "page_title": "CSSのカスタムイージングをSass関数化した"
+      }
+    },
+    "97": {
+      "newer": {},
+      "older": {
+        "page_id": "96",
+        "page_title": "Facebook Graph APIで自分の投稿をJSONで取得するためのアクセストークンを発行する旅"
       }
     }
   }

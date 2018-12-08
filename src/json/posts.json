@@ -826,5 +826,18 @@
     ],
     "page_title": "Facebook Graph APIで自分の投稿をJSONで取得するためのアクセストークンを発行する旅",
     "page_type": "post"
+  },
+  "97": {
+    "layout": "./src/html/post.pug",
+    "page_cover": "",
+    "page_datetime": "2018-12-08T23:51:20",
+    "page_description": "今日も出社してません。",
+    "page_id": "97",
+    "page_tag": [
+      "Advent Calendar",
+      "note"
+    ],
+    "page_title": "自宅作業にして半年くらい経った",
+    "page_type": "post"
   }
 }
