@@ -72,7 +72,7 @@ html(lang='ja')
 
       .space(style='--h: 60px')
 
-      main.contents
+      main.contents(role='main')
         block contents
 
       .space
@@ -81,7 +81,7 @@ html(lang='ja')
 
       .space
 
-      footer.footer
+      footer.footer(role='contentinfo')
         h1.visuallyHidden ブログフッター
         p.author(aria-label='管理者は越智です')
           | Made by 
