@@ -1,7 +1,7 @@
 const browserSync = require('browser-sync')
 
 // server & browser sync
-const server = (done) => {
+const init = (done) => {
   browserSync.init({
     ui: false,
     server: {
@@ -11,4 +11,11 @@ const server = (done) => {
   }, done)
 }
 
-module.exports = server
+const reload = () => {
+  browserSync.reload()
+}
+
+module.exports = {
+  init: init,
+  reload: reload
+}

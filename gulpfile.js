@@ -80,7 +80,7 @@ gulp.task('default', gulp.series(
     html_demoIndex
   ),
 
-  server,
+  server.init,
   watch
 ))
 
@@ -89,7 +89,8 @@ gulp.task('html', gulp.parallel(
   html_posts,
   html_archives,
   html_pages,
-  feed
+  feed,
+  server.reload
 ))
 
 // 記事更新
