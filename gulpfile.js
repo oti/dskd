@@ -51,7 +51,7 @@ const
   gulp.watch(['./src/image/**/*'], image)
   gulp.watch(['./src/misc/**/*'],  misc)
   gulp.watch(['./src/html/**/*'],  gulp.task('html'))
-  gulp.watch(['./src/md/**/*'],    gulp.task('md'))
+  // gulp.watch(['./src/md/**/*'],    gulp.task('md'))
   done()
 }
 
