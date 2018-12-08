@@ -13,7 +13,7 @@ mixin year-list(archives, archives_base)
       return arr.indexOf(year) === i
     });
 
-  ol.yearList(reversed='')
+  ol.yearList(reversed=true)
     each year, i in years_unique
       li.yearList__item
-        a(class=(page_title === year) ? '-current' : '', href='/'+archives_base+year+'.html')= year
+        a(class=(page_title === year) ? '-current' : '', href='/'+archives_base+year+'.html', aria-current=(page_title === year) && "page")= year
