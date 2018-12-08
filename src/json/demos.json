@@ -9,9 +9,7 @@
     ],
     "page_title": "pointer-events: none;つきのimg要素",
     "page_type": "demo",
-    "related_id": "7",
-    "title": "pointer-events: none;つきのimg要素",
-    "updatedAt": "2017-12-29T17:39:52.000Z"
+    "related_id": "7"
   },
   "10": {
     "layout": "./src/html/demo.pug",
@@ -23,9 +21,7 @@
     ],
     "page_title": "インライン要素を絶対中央配置する",
     "page_type": "demo",
-    "related_id": "11",
-    "title": "インライン要素を絶対中央配置する",
-    "updatedAt": "2017-12-29T17:39:52.000Z"
+    "related_id": "11"
   },
   "31": {
     "layout": "./src/html/demo.pug",
@@ -37,8 +33,7 @@
     ],
     "page_title": "画像サイズに依存しない絶対中央配置",
     "page_type": "demo",
-    "related_id": "29",
-    "updatedAt": "2017-12-29T17:39:52.000Z"
+    "related_id": "29"
   },
   "32": {
     "layout": "./src/html/demo.pug",
@@ -50,8 +45,7 @@
     ],
     "page_title": "display: table;を使った絶対中央配置",
     "page_type": "demo",
-    "related_id": "29",
-    "updatedAt": "2017-12-29T17:39:52.000Z"
+    "related_id": "29"
   },
   "51": {
     "layout": "./src/html/demo.pug",
@@ -63,8 +57,7 @@
     ],
     "page_title": "style属性とstyle要素で二重にzoomを指定する",
     "page_type": "demo",
-    "related_id": "50",
-    "updatedAt": "2017-12-29T17:39:52.000Z"
+    "related_id": "50"
   },
   "52": {
     "layout": "./src/html/demo.pug",
@@ -76,8 +69,7 @@
     ],
     "page_title": "transform: scale();の二重指定なら問題ない",
     "page_type": "demo",
-    "related_id": "50",
-    "updatedAt": "2017-12-29T17:39:52.000Z"
+    "related_id": "50"
   },
   "59": {
     "layout": "./src/html/demo.pug",
@@ -89,8 +81,7 @@
     ],
     "page_title": "基本的なTRBLメソッド",
     "page_type": "demo",
-    "related_id": "63",
-    "updatedAt": "2017-12-29T17:39:52.000Z"
+    "related_id": "63"
   },
   "60": {
     "layout": "./src/html/demo.pug",
@@ -102,8 +93,7 @@
     ],
     "page_title": "ボタンを押すとねこ画像が切り替わって挿入される",
     "page_type": "demo",
-    "related_id": "63",
-    "updatedAt": "2017-12-29T17:39:52.000Z"
+    "related_id": "63"
   },
   "61": {
     "layout": "./src/html/demo.pug",
@@ -115,8 +105,7 @@
     ],
     "page_title": "ヤンチャにTRBLを切り替える",
     "page_type": "demo",
-    "related_id": "63",
-    "updatedAt": "2017-12-29T17:39:52.000Z"
+    "related_id": "63"
   },
   "62": {
     "layout": "./src/html/demo.pug",
@@ -128,8 +117,7 @@
     ],
     "page_title": "画像パターン別の一覧",
     "page_type": "demo",
-    "related_id": "63",
-    "updatedAt": "2017-12-29T17:39:52.000Z"
+    "related_id": "63"
   },
   "70": {
     "layout": "./src/html/demo.pug",
@@ -141,7 +129,6 @@
     ],
     "page_title": "Translate Attribute Test",
     "page_type": "demo",
-    "related_id": "69",
-    "updatedAt": "2017-12-29T17:39:52.000Z"
+    "related_id": "69"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "dskd",
-  "version": "6.3.0",
+  "version": "6.4.0",
   "license": "CC BY-NC",
   "author": "@oti(https://twitter.com/o_ti)",
   "description": "I love TKG",
@@ -22,39 +22,40 @@
   },
   "main": "gulpfile.js",
   "engines": {
-    "node": ">=8.8.1"
+    "node": ">=10.14.1"
   },
+  "browserslist": [
+    "last 2 versions",
+    "ie>=9",
+    "android>=4",
+    "ios>=6"
+  ],
   "devDependencies": {
-    "browser-sync": "^2.21.0",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.0.0",
-    "gulp-front-matter": "^2.0.0-2",
-    "gulp-imagemin": "^4.0.0",
+    "autoprefixer": "^9.4.2",
+    "browser-sync": "^2.26.3",
+    "css-mqpacker": "^7.0.0",
+    "csswring": "^7.0.0",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-front-matter": "^2.0.0-7",
+    "gulp-imagemin": "^5.0.3",
     "gulp-layout": "0.0.4",
     "gulp-markdown": "^1.2.0",
-    "gulp-markdown-to-json": "^1.0.3",
-    "gulp-merge-media-queries": "^0.2.1",
-    "gulp-plumber": "^1.1.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
     "gulp-prettify": "^0.5.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.2",
-    "gulp-util": "^3.0.8",
-    "gulp-watch": "^4.3.11",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^3.2.1",
     "json-pretty": "0.0.1",
-    "lodash": "^4.17.4",
-    "marked": "^0.3.9",
-    "node-sass": "^4.7.2",
-    "pug-cli": "^1.0.0-alpha6",
-    "run-sequence": "^2.2.0",
-    "through2": "^2.0.3"
+    "list-stream": "^1.0.1",
+    "node-sass": "^4.10.0",
+    "pug-cli": "^1.0.0-alpha6"
   },
   "scripts": {
     "start": "gulp",
     "server": "gulp server",
-    "post": "gulp build_html_post",
-    "demo": "gulp build_html_demo",
-    "blog": "gulp build_html",
+    "html": "gulp html",
+    "md": "gulp md",
     "deploy": "git push origin master && git push origin master --tag && cd htdocs && git pull origin publish && git push origin publish && cd ..",
     "dev": "cd dev/v6 && python -m SimpleHTTPServer 8888 & node-sass dev/v6/style.sass dev/v6/style.css -w & pug dev/v6/*.pug -Pw"
   }
