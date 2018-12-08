@@ -1,4 +1,6 @@
-const fs = require('fs')
+const
+  package = require('../../package.json')
+, fs = require('fs')
 , gulp = require('gulp')
 , browserSync = require('browser-sync')
 , plumber = require('gulp-plumber')
@@ -7,8 +9,9 @@ const fs = require('fs')
 , prettify = require('gulp-prettify')
 , layout = require('gulp-layout')
 , md = require('gulp-markdown')
-, blogConfig = require('../../blogconfig.json')
+, config = require('../../blogconfig.json')
 
+config.blog_version = package.version
 
 // デモ個別ページ作成（md/demo/pages/*.md -> demo/*.html）
 const demos = () => {
@@ -17,7 +20,7 @@ const demos = () => {
     .pipe(frontMatter())
     .pipe(md())
     .pipe(layout(function(file) {
-      return Object.assign(blogConfig, file.frontMatter)
+      return Object.assign(config, file.frontMatter)
     }))
     .pipe(prettify({indent_char: ' ', indent_size: 2}))
     .pipe(gulp.dest('./htdocs/demo/'))

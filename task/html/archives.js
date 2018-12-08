@@ -1,4 +1,6 @@
-const fs = require('fs')
+const
+  package = require('../../package.json')
+, fs = require('fs')
 , gulp = require('gulp')
 , browserSync = require('browser-sync')
 , plumber = require('gulp-plumber')
@@ -7,8 +9,9 @@ const fs = require('fs')
 , prettify = require('gulp-prettify')
 , layout = require('gulp-layout')
 , md = require('gulp-markdown')
-, blogConfig = require('../../blogconfig.json')
+, config = require('../../blogconfig.json')
 
+config.blog_version = package.version
 
 // 記事一覧ページ作成（archives_name.md -> archives_name.html）
 const archives = () => {
@@ -20,7 +23,7 @@ const archives = () => {
       const archives = require('../../src/json/archives.json')
       const years = require('../../src/json/years.json')
       const tags = require('../../src/json/tags.json')
-      return Object.assign(blogConfig, archives, years, tags, file.frontMatter)
+      return Object.assign(config, archives, years, tags, file.frontMatter)
     }))
     .pipe(prettify({indent_char: ' ', indent_size: 2}))
     .pipe(gulp.dest('./htdocs/archives/'))

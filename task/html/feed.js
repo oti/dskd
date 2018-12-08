@@ -1,4 +1,6 @@
-const fs = require('fs')
+const
+  package = require('../../package.json')
+, fs = require('fs')
 , gulp = require('gulp')
 , browserSync = require('browser-sync')
 , plumber = require('gulp-plumber')
@@ -8,7 +10,9 @@ const fs = require('fs')
 , layout = require('gulp-layout')
 , md = require('gulp-markdown')
 , rename = require('gulp-rename')
-, blogConfig = require('../../blogconfig.json')
+, config = require('../../blogconfig.json')
+
+config.blog_version = package.version
 
 // RSS作成（feed.md -> feed）
 const feed = () => {
@@ -18,7 +22,7 @@ const feed = () => {
     .pipe(md())
     .pipe(layout(function(file) {
       const archives = require('../../src/json/archives.json')
-      return Object.assign(blogConfig, archives, file.frontMatter)
+      return Object.assign(config, archives, file.frontMatter)
     }))
     .pipe(prettify({indent_char: ' ', indent_size: 2}))
     .pipe(rename({extname: '.xml'}))
