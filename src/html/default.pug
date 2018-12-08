@@ -11,7 +11,7 @@ else if page_type === 'archives'
 else if page_type === 'about'
   - page_permalink = blog_url+'about.html'
 else if page_type === 'tag'
-  - page_permalink = blog_url+archives_base+page_title.toLowerCase().replace(' ', '_').replace('.', '_')+'.html'
+  - page_permalink = blog_url+archives_base+page_title.toLowerCase().replace(/[ .-]/g, '_')+'.html'
   - page_description = page_title+'カテゴリの記事一覧'
 else if page_type === 'year'
   - page_permalink = blog_url+archives_base+page_title+'.html'
@@ -21,8 +21,9 @@ else if page_type === 'demo-index'
 else if page_type === 'demo'
   - page_permalink = blog_url+demo_base+page_id+'.html'
 
-if !page_cover
+if (!page_cover || page_cover === '')
   - page_cover = '/img/blog-cover.png'
+
 
 include mixin/timestamp
 include mixin/tagging
@@ -38,12 +39,11 @@ html(lang='ja')
     meta(charset='UTF-8')
     meta(content='viewport-fit=cover, width=device-width, initial-scale=1' name='viewport')
     title= (page_type === 'index') ? page_title : page_title+title_suffix
-    meta(content='/img/blog-cover.png?v='+blog_version, itemprop='image')
     meta(content=page_description, name='description')
     meta(content=page_permalink, property='og:url')
     meta(content=page_title, property='og:title')
     meta(content=page_description, property='og:description')
-    meta(content=page_cover, property='og:image:secure_url')
+    meta(content=page_cover, property='og:image', itemprop='image')
     meta(content='article', property='og:type')
     meta(content='ja_JP', property='og:locale')
     meta(content='dskd', property='og:site_name')

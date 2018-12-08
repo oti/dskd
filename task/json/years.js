@@ -51,7 +51,7 @@ const years = (posts) => {
     json.years[key] = drip
 
     // yearごとにmdファイルをwriteFile
-    const yaml_block = `---\nlayout: ./src/html/index.pug\npage_type: 'year'\npage_title: '${key}'\n---`
+    const yaml_block = `---\nlayout: ./src/html/index.pug\npage_type: 'year'\npage_title: '${key}'\npage_cover: ''\n---`
     fs.writeFileSync('./src/md/archives/'+key+'.md', yaml_block)
   }
 

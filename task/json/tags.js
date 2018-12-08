@@ -52,7 +52,7 @@ const tags = (posts) => {
     json.tags[key] = dripped
 
     // tags_nameごとにmdファイルをwriteFile
-    const yaml_block = `---\nlayout: ./src/html/index.pug\npage_type: 'tag'\npage_title: '${key}'\n---`
+    const yaml_block = `---\nlayout: ./src/html/index.pug\npage_type: 'tag'\npage_title: '${key}'\npage_cover: ''\n---`
     const safe_tag_name = key.toLowerCase().replace(/[ .-]/g, '_')
     fs.writeFileSync('./src/md/archives/'+safe_tag_name+'.md', yaml_block)
   }
