@@ -85,11 +85,14 @@ gulp.task('default', gulp.series(
 ))
 
 // テンプレート更新
-gulp.task('html', gulp.parallel(
-  html_posts,
-  html_archives,
-  html_pages,
-  feed,
+gulp.task('html', gulp.series(
+  gulp.parallel(
+    html_posts,
+    html_archives,
+    html_pages,
+    feed
+  ),
+
   server.reload
 ))
 
@@ -105,5 +108,7 @@ gulp.task('md', gulp.series(
     html_archives,
     html_pages,
     feed
-  )
+  ),
+
+  server.reload
 ))
