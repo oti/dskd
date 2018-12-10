@@ -108,7 +108,5 @@ gulp.task('md', gulp.series(
     html_archives,
     html_pages,
     feed
-  ),
-
-  server.reload
+  )
 ))
