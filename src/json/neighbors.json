@@ -658,10 +658,20 @@
       }
     },
     "97": {
-      "newer": {},
+      "newer": {
+        "page_id": "98",
+        "page_title": "#deisui_html_radioのこと"
+      },
       "older": {
         "page_id": "96",
         "page_title": "Facebook Graph APIで自分の投稿をJSONで取得するためのアクセストークンを発行する旅"
+      }
+    },
+    "98": {
+      "newer": {},
+      "older": {
+        "page_id": "97",
+        "page_title": "自宅作業にして半年くらい経った"
       }
     }
   }

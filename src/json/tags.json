@@ -2,6 +2,16 @@
   "tags": {
     "Advent Calendar": [
       {
+        "page_id": "98",
+        "page_datetime": "2018-12-17T17:18:21",
+        "page_title": "#deisui_html_radioのこと",
+        "page_description": "ウェブ制作は孤独なのかもしれない。",
+        "page_tag": [
+          "Advent Calendar",
+          "deisui_html"
+        ]
+      },
+      {
         "page_id": "97",
         "page_datetime": "2018-12-08T23:51:20",
         "page_title": "自宅作業にして半年くらい経った",
@@ -858,6 +868,18 @@
         "page_tag": [
           "Advent Calendar",
           "TKG"
+        ]
+      }
+    ],
+    "deisui_html": [
+      {
+        "page_id": "98",
+        "page_datetime": "2018-12-17T17:18:21",
+        "page_title": "#deisui_html_radioのこと",
+        "page_description": "ウェブ制作は孤独なのかもしれない。",
+        "page_tag": [
+          "Advent Calendar",
+          "deisui_html"
         ]
       }
     ],
