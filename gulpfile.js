@@ -80,20 +80,16 @@ gulp.task('default', gulp.series(
     html_demoIndex
   ),
 
-  server.init,
+  server,
   watch
 ))
 
 // テンプレート更新
 gulp.task('html', gulp.series(
-  gulp.parallel(
-    html_posts,
-    html_archives,
-    html_pages,
-    feed
-  ),
-
-  server.reload
+  html_posts,
+  html_archives,
+  html_pages,
+  feed
 ))
 
 // 記事更新

@@ -11,11 +11,4 @@ const init = (done) => {
   }, done)
 }
 
-const reload = () => {
-  browserSync.reload()
-}
-
-module.exports = {
-  init: init,
-  reload: reload
-}
+module.exports = init
