@@ -1,15 +1,14 @@
-const
-  package = require('../../package.json')
-, fs = require('fs')
-, gulp = require('gulp')
-, browserSync = require('browser-sync')
-, plumber = require('gulp-plumber')
-, jsonPretty = require('json-pretty')
-, frontMatter = require('gulp-front-matter')
-, prettify = require('gulp-prettify')
-, layout = require('gulp-layout')
-, md = require('gulp-markdown')
-, config = require('../../blogconfig.json')
+const package = require('../../package.json')
+const fs = require('fs')
+const gulp = require('gulp')
+const browserSync = require('browser-sync')
+const plumber = require('gulp-plumber')
+const jsonPretty = require('json-pretty')
+const frontMatter = require('gulp-front-matter')
+const prettify = require('gulp-prettify')
+const layout = require('gulp-layout')
+const md = require('gulp-markdown')
+const config = require('../../blogconfig.json')
 
 config.blog_version = package.version
 

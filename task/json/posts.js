@@ -1,11 +1,10 @@
-const
-  fs = require('fs')
-, gulp = require('gulp')
-, plumber = require('gulp-plumber')
-, frontMatter = require('gulp-front-matter')
-, listStream = require('list-stream')
-, jsonPretty = require('json-pretty')
-, formatJson = {
+const fs = require('fs')
+const gulp = require('gulp')
+const plumber = require('gulp-plumber')
+const frontMatter = require('gulp-front-matter')
+const listStream = require('list-stream')
+const jsonPretty = require('json-pretty')
+const formatJson = {
   archives: require('./archives'),
   years: require('./years'),
   neighbors: require('./neighbors'),

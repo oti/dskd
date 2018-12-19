@@ -1,52 +1,51 @@
 'use strict'
 
-const
-  gulp = require('gulp')
+const gulp = require('gulp')
 
 // server & browser sync
-, server = require('./task/server/server')
+const server = require('./task/server/server')
 
 
 // ブログアセット作成タスク ====================
 
 // image
-, image = require('./task/asset/image')
+const image = require('./task/asset/image')
 
 // css
-, css = require('./task/asset/css')
+const css = require('./task/asset/css')
 
 // misc
-, misc = require('./task/asset/misc')
+const misc = require('./task/asset/misc')
 
 // 記事オブジェクト作成タスク ====================
 // （post/*.md -> posts.json -> archives.json, tags.json, years.json）
 // （demo/*.md -> demos.json -> demo-archives.json）
-, json_posts = require('./task/json/posts')
-, json_demos = require('./task/json/demos')
+const json_posts = require('./task/json/posts')
+const json_demos = require('./task/json/demos')
 
 
 // HTML作成タスク ====================
 
 // 記事個別ページ作成（post_id.md -> post_id.html）
-, html_posts = require('./task/html/posts')
+const html_posts = require('./task/html/posts')
 
 // 記事一覧ページ作成（archives_name.md -> archives_name.html）
-, html_archives = require('./task/html/archives')
+const html_archives = require('./task/html/archives')
 
 // ブログインデックス作成（index.md -> index.html）
-, html_pages = require('./task/html/pages')
+const html_pages = require('./task/html/pages')
 
 // デモ個別ページ作成（md/demo/pages/*.md -> demo/*.html）
-, html_demos = require('./task/html/demos')
+const html_demos = require('./task/html/demos')
 
 // デモインデックス作成（md/demo/index.md -> demo/index.html）
-, html_demoIndex = require('./task/html/demoIndex')
+const html_demoIndex = require('./task/html/demoIndex')
 
 // RSS作成（feed.md -> feed）
-, feed = require('./task/html/feed')
+const feed = require('./task/html/feed')
 
 // watch
-, watch = done => {
+const watch = done => {
   gulp.watch(['./src/style/**/*'], css)
   gulp.watch(['./src/image/**/*'], image)
   gulp.watch(['./src/misc/**/*'],  misc)

@@ -1,7 +1,7 @@
 const browserSync = require('browser-sync')
 
 // server & browser sync
-const init = (done) => {
+const server = (done) => {
   browserSync.init({
     ui: false,
     server: {
@@ -11,4 +11,4 @@ const init = (done) => {
   }, done)
 }
 
-module.exports = init
+module.exports = server
