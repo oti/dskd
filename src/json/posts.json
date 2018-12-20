@@ -852,5 +852,18 @@
     ],
     "page_title": "#deisui_html_radio のこと",
     "page_type": "post"
+  },
+  "99": {
+    "layout": "./src/html/post.pug",
+    "page_cover": "",
+    "page_datetime": "2018-12-21T00:50:15",
+    "page_description": "2018年の総括",
+    "page_id": "99",
+    "page_tag": [
+      "Advent Calendar",
+      "note"
+    ],
+    "page_title": "ベストオブ2018",
+    "page_type": "post"
   }
 }

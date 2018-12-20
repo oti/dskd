@@ -668,10 +668,20 @@
       }
     },
     "98": {
-      "newer": {},
+      "newer": {
+        "page_id": "99",
+        "page_title": "ベストオブ2018"
+      },
       "older": {
         "page_id": "97",
         "page_title": "自宅作業にして半年くらい経った"
+      }
+    },
+    "99": {
+      "newer": {},
+      "older": {
+        "page_id": "98",
+        "page_title": "#deisui_html_radio のこと"
       }
     }
   }
