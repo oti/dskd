@@ -23,4 +23,4 @@ mixin tag-list(archives, archives_base)
   ul.tagList
     each tag, i in tags_sorted
       li.tagList__item
-        a(class=(page_title === tag) ? '-current' : '', href='/'+archives_base+tag.toLowerCase().replace(' ', '_').replace('.', '_')+'.html', aria-current=(page_title === tag) && "page")= tag
+        a(class=(page_title === tag) ? '-current' : '', href='/'+archives_base+tag.toLowerCase().replace(/[ .-]/g, '_')+'.html', aria-current=(page_title === tag) && "page")= tag

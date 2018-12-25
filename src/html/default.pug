@@ -43,11 +43,11 @@ html(lang='ja')
     meta(content=page_permalink, property='og:url')
     meta(content=page_title, property='og:title')
     meta(content=page_description, property='og:description')
-    meta(content=page_cover, property='og:image', itemprop='image')
+    meta(content=page_cover, property='og:image')
     meta(content='article', property='og:type')
     meta(content='ja_JP', property='og:locale')
     meta(content='dskd', property='og:site_name')
-    link(href=page_permalink, rel='canonical', itemprop='url')
+    link(href=page_permalink, rel='canonical')
     link(href='/img/blog-icon.png?v='+blog_version, rel='apple-touch-icon-precomposed')
     link(href='/feed', rel='alternate', type='application/rss+xml')
     link(href='/css/style.css?v='+blog_version, rel='stylesheet', media='only screen')
@@ -56,12 +56,20 @@ html(lang='ja')
     .container
       .space
       header.header(role='banner')
-        .header__item
-          h1.logo
-            a.logo__link(href='/', title='ブログホーム')
-              svg.logo__icon(role='img', xmlns='http://www.w3.org/2000/svg',version='1.1',  width='45', height='35' viewBox='0 0 87.1 66.3')
-                title= blog_name
-                path(d='M85.1,2c-7,27.9-35.6,62.1-64.6,62.1s-20.9-24.7,3.3-14.7c10.6,4.4,15.4,12.9,30,14.9')
+        if page_type === 'post'
+          .header__item
+            p.logo
+              a.logo__link(href='/', title='ブログホーム')
+                svg.logo__icon(role='img', xmlns='http://www.w3.org/2000/svg',version='1.1',  width='45', height='35' viewBox='0 0 87.1 66.3')
+                  title= blog_name
+                  path(d='M85.1,2c-7,27.9-35.6,62.1-64.6,62.1s-20.9-24.7,3.3-14.7c10.6,4.4,15.4,12.9,30,14.9')
+        else
+          .header__item
+            h1.logo
+              a.logo__link(href='/', title='ブログホーム')
+                svg.logo__icon(role='img', xmlns='http://www.w3.org/2000/svg',version='1.1',  width='45', height='35' viewBox='0 0 87.1 66.3')
+                  title= blog_name
+                  path(d='M85.1,2c-7,27.9-35.6,62.1-64.6,62.1s-20.9-24.7,3.3-14.7c10.6,4.4,15.4,12.9,30,14.9')
         .header__item
           nav.nav(role='navigation')
             ul.nav__list
@@ -82,16 +90,16 @@ html(lang='ja')
       .space
 
       footer.footer(role='contentinfo')
-        h1.visuallyHidden ブログフッター
-        p.author(aria-label='管理者は越智です')
+        h2.visuallyHidden ブログフッター
+        div.author(aria-label='管理者は越智です')
           | Made by 
-          adress.author__address
+          address.author__address
             a(href='mailto:'+blog_address) 越智
         ul.subinfo
           li.subinfo__item
             a(href='https://creativecommons.org/licenses/by-nc/4.0/deed.ja', rel='license', aria-label='このブログはクリエイティブコモンズライセンス、表示−非営利 4.0 国際で提供されています', target='_blank')
               small.license CC BY-NC
           li.subinfo__item
-            a(href='/'+blog_feed, alternate='application/rss+xml', aria-label='このブログのRSS', target='_blank') RSS
+            a(href='/'+blog_feed, aria-label='このブログのRSS', target='_blank') RSS
 
       .space

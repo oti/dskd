@@ -12,19 +12,19 @@ block contents
         +tagging(page_tag, page_type)
 
     header.post__header
-      h1.post__title(itemprop='name')= page_title
+      h1.post__title= page_title
 
-    .post__body(itemprop='articleBody')
+    .post__body
       != contents
 
     .space.-h15
 
     .post__external
       aside
-        h1.visuallyHidden GitHubでパッチを送る
+        h2.visuallyHidden この記事にGitHubでパッチを送る
         +contribute(post_contribute, page_id)
       aside
-        h1.visuallyHidden SNSでシェア
+        h2.visuallyHidden この記事をSNSでシェア
         +social(page_title, blog_url+archives_base+page_id+'.html')
 
   .space

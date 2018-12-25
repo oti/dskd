@@ -4,7 +4,7 @@ mixin neighbor(neighbors, page_id, archives_base)
   - var older = page.older
   - var newer = page.newer
   nav.neighbor
-    h1.visuallyHidden 前後の記事
+    h2.visuallyHidden 前後の記事
     ul.neighbor__list
       if newer.page_title
         li.neighbor__item.-newer
