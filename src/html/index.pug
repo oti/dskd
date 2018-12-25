@@ -23,7 +23,7 @@ block contents
 
   section
     .hang
-      h1.hang__heading
+      h2.hang__heading
         span.visuallyHidden 最新記事
         span(aria-hidden='true')= index_title
       ul.postList
@@ -52,7 +52,7 @@ block contents
     .space
 
     nav.hang
-      h1.hang__heading
+      h2.hang__heading
         span.visuallyHidden 年別記事一覧
         span(aria-hidden='true') year
       +year-list(archives, archives_base)
@@ -60,7 +60,7 @@ block contents
     .space
 
     nav.hang
-      h1.hang__heading
+      h2.hang__heading
         span.visuallyHidden タグ別記事一覧
         span(aria-hidden='true') tag
       +tag-list(archives, archives_base)
@@ -69,7 +69,7 @@ block contents
     .space
 
     aside.hang(role='complementary')
-      h1.hang__heading
+      h2.hang__heading
         span.visuallyHidden 記事購読
         span(aria-hidden='true') subscribe
       +subscribe-list()
