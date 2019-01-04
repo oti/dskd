@@ -11,7 +11,7 @@ dskdは「ですけど」と読みます。「〜ですけど」が口癖なの�
 
 ## わたしについて
 
-1985年生まれ。越智、oti、 o_tiのハンドルネームで活動しています。
+1985年生まれ。越智、oti、 otiextのハンドルネームで活動しています。
 
 仕事はウェブのフロントエンドです。HTML/CSS/JavaScriptでちょっとだけ動くウェブサイトをよく作っています。JSアプリケーションも少しだけやりますが、イケイケゴリゴリではありません。
 
@@ -37,6 +37,7 @@ GitHubにてこのブログのリポジトリを[公開](https://github.com/oti/
 質問やクレームがある場合はEメールかTwitterでリプライをください。
 
 - [@dskd_jp](https://twitter.com/dskd_jp)
+- [@otiext](https://twitter.com/otiext)
 - [otiext@gmail.com](mailto:otiext@gmail.com)
 
 TwitterのDMおよびメールでの問い合わせ内容は原則として外部に公開されません。
