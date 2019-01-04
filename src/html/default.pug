@@ -74,9 +74,9 @@ html(lang='ja')
           nav.nav(role='navigation')
             ul.nav__list
               li.nav__item
-                a.nav__link(class=(page_type === 'archives') && '-current', href='/archives/', aria-label='全記事一覧', aria-current=(page_type === 'archives') && "page") all posts
+                a.nav__link(class=(page_type === 'archives') && '-current', href='/archives/', aria-current=(page_type === 'archives') && "page") 全記事一覧
               li.nav__item
-                a.nav__link(class=(page_type === 'about') && '-current', href='/about.html', aria-label='dskd.jpとは何か？', aria-current=(page_type === 'about') && "page") what is dskd.jp
+                a.nav__link(class=(page_type === 'about') && '-current', href='/about.html', aria-current=(page_type === 'about') && "page") dskdとは何か？
 
       .space.-h60
 
@@ -90,11 +90,11 @@ html(lang='ja')
       .space
 
       footer.footer(role='contentinfo')
-        h2.visuallyHidden ブログフッター
-        div.author(aria-label='管理者は越智です')
-          | Made by 
-          address.author__address
-            a(href='mailto:'+blog_address) 越智
+        h2.visuallyHidden サイトフッター
+        div.author
+          | 管理者は
+          address.author__address: a(href='mailto:'+blog_address) 越智
+          | です
         ul.subinfo
           li.subinfo__item
             a(href='https://creativecommons.org/licenses/by-nc/4.0/deed.ja', rel='license', aria-label='このブログはクリエイティブコモンズライセンス、表示−非営利 4.0 国際で提供されています', target='_blank')
