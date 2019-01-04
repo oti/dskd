@@ -1,10 +1,9 @@
 body
-  border-top: 8px solid rgba(c(text), .15)
+  border-top: 8px solid c(sub)
   font-family: Arial, sans-serif
   color: c(text)
   font-size: 16px
   background-color: c(base)
-  @extend %baseBg
 
 img
   -ms-interpolation-mode: bicubic
@@ -17,19 +16,22 @@ mark
   background-color: transparent
 
 a
-  transition: all .15s ease-out
   &:link
-    color: c(link)
+    // color: c(link)
     text-decoration: none
   &:visited
-    color: c(visited)
+    // color: c(visited)
     text-decoration: none
   &:focus
-    color: c(focus)
+    // color: c(focus)
     text-decoration: underline
   &:hover
-    color: c(hover)
+    // color: c(hover)
     text-decoration: underline
   &:active
-    color: c(active)
+    // color: c(active)
     text-decoration: none
+
+*:focus
+  // outline: 3px solid rgba(c(link), .4)
+  outline-offset: 2px

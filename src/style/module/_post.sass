@@ -15,7 +15,7 @@
     margin: 0 .5em
     width: .3em
     height: .3em
-    background-color: rgba(c(text), .25)
+    background-color: c(sub)
     border-radius: 100em
 
 .post__title
@@ -39,10 +39,11 @@
     font-size: inherit
     font-family: Consolas, monospace
     word-break: break-all
-    background-color: rgba(white, 0.15)
+    background-color: #fff
 
   img
     max-width: 100%
+    border: 3px solid rgba(c(text), 0.75)
 
   strong
     color: #dd0000
@@ -53,20 +54,21 @@
     font-style: normal
 
   pre
+    margin: 1em 0
     padding: 10px
     border-radius: 3px
     font-size: 14px
     font-family: Consolas, monospace
     line-height: 1.1
     overflow-x: auto
-    @extend %baseBg2;
+    background-color: c(sub)
     code
       background-color: transparent
 
   mark
     padding-left: 2px
     padding-right: 2px
-    background-color: rgba(255, 242, 0, .9)
+    background-color: c(mark)
 
   ins
     text-decoration: none
@@ -80,7 +82,7 @@
     height: 1em
     border: none
     line-height: 0
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="50" height="15" viewBox="0 0 50 15"><path d="M9.575,4.559c-3.192,0-5.063,1.289-8.364,5.155H0.88L0,8.895c4.732-6.211,9.354-8.906,14.308-8.906 c4.513,0,8.364,1.641,12.438,4.336c6.274,4.102,10.125,6.093,13.646,6.093c3.192,0,4.954-1.172,8.366-5.156h0.328l0.882,0.82 c-4.732,6.211-9.354,8.907-14.309,8.907c-3.092,0-5.874-0.771-8.63-2.123c-1.265-0.622-2.525-1.366-3.806-2.213 C16.84,6.55,13.097,4.559,9.575,4.559z" fill="rgba(0,0,0,.15)"/></svg>') no-repeat center center
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="50" height="15" viewBox="0 0 50 15"><path d="M9.575,4.559c-3.192,0-5.063,1.289-8.364,5.155H0.88L0,8.895c4.732-6.211,9.354-8.906,14.308-8.906 c4.513,0,8.364,1.641,12.438,4.336c6.274,4.102,10.125,6.093,13.646,6.093c3.192,0,4.954-1.172,8.366-5.156h0.328l0.882,0.82 c-4.732,6.211-9.354,8.907-14.309,8.907c-3.092,0-5.874-0.771-8.63-2.123c-1.265-0.622-2.525-1.366-3.806-2.213 C16.84,6.55,13.097,4.559,9.575,4.559z" fill="#e0e0df"/></svg>') no-repeat center center
 
   ul,
   ol
@@ -102,18 +104,25 @@
 
   caption
     font-weight: bold
-    @extend %baseBg2
+    background-color: c(sub)
 
   tr
-    border-top: 1px solid rgba(0,0,0, .1)
+    border-top: 1px solid rgba(0,0,0, 0.3)
 
   tr:nth-child(2n)
-    background-color: rgba(255,255,255,.1)
+    background-color: rgba(255,255,255, 0.3)
+
+  th,td
+    padding: 3px
+
+  th,td
+    &:not(:first-child)
+      border-left: 1px solid rgba(0,0,0, 0.3)
 
   blockquote
     padding: 10px
     border-radius: 3px
-    background-color: rgba(255,255,255,.2)
+    background-color: rgba(255,255,255, 0.3)
 
     footer
       font-size: 14px
