@@ -61,12 +61,12 @@ $ npm start
 ## 記事追加手順
 
 1. `src/md/post/` に `<post-id>.md` ファイルを追加
-3. `npm run build_html_post`
+3. `npm run md`
 
 ## デモ追加手順
 
 1. `src/md/demo/page/` に `<post-id>.md` ファイルを追加
-2. `npm run build_html_demo`
+2. `npm run md`
 
 `<post-id>` は記事とデモで一意な通し番号です。重複すると不具合を起こす可能性があります。
 
