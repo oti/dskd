@@ -35,11 +35,8 @@ const html_archives = require('./task/html/archives')
 // ブログインデックス作成（index.md -> index.html）
 const html_pages = require('./task/html/pages')
 
-// デモ個別ページ作成（md/demo/pages/*.md -> demo/*.html）
+// デモ個別ページ作成（md/demo/*.md -> archives/*.html）
 const html_demos = require('./task/html/demos')
-
-// デモインデックス作成（md/demo/index.md -> demo/index.html）
-const html_demoIndex = require('./task/html/demoIndex')
 
 // RSS作成（feed.md -> feed）
 const feed = require('./task/html/feed')
@@ -74,10 +71,7 @@ gulp.task('default', gulp.series(
   ),
 
   json_demos,
-  gulp.parallel(
-    html_demos,
-    html_demoIndex
-  ),
+  html_demos,
 
   server,
   watch
@@ -102,6 +96,7 @@ gulp.task('md', gulp.series(
     html_posts,
     html_archives,
     html_pages,
+    html_demos,
     feed
   )
 ))

@@ -12,9 +12,9 @@ const config = require('../../blogconfig.json')
 
 config.blog_version = package.version
 
-// デモ個別ページ作成（md/demo/pages/*.md -> demo/*.html）
+// デモ個別ページ作成（md/demo/*.md -> archives/*.html）
 const demos = () => {
-  return gulp.src('./src/md/demo/page/*.md')
+  return gulp.src('./src/md/demo/*.md')
     .pipe(plumber())
     .pipe(frontMatter())
     .pipe(md())
@@ -22,7 +22,7 @@ const demos = () => {
       return Object.assign(config, file.frontMatter)
     }))
     .pipe(prettify({indent_char: ' ', indent_size: 2}))
-    .pipe(gulp.dest('./htdocs/demo/'))
+    .pipe(gulp.dest('./htdocs/archives/'))
 }
 
 module.exports = demos

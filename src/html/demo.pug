@@ -16,16 +16,31 @@ html(lang='ja')
     link(href=blog_url+demo_base+page_id+'.html', rel='canonical')
 
   body
+    != contents
+
     if !no_footer
-      footer
-        small
+      style.
+        .demo-footer {
+          display: flex;
+          align-items: center;
+          padding: 1em;
+          background-color: #f1f2f3
+        }
+        .demo-footer__item {
+          margin: 0;
+          font-size: smaller;
+        }
+        .demo-footer__item + .demo-footer__item::before {
+          content: "|";
+          margin: 0 1em;
+        }
+      footer.demo-footer
+        small.demo-footer__item
           | published by 
           a(href='/') dskd 
           | on 
           time(datetime=(page_datetime+'+09:00'))=page_datetime.substring(0,10)
         if related_id
-          p
+          p.demo-footer__item
             | related to 
             a(href=blog_url+archives_base+related_id+'.html')=blog_url+archives_base+related_id+'.html'
-
-    != contents

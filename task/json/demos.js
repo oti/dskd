@@ -8,7 +8,7 @@ const formatJson = {archives: require('./archives')}
 
 // demo（demo/*.md -> demos.json -> demos-archives.json）
 const demos = () => {
-  return gulp.src('./src/md/demo/page/*.md')
+  return gulp.src('./src/md/demo/*.md')
     .pipe(plumber())
     .pipe(frontMatter())
     .pipe(listStream.obj((err, data) => {

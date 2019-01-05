@@ -65,7 +65,7 @@ $ npm start
 
 ## デモ追加手順
 
-1. `src/md/demo/page/` に `<post-id>.md` ファイルを追加
+1. `src/md/demo/` に `<post-id>.md` ファイルを追加
 2. `npm run md`
 
 `<post-id>` は記事とデモで一意な通し番号です。重複すると不具合を起こす可能性があります。
