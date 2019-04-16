@@ -698,10 +698,20 @@
       }
     },
     "101": {
-      "newer": {},
+      "newer": {
+        "page_id": "102",
+        "page_title": "Day.jsのAPI Referenceを翻訳した"
+      },
       "older": {
         "page_id": "100",
         "page_title": "アクセシビリティはあなたビリティ"
+      }
+    },
+    "102": {
+      "newer": {},
+      "older": {
+        "page_id": "101",
+        "page_title": "初夢 2019-01-02"
       }
     }
   }

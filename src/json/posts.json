@@ -890,5 +890,17 @@
     ],
     "page_title": "初夢 2019-01-02",
     "page_type": "post"
+  },
+  "102": {
+    "layout": "./src/html/post.pug",
+    "page_cover": "",
+    "page_datetime": "2019-04-16T23:52:30",
+    "page_description": "小さな貢献",
+    "page_id": "102",
+    "page_tag": [
+      "JavaScript"
+    ],
+    "page_title": "Day.jsのAPI Referenceを翻訳した",
+    "page_type": "post"
   }
 }
