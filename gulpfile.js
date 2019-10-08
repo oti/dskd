@@ -100,3 +100,13 @@ gulp.task('md', gulp.series(
     feed
   )
 ))
+
+// ビルド
+gulp.task('build', gulp.series(
+  json_posts,
+  json_demos,
+  html_posts,
+  html_archives,
+  html_pages,
+  feed
+))

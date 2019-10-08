@@ -56,6 +56,7 @@
     "server": "gulp server",
     "html": "gulp html",
     "md": "gulp md",
+    "build": "gulp build",
     "deploy": "git push origin master && git push origin master --tag && cd htdocs && git pull origin publish && git push origin publish && cd ..",
     "dev": "cd dev/v6 && python -m SimpleHTTPServer 8888 & node-sass dev/v6/style.sass dev/v6/style.css -w & pug dev/v6/*.pug -Pw"
   }
