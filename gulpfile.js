@@ -103,10 +103,20 @@ gulp.task('md', gulp.series(
 
 // ビルド
 gulp.task('build', gulp.series(
+  gulp.parallel(
+    css,
+    image,
+    misc
+  ),
+
   json_posts,
+  gulp.parallel(
+    html_posts,
+    html_archives,
+    html_pages,
+    feed
+  ),
+
   json_demos,
-  html_posts,
-  html_archives,
-  html_pages,
-  feed
+  html_demos
 ))
