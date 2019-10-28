@@ -718,10 +718,20 @@
       }
     },
     "103": {
-      "newer": {},
+      "newer": {
+        "page_id": "104",
+        "page_title": "カスタムドメインを紐付けたNetlifyサイトとは別のNetlifyサイトを、同じカスタムドメイン配下のディレクトリにリダイレクトする"
+      },
       "older": {
         "page_id": "102",
         "page_title": "Day.jsのAPI Referenceを翻訳した"
+      }
+    },
+    "104": {
+      "newer": {},
+      "older": {
+        "page_id": "103",
+        "page_title": "カスタムドメインのサブドメインにNetlifyでデプロイする"
       }
     }
   }
