@@ -1,5 +1,6 @@
 .DS_Store
 .sass-cache
+.history
 node_modules
 test
 htdocs
