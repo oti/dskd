@@ -926,5 +926,17 @@
     ],
     "page_title": "カスタムドメインを紐付けたNetlifyサイトとは別のNetlifyサイトを、同じカスタムドメイン配下のディレクトリにリダイレクトする",
     "page_type": "post"
+  },
+  "105": {
+    "layout": "./src/html/post.pug",
+    "page_cover": "",
+    "page_datetime": "2020-01-02T23:42:42",
+    "page_description": "2020年の初夢",
+    "page_id": "105",
+    "page_tag": [
+      "note"
+    ],
+    "page_title": "初夢 2020-01-02",
+    "page_type": "post"
   }
 }

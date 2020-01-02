@@ -1,6 +1,15 @@
 {
   "archives": [
     {
+      "page_id": "105",
+      "page_datetime": "2020-01-02T23:42:42",
+      "page_title": "初夢 2020-01-02",
+      "page_description": "2020年の初夢",
+      "page_tag": [
+        "note"
+      ]
+    },
+    {
       "page_id": "104",
       "page_datetime": "2019-10-28T16:22:07",
       "page_title": "カスタムドメインを紐付けたNetlifyサイトとは別のNetlifyサイトを、同じカスタムドメイン配下のディレクトリにリダイレクトする",

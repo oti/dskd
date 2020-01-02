@@ -725,6 +725,17 @@
           "note"
         ]
       }
+    ],
+    "2020": [
+      {
+        "page_id": "105",
+        "page_datetime": "2020-01-02T23:42:42",
+        "page_title": "初夢 2020-01-02",
+        "page_description": "2020年の初夢",
+        "page_tag": [
+          "note"
+        ]
+      }
     ]
   }
 }
