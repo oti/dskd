@@ -23,8 +23,8 @@ block contents
     - archives_base = 'demo/'
 
   section
-    .hang
-      h2.hang__heading
+    .section
+      h2.section__heading
         span.visuallyHidden 最新記事
         span(aria-hidden='true')= index_title
       ul.postList
@@ -52,16 +52,16 @@ block contents
 
     .space
 
-    nav.hang
-      h2.hang__heading
+    nav.section
+      h2.section__heading
         span.visuallyHidden 年別記事一覧
         span(aria-hidden='true') year
       +year-list(archives, archives_base)
 
     .space
 
-    nav.hang
-      h2.hang__heading
+    nav.section
+      h2.section__heading
         span.visuallyHidden タグ別記事一覧
         span(aria-hidden='true') tag
       +tag-list(archives, archives_base)
@@ -69,8 +69,8 @@ block contents
   if page_type === 'index'
     .space
 
-    aside.hang(role='complementary')
-      h2.hang__heading
+    aside.section(role='complementary')
+      h2.section__heading
         span.visuallyHidden 記事購読
         span(aria-hidden='true') subscribe
       +subscribe-list()
