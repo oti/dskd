@@ -938,5 +938,17 @@
     ],
     "page_title": "初夢 2020-01-02",
     "page_type": "post"
+  },
+  "106": {
+    "layout": "./src/html/post.pug",
+    "page_cover": "",
+    "page_datetime": "2020-02-02T01:16:18",
+    "page_description": "文字だけ拡大したいがそんなに大幅に拡大したいわけではないのだ。しかし文字だけ拡大はしたい。",
+    "page_id": "106",
+    "page_tag": [
+      "a11y"
+    ],
+    "page_title": "僕は文字だけ拡大したい",
+    "page_type": "post"
   }
 }
