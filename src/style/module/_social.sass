@@ -1,11 +1,12 @@
 .social
-  display: flex
-  align-items: baseline
+
+.social__item
 
 .social__item
   list-style: inside none
-  & + &
-    margin-left: 1em
+  display: inline-block
+  &:not(:last-child)
+    margin-right: 1em
 
 .social__link
   display: block

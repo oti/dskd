@@ -1,22 +1,14 @@
 .post
 
 .post__footer
-  display: flex
-  align-items: center
   font-size: 0.875rem
 
 .post__timestamp
+  display: inline-block
 
 .post__tag
-  display: flex
-  align-items: center
-  &::before
-    content: ''
-    margin: 0 .5em
-    width: .3em
-    height: .3em
-    background-color: c(sub)
-    border-radius: 100em
+  display: inline-block
+  margin-left: 1em
 
 .post__title
   margin-top: 1em
@@ -90,7 +82,7 @@
     line-height: 1.4
 
     > li
-      margin-left: 2rem
+      margin-left: 2em
 
     ul, ol
 
@@ -129,6 +121,5 @@
       text-align: right
 
 .post__external
-  display: flex
-  justify-content: space-between
-  align-items: baseline
+  & + &
+    margin-top: 1em

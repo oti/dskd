@@ -7,26 +7,15 @@
     @content
 
 =flowList
-  display: flex
-  flex-wrap: wrap
-  align-items: center
   line-height: 1.6
 
   &__item
     list-style: inside none
-    display: flex
-    justify-content: center
-    align-items: center
-    & + &
-      &::before
-        content: ""
-        margin: 0 .5em
-        width: 5px
-        height: 5px
-        background-color: c(sub)
-        border-radius: 5px
+    display: inline-block
+    &:not(:last-child)
+      margin-right: 1em
+
 
     a.-current
-      pointer-events: none
       color: c(text)
       background-image: linear-gradient(to top, c(mark) 7px, rgba(255,255,255, 0) 7px)

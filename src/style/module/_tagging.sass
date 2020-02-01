@@ -1,7 +1,8 @@
 .tagging
-  display: flex
 
   .tagging__item
     list-style: inside none
+    display: inline
     &:not(:first-child)::before
+      margin-left: -0.25em
       content: ', '

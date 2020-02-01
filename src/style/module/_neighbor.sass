@@ -1,20 +1,16 @@
 .neighbor
 
 .neighbor__list
-  list-style: inside none
   font-size: 0.875rem
   line-height: 1.4
 
 .neighbor__item
-  display: flex
+  list-style: inside none
+  display: block
   align-items: baseline
-  &::before
-    width: 3em
-    margin-right: 1em
-    text-align: right
-  &.-newer::before
-    content: 'newer:'
-  &.-older::before
-    content: 'older:'
+  &.-newer::after
+    content: '（１つ後）'
+  &.-older::after
+    content: '（１つ前）'
   & + &
     margin-top: 1em

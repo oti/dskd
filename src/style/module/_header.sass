@@ -1,9 +1,6 @@
 .header
-  display: flex
-  align-items: center
 
 .header__item
-  & + &
-    margin-left: 75px
-    +sp
-      margin-left: 50px
+  display: inline-block
+  &:not(:last-child)
+    margin-right: 2em
