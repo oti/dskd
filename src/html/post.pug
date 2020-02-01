@@ -19,13 +19,17 @@ block contents
 
     .space.-h15
 
-    .post__external
-      aside
-        h2.visuallyHidden この記事にGitHubでパッチを送る
-        +contribute(post_contribute, page_id)
-      aside
-        h2.visuallyHidden この記事をSNSでシェア
-        +social(page_title, blog_url+archives_base+page_id+'.html')
+    .border
+
+    .space
+
+    aside.post__external
+      h2.visuallyHidden この記事にGitHubでパッチを送る
+      +contribute(post_contribute, page_id)
+    
+    aside.post__external
+      h2.visuallyHidden この記事をSNSでシェア
+      +social(page_title, blog_url+archives_base+page_id+'.html')
 
   .space
 
