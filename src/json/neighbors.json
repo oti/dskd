@@ -720,7 +720,7 @@
     "103": {
       "newer": {
         "page_id": "104",
-        "page_title": "カスタムドメインを紐付けたNetlifyサイトとは別のNetlifyサイトを、同じカスタムドメイン配下のディレクトリにリダイレクトする"
+        "page_title": "カスタムドメインを紐付けたNetlifyサイトとは別のNetlifyサイトを、そのカスタムドメイン配下のディレクトリにApacheのRewriteRuleのようにリダイレクトする"
       },
       "older": {
         "page_id": "102",
@@ -744,7 +744,7 @@
       },
       "older": {
         "page_id": "104",
-        "page_title": "カスタムドメインを紐付けたNetlifyサイトとは別のNetlifyサイトを、同じカスタムドメイン配下のディレクトリにリダイレクトする"
+        "page_title": "カスタムドメインを紐付けたNetlifyサイトとは別のNetlifyサイトを、そのカスタムドメイン配下のディレクトリにApacheのRewriteRuleのようにリダイレクトする"
       }
     },
     "106": {

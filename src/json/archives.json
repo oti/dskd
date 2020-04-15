@@ -21,7 +21,7 @@
     {
       "page_id": "104",
       "page_datetime": "2019-10-28T16:22:07",
-      "page_title": "カスタムドメインを紐付けたNetlifyサイトとは別のNetlifyサイトを、同じカスタムドメイン配下のディレクトリにリダイレクトする",
+      "page_title": "カスタムドメインを紐付けたNetlifyサイトとは別のNetlifyサイトを、そのカスタムドメイン配下のディレクトリにApacheのRewriteRuleのようにリダイレクトする",
       "page_description": "つまりNetlifyサイトから別のサイトへリダイレクトする",
       "page_tag": [
         "Netlify"

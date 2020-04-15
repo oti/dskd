@@ -924,7 +924,7 @@
     "page_tag": [
       "Netlify"
     ],
-    "page_title": "カスタムドメインを紐付けたNetlifyサイトとは別のNetlifyサイトを、同じカスタムドメイン配下のディレクトリにリダイレクトする",
+    "page_title": "カスタムドメインを紐付けたNetlifyサイトとは別のNetlifyサイトを、そのカスタムドメイン配下のディレクトリにApacheのRewriteRuleのようにリダイレクトする",
     "page_type": "post"
   },
   "105": {
