@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "/feed.xml"
-  to = "/feed"
+  from = "/feed"
+  to = "/feed.xml"
   status = 200
   force = true
