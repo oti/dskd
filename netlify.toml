@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/feed.xml"
+  to = "/feed"
+  status = 200
+  force = true
