@@ -3,3 +3,9 @@
   to = "/feed.xml"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/feed/atom.xml"
+  to = "/feed.xml"
+  status = 200
+  force = true
