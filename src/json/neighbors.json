@@ -748,10 +748,20 @@
       }
     },
     "106": {
-      "newer": {},
+      "newer": {
+        "page_id": "107",
+        "page_title": "Web Creation in Society"
+      },
       "older": {
         "page_id": "105",
         "page_title": "初夢 2020-01-02"
+      }
+    },
+    "107": {
+      "newer": {},
+      "older": {
+        "page_id": "106",
+        "page_title": "僕は文字だけ拡大したい"
       }
     }
   }

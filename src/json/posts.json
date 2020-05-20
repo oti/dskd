@@ -950,5 +950,17 @@
     ],
     "page_title": "僕は文字だけ拡大したい",
     "page_type": "post"
+  },
+  "107": {
+    "layout": "./src/html/post.pug",
+    "page_cover": "",
+    "page_datetime": "2020-05-20T14:52:48",
+    "page_description": "アクセシビリティという言葉を使わずにアクセシビリティを話したスライドのブログ版",
+    "page_id": "107",
+    "page_tag": [
+      "a11y"
+    ],
+    "page_title": "Web Creation in Society",
+    "page_type": "post"
   }
 }

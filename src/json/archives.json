@@ -1,6 +1,15 @@
 {
   "archives": [
     {
+      "page_id": "107",
+      "page_datetime": "2020-05-20T14:52:48",
+      "page_title": "Web Creation in Society",
+      "page_description": "アクセシビリティという言葉を使わずにアクセシビリティを話したスライドのブログ版",
+      "page_tag": [
+        "a11y"
+      ]
+    },
+    {
       "page_id": "106",
       "page_datetime": "2020-02-02T01:16:18",
       "page_title": "僕は文字だけ拡大したい",
