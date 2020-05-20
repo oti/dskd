@@ -17,8 +17,8 @@
   line-height: 1.6
 
 .post__body
-  h2
-    margin-top: 2em
+  h2, h3, h4
+    margin: 3em 0 1rem
     font-size: 1.375rem
 
   p
@@ -124,9 +124,15 @@
       border-left: 1px solid rgba(0,0,0, 0.3)
 
   blockquote
+    margin: 1em 0;
     padding: 10px
     border-radius: 3px
     background-color: rgba(255,255,255, 0.3)
+
+    p
+      margin: 0
+      + p
+        margin-top: 1em
 
     footer
       font-size: 0.875rem
