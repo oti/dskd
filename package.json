@@ -17,7 +17,11 @@
     "server": "gulp server",
     "html": "gulp html",
     "md": "gulp md",
-    "build": "gulp build"
+    "build": "gulp build",
+    "lint-html": "markuplint htdocs/**/*.html --ruleset ./markuplintrc",
+    "lint-css": "stylelint htdocs/css/*.css",
+    "html-validator": "html-validator --file=htdocs/index.html --verbose",
+    "test": "npm run lint-html & npm run html-validator & npm run lint-css"
   },
   "browserslist": [
     "last 2 versions",
@@ -41,8 +45,12 @@
     "gulp-prettify": "^0.5.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^3.2.1",
+    "html-validator-cli": "^7.0.0",
     "json-pretty": "0.0.1",
     "list-stream": "^1.0.1",
-    "pug": "^3.0.0"
+    "markuplint": "^1.0.0-alpha.54",
+    "pug": "^3.0.0",
+    "stylelint": "^13.6.1",
+    "stylelint-config-recommended": "^3.0.0"
   }
 }
