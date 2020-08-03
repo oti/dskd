@@ -1,6 +1,6 @@
 {
   "name": "dskd",
-  "description": "I love TKG",
+  "description": "ウェブ制作にまつわる雑記を主としたウェブログです。2010年12月より公開。",
   "version": "7.0.3",
   "license": "CC BY-NC",
   "author": "oti",
@@ -23,12 +23,6 @@
     "html-validator": "html-validator --file=htdocs/index.html --verbose",
     "test": "npm run lint-html & npm run html-validator & npm run lint-css"
   },
-  "browserslist": [
-    "last 2 versions",
-    "ie>=9",
-    "android>=4",
-    "ios>=6"
-  ],
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "browser-sync": "^2.26.12",
