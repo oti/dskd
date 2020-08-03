@@ -17,9 +17,7 @@
     "server": "gulp server",
     "html": "gulp html",
     "md": "gulp md",
-    "build": "gulp build",
-    "deploy": "git push origin master && git push origin master --tag && cd htdocs && git pull origin publish && git push origin publish && cd ..",
-    "dev": "cd dev/v6 && python -m SimpleHTTPServer 8888 & node-sass dev/v6/style.sass dev/v6/style.css -w & pug dev/v6/*.pug -Pw"
+    "build": "gulp build"
   },
   "browserslist": [
     "last 2 versions",
@@ -28,16 +26,16 @@
     "ios>=6"
   ],
   "devDependencies": {
-    "autoprefixer": "^9.4.2",
-    "browser-sync": "^2.26.3",
+    "autoprefixer": "^9.8.6",
+    "browser-sync": "^2.26.12",
     "css-mqpacker": "^7.0.0",
     "csswring": "^7.0.0",
-    "gulp": "^4.0.0",
+    "gulp": "^4.0.2",
     "gulp-autoprefixer": "^4.1.0",
     "gulp-front-matter": "^2.0.0-7",
     "gulp-imagemin": "^5.0.3",
     "gulp-layout": "0.0.4",
-    "gulp-markdown": "^1.2.0",
+    "gulp-markdown": "^5.1.0",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
     "gulp-prettify": "^0.5.0",
@@ -45,7 +43,6 @@
     "gulp-sass": "^3.2.1",
     "json-pretty": "0.0.1",
     "list-stream": "^1.0.1",
-    "node-sass": "^4.10.0",
-    "pug-cli": "^1.0.0-alpha6"
+    "pug": "^3.0.0"
   }
 }
