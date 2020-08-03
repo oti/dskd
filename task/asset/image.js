@@ -1,8 +1,7 @@
-const
-  gulp = require('gulp')
-, browserSync = require('browser-sync')
-, plumber = require('gulp-plumber')
-, imagemin = require('gulp-imagemin')
+const gulp = require('gulp')
+const browserSync = require('browser-sync')
+const plumber = require('gulp-plumber')
+const imagemin = require('gulp-imagemin')
 
 const image = () => {
   return gulp.src('./src/image/**/*')

@@ -1,7 +1,6 @@
-const
-  gulp = require('gulp')
-, browserSync = require('browser-sync')
-, plumber = require('gulp-plumber')
+const gulp = require('gulp')
+const browserSync = require('browser-sync')
+const plumber = require('gulp-plumber')
 
 const misc = () => {
   return gulp.src('./src/misc/**/*')
