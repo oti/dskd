@@ -55,19 +55,18 @@ html(lang='ja')
   body(class= page_type)
     .container
       .space
-      header.header(role='banner')
-        if page_type === 'post'
-          .header__item
+      .header
+        .header__item
+          if page_type === 'post'
             p.logo
               a.logo__link(href='/', title='ブログホーム')
-                svg.logo__icon(role='img', xmlns='http://www.w3.org/2000/svg',version='1.1',  width='45', height='35' viewBox='0 0 87.1 66.3')
+                svg.logo__icon(role='img', xmlns='http://www.w3.org/2000/svg', width='45', height='35' viewBox='0 0 87.1 66.3')
                   title= blog_name
                   path(d='M85.1,2c-7,27.9-35.6,62.1-64.6,62.1s-20.9-24.7,3.3-14.7c10.6,4.4,15.4,12.9,30,14.9')
-        else
-          .header__item
+          else
             h1.logo
               a.logo__link(href='/', title='ブログホーム')
-                svg.logo__icon(role='img', xmlns='http://www.w3.org/2000/svg',version='1.1',  width='45', height='35' viewBox='0 0 87.1 66.3')
+                svg.logo__icon(role='img', xmlns='http://www.w3.org/2000/svg', width='45', height='35' viewBox='0 0 87.1 66.3')
                   title= blog_name
                   path(d='M85.1,2c-7,27.9-35.6,62.1-64.6,62.1s-20.9-24.7,3.3-14.7c10.6,4.4,15.4,12.9,30,14.9')
         .header__item
@@ -80,7 +79,7 @@ html(lang='ja')
 
       .space.-h60
 
-      main.contents(role='main')
+      main.contents
         block contents
 
       .space
@@ -89,7 +88,7 @@ html(lang='ja')
 
       .space
 
-      footer.footer(role='contentinfo')
+      footer.footer
         h2.visuallyHidden サイトフッター
         div.author
           | 管理者は
