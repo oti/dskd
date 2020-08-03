@@ -1,9 +1,9 @@
 {
   "name": "dskd",
+  "description": "I love TKG",
   "version": "7.0.3",
   "license": "CC BY-NC",
-  "author": "@oti(https://twitter.com/otiext)",
-  "description": "I love TKG",
+  "author": "oti",
   "keywords": [
     "dskd",
     "blog",
@@ -12,17 +12,14 @@
     "html",
     "js"
   ],
-  "homepage": "https://github.com/oti/dskd#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/oti/dskd.git"
-  },
-  "bugs": {
-    "url": "https://github.com/oti/dskd/issues"
-  },
-  "main": "gulpfile.js",
-  "engines": {
-    "node": ">=10.14.1"
+  "scripts": {
+    "start": "gulp",
+    "server": "gulp server",
+    "html": "gulp html",
+    "md": "gulp md",
+    "build": "gulp build",
+    "deploy": "git push origin master && git push origin master --tag && cd htdocs && git pull origin publish && git push origin publish && cd ..",
+    "dev": "cd dev/v6 && python -m SimpleHTTPServer 8888 & node-sass dev/v6/style.sass dev/v6/style.css -w & pug dev/v6/*.pug -Pw"
   },
   "browserslist": [
     "last 2 versions",
@@ -50,14 +47,5 @@
     "list-stream": "^1.0.1",
     "node-sass": "^4.10.0",
     "pug-cli": "^1.0.0-alpha6"
-  },
-  "scripts": {
-    "start": "gulp",
-    "server": "gulp server",
-    "html": "gulp html",
-    "md": "gulp md",
-    "build": "gulp build",
-    "deploy": "git push origin master && git push origin master --tag && cd htdocs && git pull origin publish && git push origin publish && cd ..",
-    "dev": "cd dev/v6 && python -m SimpleHTTPServer 8888 & node-sass dev/v6/style.sass dev/v6/style.css -w & pug dev/v6/*.pug -Pw"
   }
 }
