@@ -1,19 +1,22 @@
 //- _demo.pug
 //-
+-
+  const url = `${blog_url}${demo_base}${page_id}.html`
+  const related = `${blog_url}${archives_base}${related_id}.html`
 doctype html
 html(lang='ja')
   head
     meta(charset='UTF-8')
     meta(content='width=device-width', name='viewport')
-    meta(content=blog_url+demo_base+page_id+'.html', property='og:url')
+    meta(content=url, property='og:url')
     meta(content=page_title, property='og:title')
     meta(content=page_description, property='og:description')
     meta(content='/img/blog-cover.png', property='og:image')
     meta(content='article', property='og:type')
     meta(content='ja_JP', property='og:locale')
     meta(content='dskd', property='og:site_name')
-    title=page_title+title_suffix
-    link(href=blog_url+demo_base+page_id+'.html', rel='canonical')
+    title= `${page_title}${title_suffix}`
+    link(href=url, rel='canonical')
 
   body
     != contents
@@ -36,11 +39,11 @@ html(lang='ja')
         }
       footer.demo-footer
         small.demo-footer__item
-          | published by 
-          a(href='/') dskd 
-          | on 
-          time(datetime=(page_datetime+'+09:00'))=page_datetime.substring(0,10)
+          | published by
+          a(href='/') dskd
+          | on
+          time(datetime= `${page_datetime}+09:00`)= page_datetime.substring(0,10)
         if related_id
           p.demo-footer__item
-            | related to 
-            a(href=blog_url+archives_base+related_id+'.html')=blog_url+archives_base+related_id+'.html'
+            | related to
+            a(href= related)= related

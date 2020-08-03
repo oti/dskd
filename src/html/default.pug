@@ -70,7 +70,8 @@ html(lang='ja')
                   title= blog_name
                   path(d='M85.1,2c-7,27.9-35.6,62.1-64.6,62.1s-20.9-24.7,3.3-14.7c10.6,4.4,15.4,12.9,30,14.9')
         .header__item
-          nav.nav(role='navigation')
+          nav.nav
+            h2.visuallyHidden サイトナビ
             ul.nav__list
               li.nav__item
                 a.nav__link(class=(page_type === 'archives') && '-current', href='/archives/', aria-current=(page_type === 'archives') && "page") 全記事一覧

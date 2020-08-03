@@ -1,14 +1,10 @@
 //- _timestamp.pug
 mixin timestamp(time)
-  - var yyyymmdd = time.substring(0,10)
-  - var yyyy = yyyymmdd.split('-')[0]
-  - var mm = yyyymmdd.split('-')[1]
-  if (mm.substring(0,1) === '0')
-    - mm = mm.substring(1)
-  - var dd = yyyymmdd.split('-')[2]
-  if (dd.substring(0,1) === '0')
-    - dd = dd.substring(1)
-  - var readable_time = yyyy + '年' + mm + '月' + dd + '日'
-  time(datetime=time+'+09:00')
-    span.visuallyHidden= readable_time + 'に投稿'
+  -
+    const yyyymmdd = time.substring(0,10)
+    const yyyy = yyyymmdd.split('-')[0]
+    const mm = Number(yyyymmdd.split('-')[1])
+    const dd = Number(yyyymmdd.split('-')[2])
+  time(datetime= `${time}+09:00`)
+    span.visuallyHidden= `${yyyy}年${mm}月${dd}日に投稿`
     span(aria-hidden='true')= yyyymmdd

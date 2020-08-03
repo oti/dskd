@@ -3,24 +3,18 @@
 extends default
 
 block contents
-  - var index_title = ''
-  if page_type === 'index'
-    - index_title = 'post'
-  else if page_type === 'archives'
-    - index_title = 'archives'
-  else if page_type === 'tag' || page_type === 'year' || page_type === 'demo-index'
-    - index_title = page_title
-
-  - var post_list
-  if page_type === 'index' || page_type === 'archives'
-    - post_list = archives
-  else if page_type === 'tag'
-    - post_list = tags[page_title]
-  else if page_type === 'year'
-    - post_list = years[page_title]
-  else if page_type === 'demo-index'
-    - post_list = demos
-    - archives_base = 'demo/'
+  -
+    const index_title = page_type === 'index' ? 'post' : page_title
+    const post_list =
+      page_type === 'index'
+        ? archives.slice(0,5)
+        : page_type === 'archives'
+          ? archives
+          : page_type === 'tag'
+            ? tags[page_title]
+            : page_type === 'year'
+              ? years[page_title]
+              : demos
 
   section
     .section
@@ -29,9 +23,9 @@ block contents
         span(aria-hidden='true')= index_title
       ul.postList
         //- indexでは5件出力したら抜ける
-        each post, i in (page_type === 'index') ? post_list.slice(0,5) : post_list
-          li.postList__item(id='post-'+post.page_id)
-            a.postList__title(href='/'+archives_base+post.page_id+'.html')= post.page_title
+        each post, i in post_list
+          li.postList__item(id=`post-${post.page_id}`)
+            a.postList__title(href=`/${archives_base}${post.page_id}.html`)= post.page_title
             .postList__time
               +timestamp(post.page_datetime)
             .postList__tag
@@ -43,7 +37,7 @@ block contents
     if page_type === 'index'
 
       footer.more
-        a(href='/'+archives_base) 全記事一覧
+        a(href=`/${archives_base}`) 全記事一覧
 
   if page_type !== 'demo-index'
     .space
