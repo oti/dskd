@@ -4,6 +4,7 @@ page_type: "about"
 page_title: "このブログについて"
 page_description: "ブログのこととわたしのことと。"
 nav_cr: "about"
+page_permalink: "https://dskd.jp/about.html"
 ---
 
 dskd は「ですけど」と読みます。「〜ですけど」が口癖なのでそれを文字りました。ドメインは 2010 年 12 月 22 日から所有していますが、ご覧のとおり記事数は多くありません。更新頻度は月に 1 記事未満です。意欲がないです。
