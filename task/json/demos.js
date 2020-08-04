@@ -14,10 +14,13 @@ const demos = () => {
     .pipe(frontMatter())
     .pipe(
       listStream.obj((err, data) => {
-        const json = {};
-        data.forEach((demo) => {
-          json[demo.frontMatter.page_id] = demo.frontMatter;
-        });
+        const json = data.reduce(
+          (memo, demo) => ({
+            ...memo,
+            [demo.frontMatter.page_id]: demo.frontMatter,
+          }),
+          {}
+        );
 
         fs.writeFileSync("./src/json/demos.json", jsonPretty(json));
         fs.writeFileSync(

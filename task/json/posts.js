@@ -19,10 +19,13 @@ const posts = () => {
     .pipe(frontMatter())
     .pipe(
       listStream.obj((err, data) => {
-        const json = {};
-        data.forEach((post) => {
-          json[post.frontMatter.page_id] = post.frontMatter;
-        });
+        const json = data.reduce(
+          (memo, post) => ({
+            ...memo,
+            [post.frontMatter.page_id]: post.frontMatter,
+          }),
+          {}
+        );
 
         fs.writeFileSync("./src/json/posts.json", jsonPretty(json));
         fs.writeFileSync(
