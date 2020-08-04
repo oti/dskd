@@ -45,10 +45,14 @@ module.exports = {
     },
   ],
   scopes: [
+    { name: "json" },
+    { name: "md" },
     { name: "html" },
     { name: "css" },
     { name: "script" },
     { name: "image" },
+    { name: "misc" },
+    { name: "task" },
     { name: "env" },
     { name: "docs" },
     { name: "_" }, // その他
