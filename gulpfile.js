@@ -18,9 +18,7 @@ const misc = require("./task/asset/misc");
 
 // 記事オブジェクト作成タスク ====================
 // （post/*.md -> posts.json -> archives.json, tags.json, years.json）
-// （demo/*.md -> demos.json -> demo-archives.json）
 const json_posts = require("./task/json/posts");
-const json_demos = require("./task/json/demos");
 
 // HTML作成タスク ====================
 
@@ -32,9 +30,6 @@ const html_archives = require("./task/html/archives");
 
 // ブログインデックス作成（index.md -> index.html）
 const html_pages = require("./task/html/pages");
-
-// デモ個別ページ作成（md/demo/*.md -> archives/*.html）
-const html_demos = require("./task/html/demos");
 
 // RSS作成（feed.md -> feed）
 const feed = require("./task/html/feed");
@@ -60,9 +55,6 @@ gulp.task(
     json_posts,
     gulp.parallel(html_posts, html_archives, html_pages, feed),
 
-    json_demos,
-    html_demos,
-
     server,
     watch
   )
@@ -75,9 +67,8 @@ gulp.task("html", gulp.series(html_posts, html_archives, html_pages, feed));
 gulp.task(
   "md",
   gulp.series(
-    gulp.parallel(json_posts, json_demos),
-
-    gulp.parallel(html_posts, html_archives, html_pages, html_demos, feed)
+    json_posts,
+    gulp.parallel(html_posts, html_archives, html_pages, feed)
   )
 );
 
@@ -88,9 +79,6 @@ gulp.task(
     gulp.parallel(css, image, misc),
 
     json_posts,
-    gulp.parallel(html_posts, html_archives, html_pages, feed),
-
-    json_demos,
-    html_demos
+    gulp.parallel(html_posts, html_archives, html_pages, feed)
   )
 );

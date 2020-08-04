@@ -2,7 +2,6 @@
 const arthives = (posts, type) => {
   // 必要なデータだけ抽出して日付で降順ソート
   // json = {'arthives': [{post}, {post}, {post}...]}
-  // json = {'demos': [{post}, {post}, {post}...]}
   return {
     [type]: Object.values(posts)
       .map((post) => post)
