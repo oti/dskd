@@ -1,11 +1,15 @@
 {
   "demos": [
     {
-      "page_id": "70",
+      "layout": "./src/html/demo.pug",
+      "page_type": "demo",
       "page_datetime": "2015-10-20T03:17:22",
+      "page_id": "70",
       "page_title": "Translate Attribute Test",
+      "page_tag": ["demo"],
       "page_description": "Translate Attribute Test",
-      "page_tag": ["demo"]
+      "related_id": "69",
+      "no_footer": false
     }
   ]
 }
