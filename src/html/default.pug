@@ -1,30 +1,3 @@
-- var page_permalink
-
-if page_type === 'post'
-  - page_permalink = blog_url+archives_base+page_id+'.html'
-else if page_type === 'index'
-  - page_permalink = blog_url
-  - page_title = blog_name
-  - page_description = blog_description
-else if page_type === 'archives'
-  - page_permalink = blog_url+archives_base
-else if page_type === 'about'
-  - page_permalink = blog_url+'about.html'
-else if page_type === 'tag'
-  - page_permalink = blog_url+archives_base+page_title.toLowerCase().replace(/[ .-]/g, '_')+'.html'
-  - page_description = page_title+'カテゴリの記事一覧'
-else if page_type === 'year'
-  - page_permalink = blog_url+archives_base+page_title+'.html'
-  - page_description = page_title+'年公開の記事一覧'
-else if page_type === 'demo-index'
-  - page_permalink = blog_url+demo_base
-else if page_type === 'demo'
-  - page_permalink = blog_url+demo_base+page_id+'.html'
-
-if (!page_cover || page_cover === '')
-  - page_cover = '/img/blog-cover.png'
-
-
 include mixin/timestamp
 include mixin/tagging
 include mixin/tag-list
@@ -38,16 +11,16 @@ html(lang='ja')
   head
     meta(charset='UTF-8')
     meta(content='viewport-fit=cover, width=device-width, initial-scale=1' name='viewport')
-    title= (page_type === 'index') ? page_title : page_title+title_suffix
+    title= `${page_title}${page_type === 'index' && title_suffix}`
     meta(content=page_description, name='description')
-    meta(content=page_permalink, property='og:url')
+    meta(content=page_permalink || `${blog_url}${archives_base}${page_id}`, property='og:url')
     meta(content=page_title, property='og:title')
     meta(content=page_description, property='og:description')
-    meta(content=page_cover, property='og:image')
+    meta(content=page_cover || '/img/blog-cover.png', property='og:image')
     meta(content='article', property='og:type')
     meta(content='ja_JP', property='og:locale')
     meta(content='dskd', property='og:site_name')
-    link(href=page_permalink, rel='canonical')
+    link(href=page_permalink || `${blog_url}${archives_base}${page_id}`, rel='canonical')
     link(href='/img/blog-icon.png?v='+blog_version, rel='apple-touch-icon-precomposed')
     link(href='/feed', rel='alternate', type='application/rss+xml')
     link(href='/css/style.css?v='+blog_version, rel='stylesheet', media='only screen')

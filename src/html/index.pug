@@ -14,7 +14,7 @@ block contents
             ? tags[page_title]
             : page_type === 'year'
               ? years[page_title]
-              : demos
+              : []
 
   section
     .section
@@ -39,26 +39,25 @@ block contents
       footer.more
         a(href=`/${archives_base}`) 全記事一覧
 
-  if page_type !== 'demo-index'
-    .space
+  .space
 
-    .border
+  .border
 
-    .space
+  .space
 
-    nav.section
-      h2.section__heading
-        span.visuallyHidden 年別記事一覧
-        span(aria-hidden='true') year
-      +year-list(archives, archives_base)
+  nav.section
+    h2.section__heading
+      span.visuallyHidden 年別記事一覧
+      span(aria-hidden='true') year
+    +year-list(archives, archives_base)
 
-    .space
+  .space
 
-    nav.section
-      h2.section__heading
-        span.visuallyHidden タグ別記事一覧
-        span(aria-hidden='true') tag
-      +tag-list(archives, archives_base)
+  nav.section
+    h2.section__heading
+      span.visuallyHidden タグ別記事一覧
+      span(aria-hidden='true') tag
+    +tag-list(archives, archives_base)
 
   if page_type === 'index'
     .space
