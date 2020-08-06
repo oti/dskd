@@ -3,4 +3,8 @@ mixin tag-list(archives, archives_base)
   ul.tagList
     each tag, i in [...new Set(archives.map(post => post.page_tag).flat())].sort((a, b) => a.localeCompare(b))
       li.tagList__item
-        a(class=(page_title === tag) && '-current', href=`/${archives_base}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`, aria-current=(page_title === tag) && "page")= tag
+        a(
+          class=page_title === tag && '-current',
+          href=`${archives_base}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`,
+          aria-current=page_title === tag && 'page'
+        )= tag

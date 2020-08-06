@@ -11,8 +11,17 @@ mixin social(title, permalink)
     span.visuallyHidden SNSでシェアする
     ul.social__list
       li.social__item
-        a.social__link(href= tw_href, onclick="window.open(this.href, 'share_twitter_window', 'width=450, height=258, menubar=no, toolbar=no, scrollbars=yes'); return false;") Twitter
+        a.social__link(
+          href=tw_href,
+          onclick="window.open(this.href, 'share_twitter_window', 'width=450, height=258, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+        ) Twitter
       li.social__item
-        a.social__link(href= fb_href, onclick="window.open(this.href, 'share_facebook_window', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;") Facebook
+        a.social__link(
+          href=fb_href,
+          onclick="window.open(this.href, 'share_facebook_window', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+        ) Facebook
       li.social__item
-        a.social__link(href= hb_href, onclick="window.open(this.href, 'add_hatena_window', 'width=960, height=500, menubar=no, toolbar=no, scrollbars=yes'); return false;") はてブ
+        a.social__link(
+          href=hb_href,
+          onclick="window.open(this.href, 'add_hatena_window', 'width=960, height=500, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+        ) はてブ

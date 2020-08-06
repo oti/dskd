@@ -20,12 +20,12 @@ block contents
     .section
       h2.section__heading
         span.visuallyHidden 最新記事
-        span(aria-hidden='true')= index_title
+        span(aria-hidden="true")= index_title
       ul.postList
         //- indexでは5件出力したら抜ける
         each post, i in post_list
           li.postList__item(id=`post-${post.page_id}`)
-            a.postList__title(href=`/${archives_base}${post.page_id}.html`)= post.page_title
+            a.postList__title(href=`${archives_base}${post.page_id}.html`)= post.page_title
             .postList__time
               +timestamp(post.page_datetime)
             .postList__tag
@@ -35,9 +35,8 @@ block contents
     .space
 
     if page_type === 'index'
-
       footer.more
-        a(href=`/${archives_base}`) 全記事一覧
+        a(href=`${archives_base}`) 全記事一覧
 
   .space
 
@@ -48,7 +47,7 @@ block contents
   nav.section
     h2.section__heading
       span.visuallyHidden 年別記事一覧
-      span(aria-hidden='true') year
+      span(aria-hidden="true") year
     +year-list(archives, archives_base)
 
   .space
@@ -56,14 +55,14 @@ block contents
   nav.section
     h2.section__heading
       span.visuallyHidden タグ別記事一覧
-      span(aria-hidden='true') tag
+      span(aria-hidden="true") tag
     +tag-list(archives, archives_base)
 
   if page_type === 'index'
     .space
 
-    aside.section(role='complementary')
+    aside.section(role="complementary")
       h2.section__heading
         span.visuallyHidden 記事購読
-        span(aria-hidden='true') subscribe
-      +subscribe-list()
+        span(aria-hidden="true") subscribe
+      +subscribe-list

@@ -5,6 +5,6 @@ mixin timestamp(time)
     const yyyy = yyyymmdd.split('-')[0]
     const mm = Number(yyyymmdd.split('-')[1])
     const dd = Number(yyyymmdd.split('-')[2])
-  time(datetime= `${time}+09:00`)
+  time(datetime=`${time}+09:00`)
     span.visuallyHidden= `${yyyy}年${mm}月${dd}日に投稿`
-    span(aria-hidden='true')= yyyymmdd
+    span(aria-hidden="true")= yyyymmdd
