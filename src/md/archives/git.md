@@ -1,6 +1,6 @@
 ---
 layout: ./src/html/index.pug
-page_type: 'tag'
-page_title: 'Git'
-page_cover: ''
+page_type: tag
+page_title: Git
+page_description: Gitカテゴリの記事一覧
 ---

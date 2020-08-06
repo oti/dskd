@@ -1,17 +1,27 @@
 //- _social.pug
 mixin social(title, permalink)
-  - var escaped_title = encodeURIComponent(title)
-  - var escaped_permalink = encodeURIComponent(permalink)
-  - var tw_href = 'https://twitter.com/intent/tweet?text='+escaped_title+'&url='+escaped_permalink+'&via=dskd_jp&related=otiext"'
-  - var fb_href = 'https://www.facebook.com/share.php?u='+escaped_permalink
-  - var hb_href = 'http://b.hatena.ne.jp/my/add.confirm?title='+escaped_title+'&url='+escaped_permalink
+  -
+    const escaped_title = encodeURIComponent(title)
+    const escaped_permalink = encodeURIComponent(permalink)
+    const tw_href = `https://twitter.com/intent/tweet?text=${escaped_title}&url=${escaped_permalink}&via=dskd_jp&related=otiext`
+    const fb_href = `https://www.facebook.com/share.php?u=${escaped_permalink}`
+    const hb_href = `http://b.hatena.ne.jp/my/add.confirm?title=${escaped_title}&url=${escaped_permalink}`
 
   .socil
     span.visuallyHidden SNSでシェアする
     ul.social__list
       li.social__item
-        a.social__link(href= tw_href, onclick="window.open(this.href, 'share_twitter_window', 'width=450, height=258, menubar=no, toolbar=no, scrollbars=yes'); return false;") Twitter
+        a.social__link(
+          href=tw_href,
+          onclick="window.open(this.href, 'share_twitter_window', 'width=450, height=258, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+        ) Twitter
       li.social__item
-        a.social__link(href= fb_href, onclick="window.open(this.href, 'share_facebook_window', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;") Facebook
+        a.social__link(
+          href=fb_href,
+          onclick="window.open(this.href, 'share_facebook_window', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+        ) Facebook
       li.social__item
-        a.social__link(href= hb_href, onclick="window.open(this.href, 'add_hatena_window', 'width=960, height=500, menubar=no, toolbar=no, scrollbars=yes'); return false;") はてブ
+        a.social__link(
+          href=hb_href,
+          onclick="window.open(this.href, 'add_hatena_window', 'width=960, height=500, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+        ) はてブ

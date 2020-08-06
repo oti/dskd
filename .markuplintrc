@@ -1,0 +1,12 @@
+{
+  "extends": "@markuplint/html-ls",
+  "rules": {
+    "permitted-contents": true,
+    "attr-duplication": true,
+    "character-reference": true,
+    "deprecated-element": true,
+    "doctype": true,
+    "id-duplication": true,
+    "required-h1": true
+  }
+}

@@ -25,11 +25,11 @@ block contents
 
     aside.post__external
       h2.visuallyHidden この記事にGitHubでパッチを送る
-      +contribute(post_contribute, page_id)
-    
+      +contribute(`${post_contribute}${page_id}.md`)
+
     aside.post__external
       h2.visuallyHidden この記事をSNSでシェア
-      +social(page_title, blog_url+archives_base+page_id+'.html')
+      +social(page_title, `${blog_url}${archives_base}${page_id}.html`)
 
   .space
 
@@ -37,4 +37,4 @@ block contents
 
   .space
 
-  +neighbor(neighbors, page_id, archives_base)
+  +neighbor(neighbors[page_id].newer, neighbors[page_id].older, archives_base)

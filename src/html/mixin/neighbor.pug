@@ -1,16 +1,13 @@
 //- _neighbor.pug
-mixin neighbor(neighbors, page_id, archives_base)
-  - var page  = neighbors[page_id]
-  - var older = page.older
-  - var newer = page.newer
+mixin neighbor(newer, older, archives_base)
   nav.neighbor
     h2.visuallyHidden 前後の記事
     ul.neighbor__list
       if newer.page_title
         li.neighbor__item.-newer
           span.visuallyHidden この記事より新しい記事
-          a(href='/'+archives_base+newer.page_id+'.html')= newer.page_title
+          a(href=`${archives_base}${newer.page_id}.html`)= newer.page_title
       if older.page_title
         li.neighbor__item.-older
           span.visuallyHidden この記事より古い記事
-          a(href='/'+archives_base+older.page_id+'.html')= older.page_title
+          a(href=`${archives_base}${older.page_id}.html`)= older.page_title

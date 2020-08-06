@@ -1,13 +1,13 @@
-const
-  gulp = require('gulp')
-, browserSync = require('browser-sync')
-, plumber = require('gulp-plumber')
+const gulp = require("gulp");
+const browserSync = require("browser-sync");
+const plumber = require("gulp-plumber");
 
 const misc = () => {
-  return gulp.src('./src/misc/**/*')
+  return gulp
+    .src("./src/misc/**/*")
     .pipe(plumber())
-    .pipe(gulp.dest('./htdocs/misc/'))
-    .pipe(browserSync.stream())
-}
+    .pipe(gulp.dest("./dist/misc/"))
+    .pipe(browserSync.stream());
+};
 
-module.exports = misc
+module.exports = misc;

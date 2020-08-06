@@ -4,7 +4,9 @@ mixin tagging(page_tag, page_type)
     each tag, i in page_tag
       if page_type === 'post'
         li.tagging__item
-          a(href='/'+archives_base+tag.toLowerCase().replace(/[ .-]/g, '_')+'.html')= tag
+          a(
+            href=`${archives_base}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`
+          )= tag
       else if page_type !== 'tag' && index_title !== tag
         li.tagging__item
           span.tagging__item= tag

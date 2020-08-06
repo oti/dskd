@@ -1,31 +1,29 @@
 // 記事ごとに前後の記事情報をもったjsonを作る
-const neighbors = (archives) => {
-  const json = {neighbors: {}}
-
-  archives.forEach((post, i) => {
-    const old_set = {}
-    const new_set = {}
-
+const neighbors = (posts) => {
+  return posts.reduce((memo, post, i) => {
+    const _old = posts[i + 1] || false;
+    const _new = posts[i - 1] || false;
     // olderがあれば作る
-    if(archives[i+1]) {
-      old_set.page_id    = archives[i+1].page_id
-      old_set.page_title = archives[i+1].page_title
-    }
+    const older = _old
+      ? {
+          page_id: _old.page_id,
+          page_title: _old.page_title,
+        }
+      : {};
 
     // newerがあれば作る
-    if(archives[i-1]) {
-      new_set.page_id    = archives[i-1].page_id,
-      new_set.page_title = archives[i-1].page_title
-    }
+    const newer = _new
+      ? {
+          page_id: _new.page_id,
+          page_title: _new.page_title,
+        }
+      : {};
 
-    // postごとに持つ
-    json.neighbors[post.page_id] = {
-      older: old_set,
-      newer: new_set
-    }
-  })
+    return {
+      ...memo,
+      [post.page_id]: { older, newer },
+    };
+  }, {});
+};
 
-  return json
-}
-
-module.exports = neighbors
+module.exports = neighbors;

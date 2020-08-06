@@ -1,14 +1,17 @@
-const browserSync = require('browser-sync')
+const browserSync = require("browser-sync");
 
 // server & browser sync
 const server = (done) => {
-  browserSync.init({
-    ui: false,
-    server: {
-      baseDir: './htdocs/',
-      proxy: 'localhost:3000'
-    }
-  }, done)
-}
+  browserSync.init(
+    {
+      ui: false,
+      server: {
+        baseDir: "./dist/",
+        proxy: "localhost:3000",
+      },
+    },
+    done
+  );
+};
 
-module.exports = server
+module.exports = server;
