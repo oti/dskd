@@ -15,6 +15,7 @@ const css = require("./task/asset/css");
 
 // misc
 const misc = require("./task/asset/misc");
+const favicon = require("./task/asset/favicon");
 
 // 記事オブジェクト作成タスク ====================
 // （post/*.md -> posts.json -> archives.json, tags.json, years.json）
@@ -52,7 +53,7 @@ const watch = (done) => {
 gulp.task(
   "default",
   gulp.series(
-    gulp.parallel(css, image, misc),
+    gulp.parallel(css, image, misc, favicon),
 
     json_posts,
     gulp.parallel(html_posts, html_archives, html_pages, feed),
@@ -81,7 +82,7 @@ gulp.task("validator", html_validator);
 gulp.task(
   "build",
   gulp.series(
-    gulp.parallel(css, image, misc),
+    gulp.parallel(css, image, misc, favicon),
 
     json_posts,
     gulp.parallel(html_posts, html_archives, html_pages, feed)
