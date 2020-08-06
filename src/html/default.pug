@@ -14,7 +14,7 @@
       : INDEX
         ? blog_url
         : page_permalink
-  const og_image = page_cover ? `${page_cover}?${blog_version}` : `/img/blog-cover.png?${blog_version}`
+  const og_image = page_cover ? `${page_cover}?${blog_version}` : `/img/og-image.png?${blog_version}`
   const og_type = INDEX ? 'website' : 'article'
 
 include mixin/timestamp
@@ -42,17 +42,24 @@ html(lang="ja")
     meta(content=og_type, property="og:type")
     meta(content="ja_JP", property="og:locale")
     meta(content="dskd", property="og:site_name")
-    link(href=url, rel="canonical")
+    link(rel="image_src", href=`/img/og-image.png?${blog_version}`)
     link(
-      href=`/img/blog-icon.png?${blog_version}`,
-      rel="apple-touch-icon-precomposed"
+      rel="shortcut icon",
+      href=`/favicon.ico?${blog_version}`,
+      type="image/x-icon"
     )
-    link(href="/feed", rel="alternate", type="application/rss+xml")
+    link(
+      rel="apple-touch-icon",
+      sizes="180x180",
+      href=`/img/apple-touch-icon.png?${blog_version}`
+    )
     link(
       href=`/css/style.css?${blog_version}`,
       rel="stylesheet",
       media="only screen"
     )
+    link(href="/feed", rel="alternate", type="application/rss+xml")
+    link(href=url, rel="canonical")
 
   body(class=page_type)
     .container
