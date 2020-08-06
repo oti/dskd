@@ -20,8 +20,7 @@
     "build": "gulp build",
     "lint-html": "markuplint dist/**/*.html --ruleset ./markuplintrc",
     "lint-css": "stylelint dist/css/*.css",
-    "html-validator": "html-validator --file=dist/index.html --verbose",
-    "test": "npm run lint-html & npm run html-validator & npm run lint-css"
+    "test": "npm run lint-css && npm run lint-html && gulp validator"
   },
   "devDependencies": {
     "@prettier/plugin-pug": "^1.5.0",
@@ -42,6 +41,7 @@
     "gulp-prettify": "^0.5.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^3.2.1",
+    "gulp-w3c-html-validator": "^2.0.1",
     "html-validator-cli": "^7.0.0",
     "husky": "^4.2.5",
     "json-pretty": "0.0.1",
