@@ -1,7 +1,5 @@
 //- _neighbor.pug
-mixin neighbor(neighbors, page_id, archives_base)
-  -
-    const { newer, older } = neighbors[page_id]
+mixin neighbor(newer, older, archives_base)
   nav.neighbor
     h2.visuallyHidden 前後の記事
     ul.neighbor__list
