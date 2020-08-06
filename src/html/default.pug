@@ -5,7 +5,7 @@
   const YEAR = page_type === 'year'
   const ARCHIVES = page_type === 'archives'
   const ABOUT = page_type === 'about'
-  const title = INDEX ? blog_name : page_title + ' - dskd'
+  const title = INDEX ? blog_name : `${page_title} - ${blog_name}`
   const description = INDEX ? blog_description : page_description
   const url = POST
     ? `${blog_url}${archives_base}${page_id}.html`
@@ -57,29 +57,13 @@ html(lang="ja")
   body(class=page_type)
     .container
       .space
-      header.header
-        .header__item
-          if POST || ABOUT
-            p.logo
-              include _logo
-          else
-            h1.logo
-              include _logo
-        .header__item
-          nav.nav(aria-label="サイトナビ")
-            ul.nav__list
-              li.nav__item
-                a.nav__link(
-                  class=page_type === 'archives' && '-current',
-                  href="/archives/",
-                  aria-current=page_type === 'archives' && 'page'
-                ) 全記事一覧
-              li.nav__item
-                a.nav__link(
-                  class=page_type === 'about' && '-current',
-                  href="/about.html",
-                  aria-current=page_type === 'about' && 'page'
-                ) dskdとは何か？
+      .header
+        if POST || ABOUT
+          p.logo
+            include _logo
+        else
+          h1.logo
+            include _logo
 
       .space.-h60
 
@@ -95,10 +79,12 @@ html(lang="ja")
       footer.footer
         h2.visuallyHidden サイトフッター
         .author
-          | 管理者は
+          | このブログは
           address.author__address: a(href=`mailto:${blog_address}`) 越智
-          | です
+          | が作りました。
         ul.subinfo
+          li.subinfo__item
+            a(href="/about.html", aria-current=page_type === 'about' && 'page') dskdとは何か？
           li.subinfo__item
             a(
               href=`${blog_url}${blog_feed}`,
