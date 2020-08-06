@@ -1,7 +1,7 @@
 //- _year-list.pug
-mixin year-list(archives, archives_base)
+mixin year-list(years, archives_base)
   ol.yearList(reversed)
-    each year, i in [... new Set(archives.map((post) => post.page_datetime.substring(0,4)).flat())].sort((a, b) => b.localeCompare(a))
+    each year, i in Object.keys(years).sort((a, b) => b.localeCompare(a))
       li.yearList__item
         a(
           class=page_title === year && '-current',
