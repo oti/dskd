@@ -31,6 +31,8 @@ const html_archives = require("./task/html/archives");
 // ブログインデックス作成（index.md -> index.html）
 const html_pages = require("./task/html/pages");
 
+const html_validator = require("./task/html/validator");
+
 // RSS作成（feed.md -> feed）
 const feed = require("./task/html/feed");
 
@@ -71,6 +73,9 @@ gulp.task(
     gulp.parallel(html_posts, html_archives, html_pages, feed)
   )
 );
+
+// バリデーション
+gulp.task("validator", html_validator);
 
 // ビルド
 gulp.task(
