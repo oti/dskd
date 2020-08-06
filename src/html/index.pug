@@ -1,10 +1,10 @@
 //- _index.pug
-//- ブログトップ、全記事一覧、タグ一覧、年別記事一覧
+//- ブログトップ、全記事一覧、タグ一覧、年別記事一覧テンプレート
 extends default
 
 block contents
   -
-    const index_title = page_type === 'index' ? 'post' : page_title
+    const heading = page_type === 'index' ? 'post' : page_description
     const post_list =
       page_type === 'index'
         ? archives.slice(0,5) //- indexでは5件出力だけ出力する
@@ -20,7 +20,7 @@ block contents
     .section
       h2.section__heading
         span.visuallyHidden 最新記事
-        span(aria-hidden="true")= index_title
+        span(aria-hidden="true")= heading
       ul.postList
         each post, i in post_list
           li.postList__item(id=`post-${post.page_id}`)
