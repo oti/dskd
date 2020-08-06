@@ -25,7 +25,7 @@ block contents
 
     aside.post__external
       h2.visuallyHidden この記事にGitHubでパッチを送る
-      +contribute(post_contribute, page_id)
+      +contribute(`${post_contribute}${page_id}.md`)
 
     aside.post__external
       h2.visuallyHidden この記事をSNSでシェア
