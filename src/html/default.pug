@@ -1,11 +1,11 @@
 -
-  const INDEX = page_type === "index"
-  const POST = page_type === "post"
+  const INDEX = page_type === 'index'
+  const POST = page_type === 'post'
   const TAG = page_type === 'tag'
   const YEAR = page_type === 'year'
   const ARCHIVES = page_type === 'archives'
   const ABOUT = page_type === 'about'
-  const title = INDEX ? blog_name : page_title + " - dskd"
+  const title = INDEX ? blog_name : page_title + ' - dskd'
   const description = INDEX ? blog_description : page_description
   const url = POST
     ? `${blog_url}${archives_base}${page_id}.html`
@@ -104,12 +104,12 @@ html(lang="ja")
         h2.visuallyHidden サイトフッター
         .author
           | 管理者は
-          address.author__address: a(href='mailto:' + blog_address) 越智
+          address.author__address: a(href=`mailto:${blog_address}`) 越智
           | です
         ul.subinfo
           li.subinfo__item
             a(
-              href='/' + blog_feed,
+              href=`${blog_url}${blog_feed}`,
               aria-label="このブログのRSS",
               target="_blank",
               rel="noopener"
