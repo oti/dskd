@@ -1,9 +1,21 @@
 -
-  const title = (page_type === 'index') ? blog_name : page_title + ' - dskd'
-  const description = (page_type === 'index') ? blog_description : page_description
-  const url = (page_type === 'post') ? `${blog_url}${archives_base}${page_id}.html` : (page_type === 'tag' || page_type === 'year') ? `${blog_url}${archives_base}${page_title.toLowerCase().replace(/[ .-]/g, '_')}.html` : ((page_type === 'index')) ? blog_url : page_permalink
+  const INDEX = page_type === "index"
+  const POST = page_type === "post"
+  const TAG = page_type === 'tag'
+  const YEAR = page_type === 'year'
+  const ARCHIVES = page_type === 'archives'
+  const ABOUT = page_type === 'about'
+  const title = INDEX ? blog_name : page_title + " - dskd"
+  const description = INDEX ? blog_description : page_description
+  const url = POST
+    ? `${blog_url}${archives_base}${page_id}.html`
+    : TAG || YEAR
+      ? `${blog_url}${archives_base}${String(page_title).toLowerCase().replace(/[ .-]/g, '_')}.html`
+      : INDEX
+        ? blog_url
+        : page_permalink
   const og_image = page_cover ? `${page_cover}?${blog_version}` : `/img/blog-cover.png?${blog_version}`
-  const og_type = (page_type === 'index') ? 'website' : 'article'
+  const og_type = INDEX ? 'website' : 'article'
 
 include mixin/timestamp
 include mixin/tagging
