@@ -8,7 +8,6 @@
         "page_id": "1",
         "page_title": "よくわかんないんですけど",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "a.k.a initial commit"
       }
     ],
@@ -20,7 +19,6 @@
         "page_id": "7",
         "page_title": "img要素にpointer-events:none;を指定する",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "img要素にpointer-events:none;を指定するとどうなるのか"
       }
     ],
@@ -32,7 +30,6 @@
         "page_id": "25",
         "page_title": "CSS Programming HTML5 Template Generator",
         "page_tag": ["CSS", "Advent Calendar"],
-        "page_cover": "",
         "page_description": "CSS Programming"
       },
       {
@@ -42,7 +39,6 @@
         "page_id": "24",
         "page_title": "@mediaのorientationはviewportの縦横がどっちが長いかであって、デバイスが縦か横かじゃないですよ",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "@media orientationの注意点"
       },
       {
@@ -52,7 +48,6 @@
         "page_id": "23",
         "page_title": ":hoverしている要素の直前の要素の指定をCSS4の!符号で妄想した",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "親セレクタ的なやつ"
       },
       {
@@ -62,7 +57,6 @@
         "page_id": "14",
         "page_title": "「終わん寝」の提唱",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "終わらないから寝るとか"
       },
       {
@@ -72,7 +66,6 @@
         "page_id": "13",
         "page_title": "GW",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "ゴールデンウィークの前半は日光の中禅寺湖畔へ足を運んだ"
       },
       {
@@ -82,7 +75,6 @@
         "page_id": "12",
         "page_title": "絶対中央配置のCSSの続き",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "CSSの絶対中央配置スニペットの検証"
       },
       {
@@ -92,7 +84,6 @@
         "page_id": "11",
         "page_title": "絶対中央配置のCSS",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "上下左右方向で中央揃えにするCSSスニペット"
       }
     ],
@@ -104,7 +95,6 @@
         "page_id": "43",
         "page_title": "BEMまとめ奴",
         "page_tag": ["Advent Calendar", "BEM"],
-        "page_cover": "",
         "page_description": "ちゃんとまとめました"
       },
       {
@@ -114,7 +104,6 @@
         "page_id": "42",
         "page_title": "PSDファイルのレイヤー名でBEM",
         "page_tag": ["Advent Calendar", "BEM"],
-        "page_cover": "",
         "page_description": "ファイル名でもBEMメソッドをとりいれる試み"
       },
       {
@@ -134,7 +123,6 @@
         "page_id": "40",
         "page_title": "BEMに向いているデザイン、向いていないデザイン",
         "page_tag": ["Advent Calendar", "BEM", "CSS"],
-        "page_cover": "",
         "page_description": "BEMの向き不向き"
       },
       {
@@ -144,7 +132,6 @@
         "page_id": "39",
         "page_title": "ブログを初めてBEM化した時の流れの最後",
         "page_tag": ["Advent Calendar", "BEM", "CSS", "HTML"],
-        "page_cover": "",
         "page_description": "BEM神の声完結編"
       },
       {
@@ -154,7 +141,6 @@
         "page_id": "38",
         "page_title": "ブログを初めてBEM化した時の流れの続き",
         "page_tag": ["Advent Calendar", "BEM", "CSS", "HTML"],
-        "page_cover": "",
         "page_description": "BEM神の声の続き"
       },
       {
@@ -164,7 +150,6 @@
         "page_id": "37",
         "page_title": "内包要素の数が変動しても僕には擬似クラスと間接セレクタがある",
         "page_tag": ["Advent Calendar", "CSS"],
-        "page_cover": "",
         "page_description": "CSSの数量クエリで対象を限定する"
       },
       {
@@ -174,7 +159,6 @@
         "page_id": "36",
         "page_title": "ブログを初めてBEM化した時の流れ",
         "page_tag": ["Advent Calendar", "BEM", "CSS", "HTML"],
-        "page_cover": "",
         "page_description": "BEM神の声が聞こえているか"
       },
       {
@@ -184,7 +168,6 @@
         "page_id": "35",
         "page_title": "もっと広まって欲しいCSS",
         "page_tag": ["Advent Calendar", "CSS"],
-        "page_cover": "",
         "page_description": "TRBLメソッドについて"
       },
       {
@@ -194,7 +177,6 @@
         "page_id": "34",
         "page_title": "CSSの命名規則にBEMを取り入れてみる",
         "page_tag": ["Advent Calendar", "BEM", "CSS", "HTML"],
-        "page_cover": "",
         "page_description": "BEM始めました"
       },
       {
@@ -204,7 +186,6 @@
         "page_id": "29",
         "page_title": "画像サイズに依存しない絶対中央配置",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "上下左右の中央揃えは人類の欲望"
       },
       {
@@ -236,7 +217,6 @@
         "page_id": "55",
         "page_title": "columnプロパティが特定の状況でおかしくなる",
         "page_tag": ["Advent Calendar", "CSS"],
-        "page_cover": "",
         "page_description": "columnこわい。"
       },
       {
@@ -246,7 +226,6 @@
         "page_id": "54",
         "page_title": "僕はCSSを見殺しにした",
         "page_tag": ["Advent Calendar", "CSS"],
-        "page_cover": "",
         "page_description": "CSSよ死をもって我が地肉となれ"
       },
       {
@@ -256,7 +235,6 @@
         "page_id": "50",
         "page_title": "style属性でzoomを指定すると特定の状況でzoomが無効になる",
         "page_tag": ["Advent Calendar", "CSS"],
-        "page_cover": "",
         "page_description": "zoomこわい。"
       },
       {
@@ -266,7 +244,6 @@
         "page_id": "49",
         "page_title": "適当とテキトー",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "ニュアンスの再定義みたいなこと"
       },
       {
@@ -276,7 +253,6 @@
         "page_id": "48",
         "page_title": "overflow: overlay;",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "知っていても役には立たない系のネタ"
       },
       {
@@ -286,7 +262,6 @@
         "page_id": "47",
         "page_title": "左右marginで任意の比率を保つ",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "calc()とmargin-*: auto;"
       },
       {
@@ -296,7 +271,6 @@
         "page_id": "46",
         "page_title": "git filter-branchで過去の全てのcommitから画像ファイルの追加/変更をなかったことにしてリポジトリを軽量化する",
         "page_tag": ["Git"],
-        "page_cover": "",
         "page_description": "歴史の書き換えだぁ〜！"
       },
       {
@@ -306,7 +280,6 @@
         "page_id": "45",
         "page_title": "人には難しい気がする機械の真偽",
         "page_tag": ["JavaScript"],
-        "page_cover": "",
         "page_description": "素人なので簡単なことがわからない"
       },
       {
@@ -316,7 +289,6 @@
         "page_id": "44",
         "page_title": "Autoprefixerの@keyframes animation の処理に違和感があったけど、僕が間違っていた",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "Autoprefixerは頭がいい"
       }
     ],
@@ -327,7 +299,6 @@
         "page_datetime": "2015-12-08T14:45:18",
         "page_id": "76",
         "page_tag": ["Advent Calendar", "CSS"],
-        "page_cover": "",
         "page_description": "みんなよく使ってたであろうあのスニペット",
         "page_title": "IE6の疑似min-heightは奇跡のCSSトリック"
       },
@@ -337,7 +308,6 @@
         "page_datetime": "2015-12-04T01:57:32",
         "page_id": "75",
         "page_tag": ["Advent Calendar", "CSS"],
-        "page_cover": "",
         "page_description": "ブラウザの@importの解釈の違いを利用したCSSハック回顧会場",
         "page_title": "@importトリックの回顧"
       },
@@ -348,7 +318,6 @@
         "page_id": "74",
         "page_title": "My Life, My TKG",
         "page_tag": ["Advent Calendar", "TKG"],
-        "page_cover": "",
         "page_description": "僕のTKGオリジン"
       },
       {
@@ -358,7 +327,6 @@
         "page_id": "73",
         "page_title": "outlineプロパティで作った枠線は角丸にすることができない",
         "page_tag": ["Advent Calendar", "CSS"],
-        "page_cover": "",
         "page_description": "CSSで出来そうで出来ないことシリーズ1"
       },
       {
@@ -368,7 +336,6 @@
         "page_id": "72",
         "page_title": "Launch dskd v5",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "ブログをバージョンアップした。"
       },
       {
@@ -378,7 +345,6 @@
         "page_id": "71",
         "page_title": "小さく持つ",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "宗教上の理由で小さいのが好き"
       },
       {
@@ -388,7 +354,6 @@
         "page_id": "69",
         "page_title": "translate属性による翻訳の制御",
         "page_tag": ["HTML"],
-        "page_cover": "",
         "page_description": "translate属性使ってます？"
       },
       {
@@ -398,7 +363,6 @@
         "page_id": "68",
         "page_title": "yargsを使ってタスク自動化ツールのコマンドにオプションを指定する",
         "page_tag": ["Node.js"],
-        "page_cover": "",
         "page_description": "yargs便利ですわ〜"
       },
       {
@@ -408,7 +372,6 @@
         "page_id": "67",
         "page_title": "キーバインドの競合",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "あちらを立てればこちらが立たず"
       },
       {
@@ -418,7 +381,6 @@
         "page_id": "66",
         "page_title": "開発環境構築作業の理想",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "男は黙って再インストール"
       },
       {
@@ -428,7 +390,6 @@
         "page_id": "65",
         "page_title": "Launch dskd v4",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "BEM離れ"
       },
       {
@@ -438,7 +399,6 @@
         "page_id": "64",
         "page_title": "SKAGEN BLUE DIALS",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "なぜ腕時計は増えていくのか"
       },
       {
@@ -448,7 +408,6 @@
         "page_id": "63",
         "page_title": "TRBLメソッドでbackground-sizeを代替する",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "TRBLメソッドすごいな〜"
       },
       {
@@ -458,7 +417,6 @@
         "page_id": "58",
         "page_title": "Google Chrome 40でreversed属性のついたol要素のカウンターがおかしい",
         "page_tag": ["HTML"],
-        "page_cover": "",
         "page_description": "reversed属性、使ってます？"
       },
       {
@@ -468,7 +426,6 @@
         "page_id": "57",
         "page_title": "EDJOなオブジェクトの妄想",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "Every Declaration Just Once"
       }
     ],
@@ -479,7 +436,6 @@
         "page_datetime": "2016-12-23T22:38:32",
         "page_id": "86",
         "page_tag": ["Advent Calendar", "note"],
-        "page_cover": "",
         "page_description": "2016年のベスト",
         "page_title": "ベストオブ2016"
       },
@@ -489,7 +445,6 @@
         "page_datetime": "2016-12-22T17:00:00",
         "page_id": "85",
         "page_tag": ["Advent Calendar", "CSS"],
-        "page_cover": "",
         "page_description": "",
         "page_title": "CSS pointer-events 2016"
       },
@@ -500,7 +455,6 @@
         "page_id": "84",
         "page_title": "夢 2016-11-18",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "2016年11月17日の夢"
       },
       {
@@ -510,7 +464,6 @@
         "page_id": "83",
         "page_title": "SKAGEN Rungsted Leather Watch",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "続・なぜ腕時計は増えていくのか"
       },
       {
@@ -519,7 +472,6 @@
         "page_datetime": "2016-05-09T00:03:22",
         "page_id": "82",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "結論から言うとCSSを知らなすぎて死にたい",
         "page_title": "続・CSSだけでviewportに常に対角線を引く"
       },
@@ -529,7 +481,6 @@
         "page_datetime": "2016-05-08T22:28:45",
         "page_id": "81",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "結論から言うとCSSだけでは無理",
         "page_title": "CSSだけでviewportに常に対角線を引く"
       },
@@ -539,7 +490,6 @@
         "page_datetime": "2016-03-24T22:15:19",
         "page_id": "80",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "2016年3月23日の夢",
         "page_title": "夢 2016-03-23"
       },
@@ -549,7 +499,6 @@
         "page_datetime": "2016-03-15T16:21:25",
         "page_id": "79",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "CSSで出来そうで出来ないことシリーズ2",
         "page_title": "CSSでは背景画像のリピート間隔を任意に設定できない"
       },
@@ -559,7 +508,6 @@
         "page_datetime": "2016-01-17T22:52:17",
         "page_id": "78",
         "page_tag": ["Advent Calendar", "TKG"],
-        "page_cover": "",
         "page_description": "TKG Advent Calendar 2015、25日目",
         "page_title": "TKGスロット"
       },
@@ -581,7 +529,6 @@
         "page_datetime": "2017-12-21T12:00:00",
         "page_id": "92",
         "page_tag": ["Advent Calendar", "note"],
-        "page_cover": "",
         "page_description": "どっちかというと充実した一年だったんだと思う",
         "page_title": "ベストオブ2017"
       },
@@ -591,7 +538,6 @@
         "page_datetime": "2017-12-20T03:02:51",
         "page_id": "91",
         "page_tag": ["Advent Calendar", "CSS", "SVG"],
-        "page_cover": "",
         "page_description": "SVGのpointer-eventsはすごいと思ったけどブラウザ対応に「？」がある",
         "page_title": "SVG pointer-events 2017"
       },
@@ -601,7 +547,6 @@
         "page_datetime": "2017-09-19T19:16:47",
         "page_id": "90",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "gulpの話はしていません。",
         "page_title": "Sass/SCSSコンパイルできるエディタ"
       },
@@ -611,7 +556,6 @@
         "page_datetime": "2017-08-16T18:58:17",
         "page_id": "89",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "2017年8月14日の夢",
         "page_title": "夢 2017-08-16"
       },
@@ -621,7 +565,6 @@
         "page_datetime": "2017-04-21T20:51:34",
         "page_id": "88",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "仕事とは問題を解決すること",
         "page_title": "バグは出る"
       },
@@ -631,7 +574,6 @@
         "page_datetime": "2017-01-03T22:05:10",
         "page_id": "87",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "first-letter擬似要素とfont-feature-settingsで行頭の約物半角を対応してみる。",
         "page_title": "CSSで行頭の約物を半角にする"
       }
@@ -643,7 +585,6 @@
         "page_datetime": "2018-12-24T00:41:47",
         "page_id": "100",
         "page_tag": ["Advent Calendar", "a11y"],
-        "page_cover": "",
         "page_description": "守る覚悟でなら地獄を進め",
         "page_title": "アクセシビリティはあなたビリティ"
       },
@@ -653,7 +594,6 @@
         "page_datetime": "2018-12-21T00:50:15",
         "page_id": "99",
         "page_tag": ["Advent Calendar", "note"],
-        "page_cover": "",
         "page_description": "2018年の総括",
         "page_title": "ベストオブ2018"
       },
@@ -663,7 +603,6 @@
         "page_datetime": "2018-12-17T17:18:21",
         "page_id": "98",
         "page_tag": ["Advent Calendar", "deisui_html"],
-        "page_cover": "",
         "page_description": "ウェブ制作は孤独なのかもしれない。",
         "page_title": "#deisui_html_radio のこと"
       },
@@ -673,7 +612,6 @@
         "page_datetime": "2018-12-08T23:51:20",
         "page_id": "97",
         "page_tag": ["Advent Calendar", "note"],
-        "page_cover": "",
         "page_description": "今日も出社してません。",
         "page_title": "自宅作業にして半年くらい経った"
       },
@@ -683,7 +621,6 @@
         "page_datetime": "2018-05-01T19:25:48",
         "page_id": "96",
         "page_tag": ["Graph API", "JavaScript"],
-        "page_cover": "",
         "page_description": "結論めんどい",
         "page_title": "Facebook Graph APIで自分の投稿をJSONで取得するためのアクセストークンを発行する旅"
       },
@@ -693,7 +630,6 @@
         "page_datetime": "2018-04-16T02:02:02",
         "page_id": "95",
         "page_tag": ["CSS", "Sass", "Node.js"],
-        "page_cover": "",
         "page_description": "npm iできます",
         "page_title": "CSSのカスタムイージングをSass関数化した"
       },
@@ -703,7 +639,6 @@
         "page_datetime": "2018-02-28T18:58:07",
         "page_id": "94",
         "page_tag": ["CSS"],
-        "page_cover": "",
         "page_description": "環境依存バグを踏むとワクワクさん",
         "page_title": "280blockerはiOS Safariにユーザースタイルを追加する"
       },
@@ -713,7 +648,6 @@
         "page_datetime": "2018-01-03T19:18:05",
         "page_id": "93",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "2018年1月2日の夢",
         "page_title": "初夢 2018-01-02"
       }
@@ -725,7 +659,6 @@
         "page_datetime": "2019-10-28T16:22:07",
         "page_id": "104",
         "page_tag": ["Netlify"],
-        "page_cover": "",
         "page_description": "つまりNetlifyサイトから別のサイトへリダイレクトする",
         "page_title": "カスタムドメインを紐付けたNetlifyサイトとは別のNetlifyサイトを、そのカスタムドメイン配下のディレクトリにApacheのRewriteRuleのようにリダイレクトする"
       },
@@ -735,7 +668,6 @@
         "page_datetime": "2019-10-28T00:18:56",
         "page_id": "103",
         "page_tag": ["Netlify"],
-        "page_cover": "",
         "page_description": "Netlifyすごい！最高のデプロイシステムです！",
         "page_title": "カスタムドメインのサブドメインにNetlifyでデプロイする"
       },
@@ -745,7 +677,6 @@
         "page_datetime": "2019-04-16T23:52:30",
         "page_id": "102",
         "page_tag": ["JavaScript"],
-        "page_cover": "",
         "page_description": "小さな貢献",
         "page_title": "Day.jsのAPI Referenceを翻訳した"
       },
@@ -755,7 +686,6 @@
         "page_datetime": "2019-01-04T22:38:24",
         "page_id": "101",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "2019年の初夢",
         "page_title": "初夢 2019-01-02"
       }
@@ -767,7 +697,6 @@
         "page_datetime": "2020-05-20T14:54:48",
         "page_id": "107",
         "page_tag": ["a11y"],
-        "page_cover": "",
         "page_description": "アクセシビリティという言葉を使わずにアクセシビリティを話したスライドのブログ版",
         "page_title": "Web Creation in Society"
       },
@@ -777,7 +706,6 @@
         "page_datetime": "2020-02-02T01:16:18",
         "page_id": "106",
         "page_tag": ["a11y"],
-        "page_cover": "",
         "page_description": "文字だけ拡大したいがそんなに大幅に拡大したいわけではないのだ。しかし文字だけ拡大はしたい。",
         "page_title": "僕は文字だけ拡大したい"
       },
@@ -787,7 +715,6 @@
         "page_datetime": "2020-01-02T23:42:42",
         "page_id": "105",
         "page_tag": ["note"],
-        "page_cover": "",
         "page_description": "2020年の初夢",
         "page_title": "初夢 2020-01-02"
       }
