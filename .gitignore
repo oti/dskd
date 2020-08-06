@@ -3,5 +3,5 @@
 .history
 node_modules
 test
-htdocs
+dist
 npm-debug.log

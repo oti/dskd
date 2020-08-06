@@ -13,7 +13,7 @@ const css = () => {
     .pipe(plumber())
     .pipe(sass().on("error", sass.logError))
     .pipe(postcss([autoprefixer({ grid: true }), mqpacker(), csswring()]))
-    .pipe(gulp.dest("./htdocs/css/"))
+    .pipe(gulp.dest("./dist/css/"))
     .pipe(browserSync.stream());
 };
 

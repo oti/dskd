@@ -17,7 +17,7 @@ const image = () => {
         }),
       ])
     )
-    .pipe(gulp.dest("./htdocs/img/"))
+    .pipe(gulp.dest("./dist/img/"))
     .pipe(browserSync.stream());
 };
 

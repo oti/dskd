@@ -6,7 +6,7 @@ const server = (done) => {
     {
       ui: false,
       server: {
-        baseDir: "./htdocs/",
+        baseDir: "./dist/",
         proxy: "localhost:3000",
       },
     },

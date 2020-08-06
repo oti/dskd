@@ -24,7 +24,7 @@ const posts = () => {
       }))
     )
     .pipe(prettify({ indent_char: " ", indent_size: 2 }))
-    .pipe(gulp.dest("./htdocs/archives/"));
+    .pipe(gulp.dest("./dist/archives/"));
 };
 
 module.exports = posts;

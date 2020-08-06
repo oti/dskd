@@ -26,7 +26,7 @@ const feed = () => {
     )
     .pipe(prettify({ indent_char: " ", indent_size: 2 }))
     .pipe(rename({ extname: ".xml" }))
-    .pipe(gulp.dest("./htdocs/"));
+    .pipe(gulp.dest("./dist/"));
 };
 
 module.exports = feed;

@@ -6,7 +6,7 @@ const misc = () => {
   return gulp
     .src("./src/misc/**/*")
     .pipe(plumber())
-    .pipe(gulp.dest("./htdocs/misc/"))
+    .pipe(gulp.dest("./dist/misc/"))
     .pipe(browserSync.stream());
 };
 

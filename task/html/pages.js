@@ -24,7 +24,7 @@ const pages = () => {
       }))
     )
     .pipe(prettify({ indent_char: " ", indent_size: 2 }))
-    .pipe(gulp.dest("./htdocs/"));
+    .pipe(gulp.dest("./dist/"));
 };
 
 module.exports = pages;

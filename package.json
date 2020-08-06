@@ -18,9 +18,9 @@
     "html": "gulp html",
     "md": "gulp md",
     "build": "gulp build",
-    "lint-html": "markuplint htdocs/**/*.html --ruleset ./markuplintrc",
-    "lint-css": "stylelint htdocs/css/*.css",
-    "html-validator": "html-validator --file=htdocs/index.html --verbose",
+    "lint-html": "markuplint dist/**/*.html --ruleset ./markuplintrc",
+    "lint-css": "stylelint dist/css/*.css",
+    "html-validator": "html-validator --file=dist/index.html --verbose",
     "test": "npm run lint-html & npm run html-validator & npm run lint-css"
   },
   "devDependencies": {
