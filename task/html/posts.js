@@ -17,10 +17,11 @@ const posts = () => {
     .pipe(frontMatter())
     .pipe(md())
     .pipe(
-      layout(function (file) {
-        const neighbors = require("../../src/json/neighbors.json");
-        return Object.assign(config, neighbors, file.frontMatter);
-      })
+      layout((file) => ({
+        ...config,
+        ...file.frontMatter,
+        ...require("../../src/json/data.json"),
+      }))
     )
     .pipe(prettify({ indent_char: " ", indent_size: 2 }))
     .pipe(gulp.dest("./htdocs/archives/"));

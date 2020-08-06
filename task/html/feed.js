@@ -18,10 +18,11 @@ const feed = () => {
     .pipe(frontMatter())
     .pipe(md())
     .pipe(
-      layout(function (file) {
-        const archives = require("../../src/json/archives.json");
-        return Object.assign(config, archives, file.frontMatter);
-      })
+      layout((file) => ({
+        ...config,
+        ...file.frontMatter,
+        ...require("../../src/json/data.json"),
+      }))
     )
     .pipe(prettify({ indent_char: " ", indent_size: 2 }))
     .pipe(rename({ extname: ".xml" }))

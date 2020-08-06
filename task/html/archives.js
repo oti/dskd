@@ -17,12 +17,11 @@ const archives = () => {
     .pipe(frontMatter())
     .pipe(md())
     .pipe(
-      layout(function (file) {
-        const archives = require("../../src/json/archives.json");
-        const years = require("../../src/json/years.json");
-        const tags = require("../../src/json/tags.json");
-        return Object.assign(config, archives, years, tags, file.frontMatter);
-      })
+      layout((file) => ({
+        ...config,
+        ...file.frontMatter,
+        ...require("../../src/json/data.json"),
+      }))
     )
     .pipe(prettify({ indent_char: " ", indent_size: 2 }))
     .pipe(gulp.dest("./htdocs/archives/"));
