@@ -24,6 +24,7 @@
     "test": "npm run lint-html & npm run html-validator & npm run lint-css"
   },
   "devDependencies": {
+    "@prettier/plugin-pug": "^1.5.0",
     "autoprefixer": "^9.8.6",
     "browser-sync": "^2.26.12",
     "commitizen": "^4.1.2",
