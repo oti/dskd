@@ -36,7 +36,7 @@ html(lang="ja")
     title= title
     meta(content=description, name="description")
     meta(content=url, property="og:url")
-    meta(content=page_title, property="og:title")
+    meta(content=title, property="og:title")
     meta(content=description, property="og:description")
     meta(content=og_image, property="og:image")
     meta(content=og_type, property="og:type")
@@ -66,8 +66,7 @@ html(lang="ja")
             h1.logo
               include _logo
         .header__item
-          nav.nav
-            h2.visuallyHidden サイトナビ
+          nav.nav(aria-label="サイトナビ")
             ul.nav__list
               li.nav__item
                 a.nav__link(
