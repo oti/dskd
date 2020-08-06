@@ -4,12 +4,9 @@ const plumber = require("gulp-plumber");
 const frontMatter = require("gulp-front-matter");
 const listStream = require("list-stream");
 const jsonPretty = require("json-pretty");
-const formatJson = {
-  archives: require("./archives"),
-  years: require("./years"),
-  neighbors: require("./neighbors"),
-  tags: require("./tags"),
-};
+const yearsJson = require("./years");
+const neighborsJson = require("./neighbors");
+const tagsJson = require("./tags");
 
 // post（post/*.md -> posts.json -> archives.json, tags.json, years.json）
 const posts = () => {
@@ -19,32 +16,24 @@ const posts = () => {
     .pipe(frontMatter())
     .pipe(
       listStream.obj((err, data) => {
-        const json = data.reduce(
-          (memo, post) => ({
-            ...memo,
-            [post.frontMatter.page_id]: post.frontMatter,
-          }),
-          {}
-        );
-
-        fs.writeFileSync("./src/json/posts.json", jsonPretty(json));
+        if (err) throw err;
+        const posts = data
+          .map((post) => post.frontMatter)
+          .sort((a, b) =>
+            Number(
+              b.page_datetime
+                .replace(/[-T:]/g, "")
+                .localeCompare(Number(a.page_datetime.replace(/[-T:]/g, "")))
+            )
+          );
         fs.writeFileSync(
-          "./src/json/archives.json",
-          jsonPretty(formatJson.archives(json, "archives"))
-        );
-        fs.writeFileSync(
-          "./src/json/neighbors.json",
-          jsonPretty(
-            formatJson.neighbors(formatJson.archives(json, "archives").archives)
-          )
-        );
-        fs.writeFileSync(
-          "./src/json/tags.json",
-          jsonPretty(formatJson.tags(json))
-        );
-        fs.writeFileSync(
-          "./src/json/years.json",
-          jsonPretty(formatJson.years(json))
+          "./src/json/data.json",
+          jsonPretty({
+            archives: posts,
+            neighbors: neighborsJson(posts),
+            tags: tagsJson(posts),
+            years: yearsJson(posts),
+          })
         );
       })
     );
