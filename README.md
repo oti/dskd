@@ -1,6 +1,6 @@
 # dskd
 
-https:dskd.jp  
+https://dskd.jp  
 [![Netlify Status](https://api.netlify.com/api/v1/badges/db04f4b1-9cba-45ab-bb63-97b6a110992b/deploy-status)](https://app.netlify.com/sites/dskd/deploys)
 
 dskd はウェブ制作にまつわる雑記を主としたウェブログです。2010 年 12 月より公開。
