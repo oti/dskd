@@ -3,6 +3,15 @@
     {
       "layout": "./src/html/post.pug",
       "page_type": "post",
+      "page_datetime": "2020-08-20T00:47:39",
+      "page_id": "108",
+      "page_tag": ["note"],
+      "page_description": "ずっとずっとずっとずっと待ってる♪たとえ時代が合わなくったって♪",
+      "page_title": "散文 2020-8-20"
+    },
+    {
+      "layout": "./src/html/post.pug",
+      "page_type": "post",
       "page_datetime": "2020-05-20T14:54:48",
       "page_id": "107",
       "page_tag": ["a11y"],
@@ -1457,10 +1466,20 @@
       }
     },
     "107": {
-      "newer": {},
+      "newer": {
+        "page_id": "108",
+        "page_title": "散文 2020-8-20"
+      },
       "older": {
         "page_id": "106",
         "page_title": "僕は文字だけ拡大したい"
+      }
+    },
+    "108": {
+      "newer": {},
+      "older": {
+        "page_id": "107",
+        "page_title": "Web Creation in Society"
       }
     }
   },
@@ -2324,6 +2343,15 @@
       }
     ],
     "note": [
+      {
+        "layout": "./src/html/post.pug",
+        "page_type": "post",
+        "page_datetime": "2020-08-20T00:47:39",
+        "page_id": "108",
+        "page_tag": ["note"],
+        "page_description": "ずっとずっとずっとずっと待ってる♪たとえ時代が合わなくったって♪",
+        "page_title": "散文 2020-8-20"
+      },
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
@@ -3246,6 +3274,15 @@
       }
     ],
     "2020": [
+      {
+        "layout": "./src/html/post.pug",
+        "page_type": "post",
+        "page_datetime": "2020-08-20T00:47:39",
+        "page_id": "108",
+        "page_tag": ["note"],
+        "page_description": "ずっとずっとずっとずっと待ってる♪たとえ時代が合わなくったって♪",
+        "page_title": "散文 2020-8-20"
+      },
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
