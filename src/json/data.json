@@ -3,6 +3,16 @@
     {
       "layout": "./src/html/post.pug",
       "page_type": "post",
+      "page_datetime": "2021-01-02T01:27:03",
+      "page_id": "110",
+      "page_tag": ["Advent Calendar", "note"],
+      "page_cover": "",
+      "page_description": "2020年の気持ち、変えたこと、買ったもの、ウケた日常",
+      "page_title": "ベストオブ2020"
+    },
+    {
+      "layout": "./src/html/post.pug",
+      "page_type": "post",
       "page_datetime": "2020-12-08T09:19:45",
       "page_id": "109",
       "page_tag": ["Advent Calendar", "a11y"],
@@ -1496,15 +1506,35 @@
       }
     },
     "109": {
-      "newer": {},
+      "newer": {
+        "page_id": "110",
+        "page_title": "ベストオブ2020"
+      },
       "older": {
         "page_id": "108",
         "page_title": "散文 2020-8-20"
+      }
+    },
+    "110": {
+      "newer": {},
+      "older": {
+        "page_id": "109",
+        "page_title": "accrefsの公開に寄せて"
       }
     }
   },
   "tags": {
     "Advent Calendar": [
+      {
+        "layout": "./src/html/post.pug",
+        "page_type": "post",
+        "page_datetime": "2021-01-02T01:27:03",
+        "page_id": "110",
+        "page_tag": ["Advent Calendar", "note"],
+        "page_cover": "",
+        "page_description": "2020年の気持ち、変えたこと、買ったもの、ウケた日常",
+        "page_title": "ベストオブ2020"
+      },
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
@@ -2383,6 +2413,16 @@
       }
     ],
     "note": [
+      {
+        "layout": "./src/html/post.pug",
+        "page_type": "post",
+        "page_datetime": "2021-01-02T01:27:03",
+        "page_id": "110",
+        "page_tag": ["Advent Calendar", "note"],
+        "page_cover": "",
+        "page_description": "2020年の気持ち、変えたこと、買ったもの、ウケた日常",
+        "page_title": "ベストオブ2020"
+      },
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
@@ -3359,6 +3399,18 @@
         "page_tag": ["note"],
         "page_description": "2020年の初夢",
         "page_title": "初夢 2020-01-02"
+      }
+    ],
+    "2021": [
+      {
+        "layout": "./src/html/post.pug",
+        "page_type": "post",
+        "page_datetime": "2021-01-02T01:27:03",
+        "page_id": "110",
+        "page_tag": ["Advent Calendar", "note"],
+        "page_cover": "",
+        "page_description": "2020年の気持ち、変えたこと、買ったもの、ウケた日常",
+        "page_title": "ベストオブ2020"
       }
     ]
   }
