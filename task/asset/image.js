@@ -1,12 +1,14 @@
 const gulp = require("gulp");
 const browserSync = require("browser-sync");
+const changed = require("gulp-changed");
 const plumber = require("gulp-plumber");
 const imagemin = require("gulp-imagemin");
 
 const image = () => {
   return gulp
-    .src("./src/image/**/*")
+    .src("./src/image/**")
     .pipe(plumber())
+    .pipe(changed("./dist/img"))
     .pipe(
       imagemin([
         imagemin.gifsicle({ interlaced: true }),
