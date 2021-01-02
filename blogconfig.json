@@ -4,7 +4,7 @@
   "blog_description": "dskd はウェブ制作にまつわる雑記を主としたウェブログです。",
   "blog_author": "越智",
   "blog_address": "otiext@gmail.com",
-  "blog_feed": "feed",
+  "blog_feed": "/feed",
   "blog_twitter": "dskd_jp",
   "post_contribute": "https://github.com/oti/dskd/blob/master/src/md/post/",
   "archives_base": "/archives/"
