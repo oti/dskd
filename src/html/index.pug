@@ -4,7 +4,7 @@ extends default
 
 block contents
   -
-    const heading = page_type === 'index' ? 'post' : page_description
+    const heading = page_type === 'index' ? '最近の記事' : page_description
     const post_list =
       page_type === 'index'
         ? archives.slice(0,5) //- indexでは5件出力だけ出力する
@@ -18,9 +18,7 @@ block contents
 
   section
     .section
-      h2.section__heading
-        span.visuallyHidden 最新記事
-        span(aria-hidden="true")= heading
+      h2.section__heading= heading
       ul.postList
         each post, i in post_list
           li.postList__item(id=`post-${post.page_id}`)
@@ -28,29 +26,23 @@ block contents
             .postList__time
               +timestamp(post.page_datetime)
             .postList__tag
-              span.visuallyHidden この記事につけられたタグ
+              span.visuallyHidden タグ
               +tagging(post.page_tag, post.page_type)
 
     if page_type === 'index'
       footer.more.space
-        a(href=`${archives_base}`) 全記事一覧
+        a(href=`${archives_base}`) 全ての記事
 
   nav.section.border
-    h2.section__heading
-      span.visuallyHidden 年別記事一覧
-      span(aria-hidden="true") year
+    h2.section__heading 年別
     +year-list(years, archives_base)
 
   nav.section.space
-    h2.section__heading
-      span.visuallyHidden タグ別記事一覧
-      span(aria-hidden="true") tag
+    h2.section__heading タグ別
     +tag-list(tags, archives_base)
 
   if page_type === 'index'
 
     aside.section.space
-      h2.section__heading
-        span.visuallyHidden 記事購読
-        span(aria-hidden="true") subscribe
+      h2.section__heading 購読
       +subscribe-list
