@@ -10,7 +10,7 @@
       ],
       "page_cover": "",
       "page_description": "はっきりせい",
-      "page_title": "div要素やspan要素は中身を空にできるが、レイアウトや装飾目的で中身を空にしていいかはっきりしていない"
+      "page_title": "div要素やspan要素は中身が空になってもいいが、レイアウトや装飾目的で中身を空にしていいかはハッキリしていない"
     },
     {
       "layout": "./src/html/post.pug",
@@ -1732,7 +1732,7 @@
     "110": {
       "newer": {
         "page_id": "111",
-        "page_title": "div要素やspan要素は中身を空にできるが、レイアウトや装飾目的で中身を空にしていいかはっきりしていない"
+        "page_title": "div要素やspan要素は中身が空になってもいいが、レイアウトや装飾目的で中身を空にしていいかはハッキリしていない"
       },
       "older": {
         "page_id": "109",
@@ -2661,7 +2661,7 @@
         ],
         "page_cover": "",
         "page_description": "はっきりせい",
-        "page_title": "div要素やspan要素は中身を空にできるが、レイアウトや装飾目的で中身を空にしていいかはっきりしていない"
+        "page_title": "div要素やspan要素は中身が空になってもいいが、レイアウトや装飾目的で中身を空にしていいかはハッキリしていない"
       },
       {
         "layout": "./src/html/post.pug",
@@ -4205,7 +4205,7 @@
         ],
         "page_cover": "",
         "page_description": "はっきりせい",
-        "page_title": "div要素やspan要素は中身を空にできるが、レイアウトや装飾目的で中身を空にしていいかはっきりしていない"
+        "page_title": "div要素やspan要素は中身が空になってもいいが、レイアウトや装飾目的で中身を空にしていいかはハッキリしていない"
       },
       {
         "layout": "./src/html/post.pug",
