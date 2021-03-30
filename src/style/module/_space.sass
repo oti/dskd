@@ -1,7 +1,12 @@
 .space
-  width:  0
-  height: 4rem
+  &::before
+    content: ""
+    display: block
+    width:  0
+    height: $space
   &.-thin
-    height: 2rem
+    &::before
+      height: $space / 2
   &.-wide
-    height: 8rem
+    &::before
+      height: $space * 2

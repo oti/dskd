@@ -31,36 +31,26 @@ block contents
               span.visuallyHidden この記事につけられたタグ
               +tagging(post.page_tag, post.page_type)
 
-    .space
-
     if page_type === 'index'
-      footer.more
+      footer.more.space
         a(href=`${archives_base}`) 全記事一覧
 
-  .space
-
   .border
-
-  .space
-
   nav.section
     h2.section__heading
       span.visuallyHidden 年別記事一覧
       span(aria-hidden="true") year
     +year-list(years, archives_base)
 
-  .space
-
-  nav.section
+  nav.section.space
     h2.section__heading
       span.visuallyHidden タグ別記事一覧
       span(aria-hidden="true") tag
     +tag-list(tags, archives_base)
 
   if page_type === 'index'
-    .space
 
-    aside.section
+    aside.section.space
       h2.section__heading
         span.visuallyHidden 記事購読
         span(aria-hidden="true") subscribe
