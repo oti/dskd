@@ -1,5 +1,9 @@
 .border
-  width: 1rem
-  height: 1rem
-  border-radius: 1rem
-  background-color: c(accent)
+  &::before
+    content: ""
+    display: block
+    margin: $space 0
+    width: 1rem
+    height: 1rem
+    border-radius: 1rem
+    background-color: c(accent)
