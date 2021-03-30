@@ -145,7 +145,7 @@
       "page_id": "98",
       "page_tag": [
         "Advent Calendar",
-        "deisui_html"
+        "deisui_html_radio"
       ],
       "page_description": "ウェブ制作は孤独なのかもしれない。",
       "page_title": "#deisui_html_radio のこと"
@@ -1784,7 +1784,7 @@
         "page_id": "98",
         "page_tag": [
           "Advent Calendar",
-          "deisui_html"
+          "deisui_html_radio"
         ],
         "page_description": "ウェブ制作は孤独なのかもしれない。",
         "page_title": "#deisui_html_radio のこと"
@@ -2899,7 +2899,7 @@
         "page_title": "アクセシビリティはあなたビリティ"
       }
     ],
-    "deisui_html": [
+    "deisui_html_radio": [
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
@@ -2907,7 +2907,7 @@
         "page_id": "98",
         "page_tag": [
           "Advent Calendar",
-          "deisui_html"
+          "deisui_html_radio"
         ],
         "page_description": "ウェブ制作は孤独なのかもしれない。",
         "page_title": "#deisui_html_radio のこと"
@@ -3990,7 +3990,7 @@
         "page_id": "98",
         "page_tag": [
           "Advent Calendar",
-          "deisui_html"
+          "deisui_html_radio"
         ],
         "page_description": "ウェブ制作は孤独なのかもしれない。",
         "page_title": "#deisui_html_radio のこと"
