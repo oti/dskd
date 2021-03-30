@@ -17,8 +17,7 @@ block contents
     .post__body
       != contents
 
-    .border
-    aside.post__external
+    aside.post__external.border
       h2.visuallyHidden この記事にGitHubでパッチを送る
       +contribute(`${post_contribute}${page_id}.md`)
 
@@ -26,5 +25,4 @@ block contents
       h2.visuallyHidden この記事をSNSでシェア
       +social(page_title, `${blog_url}${archives_base}${page_id}.html`)
 
-  .border
   +neighbor(neighbors[page_id].newer, neighbors[page_id].older, archives_base)
