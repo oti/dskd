@@ -1,5 +1,4 @@
 {
-  "extends": "@markuplint/html-ls",
   "rules": {
     "attr-duplication": true,
     "attr-equal-space-after": true,
@@ -11,7 +10,12 @@
     "deprecated-element": true,
     "doctype": true,
     "id-duplication": true,
-    "landmark-roles": true,
+    "landmark-roles": {
+      "value": true,
+      "option": {
+        "ignoreRoles": ["complementary"]
+      }
+    },
     "permitted-contents": true,
     "required-attr": true,
     "required-h1": true,
