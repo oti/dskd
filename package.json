@@ -20,7 +20,8 @@
     "build": "gulp build",
     "lint-html": "markuplint dist/**/*.html --ruleset ./markuplintrc",
     "lint-css": "stylelint dist/css/*.css",
-    "test": "npm run lint-css && npm run lint-html && gulp validator"
+    "test": "npm run lint-css && npm run lint-html && gulp validator",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@prettier/plugin-pug": "^1.15.2",
@@ -55,18 +56,12 @@
     "stylelint": "^13.13.1",
     "stylelint-config-recommended": "^5.0.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
-    }
-  },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-customizable"
     },
     "cz-customizable": {
-      "config": "./.cz-config.js"
+      "config": ".cz-config.js"
     }
   }
 }
