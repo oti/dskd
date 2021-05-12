@@ -43,7 +43,6 @@
     "gulp-prettify": "^0.5.0",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
-    "gulp-w3c-html-validator": "^2.0.1",
     "html-validator-cli": "^7.0.1",
     "husky": "^6.0.0",
     "json-pretty": "0.0.1",
