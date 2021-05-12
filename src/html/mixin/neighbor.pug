@@ -1,6 +1,6 @@
 //- _neighbor.pug
 mixin neighbor(newer, older, archives_base)
-  nav.neighbor.border
+  nav.neighbor.border(aria-label="前後の記事")
     ul.neighbor__list
       if newer.page_title
         li.neighbor__item.-newer

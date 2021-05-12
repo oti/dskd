@@ -17,7 +17,7 @@ block contents
     .post__body
       != contents
 
-    aside.post__external.border
+    nav.post__external.border(aria-label="ソースとSNSシェアリンク")
       +contribute(`${post_contribute}${page_id}.md`)
       +social(page_title, `${blog_url}${archives_base}${page_id}.html`)
 

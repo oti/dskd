@@ -33,15 +33,15 @@ block contents
       footer.more.space
         a(href=`${archives_base}`) 全ての記事
 
-  nav.section.border
-    h2.section__heading 年別
+  nav.section.border(aria-labelledby="year-nav")
+    h2#year-nav.section__heading 年別
     +year-list(years, archives_base)
 
-  nav.section.space
-    h2.section__heading タグ別
+  nav.section.space(aria-labelledby="tag-nav")
+    h2#tag-nav.section__heading タグ別
     +tag-list(tags, archives_base)
 
   if page_type === 'index'
-    aside.section.space
-      h2.section__heading 購読
+    aside.section.space(aria-labelledby="describe-links")
+      h2#describe-links.section__heading 購読
       +subscribe-list
