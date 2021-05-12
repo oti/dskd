@@ -520,15 +520,6 @@
     {
       "layout": "./src/html/post.pug",
       "page_type": "post",
-      "page_datetime": "2014-05-24T13:51:12",
-      "page_id": "45",
-      "page_title": "人には難しい気がする機械の真偽",
-      "page_tag": ["JavaScript"],
-      "page_description": "素人なので簡単なことがわからない"
-    },
-    {
-      "layout": "./src/html/post.pug",
-      "page_type": "post",
       "page_datetime": "2014-05-07T11:47:45",
       "page_id": "44",
       "page_title": "Autoprefixerの@keyframes animation の処理に違和感があったけど、僕が間違っていた",
@@ -937,22 +928,12 @@
     },
     "44": {
       "newer": {
-        "page_id": "45",
-        "page_title": "人には難しい気がする機械の真偽"
-      },
-      "older": {
-        "page_id": "43",
-        "page_title": "BEMまとめ奴"
-      }
-    },
-    "45": {
-      "newer": {
         "page_id": "46",
         "page_title": "git filter-branchで過去の全てのcommitから画像ファイルの追加/変更をなかったことにしてリポジトリを軽量化する"
       },
       "older": {
-        "page_id": "44",
-        "page_title": "Autoprefixerの@keyframes animation の処理に違和感があったけど、僕が間違っていた"
+        "page_id": "43",
+        "page_title": "BEMまとめ奴"
       }
     },
     "46": {
@@ -961,8 +942,8 @@
         "page_title": "左右marginで任意の比率を保つ"
       },
       "older": {
-        "page_id": "45",
-        "page_title": "人には難しい気がする機械の真偽"
+        "page_id": "44",
+        "page_title": "Autoprefixerの@keyframes animation の処理に違和感があったけど、僕が間違っていた"
       }
     },
     "47": {
@@ -2269,15 +2250,6 @@
         "page_tag": ["Graph API", "JavaScript"],
         "page_description": "結論めんどい",
         "page_title": "Facebook Graph APIで自分の投稿をJSONで取得するためのアクセストークンを発行する旅"
-      },
-      {
-        "layout": "./src/html/post.pug",
-        "page_type": "post",
-        "page_datetime": "2014-05-24T13:51:12",
-        "page_id": "45",
-        "page_title": "人には難しい気がする機械の真偽",
-        "page_tag": ["JavaScript"],
-        "page_description": "素人なので簡単なことがわからない"
       }
     ],
     "Netlify": [
@@ -2935,15 +2907,6 @@
         "page_title": "git filter-branchで過去の全てのcommitから画像ファイルの追加/変更をなかったことにしてリポジトリを軽量化する",
         "page_tag": ["Git"],
         "page_description": "歴史の書き換えだぁ〜！"
-      },
-      {
-        "layout": "./src/html/post.pug",
-        "page_type": "post",
-        "page_datetime": "2014-05-24T13:51:12",
-        "page_id": "45",
-        "page_title": "人には難しい気がする機械の真偽",
-        "page_tag": ["JavaScript"],
-        "page_description": "素人なので簡単なことがわからない"
       },
       {
         "layout": "./src/html/post.pug",
