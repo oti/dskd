@@ -20,7 +20,7 @@
     "build": "gulp build",
     "lint-html": "markuplint dist/**/*.html --ruleset ./markuplintrc",
     "lint-css": "stylelint dist/css/*.css",
-    "test": "npm run lint-css && npm run lint-html && gulp validator",
+    "test": "npm run lint-css && npm run lint-html",
     "prepare": "husky install"
   },
   "devDependencies": {
