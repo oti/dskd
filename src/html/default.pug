@@ -63,7 +63,6 @@ html(lang="ja")
 
   body(class=page_type)
     .container
-      .space
       .header
         if POST || ABOUT
           p.logo
@@ -72,18 +71,10 @@ html(lang="ja")
           h1.logo
             include _logo
 
-      .space.-wide
-
-      main.contents
+      main.contents.space.-wide
         block contents
 
-      .space
-
-      .border
-
-      .space
-
-      footer.footer
+      footer.footer.border
         h2.visuallyHidden サイトフッター
         .author
           | このブログは
@@ -107,5 +98,3 @@ html(lang="ja")
               target="_blank"
             )
               small.license CC BY-NC
-
-      .space

@@ -19,7 +19,7 @@
       "page_id": "110",
       "page_tag": [
         "Advent Calendar",
-        "note"
+        "diary"
       ],
       "page_cover": "",
       "page_description": "2020年の気持ち、変えたこと、買ったもの、ウケた日常",
@@ -32,7 +32,7 @@
       "page_id": "109",
       "page_tag": [
         "Advent Calendar",
-        "a11y"
+        "accessibility"
       ],
       "page_cover": "",
       "page_description": "公開後1年以上過ぎてるけど寄せてる気持ちは変わらない",
@@ -44,7 +44,7 @@
       "page_datetime": "2020-08-20T00:47:39",
       "page_id": "108",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "ずっとずっとずっとずっと待ってる♪たとえ時代が合わなくったって♪",
       "page_title": "散文 2020-8-20"
@@ -55,7 +55,7 @@
       "page_datetime": "2020-05-20T14:54:48",
       "page_id": "107",
       "page_tag": [
-        "a11y"
+        "accessibility"
       ],
       "page_description": "アクセシビリティという言葉を使わずにアクセシビリティを話したスライドのブログ版",
       "page_title": "Web Creation in Society"
@@ -66,7 +66,7 @@
       "page_datetime": "2020-02-02T01:16:18",
       "page_id": "106",
       "page_tag": [
-        "a11y"
+        "accessibility"
       ],
       "page_description": "文字だけ拡大したいがそんなに大幅に拡大したいわけではないのだ。しかし文字だけ拡大はしたい。",
       "page_title": "僕は文字だけ拡大したい"
@@ -77,7 +77,7 @@
       "page_datetime": "2020-01-02T23:42:42",
       "page_id": "105",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "2020年の初夢",
       "page_title": "初夢 2020-01-02"
@@ -121,7 +121,7 @@
       "page_datetime": "2019-01-04T22:38:24",
       "page_id": "101",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "2019年の初夢",
       "page_title": "初夢 2019-01-02"
@@ -133,7 +133,7 @@
       "page_id": "100",
       "page_tag": [
         "Advent Calendar",
-        "a11y"
+        "accessibility"
       ],
       "page_description": "守る覚悟でなら地獄を進め",
       "page_title": "アクセシビリティはあなたビリティ"
@@ -145,7 +145,7 @@
       "page_id": "99",
       "page_tag": [
         "Advent Calendar",
-        "note"
+        "diary"
       ],
       "page_description": "2018年の総括",
       "page_title": "ベストオブ2018"
@@ -157,7 +157,7 @@
       "page_id": "98",
       "page_tag": [
         "Advent Calendar",
-        "deisui_html"
+        "deisui_html_radio"
       ],
       "page_description": "ウェブ制作は孤独なのかもしれない。",
       "page_title": "#deisui_html_radio のこと"
@@ -169,7 +169,7 @@
       "page_id": "97",
       "page_tag": [
         "Advent Calendar",
-        "note"
+        "diary"
       ],
       "page_description": "今日も出社してません。",
       "page_title": "自宅作業にして半年くらい経った"
@@ -216,7 +216,7 @@
       "page_datetime": "2018-01-03T19:18:05",
       "page_id": "93",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "2018年1月2日の夢",
       "page_title": "初夢 2018-01-02"
@@ -228,7 +228,7 @@
       "page_id": "92",
       "page_tag": [
         "Advent Calendar",
-        "note"
+        "diary"
       ],
       "page_description": "どっちかというと充実した一年だったんだと思う",
       "page_title": "ベストオブ2017"
@@ -263,7 +263,7 @@
       "page_datetime": "2017-08-16T18:58:17",
       "page_id": "89",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "2017年8月14日の夢",
       "page_title": "夢 2017-08-16"
@@ -274,7 +274,7 @@
       "page_datetime": "2017-04-21T20:51:34",
       "page_id": "88",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "仕事とは問題を解決すること",
       "page_title": "バグは出る"
@@ -297,7 +297,7 @@
       "page_id": "86",
       "page_tag": [
         "Advent Calendar",
-        "note"
+        "diary"
       ],
       "page_description": "2016年のベスト",
       "page_title": "ベストオブ2016"
@@ -321,7 +321,7 @@
       "page_id": "84",
       "page_title": "夢 2016-11-18",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "2016年11月17日の夢"
     },
@@ -332,7 +332,7 @@
       "page_id": "83",
       "page_title": "SKAGEN Rungsted Leather Watch",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "続・なぜ腕時計は増えていくのか"
     },
@@ -364,7 +364,7 @@
       "page_datetime": "2016-03-24T22:15:19",
       "page_id": "80",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "2016年3月23日の夢",
       "page_title": "夢 2016-03-23"
@@ -398,7 +398,7 @@
       "page_datetime": "2016-01-11T10:38:32",
       "page_id": "77",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_cover": "/img/lego-wall-e/lego-wall-e-01.jpg",
       "page_description": "30歳でもおもちゃは楽しい",
@@ -459,7 +459,7 @@
       "page_id": "72",
       "page_title": "Launch dskd v5",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "ブログをバージョンアップした。"
     },
@@ -470,7 +470,7 @@
       "page_id": "71",
       "page_title": "小さく持つ",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "宗教上の理由で小さいのが好き"
     },
@@ -503,7 +503,7 @@
       "page_id": "67",
       "page_title": "キーバインドの競合",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "あちらを立てればこちらが立たず"
     },
@@ -514,7 +514,7 @@
       "page_id": "66",
       "page_title": "開発環境構築作業の理想",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "男は黙って再インストール"
     },
@@ -525,7 +525,7 @@
       "page_id": "65",
       "page_title": "Launch dskd v4",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "BEM離れ"
     },
@@ -536,7 +536,7 @@
       "page_id": "64",
       "page_title": "SKAGEN BLUE DIALS",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "なぜ腕時計は増えていくのか"
     },
@@ -580,7 +580,7 @@
       "page_id": "56",
       "page_title": "UE BOOMを買った",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_cover": "/img/hello-ue-boom/01.jpg",
       "page_description": "無線スピーカーを買ったぞ！"
@@ -628,7 +628,7 @@
       "page_id": "49",
       "page_title": "適当とテキトー",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "ニュアンスの再定義みたいなこと"
     },
@@ -835,7 +835,7 @@
       "page_id": "27",
       "page_title": "次へ前ヘのボタンのどっちがどっちなのか試させないデザイン",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_cover": "/img/stated-slider/03.png",
       "page_description": "予想しにくいデザインはいやずら"
@@ -881,7 +881,7 @@
       "page_id": "14",
       "page_title": "「終わん寝」の提唱",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "終わらないから寝るとか"
     },
@@ -892,7 +892,7 @@
       "page_id": "13",
       "page_title": "GW",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "ゴールデンウィークの前半は日光の中禅寺湖畔へ足を運んだ"
     },
@@ -936,7 +936,7 @@
       "page_id": "1",
       "page_title": "よくわかんないんですけど",
       "page_tag": [
-        "note"
+        "diary"
       ],
       "page_description": "a.k.a initial commit"
     }
@@ -1756,7 +1756,7 @@
         "page_id": "110",
         "page_tag": [
           "Advent Calendar",
-          "note"
+          "diary"
         ],
         "page_cover": "",
         "page_description": "2020年の気持ち、変えたこと、買ったもの、ウケた日常",
@@ -1769,7 +1769,7 @@
         "page_id": "109",
         "page_tag": [
           "Advent Calendar",
-          "a11y"
+          "accessibility"
         ],
         "page_cover": "",
         "page_description": "公開後1年以上過ぎてるけど寄せてる気持ちは変わらない",
@@ -1782,7 +1782,7 @@
         "page_id": "100",
         "page_tag": [
           "Advent Calendar",
-          "a11y"
+          "accessibility"
         ],
         "page_description": "守る覚悟でなら地獄を進め",
         "page_title": "アクセシビリティはあなたビリティ"
@@ -1794,7 +1794,7 @@
         "page_id": "99",
         "page_tag": [
           "Advent Calendar",
-          "note"
+          "diary"
         ],
         "page_description": "2018年の総括",
         "page_title": "ベストオブ2018"
@@ -1806,7 +1806,7 @@
         "page_id": "98",
         "page_tag": [
           "Advent Calendar",
-          "deisui_html"
+          "deisui_html_radio"
         ],
         "page_description": "ウェブ制作は孤独なのかもしれない。",
         "page_title": "#deisui_html_radio のこと"
@@ -1818,7 +1818,7 @@
         "page_id": "97",
         "page_tag": [
           "Advent Calendar",
-          "note"
+          "diary"
         ],
         "page_description": "今日も出社してません。",
         "page_title": "自宅作業にして半年くらい経った"
@@ -1830,7 +1830,7 @@
         "page_id": "92",
         "page_tag": [
           "Advent Calendar",
-          "note"
+          "diary"
         ],
         "page_description": "どっちかというと充実した一年だったんだと思う",
         "page_title": "ベストオブ2017"
@@ -1855,7 +1855,7 @@
         "page_id": "86",
         "page_tag": [
           "Advent Calendar",
-          "note"
+          "diary"
         ],
         "page_description": "2016年のベスト",
         "page_title": "ベストオブ2016"
@@ -2884,7 +2884,7 @@
         "page_description": "僕のTKGオリジン"
       }
     ],
-    "a11y": [
+    "accessibility": [
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
@@ -2892,7 +2892,7 @@
         "page_id": "109",
         "page_tag": [
           "Advent Calendar",
-          "a11y"
+          "accessibility"
         ],
         "page_cover": "",
         "page_description": "公開後1年以上過ぎてるけど寄せてる気持ちは変わらない",
@@ -2904,7 +2904,7 @@
         "page_datetime": "2020-05-20T14:54:48",
         "page_id": "107",
         "page_tag": [
-          "a11y"
+          "accessibility"
         ],
         "page_description": "アクセシビリティという言葉を使わずにアクセシビリティを話したスライドのブログ版",
         "page_title": "Web Creation in Society"
@@ -2915,7 +2915,7 @@
         "page_datetime": "2020-02-02T01:16:18",
         "page_id": "106",
         "page_tag": [
-          "a11y"
+          "accessibility"
         ],
         "page_description": "文字だけ拡大したいがそんなに大幅に拡大したいわけではないのだ。しかし文字だけ拡大はしたい。",
         "page_title": "僕は文字だけ拡大したい"
@@ -2927,13 +2927,13 @@
         "page_id": "100",
         "page_tag": [
           "Advent Calendar",
-          "a11y"
+          "accessibility"
         ],
         "page_description": "守る覚悟でなら地獄を進め",
         "page_title": "アクセシビリティはあなたビリティ"
       }
     ],
-    "deisui_html": [
+    "deisui_html_radio": [
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
@@ -2941,13 +2941,13 @@
         "page_id": "98",
         "page_tag": [
           "Advent Calendar",
-          "deisui_html"
+          "deisui_html_radio"
         ],
         "page_description": "ウェブ制作は孤独なのかもしれない。",
         "page_title": "#deisui_html_radio のこと"
       }
     ],
-    "note": [
+    "diary": [
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
@@ -2955,7 +2955,7 @@
         "page_id": "110",
         "page_tag": [
           "Advent Calendar",
-          "note"
+          "diary"
         ],
         "page_cover": "",
         "page_description": "2020年の気持ち、変えたこと、買ったもの、ウケた日常",
@@ -2967,7 +2967,7 @@
         "page_datetime": "2020-08-20T00:47:39",
         "page_id": "108",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "ずっとずっとずっとずっと待ってる♪たとえ時代が合わなくったって♪",
         "page_title": "散文 2020-8-20"
@@ -2978,7 +2978,7 @@
         "page_datetime": "2020-01-02T23:42:42",
         "page_id": "105",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "2020年の初夢",
         "page_title": "初夢 2020-01-02"
@@ -2989,7 +2989,7 @@
         "page_datetime": "2019-01-04T22:38:24",
         "page_id": "101",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "2019年の初夢",
         "page_title": "初夢 2019-01-02"
@@ -3001,7 +3001,7 @@
         "page_id": "99",
         "page_tag": [
           "Advent Calendar",
-          "note"
+          "diary"
         ],
         "page_description": "2018年の総括",
         "page_title": "ベストオブ2018"
@@ -3013,7 +3013,7 @@
         "page_id": "97",
         "page_tag": [
           "Advent Calendar",
-          "note"
+          "diary"
         ],
         "page_description": "今日も出社してません。",
         "page_title": "自宅作業にして半年くらい経った"
@@ -3024,7 +3024,7 @@
         "page_datetime": "2018-01-03T19:18:05",
         "page_id": "93",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "2018年1月2日の夢",
         "page_title": "初夢 2018-01-02"
@@ -3036,7 +3036,7 @@
         "page_id": "92",
         "page_tag": [
           "Advent Calendar",
-          "note"
+          "diary"
         ],
         "page_description": "どっちかというと充実した一年だったんだと思う",
         "page_title": "ベストオブ2017"
@@ -3047,7 +3047,7 @@
         "page_datetime": "2017-08-16T18:58:17",
         "page_id": "89",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "2017年8月14日の夢",
         "page_title": "夢 2017-08-16"
@@ -3058,7 +3058,7 @@
         "page_datetime": "2017-04-21T20:51:34",
         "page_id": "88",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "仕事とは問題を解決すること",
         "page_title": "バグは出る"
@@ -3070,7 +3070,7 @@
         "page_id": "86",
         "page_tag": [
           "Advent Calendar",
-          "note"
+          "diary"
         ],
         "page_description": "2016年のベスト",
         "page_title": "ベストオブ2016"
@@ -3082,7 +3082,7 @@
         "page_id": "84",
         "page_title": "夢 2016-11-18",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "2016年11月17日の夢"
       },
@@ -3093,7 +3093,7 @@
         "page_id": "83",
         "page_title": "SKAGEN Rungsted Leather Watch",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "続・なぜ腕時計は増えていくのか"
       },
@@ -3103,7 +3103,7 @@
         "page_datetime": "2016-03-24T22:15:19",
         "page_id": "80",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "2016年3月23日の夢",
         "page_title": "夢 2016-03-23"
@@ -3114,7 +3114,7 @@
         "page_datetime": "2016-01-11T10:38:32",
         "page_id": "77",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_cover": "/img/lego-wall-e/lego-wall-e-01.jpg",
         "page_description": "30歳でもおもちゃは楽しい",
@@ -3127,7 +3127,7 @@
         "page_id": "72",
         "page_title": "Launch dskd v5",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "ブログをバージョンアップした。"
       },
@@ -3138,7 +3138,7 @@
         "page_id": "71",
         "page_title": "小さく持つ",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "宗教上の理由で小さいのが好き"
       },
@@ -3149,7 +3149,7 @@
         "page_id": "67",
         "page_title": "キーバインドの競合",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "あちらを立てればこちらが立たず"
       },
@@ -3160,7 +3160,7 @@
         "page_id": "66",
         "page_title": "開発環境構築作業の理想",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "男は黙って再インストール"
       },
@@ -3171,7 +3171,7 @@
         "page_id": "65",
         "page_title": "Launch dskd v4",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "BEM離れ"
       },
@@ -3182,7 +3182,7 @@
         "page_id": "64",
         "page_title": "SKAGEN BLUE DIALS",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "なぜ腕時計は増えていくのか"
       },
@@ -3193,7 +3193,7 @@
         "page_id": "56",
         "page_title": "UE BOOMを買った",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_cover": "/img/hello-ue-boom/01.jpg",
         "page_description": "無線スピーカーを買ったぞ！"
@@ -3205,7 +3205,7 @@
         "page_id": "49",
         "page_title": "適当とテキトー",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "ニュアンスの再定義みたいなこと"
       },
@@ -3216,7 +3216,7 @@
         "page_id": "27",
         "page_title": "次へ前ヘのボタンのどっちがどっちなのか試させないデザイン",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_cover": "/img/stated-slider/03.png",
         "page_description": "予想しにくいデザインはいやずら"
@@ -3228,7 +3228,7 @@
         "page_id": "14",
         "page_title": "「終わん寝」の提唱",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "終わらないから寝るとか"
       },
@@ -3239,7 +3239,7 @@
         "page_id": "13",
         "page_title": "GW",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "ゴールデンウィークの前半は日光の中禅寺湖畔へ足を運んだ"
       },
@@ -3250,7 +3250,7 @@
         "page_id": "1",
         "page_title": "よくわかんないんですけど",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "a.k.a initial commit"
       }
@@ -3265,7 +3265,7 @@
         "page_id": "1",
         "page_title": "よくわかんないんですけど",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "a.k.a initial commit"
       }
@@ -3325,7 +3325,7 @@
         "page_id": "14",
         "page_title": "「終わん寝」の提唱",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "終わらないから寝るとか"
       },
@@ -3336,7 +3336,7 @@
         "page_id": "13",
         "page_title": "GW",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "ゴールデンウィークの前半は日光の中禅寺湖畔へ足を運んだ"
       },
@@ -3512,7 +3512,7 @@
         "page_id": "27",
         "page_title": "次へ前ヘのボタンのどっちがどっちなのか試させないデザイン",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_cover": "/img/stated-slider/03.png",
         "page_description": "予想しにくいデザインはいやずら"
@@ -3526,7 +3526,7 @@
         "page_id": "56",
         "page_title": "UE BOOMを買った",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_cover": "/img/hello-ue-boom/01.jpg",
         "page_description": "無線スピーカーを買ったぞ！"
@@ -3574,7 +3574,7 @@
         "page_id": "49",
         "page_title": "適当とテキトー",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "ニュアンスの再定義みたいなこと"
       },
@@ -3690,7 +3690,7 @@
         "page_id": "72",
         "page_title": "Launch dskd v5",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "ブログをバージョンアップした。"
       },
@@ -3701,7 +3701,7 @@
         "page_id": "71",
         "page_title": "小さく持つ",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "宗教上の理由で小さいのが好き"
       },
@@ -3734,7 +3734,7 @@
         "page_id": "67",
         "page_title": "キーバインドの競合",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "あちらを立てればこちらが立たず"
       },
@@ -3745,7 +3745,7 @@
         "page_id": "66",
         "page_title": "開発環境構築作業の理想",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "男は黙って再インストール"
       },
@@ -3756,7 +3756,7 @@
         "page_id": "65",
         "page_title": "Launch dskd v4",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "BEM離れ"
       },
@@ -3767,7 +3767,7 @@
         "page_id": "64",
         "page_title": "SKAGEN BLUE DIALS",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "なぜ腕時計は増えていくのか"
       },
@@ -3813,7 +3813,7 @@
         "page_id": "86",
         "page_tag": [
           "Advent Calendar",
-          "note"
+          "diary"
         ],
         "page_description": "2016年のベスト",
         "page_title": "ベストオブ2016"
@@ -3837,7 +3837,7 @@
         "page_id": "84",
         "page_title": "夢 2016-11-18",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "2016年11月17日の夢"
       },
@@ -3848,7 +3848,7 @@
         "page_id": "83",
         "page_title": "SKAGEN Rungsted Leather Watch",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "続・なぜ腕時計は増えていくのか"
       },
@@ -3880,7 +3880,7 @@
         "page_datetime": "2016-03-24T22:15:19",
         "page_id": "80",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "2016年3月23日の夢",
         "page_title": "夢 2016-03-23"
@@ -3914,7 +3914,7 @@
         "page_datetime": "2016-01-11T10:38:32",
         "page_id": "77",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_cover": "/img/lego-wall-e/lego-wall-e-01.jpg",
         "page_description": "30歳でもおもちゃは楽しい",
@@ -3929,7 +3929,7 @@
         "page_id": "92",
         "page_tag": [
           "Advent Calendar",
-          "note"
+          "diary"
         ],
         "page_description": "どっちかというと充実した一年だったんだと思う",
         "page_title": "ベストオブ2017"
@@ -3964,7 +3964,7 @@
         "page_datetime": "2017-08-16T18:58:17",
         "page_id": "89",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "2017年8月14日の夢",
         "page_title": "夢 2017-08-16"
@@ -3975,7 +3975,7 @@
         "page_datetime": "2017-04-21T20:51:34",
         "page_id": "88",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "仕事とは問題を解決すること",
         "page_title": "バグは出る"
@@ -4000,7 +4000,7 @@
         "page_id": "100",
         "page_tag": [
           "Advent Calendar",
-          "a11y"
+          "accessibility"
         ],
         "page_description": "守る覚悟でなら地獄を進め",
         "page_title": "アクセシビリティはあなたビリティ"
@@ -4012,7 +4012,7 @@
         "page_id": "99",
         "page_tag": [
           "Advent Calendar",
-          "note"
+          "diary"
         ],
         "page_description": "2018年の総括",
         "page_title": "ベストオブ2018"
@@ -4024,7 +4024,7 @@
         "page_id": "98",
         "page_tag": [
           "Advent Calendar",
-          "deisui_html"
+          "deisui_html_radio"
         ],
         "page_description": "ウェブ制作は孤独なのかもしれない。",
         "page_title": "#deisui_html_radio のこと"
@@ -4036,7 +4036,7 @@
         "page_id": "97",
         "page_tag": [
           "Advent Calendar",
-          "note"
+          "diary"
         ],
         "page_description": "今日も出社してません。",
         "page_title": "自宅作業にして半年くらい経った"
@@ -4083,7 +4083,7 @@
         "page_datetime": "2018-01-03T19:18:05",
         "page_id": "93",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "2018年1月2日の夢",
         "page_title": "初夢 2018-01-02"
@@ -4129,7 +4129,7 @@
         "page_datetime": "2019-01-04T22:38:24",
         "page_id": "101",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "2019年の初夢",
         "page_title": "初夢 2019-01-02"
@@ -4143,7 +4143,7 @@
         "page_id": "109",
         "page_tag": [
           "Advent Calendar",
-          "a11y"
+          "accessibility"
         ],
         "page_cover": "",
         "page_description": "公開後1年以上過ぎてるけど寄せてる気持ちは変わらない",
@@ -4155,7 +4155,7 @@
         "page_datetime": "2020-08-20T00:47:39",
         "page_id": "108",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "ずっとずっとずっとずっと待ってる♪たとえ時代が合わなくったって♪",
         "page_title": "散文 2020-8-20"
@@ -4166,7 +4166,7 @@
         "page_datetime": "2020-05-20T14:54:48",
         "page_id": "107",
         "page_tag": [
-          "a11y"
+          "accessibility"
         ],
         "page_description": "アクセシビリティという言葉を使わずにアクセシビリティを話したスライドのブログ版",
         "page_title": "Web Creation in Society"
@@ -4177,7 +4177,7 @@
         "page_datetime": "2020-02-02T01:16:18",
         "page_id": "106",
         "page_tag": [
-          "a11y"
+          "accessibility"
         ],
         "page_description": "文字だけ拡大したいがそんなに大幅に拡大したいわけではないのだ。しかし文字だけ拡大はしたい。",
         "page_title": "僕は文字だけ拡大したい"
@@ -4188,7 +4188,7 @@
         "page_datetime": "2020-01-02T23:42:42",
         "page_id": "105",
         "page_tag": [
-          "note"
+          "diary"
         ],
         "page_description": "2020年の初夢",
         "page_title": "初夢 2020-01-02"
@@ -4214,7 +4214,7 @@
         "page_id": "110",
         "page_tag": [
           "Advent Calendar",
-          "note"
+          "diary"
         ],
         "page_cover": "",
         "page_description": "2020年の気持ち、変えたこと、買ったもの、ウケた日常",

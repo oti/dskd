@@ -1,7 +1,7 @@
 {
   "name": "dskd",
   "description": "ウェブ制作にまつわる雑記を主としたウェブログです。2010年12月より公開。",
-  "version": "7.7.0",
+  "version": "7.8.0",
   "license": "CC BY-NC",
   "author": "oti",
   "keywords": [
@@ -48,7 +48,7 @@
     "json-pretty": "0.0.1",
     "list-stream": "^2.0.0",
     "markuplint": "^1.6.1",
-    "postcss": "^8.2.8",
+    "postcss": "^8.2.10",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
     "pug": "^3.0.2",
