@@ -5,4 +5,4 @@ mixin timestamp(time)
     const yyyy = yyyymmdd.split('-')[0]
     const mm = Number(yyyymmdd.split('-')[1])
     const dd = Number(yyyymmdd.split('-')[2])
-  time(datetime=`${time}+09:00`)= `${yyyy}年${mm}月${dd}日`
+  time.timestamp(datetime=`${time}+09:00`)= `${yyyy}年${mm}月${dd}日`

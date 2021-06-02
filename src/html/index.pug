@@ -23,11 +23,7 @@ block contents
         each post, i in post_list
           li.postList__item(id=`post-${post.page_id}`)
             a.postList__title(href=`${archives_base}${post.page_id}.html`)= post.page_title
-            p.postList__time
-              +timestamp(post.page_datetime)
-            .postList__tag
-              span.visuallyHidden タグ
-              +tagging(post.page_tag)
+            +post-info(post.page_datetime, post.page_tag)
 
     if page_type === 'index'
       footer.more.space

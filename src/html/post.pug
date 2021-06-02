@@ -4,15 +4,9 @@ extends default
 
 block contents
   article.post
-    footer.post__footer
-      .post__timestamp
-        +timestamp(page_datetime)
-      .post__tag
-        span.visuallyHidden タグ
-        +tagging(page_tag)
-
     header.post__header
       h1.post__title= page_title
+      +post-info(page_datetime, page_tag)
 
     .post__body
       != contents
