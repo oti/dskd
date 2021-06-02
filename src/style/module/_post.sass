@@ -42,8 +42,25 @@
     font-weight: bold
     font-style: normal
 
+  mark
+    padding-left: 2px
+    padding-right: 2px
+    background-color: c(mark)
+
+  img
+    max-width: 100%
+    height: auto
+    box-shadow: 0 0 0 1px c(sub)
+
+    &.-post110
+      float: right
+      margin-left: 1em
+      margin-bottom: 1em
+      width: 30%
+      max-width: 240px
+
   pre
-    margin: 1em 0
+    margin: 2em 0
     padding: 10px
     border-radius: 3px
     font-size: 1rem
@@ -54,45 +71,48 @@
     code
       background-color: transparent
 
-  mark
-    padding-left: 2px
-    padding-right: 2px
-    background-color: c(mark)
+  code
+    padding: 0 2px
+    border-radius: 3px
+    font-size: inherit
+    font-family: Consolas, monospace
+    word-break: break-word
+    background-color: #fff
 
   ins
     text-decoration: none
 
   aside
-    margin: 1em 0 1em 25%
+    max-width: 32em
+    margin-left: auto
     font-size: 1rem
 
   hr
     position: relative
-    margin: 4em auto
-    height: 6px
+    margin: 5em 0
     border: none
-    line-height: 0
-    &::after
-      position: absolute
-      top: calc(50% - 3px)
-      left: 0
+    line-height: 1
+    &::before
       content: ""
-      width: 1.125rem
-      height: 6px
-      background-color: c(sub)
+      position: absolute
+      top: calc(50% - 1px)
+      left: 0
+      width: 20em
+      height: 1px
+      background-color: c(text)
+    &::after
+      content: "✳　✳　✳"
+      padding-left: 1em
 
-  ul,
-  ol
-    margin: 1em 0
-    line-height: 1.4
-
+  ul,ol
+    margin-left: 3em
+    max-width: 45em
+    line-height: 1.6
     > li
-      margin-left: 2em
-
-    ul, ol
+      margin-top: 0.5em
 
   table
-    margin: 1em 0
+    margin: 2em 0
     width: 100%
     border-collapse: collapse
     font-size: 1rem
@@ -100,28 +120,24 @@
     line-height: 1.4
 
   caption
+    padding: 3px
+    border: 1px solid rgba(0,0,0, 0.15)
+    border-bottom: 0 none
     font-weight: bold
     background-color: c(sub)
 
-  tr
-    border-top: 1px solid rgba(0,0,0, 0.3)
-
-  tr:nth-child(2n)
-    background-color: rgba(255,255,255, 0.3)
+  tbody
+    tr:nth-child(2n+1)
+      background-color: rgba(255,255,255, 0.3)
 
   th,td
-    padding: 3px
-
-  th,td
-    &:not(:first-child)
-      border-left: 1px solid rgba(0,0,0, 0.3)
-
-  .table--post48 td
-    padding-top: 10px
-    padding-bottom: 10px
+    padding: 5px
+    word-break: break-all
+    border: 1px solid rgba(0,0,0, 0.2)
+    word-break: break-word
 
   blockquote
-    margin: 1em 0;
+    margin: 2em 0;
     padding: 10px
     border-radius: 3px
     background-color: rgba(255,255,255, 0.3)
@@ -136,6 +152,7 @@
       text-align: right
 
   iframe
+    margin: 2em 0
     border: 0 none
     width: 100%
 
