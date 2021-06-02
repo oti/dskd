@@ -4,7 +4,7 @@ mixin year-list(years, archives_base)
     each year, i in Object.keys(years).sort((a, b) => b.localeCompare(a))
       li.yearList__item
         a(
-          class=page_title === year && '-current',
+          class=page_title === Number(year) && '-current',
           href=`${archives_base}${year}.html`,
-          aria-current=page_title === year && 'page'
+          aria-current=page_title === Number(year) && 'page'
         )= year
