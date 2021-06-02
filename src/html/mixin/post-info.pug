@@ -1,0 +1,11 @@
+include timestamp
+include tagging
+
+//- timestamp.pug
+mixin post-info(time, tags)
+  .postInfo
+    p.postInfo__timestamp
+      +timestamp(time)
+    .postInfo__tagging
+      span.visuallyHidden タグ
+      +tagging(tags)
