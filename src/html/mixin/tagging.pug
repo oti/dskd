@@ -1,12 +1,8 @@
 //- _tagging.pug
-mixin tagging(page_tag, page_type)
+mixin tagging(tags)
   ul.tagging
-    each tag, i in page_tag
-      if page_type === 'post'
-        li.tagging__item
-          a(
-            href=`${archives_base}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`
-          )= tag
-      else if page_type !== 'tag' && index_title !== tag
-        li.tagging__item
-          span.tagging__item= tag
+    each tag in tags
+      li.tagging__item
+        a(
+          href=`${archives_base}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`
+        )= tag

@@ -27,7 +27,7 @@ block contents
               +timestamp(post.page_datetime)
             .postList__tag
               span.visuallyHidden タグ
-              +tagging(post.page_tag, post.page_type)
+              +tagging(post.page_tag)
 
     if page_type === 'index'
       footer.more.space
