@@ -3,10 +3,10 @@
     content: ""
     display: block
     width:  0
-    height: $space
+    height: var(--space)
   &.-thin
     &::before
-      height: $space / 2
+      height: calc(var(--space) / 2)
   &.-wide
     &::before
-      height: $space * 2
+      height: calc(var(--space) * 2)
