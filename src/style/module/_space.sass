@@ -3,10 +3,10 @@
     content: ""
     display: block
     width:  0
-    height: var(--space)
+    height: var(--space-default)
   &.-thin
     &::before
-      height: calc(var(--space) / 2)
+      height: var(--space-small)
   &.-wide
     &::before
-      height: calc(var(--space) * 2)
+      height: var(--space-large)
