@@ -40,6 +40,9 @@
     height: auto
     box-shadow: 0 0 0 1px var(--color-sub)
 
+    @media (prefers-color-scheme: dark)
+      filter: brightness(85%)
+
     &.-post110
       float: right
       margin-left: 1em
@@ -134,6 +137,8 @@
     margin: 2rem 0
     border: 0 none
     width: 100%
+    @media (prefers-color-scheme: dark)
+      filter: brightness(85%)
 
 .post__external
   font-size: 1rem
