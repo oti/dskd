@@ -2,7 +2,7 @@
 
 .post__title
   font-size: 2rem
-  line-height: 1.6
+  line-height: var(--line-height-medium)
 
 .post__body
   overflow-wrap: break-word
@@ -15,7 +15,7 @@
   p
     max-width: 39em
     margin: 2rem 0
-    line-height: 1.8
+    line-height: var(--line-height-large)
 
   .frame
     max-width: initial;
@@ -53,7 +53,7 @@
     border-radius: 3px
     font-size: 1rem
     font-family: Consolas, monospace
-    line-height: 1.1
+    line-height: var(--line-height-tiny)
     overflow: auto
     background-color: var(--color-sub)
     code
@@ -79,14 +79,14 @@
     position: relative
     margin: 5rem 0
     border: none
-    line-height: 1
+    line-height: var(--line-height-base)
     &::after
       content: "◦◦◦◦◦◦"
 
   ul,ol
     margin-left: 3em
     max-width: 45em
-    line-height: 1.6
+    line-height: var(--line-height-medium)
     > li
       margin-top: 0.5em
 
@@ -96,7 +96,7 @@
     border-collapse: collapse
     font-size: 1rem
     text-align: center
-    line-height: 1.4
+    line-height: var(--line-height-small)
 
   caption
     padding: 3px
