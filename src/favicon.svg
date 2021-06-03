@@ -1,0 +1,19 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<style>
+			:root {
+				--fill: #1B1C1F;
+			}
+
+			@media (prefers-color-scheme: dark) {
+				:root {
+					--fill: #f1f2f3;
+				}
+			}
+		</style>
+	</defs>
+  <path
+    d="M18.1361 23C9.34649 23 0 20.5979 0 16.1429C0 11.6878 9.34649 9.28571 18.1361 9.28571C22.4956 9.28571 26.6888 9.8426 29.9179 10.8358L29.9221 7H32V20.706L31.3351 20.9636C27.973 22.2561 23.1647 23 18.1361 23Z"
+    fill="var(--fill)"
+  />
+</svg>
