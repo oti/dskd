@@ -1,31 +1,11 @@
 .logo
-  width: 45px
+  width: 72px
+  height: 36px
 
 .logo__link
+  display: block
   line-height: var(--line-height-base)
 
 .logo__icon
-  fill: none
-  stroke: var(--color-text)
-  stroke-width: 2
-  stroke-linecap: round
-  stroke-linejoin: round
-  stroke-miterlimit: 10
-  transition: stroke .15s ease-out
-  .index &
-    stroke-dasharray: 180
-    stroke-dashoffset: 180
-    animation-name: logo_show
-    animation-duration: 1s
-    animation-timing-function: ease-out
-    animation-delay: .5s
-    animation-fill-mode: forwards
-
-  @keyframes logo_show
-    0%
-      stroke-dashoffset: 180
-    100%
-      stroke-dashoffset: 0
-
-  &:hover
-    stroke: var(--color-hover)
+  fill: var(--color-text)
+  vertical-align: top
