@@ -103,19 +103,19 @@
 
   caption
     padding: 3px
-    border: 1px solid rgba(0,0,0, 0.15)
+    border: 1px solid var(--color-table-border)
     border-bottom: 0 none
     font-weight: bold
-    background-color: var(--color-sub)
+    background-color: var(--color-table-caption)
 
   tbody
-    tr:nth-child(2n+1)
-      background-color: rgba(255,255,255, 0.3)
+    tr:nth-child(2n)
+      background-color: var(--color-table-stripe)
 
   th,td
     padding: 5px
     word-break: break-all
-    border: 1px solid rgba(0,0,0, 0.2)
+    border: 1px solid var(--color-table-border)
     word-break: break-word
 
   blockquote
