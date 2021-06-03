@@ -21,7 +21,7 @@ const feed = () => {
       layout((file) => ({
         ...config,
         ...file.frontMatter,
-        ...require("../../src/json/data.json"),
+        ...require("../../src/json/posts.json"),
       }))
     )
     .pipe(prettify({ indent_char: " ", indent_size: 2 }))
