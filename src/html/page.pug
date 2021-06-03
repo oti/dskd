@@ -1,11 +1,9 @@
-//- _page.pug
-//- 単一ページ用テンプレート
 extends default
 
 block contents
-  article.post
-    header.post__header
-      h1.post__title= page_title
+  article
+    header
+      h1= page_title
 
-    .post__body
+    div
       != contents

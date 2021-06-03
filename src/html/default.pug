@@ -18,12 +18,7 @@
   const og_type = INDEX ? 'website' : 'article'
 
 include mixin/post-info
-include mixin/tag-list
-include mixin/year-list
-include mixin/subscribe-list
-include mixin/contribute
-include mixin/social
-include mixin/neighbor
+
 doctype html
 html(lang="ja")
   head
@@ -62,39 +57,45 @@ html(lang="ja")
     link(href=url, rel="canonical")
 
   body(class=page_type)
-    .container
-      .header
-        if POST || ABOUT
-          p.logo
-            include _logo
-        else
-          h1.logo
-            include _logo
-
-      main.contents.space.-wide
-        block contents
-
-      footer.footer.border
-        h2.visuallyHidden サイトフッター
-        .author
-          | このブログは
-          address.author__address: a(href=`mailto:${blog_address}`) 越智
-          | が作りました。
-        ul.subinfo
-          li.subinfo__item
-            a(href="/about.html", aria-current=page_type === 'about' && 'page') dskdとは何か？
-          li.subinfo__item
-            a(
-              href=`${blog_url}${blog_feed}`,
-              aria-label="このブログのRSS",
-              target="_blank",
-              rel="noopener"
-            ) RSS
-          li.subinfo__item
-            a(
-              href="https://creativecommons.org/licenses/by-nc/4.0/deed.ja",
-              rel="license noopener",
-              aria-label="このブログはクリエイティブコモンズライセンス、表示−非営利 4.0 国際で提供されています",
-              target="_blank"
+    header
+      nav
+        a(href="/", title="ブログホーム")
+          svg(
+            role="img",
+            xmlns="http://www.w3.org/2000/svg",
+            width="72",
+            height="36",
+            viewBox="0 0 72 36"
+          )
+            title= blog_name
+            path(
+              d="M40.81 36C21.03 36 0 30.59 0 20.58C0 10.57 21.03 5.15 40.81 5.15C50.09 5.15 59.04 6.28 66.13 8.29C66.73 8.46 67.32 8.02 67.32 7.39V2C67.32 0.9 68.22 0 69.32 0H72V30.84L70.5 31.42C62.94 34.33 52.12 36 40.81 36Z"
             )
-              small.license CC BY-NC
+
+    main
+      block contents
+
+    footer
+      div
+        | このブログは越智（oti / otiext）が作り、
+        a(
+          href="https://creativecommons.org/licenses/by-nc/4.0/deed.ja",
+          rel="license noopener",
+          aria-label="このブログはクリエイティブコモンズライセンス、表示−非営利 4.0 国際で提供されています",
+          target="_blank"
+        ) CC BY-NC
+        | の元に公開しています。
+      ul
+        li
+          a(href="/about.html", aria-current=page_type === ABOUT && 'page') dskdとは何か？
+        li
+          a(href=`${blog_url}${blog_feed}`, target="_blank", rel="noopener") RSS
+        li
+          a(
+            href=`https://twitter.com/${blog_twitter}`,
+            target="_blank",
+            rel="noopener"
+          )= `@${blog_twitter}`
+        li
+          address
+            a(href=`mailto:${blog_address}`)= blog_address

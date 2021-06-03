@@ -1,43 +1,47 @@
-//- _index.pug
-//- ブログトップ、全記事一覧、タグ一覧、年別記事一覧テンプレート
 extends default
 
 block contents
   -
-    const heading = page_type === 'index' ? '最近の記事' : page_description
-    const post_list =
-      page_type === 'index'
+    const heading = INDEX ? '最近の記事' : page_description
+    const posts = INDEX
         ? archives.slice(0,5) //- indexでは5件出力だけ出力する
-        : page_type === 'archives'
+        : ARCHIVES
           ? archives
-          : page_type === 'tag'
+          : TAG
             ? tags[page_title]
-            : page_type === 'year'
+            : YEAR
               ? years[page_title]
               : []
 
   section
-    .section
-      h2.section__heading= heading
-      ul.postList
-        each post, i in post_list
-          li.postList__item(id=`post-${post.page_id}`)
-            a.postList__title(href=`${archives_base}${post.page_id}.html`)= post.page_title
-            +post-info(post.page_datetime, post.page_tag)
+    h2= heading
+    ul
+      each post in posts
+        li
+          a(href=`${archives_base}${post.page_id}.html`)= post.page_title
+          +post-info(post.page_datetime, post.page_tag)
 
-    if page_type === 'index'
-      footer.more.space
+    if page_type === INDEX
+      nav
         a(href=`${archives_base}`) 全ての記事
 
-  nav.section.border(aria-labelledby="year-nav")
-    h2#year-nav.section__heading 年別
-    +year-list(years, archives_base)
+  nav
+    h2 年別
+    ol(reversed)
+      each year, i in Object.keys(years).sort((a, b) => b.localeCompare(a))
+        li
+          a(
+            class=page_title === Number(year) && '-current',
+            href=`${archives_base}${year}.html`,
+            aria-current=page_title === Number(year) && 'page'
+          )= year
 
-  nav.section.space(aria-labelledby="tag-nav")
-    h2#tag-nav.section__heading タグ別
-    +tag-list(tags, archives_base)
-
-  if page_type === 'index'
-    aside.section.space(aria-labelledby="describe-links")
-      h2#describe-links.section__heading 購読
-      +subscribe-list
+    h2 タグ別
+    ul
+      each tag, i in Object.keys(tags).sort((a, b) => a.localeCompare(b))
+        li
+          a(
+            class=page_title === tag && '-current',
+            href=`${archives_base}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`,
+            aria-current=page_title === tag && 'page'
+          )= tag

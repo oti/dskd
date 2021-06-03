@@ -1,18 +1,49 @@
-//- _post.pug
-//- 個別記事用テンプレート
 extends default
 
 block contents
-  article.post
-    header.post__header
-      h1.post__title= page_title
+  -
+    const escaped_title = encodeURIComponent(page_title)
+    const escaped_permalink = encodeURIComponent(`${blog_url}${archives_base}${page_id}.html`)
+    const tw_href = `https://twitter.com/intent/tweet?text=${escaped_title}&url=${escaped_permalink}&via=dskd_jp&related=otiext`
+    const fb_href = `https://www.facebook.com/share.php?u=${escaped_permalink}`
+    const hb_href = `http://b.hatena.ne.jp/my/add.confirm?title=${escaped_title}&url=${escaped_permalink}`
+    const neighbor = neighbors[page_id]
+    const newer = neighbor.newer
+    const older = neighbor.older
+  article
+    header
+      h1= page_title
       +post-info(page_datetime, page_tag)
 
-    .post__body
+    div
       != contents
 
-    nav.post__external.border(aria-label="ソースとSNSシェアリンク")
-      +contribute(`${post_contribute}${page_id}.md`)
-      +social(page_title, `${blog_url}${archives_base}${page_id}.html`)
+    nav
+      ul
+        li
+          a(href=`${post_contribute}${page_id}.md`) ソース（GitHub）
+        li
+          a(
+            href=tw_href,
+            onclick="window.open(this.href, 'share_twitter_window', 'width=450, height=258, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+          ) Twitter
+        li
+          a(
+            href=fb_href,
+            onclick="window.open(this.href, 'share_facebook_window', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+          ) Facebook
+        li
+          a(
+            href=hb_href,
+            onclick="window.open(this.href, 'add_hatena_window', 'width=960, height=500, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+          ) はてブ
 
-  +neighbor(neighbors[page_id].newer, neighbors[page_id].older, archives_base)
+      ul
+        if newer.page_title
+          li
+            a(href=`${archives_base}${newer.page_id}.html`)= newer.page_title
+            span （1つ未来）
+        if older.page_title
+          li
+            a(href=`${archives_base}${older.page_id}.html`)= older.page_title
+            span （1つ過去）

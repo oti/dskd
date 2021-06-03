@@ -1,8 +1,7 @@
-//- _tagging.pug
 mixin tagging(tags)
-  ul.tagging
+  ul
     each tag in tags
-      li.tagging__item
+      li
         a(
           href=`${archives_base}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`
         )= tag
