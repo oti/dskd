@@ -17,7 +17,7 @@ const posts = () => {
     .pipe(
       listStream.obj((err, data) => {
         if (err) throw err;
-        const posts = data
+        const md = data
           .map((post) => post.frontMatter)
           .sort((a, b) =>
             Number(
@@ -27,12 +27,12 @@ const posts = () => {
             )
           );
         fs.writeFileSync(
-          "./src/json/data.json",
+          "./src/json/posts.json",
           jsonPretty({
-            archives: posts,
-            neighbors: neighborsJson(posts),
-            tags: tagsJson(posts),
-            years: yearsJson(posts),
+            archives: md,
+            neighbors: neighborsJson(md),
+            tags: tagsJson(md),
+            years: yearsJson(md),
           })
         );
       })
