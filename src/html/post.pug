@@ -14,7 +14,7 @@ block contents
   article.Post.Border
     h1= page_title
 
-    +publish(page_datetime, page_tag)
+    +publish(page_datetime, page_tag, null)
 
     != contents
 
@@ -37,6 +37,7 @@ block contents
           href=hb_href,
           onclick="window.open(this.href, 'add_hatena_window', 'width=960, height=500, menubar=no, toolbar=no, scrollbars=yes'); return false;"
         ) はてブ
+
   .Border
     ul.Neighbor
       if newer.page_title
