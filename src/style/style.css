@@ -304,9 +304,6 @@ body > header > h1 {
   font-size: var(--font-size-default);
   line-height: var(--line-height-small);
 }
-.Share > li {
-  list-style: none;
-}
 
 .Neighbor {
   font-size: var(--font-size-default);
@@ -375,9 +372,6 @@ body > header > h1 {
   margin-top: var(--space-small);
   font-size: var(--font-size-default);
   line-height: var(--line-height-small);
-}
-.Pages li {
-  list-style: none;
 }
 .Pages address {
   display: inline;
