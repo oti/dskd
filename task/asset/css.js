@@ -5,7 +5,6 @@ const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
 const csswring = require("csswring");
 const mqpacker = require("css-mqpacker");
-const sass = require("gulp-sass");
 
 const css = () => {
   return gulp
