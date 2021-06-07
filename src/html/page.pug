@@ -1,9 +1,7 @@
 extends default
 
 block contents
-  article
-    header
-      h1= page_title
+  article.Post.Border
+    h1= page_title
 
-    div
-      != contents
+    != contents
