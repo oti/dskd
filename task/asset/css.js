@@ -9,9 +9,8 @@ const sass = require("gulp-sass");
 
 const css = () => {
   return gulp
-    .src("./src/style/*.sass")
+    .src("./src/style/*.css")
     .pipe(plumber())
-    .pipe(sass().on("error", sass.logError))
     .pipe(postcss([autoprefixer({ grid: true }), mqpacker(), csswring()]))
     .pipe(gulp.dest("./dist/css/"))
     .pipe(browserSync.stream());
