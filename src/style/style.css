@@ -321,6 +321,10 @@ body > header > h1 {
   line-height: var(--line-height-small);
 }
 
+.Primary + .Posts {
+  margin-top: var(--space-medium);
+}
+
 .Posts > li {
   list-style: none;
 }
