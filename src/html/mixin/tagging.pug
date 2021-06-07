@@ -1,7 +1,0 @@
-mixin tagging(tags)
-  ul
-    each tag in tags
-      li
-        a(
-          href=`${archives_base}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`
-        )= tag
