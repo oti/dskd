@@ -1,0 +1,22 @@
+mixin publish(time, tags, page_title)
+  -
+    const dtf = new Intl.DateTimeFormat('ja-JP', {
+      year: 'numeric',
+      month: 'narrow',
+      day: 'numeric'
+    })
+    const date = new Date(time)
+    const pubdate = dtf.format(date)
+  dl.Publish
+    dt.Invisible 公開日
+    dd
+      time(datetime=`${time}+09:00`)= pubdate
+    dt.Invisible タギング
+    each tag in tags
+      if page_title === tag
+        dd= tag
+      else
+        dd
+          a(
+            href=`${archives_base}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`
+          )= tag

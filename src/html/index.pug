@@ -19,7 +19,7 @@ block contents
       each post in posts
         li
           a(href=`${archives_base}${post.page_id}.html`)= post.page_title
-          +post-info(post.page_datetime, post.page_tag)
+          +publish(post.page_datetime, post.page_tag, page_title)
 
     if INDEX
       p.More
