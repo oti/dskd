@@ -200,9 +200,6 @@ body > header > h1 {
   overflow: auto;
   background-color: var(--color-sub);
 }
-.Post pre code {
-  background-color: transparent;
-}
 .Post code {
   padding: 0 2px;
   border-radius: 3px;
@@ -210,6 +207,9 @@ body > header > h1 {
   font-family: Consolas, monospace;
   word-break: break-word;
   background-color: var(--color-code);
+}
+.Post pre code {
+  background-color: transparent;
 }
 .Post ins {
   text-decoration: none;
