@@ -10,40 +10,40 @@ block contents
     const neighbor = neighbors[page_id]
     const newer = neighbor.newer
     const older = neighbor.older
-  article
-    header
-      h1= page_title
-      +post-info(page_datetime, page_tag)
 
-    div
-      != contents
+  article.Post.Border
+    h1= page_title
 
-    nav
-      ul
-        li
-          a(href=`${post_contribute}${page_id}.md`) ソース（GitHub）
-        li
-          a(
-            href=tw_href,
-            onclick="window.open(this.href, 'share_twitter_window', 'width=450, height=258, menubar=no, toolbar=no, scrollbars=yes'); return false;"
-          ) Twitter
-        li
-          a(
-            href=fb_href,
-            onclick="window.open(this.href, 'share_facebook_window', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"
-          ) Facebook
-        li
-          a(
-            href=hb_href,
-            onclick="window.open(this.href, 'add_hatena_window', 'width=960, height=500, menubar=no, toolbar=no, scrollbars=yes'); return false;"
-          ) はてブ
+    +publish(page_datetime, page_tag)
 
-      ul
-        if newer.page_title
-          li
-            a(href=`${archives_base}${newer.page_id}.html`)= newer.page_title
-            span （1つ未来）
-        if older.page_title
-          li
-            a(href=`${archives_base}${older.page_id}.html`)= older.page_title
-            span （1つ過去）
+    != contents
+
+  .Border
+    ul.Share
+      li
+        a(href=`${post_contribute}${page_id}.md`) ソース（GitHub）
+      li
+        a(
+          href=tw_href,
+          onclick="window.open(this.href, 'share_twitter_window', 'width=450, height=258, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+        ) Twitter
+      li
+        a(
+          href=fb_href,
+          onclick="window.open(this.href, 'share_facebook_window', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+        ) Facebook
+      li
+        a(
+          href=hb_href,
+          onclick="window.open(this.href, 'add_hatena_window', 'width=960, height=500, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+        ) はてブ
+  .Border
+    ul.Neighbor
+      if newer.page_title
+        li
+          a(href=`${archives_base}${newer.page_id}.html`)= newer.page_title
+          span （1つ未来）
+      if older.page_title
+        li
+          a(href=`${archives_base}${older.page_id}.html`)= older.page_title
+          span （1つ過去）
