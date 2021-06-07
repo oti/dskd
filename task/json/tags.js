@@ -16,7 +16,7 @@ const tags = (posts) => {
         if (!memo[key]) {
           memo[key] = [];
           // tags_name ごとに mdファイルを writeFile
-          const yaml_block = `---\nlayout: ./src/html/index.pug\npage_type: tag\npage_title: ${key}\npage_description: ${key}カテゴリの記事一覧\n---\n`;
+          const yaml_block = `---\nlayout: ./src/html/index.pug\npage_type: tag\npage_title: ${key}\npage_description: ${key}タグの記事一覧\n---\n`;
           const safe_name = key.toLowerCase().replace(/[ .-]/g, "_");
           fs.writeFileSync(`./src/md/archives/${safe_name}.md`, yaml_block);
         }

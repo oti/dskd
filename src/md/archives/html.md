@@ -2,5 +2,5 @@
 layout: ./src/html/index.pug
 page_type: tag
 page_title: HTML
-page_description: HTMLカテゴリの記事一覧
+page_description: HTMLタグの記事一覧
 ---

@@ -2,5 +2,5 @@
 layout: ./src/html/index.pug
 page_type: tag
 page_title: Netlify
-page_description: Netlifyカテゴリの記事一覧
+page_description: Netlifyタグの記事一覧
 ---
