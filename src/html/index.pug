@@ -21,8 +21,8 @@ block contents
           a(href=`${archives_base}${post.page_id}.html`)= post.page_title
           +post-info(post.page_datetime, post.page_tag)
 
-    if page_type === INDEX
-      nav
+    if INDEX
+      p.More
         a(href=`${archives_base}`) 全ての記事
 
   section.Border
