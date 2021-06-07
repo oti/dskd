@@ -1,0 +1,407 @@
+/*! style.css | MIT License */
+
+:root {
+  --color-background: #f1f2f3;
+  --color-sub: #d9dce2;
+  --color-accent: #b8bed0;
+  --color-text: #1b1c1f;
+  --color-mark: #fff200;
+  --color-code: #ffffff;
+  --color-strong: #dd0000;
+  --color-frame: #ffffff;
+  --color-link: #336699;
+  --color-visited: var(--color-text);
+  --color-hover: var(--color-text);
+  --color-active: var(--color-text);
+  --color-focus: var(--color-text);
+  --color-table-border: #d9dcdf;
+  --color-table-caption: #d9dcdf;
+  --color-table-stripe: #eaecee;
+  --font-size-default: 1rem;
+  --font-size-tiny: calc(var(--font-size-default) * 1.125);
+  --font-size-small: calc(var(--font-size-default) * 1.25);
+  --font-size-medium: calc(var(--font-size-default) * 1.375);
+  --font-size-large: calc(var(--font-size-default) * 1.5);
+  --font-size-huge: calc(var(--font-size-default) * 2);
+  --space-default: 4rem;
+  --space-micro: calc(var(--space-default) / 8);
+  --space-tiny: calc(var(--space-default) / 4);
+  --space-small: calc(var(--space-default) / 2);
+  --space-medium: calc(var(--space-default) * 1.5);
+  --space-large: calc(var(--space-default) * 2);
+  --line-height-default: 1;
+  --line-height-tiny: calc(var(--line-height-default) * 1.1);
+  --line-height-small: calc(var(--line-height-default) * 1.4);
+  --line-height-medium: calc(var(--line-height-default) * 1.6);
+  --line-height-large: calc(var(--line-height-default) * 1.8);
+  --width-column: 64rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #1b1c1f;
+    --color-sub: #2d3542;
+    --color-accent: #d9dce2;
+    --color-text: #e3e3e4;
+    --color-mark: #9e0072;
+    --color-code: #383f52;
+    --color-strong: #ffa9a9;
+    --color-frame: #36383f;
+    --color-link: #88b0d8;
+    --color-table-border: #000000;
+    --color-table-caption: #000000;
+    --color-table-stripe: #121317;
+  }
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:focus {
+  outline-offset: 2px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: var(--space-default) auto;
+  padding: 0 var(--space-small);
+  max-width: 1024px;
+  font-family: arial, sans-serif;
+  color: var(--color-text);
+  font-size: var(--font-size-tiny);
+  background-color: var(--color-background);
+}
+
+img {
+  border: 0 none;
+  vertical-align: top;
+}
+
+mark {
+  background-color: transparent;
+}
+
+a:link {
+  color: var(--color-link);
+}
+
+a:visited {
+  color: var(--color-visited);
+}
+
+a:hover {
+  color: var(--color-hover);
+}
+
+a:active {
+  color: var(--color-active);
+}
+
+a:focus {
+  color: var(--color-focus);
+}
+
+body > header > h1 {
+  line-height: 1;
+}
+
+.Logo {
+  display: block;
+  width: 72px;
+  height: 36px;
+}
+.Logo svg {
+  vertical-align: top;
+}
+.Logo path {
+  fill: var(--color-text);
+}
+
+.Post {
+  overflow-wrap: break-word;
+}
+.Post h1 {
+  font-size: var(--font-size-huge);
+  font-weight: bold;
+  line-height: var(--line-height-small);
+}
+.Post h2,
+.Post h3,
+.Post h4 {
+  clear: both;
+  margin: var(--space-medium) 0 var(--space-small);
+  font-size: var(--font-size-large);
+}
+.Post p {
+  max-width: 39em;
+  margin: var(--space-small) 0;
+  line-height: var(--line-height-large);
+}
+.Post .Publish {
+  margin-top: var(--space-tiny);
+}
+.Post .Publish + p {
+  margin-top: var(--space-default);
+}
+.Post .frame {
+  max-width: initial;
+  padding: var(--font-size-default);
+  background-color: var(--color-frame);
+}
+.Post strong {
+  color: var(--color-strong);
+  font-weight: bold;
+}
+.Post em {
+  font-weight: bold;
+  font-style: normal;
+}
+.Post mark {
+  padding-left: 2px;
+  padding-right: 2px;
+  background-color: var(--color-mark);
+}
+.Post img {
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 0 0 1px var(--color-sub);
+}
+@media (prefers-color-scheme: dark) {
+  .Post img {
+    filter: brightness(85%);
+  }
+}
+.Post img.-post110 {
+  float: right;
+  margin-left: 1em;
+  margin-bottom: 1em;
+  width: 30%;
+  max-width: 240px;
+}
+.Post pre {
+  margin: 2em 0;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: var(--font-size-default);
+  font-family: Consolas, monospace;
+  line-height: var(--line-height-tiny);
+  overflow: auto;
+  background-color: var(--color-sub);
+}
+.Post pre code {
+  background-color: transparent;
+}
+.Post code {
+  padding: 0 2px;
+  border-radius: 3px;
+  font-size: inherit;
+  font-family: Consolas, monospace;
+  word-break: break-word;
+  background-color: var(--color-code);
+}
+.Post ins {
+  text-decoration: none;
+}
+.Post aside {
+  max-width: 32em;
+  margin-left: auto;
+  font-size: var(--font-size-default);
+  line-height: var(--line-height-small);
+}
+.Post hr {
+  position: relative;
+  margin: 5rem 0;
+  border: none;
+  line-height: var(--line-height-default);
+}
+.Post hr::after {
+  content: "◦◦◦◦◦◦";
+}
+.Post ul,
+.Post ol {
+  margin-left: 3em;
+  max-width: 45em;
+}
+.Post ul li,
+.Post ol li {
+  line-height: var(--line-height-medium);
+}
+.Post ul > li,
+.Post ol > li {
+  margin-top: var(--space-micro);
+}
+.Post table {
+  margin: var(--space-small) 0;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-default);
+  text-align: center;
+  line-height: var(--line-height-small);
+}
+.Post caption {
+  padding: 3px;
+  border: 1px solid var(--color-table-border);
+  border-bottom: 0 none;
+  font-weight: bold;
+  background-color: var(--color-table-caption);
+}
+.Post tbody tr:nth-child(2n) {
+  background-color: var(--color-table-stripe);
+}
+.Post th,
+.Post td {
+  padding: 5px;
+  word-break: break-all;
+  border: 1px solid var(--color-table-border);
+  word-break: break-word;
+}
+.Post blockquote {
+  margin: var(--space-small) 0;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.Post blockquote p {
+  margin: 0;
+}
+.Post blockquote p + p {
+  margin-top: 1em;
+}
+.Post blockquote footer {
+  font-size: var(--font-size-default);
+  text-align: right;
+}
+.Post iframe {
+  margin: var(--space-small) 0;
+  border: 0 none;
+  width: 100%;
+}
+@media (prefers-color-scheme: dark) {
+  .Post iframe {
+    filter: brightness(85%);
+  }
+}
+
+.Share {
+  display: flex;
+  gap: var(--space-tiny);
+  flex-wrap: wrap;
+  font-size: var(--font-size-default);
+  line-height: var(--line-height-small);
+}
+.Share > li {
+  list-style: none;
+}
+
+.Neighbor {
+  font-size: var(--font-size-default);
+  line-height: var(--line-height-small);
+}
+.Neighbor > li {
+  list-style: none;
+}
+.Neighbor > li + li {
+  margin-top: var(--space-tiny);
+}
+
+.Primary {
+  font-size: var(--font-size-small);
+}
+
+.Secondary {
+  font-size: var(--font-size-tiny);
+  line-height: var(--line-height-small);
+}
+
+.Posts > li {
+  list-style: none;
+}
+.Posts > li + li {
+  margin-top: var(--space-default);
+}
+.Posts > li > a {
+  font-size: var(--font-size-large);
+  font-weight: bold;
+  line-height: var(--line-height-small);
+}
+
+.Publish {
+  display: flex;
+  gap: var(--space-micro);
+  flex-wrap: wrap;
+  margin-top: var(--space-micro);
+  font-size: var(--font-size-default);
+  line-height: var(--line-height-small);
+}
+.Publish dd:nth-child(2)::after {
+  content: "◦";
+  margin-left: var(--space-micro);
+}
+.Publish dd:not(:nth-child(2)):not(:last-child)::after {
+  content: ",";
+}
+
+.More {
+  margin-top: var(--space-large);
+  font-size: var(--font-size-default);
+}
+.More a::after {
+  content: " »";
+}
+
+.Pages {
+  display: flex;
+  gap: var(--space-tiny);
+  flex-wrap: wrap;
+  margin-top: var(--space-small);
+  font-size: var(--font-size-default);
+  line-height: var(--line-height-small);
+}
+.Pages li {
+  list-style: none;
+}
+.Pages address {
+  display: inline;
+}
+
+.License {
+  font-size: var(--font-size-default);
+  line-height: var(--line-height-small);
+}
+
+.Pagetop {
+  font-size: var(--font-size-default);
+  line-height: var(--line-height-small);
+}
+
+.Border::before {
+  content: "";
+  display: block;
+  margin: var(--space-large) 0 var(--space-small);
+  width: var(--space-small);
+  height: 1px;
+  background-color: var(--color-text);
+}
+
+.Invisible {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  display: block !important;
+  width: 4px !important;
+  height: 4px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  visibility: visible !important;
+}
