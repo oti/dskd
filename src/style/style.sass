@@ -25,6 +25,174 @@ body
     fill: var(--color-text)
     vertical-align: top
 
+.Post
+  overflow-wrap: break-word
+
+  h1
+    font-size: var(--font-size-huge)
+    font-weight: bold
+    line-height: var(--line-height-small)
+
+  h2, h3, h4
+    clear: both
+    margin: var(--space-medium) 0 var(--space-small)
+    font-size: var(--font-size-large)
+
+  p
+    max-width: 39em
+    margin: var(--space-small) 0
+    line-height: var(--line-height-large)
+
+  .Publish
+    margin-top: var(--space-tiny)
+    + p
+      margin-top: var(--space-default)
+
+  .frame
+    max-width: initial;
+    padding: var(--font-size-default)
+    background-color: var(--color-frame)
+
+  strong
+    color: var(--color-strong)
+    font-weight: bold
+
+  em
+    font-weight: bold
+    font-style: normal
+
+  mark
+    padding-left: 2px
+    padding-right: 2px
+    background-color: var(--color-mark)
+
+  img
+    max-width: 100%
+    height: auto
+    box-shadow: 0 0 0 1px var(--color-sub)
+
+    @media (prefers-color-scheme: dark)
+      filter: brightness(85%)
+
+    &.-post110
+      float: right
+      margin-left: 1em
+      margin-bottom: 1em
+      width: 30%
+      max-width: 240px
+
+  pre
+    margin: 2em 0
+    padding: 10px
+    border-radius: 3px
+    font-size: var(--font-size-default)
+    font-family: Consolas, monospace
+    line-height: var(--line-height-tiny)
+    overflow: auto
+    background-color: var(--color-sub)
+    code
+      background-color: transparent
+
+  code
+    padding: 0 2px
+    border-radius: 3px
+    font-size: inherit
+    font-family: Consolas, monospace
+    word-break: break-word
+    background-color: var(--color-code)
+
+  ins
+    text-decoration: none
+
+  aside
+    max-width: 32em
+    margin-left: auto
+    font-size: var(--font-size-default)
+    line-height: var(--line-height-small)
+
+  hr
+    position: relative
+    margin: 5rem 0
+    border: none
+    line-height: var(--line-height-default)
+    &::after
+      content: "◦◦◦◦◦◦"
+
+  ul,ol
+    margin-left: 3em
+    max-width: 45em
+    li
+      line-height: var(--line-height-medium)
+
+    > li
+      margin-top: var(--space-micro)
+
+  table
+    margin: var(--space-small) 0
+    width: 100%
+    border-collapse: collapse
+    font-size: var(--font-size-default)
+    text-align: center
+    line-height: var(--line-height-small)
+
+  caption
+    padding: 3px
+    border: 1px solid var(--color-table-border)
+    border-bottom: 0 none
+    font-weight: bold
+    background-color: var(--color-table-caption)
+
+  tbody
+    tr:nth-child(2n)
+      background-color: var(--color-table-stripe)
+
+  th,td
+    padding: 5px
+    word-break: break-all
+    border: 1px solid var(--color-table-border)
+    word-break: break-word
+
+  blockquote
+    margin: var(--space-small) 0;
+    padding: 10px
+    border-radius: 3px
+    background-color: rgba(255,255,255, 0.3)
+
+    p
+      margin: 0
+      + p
+        margin-top: 1em
+
+    footer
+      font-size: var(--font-size-default)
+      text-align: right
+
+  iframe
+    margin: var(--space-small) 0
+    border: 0 none
+    width: 100%
+    @media (prefers-color-scheme: dark)
+      filter: brightness(85%)
+
+
+.Share
+  display: flex
+  gap: var(--space-tiny)
+  flex-wrap: wrap
+  font-size: var(--font-size-default)
+  line-height: var(--line-height-small)
+  > li
+    list-style: none
+
+.Neighbor
+  font-size: var(--font-size-default)
+  line-height: var(--line-height-small)
+
+  > li
+    list-style: none
+    + li
+      margin-top: var(--space-tiny)
+
 .Primary
   font-size: var(--font-size-small)
 
