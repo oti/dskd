@@ -314,16 +314,13 @@ body > header > h1 {
 }
 
 .Primary {
+  margin-bottom: var(--space-medium);
   font-size: var(--font-size-small);
 }
 
 .Secondary {
   font-size: var(--font-size-tiny);
   line-height: var(--line-height-small);
-}
-
-.Primary + .Posts {
-  margin-top: var(--space-medium);
 }
 
 .Posts {
