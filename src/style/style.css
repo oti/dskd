@@ -149,12 +149,6 @@ body > header > h1 {
   margin: var(--space-small) 0;
   line-height: var(--line-height-large);
 }
-.Post .Publish {
-  margin-top: var(--space-tiny);
-}
-.Post .Publish + p {
-  margin-top: var(--space-default);
-}
 .Post .frame {
   max-width: initial;
   padding: var(--font-size-default);
@@ -348,6 +342,12 @@ body > header > h1 {
 }
 .Publish dd:not(:nth-child(2)):not(:last-child)::after {
   content: ",";
+}
+.Post .Publish {
+  margin-top: var(--space-tiny);
+}
+.Post .Publish + p {
+  margin-top: var(--space-default);
 }
 
 .More {
