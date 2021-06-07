@@ -326,11 +326,11 @@ body > header > h1 {
   margin-top: var(--space-medium);
 }
 
-.Posts > li {
+.Posts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-default);
   list-style: none;
-}
-.Posts > li + li {
-  margin-top: var(--space-default);
 }
 .Posts > li > a {
   font-size: var(--font-size-large);
