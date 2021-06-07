@@ -13,9 +13,9 @@ block contents
               ? years[page_title]
               : []
 
-  section
-    h2= heading
-    ul
+  section.Border
+    h2.Primary= heading
+    ul.Posts
       each post in posts
         li
           a(href=`${archives_base}${post.page_id}.html`)= post.page_title
@@ -25,9 +25,9 @@ block contents
       nav
         a(href=`${archives_base}`) 全ての記事
 
-  nav
-    h2 年別
-    ol(reversed)
+  section.Border
+    h2.Secondary 年別
+    ol.Pages(reversed)
       each year, i in Object.keys(years).sort((a, b) => b.localeCompare(a))
         li
           a(
@@ -36,8 +36,9 @@ block contents
             aria-current=page_title === Number(year) && 'page'
           )= year
 
-    h2 タグ別
-    ul
+  section.Border
+    h2.Secondary タグ別
+    ul.Pages
       each tag, i in Object.keys(tags).sort((a, b) => a.localeCompare(b))
         li
           a(
