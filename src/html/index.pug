@@ -14,7 +14,7 @@ block contents
               : []
 
   section.Border
-    h2.Primary= heading
+    h2(class=INDEX ? 'Invisible' : 'Primary')= heading
     ul.Posts
       each post in posts
         li
