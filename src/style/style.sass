@@ -32,6 +32,23 @@ body
       font-weight: bold
       line-height: var(--line-height-small)
 
+.Publish
+  display: flex
+  gap: var(--space-micro)
+  flex-wrap: wrap
+  margin-top: var(--space-micro)
+  font-size: var(--font-size-default)
+  line-height: var(--line-height-small)
+
+  dd
+    &:nth-child(2)::after
+      content: "◦"
+      margin-left: var(--space-micro)
+
+
+    &:not(:nth-child(2)):not(:last-child)::after
+      content: ","
+
 .Secondary
   font-size: var(--font-size-tiny)
   line-height: var(--line-height-small)
