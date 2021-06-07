@@ -109,6 +109,10 @@ a:focus {
   color: var(--color-focus);
 }
 
+li {
+  list-style: none;
+}
+
 body > header > h1 {
   line-height: 1;
 }
@@ -230,6 +234,9 @@ body > header > h1 {
   margin-left: 3em;
   max-width: 45em;
 }
+.Post li {
+  list-style: revert;
+}
 .Post ul li,
 .Post ol li {
   line-height: var(--line-height-medium);
@@ -305,7 +312,7 @@ body > header > h1 {
   font-size: var(--font-size-default);
   line-height: var(--line-height-small);
 }
-.Neighbor > li {
+.Neighbor li {
   list-style: none;
 }
 .Neighbor > li + li {
