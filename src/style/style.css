@@ -306,14 +306,11 @@ body > header > h1 {
 }
 
 .Neighbor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-tiny);
   font-size: var(--font-size-default);
   line-height: var(--line-height-small);
-}
-.Neighbor li {
-  list-style: none;
-}
-.Neighbor > li + li {
-  margin-top: var(--space-tiny);
 }
 
 .Primary {
