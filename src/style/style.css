@@ -266,7 +266,6 @@ body > header > h1 {
 .Post th,
 .Post td {
   padding: 5px;
-  word-break: break-all;
   border: 1px solid var(--color-table-border);
   word-break: break-word;
 }
