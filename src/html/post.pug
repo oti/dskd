@@ -8,8 +8,8 @@ block contents
     const fb_href = `https://www.facebook.com/share.php?u=${escaped_permalink}`
     const hb_href = `http://b.hatena.ne.jp/my/add.confirm?title=${escaped_title}&url=${escaped_permalink}`
     const neighbor = neighbors[page_id]
-    const newer = neighbor.newer
-    const older = neighbor.older
+    const newer = neighbor.newer || {}
+    const older = neighbor.older || {}
 
   article.Post.Border
     h1= page_title
