@@ -4,7 +4,7 @@ const plumber = require("gulp-plumber");
 
 const favicon = () => {
   return gulp
-    .src(["./src/favicon.ico", "./src/favicon.svg"])
+    .src("./src/favicon.svg")
     .pipe(plumber())
     .pipe(gulp.dest("./dist/"))
     .pipe(browserSync.stream());
