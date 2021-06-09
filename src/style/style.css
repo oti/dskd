@@ -195,11 +195,10 @@ body > header > h1 {
   background-color: var(--color-sub);
 }
 .Post code {
-  padding: 0 2px;
+  padding: 2px 2px 0;
   border-radius: 3px;
   font-size: inherit;
   font-family: Consolas, monospace;
-  word-break: break-word;
   background-color: var(--color-code);
 }
 .Post pre code {
