@@ -142,8 +142,17 @@ body > header > h1 {
 .Post h4 {
   clear: both;
   margin: var(--space-medium) 0 var(--space-small);
+}
+.Post h2 {
   font-size: var(--font-size-large);
 }
+.Post h3 {
+  font-size: var(--font-size-medium);
+}
+.Post h4 {
+  font-size: var(--font-size-small);
+}
+
 .Post p {
   max-width: 39em;
   margin: var(--space-small) 0;
