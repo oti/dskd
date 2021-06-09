@@ -17,28 +17,29 @@
   --color-table-border: #d9dcdf;
   --color-table-caption: #d9dcdf;
   --color-table-stripe: #eaecee;
-  --font-size-base: 1rem;
-  --font-size-default: calc(--font-size-base);
-  --font-size-tiny: calc(var(--font-size-base) * 1.125);
-  --font-size-small: calc(var(--font-size-base) * 1.25);
-  --font-size-medium: calc(var(--font-size-base) * 1.375);
-  --font-size-large: calc(var(--font-size-base) * 1.5);
-  --font-size-huge: calc(var(--font-size-base) * 2);
-  --space-base: 1rem;
-  --space-micro: calc(var(--space-base) * 0.5);
-  --space-default: var(--space-base);
-  --space-tiny: calc(var(--space-base) * 1.5);
-  --space-small: calc(var(--space-base) * 2);
-  --space-medium: calc(var(--space-base) * 4);
-  --space-large: calc(var(--space-base) * 6);
-  --space-huge: calc(var(--space-base) * 8);
-  --line-height-base: 1;
-  --line-height-default: calc(--line-height-base);
-  --line-height-tiny: calc(var(--line-height-base) * 1.1);
-  --line-height-small: calc(var(--line-height-base) * 1.2);
-  --line-height-medium: calc(var(--line-height-base) * 1.4);
-  --line-height-large: calc(var(--line-height-base) * 1.6);
-  --line-height-huge: calc(var(--line-height-base) * 1.8);
+
+  --font-size-default: 1rem;
+  --font-size-tiny: 1.125rem;
+  --font-size-small: 1.25rem;
+  --font-size-medium: 1.375rem;
+  --font-size-large: 1.5rem;
+  --font-size-huge: 2rem;
+
+  --space-micro: 0.5rem;
+  --space-default: 1rem;
+  --space-tiny: 1.5rem;
+  --space-small: 2rem;
+  --space-medium: 4rem;
+  --space-large: 6rem;
+  --space-huge: 8rem;
+
+  --line-height-default: 1;
+  --line-height-tiny: 1.1;
+  --line-height-small: 1.2;
+  --line-height-medium: 1.4;
+  --line-height-large: 1.6;
+  --line-height-huge: 1.8;
+
   --width-column: 64rem;
 }
 
