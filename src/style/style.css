@@ -23,12 +23,13 @@
   --font-size-medium: calc(var(--font-size-default) * 1.375);
   --font-size-large: calc(var(--font-size-default) * 1.5);
   --font-size-huge: calc(var(--font-size-default) * 2);
-  --space-default: 4rem;
-  --space-micro: calc(var(--space-default) / 8);
-  --space-tiny: calc(var(--space-default) / 4);
-  --space-small: calc(var(--space-default) / 2);
-  --space-medium: calc(var(--space-default) * 1.5);
-  --space-large: calc(var(--space-default) * 2);
+  --space-base: 1rem;
+  --space-micro: calc(var(--space-base) * 0.5);
+  --space-tiny: var(--space-base);
+  --space-small: calc(var(--space-base) * 2);
+  --space-medium: calc(var(--space-base) * 4);
+  --space-large: calc(var(--space-base) * 6);
+  --space-huge: calc(var(--space-base) * 8);
   --line-height-default: 1;
   --line-height-tiny: calc(var(--line-height-default) * 1.2);
   --line-height-small: calc(var(--line-height-default) * 1.4);
@@ -71,7 +72,7 @@ html {
 }
 
 body {
-  margin: var(--space-default) auto;
+  margin: var(--space-medium) auto;
   padding: 0 var(--space-small);
   max-width: 1024px;
   font-family: arial, sans-serif;
@@ -141,7 +142,7 @@ body > header > h1 {
 .Post h3,
 .Post h4 {
   clear: both;
-  margin: var(--space-medium) 0 var(--space-small);
+  margin: var(--space-large) 0 var(--space-small);
 }
 .Post h2 {
   font-size: var(--font-size-large);
@@ -315,7 +316,7 @@ body > header > h1 {
 }
 
 .Primary {
-  margin-bottom: var(--space-medium);
+  margin-bottom: var(--space-large);
   font-size: var(--font-size-small);
 }
 
@@ -327,7 +328,7 @@ body > header > h1 {
 .Posts {
   display: flex;
   flex-direction: column;
-  gap: var(--space-default);
+  gap: var(--space-medium);
   list-style: none;
 }
 .Posts > li > a {
@@ -355,11 +356,11 @@ body > header > h1 {
   margin-top: var(--space-tiny);
 }
 .Post .Publish + p {
-  margin-top: var(--space-default);
+  margin-top: var(--space-medium);
 }
 
 .More {
-  margin-top: var(--space-large);
+  margin-top: var(--space-huge);
   font-size: var(--font-size-default);
 }
 .More a::after {
@@ -391,7 +392,7 @@ body > header > h1 {
 .Border::before {
   content: "";
   display: block;
-  margin: var(--space-large) 0 var(--space-small);
+  margin: var(--space-huge) 0 var(--space-small);
   width: var(--space-small);
   height: 1px;
   background-color: var(--color-text);
