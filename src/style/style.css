@@ -215,9 +215,8 @@ body > header > h1 {
   background-color: var(--color-sub);
 }
 .Post code {
-  padding-block-start: 3px;
-  padding-inline-start: 2px;
-  padding-inline-end: 2px;
+  padding-inline-start: 3px;
+  padding-inline-end: 3px;
   border-radius: 3px;
   font-size: inherit;
   font-family: Consolas, monospace;
