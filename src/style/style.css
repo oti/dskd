@@ -26,7 +26,8 @@
   --font-size-huge: calc(var(--font-size-base) * 2);
   --space-base: 1rem;
   --space-micro: calc(var(--space-base) * 0.5);
-  --space-tiny: var(--space-base);
+  --space-default: var(--space-base);
+  --space-tiny: calc(var(--space-base) * 1.5);
   --space-small: calc(var(--space-base) * 2);
   --space-medium: calc(var(--space-base) * 4);
   --space-large: calc(var(--space-base) * 6);
@@ -165,7 +166,7 @@ body > header > h1 {
 }
 .Post .frame {
   max-width: initial;
-  padding: var(--font-size-default);
+  padding: var(--space-default);
   background-color: var(--color-frame);
 }
 .Post strong {
@@ -301,7 +302,7 @@ body > header > h1 {
 
 .Share {
   display: flex;
-  gap: var(--space-tiny);
+  gap: var(--space-default);
   flex-wrap: wrap;
   line-height: var(--line-height-medium);
 }
@@ -309,7 +310,7 @@ body > header > h1 {
 .Neighbor {
   display: flex;
   flex-direction: column;
-  gap: var(--space-tiny);
+  gap: var(--space-default);
   line-height: var(--line-height-medium);
 }
 
@@ -350,7 +351,7 @@ body > header > h1 {
   content: ",";
 }
 .Post .Publish {
-  margin-top: var(--space-tiny);
+  margin-top: var(--space-default);
 }
 .Post .Publish + p {
   margin-top: var(--space-medium);
@@ -365,7 +366,7 @@ body > header > h1 {
 
 .Pages {
   display: flex;
-  gap: var(--space-tiny);
+  gap: var(--space-default);
   flex-wrap: wrap;
   margin-top: var(--space-small);
   line-height: var(--line-height-medium);
