@@ -30,7 +30,7 @@
   --space-medium: calc(var(--space-default) * 1.5);
   --space-large: calc(var(--space-default) * 2);
   --line-height-default: 1;
-  --line-height-tiny: calc(var(--line-height-default) * 1.1);
+  --line-height-tiny: calc(var(--line-height-default) * 1.2);
   --line-height-small: calc(var(--line-height-default) * 1.4);
   --line-height-medium: calc(var(--line-height-default) * 1.6);
   --line-height-large: calc(var(--line-height-default) * 1.8);
