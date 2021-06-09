@@ -248,7 +248,7 @@ body > header > h1 {
   max-width: 45em;
 }
 .Post li {
-  list-style: revert;
+  list-style: inherit;
 }
 .Post ul li,
 .Post ol li {
