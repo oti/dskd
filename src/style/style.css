@@ -80,7 +80,7 @@ body {
   max-width: 1024px;
   font-family: arial, sans-serif;
   color: var(--color-text);
-  font-size: var(--font-size-tiny);
+  font-size: var(--font-size-default);
   background-color: var(--color-background);
 }
 
@@ -160,6 +160,7 @@ body > header > h1 {
 .Post p {
   max-width: 39em;
   margin: var(--space-small) 0;
+  font-size: var(--font-size-tiny);
   line-height: var(--line-height-huge);
 }
 .Post .frame {
@@ -201,7 +202,6 @@ body > header > h1 {
   margin: 2em 0;
   padding: 10px;
   border-radius: 3px;
-  font-size: var(--font-size-default);
   font-family: Consolas, monospace;
   line-height: var(--line-height-small);
   overflow: auto;
@@ -223,7 +223,6 @@ body > header > h1 {
 .Post aside {
   max-width: 32em;
   margin-left: auto;
-  font-size: var(--font-size-default);
   line-height: var(--line-height-medium);
 }
 .Post hr {
@@ -255,7 +254,6 @@ body > header > h1 {
   margin: var(--space-small) 0;
   width: 100%;
   border-collapse: collapse;
-  font-size: var(--font-size-default);
   text-align: center;
   line-height: var(--line-height-medium);
 }
@@ -288,7 +286,6 @@ body > header > h1 {
   margin-top: 1em;
 }
 .Post blockquote footer {
-  font-size: var(--font-size-default);
   text-align: right;
 }
 .Post iframe {
@@ -306,7 +303,6 @@ body > header > h1 {
   display: flex;
   gap: var(--space-tiny);
   flex-wrap: wrap;
-  font-size: var(--font-size-default);
   line-height: var(--line-height-medium);
 }
 
@@ -314,7 +310,6 @@ body > header > h1 {
   display: flex;
   flex-direction: column;
   gap: var(--space-tiny);
-  font-size: var(--font-size-default);
   line-height: var(--line-height-medium);
 }
 
@@ -324,7 +319,7 @@ body > header > h1 {
 }
 
 .Secondary {
-  font-size: var(--font-size-tiny);
+  font-size: var(--font-size-small);
   line-height: var(--line-height-medium);
 }
 
@@ -345,7 +340,6 @@ body > header > h1 {
   gap: var(--space-micro);
   flex-wrap: wrap;
   margin-top: var(--space-micro);
-  font-size: var(--font-size-default);
   line-height: var(--line-height-medium);
 }
 .Publish dd:nth-child(2)::after {
@@ -364,7 +358,6 @@ body > header > h1 {
 
 .More {
   margin-top: var(--space-huge);
-  font-size: var(--font-size-default);
 }
 .More a::after {
   content: " »";
@@ -375,7 +368,6 @@ body > header > h1 {
   gap: var(--space-tiny);
   flex-wrap: wrap;
   margin-top: var(--space-small);
-  font-size: var(--font-size-default);
   line-height: var(--line-height-medium);
 }
 .Pages address {
@@ -383,12 +375,10 @@ body > header > h1 {
 }
 
 .License {
-  font-size: var(--font-size-default);
   line-height: var(--line-height-medium);
 }
 
 .Pagetop {
-  font-size: var(--font-size-default);
   line-height: var(--line-height-medium);
 }
 
