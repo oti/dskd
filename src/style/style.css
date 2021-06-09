@@ -78,7 +78,7 @@ html {
 
 body {
   margin: var(--space-medium) auto;
-  padding: 0 var(--space-small);
+  padding: var(--space-small);
   max-width: 1024px;
   font-family: arial, sans-serif;
   color: var(--color-text);
@@ -147,7 +147,8 @@ body > header > h1 {
 .Post h3,
 .Post h4 {
   clear: both;
-  margin: var(--space-large) 0 var(--space-small);
+  margin-block-start: var(--space-large);
+  margin-block-end: var(--space-small);
 }
 .Post h2 {
   font-size: var(--font-size-large);
@@ -161,7 +162,8 @@ body > header > h1 {
 
 .Post p {
   max-width: 39em;
-  margin: var(--space-small) 0;
+  margin-block-start: var(--space-small);
+  margin-block-end: var(--space-small);
   font-size: var(--font-size-tiny);
   line-height: var(--line-height-huge);
 }
@@ -179,8 +181,7 @@ body > header > h1 {
   font-style: normal;
 }
 .Post mark {
-  padding-left: 2px;
-  padding-right: 2px;
+  padding: 0 2px;
   background-color: var(--color-mark);
 }
 .Post img {
@@ -195,13 +196,15 @@ body > header > h1 {
 }
 .Post img.-post110 {
   float: right;
-  margin-left: 1em;
-  margin-bottom: 1em;
+  float: inline-end;
+  margin-inline-start: 1em;
+  margin-block-end: 1em;
   width: 30%;
   max-width: 240px;
 }
 .Post pre {
-  margin: 2em 0;
+  margin-block-start: 2em;
+  margin-block-end: 2em;
   padding: 10px;
   border-radius: 3px;
   font-family: Consolas, monospace;
@@ -210,7 +213,9 @@ body > header > h1 {
   background-color: var(--color-sub);
 }
 .Post code {
-  padding: 2px 2px 0;
+  padding-block-start: 3px;
+  padding-inline-start: 2px;
+  padding-inline-end: 2px;
   border-radius: 3px;
   font-size: inherit;
   font-family: Consolas, monospace;
@@ -224,12 +229,13 @@ body > header > h1 {
 }
 .Post aside {
   max-width: 32em;
-  margin-left: auto;
+  margin-inline-start: auto;
   line-height: var(--line-height-medium);
 }
 .Post hr {
   position: relative;
-  margin: 5rem 0;
+  margin-block-start: var(--space-large);
+  margin-block-end: var(--space-large);
   border: none;
   line-height: var(--line-height-default);
 }
@@ -238,7 +244,7 @@ body > header > h1 {
 }
 .Post ul,
 .Post ol {
-  margin-left: 3em;
+  margin-inline-start: 3em;
   max-width: 45em;
 }
 .Post li {
@@ -250,10 +256,11 @@ body > header > h1 {
 }
 .Post ul > li,
 .Post ol > li {
-  margin-top: var(--space-micro);
+  margin-block-start: var(--space-micro);
 }
 .Post table {
-  margin: var(--space-small) 0;
+  margin-block-start: var(--space-small);
+  margin-block-end: var(--space-small);
   width: 100%;
   border-collapse: collapse;
   text-align: center;
@@ -276,7 +283,8 @@ body > header > h1 {
   word-break: break-word;
 }
 .Post blockquote {
-  margin: var(--space-small) 0;
+  margin-block-start: var(--space-small);
+  margin-block-end: var(--space-small);
   padding: 10px;
   border-radius: 3px;
   background-color: rgba(255, 255, 255, 0.3);
@@ -285,13 +293,14 @@ body > header > h1 {
   margin: 0;
 }
 .Post blockquote p + p {
-  margin-top: 1em;
+  margin-block-start: 1em;
 }
 .Post blockquote footer {
-  text-align: right;
+  text-align: end;
 }
 .Post iframe {
-  margin: var(--space-small) 0;
+  margin-block-start: var(--space-small);
+  margin-block-end: var(--space-small);
   border: 0 none;
   width: 100%;
 }
@@ -316,7 +325,7 @@ body > header > h1 {
 }
 
 .Primary {
-  margin-bottom: var(--space-large);
+  margin-block-end: var(--space-large);
   font-size: var(--font-size-small);
 }
 
@@ -341,25 +350,25 @@ body > header > h1 {
   display: flex;
   gap: var(--space-micro);
   flex-wrap: wrap;
-  margin-top: var(--space-micro);
+  margin-block-start: var(--space-micro);
   line-height: var(--line-height-medium);
 }
 .Publish dd:nth-child(2)::after {
   content: "◦";
-  margin-left: var(--space-micro);
+  margin-inline-start: var(--space-micro);
 }
 .Publish dd:not(:nth-child(2)):not(:last-child)::after {
   content: ",";
 }
 .Post .Publish {
-  margin-top: var(--space-default);
+  margin-block-start: var(--space-default);
 }
 .Post .Publish + p {
-  margin-top: var(--space-medium);
+  margin-block-start: var(--space-medium);
 }
 
 .More {
-  margin-top: var(--space-huge);
+  margin-block-start: var(--space-huge);
 }
 .More a::after {
   content: " »";
@@ -369,7 +378,7 @@ body > header > h1 {
   display: flex;
   gap: var(--space-default);
   flex-wrap: wrap;
-  margin-top: var(--space-small);
+  margin-block-start: var(--space-small);
   line-height: var(--line-height-medium);
 }
 .Pages address {
@@ -387,7 +396,8 @@ body > header > h1 {
 .Border::before {
   content: "";
   display: block;
-  margin: var(--space-huge) 0 var(--space-small);
+  margin-block-start: var(--space-huge);
+  margin-block-end: var(--space-small);
   width: var(--space-small);
   height: 1px;
   background-color: var(--color-text);
