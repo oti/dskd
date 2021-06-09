@@ -80,7 +80,7 @@
 
 body {
   margin: var(--space-medium) auto;
-  padding: var(--space-small);
+  padding: var(--space-default);
   max-width: 1024px;
   font-family: arial, sans-serif;
   color: var(--color-text);
