@@ -26,6 +26,9 @@ const posts = () => {
                 .localeCompare(Number(a.page_datetime.replace(/[-T:]/g, "")))
             )
           );
+        if (!fs.existsSync("./src/json/")) {
+          fs.mkdirSync("./src/json/");
+        }
         fs.writeFileSync(
           "./src/json/posts.json",
           jsonPretty({
