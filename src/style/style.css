@@ -43,8 +43,23 @@
   --size-body-inline: 64rem;
 }
 
+.-dark {
+  --color-background: #1b1c1f;
+  --color-sub: #2d3542;
+  --color-accent: #d9dce2;
+  --color-text: #e3e3e4;
+  --color-mark: #9e0072;
+  --color-code: #383f52;
+  --color-strong: #ffa9a9;
+  --color-frame: #36383f;
+  --color-link: #88b0d8;
+  --color-table-border: #000000;
+  --color-table-caption: #000000;
+  --color-table-stripe: #121317;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  .-system {
     --color-background: #1b1c1f;
     --color-sub: #2d3542;
     --color-accent: #d9dce2;
