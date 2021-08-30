@@ -52,13 +52,25 @@ html(lang="ja")
     link(href=url, rel="canonical")
 
   body
-    header
+    header.Header
       if POST || ABOUT
         nav
           include _logo
       else
         h1
           include _logo
+      details.Mode
+        summary モードの変更
+        form#Switch
+          label
+            input(name="switch", type="radio", value="-system")
+            span OSの設定に従う
+          label
+            input(name="switch", type="radio", value="-light")
+            span ライトに固定する
+          label
+            input(name="switch", type="radio", value="-dark")
+            span ダークに固定する
 
     main
       block contents
