@@ -91,6 +91,59 @@
   html {
     scroll-behavior: smooth;
   }
+  body {
+    transition-property: color, background-color;
+    transition-duration: 0.1s;
+  }
+  a {
+    transition-property: color;
+    transition-duration: 0.1s;
+  }
+  .Logo path {
+    transition-property: fill;
+    transition-duration: 0.1s;
+  }
+  .Post .frame {
+    transition-property: background-color;
+    transition-duration: 0.1s;
+  }
+  .Post strong {
+    transition-property: color;
+    transition-duration: 0.1s;
+  }
+  .Post mark {
+    transition-property: background-color;
+    transition-duration: 0.1s;
+  }
+  .Post img {
+    transition-property: box-shadow;
+    transition-duration: 0.1s;
+  }
+  .Post pre {
+    transition-property: background-color;
+    transition-duration: 0.1s;
+  }
+  .Post code {
+    transition-property: background-color;
+    transition-duration: 0.1s;
+  }
+  .Post caption {
+    transition-property: border-color, background-color;
+    transition-duration: 0.1s;
+  }
+  .Post tbody tr:nth-child(2n) {
+    transition-property: background-color;
+    transition-duration: 0.1s;
+  }
+  .Post th,
+  .Post td {
+    transition-property: border-color;
+    transition-duration: 0.1s;
+  }
+  .Border::before {
+    transition-property: background-color;
+    transition-duration: 0.1s;
+  }
 }
 
 body {
