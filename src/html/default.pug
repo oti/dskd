@@ -50,7 +50,34 @@ html(lang="ja")
     )
     link(href="/feed", rel="alternate", type="application/rss+xml")
     link(href=url, rel="canonical")
+    script.
+      document.addEventListener('DOMContentLoaded', () => {
+        const HTML = document.documentElement;
+        const SWITCH = document.querySelector('#Switch');
+        const MODE_LIST = [...SWITCH.querySelectorAll("[name='switch']")].map((elem) => elem.value);
 
+        function updateMode(value) {
+          localStorage.setItem('prefer-dskd-mode', value);
+          HTML.classList.remove(...MODE_LIST);
+          HTML.classList.add(value);
+        }
+
+        SWITCH.addEventListener(
+          'change',
+          ({ target }) => {
+            updateMode(target.value);
+          },
+          false
+        );
+
+        (() => {
+          const preferModeName = localStorage.getItem('prefer-dskd-mode');
+          const initModeName = MODE_LIST.indexOf(preferModeName) < 0 ? MODE_LIST[0] : preferModeName;
+          updateMode(initModeName);
+          SWITCH.querySelector(`[value="${initModeName}"]`).setAttribute('checked', true);
+        })();
+      });
+    
   body
     header.Header
       if POST || ABOUT
