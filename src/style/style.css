@@ -390,6 +390,7 @@ body > header > h1 {
 }
 .Post blockquote p {
   margin: 0;
+  max-width: 100%;
 }
 .Post blockquote p + p {
   margin-block-start: 1em;
