@@ -16,14 +16,12 @@ module.exports = {
       value: "docs",
     },
     {
-      name:
-        "style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
+      name: "style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
       title: "style",
       value: "style",
     },
     {
-      name:
-        "refactor: A code change that neither fixes a bug nor adds a feature",
+      name: "refactor: A code change that neither fixes a bug nor adds a feature",
       title: "refactor",
       value: "refactor",
     },
@@ -38,8 +36,7 @@ module.exports = {
       value: "test",
     },
     {
-      name:
-        "chore: Changes to the build process or auxiliary tools and libraries such as documentation generation",
+      name: "chore: Changes to the build process or auxiliary tools and libraries such as documentation generation",
       title: "chore",
       value: "chore",
     },
