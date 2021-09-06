@@ -3,6 +3,16 @@
     {
       "layout": "./src/html/post.pug",
       "page_type": "post",
+      "page_datetime": "2021-09-06T11:00:00",
+      "page_id": "112",
+      "page_tag": ["HTML"],
+      "page_cover": "",
+      "page_description": "もう仕様でいいとか悪いとかちゃんと書いといてくれよ",
+      "page_title": "中身のない空の div 要素や空の span 要素は HTML 仕様として妥当なのか？"
+    },
+    {
+      "layout": "./src/html/post.pug",
+      "page_type": "post",
       "page_datetime": "2021-06-10T09:24:28",
       "page_id": "111",
       "page_tag": ["diary"],
@@ -1517,10 +1527,20 @@
       }
     },
     "111": {
-      "newer": {},
+      "newer": {
+        "page_id": "112",
+        "page_title": "中身のない空の div 要素や空の span 要素は HTML 仕様として妥当なのか？"
+      },
       "older": {
         "page_id": "110",
         "page_title": "ベストオブ2020"
+      }
+    },
+    "112": {
+      "newer": {},
+      "older": {
+        "page_id": "111",
+        "page_title": "v8"
       }
     }
   },
@@ -2197,6 +2217,16 @@
       }
     ],
     "HTML": [
+      {
+        "layout": "./src/html/post.pug",
+        "page_type": "post",
+        "page_datetime": "2021-09-06T11:00:00",
+        "page_id": "112",
+        "page_tag": ["HTML"],
+        "page_cover": "",
+        "page_description": "もう仕様でいいとか悪いとかちゃんと書いといてくれよ",
+        "page_title": "中身のない空の div 要素や空の span 要素は HTML 仕様として妥当なのか？"
+      },
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
@@ -3395,6 +3425,16 @@
       }
     ],
     "2021": [
+      {
+        "layout": "./src/html/post.pug",
+        "page_type": "post",
+        "page_datetime": "2021-09-06T11:00:00",
+        "page_id": "112",
+        "page_tag": ["HTML"],
+        "page_cover": "",
+        "page_description": "もう仕様でいいとか悪いとかちゃんと書いといてくれよ",
+        "page_title": "中身のない空の div 要素や空の span 要素は HTML 仕様として妥当なのか？"
+      },
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
