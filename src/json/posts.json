@@ -3,11 +3,11 @@
     {
       "layout": "./src/html/post.pug",
       "page_type": "post",
-      "page_datetime": "2021-09-06T11:00:00",
+      "page_datetime": "2021-09-06T10:42:18",
       "page_id": "112",
       "page_tag": ["HTML"],
       "page_cover": "",
-      "page_description": "もう仕様でいいとか悪いとかちゃんと書いといてくれよ",
+      "page_description": "もう仕様書に良いとか悪いとかちゃんと書いといてくれよ",
       "page_title": "中身のない空の div 要素や空の span 要素は HTML 仕様として妥当なのか？"
     },
     {
@@ -417,7 +417,7 @@
       "page_id": "66",
       "page_title": "開発環境構築作業の理想",
       "page_tag": ["diary"],
-      "page_description": "男は黙って再インストール"
+      "page_description": "漢は黙って再インストール"
     },
     {
       "layout": "./src/html/post.pug",
@@ -2220,11 +2220,11 @@
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
-        "page_datetime": "2021-09-06T11:00:00",
+        "page_datetime": "2021-09-06T10:42:18",
         "page_id": "112",
         "page_tag": ["HTML"],
         "page_cover": "",
-        "page_description": "もう仕様でいいとか悪いとかちゃんと書いといてくれよ",
+        "page_description": "もう仕様書に良いとか悪いとかちゃんと書いといてくれよ",
         "page_title": "中身のない空の div 要素や空の span 要素は HTML 仕様として妥当なのか？"
       },
       {
@@ -2616,7 +2616,7 @@
         "page_id": "66",
         "page_title": "開発環境構築作業の理想",
         "page_tag": ["diary"],
-        "page_description": "男は黙って再インストール"
+        "page_description": "漢は黙って再インストール"
       },
       {
         "layout": "./src/html/post.pug",
@@ -3067,7 +3067,7 @@
         "page_id": "66",
         "page_title": "開発環境構築作業の理想",
         "page_tag": ["diary"],
-        "page_description": "男は黙って再インストール"
+        "page_description": "漢は黙って再インストール"
       },
       {
         "layout": "./src/html/post.pug",
@@ -3428,11 +3428,11 @@
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
-        "page_datetime": "2021-09-06T11:00:00",
+        "page_datetime": "2021-09-06T10:42:18",
         "page_id": "112",
         "page_tag": ["HTML"],
         "page_cover": "",
-        "page_description": "もう仕様でいいとか悪いとかちゃんと書いといてくれよ",
+        "page_description": "もう仕様書に良いとか悪いとかちゃんと書いといてくれよ",
         "page_title": "中身のない空の div 要素や空の span 要素は HTML 仕様として妥当なのか？"
       },
       {
