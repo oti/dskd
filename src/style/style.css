@@ -331,19 +331,6 @@ body > header > h1 {
   padding-block-start: var(--space-micro);
   padding-block-end: var(--space-micro);
   text-decoration: none;
-  background-color: var(--color-sub);
-}
-.Post ins.-labelled::before,
-.Post ins.-labelled::after {
-  padding-inline-start: 2px;
-  padding-inline-end: 2px;
-  font-size: var(--font-size-default);
-}
-.Post ins.-labelled::before {
-  content: "<追加ここから>";
-}
-.Post ins.-labelled::after {
-  content: "</追加ここまで>";
 }
 .Post aside {
   max-width: 32em;
