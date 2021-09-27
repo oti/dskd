@@ -328,8 +328,6 @@ body > header > h1 {
   background-color: transparent;
 }
 .Post ins {
-  padding-block-start: var(--space-micro);
-  padding-block-end: var(--space-micro);
   text-decoration: none;
 }
 .Post aside {
