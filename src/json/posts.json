@@ -3,6 +3,16 @@
     {
       "layout": "./src/html/post.pug",
       "page_type": "post",
+      "page_datetime": "2021-12-13T17:20:13",
+      "page_id": "113",
+      "page_tag": ["diary"],
+      "page_cover": "",
+      "page_description": "150g以上の端末は無理なのかもしれない。",
+      "page_title": "iPhone 13 mini"
+    },
+    {
+      "layout": "./src/html/post.pug",
+      "page_type": "post",
       "page_datetime": "2021-09-06T10:42:18",
       "page_id": "112",
       "page_tag": ["HTML"],
@@ -1537,10 +1547,20 @@
       }
     },
     "112": {
-      "newer": {},
+      "newer": {
+        "page_id": "113",
+        "page_title": "iPhone 13 mini"
+      },
       "older": {
         "page_id": "111",
         "page_title": "v8"
+      }
+    },
+    "113": {
+      "newer": {},
+      "older": {
+        "page_id": "112",
+        "page_title": "中身のない空の div 要素や空の span 要素は HTML 仕様として妥当なのか？"
       }
     }
   },
@@ -2435,6 +2455,16 @@
       }
     ],
     "diary": [
+      {
+        "layout": "./src/html/post.pug",
+        "page_type": "post",
+        "page_datetime": "2021-12-13T17:20:13",
+        "page_id": "113",
+        "page_tag": ["diary"],
+        "page_cover": "",
+        "page_description": "150g以上の端末は無理なのかもしれない。",
+        "page_title": "iPhone 13 mini"
+      },
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
@@ -3425,6 +3455,16 @@
       }
     ],
     "2021": [
+      {
+        "layout": "./src/html/post.pug",
+        "page_type": "post",
+        "page_datetime": "2021-12-13T17:20:13",
+        "page_id": "113",
+        "page_tag": ["diary"],
+        "page_cover": "",
+        "page_description": "150g以上の端末は無理なのかもしれない。",
+        "page_title": "iPhone 13 mini"
+      },
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
