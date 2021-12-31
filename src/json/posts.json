@@ -3,6 +3,16 @@
     {
       "layout": "./src/html/post.pug",
       "page_type": "post",
+      "page_datetime": "2021-12-31T15:54:12",
+      "page_id": "114",
+      "page_tag": ["diary"],
+      "page_cover": "",
+      "page_description": "端的には忙しい年でした",
+      "page_title": "ベストオブ2021"
+    },
+    {
+      "layout": "./src/html/post.pug",
+      "page_type": "post",
       "page_datetime": "2021-12-13T17:20:13",
       "page_id": "113",
       "page_tag": ["diary"],
@@ -1557,10 +1567,20 @@
       }
     },
     "113": {
-      "newer": {},
+      "newer": {
+        "page_id": "114",
+        "page_title": "ベストオブ2021"
+      },
       "older": {
         "page_id": "112",
         "page_title": "中身のない空の div 要素や空の span 要素は HTML 仕様として妥当なのか？"
+      }
+    },
+    "114": {
+      "newer": {},
+      "older": {
+        "page_id": "113",
+        "page_title": "iPhone 13 mini"
       }
     }
   },
@@ -2455,6 +2475,16 @@
       }
     ],
     "diary": [
+      {
+        "layout": "./src/html/post.pug",
+        "page_type": "post",
+        "page_datetime": "2021-12-31T15:54:12",
+        "page_id": "114",
+        "page_tag": ["diary"],
+        "page_cover": "",
+        "page_description": "端的には忙しい年でした",
+        "page_title": "ベストオブ2021"
+      },
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
@@ -3455,6 +3485,16 @@
       }
     ],
     "2021": [
+      {
+        "layout": "./src/html/post.pug",
+        "page_type": "post",
+        "page_datetime": "2021-12-31T15:54:12",
+        "page_id": "114",
+        "page_tag": ["diary"],
+        "page_cover": "",
+        "page_description": "端的には忙しい年でした",
+        "page_title": "ベストオブ2021"
+      },
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
