@@ -3,6 +3,16 @@
     {
       "layout": "./src/html/post.pug",
       "page_type": "post",
+      "page_datetime": "2022-01-02T21:44:36",
+      "page_id": "115",
+      "page_tag": ["diary"],
+      "page_cover": "",
+      "page_description": "人がいっぱい出てくる夢は楽しいけど疲れる",
+      "page_title": "初夢 2022-01-22"
+    },
+    {
+      "layout": "./src/html/post.pug",
+      "page_type": "post",
       "page_datetime": "2021-12-31T15:54:12",
       "page_id": "114",
       "page_tag": ["diary"],
@@ -1577,10 +1587,20 @@
       }
     },
     "114": {
-      "newer": {},
+      "newer": {
+        "page_id": "115",
+        "page_title": "初夢 2022-01-22"
+      },
       "older": {
         "page_id": "113",
         "page_title": "iPhone 13 mini"
+      }
+    },
+    "115": {
+      "newer": {},
+      "older": {
+        "page_id": "114",
+        "page_title": "ベストオブ2021"
       }
     }
   },
@@ -2475,6 +2495,16 @@
       }
     ],
     "diary": [
+      {
+        "layout": "./src/html/post.pug",
+        "page_type": "post",
+        "page_datetime": "2022-01-02T21:44:36",
+        "page_id": "115",
+        "page_tag": ["diary"],
+        "page_cover": "",
+        "page_description": "人がいっぱい出てくる夢は楽しいけど疲れる",
+        "page_title": "初夢 2022-01-22"
+      },
       {
         "layout": "./src/html/post.pug",
         "page_type": "post",
@@ -3534,6 +3564,18 @@
         "page_cover": "",
         "page_description": "2020年の気持ち、変えたこと、買ったもの、ウケた日常",
         "page_title": "ベストオブ2020"
+      }
+    ],
+    "2022": [
+      {
+        "layout": "./src/html/post.pug",
+        "page_type": "post",
+        "page_datetime": "2022-01-02T21:44:36",
+        "page_id": "115",
+        "page_tag": ["diary"],
+        "page_cover": "",
+        "page_description": "人がいっぱい出てくる夢は楽しいけど疲れる",
+        "page_title": "初夢 2022-01-22"
       }
     ]
   }
