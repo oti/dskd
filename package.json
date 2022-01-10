@@ -21,7 +21,8 @@
     "lint-html": "markuplint dist/**/*.html --ruleset ./markuplintrc",
     "lint-css": "stylelint dist/css/*.css",
     "test": "npm run lint-css && npm run lint-html",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prettier": "prettier --write ."
   },
   "devDependencies": {
     "@prettier/plugin-pug": "^1.15.2",
