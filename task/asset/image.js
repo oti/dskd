@@ -2,6 +2,7 @@ const gulp = require("gulp");
 const browserSync = require("browser-sync");
 const changed = require("gulp-changed");
 const plumber = require("gulp-plumber");
+// v8 にすると require() が使えないので v7.1.0 のままにする
 const imagemin = require("gulp-imagemin");
 
 const image = () => {
