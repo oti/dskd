@@ -34,7 +34,7 @@
     "gulp": "^4.0.2",
     "gulp-changed": "^4.0.3",
     "gulp-front-matter": "^2.0.0-7",
-    "gulp-imagemin": "^7.1.0",
+    "gulp-imagemin": "^8.0.0",
     "gulp-layout": "0.0.4",
     "gulp-markdown": "^6.0.0",
     "gulp-plumber": "^1.2.1",
