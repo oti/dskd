@@ -28,9 +28,7 @@
     "@prettier/plugin-pug": "^1.19.2",
     "autoprefixer": "^10.4.2",
     "browser-sync": "^2.27.7",
-    "commitizen": "^4.2.4",
     "css-mqpacker": "^7.0.0",
-    "cz-customizable": "^6.3.0",
     "esm": "^3.2.25",
     "gulp": "^4.0.2",
     "gulp-changed": "^4.0.3",
@@ -53,13 +51,5 @@
     "pug": "^3.0.2",
     "stylelint": "^14.3.0",
     "stylelint-config-recommended": "^6.0.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-customizable"
-    },
-    "cz-customizable": {
-      "config": ".cz-config.js"
-    }
   }
 }
