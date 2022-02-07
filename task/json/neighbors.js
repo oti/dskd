@@ -1,6 +1,6 @@
 // 記事ごとに前後の記事情報をもったjsonを作る
-const neighbors = (posts) => {
-  return posts.reduce((memo, post, i) => {
+export const neighbors = (posts) =>
+  posts.reduce((memo, post, i) => {
     const _old = posts[i + 1] || false;
     const _new = posts[i - 1] || false;
     // olderがあれば作る
@@ -24,6 +24,3 @@ const neighbors = (posts) => {
       [post.page_id]: { older, newer },
     };
   }, {});
-};
-
-module.exports = neighbors;
