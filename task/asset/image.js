@@ -1,6 +1,5 @@
 import gulp from "gulp";
 import browserSync from "browser-sync";
-import imagemin from "gulp-imagemin";
 import changed from "gulp-changed";
 import imagemin, { gifsicle, mozjpeg, optipng, svgo } from "gulp-imagemin";
 
@@ -8,7 +7,6 @@ export const image = () =>
   gulp
     .src("./src/image/**/*.{gif,jpg,png,svg}")
     .pipe(changed("./dist/img"))
-    .pipe(gulp.dest("./dist/img"))
     .pipe(
       imagemin(
         [
@@ -17,8 +15,14 @@ export const image = () =>
           optipng({ optimizationLevel: 3 }),
           svgo({
             plugins: [
-              { name: "removeViewBox", active: false },
-              { name: "cleanupIDs", active: true },
+              {
+                name: "removeViewBox",
+                active: false,
+              },
+              {
+                name: "cleanupIDs",
+                active: true,
+              },
             ],
           }),
         ],
@@ -27,4 +31,5 @@ export const image = () =>
         }
       )
     )
+    .pipe(gulp.dest("./dist/img"))
     .pipe(browserSync.stream());
