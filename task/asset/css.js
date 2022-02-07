@@ -1,17 +1,14 @@
-const gulp = require("gulp");
-const browserSync = require("browser-sync");
-const plumber = require("gulp-plumber");
-const postcss = require("gulp-postcss");
-const autoprefixer = require("autoprefixer");
-const mqpacker = require("css-mqpacker");
+import gulp from "gulp";
+import browserSync from "browser-sync";
+import plumber from "gulp-plumber";
+import postcss from "gulp-postcss";
+import autoprefixer from "autoprefixer";
+import mqpacker from "css-mqpacker";
 
-const css = () => {
-  return gulp
+export const css = () =>
+  gulp
     .src("./src/style/*.css")
     .pipe(plumber())
     .pipe(postcss([autoprefixer({ grid: true }), mqpacker()]))
     .pipe(gulp.dest("./dist/css/"))
     .pipe(browserSync.stream());
-};
-
-module.exports = css;
