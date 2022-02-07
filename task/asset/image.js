@@ -1,27 +1,35 @@
-const gulp = require("gulp");
-const browserSync = require("browser-sync");
-const changed = require("gulp-changed");
-const plumber = require("gulp-plumber");
-// v8 にすると require() が使えないので v7.1.0 のままにする
-const imagemin = require("gulp-imagemin");
+import gulp from "gulp";
+import browserSync from "browser-sync";
+import imagemin from "gulp-imagemin";
+import changed from "gulp-changed";
 
-const image = () => {
-  return gulp
-    .src("./src/image/**")
-    .pipe(plumber())
+export const image = () =>
+  gulp
+    .src("./src/image/**/*.{gif,jpg,png,svg}")
     .pipe(changed("./dist/img"))
+    .pipe(gulp.dest("./dist/img"))
     .pipe(
-      imagemin([
-        imagemin.gifsicle({ interlaced: true }),
-        imagemin.mozjpeg({ quality: 75, progressive: true }),
-        imagemin.optipng({ optimizationLevel: 3 }),
-        imagemin.svgo({
-          plugins: [{ removeViewBox: false }, { cleanupIDs: true }],
-        }),
-      ])
+      imagemin(
+        [
+          imagemin.gifsicle({ interlaced: true }),
+          imagemin.mozjpeg({ quality: 75, progressive: true }),
+          imagemin.optipng({ optimizationLevel: 3 }),
+          imagemin.svgo({
+            plugins: [
+              {
+                name: "removeViewBox",
+                active: false,
+              },
+              {
+                name: "cleanupIDs",
+                active: true,
+              },
+            ],
+          }),
+        ],
+        {
+          verbose: true,
+        }
+      )
     )
-    .pipe(gulp.dest("./dist/img/"))
     .pipe(browserSync.stream());
-};
-
-module.exports = image;
