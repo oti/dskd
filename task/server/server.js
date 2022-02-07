@@ -1,17 +1,13 @@
-const browserSync = require("browser-sync");
+import browserSync from "browser-sync";
 
 // server & browser sync
-const server = (done) => {
+export const server = (done) =>
   browserSync.init(
     {
       ui: false,
       server: {
         baseDir: "./dist/",
-        proxy: "localhost:3000",
       },
     },
     done
   );
-};
-
-module.exports = server;
