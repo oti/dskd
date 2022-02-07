@@ -29,7 +29,6 @@
     "autoprefixer": "^10.4.2",
     "browser-sync": "^2.27.7",
     "css-mqpacker": "^7.0.0",
-    "esm": "^3.2.25",
     "gulp": "^4.0.2",
     "gulp-changed": "^4.0.3",
     "gulp-front-matter": "^2.0.0-7",
