@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import url from "url";
 import gulp from "gulp";
 import plumber from "gulp-plumber";
 import frontMatter from "gulp-front-matter";
@@ -8,6 +9,9 @@ import jsonPretty from "json-pretty";
 import { years } from "./years.js";
 import { neighbors } from "./neighbors.js";
 import { tags } from "./tags.js";
+
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export const data = () =>
   gulp
