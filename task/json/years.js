@@ -1,9 +1,9 @@
-const fs = require("fs");
+import fs from "fs";
 
 // 年ごとに記事が全てぶら下がったオブジェクトを作る
-const years = (posts) => {
-  // {'2020': [{post1}, {post2}, ...], '2019': [{post10}, {post11}, ...]}
-  return posts.reduce((memo, post) => {
+// {'2020': [{post1}, {post2}, ...], '2019': [{post10}, {post11}, ...]}
+export const years = (posts) =>
+  posts.reduce((memo, post) => {
     const yyyy = post.page_datetime.split("-")[0];
     // タグ名に対して記事オブジェクトを配列にまとめる
     if (!memo[yyyy]) {
@@ -15,6 +15,3 @@ const years = (posts) => {
     memo[yyyy].push(post);
     return memo;
   }, {});
-};
-
-module.exports = years;
