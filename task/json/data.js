@@ -2,7 +2,6 @@ import { existsSync, mkdirSync, writeFileSync } from "fs";
 import gulp from "gulp";
 import plumber from "gulp-plumber";
 import frontMatter from "gulp-front-matter";
-import jsonPretty from "json-pretty";
 import listStream from "list-stream";
 import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
@@ -35,12 +34,16 @@ export const data = () =>
         }
         writeFileSync(
           resolve(__dirname, "../../src/json/data.json"),
-          jsonPretty({
-            archives: md,
-            neighbors: neighbors(md),
-            tags: tags(md),
-            years: years(md),
-          })
+          JSON.stringify(
+            {
+              archives: md,
+              neighbors: neighbors(md),
+              tags: tags(md),
+              years: years(md),
+            },
+            null,
+            2
+          )
         );
       })
     );
