@@ -1,7 +1,8 @@
 .DS_Store
-.sass-cache
 .history
-node_modules
-test
-dist
+.sass-cache
 npm-debug.log
+dist
+node_modules
+src/json/
+test
