@@ -1,84 +1,61 @@
-"use strict";
-
-const gulp = require("gulp");
+import gulp from "gulp";
 
 // server & browser sync
-const server = require("./task/server/server");
+import { server } from "./task/server/server.js";
 
 // ブログアセット作成タスク ====================
-
-// image
-const image = require("./task/asset/image");
-
-// css
-const css = require("./task/asset/css");
-
-// misc
-const misc = require("./task/asset/misc");
-const favicon = require("./task/asset/favicon");
+import { css } from "./task/asset/css.js";
+import { favicon } from "./task/asset/favicon.js";
+import { image } from "./task/asset/image.js";
+import { misc } from "./task/asset/misc.js";
 
 // 記事オブジェクト作成タスク ====================
-// （post/*.md -> posts.json -> archives.json, tags.json, years.json）
-const json_posts = require("./task/json/posts");
+// （post/*.md -> posts.json）
+import { data } from "./task/json/data.js";
 
 // HTML作成タスク ====================
-
-// 記事個別ページ作成（post_id.md -> post_id.html）
-const html_posts = require("./task/html/posts");
-
 // 記事一覧ページ作成（archives_name.md -> archives_name.html）
-const html_archives = require("./task/html/archives");
-
-// ブログインデックス作成（index.md -> index.html）
-const html_pages = require("./task/html/pages");
-
+import { archives } from "./task/html/archives.js";
 // RSS作成（feed.md -> feed）
-const feed = require("./task/html/feed");
+import { feed } from "./task/html/feed.js";
+// ブログインデックス作成（index.md -> index.html）
+import { pages } from "./task/html/pages.js";
+// 記事個別ページ作成（post_id.md -> post_id.html）
+import { posts } from "./task/html/posts.js";
 
-// watch
 const watch = (done) => {
-  gulp.watch(["./src/style/**/*"], css);
   gulp.watch(["./src/image/**/*"], image);
-  gulp.watch(["./src/misc/**/*"], misc);
   gulp.watch(["./src/html/**/*"], gulp.task("html"));
+  gulp.watch(["./src/misc/**/*"], misc);
+  gulp.watch(["./src/style/**/*"], css);
   done();
 };
 
 // Gulpタスク ====================
-
 // 初回起動
 gulp.task(
   "default",
   gulp.series(
-    gulp.parallel(css, image, misc, favicon),
-
-    json_posts,
-    gulp.parallel(html_posts, html_archives, html_pages, feed),
-
+    gulp.parallel(favicon, image, css, misc),
+    data,
+    gulp.parallel(archives, feed, pages, posts),
     server,
     watch
   )
 );
 
 // テンプレート更新
-gulp.task("html", gulp.series(html_posts, html_archives, html_pages, feed));
+gulp.task("html", gulp.parallel(archives, feed, pages, posts));
 
 // 記事更新
-gulp.task(
-  "md",
-  gulp.series(
-    json_posts,
-    gulp.parallel(html_posts, html_archives, html_pages, feed)
-  )
-);
+gulp.task("md", gulp.series(data, gulp.parallel(archives, feed, pages, posts)));
 
 // ビルド
 gulp.task(
   "build",
   gulp.series(
-    gulp.parallel(css, image, misc, favicon),
-
-    json_posts,
-    gulp.parallel(html_posts, html_archives, html_pages, feed)
+    gulp.parallel(favicon, image, css, misc),
+    data,
+    gulp.parallel(archives, feed, pages, posts)
   )
 );
