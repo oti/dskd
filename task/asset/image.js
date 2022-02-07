@@ -2,6 +2,7 @@ import gulp from "gulp";
 import browserSync from "browser-sync";
 import imagemin from "gulp-imagemin";
 import changed from "gulp-changed";
+import imagemin, { gifsicle, mozjpeg, optipng, svgo } from "gulp-imagemin";
 
 export const image = () =>
   gulp
@@ -11,19 +12,13 @@ export const image = () =>
     .pipe(
       imagemin(
         [
-          imagemin.gifsicle({ interlaced: true }),
-          imagemin.mozjpeg({ quality: 75, progressive: true }),
-          imagemin.optipng({ optimizationLevel: 3 }),
-          imagemin.svgo({
+          gifsicle({ interlaced: true }),
+          mozjpeg({ quality: 75, progressive: true }),
+          optipng({ optimizationLevel: 3 }),
+          svgo({
             plugins: [
-              {
-                name: "removeViewBox",
-                active: false,
-              },
-              {
-                name: "cleanupIDs",
-                active: true,
-              },
+              { name: "removeViewBox", active: false },
+              { name: "cleanupIDs", active: true },
             ],
           }),
         ],
