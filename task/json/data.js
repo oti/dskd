@@ -5,9 +5,9 @@ import plumber from "gulp-plumber";
 import frontMatter from "gulp-front-matter";
 import listStream from "list-stream";
 import jsonPretty from "json-pretty";
-import { years } from "./years";
-import { neighbors } from "./neighbors";
-import { tags } from "./tags";
+import { years } from "./years.js";
+import { neighbors } from "./neighbors.js";
+import { tags } from "./tags.js";
 
 export const data = () =>
   gulp

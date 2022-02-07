@@ -5,7 +5,7 @@ import prettify from "gulp-prettify";
 import layout from "gulp-layout";
 import md from "gulp-markdown";
 import rename from "gulp-rename";
-import { getCombinedData } from "../utility/getCombinedData";
+import { getCombinedData } from "../utility/getCombinedData.js";
 
 // RSS作成（feed.md -> feed）
 export const feed = () =>

@@ -4,7 +4,7 @@ import frontMatter from "gulp-front-matter";
 import prettify from "gulp-prettify";
 import layout from "gulp-layout";
 import md from "gulp-markdown";
-import { getCombinedData } from "../utility/getCombinedData";
+import { getCombinedData } from "../utility/getCombinedData.js";
 
 // 記事一覧ページ作成（archives_name.md -> archives_name.html）
 export const archives = () =>

@@ -4,7 +4,7 @@ import frontMatter from "gulp-front-matter";
 import prettify from "gulp-prettify";
 import layout from "gulp-layout";
 import md from "gulp-markdown";
-import { getCombinedData } from "../utility/getCombinedData";
+import { getCombinedData } from "../utility/getCombinedData.js";
 
 // ブログインデックス作成（index.md -> index.html）
 export const pages = () =>
