@@ -51,19 +51,19 @@ html(lang="ja")
     link(href="/feed", rel="alternate", type="application/rss+xml")
     link(href=url, rel="canonical")
     script.
-      document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener("DOMContentLoaded", () => {
         const HTML = document.documentElement;
-        const SWITCH = document.querySelector('#Switch');
+        const SWITCH = document.querySelector("#Switch");
         const MODE_LIST = [...SWITCH.querySelectorAll("[name='switch']")].map((elem) => elem.value);
 
         function updateMode(value) {
-          localStorage.setItem('prefer-dskd-mode', value);
+          localStorage.setItem("prefer-dskd-mode", value);
           HTML.classList.remove(...MODE_LIST);
           HTML.classList.add(value);
         }
 
         SWITCH.addEventListener(
-          'change',
+          "change",
           ({ target }) => {
             updateMode(target.value);
           },
@@ -71,13 +71,13 @@ html(lang="ja")
         );
 
         (() => {
-          const preferModeName = localStorage.getItem('prefer-dskd-mode');
+          const preferModeName = localStorage.getItem("prefer-dskd-mode");
           const initModeName = MODE_LIST.indexOf(preferModeName) < 0 ? MODE_LIST[0] : preferModeName;
           updateMode(initModeName);
-          SWITCH.querySelector(`[value="${initModeName}"]`).setAttribute('checked', true);
+          SWITCH.querySelector(`[value="${initModeName}"]`).setAttribute("checked", true);
         })();
       });
-    
+
   body
     header.Header
       if POST || ABOUT
@@ -114,7 +114,7 @@ html(lang="ja")
 
       ul.Pages
         li
-          a(href="/about.html", aria-current=page_type === ABOUT && 'page') dskdとは何か？
+          a(href="/about.html", aria-current=page_type === ABOUT && "page") dskdとは何か？
         li
           a(href=`${blog_url}${blog_feed}`, target="_blank", rel="noopener") RSS
         li
