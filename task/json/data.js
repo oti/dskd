@@ -1,17 +1,17 @@
-import fs from "fs";
-import path from "path";
-import url from "url";
+import { existsSync, mkdirSync, writeFileSync } from "fs";
 import gulp from "gulp";
 import plumber from "gulp-plumber";
 import frontMatter from "gulp-front-matter";
-import listStream from "list-stream";
 import jsonPretty from "json-pretty";
-import { years } from "./years.js";
+import listStream from "list-stream";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
 import { neighbors } from "./neighbors.js";
 import { tags } from "./tags.js";
+import { years } from "./years.js";
 
-const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export const data = () =>
   gulp
@@ -30,11 +30,11 @@ export const data = () =>
                 .localeCompare(Number(a.page_datetime.replace(/[-T:]/g, "")))
             )
           );
-        if (!fs.existsSync(path.resolve(__dirname, "../../src/json/"))) {
-          fs.mkdirSync(path.resolve(__dirname, "../../src/json/"));
+        if (!existsSync(resolve(__dirname, "../../src/json/"))) {
+          mkdirSync(resolve(__dirname, "../../src/json/"));
         }
-        fs.writeFileSync(
-          path.resolve(__dirname, "../../src/json/data.json"),
+        writeFileSync(
+          resolve(__dirname, "../../src/json/data.json"),
           jsonPretty({
             archives: md,
             neighbors: neighbors(md),

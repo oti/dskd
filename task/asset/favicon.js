@@ -1,5 +1,5 @@
 import gulp from "gulp";
-import browserSync from "browser-sync";
+import { stream } from "browser-sync";
 import plumber from "gulp-plumber";
 
 export const favicon = () =>
@@ -7,4 +7,4 @@ export const favicon = () =>
     .src("./src/favicon.svg")
     .pipe(plumber())
     .pipe(gulp.dest("./dist/"))
-    .pipe(browserSync.stream());
+    .pipe(stream());

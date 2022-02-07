@@ -1,5 +1,5 @@
 import gulp from "gulp";
-import browserSync from "browser-sync";
+import { stream } from "browser-sync";
 import changed from "gulp-changed";
 import imagemin, { gifsicle, mozjpeg, optipng, svgo } from "gulp-imagemin";
 
@@ -32,4 +32,4 @@ export const image = () =>
       )
     )
     .pipe(gulp.dest("./dist/img"))
-    .pipe(browserSync.stream());
+    .pipe(stream());

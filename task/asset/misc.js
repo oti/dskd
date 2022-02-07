@@ -1,5 +1,5 @@
 import gulp from "gulp";
-import browserSync from "browser-sync";
+import { stream } from "browser-sync";
 import plumber from "gulp-plumber";
 
 export const misc = () =>
@@ -7,4 +7,4 @@ export const misc = () =>
     .src("./src/misc/**/*")
     .pipe(plumber())
     .pipe(gulp.dest("./dist/misc/"))
-    .pipe(browserSync.stream());
+    .pipe(stream());

@@ -1,8 +1,8 @@
-import browserSync from "browser-sync";
+import { init } from "browser-sync";
 
 // server & browser sync
 export const server = (done) =>
-  browserSync.init(
+  init(
     {
       ui: false,
       server: {

@@ -1,9 +1,9 @@
 import gulp from "gulp";
-import plumber from "gulp-plumber";
 import frontMatter from "gulp-front-matter";
-import prettify from "gulp-prettify";
 import layout from "gulp-layout";
 import md from "gulp-markdown";
+import plumber from "gulp-plumber";
+import prettify from "gulp-prettify";
 import rename from "gulp-rename";
 import { getCombinedData } from "../utility/getCombinedData.js";
 

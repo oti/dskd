@@ -1,21 +1,21 @@
-import fs from "fs";
-import path from "path";
-import url from "url";
+import { readFileSync } from "fs";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
 
-const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export const getCombinedData = (frontMatter) => {
-  const _config = fs.readFileSync(
-    path.resolve(__dirname, "../../blogconfig.json"),
+  const _config = readFileSync(
+    resolve(__dirname, "../../blogconfig.json"),
     "utf8"
   );
-  const _data = fs.readFileSync(
-    path.resolve(__dirname, "../../src/json/data.json"),
+  const _data = readFileSync(
+    resolve(__dirname, "../../src/json/data.json"),
     "utf8"
   );
-  const _package = fs.readFileSync(
-    path.resolve(__dirname, "../../package.json"),
+  const _package = readFileSync(
+    resolve(__dirname, "../../package.json"),
     "utf8"
   );
 

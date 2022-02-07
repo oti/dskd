@@ -24,7 +24,7 @@ import { posts } from "./task/html/posts.js";
 // ファイル監視
 export const observe = (done) => {
   gulp.watch(["./src/image/**/*"], image);
-  gulp.watch(["./src/html/**/*"], gulp.task("html"));
+  gulp.watch(["./src/html/**/*"], template);
   gulp.watch(["./src/misc/**/*"], misc);
   gulp.watch(["./src/style/**/*"], css);
   done();
@@ -38,7 +38,7 @@ export const build = gulp.series(
 );
 
 // テンプレート更新
-export const pug = gulp.parallel(archives, feed, pages, posts);
+export const template = gulp.parallel(archives, feed, pages, posts);
 
 // 記事更新
 export const md = gulp.series(

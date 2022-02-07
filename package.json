@@ -15,7 +15,7 @@
   "type": "module",
   "scripts": {
     "start": "gulp",
-    "pug": "gulp pug",
+    "template": "gulp template",
     "md": "gulp md",
     "build": "gulp build",
     "lint-html": "markuplint dist/**/*.html --ruleset ./markuplintrc",
