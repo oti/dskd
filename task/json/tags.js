@@ -1,9 +1,9 @@
-const fs = require("fs");
+import fs from "fs";
 
 // タグごとに記事が全てぶら下がったオブジェクトを作る
-const tags = (posts) => {
-  // {'CSS': [{post1}, {post2}, ...], 'note': [{post10}, {post11}, ...]}
-  return posts
+// {'CSS': [{post1}, {post2}, ...], 'note': [{post10}, {post11}, ...]}
+export const tags = (posts) =>
+  posts
     .map((post) => {
       // 記事のタグを key にした記事オブジェクトのペアの配列にする
       // [{'CSS': {post1}}, {'note': {post10}}, {'CSS': {post2}}, {'note': {post11}}, ...]
@@ -24,6 +24,3 @@ const tags = (posts) => {
       });
       return memo;
     }, {});
-};
-
-module.exports = tags;
