@@ -1,25 +1,36 @@
 import fs from "fs";
 import path from "path";
-import config from "../../blogconfig.json";
-import { version } from "../../package.json";
 
 export const getCombinedData = (frontMatter) => {
-  const posts = fs.readFileSync(
+  const _config = fs.readFileSync(
+    path.resolve(__dirname, "../../blogconfig.json"),
+    "utf8"
+  );
+  const _data = fs.readFileSync(
     path.resolve(__dirname, "../../src/json/data.json"),
     "utf8"
   );
-  let parsedPost = {};
+  const _package = fs.readFileSync(
+    path.resolve(__dirname, "../../package.json"),
+    "utf8"
+  );
+
+  let parsedData = {};
+  let parsedConfig = {};
+  let parsedPackage = {};
 
   try {
-    parsedPost = JSON.parse(posts);
+    parsedPackage = JSON.parse(_package);
+    parsedData = JSON.parse(_data);
+    parsedConfig = JSON.parse(_config);
   } catch (e) {
     console.error(e);
   }
 
   return {
-    ...config,
-    blog_version: version,
+    ...parsedConfig,
+    blog_version: parsedPackage.version,
     ...frontMatter,
-    ...parsedPost,
+    ...parsedData,
   };
 };
