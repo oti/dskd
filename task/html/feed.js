@@ -1,32 +1,20 @@
-const package = require("../../package.json");
-const gulp = require("gulp");
-const plumber = require("gulp-plumber");
-const frontMatter = require("gulp-front-matter");
-const prettify = require("gulp-prettify");
-const layout = require("gulp-layout");
-const md = require("gulp-markdown");
-const rename = require("gulp-rename");
-const config = require("../../blogconfig.json");
-
-config.blog_version = package.version;
+import gulp from "gulp";
+import plumber from "gulp-plumber";
+import frontMatter from "gulp-front-matter";
+import prettify from "gulp-prettify";
+import layout from "gulp-layout";
+import md from "gulp-markdown";
+import rename from "gulp-rename";
+import { getCombinedData } from "../utility/getCombinedData";
 
 // RSS作成（feed.md -> feed）
-const feed = () => {
-  return gulp
+export const feed = () =>
+  gulp
     .src("./src/md/feed.md", { allowEmpty: true })
     .pipe(plumber())
     .pipe(frontMatter())
     .pipe(md())
-    .pipe(
-      layout((file) => ({
-        ...config,
-        ...file.frontMatter,
-        ...require("../../src/json/posts.json"),
-      }))
-    )
+    .pipe(layout(({ frontMatter }) => getCombinedData(frontMatter)))
     .pipe(prettify({ indent_char: " ", indent_size: 2 }))
     .pipe(rename({ extname: ".xml" }))
     .pipe(gulp.dest("./dist/"));
-};
-
-module.exports = feed;
