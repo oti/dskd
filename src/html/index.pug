@@ -18,12 +18,12 @@ block contents
     ul.Posts
       each post in posts
         li
-          a(href=`${archives_base}${post.page_id}.html`)= post.page_title
+          a(href=`${archives_base}${posts_base}${post.page_id}.html`)= post.page_title
           +publish(post.page_datetime, post.page_tag, page_title)
 
     if INDEX
       p.More
-        a(href=`${archives_base}`) 全ての記事
+        a(href=`${archives_base}${posts_base}`) 全ての記事
 
   section.Border
     h2.Secondary 年別
@@ -32,7 +32,7 @@ block contents
         li
           a(
             class=page_title === Number(year) && "-current",
-            href=`${archives_base}${year}.html`,
+            href=`${archives_base}${years_base}${year}.html`,
             aria-current=page_title === Number(year) && "page"
           )= year
 
@@ -43,6 +43,6 @@ block contents
         li
           a(
             class=page_title === tag && "-current",
-            href=`${archives_base}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`,
+            href=`${archives_base}${tags_base}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`,
             aria-current=page_title === tag && "page"
           )= tag
