@@ -82,12 +82,10 @@ html(lang="ja")
           false
         );
 
-        (() => {
-          const preferModeName = localStorage.getItem("prefer-dskd-mode");
-          const initModeName = MODE_LIST.indexOf(preferModeName) < 0 ? MODE_LIST[0] : preferModeName;
-          updateMode(initModeName);
-          SWITCH.querySelector(`[value="${initModeName}"]`).setAttribute("checked", true);
-        })();
+        const preferModeName = localStorage.getItem("prefer-dskd-mode");
+        const initModeName = MODE_LIST.indexOf(preferModeName) < 0 ? MODE_LIST[0] : preferModeName;
+        updateMode(initModeName);
+        SWITCH.querySelector(`[value="${initModeName}"]`).setAttribute("checked", true);
       });
 
   body
