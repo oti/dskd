@@ -1,5 +1,5 @@
 ---
-layout: ./src/html/index.pug
+layout: "./src/html/index.pug"
 page_type: "archives"
 page_title: "Archives"
 page_description: "dskd の全記事一覧"

@@ -1,3 +1,3 @@
 ---
-layout: ./src/html/rss.pug
+layout: "./src/html/rss.pug"
 ---
