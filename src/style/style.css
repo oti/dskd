@@ -488,6 +488,9 @@ body > header > h1 {
 .Pages address {
   display: inline;
 }
+.Pages a.-current {
+  background-color: var(--color-mark);
+}
 
 .License {
   line-height: var(--line-height-medium);
