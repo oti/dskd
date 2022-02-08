@@ -14,7 +14,7 @@ import { html } from "./task/html/html.js";
 export const archives = () =>
   html({ src: "./src/md/archives/**/*.md", dest: "./dist/archives/" });
 export const feed = () =>
-  html({ src: "./src/md/feed/feed.md", dest: "./dist/", extname: ".xml" });
+  html({ src: "./src/md/feed.md", dest: "./dist/", extname: ".xml" });
 export const pages = () =>
   html({ src: "./src/md/{*, !feed}.md", dest: "./dist/" });
 export const posts = () =>
