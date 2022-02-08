@@ -27,7 +27,7 @@ export const asset = gulp.parallel(favicon, image, css, misc);
 export const template = gulp.parallel(archives, feed, pages, posts);
 
 // 記事更新
-export const md = gulp.series(data, html);
+export const md = gulp.series(data, posts);
 
 // ビルド
 export const build = gulp.series(asset, data, template);
