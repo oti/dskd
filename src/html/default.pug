@@ -34,7 +34,7 @@ html(lang="ja")
     meta(content=og_image, property="og:image")
     meta(content=og_type, property="og:type")
     meta(content="ja_JP", property="og:locale")
-    meta(content="dskd", property="og:site_name")
+    meta(content=blog_name, property="og:site_name")
     link(rel="image_src", href=og_image)
     link(rel="icon", href=`/favicon.svg?${version}`, type="image/svg+xml")
     link(
@@ -121,7 +121,7 @@ html(lang="ja")
 
       ul.Pages
         li
-          a(href="/about.html", aria-current=page_type === ABOUT && "page") dskdとは何か？
+          a(href="/about.html", aria-current=page_type === ABOUT && "page")= `${blog_name}とは何か？`
         li
           a(href=`${blog_url}${blog_feed}`, target="_blank", rel="noopener") RSS
         li
