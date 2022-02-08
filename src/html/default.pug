@@ -54,6 +54,16 @@ html(lang="ja")
     link(href=url, rel="canonical")
     script.
       document.addEventListener("DOMContentLoaded", () => {
+        const VIEWPORT = document.querySelector("meta[name='viewport']");
+        const BREAKPOINT = "not all and (min-width: 360px)"; // 360px を含まないそれ未満を示す
+        const MATCH = window.matchMedia(BREAKPOINT);
+        const toggleViewport = (isFit) => {
+          const value = isFit ? "width=360" : "width=device-width";
+          VIEWPORT.getAttribute("content") !== value && VIEWPORT.setAttribute("content", value);
+        };
+        MATCH.addEventListener("change", ({ matches }) => toggleViewport(matches), false);
+        toggleViewport(MATCH.matches);
+
         const HTML = document.documentElement;
         const SWITCH = document.querySelector("#Switch");
         const MODE_LIST = [...SWITCH.querySelectorAll("[name='switch']")].map((elem) => elem.value);
