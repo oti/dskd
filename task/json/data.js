@@ -36,6 +36,7 @@ export const data = () =>
           resolve(__dirname, "../../src/json/data.json"),
           JSON.stringify(
             {
+              latest: md[0],
               archives: md,
               neighbors: neighbors(md),
               tags: tags(md),
