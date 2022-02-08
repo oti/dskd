@@ -25,10 +25,7 @@ doctype html
 html(lang="ja")
   head
     meta(charset="UTF-8")
-    meta(
-      content="viewport-fit=cover, width=device-width, initial-scale=1",
-      name="viewport"
-    )
+    meta(content="viewport-fit=cover, width=device-width", name="viewport")
     title= title
     meta(content=description, name="description")
     meta(content=url, property="og:url")
@@ -58,7 +55,7 @@ html(lang="ja")
         const BREAKPOINT = "not all and (min-width: 360px)"; // 360px を含まないそれ未満を示す
         const MATCH = window.matchMedia(BREAKPOINT);
         const toggleViewport = (isFit) => {
-          const value = isFit ? "width=360" : "width=device-width";
+          const value = isFit ? "width=360" : "viewport-fit=cover, width=device-width";
           VIEWPORT.getAttribute("content") !== value && VIEWPORT.setAttribute("content", value);
         };
         MATCH.addEventListener("change", ({ matches }) => toggleViewport(matches), false);
