@@ -16,5 +16,5 @@ export const html = ({ src, dest, extname }) =>
     .pipe(md())
     .pipe(layout(({ frontMatter }) => getCombinedData(frontMatter)))
     .pipe(prettify({ indent_char: " ", indent_size: 2 }))
-    .pipe(gulpIf(extname, rename({ extname: ".xml" })))
+    .pipe(gulpIf(() => extname === ".xml", rename({ extname: ".xml" })))
     .pipe(gulp.dest(dest));
