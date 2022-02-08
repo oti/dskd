@@ -9,10 +9,19 @@ import { misc } from "./task/asset/misc.js";
 
 import { data } from "./task/json/data.js";
 
-import { archives } from "./task/html/archives.js";
-import { feed } from "./task/html/feed.js";
-import { pages } from "./task/html/pages.js";
-import { posts } from "./task/html/posts.js";
+import { html } from "./task/html/html.js";
+
+export const archives = () =>
+  html({ src: "./src/md/archives/**/*.md", dest: "./dist/archives/" });
+export const feed = () =>
+  html({ src: "./src/md/feed/feed.md", dest: "./dist/", extname: ".xml" });
+export const pages = () =>
+  html({ src: "./src/md/{*, !feed}.md", dest: "./dist/" });
+export const posts = () =>
+  html({ src: "./src/md/post/*.md", dest: "./dist/archives/" });
+
+// テンプレート更新
+export const template = gulp.parallel(archives, feed, pages, posts);
 
 // ファイル監視
 export const observe = (done) => {
@@ -29,9 +38,6 @@ export const build = gulp.series(
   data,
   gulp.parallel(archives, feed, pages, posts)
 );
-
-// テンプレート更新
-export const template = gulp.parallel(archives, feed, pages, posts);
 
 // 記事更新
 export const md = gulp.series(
