@@ -1,12 +1,12 @@
 import { writeFileSync } from "fs";
 
 // タグごとに記事が全てぶら下がったオブジェクトを作る
-// {'CSS': [{post1}, {post2}, ...], 'note': [{post10}, {post11}, ...]}
+// {'CSS': [{post1}, {post2}, ...], 'diary': [{post10}, {post11}, ...]}
 export const tags = (posts) =>
   posts
     .map((post) => {
       // 記事のタグを key にした記事オブジェクトのペアの配列にする
-      // [{'CSS': {post1}}, {'note': {post10}}, {'CSS': {post2}}, {'note': {post11}}, ...]
+      // [{'CSS': {post1}}, {'diary': {post10}}, {'CSS': {post2}}, {'diary': {post11}}, ...]
       return post.page_tag.map((tag_name) => ({ [tag_name]: post }));
     })
     .flat()
@@ -18,7 +18,7 @@ export const tags = (posts) =>
           // tags_name ごとに mdファイルを writeFile
           const yaml_block = `---\nlayout: ./src/html/index.pug\npage_type: tag\npage_title: ${key}\npage_description: ${key}タグの記事一覧\n---\n`;
           const safe_name = key.toLowerCase().replace(/[ .-]/g, "_");
-          writeFileSync(`./src/md/archives/${safe_name}.md`, yaml_block);
+          writeFileSync(`./src/md/archives/tags/${safe_name}.md`, yaml_block);
         }
         memo[key].push(pair[key]);
       });
