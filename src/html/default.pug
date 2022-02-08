@@ -8,12 +8,14 @@
   const title = INDEX ? blog_name : `${page_title} - ${blog_name}`
   const description = INDEX ? blog_description : page_description
   const url = POST
-    ? `${blog_url}${archives_base}${page_id}.html`
-    : TAG || YEAR
-      ? `${blog_url}${archives_base}${String(page_title).toLowerCase().replace(/[ .-]/g, '_')}.html`
-      : INDEX
-        ? blog_url
-        : page_permalink
+    ? `${blog_url}${archives_base}${posts_base}${page_id}.html`
+    : TAG
+      ? `${blog_url}${archives_base}${tags_base}${String(page_title).toLowerCase().replace(/[ .-]/g, '_')}.html`
+      : YEAR
+        ? `${blog_url}${archives_base}${years_base}${String(page_title).toLowerCase().replace(/[ .-]/g, '_')}.html`
+        : INDEX
+          ? blog_url
+          : page_permalink
   const og_image = page_cover ? `${page_cover}?${version}` : `/img/og-image.png?${version}`
   const og_type = INDEX ? 'website' : 'article'
 
