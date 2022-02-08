@@ -10,7 +10,7 @@ export const years = (posts) =>
       memo[yyyy] = [];
       // tags_name ごとに mdファイルを writeFile
       const yaml_block = `---\nlayout: ./src/html/index.pug\npage_type: year\npage_title: ${yyyy}\npage_description: ${yyyy}年公開の記事一覧\n---\n`;
-      writeFileSync(`./src/md/archives/${yyyy}.md`, yaml_block);
+      writeFileSync(`./src/md/archives/years/${yyyy}.md`, yaml_block);
     }
     memo[yyyy].push(post);
     return memo;
