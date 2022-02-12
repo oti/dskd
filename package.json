@@ -12,7 +12,6 @@
     "html",
     "js"
   ],
-  "type": "module",
   "scripts": {
     "start": "gulp",
     "template": "gulp template",
