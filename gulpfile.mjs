@@ -1,15 +1,15 @@
 import gulp from "gulp";
 
-import { server } from "./task/server/server.js";
+import { server } from "./task/server/server.mjs";
 
-import { css } from "./task/asset/css.js";
-import { favicon } from "./task/asset/favicon.js";
-import { image } from "./task/asset/image.js";
-import { misc } from "./task/asset/misc.js";
+import { css } from "./task/asset/css.mjs";
+import { favicon } from "./task/asset/favicon.mjs";
+import { image } from "./task/asset/image.mjs";
+import { misc } from "./task/asset/misc.mjs";
 
-import { data } from "./task/json/data.js";
+import { data } from "./task/json/data.mjs";
 
-import { html } from "./task/html/html.js";
+import { html } from "./task/html/html.mjs";
 
 export const archives = () =>
   html({ src: "./src/md/archives/**/*.md", dest: "./dist/archives/" });

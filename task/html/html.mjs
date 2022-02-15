@@ -6,7 +6,7 @@ import md from "gulp-markdown";
 import plumber from "gulp-plumber";
 import prettify from "gulp-prettify";
 import rename from "gulp-rename";
-import { getCombinedData } from "../utility/getCombinedData.js";
+import { getCombinedData } from "../utility/getCombinedData.mjs";
 
 export const html = ({ src, dest, extname }) =>
   gulp

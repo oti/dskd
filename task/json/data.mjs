@@ -5,9 +5,9 @@ import frontMatter from "gulp-front-matter";
 import listStream from "list-stream";
 import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
-import { neighbors } from "./neighbors.js";
-import { tags } from "./tags.js";
-import { years } from "./years.js";
+import { neighbors } from "./neighbors.mjs";
+import { tags } from "./tags.mjs";
+import { years } from "./years.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

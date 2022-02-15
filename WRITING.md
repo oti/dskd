@@ -28,7 +28,7 @@ page_tag:                            // 記事に登録するタグ。配列形�
 記事 md ファイルの雛形を自動生成するコマンドを用意しています。
 
 ```
-node createPostMd.js
+node createPostMd.mjs
 ```
 
 最新の記事 ID が自動で採番され `./src/post/` 配下に md ファイルが出力されます。ファイルを開いて思い思いの文章を書きましょう。
