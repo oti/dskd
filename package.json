@@ -13,15 +13,16 @@
     "js"
   ],
   "scripts": {
+    "build": "gulp build",
+    "create-post-md": "node createPostMd.mjs",
+    "lint-css": "stylelint dist/css/*.css",
+    "lint-html": "markuplint dist/**/*.html --ruleset ./markuplintrc",
+    "md": "gulp md",
+    "prepare": "husky install",
+    "prettier": "prettier --write .",
     "start": "gulp",
     "template": "gulp template",
-    "md": "gulp md",
-    "build": "gulp build",
-    "lint-html": "markuplint dist/**/*.html --ruleset ./markuplintrc",
-    "lint-css": "stylelint dist/css/*.css",
-    "test": "npm run lint-css && npm run lint-html",
-    "prepare": "husky install",
-    "prettier": "prettier --write ."
+    "test": "npm run lint-css && npm run lint-html"
   },
   "devDependencies": {
     "@prettier/plugin-pug": "^1.19.2",
