@@ -27,7 +27,7 @@ page_tag:                            // 記事に登録するタグ。配列形�
 
 記事 md ファイルの雛形を自動生成するコマンドを用意しています。
 
-```
+```bash
 node createPostMd.mjs
 ```
 
@@ -39,7 +39,7 @@ node createPostMd.mjs
 
 記事の YAML ブロックに `page_tag` フィールドで配列型式でタグ名を指定してください。
 
-```
+```yaml
 page_tag:
   - "HTML"
   - "CSS"
