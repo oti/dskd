@@ -1,0 +1,19 @@
+{
+  "rules": {
+    "preset-ja-spacing": {
+      "ja-space-around-code": true,
+      "ja-space-between-half-and-full-width": {
+        "space": "always"
+      }
+    },
+    "preset-ja-technical-writing": {
+      "ja-no-successive-word": {
+        "allowOnomatopee": true,
+        "allow": ["…", "！", "？"]
+      },
+      "ja-no-weak-phrase": false,
+      "no-exclamation-question-mark": false,
+      "no-hankaku-kana": false
+    }
+  }
+}
