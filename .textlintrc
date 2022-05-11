@@ -1,7 +1,10 @@
 {
   "rules": {
     "preset-ja-spacing": {
-      "ja-space-around-code": true,
+      "ja-space-around-code": {
+        "after": true,
+        "before": true
+      },
       "ja-space-between-half-and-full-width": {
         "space": "always"
       }
