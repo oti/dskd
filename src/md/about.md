@@ -44,7 +44,7 @@ dskd は「ですけど」と読みます。「〜ですけど」が口癖なの
 
 このブログ内の全てのデータは、特記事項が付随および明記されていない限りは[Creative Commons — Attribution-NonCommercial(CC BY-NC)](https://creativecommons.org/licenses/by-nc/4.0/deed.ja)の元で公開されています。
 
-このライセンスでは、非営利目的に限りこのブログ内のデータを自由に使用することができます。
+このライセンスでは、非営利目的に限りこのブログ内のデータを自由に使用できます。
 
 [GitHub にてこのブログのリポジトリを公開しています](https://github.com/oti/dskd)。
 
