@@ -13,24 +13,22 @@ dskd は「ですけど」と読みます。「〜ですけど」が口癖なの
 
 ## わたしのこと
 
-1985 年度生まれのフロントエンドエンジニアです。2007 年 5 月からウェブ制作に従事しています。[2015 年に株式会社まぼろしに入社しました](https://maboroshi.biz)。
-
 ハンドルネームは越智、oti、otiext など。本名は伊藤です。
 
-コンテンツにふさわしい情報設計を心がけ、ウェブアクセシビリティにスペシャリティを持って取り組んでいます。
+1985 年度生まれのフロントエンドエンジニアです。2007 年 5 月からウェブ制作に従事しています。[2015 年 4 月から株式会社まぼろしに所属しています](https://maboroshi.biz)。
 
 ## dskd の他に作っている主なプロダクト
 
-[ktt](https://tkg.dskd.jp)  
+[ktt](https://tkg.dskd.jp)
 ーー朝食べた TKG を掲載しているウェブサイトです。
 
-[decomoji](https://decomoji.dev)  
+[decomoji](https://decomoji.dev)
 ーー Slack のリアクション機能で使えるカスタム絵文字セット「decomoji（デコモジ）」です。
 
-[デコモジファインダー](https://finder.decomoji.dev)  
+[デコモジファインダー](https://finder.decomoji.dev)
 ーー前述のデコモジを検索、コレクションを共有できるウェブアプリです。
 
-[HEX Contrast Ratio Calculator](https://hex-crc.dskd.jp)  
+[HEX Contrast Ratio Calculator](https://hex-crc.dskd.jp)
 ーー 2 色の HEX カラーセットからコントラスト比を計算し、WCAG2.1 が定める基準を達成しているかを検証するウェブアプリです。
 
 ## 購読
@@ -42,7 +40,7 @@ dskd は「ですけど」と読みます。「〜ですけど」が口癖なの
 
 ## ライセンス
 
-このブログ内の全てのデータは、特記事項が付随および明記されていない限りは[Creative Commons — Attribution-NonCommercial(CC BY-NC)](https://creativecommons.org/licenses/by-nc/4.0/deed.ja)の元で公開されています。
+特記事項が付随および明記されていない限りは[Creative Commons — Attribution-NonCommercial(CC BY-NC)](https://creativecommons.org/licenses/by-nc/4.0/deed.ja)の元で公開されています。
 
 このライセンスでは、非営利目的に限りこのブログ内のデータを自由に使用できます。
 
