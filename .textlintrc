@@ -16,7 +16,10 @@
       },
       "ja-no-weak-phrase": false,
       "no-exclamation-question-mark": false,
-      "no-hankaku-kana": false
+      "no-hankaku-kana": false,
+      "sentence-length": {
+        "max": 120
+      }
     }
   }
 }
