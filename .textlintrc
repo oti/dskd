@@ -12,7 +12,7 @@
     "preset-ja-technical-writing": {
       "ja-no-successive-word": {
         "allowOnomatopee": true,
-        "allow": ["…", "！", "？"]
+        "allow": ["…", "！", "？", "めでたし"]
       },
       "ja-no-weak-phrase": false,
       "no-doubled-joshi": {
