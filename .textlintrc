@@ -17,7 +17,7 @@
       "ja-no-weak-phrase": false,
       "no-doubled-joshi": {
         "strict": false,
-        "allow": ["するか", "でも", "も", "や"]
+        "allow": ["するか", "と", "でも", "も", "や"]
       },
       "no-exclamation-question-mark": false,
       "no-hankaku-kana": false,
