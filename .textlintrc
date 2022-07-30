@@ -15,6 +15,10 @@
         "allow": ["…", "！", "？"]
       },
       "ja-no-weak-phrase": false,
+      "no-doubled-joshi": {
+        "strict": false,
+        "allow": ["するか", "でも", "も", "や"]
+      },
       "no-exclamation-question-mark": false,
       "no-hankaku-kana": false,
       "sentence-length": {
