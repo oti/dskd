@@ -5,7 +5,6 @@
     "attr-equal-space-before": true,
     "attr-spacing": true,
     "attr-value-quotes": true,
-    "character-reference": true,
     "deprecated-attr": true,
     "deprecated-element": true,
     "doctype": true,
