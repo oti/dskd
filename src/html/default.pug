@@ -70,7 +70,7 @@ html(lang="ja")
         );
 
         const preferModeName = localStorage.getItem("prefer-dskd-mode");
-        const initModeName = MODE_LIST.indexOf(preferModeName) < 0 ? MODE_LIST[0] : preferModeName;
+        const initModeName = MODE_LIST.includes(preferModeName) ? preferModeName : MODE_LIST[0];
         updateMode(initModeName);
         SWITCH.querySelector(`[value="${initModeName}"]`).setAttribute("checked", true);
       });
