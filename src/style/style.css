@@ -374,6 +374,12 @@ body > header > h1 {
 .Post table.-align-start {
   text-align: start;
 }
+.Post table.-post87 th {
+  text-align: left;
+}
+.Post table.-post87 img {
+  width: 50%;
+}
 
 .Post caption {
   padding: 3px;
