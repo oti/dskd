@@ -1,23 +1,36 @@
 {
   "rules": {
     "attr-duplication": true,
-    "attr-equal-space-after": true,
-    "attr-equal-space-before": true,
-    "attr-spacing": true,
     "attr-value-quotes": true,
+    "case-sensitive-attr-name": true,
+    "case-sensitive-tag-name": true,
+    "character-reference": true,
+    "class-naming": false,
     "deprecated-attr": true,
     "deprecated-element": true,
+    "disallowed-element": false,
     "doctype": true,
+    "end-tag": true,
     "id-duplication": true,
+    "ineffective-attr": true,
+    "invalid-attr": true,
+    "label-has-control": false,
     "landmark-roles": {
-      "value": true,
-      "option": {
+      "options": {
         "ignoreRoles": ["complementary"]
       }
     },
+    "no-boolean-attr-value": true,
+    "no-default-value": true,
+    "no-empty-palpable-content": false,
+    "no-hard-code-id": true,
+    "no-refer-to-non-existent-id": true,
+    "no-use-event-handler-attr": true,
     "permitted-contents": true,
     "required-attr": true,
+    "required-element": false,
     "required-h1": true,
+    "use-list": false,
     "wai-aria": true
   }
 }
