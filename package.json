@@ -15,17 +15,17 @@
   "scripts": {
     "build": "gulp build",
     "create-post-md": "node createPostMd.mjs",
-    "lint-css": "stylelint dist/css/*.css",
-    "lint-html": "markuplint dist/**/*.html --ruleset ./markuplintrc",
+    "markuplint": "markuplint dist/**/*.html --ruleset ./markuplintrc",
     "md": "gulp md",
     "prepare": "husky install",
     "prettier": "prettier --write .",
     "start": "gulp",
+    "stylelint": "stylelint dist/css/*.css",
     "template": "gulp template",
-    "test": "npm run lint-css && npm run lint-html"
+    "test": "npm run stylelint && npm run markuplint"
   },
   "devDependencies": {
-    "@prettier/plugin-pug": "^2.3.0",
+    "@prettier/plugin-pug": "^2.4.1",
     "autoprefixer": "^10.4.13",
     "browser-sync": "^2.27.11",
     "css-mqpacker": "^7.0.0",
@@ -41,17 +41,17 @@
     "gulp-prettify": "^0.5.0",
     "gulp-rename": "^2.0.0",
     "html-validator-cli": "^7.0.1",
-    "husky": "^8.0.2",
+    "husky": "^8.0.3",
     "list-stream": "^2.1.0",
-    "markuplint": "^3.0.1",
-    "postcss": "^8.4.20",
-    "prettier": "^2.8.1",
+    "markuplint": "^3.2.0",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.3",
     "pretty-quick": "^3.1.3",
     "pug": "^3.0.2",
     "stylelint": "^14.16.1",
     "stylelint-config-recommended": "^9.0.0",
-    "textlint": "^12.4.0",
-    "textlint-rule-preset-ja-spacing": "^2.2.0",
+    "textlint": "^12.6.1",
+    "textlint-rule-preset-ja-spacing": "^2.3.0",
     "textlint-rule-preset-ja-technical-writing": "^7.0.0"
   }
 }
