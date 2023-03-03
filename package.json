@@ -13,7 +13,7 @@
     "js"
   ],
   "scripts": {
-    "build": "gulp build",
+    "build": "gulp build && rm -rf dist/feed.html",
     "create-post-md": "node createPostMd.mjs",
     "markuplint": "markuplint dist/**/*.html --ruleset ./markuplintrc",
     "md": "gulp md",
