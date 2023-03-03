@@ -8,8 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: install dependencies
-        run: npm ci
+      - name: install dependencies exclude gulp-*
+        run: npm i -D @prettier/plugin-pug autoprefixer browser-sync css-mqpacker husky list-stream markuplint pretty-quick pug stylelint stylelint-config-recommended
+      - name: install dependencies gulp-*
+        run: npm i -D gulp gulp-changed gulp-front-matter gulp-if gulp-imagemin gulp-layout gulp-markdown gulp-plumber gulp-postcss gulp-prettify gulp-rename
       - name: build
         run: npm run build
       - name: test
