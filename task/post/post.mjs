@@ -23,12 +23,6 @@ const getFormattedPugString = ({ content, layout }) => {
   return `extends ${layout}\n\nblock contents\n${value}`;
 };
 
-const getCompiledHtml = async ({ name, path }) => {
-  const filename = name.split(".pug")[0];
-  const content = await fs.readFile(`${path}${name}`, "utf8");
-  return pug.render(content, { filename });
-};
-
 const getPostMatter = async () => {
   return Promise.all(
     (await getFileList(SRC_POST_MD)).map(async ({ name }) =>
@@ -50,6 +44,12 @@ const getPostPug = async (matters) => {
   );
 };
 
+const getPugCompiledHtml = async ({ name, path }) => {
+  const filename = name.split(".pug")[0];
+  const content = await fs.readFile(`${path}${name}`, "utf8");
+  return pug.render(content, { filename });
+};
+
 const generatePostHtml = async () => {
   await fs.mkdir(DIST_POST_HTML, { recursive: true });
   return Promise.all(
@@ -57,7 +57,7 @@ const generatePostHtml = async () => {
       async ({ name }) =>
         await fs.writeFile(
           `${DIST_POST_HTML}${name.split(".pug")[0]}.html`,
-          await getCompiledHtml({
+          await getPugCompiledHtml({
             name,
             path: SRC_POST_PUG,
           })
@@ -67,5 +67,4 @@ const generatePostHtml = async () => {
 };
 
 await getPostMatter().then(async (matters) => await getPostPug(matters));
-
 await generatePostHtml();
