@@ -1,3 +1,5 @@
+import fs from "fs/promises";
+
 /**
  * path で渡したディレクトリ内のファイルリストを返す
  * @param path
