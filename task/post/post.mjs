@@ -1,7 +1,8 @@
 import fs from "fs/promises";
+import fg from "fast-glob";
 import matter from "gray-matter";
-import pug from "pug";
 import md2Pug from "markdown-to-pug";
+import pug from "pug";
 
 import { getFileList } from "../utility/getFileList.mjs";
 
@@ -9,7 +10,9 @@ const PUG_INDENT = "  ";
 const PUG_DELIMITER = "\n";
 const SRC_POST_MD = "src/md/post/";
 const SRC_POST_PUG = "src/pug/archives/";
+const SRC_PUG = "src/pug/";
 const DIST_POST_HTML = "dist/archives/";
+const DIST = "dist/"
 
 const m2p = new md2Pug();
 
@@ -50,21 +53,19 @@ const getPugCompiledHtml = async ({ name, path }) => {
   return pug.render(content, { filename });
 };
 
-const generatePostHtml = async () => {
-  await fs.mkdir(DIST_POST_HTML, { recursive: true });
+const generateHTML = async () => {
+  await fs.mkdir("dist/archives/tags/", { recursive: true });
   return Promise.all(
-    (await getFileList(SRC_POST_PUG)).map(
-      async ({ name }) =>
-        await fs.writeFile(
-          `${DIST_POST_HTML}${name.split(".pug")[0]}.html`,
-          await getPugCompiledHtml({
-            name,
-            path: SRC_POST_PUG,
-          })
-        )
-    )
+    (await fg(`${SRC_PUG}**/*.pug`)).map(async (filepath) => {
+      return await fs.writeFile(
+        filepath.replace(SRC_PUG, DIST).replace('.pug', ".html"),
+        await getPugCompiledHtml({
+          filepath,
+        })
+      );
+    })
   );
 };
 
 await getPostMatter().then(async (matters) => await getPostPug(matters));
-await generatePostHtml();
+await generateHTML();
