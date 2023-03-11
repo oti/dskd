@@ -7,7 +7,6 @@
   "keywords": [],
   "scripts": {},
   "devDependencies": {
-    "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",
     "markdown-to-pug": "^1.0.11",
     "pug": "^3.0.2"
