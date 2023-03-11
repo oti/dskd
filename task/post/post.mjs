@@ -1,54 +1,75 @@
 import fs from "fs/promises";
-import fg from "fast-glob";
 import matter from "gray-matter";
 import pug from "pug";
-
 import md2Pug from "markdown-to-pug";
+
+const PUG_INDENT = "  ";
+const PUG_DELIMITER = "\n";
+const SRC_POST_MD = "src/md/post/";
+const SRC_POST_PUG = "src/html/archives/";
+const DIST_POST_HTML = "dist/archives/";
+
 const m2p = new md2Pug();
 
-const postMdPath = "src/md/post/";
-const postPugPath = "src/html/archives/";
+const getFilesByDir = async (path) => {
+  return (await fs.readdir(path, { withFileTypes: true })).filter((dirent) =>
+    dirent.isFile()
+  );
+};
+
+const getFormattedPugString = ({ content, layout }) => {
+  // Pug の `block contents` に合わせてインデントを追加する
+  const value = m2p
+    .render(content, { pretty: true })
+    .split(PUG_DELIMITER)
+    .map((v) => `${PUG_INDENT}${v}`)
+    .join(PUG_DELIMITER);
+  return `extends ${layout}\n\nblock contents\n${value}`;
+};
+
+const getCompiledHtml = async ({ name, path }) => {
+  const filename = name.split(".pug")[0];
+  const content = await fs.readFile(`${path}${name}`, "utf8");
+  return pug.render(content, { filename });
+};
 
 const getPostMatter = async () => {
   return Promise.all(
-    (await fs.readdir(postMdPath, { withFileTypes: true }))
-      .filter((dirent) => dirent.isFile())
-      .map(async ({ name }) => {
-        const content = await fs.readFile(`${postMdPath}${name}`, "utf8");
-        return matter(content);
-      })
+    (await getFilesByDir(SRC_POST_MD)).map(async ({ name }) =>
+      matter(await fs.readFile(`${SRC_POST_MD}${name}`, "utf8"))
+    )
   );
 };
 
 const getPostPug = async (matters) => {
+  await fs.mkdir("src/html/archives/", { recursive: true });
   return Promise.all(
-    matters.map(async ({ content, data }) => {
-      const pug = m2p.render(content, { pretty: "  " });
-      const indentedPug = pug
-        .split("\n")
-        .map((v) => `  ${v}`)
-        .join("\n");
-      const formatted = `extends ${data.layout}\n\nblock contents\n${indentedPug}`;
-      fs.mkdir("src/html/archives/", { recursive: true });
-      await fs.writeFile(`src/html/archives/${data.page_id}.pug`, formatted);
-    })
+    matters.map(
+      async ({ content, data: { layout, page_id } }) =>
+        await fs.writeFile(
+          `src/html/archives/${page_id}.pug`,
+          getFormattedPugString({ content, layout })
+        )
+    )
   );
 };
 
-const getPostHtml = async () => {
+const generatePostHtml = async () => {
+  await fs.mkdir(DIST_POST_HTML, { recursive: true });
   return Promise.all(
-    (await fs.readdir(postPugPath, { withFileTypes: true }))
-      .filter((dirent) => dirent.isFile())
-      .map(async ({ name }) => {
-        const filename = name.split(".pug")[0].at(-1);
-        const content = await fs.readFile(`${postPugPath}${name}`, "utf8");
-        const compiled = pug.render(content, { filename });
-        fs.mkdir("dist/archives/", { recursive: true });
-        await fs.writeFile(`dist/archives/${filename}.html`, compiled);
-      })
+    (await getFilesByDir(SRC_POST_PUG)).map(
+      async ({ name }) =>
+        await fs.writeFile(
+          `${DIST_POST_HTML}${name.split(".pug")[0]}.html`,
+          await getCompiledHtml({
+            name,
+            path: SRC_POST_PUG,
+          })
+        )
+    )
   );
 };
 
-await getPostMatter()
-  .then(async (matters) => await getPostPug(matters))
-  .then(async () => await getPostHtml());
+await getPostMatter().then(async (matters) => await getPostPug(matters));
+
+await generatePostHtml();
