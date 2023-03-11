@@ -1,8 +1,4 @@
 .DS_Store
-.history
-.sass-cache
-npm-debug.log
-dist
 node_modules
-src/json/
-test
+src/json
+src/pug
