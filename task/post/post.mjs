@@ -8,7 +8,7 @@ import { getFileList } from "../utility/getFileList.mjs";
 const PUG_INDENT = "  ";
 const PUG_DELIMITER = "\n";
 const SRC_POST_MD = "src/md/post/";
-const SRC_POST_PUG = "src/html/archives/";
+const SRC_POST_PUG = "src/pug/archives/";
 const DIST_POST_HTML = "dist/archives/";
 
 const m2p = new md2Pug();
@@ -32,12 +32,12 @@ const getPostMatter = async () => {
 };
 
 const getPostPug = async (matters) => {
-  await fs.mkdir("src/html/archives/", { recursive: true });
+  await fs.mkdir(SRC_POST_PUG, { recursive: true });
   return Promise.all(
     matters.map(
       async ({ content, data: { layout, page_id } }) =>
         await fs.writeFile(
-          `src/html/archives/${page_id}.pug`,
+          `${SRC_POST_PUG}${page_id}.pug`,
           getFormattedPugString({ content, layout })
         )
     )
