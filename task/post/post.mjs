@@ -3,6 +3,8 @@ import matter from "gray-matter";
 import pug from "pug";
 import md2Pug from "markdown-to-pug";
 
+import { getFileList } from "../utility/getFileList.mjs";
+
 const PUG_INDENT = "  ";
 const PUG_DELIMITER = "\n";
 const SRC_POST_MD = "src/md/post/";
@@ -10,12 +12,6 @@ const SRC_POST_PUG = "src/html/archives/";
 const DIST_POST_HTML = "dist/archives/";
 
 const m2p = new md2Pug();
-
-const getFilesByDir = async (path) => {
-  return (await fs.readdir(path, { withFileTypes: true })).filter((dirent) =>
-    dirent.isFile()
-  );
-};
 
 const getFormattedPugString = ({ content, layout }) => {
   // Pug の `block contents` に合わせてインデントを追加する
@@ -35,7 +31,7 @@ const getCompiledHtml = async ({ name, path }) => {
 
 const getPostMatter = async () => {
   return Promise.all(
-    (await getFilesByDir(SRC_POST_MD)).map(async ({ name }) =>
+    (await getFileList(SRC_POST_MD)).map(async ({ name }) =>
       matter(await fs.readFile(`${SRC_POST_MD}${name}`, "utf8"))
     )
   );
@@ -57,7 +53,7 @@ const getPostPug = async (matters) => {
 const generatePostHtml = async () => {
   await fs.mkdir(DIST_POST_HTML, { recursive: true });
   return Promise.all(
-    (await getFilesByDir(SRC_POST_PUG)).map(
+    (await getFileList(SRC_POST_PUG)).map(
       async ({ name }) =>
         await fs.writeFile(
           `${DIST_POST_HTML}${name.split(".pug")[0]}.html`,
