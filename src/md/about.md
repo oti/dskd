@@ -1,8 +1,8 @@
 ---
 layout: ./src/html/page.pug
 page_type: "about"
-page_title: "dskd とは何か？"
-page_description: "ブログのこととわたしのことと。"
+title: "dskd とは何か？"
+desc: "ブログのこととわたしのことと。"
 nav_cr: "about"
 page_permalink: "https://dskd.jp/about.html"
 ---
