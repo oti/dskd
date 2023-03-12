@@ -2,40 +2,39 @@ extends default
 
 block contents
   -
-    const escaped_title = encodeURIComponent(page_title)
-    const escaped_permalink = encodeURIComponent(`${blog_url}${archives_base}${posts_base}${page_id}.html`)
+    const escaped_title = encodeURIComponent(title)
+    const escaped_permalink = encodeURIComponent(`${blog_url}${archives_base}${posts_base}${id}.html`)
     const tw_href = `https://twitter.com/intent/tweet?text=${escaped_title}&url=${escaped_permalink}&via=dskd_jp&related=otiext`
     const fb_href = `https://www.facebook.com/share.php?u=${escaped_permalink}`
     const hb_href = `http://b.hatena.ne.jp/my/add.confirm?title=${escaped_title}&url=${escaped_permalink}`
-    const neighbor = neighbors[page_id]
-    const newer = neighbor.newer || {}
-    const older = neighbor.older || {}
+    const newer = posts[id].newer
+    const older = posts[id].older
 
   article.Post.Border
-    h1= page_title
+    h1= title
 
-    +publish(page_datetime, page_tag, null)
+    +publish(datetime, tag, null)
 
     != contents
 
   .Border
     ul.Share
       li
-        a(href=`${contribute}${page_id}.md`) ソース（GitHub）
+        a(href=`${contribute}${id}.md`) ソース（GitHub）
       li
-        a(href=tw_href, target="_blank") Twitter
+        a(href=tw_href) Twitter
       li
-        a(href=fb_href, target="_blank") Facebook
+        a(href=fb_href) Facebook
       li
-        a(href=hb_href, target="_blank") はてブ
+        a(href=hb_href) はてブ
 
   .Border
     ul.Neighbor
-      if newer.page_title
+      if newer
         li
-          a(href=`${archives_base}${posts_base}${newer.page_id}.html`)= newer.page_title
+          a(href=`${archives_base}${posts_base}${newer.id}.html`)= newer.title
           span （ひとつ未来）
-      if older.page_title
+      if older
         li
-          a(href=`${archives_base}${posts_base}${older.page_id}.html`)= older.page_title
+          a(href=`${archives_base}${posts_base}${older.id}.html`)= older.title
           span （ひとつ過去）

@@ -13,7 +13,7 @@ rss(
     pubdate= new Date()
     lastbuilddate= new Date()
     docs http://blogs.law.harvard.edu/tech/rss
-    generator Node.js v10.14.1
+    generator oti
     managingeditor= `${blog_address} (${blog_author})`
     webmaster= `${blog_address} (${blog_author})`
     atom:link(href=`${blog_url}feed`, rel="self", type="application/rss+xml")/
@@ -21,9 +21,9 @@ rss(
 
     each post, i in archives
       item
-        title= post.page_title
-        link= `${blog_url}${archives_base}${posts_base}${post.page_id}.html`
-        description= post.page_description
-        pubdate= new Date(post.page_datetime)
-        guid(isPermaLink="true")= `${blog_url}${archives_base}${posts_base}${post.page_id}.html`
+        title= post.title
+        link= `${blog_url}${archives_base}${posts_base}${post.id}.html`
+        description= post.desc
+        pubdate= new Date(post.datetime)
+        guid(isPermaLink="true")= `${blog_url}${archives_base}${posts_base}${post.id}.html`
         //- content:encoded=('<![CDATA['+post.page_body+']]>')

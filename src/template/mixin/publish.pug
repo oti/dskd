@@ -1,4 +1,4 @@
-mixin publish(time, tags, page_title)
+mixin publish(time, tags, title)
   -
     const dtf = new Intl.DateTimeFormat('ja-JP', {
       year: 'numeric',
@@ -13,7 +13,7 @@ mixin publish(time, tags, page_title)
       time(datetime=`${time}+09:00`)= pubdate
     dt.Invisible タギング
     each tag in tags
-      if page_title === tag
+      if title === tag
         dd= tag
       else
         dd

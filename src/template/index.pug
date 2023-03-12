@@ -2,15 +2,15 @@ extends default
 
 block contents
   -
-    const heading = INDEX ? '最近の記事' : page_description
+    const heading = INDEX ? '最近の記事' : desc
     const posts = INDEX
         ? archives.slice(0,5) //- indexでは5件だけ出力する
         : ARCHIVES
           ? archives
           : TAG
-            ? tags[page_title]
+            ? tags[title]
             : YEAR
-              ? years[page_title]
+              ? years[title]
               : []
 
   section.Border
@@ -18,8 +18,8 @@ block contents
     ul.Posts
       each post in posts
         li
-          a(href=`${archives_base}${posts_base}${post.page_id}.html`)= post.page_title
-          +publish(post.page_datetime, post.page_tag, page_title)
+          a(href=`${archives_base}${posts_base}${post.id}.html`)= post.title
+          +publish(post.datetime, post.tag, title)
 
     if INDEX
       p.More
@@ -31,9 +31,9 @@ block contents
       each year, i in Object.keys(years).sort((a, b) => b.localeCompare(a))
         li
           a(
-            class=page_title === Number(year) && "-current",
+            class=title === Number(year) && "-current",
             href=`${archives_base}${years_base}${year}.html`,
-            aria-current=page_title === Number(year) && "page"
+            aria-current=title === Number(year) && "page"
           )= year
 
   section.Border
@@ -42,7 +42,7 @@ block contents
       each tag, i in Object.keys(tags).sort((a, b) => a.localeCompare(b))
         li
           a(
-            class=page_title === tag && "-current",
+            class=title === tag && "-current",
             href=`${archives_base}${tags_base}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`,
-            aria-current=page_title === tag && "page"
+            aria-current=title === tag && "page"
           )= tag

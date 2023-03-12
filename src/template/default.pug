@@ -1,22 +1,22 @@
 -
   const INDEX = page_type === 'index'
-  const POST = page_type === 'post'
+  const POST = type === 'post'
   const TAG = page_type === 'tag'
   const YEAR = page_type === 'year'
   const ARCHIVES = page_type === 'archives'
   const ABOUT = page_type === 'about'
-  const title = INDEX ? blog_name : `${page_title} - ${blog_name}`
-  const description = INDEX ? blog_description : page_description
+  const title = INDEX ? blog_name : `${title} - ${blog_name}`
+  const description = INDEX ? blog_description : desc
   const url = POST
-    ? `${blog_url}${archives_base}${posts_base}${page_id}.html`
+    ? `${blog_url}${archives_base}${posts_base}${id}.html`
     : TAG
-      ? `${blog_url}${archives_base}${tags_base}${String(page_title).toLowerCase().replace(/[ .-]/g, '_')}.html`
+      ? `${blog_url}${archives_base}${tags_base}${String(title).toLowerCase().replace(/[ .-]/g, '_')}.html`
       : YEAR
-        ? `${blog_url}${archives_base}${years_base}${String(page_title).toLowerCase().replace(/[ .-]/g, '_')}.html`
+        ? `${blog_url}${archives_base}${years_base}${String(title).toLowerCase().replace(/[ .-]/g, '_')}.html`
         : INDEX
           ? blog_url
           : page_permalink
-  const og_image = page_cover ? `${page_cover}?${version}` : `/img/og-image.png?${version}`
+  const og_image = cover ? `${cover}?${version}` : `/img/og-image.png?${version}`
 
 include mixin/publish
 
@@ -103,7 +103,7 @@ html(lang="ja")
 
       ul.Pages
         li
-          a(href="/about.html", aria-current=page_type === ABOUT && "page")= `${blog_name}とは何か？`
+          a(href="/about.html", aria-current=id === "about" && "page")= `${blog_name}とは何か？`
         li
           a(href=`${blog_url}${blog_feed}`, target="_blank", rel="noopener") RSS
         li
