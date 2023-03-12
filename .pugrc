@@ -1,5 +1,5 @@
 {
-  "locale": {
+  "locals": {
     "blog_name": "dskd",
     "blog_url": "https://dskd.jp",
     "blog_description": "dskd はウェブ制作にまつわる雑記を主としたウェブログです。",
