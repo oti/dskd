@@ -1,5 +1,5 @@
 ---
-layout: "page"
+type: "page"
 id: "about"
 title: "dskd とは何か？"
 desc: "ブログのこととわたしのことと。"
