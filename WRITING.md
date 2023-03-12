@@ -12,12 +12,12 @@ YAML ブロックは記事ページとそれ以外とで異なります。
 ---
 layout: "./src/html/post.pug"        // ページが利用するテンプレートのパスを指定する
 page_type: "post"                    // ページの種類を指定する。テンプレート向け。
-page_cover: null                     // og:image を個別に指定したい場合は画像の URL を指定する。
-page_id: 0                           // 記事の id。ユニークでなければならない。
-page_datetime: "2022-02-07T01:23:45" // 記事の時間
-page_title: "タイトル"                // 記事のタイトル
-page_description: "サマリー"          // meta description 用。記事の説明文。
-page_tag:                            // 記事に登録するタグ。配列形式で複数指定可能。
+cover: null                     // og:image を個別に指定したい場合は画像の URL を指定する。
+id: 0                           // 記事の id。ユニークでなければならない。
+datetime: "2022-02-07T01:23:45" // 記事の時間
+title: "タイトル"                // 記事のタイトル
+desc: "サマリー"          // meta description 用。記事の説明文。
+tag:                            // 記事に登録するタグ。配列形式で複数指定可能。
   - "diary"
   - "TKG"
 ---
@@ -37,10 +37,10 @@ node createPostMd.mjs
 
 記事にはタグを複数指定できます。
 
-記事の YAML ブロックに `page_tag` フィールドで配列型式でタグ名を指定してください。
+記事の YAML ブロックに `tag` フィールドで配列型式でタグ名を指定してください。
 
 ```yaml
-page_tag:
+tag:
   - "HTML"
   - "CSS"
 ```
