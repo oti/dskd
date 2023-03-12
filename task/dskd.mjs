@@ -3,6 +3,7 @@ import fg from "fast-glob";
 import matter from "gray-matter";
 import md2Pug from "markdown-to-pug";
 import pug from "pug";
+import { getParsedJSON } from "./utility/getParsedJSON.mjs";
 
 const PUG_INDENT = "  ";
 const PUG_DELIMITER = "\n";
@@ -11,6 +12,7 @@ const SRC_POST_PUG = "src/pug/archives/";
 const SRC_PUG = "src/pug/";
 const DIST = "dist/";
 
+const pugrc = await getParsedJSON("../../.pugrc");
 const m2p = new md2Pug();
 
 const generateMatters = async () => {
@@ -101,7 +103,7 @@ const generatePug = async () => {
   await fs.mkdir("src/pug/archives/years/", { recursive: true });
   return Promise.all([
     ...matters
-      .filter(({ type }) => type === "post")
+      .filter(({ data: { type } }) => type === "post")
       .map(async ({ content, data: { type, id } }) => {
         return await fs.writeFile(
           `src/pug/archives/${id}.pug`,
@@ -134,7 +136,10 @@ const generatePug = async () => {
 const getPugCompiledHtml = async ({ filepath }) => {
   return pug.render(await fs.readFile(filepath, "utf8"), {
     filename: filepath.split(".pug")[0],
-    locals,
+    locals: {
+      ...locals,
+      ...pugrc.locals,
+    },
     pretty: true,
   });
 };
@@ -156,10 +161,10 @@ const generateHTML = async () => {
 
 // md ファイルから front-matter の配列を生成する
 const matters = await generateMatters();
+console.log(matters);
 
 // 画面に必要な locals を生成する
 const locals = generateLocals();
-console.log(locals);
 
 // 年別一覧・タグ別一覧・インデックスの pug ファイルを生成する
 await generatePug();
