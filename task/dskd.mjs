@@ -159,18 +159,23 @@ const generateHTML = async (db) => {
         })
       );
     })),
-    // await (async () => {
-    //   const distFileData = await getPugCompiler({
-    //     filepath: `src/pug/archives/index.pug`,
-    //   });
-    //   await fs.writeFile(
-    //     "dist/archives/index.html",
-    //     distFileData({
-    //       type: "archives",
-    //       ...db,
-    //     })
-    //   );
-    // })(),
+    await (async () => {
+      const filename = "dist/archives/index";
+      const pugCompiler = await pug.compile(
+        `extends ../../src/template/index.pug\n`,
+        {
+          filename,
+          pretty: true,
+        }
+      );
+      await fs.writeFile(
+        `${filename}.html`,
+        pugCompiler({
+          type: "archives",
+          ...db,
+        })
+      );
+    })(),
     // await (async () => {
     //   const distFileData = await getPugCompiler({
     //     filepath: `src/pug/index.pug`,
