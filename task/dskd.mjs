@@ -176,18 +176,23 @@ const generateHTML = async (db) => {
         })
       );
     })(),
-    // await (async () => {
-    //   const distFileData = await getPugCompiler({
-    //     filepath: `src/pug/index.pug`,
-    //   });
-    //   await fs.writeFile(
-    //     "dist/index.html",
-    //     distFileData({
-    //       type: "index",
-    //       ...db,
-    //     })
-    //   );
-    // })(),
+    await (async () => {
+      const filename = "dist/index";
+      const pugCompiler = await pug.compile(
+        `extends ../src/template/index.pug\n`,
+        {
+          filename,
+          pretty: true,
+        }
+      );
+      await fs.writeFile(
+        `${filename}.html`,
+        pugCompiler({
+          type: "index",
+          ...db,
+        })
+      );
+    })(),
   ]);
 };
 
