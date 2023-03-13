@@ -172,6 +172,20 @@ const generateHTML = async () => {
         })
       );
     })),
+    ...(await Object.keys(locals.years).map(async (year, i, years) => {
+      const distFilePath = `dist/archives/years/${year}.html`;
+      const distFileData = await getPugCompiler({
+        filepath: `src/pug/archives/years/${year}.pug`,
+      });
+      return await fs.writeFile(
+        distFilePath,
+        distFileData({
+          title: year,
+          type: "year",
+          ...locals,
+        })
+      );
+    })),
   ]);
 };
 
