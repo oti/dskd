@@ -146,6 +146,7 @@ const generatePug = async () => {
       `src/pug/archives/index.pug`,
       `extends ../../template/index.pug\n`
     ),
+    await fs.writeFile(`src/pug/index.pug`, `extends ../template/index.pug\n`),
   ]);
 };
 
