@@ -119,22 +119,27 @@ const generateHTML = async (db) => {
         })
       );
     })),
-    // ...(await Object.keys(db.tags).map(async (tag) => {
-    //   const safeTag = tag.toLowerCase().replace(/[ .-]/g, "_");
-    //   const distFilePath = `dist/archives/tags/${safeTag}.html`;
-    //   const distFileData = await getPugCompiler({
-    //     filepath: `src/pug/archives/tags/${safeTag}.pug`,
-    //   });
-    //   return await fs.writeFile(
-    //     distFilePath,
-    //     distFileData({
-    //       type: "tag",
-    //       title: tag,
-    //       desc: `${tag}タグの記事一覧`,
-    //       ...db,
-    //     })
-    //   );
-    // })),
+    ...(await Object.keys(db.tags).map(async (tag) => {
+      const filename = `dist/archives/tags/${tag
+        .toLowerCase()
+        .replace(/[ .-]/g, "_")}`;
+      const pugCompiler = await pug.compile(
+        `extends ../../../src/template/index.pug\n`,
+        {
+          filename,
+          pretty: true,
+        }
+      );
+      return await fs.writeFile(
+        `${filename}.html`,
+        pugCompiler({
+          type: "tag",
+          title: tag,
+          desc: `${tag}タグの記事一覧`,
+          ...db,
+        })
+      );
+    })),
     // ...(await Object.keys(db.years).map(async (year) => {
     //   const distFilePath = `dist/archives/years/${year}.html`;
     //   const distFileData = await getPugCompiler({
