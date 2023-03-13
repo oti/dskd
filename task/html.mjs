@@ -6,7 +6,7 @@ import packageJson from "../package.json" assert { type: "json" };
 
 const m2p = new md2Pug();
 
-export const generateHTML = async (database) => {
+export const html = async (database) => {
   await fs.mkdir("dist/archives/tags/", { recursive: true });
   await fs.mkdir("dist/archives/years/", { recursive: true });
 

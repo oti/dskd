@@ -1,6 +1,6 @@
 import packageJson from "../package.json" assert { type: "json" };
 
-export const generateDataBase = async (matters) => {
+export const database = async (matters) => {
   const posts = matters
     .filter(({ data: { type } }) => type === "post")
     // 記事は日付でソートする

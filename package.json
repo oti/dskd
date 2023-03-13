@@ -6,8 +6,8 @@
   "author": "oti",
   "keywords": [],
   "scripts": {
-    "build": "node task/dskd.mjs",
-    "start": "rm -rf dist && npm run build && cd dist && python3 -m http.server 3000"
+    "build": "rm -rf dist && node task/build.mjs",
+    "start": "npm run build && cd dist && python3 -m http.server 3000"
   },
   "devDependencies": {
     "fast-glob": "^3.2.12",
