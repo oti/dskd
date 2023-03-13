@@ -23,8 +23,9 @@ const generateMatters = async () => {
 
 const generateLocals = () => {
   const metas = matters.map(
-    ({ data: { datetime, dist, id, tag, title, type } }) => ({
+    ({ data: { datetime, desc, dist, id, tag, title, type } }) => ({
       datetime,
+      desc,
       dist,
       id,
       tag,
@@ -181,7 +182,7 @@ const generateHTML = async () => {
         })
       );
     })),
-    ...(await Object.keys(locals.tags).map(async (tag, i, tags) => {
+    ...(await Object.keys(locals.tags).map(async (tag) => {
       const safeTag = tag.toLowerCase().replace(/[ .-]/g, "_");
       const distFilePath = `dist/archives/tags/${safeTag}.html`;
       const distFileData = await getPugCompiler({
@@ -190,13 +191,14 @@ const generateHTML = async () => {
       return await fs.writeFile(
         distFilePath,
         distFileData({
-          title: tag,
           type: "tag",
+          title: tag,
+          desc: `${tag}タグの記事一覧`,
           ...locals,
         })
       );
     })),
-    ...(await Object.keys(locals.years).map(async (year, i, years) => {
+    ...(await Object.keys(locals.years).map(async (year) => {
       const distFilePath = `dist/archives/years/${year}.html`;
       const distFileData = await getPugCompiler({
         filepath: `src/pug/archives/years/${year}.pug`,
@@ -204,8 +206,9 @@ const generateHTML = async () => {
       return await fs.writeFile(
         distFilePath,
         distFileData({
-          title: year,
           type: "year",
+          title: year,
+          desc: `${year}年の記事一覧`,
           ...locals,
         })
       );
