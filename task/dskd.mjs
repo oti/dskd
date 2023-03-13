@@ -142,7 +142,10 @@ const generatePug = async () => {
         `extends ../../../template/index.pug\n`
       );
     }),
-    // todo: index.pug, archives/index.pug を生成する
+    await fs.writeFile(
+      `src/pug/archives/index.pug`,
+      `extends ../../template/index.pug\n`
+    ),
   ]);
 };
 
