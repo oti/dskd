@@ -10,7 +10,7 @@ export const html = async (database) => {
   await fs.mkdir("dist/archives/tags/", { recursive: true });
   await fs.mkdir("dist/archives/years/", { recursive: true });
 
-  const pugString = async ({ content, type }) => {
+  const pugString = ({ content, type }) => {
     // Pug の `block contents` に合わせてインデントを追加する
     const body = m2p
       .render(content)
@@ -26,9 +26,9 @@ export const html = async (database) => {
   return Promise.all([
     ...(await [...database.posts, ...database.pages].map(async (item) => {
       const filename = `dist${item.dist}${item.id}`;
-      const pugCompiler = await pug.compile(
+      const pugCompiler = pug.compile(
         // todo: 1.pug -> post.pug -> default.pug で入れ子なのでその度に render() してやる必要あり？
-        await pugString({ content: item.content, type: item.type }),
+        pugString({ content: item.content, type: item.type }),
         {
           filename,
           pretty: true,
