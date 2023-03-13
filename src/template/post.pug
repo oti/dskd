@@ -1,6 +1,6 @@
 extends default
 
-block contents
+block main
   -
     const escaped_title = encodeURIComponent(title)
     const escaped_permalink = encodeURIComponent(`${blog_url}${archives_base}${posts_base}${id}.html`)
@@ -15,7 +15,7 @@ block contents
 
     +publish(datetime, tag, null)
 
-    != content
+    block contents
 
   .Border
     ul.Share

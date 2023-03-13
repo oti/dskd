@@ -1,7 +1,7 @@
 extends default
 
-block contents
+block main
   article.Post.Border
     h1= title
 
-    != content
+    block contents
