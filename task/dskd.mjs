@@ -230,6 +230,18 @@ const generateHTML = async () => {
         })
       );
     })(),
+    await (async () => {
+      const distFileData = await getPugCompiler({
+        filepath: `src/pug/index.pug`,
+      });
+      await fs.writeFile(
+        "dist/index.html",
+        distFileData({
+          type: "index",
+          ...locals,
+        })
+      );
+    })(),
   ]);
 };
 
