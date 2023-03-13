@@ -110,7 +110,7 @@ export const html = async (database) => {
       await fs.writeFile(
         `${filename}.html`,
         pugCompiler({
-          type: "index",
+          type: "home",
           ...database,
         })
       );

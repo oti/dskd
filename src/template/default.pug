@@ -1,5 +1,5 @@
 -
-  const INDEX = type === "index"
+  const HOME = type === "home"
   const POST = type === "post"
   const TAG = type === "tag"
   const YEAR = type === "year"
@@ -17,15 +17,15 @@
   const posts_base = ""
   const tags_base = "tags/"
   const years_base = "years/"
-  const metaTitle = INDEX ? blog_name : `${title} - ${blog_name}`
-  const description = INDEX ? blog_description : desc
+  const metaTitle = HOME ? blog_name : `${title} - ${blog_name}`
+  const description = HOME ? blog_description : desc
   const url = POST
     ? `${blog_url}${archives_base}${posts_base}${id}.html`
     : TAG
       ? `${blog_url}${archives_base}${tags_base}${String(title).toLowerCase().replace(/[ .-]/g, "_")}.html`
       : YEAR
         ? `${blog_url}${archives_base}${years_base}${String(title).toLowerCase().replace(/[ .-]/g, "_")}.html`
-        : INDEX
+        : HOME
           ? blog_url
           : page_permalink
   const og_image = cover ? `${cover}?${version}` : `/image/og-image.png?${version}`

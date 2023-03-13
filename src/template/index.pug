@@ -2,8 +2,8 @@ extends default
 
 block contents
   -
-    const heading = INDEX ? '最近の記事' : desc
-    const items = INDEX
+    const heading = HOME ? '最近の記事' : desc
+    const items = HOME
         ? posts.slice(0,5) //- indexでは5件だけ出力する
         : ARCHIVES
           ? posts
@@ -14,14 +14,14 @@ block contents
               : []
 
   section.Border
-    h2(class=INDEX ? "Invisible" : "Primary")= heading
+    h2(class=HOME ? "Invisible" : "Primary")= heading
     ul.Posts
       each item in items
         li
           a(href=`${archives_base}${posts_base}${item.id}.html`)= item.title
           +publish(item.datetime, item.tag, title)
 
-    if INDEX
+    if HOME
       p.More
         a(href=`${archives_base}${posts_base}`) 全ての記事
 
