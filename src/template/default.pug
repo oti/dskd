@@ -1,11 +1,11 @@
 -
-  const INDEX = page_type === 'index'
+  const INDEX = type === 'index'
   const POST = type === 'post'
-  const TAG = page_type === 'tag'
-  const YEAR = page_type === 'year'
-  const ARCHIVES = page_type === 'archives'
-  const ABOUT = page_type === 'about'
-  const title = INDEX ? blog_name : `${title} - ${blog_name}`
+  const TAG = type === 'tag'
+  const YEAR = type === 'year'
+  const ARCHIVES = type === 'archives'
+  const ABOUT = type === 'about'
+  const metaTitle = INDEX ? blog_name : `${title} - ${blog_name}`
   const description = INDEX ? blog_description : desc
   const url = POST
     ? `${blog_url}${archives_base}${posts_base}${id}.html`
@@ -25,7 +25,7 @@ html(lang="ja")
   head
     meta(charset="UTF-8")
     meta(content="viewport-fit=cover, width=device-width", name="viewport")
-    title= title
+    title= metaTitle
     meta(content=description, name="description")
     link(rel="image_src", href=og_image)
     link(rel="icon", href=`/favicon.svg?${version}`, type="image/svg+xml")
