@@ -5,8 +5,13 @@ import md2Pug from "markdown-to-pug";
 import pug from "pug";
 import { getParsedJSON } from "./utility/getParsedJSON.mjs";
 
-const pugrc = await getParsedJSON("../../.pugrc");
 const m2p = new md2Pug();
+const pugrc = await getParsedJSON("../../.pugrc");
+const { version } = await getParsedJSON("../../package.json");
+const blogConfig = {
+  ...pugrc.locals,
+  version,
+};
 
 const generateMatters = async () => {
   return Promise.all(
@@ -78,7 +83,7 @@ const generateLocals = () => {
     ],
     tags,
     years,
-    ...pugrc.locals,
+    ...blogConfig,
   };
 };
 
@@ -153,7 +158,7 @@ const generateHTML = async () => {
         distFilePath,
         distFileData({
           ...local,
-          ...pugrc.locals,
+          ...blogConfig,
         })
       );
     })),
