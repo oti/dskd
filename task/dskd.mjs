@@ -115,15 +115,7 @@ const generatePug = async () => {
   await fs.mkdir("src/pug/archives/years/", { recursive: true });
   return Promise.all([
     ...matters
-      .filter(({ data: { type } }) => type === "post")
-      .map(async ({ content, data: { id, type } }) => {
-        return await fs.writeFile(
-          `src/pug/archives/${id}.pug`,
-          getFormattedPugString({ content, type })
-        );
-      }),
-    ...matters
-      .filter(({ data: { type } }) => type === "page")
+      .filter(({ data: { type } }) => type === "post" || type === "page")
       .map(async ({ content, data: { dist, id, type } }) => {
         return await fs.writeFile(
           `src/pug${dist}${id}.pug`,
