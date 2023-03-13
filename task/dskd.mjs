@@ -102,36 +102,23 @@ const generateHTML = async (db) => {
   await fs.mkdir("dist/archives/years/", { recursive: true });
 
   return Promise.all([
-    ...(await db.posts.map(async (post) => {
-      const distPath = `dist${post.dist}${post.id}.html`;
-      const distFile = await pug.compile(
-        getFormattedPugString({ content: post.content, type: post.type }),
+    ...(await [...db.posts, ...db.pages].map(async (item) => {
+      const filename = `dist${item.dist}${item.id}`;
+      const pugCompiler = await pug.compile(
+        getFormattedPugString({ content: item.content, type: item.type }),
         {
-          filename: `dist${post.dist}${post.id}`,
+          filename,
           pretty: true,
         }
       );
       return await fs.writeFile(
-        distPath,
-        distFile({
-          ...post,
+        `${filename}.html`,
+        pugCompiler({
+          ...item,
           version: packageJson.version,
         })
       );
     })),
-    // ...(await db.pages.map(async ({ pug, ...yaml }) => {
-    //   const distFilePath = pug
-    //     .replace("src/pug/", "dist/")
-    //     .replace(".pug", ".html");
-    //   const distFileData = await getPugCompiler({ filepath: pug });
-    //   return await fs.writeFile(
-    //     distFilePath,
-    //     distFileData({
-    //       ...yaml,
-    //       version: packageJson.version,
-    //     })
-    //   );
-    // })),
     // ...(await Object.keys(db.tags).map(async (tag) => {
     //   const safeTag = tag.toLowerCase().replace(/[ .-]/g, "_");
     //   const distFilePath = `dist/archives/tags/${safeTag}.html`;
