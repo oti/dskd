@@ -1,6 +1,4 @@
 .DS_Store
 node_modules
-
 dist
-src/json
 src/pug
