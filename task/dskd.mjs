@@ -4,7 +4,6 @@ import matter from "gray-matter";
 import md2Pug from "markdown-to-pug";
 import pug from "pug";
 import { asset } from "./asset.mjs";
-import { getParsedJSON } from "./utility/getParsedJSON.mjs";
 import packageJson from "../package.json" assert { type: "json" };
 
 const m2p = new md2Pug();
