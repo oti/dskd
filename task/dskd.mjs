@@ -3,6 +3,7 @@ import fg from "fast-glob";
 import matter from "gray-matter";
 import md2Pug from "markdown-to-pug";
 import pug from "pug";
+import { asset } from "./asset.mjs";
 import { getParsedJSON } from "./utility/getParsedJSON.mjs";
 
 const m2p = new md2Pug();
@@ -250,3 +251,5 @@ const locals = generateLocals();
 await generatePug();
 
 await generateHTML();
+
+await asset();
