@@ -22,13 +22,16 @@ const generateMatters = async () => {
 };
 
 const generateLocals = () => {
-  const metas = matters.map(({ data: { datetime, id, tag, title, type } }) => ({
-    datetime,
-    id,
-    tag,
-    title,
-    type,
-  }));
+  const metas = matters.map(
+    ({ data: { datetime, dist, id, tag, title, type } }) => ({
+      datetime,
+      dist,
+      id,
+      tag,
+      title,
+      type,
+    })
+  );
   const posts = metas
     .filter(({ type }) => type === "post")
     .sort((a, b) =>
@@ -59,6 +62,15 @@ const generateLocals = () => {
       };
     });
 
+  const pages = metas
+    .filter(({ type }) => type === "page")
+    .map((page) => {
+      return {
+        pug: `src/pug${page.dist}${page.id}.pug`,
+        ...page,
+      };
+    });
+
   const tags = posts
     .flatMap((post) => post.tag.map((tag) => ({ [tag]: post })))
     .reduce((memo, pair) => {
@@ -78,9 +90,7 @@ const generateLocals = () => {
 
   return {
     posts,
-    pages: [
-      /* todo: type === "page" で絞り込んだアイテムを配置する*/
-    ],
+    pages,
     tags,
     years,
     ...blogConfig,
