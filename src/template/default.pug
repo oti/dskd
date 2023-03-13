@@ -16,7 +16,7 @@
         : INDEX
           ? blog_url
           : page_permalink
-  const og_image = cover ? `${cover}?${version}` : `/img/og-image.png?${version}`
+  const og_image = cover ? `${cover}?${version}` : `/image/og-image.png?${version}`
 
 include mixin/publish
 
@@ -32,10 +32,10 @@ html(lang="ja")
     link(
       rel="apple-touch-icon",
       sizes="180x180",
-      href=`/img/apple-touch-icon.png?${version}`
+      href=`/image/apple-touch-icon.png?${version}`
     )
     link(
-      href=`/css/style.css?${version}`,
+      href=`/style/style.css?${version}`,
       rel="stylesheet",
       media="only screen"
     )
