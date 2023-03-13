@@ -5,19 +5,12 @@ import md2Pug from "markdown-to-pug";
 import pug from "pug";
 import { getParsedJSON } from "./utility/getParsedJSON.mjs";
 
-const PUG_INDENT = "  ";
-const PUG_DELIMITER = "\n";
-const SRC_MD = "src/md/";
-const SRC_POST_PUG = "src/pug/archives/";
-const SRC_PUG = "";
-const DIST = "dist/";
-
 const pugrc = await getParsedJSON("../../.pugrc");
 const m2p = new md2Pug();
 
 const generateMatters = async () => {
   return Promise.all(
-    (await fg(`${SRC_MD}**/*.md`)).map(async (filepath) =>
+    (await fg("src/md/**/*.md")).map(async (filepath) =>
       matter(await fs.readFile(filepath, "utf8"))
     )
   );
@@ -90,9 +83,9 @@ const getFormattedPugString = ({ content, type }) => {
   // Pug の `block contents` に合わせてインデントを追加する
   const body = m2p
     .render(content)
-    .split(PUG_DELIMITER)
-    .map((v) => `${PUG_INDENT}${v}`)
-    .join(PUG_DELIMITER);
+    .split("\n")
+    .map((v) => `  ${v}`)
+    .join("\n");
 
   const relativePath = type === "post" ? "../../" : "../";
 
