@@ -172,6 +172,19 @@ const generateHTML = async () => {
         })
       );
     })),
+    ...(await locals.pages.map(async ({ pug, ...local }) => {
+      const distFilePath = pug
+        .replace("src/pug/", "dist/")
+        .replace(".pug", ".html");
+      const distFileData = await getPugCompiler({ filepath: pug });
+      return await fs.writeFile(
+        distFilePath,
+        distFileData({
+          ...local,
+          ...blogConfig,
+        })
+      );
+    })),
     ...(await Object.keys(locals.tags).map(async (tag, i, tags) => {
       const safeTag = tag.toLowerCase().replace(/[ .-]/g, "_");
       const distFilePath = `dist/archives/tags/${safeTag}.html`;
