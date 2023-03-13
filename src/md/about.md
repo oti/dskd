@@ -1,9 +1,9 @@
 ---
+dist: "/"
 type: "page"
 id: "about"
 title: "dskd とは何か？"
 desc: "ブログのこととわたしのことと。"
-dist: "/"
 ---
 
 dskd はウェブ制作にまつわる雑記を主としたウェブログです。
