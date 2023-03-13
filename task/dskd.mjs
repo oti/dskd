@@ -140,21 +140,25 @@ const generateHTML = async (db) => {
         })
       );
     })),
-    // ...(await Object.keys(db.years).map(async (year) => {
-    //   const distFilePath = `dist/archives/years/${year}.html`;
-    //   const distFileData = await getPugCompiler({
-    //     filepath: `src/pug/archives/years/${year}.pug`,
-    //   });
-    //   return await fs.writeFile(
-    //     distFilePath,
-    //     distFileData({
-    //       type: "year",
-    //       title: year,
-    //       desc: `${year}年の記事一覧`,
-    //       ...db,
-    //     })
-    //   );
-    // })),
+    ...(await Object.keys(db.years).map(async (year) => {
+      const filename = `dist/archives/years/${year}`;
+      const pugCompiler = await pug.compile(
+        `extends ../../../src/template/index.pug\n`,
+        {
+          filename,
+          pretty: true,
+        }
+      );
+      return await fs.writeFile(
+        `${filename}.html`,
+        pugCompiler({
+          type: "year",
+          title: year,
+          desc: `${year}タグの記事一覧`,
+          ...db,
+        })
+      );
+    })),
     // await (async () => {
     //   const distFileData = await getPugCompiler({
     //     filepath: `src/pug/archives/index.pug`,
