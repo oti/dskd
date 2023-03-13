@@ -16,7 +16,7 @@ const generateMatters = async () => {
   );
 };
 
-const generateDB = () => {
+const generateDB = (matters) => {
   const posts = matters
     .filter(({ data: { type } }) => type === "post")
     .sort((a, b) =>
@@ -30,7 +30,7 @@ const generateDB = () => {
       const older = sortedPosts[i + 1];
       const newer = sortedPosts[i - 1];
       return {
-        pug: `src/pug${post.data.dist}${post.data.id}.pug`,
+        // pug: `src/pug${post.data.dist}${post.data.id}.pug`,
         content: post.content,
         ...post.data,
         older: older
@@ -94,149 +94,103 @@ const getFormattedPugString = ({ content, type }) => {
 
   const relativePath = type === "post" ? "../../" : "../";
 
-  return `extends ${relativePath}template/${type}.pug\n\nblock contents\n${body}\n`;
+  return `extends ${relativePath}src/template/${type}.pug\n\nblock contents\n${body}\n`;
 };
 
-const generatePug = async () => {
-  await fs.mkdir("src/pug/archives/tags/", { recursive: true });
-  await fs.mkdir("src/pug/archives/years/", { recursive: true });
-  return Promise.all([
-    ...matters
-      .filter(({ data: { type } }) => type === "post" || type === "page")
-      .map(async ({ content, data: { dist, id, type } }) => {
-        return await fs.writeFile(
-          `src/pug${dist}${id}.pug`,
-          getFormattedPugString({ content, type })
-        );
-      }),
-    ...Object.keys(db.tags).map(async (tag) => {
-      return await fs.writeFile(
-        `src/pug/archives/tags/${tag.toLowerCase().replace(/[ .-]/g, "_")}.pug`,
-        `extends ../../../template/index.pug\n`
-      );
-    }),
-    ...Object.keys(db.years).map(async (year) => {
-      return await fs.writeFile(
-        `src/pug/archives/years/${year}.pug`,
-        `extends ../../../template/index.pug\n`
-      );
-    }),
-    await fs.writeFile(
-      `src/pug/archives/index.pug`,
-      `extends ../../template/index.pug\n`
-    ),
-    await fs.writeFile(`src/pug/index.pug`, `extends ../template/index.pug\n`),
-  ]);
-};
-
-const getPugCompiler = async ({ filepath }) => {
-  const sorce = await fs.readFile(filepath, "utf8");
-  const options = {
-    filename: filepath.split(".pug")[0],
-    pretty: true,
-  };
-  return pug.compile(sorce, options);
-};
-
-const generateHTML = async () => {
+const generateHTML = async (db) => {
   await fs.mkdir("dist/archives/tags/", { recursive: true });
   await fs.mkdir("dist/archives/years/", { recursive: true });
 
   return Promise.all([
-    ...(await db.posts.map(async ({ pug, ...yaml }) => {
-      const distFilePath = pug
-        .replace("src/pug/", "dist/")
-        .replace(".pug", ".html");
-      const distFileData = await getPugCompiler({ filepath: pug });
+    ...(await db.posts.map(async (post) => {
+      const distPath = `dist${post.dist}${post.id}.html`;
+      const distFile = await pug.compile(
+        getFormattedPugString({ content: post.content, type: post.type }),
+        {
+          filename: `dist${post.dist}${post.id}`,
+          pretty: true,
+        }
+      );
       return await fs.writeFile(
-        distFilePath,
-        distFileData({
-          ...yaml,
+        distPath,
+        distFile({
+          ...post,
           version: packageJson.version,
         })
       );
     })),
-    ...(await db.pages.map(async ({ pug, ...yaml }) => {
-      const distFilePath = pug
-        .replace("src/pug/", "dist/")
-        .replace(".pug", ".html");
-      const distFileData = await getPugCompiler({ filepath: pug });
-      return await fs.writeFile(
-        distFilePath,
-        distFileData({
-          ...yaml,
-          version: packageJson.version,
-        })
-      );
-    })),
-    ...(await Object.keys(db.tags).map(async (tag) => {
-      const safeTag = tag.toLowerCase().replace(/[ .-]/g, "_");
-      const distFilePath = `dist/archives/tags/${safeTag}.html`;
-      const distFileData = await getPugCompiler({
-        filepath: `src/pug/archives/tags/${safeTag}.pug`,
-      });
-      return await fs.writeFile(
-        distFilePath,
-        distFileData({
-          type: "tag",
-          title: tag,
-          desc: `${tag}タグの記事一覧`,
-          ...db,
-        })
-      );
-    })),
-    ...(await Object.keys(db.years).map(async (year) => {
-      const distFilePath = `dist/archives/years/${year}.html`;
-      const distFileData = await getPugCompiler({
-        filepath: `src/pug/archives/years/${year}.pug`,
-      });
-      return await fs.writeFile(
-        distFilePath,
-        distFileData({
-          type: "year",
-          title: year,
-          desc: `${year}年の記事一覧`,
-          ...db,
-        })
-      );
-    })),
-    await (async () => {
-      const distFileData = await getPugCompiler({
-        filepath: `src/pug/archives/index.pug`,
-      });
-      await fs.writeFile(
-        "dist/archives/index.html",
-        distFileData({
-          type: "archives",
-          ...db,
-        })
-      );
-    })(),
-    await (async () => {
-      const distFileData = await getPugCompiler({
-        filepath: `src/pug/index.pug`,
-      });
-      await fs.writeFile(
-        "dist/index.html",
-        distFileData({
-          type: "index",
-          ...db,
-        })
-      );
-    })(),
+    // ...(await db.pages.map(async ({ pug, ...yaml }) => {
+    //   const distFilePath = pug
+    //     .replace("src/pug/", "dist/")
+    //     .replace(".pug", ".html");
+    //   const distFileData = await getPugCompiler({ filepath: pug });
+    //   return await fs.writeFile(
+    //     distFilePath,
+    //     distFileData({
+    //       ...yaml,
+    //       version: packageJson.version,
+    //     })
+    //   );
+    // })),
+    // ...(await Object.keys(db.tags).map(async (tag) => {
+    //   const safeTag = tag.toLowerCase().replace(/[ .-]/g, "_");
+    //   const distFilePath = `dist/archives/tags/${safeTag}.html`;
+    //   const distFileData = await getPugCompiler({
+    //     filepath: `src/pug/archives/tags/${safeTag}.pug`,
+    //   });
+    //   return await fs.writeFile(
+    //     distFilePath,
+    //     distFileData({
+    //       type: "tag",
+    //       title: tag,
+    //       desc: `${tag}タグの記事一覧`,
+    //       ...db,
+    //     })
+    //   );
+    // })),
+    // ...(await Object.keys(db.years).map(async (year) => {
+    //   const distFilePath = `dist/archives/years/${year}.html`;
+    //   const distFileData = await getPugCompiler({
+    //     filepath: `src/pug/archives/years/${year}.pug`,
+    //   });
+    //   return await fs.writeFile(
+    //     distFilePath,
+    //     distFileData({
+    //       type: "year",
+    //       title: year,
+    //       desc: `${year}年の記事一覧`,
+    //       ...db,
+    //     })
+    //   );
+    // })),
+    // await (async () => {
+    //   const distFileData = await getPugCompiler({
+    //     filepath: `src/pug/archives/index.pug`,
+    //   });
+    //   await fs.writeFile(
+    //     "dist/archives/index.html",
+    //     distFileData({
+    //       type: "archives",
+    //       ...db,
+    //     })
+    //   );
+    // })(),
+    // await (async () => {
+    //   const distFileData = await getPugCompiler({
+    //     filepath: `src/pug/index.pug`,
+    //   });
+    //   await fs.writeFile(
+    //     "dist/index.html",
+    //     distFileData({
+    //       type: "index",
+    //       ...db,
+    //     })
+    //   );
+    // })(),
   ]);
 };
 
-// md ファイルから front-matter の配列を生成する
-const matters = await generateMatters();
-
-// 画面に必要な db を生成する
-const db = generateDB();
-console.log(db);
-
-// 年別一覧・タグ別一覧・インデックスの pug ファイルを生成する
-await generatePug();
-
-await generateHTML();
-
-await asset();
+// await asset();
+await generateMatters()
+  .then((matters) => generateDB(matters))
+  .then(async (db) => await generateHTML(db));
