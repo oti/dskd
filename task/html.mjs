@@ -2,7 +2,7 @@ import fs from "fs/promises";
 import md2Pug from "markdown-to-pug";
 import pug from "pug";
 
-import packageJson from "../package.json" assert { type: "json" };
+import pkg from "../package.json" assert { type: "json" };
 
 const m2p = new md2Pug();
 
@@ -10,7 +10,7 @@ export const html = async (database) => {
   await fs.mkdir("dist/archives/tags/", { recursive: true });
   await fs.mkdir("dist/archives/years/", { recursive: true });
 
-  const pugString = ({ content, type }) => {
+  const pugString = async ({ content, type }) => {
     // Pug の `block contents` に合わせてインデントを追加する
     const body = m2p
       .render(content)
@@ -27,7 +27,8 @@ export const html = async (database) => {
     ...(await [...database.posts, ...database.pages].map(async (item) => {
       const filename = `dist${item.dist}${item.id}`;
       const pugCompiler = await pug.compile(
-        pugString({ content: item.content, type: item.type }),
+        // todo: 1.pug -> post.pug -> default.pug で入れ子なのでその度に render() してやる必要あり？
+        await pugString({ content: item.content, type: item.type }),
         {
           filename,
           pretty: true,
@@ -37,7 +38,7 @@ export const html = async (database) => {
         `${filename}.html`,
         pugCompiler({
           ...item,
-          version: packageJson.version,
+          version: pkg.version,
         })
       );
     })),

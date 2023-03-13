@@ -1,4 +1,4 @@
-import packageJson from "../package.json" assert { type: "json" };
+import pkg from "../package.json" assert { type: "json" };
 
 export const database = async (matters) => {
   const posts = matters
@@ -15,7 +15,6 @@ export const database = async (matters) => {
       const older = sortedPosts[i + 1];
       const newer = sortedPosts[i - 1];
       return {
-        // pug: `src/pug${post.data.dist}${post.data.id}.pug`,
         content: post.content,
         ...post.data,
         older: older
@@ -37,7 +36,6 @@ export const database = async (matters) => {
     .filter(({ data: { type } }) => type === "page")
     .map((page) => {
       return {
-        pug: `src/pug${page.data.dist}${page.data.id}.pug`,
         content: page.content,
         ...page.data,
       };
@@ -65,6 +63,6 @@ export const database = async (matters) => {
     pages,
     tags,
     years,
-    version: packageJson.version,
+    version: pkg.version,
   });
 };
