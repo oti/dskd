@@ -123,10 +123,10 @@ const generatePug = async () => {
         );
       }),
     ...matters
-      .filter(({ type }) => type === "page")
-      .map(async ({ content, data: { id, type } }) => {
+      .filter(({ data: { type } }) => type === "page")
+      .map(async ({ content, data: { dist, id, type } }) => {
         return await fs.writeFile(
-          `src/pug/${id}.pug`,
+          `src/pug${dist}${id}.pug`,
           getFormattedPugString({ content, type })
         );
       }),
