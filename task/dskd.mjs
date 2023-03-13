@@ -73,8 +73,12 @@ const generateLocals = () => {
 
   return {
     posts,
+    pages: [
+      /* todo: type === "page" で絞り込んだアイテムを配置する*/
+    ],
     tags,
     years,
+    ...pugrc.locals,
   };
 };
 
@@ -123,6 +127,7 @@ const generatePug = async () => {
         `extends ../../../template/index.pug\n`
       );
     }),
+    // todo: index.pug, archives/index.pug を生成する
   ]);
 };
 
@@ -138,8 +143,8 @@ const getPugCompiler = async ({ filepath }) => {
 const generateHTML = async () => {
   await fs.mkdir("dist/archives/tags/", { recursive: true });
   await fs.mkdir("dist/archives/years/", { recursive: true });
-  return Promise.all(
-    await locals.posts.map(async ({ pug, ...local }) => {
+  return Promise.all([
+    ...(await locals.posts.map(async ({ pug, ...local }) => {
       const distFilePath = pug
         .replace("src/pug/", "dist/")
         .replace(".pug", ".html");
@@ -151,8 +156,23 @@ const generateHTML = async () => {
           ...pugrc.locals,
         })
       );
-    })
-  );
+    })),
+    ...(await Object.keys(locals.tags).map(async (tag, i, tags) => {
+      const safeTag = tag.toLowerCase().replace(/[ .-]/g, "_");
+      const distFilePath = `dist/archives/tags/${safeTag}.html`;
+      const distFileData = await getPugCompiler({
+        filepath: `src/pug/archives/tags/${safeTag}.pug`,
+      });
+      return await fs.writeFile(
+        distFilePath,
+        distFileData({
+          title: tag,
+          type: "tag",
+          ...locals,
+        })
+      );
+    })),
+  ]);
 };
 
 // md ファイルから front-matter の配列を生成する
