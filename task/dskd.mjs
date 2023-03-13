@@ -9,7 +9,7 @@ const PUG_INDENT = "  ";
 const PUG_DELIMITER = "\n";
 const SRC_MD = "src/md/";
 const SRC_POST_PUG = "src/pug/archives/";
-const SRC_PUG = "src/pug/";
+const SRC_PUG = "";
 const DIST = "dist/";
 
 const pugrc = await getParsedJSON("../../.pugrc");
@@ -45,6 +45,7 @@ const generateLocals = () => {
     const older = sortedPosts[i + 1];
     const newer = sortedPosts[i - 1];
     return {
+      pug: `src/pug/archives/${post.id}.pug`,
       ...post,
       older: older
         ? {
@@ -104,7 +105,7 @@ const generatePug = async () => {
   return Promise.all([
     ...matters
       .filter(({ data: { type } }) => type === "post")
-      .map(async ({ content, data: { type, id } }) => {
+      .map(async ({ content, data: { id, type } }) => {
         return await fs.writeFile(
           `src/pug/archives/${id}.pug`,
           getFormattedPugString({ content, type })
@@ -112,7 +113,7 @@ const generatePug = async () => {
       }),
     ...matters
       .filter(({ type }) => type === "page")
-      .map(async ({ content, data: { type, id } }) => {
+      .map(async ({ content, data: { id, type } }) => {
         return await fs.writeFile(
           `src/pug/${id}.pug`,
           getFormattedPugString({ content, type })
@@ -133,26 +134,29 @@ const generatePug = async () => {
   ]);
 };
 
-const getPugCompiledHtml = async ({ filepath }) => {
-  return pug.render(await fs.readFile(filepath, "utf8"), {
+const getPugCompiler = async ({ filepath }) => {
+  const sorce = await fs.readFile(filepath, "utf8");
+  const options = {
     filename: filepath.split(".pug")[0],
-    locals: {
-      ...locals,
-      ...pugrc.locals,
-    },
     pretty: true,
-  });
+  };
+  return pug.compile(sorce, options);
 };
 
 const generateHTML = async () => {
   await fs.mkdir("dist/archives/tags/", { recursive: true });
   await fs.mkdir("dist/archives/years/", { recursive: true });
   return Promise.all(
-    (await fg(`${SRC_PUG}**/*.pug`)).map(async (filepath) => {
+    await locals.posts.map(async ({ pug, ...local }) => {
+      const distFilePath = pug
+        .replace("src/pug/", "dist/")
+        .replace(".pug", ".html");
+      const distFileData = await getPugCompiler({ filepath: pug });
       return await fs.writeFile(
-        filepath.replace(SRC_PUG, DIST).replace(".pug", ".html"),
-        await getPugCompiledHtml({
-          filepath,
+        distFilePath,
+        distFileData({
+          ...local,
+          ...pugrc.locals,
         })
       );
     })
@@ -161,7 +165,6 @@ const generateHTML = async () => {
 
 // md ファイルから front-matter の配列を生成する
 const matters = await generateMatters();
-console.log(matters);
 
 // 画面に必要な locals を生成する
 const locals = generateLocals();
