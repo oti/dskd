@@ -7,12 +7,20 @@
   "keywords": [],
   "scripts": {
     "build": "rm -rf dist && node task/build.mjs",
-    "start": "npm run build && cd dist && python3 -m http.server 3000"
+    "markuplint": "markuplint dist/**/*.html",
+    "prepare": "husky install",
+    "start": "npm run build && cd dist && python3 -m http.server 3000",
+    "stylelint": "stylelint dist/**/*.css",
+    "test": "npm run stylelint && npm run markuplint"
   },
   "devDependencies": {
     "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",
+    "husky": "^8.0.3",
     "markdown-to-pug": "^1.0.11",
-    "pug": "^3.0.2"
+    "markuplint": "^3.4.0",
+    "pug": "^3.0.2",
+    "stylelint": "^15.2.0",
+    "stylelint-config-recommended": "^10.0.1"
   }
 }
