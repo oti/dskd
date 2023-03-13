@@ -3,10 +3,10 @@ extends default
 block contents
   -
     const heading = INDEX ? '最近の記事' : desc
-    const posts = INDEX
-        ? archives.slice(0,5) //- indexでは5件だけ出力する
+    const items = INDEX
+        ? posts.slice(0,5) //- indexでは5件だけ出力する
         : ARCHIVES
-          ? archives
+          ? posts
           : TAG
             ? tags[title]
             : YEAR
@@ -16,10 +16,10 @@ block contents
   section.Border
     h2(class=INDEX ? "Invisible" : "Primary")= heading
     ul.Posts
-      each post in posts
+      each item in items
         li
-          a(href=`${archives_base}${posts_base}${post.id}.html`)= post.title
-          +publish(post.datetime, post.tag, title)
+          a(href=`${archives_base}${posts_base}${item.id}.html`)= item.title
+          +publish(item.datetime, item.tag, title)
 
     if INDEX
       p.More
