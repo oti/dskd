@@ -5,14 +5,9 @@ import md2Pug from "markdown-to-pug";
 import pug from "pug";
 import { asset } from "./asset.mjs";
 import { getParsedJSON } from "./utility/getParsedJSON.mjs";
+import packageJson from "../package.json" assert { type: "json" };
 
 const m2p = new md2Pug();
-const pugrc = await getParsedJSON("../../.pugrc");
-const { version } = await getParsedJSON("../../package.json");
-const blogConfig = {
-  ...pugrc.locals,
-  version,
-};
 
 const generateMatters = async () => {
   return Promise.all(
@@ -95,7 +90,7 @@ const generateLocals = () => {
     pages,
     tags,
     years,
-    ...blogConfig,
+    version: packageJson.version,
   };
 };
 
@@ -157,7 +152,7 @@ const generateHTML = async () => {
   await fs.mkdir("dist/archives/tags/", { recursive: true });
   await fs.mkdir("dist/archives/years/", { recursive: true });
   return Promise.all([
-    ...(await locals.posts.map(async ({ pug, ...local }) => {
+    ...(await locals.posts.map(async ({ pug, ...yaml }) => {
       const distFilePath = pug
         .replace("src/pug/", "dist/")
         .replace(".pug", ".html");
@@ -165,12 +160,12 @@ const generateHTML = async () => {
       return await fs.writeFile(
         distFilePath,
         distFileData({
-          ...local,
-          ...blogConfig,
+          ...yaml,
+          version: packageJson.version,
         })
       );
     })),
-    ...(await locals.pages.map(async ({ pug, ...local }) => {
+    ...(await locals.pages.map(async ({ pug, ...yaml }) => {
       const distFilePath = pug
         .replace("src/pug/", "dist/")
         .replace(".pug", ".html");
@@ -178,8 +173,8 @@ const generateHTML = async () => {
       return await fs.writeFile(
         distFilePath,
         distFileData({
-          ...local,
-          ...blogConfig,
+          ...yaml,
+          version: packageJson.version,
         })
       );
     })),
