@@ -24,8 +24,7 @@ const generateLocals = () => {
     title,
     type,
   }));
-
-  const sortedPosts = metas
+  const posts = metas
     .filter(({ type }) => type === "post")
     .sort((a, b) =>
       Number(
@@ -33,27 +32,27 @@ const generateLocals = () => {
           .replace(/[-T:]/g, "")
           .localeCompare(Number(a.datetime.replace(/[-T:]/g, "")))
       )
-    );
-  const posts = sortedPosts.map((post, i) => {
-    const older = sortedPosts[i + 1];
-    const newer = sortedPosts[i - 1];
-    return {
-      pug: `src/pug/archives/${post.id}.pug`,
-      ...post,
-      older: older
-        ? {
-            id: older.id,
-            title: older.title,
-          }
-        : undefined,
-      newer: newer
-        ? {
-            id: newer.id,
-            title: newer.title,
-          }
-        : undefined,
-    };
-  });
+    )
+    .map((post, i, sortedPosts) => {
+      const older = sortedPosts[i + 1];
+      const newer = sortedPosts[i - 1];
+      return {
+        pug: `src/pug/archives/${post.id}.pug`,
+        ...post,
+        older: older
+          ? {
+              id: older.id,
+              title: older.title,
+            }
+          : undefined,
+        newer: newer
+          ? {
+              id: newer.id,
+              title: newer.title,
+            }
+          : undefined,
+      };
+    });
 
   const tags = posts
     .flatMap((post) => post.tag.map((tag) => ({ [tag]: post })))
