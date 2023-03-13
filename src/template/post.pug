@@ -7,8 +7,6 @@ block main
     const tw_href = `https://twitter.com/intent/tweet?text=${escaped_title}&url=${escaped_permalink}&via=dskd_jp&related=otiext`
     const fb_href = `https://www.facebook.com/share.php?u=${escaped_permalink}`
     const hb_href = `http://b.hatena.ne.jp/my/add.confirm?title=${escaped_title}&url=${escaped_permalink}`
-    const newer = posts[id].newer
-    const older = posts[id].older
 
   article.Post.Border
     h1= title
