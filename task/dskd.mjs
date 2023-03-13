@@ -218,6 +218,18 @@ const generateHTML = async () => {
         })
       );
     })),
+    await (async () => {
+      const distFileData = await getPugCompiler({
+        filepath: `src/pug/archives/index.pug`,
+      });
+      await fs.writeFile(
+        "dist/archives/index.html",
+        distFileData({
+          type: "archives",
+          ...locals,
+        })
+      );
+    })(),
   ]);
 };
 
