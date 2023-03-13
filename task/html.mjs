@@ -95,6 +95,7 @@ export const html = async (database) => {
         `${filename}.html`,
         pugCompiler({
           type: "archives",
+          desc: `全記事一覧`,
           ...database,
         })
       );
