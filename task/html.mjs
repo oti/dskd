@@ -1,13 +1,10 @@
 import fs from "fs/promises";
-import md2Pug from "./md2pug.js";
 import { marked } from "marked";
 import pug from "pug";
-
 import pkg from "../package.json" assert { type: "json" };
 
-const m2p = new md2Pug();
-
 export const html = async (database) => {
+  // todo: ディレクトリ生成を別処理にまとめる
   await fs.mkdir("dist/archives/tags/", { recursive: true });
   await fs.mkdir("dist/archives/years/", { recursive: true });
 

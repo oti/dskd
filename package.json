@@ -16,10 +16,7 @@
   "devDependencies": {
     "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",
-    "he": "^1.2.0",
     "husky": "^8.0.3",
-    "markdown-it": "^13.0.1",
-    "markdown-to-pug": "^1.0.11",
     "marked": "^4.2.12",
     "markuplint": "^3.4.0",
     "pug": "^3.0.2",
