@@ -11,30 +11,31 @@ export const html = async (database) => {
   await fs.mkdir("dist/archives/tags/", { recursive: true });
   await fs.mkdir("dist/archives/years/", { recursive: true });
 
-  const pugString = ({ content, type }) => {
-    // Pug の `block contents` に合わせてインデントを追加する
-    const body = m2p
-      .render(content)
-      .split("\n")
-      .map((v) => `  ${v}`)
-      .join("\n");
-
-    const relativePath = type === "post" ? "../../" : "../";
-
-    // return `extends ${relativePath}src/template/${type}\n`;
-    return `extends ${relativePath}src/template/${type}.pug\n\nblock contents\n${body}\n`;
+  const getExtendsString = (type) => {
+    switch (type) {
+      case "post":
+        return "extends ../../src/template/post\n";
+      case "page":
+        return "extends ../src/template/page\n";
+      case "tag":
+      case "year":
+        return "extends ../../../src/template/index.pug\n";
+      case "archives":
+        return "extends ../../src/template/index.pug\n";
+      case "home":
+        return "extends ../src/template/index.pug\n";
+      default:
+        return undefined;
+    }
   };
 
   return Promise.all([
     ...(await [...database.posts, ...database.pages].map(async (item) => {
       const filename = `dist${item.dist}${item.id}`;
-      const pugCompiler = pug.compile(
-        pugString({ content: item.content, type: item.type }),
-        {
-          filename,
-          pretty: true,
-        }
-      );
+      const pugCompiler = pug.compile(getExtendsString(item.type), {
+        filename,
+        pretty: true,
+      });
       return await fs.writeFile(
         `${filename}.html`,
         pugCompiler({
@@ -48,13 +49,10 @@ export const html = async (database) => {
       const filename = `dist/archives/tags/${tag
         .toLowerCase()
         .replace(/[ .-]/g, "_")}`;
-      const pugCompiler = await pug.compile(
-        `extends ../../../src/template/index.pug\n`,
-        {
-          filename,
-          pretty: true,
-        }
-      );
+      const pugCompiler = await pug.compile(getExtendsString("tag"), {
+        filename,
+        pretty: true,
+      });
       return await fs.writeFile(
         `${filename}.html`,
         pugCompiler({
@@ -67,13 +65,10 @@ export const html = async (database) => {
     })),
     ...(await Object.keys(database.years).map(async (year) => {
       const filename = `dist/archives/years/${year}`;
-      const pugCompiler = await pug.compile(
-        `extends ../../../src/template/index.pug\n`,
-        {
-          filename,
-          pretty: true,
-        }
-      );
+      const pugCompiler = await pug.compile(getExtendsString("year"), {
+        filename,
+        pretty: true,
+      });
       return await fs.writeFile(
         `${filename}.html`,
         pugCompiler({
@@ -86,13 +81,10 @@ export const html = async (database) => {
     })),
     await (async () => {
       const filename = "dist/archives/index";
-      const pugCompiler = await pug.compile(
-        `extends ../../src/template/index.pug\n`,
-        {
-          filename,
-          pretty: true,
-        }
-      );
+      const pugCompiler = await pug.compile(getExtendsString("archives"), {
+        filename,
+        pretty: true,
+      });
       await fs.writeFile(
         `${filename}.html`,
         pugCompiler({
@@ -104,13 +96,10 @@ export const html = async (database) => {
     })(),
     await (async () => {
       const filename = "dist/index";
-      const pugCompiler = await pug.compile(
-        `extends ../src/template/index.pug\n`,
-        {
-          filename,
-          pretty: true,
-        }
-      );
+      const pugCompiler = await pug.compile(getExtendsString("home"), {
+        filename,
+        pretty: true,
+      });
       await fs.writeFile(
         `${filename}.html`,
         pugCompiler({
