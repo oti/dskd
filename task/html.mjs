@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 import md2Pug from "./md2pug.js";
+import { marked } from "marked";
 import pug from "pug";
 
 import pkg from "../package.json" assert { type: "json" };
@@ -38,6 +39,7 @@ export const html = async (database) => {
         `${filename}.html`,
         pugCompiler({
           ...item,
+          marked: marked.parse(item.content),
           version: pkg.version,
         })
       );
