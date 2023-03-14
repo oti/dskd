@@ -4,9 +4,11 @@ import pug from "pug";
 import pkg from "../package.json" assert { type: "json" };
 
 export const html = async (database) => {
-  // todo: ディレクトリ生成を別処理にまとめる
-  await fs.mkdir("dist/archives/tags/", { recursive: true });
-  await fs.mkdir("dist/archives/years/", { recursive: true });
+  await Promise.all(
+    ["dist/archives/tags/", "dist/archives/years/"].map(
+      async (dir) => await fs.mkdir(dir, { recursive: true })
+    )
+  );
 
   const getExtendsString = (type) => {
     switch (type) {
