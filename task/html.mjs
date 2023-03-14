@@ -20,6 +20,7 @@ export const html = async (database) => {
 
     const relativePath = type === "post" ? "../../" : "../";
 
+    // return `extends ${relativePath}src/template/${type}\n`;
     return `extends ${relativePath}src/template/${type}.pug\n\nblock contents\n${body}\n`;
   };
 
@@ -27,7 +28,6 @@ export const html = async (database) => {
     ...(await [...database.posts, ...database.pages].map(async (item) => {
       const filename = `dist${item.dist}${item.id}`;
       const pugCompiler = pug.compile(
-        // todo: 1.pug -> post.pug -> default.pug で入れ子なのでその度に render() してやる必要あり？
         pugString({ content: item.content, type: item.type }),
         {
           filename,

@@ -1,4 +1,7 @@
+import md2Pug from "markdown-to-pug";
+import pug from "pug";
 import pkg from "../package.json" assert { type: "json" };
+const m2p = new md2Pug();
 
 export const database = async (matters) => {
   const posts = matters
@@ -12,9 +15,11 @@ export const database = async (matters) => {
       )
     )
     .map((post, i, sortedPosts) => {
+      const pugCompiler = pug.compile(m2p.render(post.content));
       const older = sortedPosts[i + 1];
       const newer = sortedPosts[i - 1];
       return {
+        // content: pugCompiler(),
         content: post.content,
         ...post.data,
         older: older
@@ -35,7 +40,9 @@ export const database = async (matters) => {
   const pages = matters
     .filter(({ data: { type } }) => type === "page")
     .map((page) => {
+      const pugCompiler = pug.compile(m2p.render(page.content));
       return {
+        // content: pugCompiler(),
         content: page.content,
         ...page.data,
       };
