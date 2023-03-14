@@ -3,13 +3,11 @@ import pkg from "../package.json" assert { type: "json" };
 export const database = async (matters) => {
   const posts = matters
     .filter(({ data: { type } }) => type === "post")
-    // 記事は日付でソートする
-    .sort((a, b) =>
-      Number(
-        b.data.datetime
-          .replace(/[-T:]/g, "")
-          .localeCompare(Number(a.data.datetime.replace(/[-T:]/g, "")))
-      )
+    // 記事は日付で降順ソートする
+    .sort(
+      (a, b) =>
+        Number(b.data.datetime.replace(/[-T:]/g, "")) -
+        Number(a.data.datetime.replace(/[-T:]/g, ""))
     )
     .map((post, i, sortedPosts) => {
       const older = sortedPosts[i + 1];
