@@ -1,5 +1,5 @@
 import fs from "fs/promises";
-import md2Pug from "markdown-to-pug";
+import md2Pug from "./md2pug.js";
 import pug from "pug";
 
 import pkg from "../package.json" assert { type: "json" };
