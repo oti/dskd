@@ -57,7 +57,7 @@ html(lang="ja")
       document.addEventListener("DOMContentLoaded", () => {
         const HTML = document.documentElement;
         const SWITCH = document.querySelector("#Switch");
-        const MODE_LIST = [...SWITCH.querySelectorAll("[name="switch"]")].map((elem) => elem.value);
+        const MODE_LIST = [...SWITCH.querySelectorAll(`[name="switch"]`)].map((elem) => elem.value);
 
         function updateMode(value) {
           localStorage.setItem("prefer-dskd-mode", value);
