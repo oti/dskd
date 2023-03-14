@@ -1,6 +1,6 @@
 # 開発
 
-dskd は md（マークダウン）ファイルでコンテンツを管理し、静的にビルドするブログシステムです。
+dskd は md（マークダウン）ファイルでコンテンツを管理し、HTML を静的にビルドするブログシステムです。
 
 ## コンセプト
 
@@ -19,39 +19,21 @@ npm ci
 npm start
 ```
 
-ローカルサーバー `localhost:3000` が立ち上がります。
+python3 でローカルサーバーが立ち上がるので**手動で** `localhost:3000` にアクセスしてください。
 
-タスクランナーに gulp を利用しています。
+### アセットはハードコア
 
-### アセット
+プリプロセッサーやトランスパイラーは利用しません。
 
-画像は gulp-imagemin で適当に圧縮しています。
+画像と CSS は src/ ディレクトリから dist/ へ**コピーされるだけ**です。
 
-CSS は Sass などのプリプロセッサーは使わず、素の CSS で記述して postcss でちょっとした処理を施すだけにしています。
-
-JavaScript は外部ファイルではなくテンプレートに直接記述しています。
+JavaScript はテンプレートか md ファイル内に直接記述してください。
 
 ### テンプレート
 
 pug を利用しています。
 
 記事のメタ情報やブログの設定情報、年別リストやタグ別リストの情報が格納された巨大なオブジェクトを内部で受け取り、テンプレートで利用しています。
-
-どのページがどのテンプレートを利用するのかは、md ファイルの YAML ブロックの `layout` フィールドで定義しています。
-
-### data.json
-
-テンプレートに渡される data.json は `./task/json/data.js` タスクで生成されます。
-
-このタスクでは front-matter で記事 md をパースし、サブタスクの下記が実行されます。
-
-- 記事ごとに前後の記事のリストを作る `neighbors.js`
-- タグごとに記事リストを作る `tags.js`
-- 年ごとに記事リストを作る `years.js`
-
-これらのタスクは、テンプレートで使いやすいように加工された記事リストを返します。
-
-テンプレートで新しい形の記事リストを表示したい場合は、data.js タスクで生成して data.json に格納するのが主なフローです。
 
 ## デプロイ
 
@@ -60,3 +42,21 @@ pug を利用しています。
 これをドキュメントルートとしてウェブサーバーでホスティングすればウェブサイトとして閲覧可能です。
 
 dskd では Netlify を使ってデプロイ、ホスティングしています。
+
+## 依存モジュール
+
+ビルドは以下のモジュールに依存しています。
+
+- [fast-glob](https://github.com/mrmlnc/fast-glob)
+- [gray-matter](https://github.com/jonschlinkert/gray-matter)
+- [marked](https://github.com/markedjs/marked)
+- [pug](https://github.com/pugjs/pug)
+
+テスト実行は以下のモジュールに依存しています。
+
+- [markuplint](https://github.com/markuplint/markuplint)
+- [stylelint](https://github.com/stylelint/stylelint)
+
+git コミット時に prettier を実行するため husky を利用しています。
+
+- [husky](https://github.com/typicode/husky)
