@@ -28,7 +28,7 @@
         : HOME
           ? blog_url
           : page_permalink
-  const og_image = cover ? `${cover}?${version}` : `/image/og-image.png?${version}`
+  const og_image = cover ? `${cover}?${version}` : `/image/og-image.webp?${version}`
 
 include mixin/publish
 
@@ -44,7 +44,7 @@ html(lang="ja")
     link(
       rel="apple-touch-icon",
       sizes="180x180",
-      href=`/image/apple-touch-icon.png?${version}`
+      href=`/image/apple-touch-icon.webp?${version}`
     )
     link(
       href=`/style/style.css?${version}`,
