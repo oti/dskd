@@ -6,11 +6,10 @@ import path from "path";
 const date = new Date(Date.now() + 9 * 60 * 60 * 1000);
 const datetime = date.toISOString().split(".")[0];
 
-const posts = (await fg("src/md/**/*.md"))
-  .map((filepath) => Number(path.parse(filepath).name))
-  .filter((id) => !isNaN(id))
-  .sort((a, b) => b - a);
-const id = posts && posts[0] ? posts[0] + 1 : undefined;
+const id =
+  (await fg("src/md/post/*.md"))
+    .map((filepath) => Number(path.parse(filepath).name))
+    .reduce((a, b) => Math.max(a, b)) + 1;
 const body = `---
 dist: "/archives/"
 type: "post"
