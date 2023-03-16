@@ -1,12 +1,13 @@
 import fs from "fs/promises";
 import fg from "fast-glob";
+import path from "path";
 
 // コマンド実行した時間を datetime とする（日本時間に合わせるため 9 時間追加）
 const date = new Date(Date.now() + 9 * 60 * 60 * 1000);
 const datetime = date.toISOString().split(".")[0];
 
 const posts = (await fg("src/md/**/*.md"))
-  .map((filepath) => Number(filepath.split(".md")[0].split("/").at(-1)))
+  .map((filepath) => Number(path.parse(filepath).name))
   .filter((id) => !isNaN(id))
   .sort((a, b) => b - a);
 const id = posts && posts[0] ? posts[0] + 1 : undefined;
