@@ -1,13 +1,11 @@
 import fs from "fs/promises";
 import fg from "fast-glob";
+import path from "path";
 
 export const asset = async () =>
-  (await fg("src/({image,misc,style}/**/*|favicon.svg)")).map(
-    async (source) => {
-      const dist = source.replace("src", "dist");
-      const _ = dist.split("/");
-      const distDir = `${_.slice(0, _.length - 1).join("/")}/`;
-      await fs.mkdir(distDir, { recursive: true });
-      return await fs.copyFile(source, dist);
-    }
-  );
+  (await fg("src/({image,misc,style}/**/*|favicon.*)")).map(async (source) => {
+    await fs.mkdir(path.parse(source).dir.replace("src", "dist"), {
+      recursive: true,
+    });
+    return await fs.copyFile(source, source.replace("src", "dist"));
+  });
