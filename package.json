@@ -6,10 +6,11 @@
   "author": "oti",
   "keywords": [],
   "scripts": {
-    "build": "rm -rf dist && node task/build.mjs",
-    "markuplint": "markuplint dist/**/*.html",
     "prepare": "husky install",
     "start": "npm run build && cd dist && python3 -m http.server 3000",
+    "create-draft-post": "node task/draft-post.mjs",
+    "build": "rm -rf dist && node task/build.mjs",
+    "markuplint": "markuplint dist/**/*.html",
     "stylelint": "stylelint dist/**/*.css",
     "test": "npm run stylelint && npm run markuplint"
   },
