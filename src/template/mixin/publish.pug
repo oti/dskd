@@ -1,17 +1,18 @@
 mixin publish(time, tags, title)
   -
-    const dtf = new Intl.DateTimeFormat('ja-JP', {
-      year: 'numeric',
-      month: 'narrow',
-      day: 'numeric'
-    })
-    const date = new Date(time)
-    const pubdate = dtf.format(date)
+    //- const dtf = new Intl.DateTimeFormat('ja-JP', {
+    //-   year: 'numeric',
+    //-   month: 'narrow',
+    //-   day: 'numeric'
+    //- })
+    //- const date = new Date(time)
+    //- const pubdate = dtf.format(date)
+    const pubdate = time.split('T')[0]
   dl.Publish
     dt.Invisible 公開日
     dd
       time(datetime=`${time}+09:00`)= pubdate
-    dt.Invisible タギング
+    dt.Invisible タグ
     each tag in tags
       if title === tag
         dd= tag
