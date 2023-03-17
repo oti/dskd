@@ -204,6 +204,7 @@ body > header > h1 {
 
 .Header {
   display: flex;
+  align-items: center;
 }
 
 .Mode {
