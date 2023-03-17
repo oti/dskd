@@ -494,7 +494,6 @@ body > header > h1 {
 
 .Publish dd:nth-child(2)::after {
   content: "◦";
-  margin-inline-start: var(--space-micro);
 }
 .Publish dd:not(:nth-child(2)):not(:last-child)::after {
   content: ",";
