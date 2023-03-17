@@ -2,7 +2,7 @@
 dist: "/"
 type: "page"
 id: "about"
-title: "dskd とは何か？"
+title: "About"
 desc: "ブログのこととわたしのことと。"
 ---
 
