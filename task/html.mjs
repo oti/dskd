@@ -46,9 +46,9 @@ export const html = async (database) => {
         .writeFile(
           `${filename}.html`,
           pugCompiler({
-            ...item,
             marked: marked.parse(item.content),
-            version: pkg.version,
+            ...item,
+            ...database,
           })
         )
         .catch(error);
@@ -67,7 +67,6 @@ export const html = async (database) => {
           pugCompiler({
             type: T_TAG,
             title: tag,
-            desc: `${tag}タグの記事一覧`,
             ...database,
           })
         )
@@ -86,7 +85,6 @@ export const html = async (database) => {
         pugCompiler({
           type: T_YEAR,
           title: year,
-          desc: `${year}年の記事一覧`,
           ...database,
         })
       );
@@ -104,7 +102,6 @@ export const html = async (database) => {
         pugCompiler({
           type: T_ARCHIVES,
           title: "Archives",
-          desc: `全記事一覧`,
           ...database,
         })
       )

@@ -18,7 +18,15 @@
   const tags_base = "tags/"
   const years_base = "years/"
   const metaTitle = HOME ? blog_name : `${title} - ${blog_name}`
-  const description = HOME ? blog_description : desc
+  const description = HOME
+    ? blog_description
+    : ARCHIVES
+      ? "全記事一覧"
+      : TAG
+        ? `${title}タグの記事一覧`
+        : YEAR
+          ? `${title}年の記事一覧`
+          : desc
   const url = POST
     ? `${blog_url}${archives_base}${posts_base}${id}.html`
     : TAG
