@@ -529,6 +529,9 @@ body > header > h1 {
 }
 
 .License {
+  display: flex;
+  gap: var(--space-default);
+  flex-wrap: wrap;
   line-height: var(--line-height-medium);
 }
 
