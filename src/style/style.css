@@ -569,6 +569,10 @@ body > header > h1 {
   background-color: var(--color-text);
 }
 
+.Space {
+  margin-block-start: var(--space-small);
+}
+
 .Invisible {
   position: fixed !important;
   top: 0 !important;
