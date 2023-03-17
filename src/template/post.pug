@@ -16,15 +16,18 @@ block main
     != marked
 
   .Border
-    ul.Share
-      li
-        a(href=`${contribute}${id}.md`) ソース（GitHub）
-      li
-        a(href=tw_href) Twitter
-      li
-        a(href=fb_href) Facebook
-      li
-        a(href=hb_href) はてブ
+    .Halve
+      ul.Share
+        li
+          a(href=tw_href) Twitter
+        li
+          a(href=fb_href) Facebook
+        li
+          a(href=hb_href) はてブ
+
+      ul.Contribute
+        li
+          a(href=`${contribute}${id}.md`) GitHub
 
   .Border
     ul.Neighbor
