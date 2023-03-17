@@ -215,7 +215,7 @@ body > header > h1 {
 
 .Mode form {
   position: absolute;
-  right: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   padding: var(--space-micro);
