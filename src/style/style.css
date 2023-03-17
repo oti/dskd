@@ -504,6 +504,9 @@ body > header > h1 {
 .Post .Publish + p {
   margin-block-start: var(--space-huge);
 }
+.Post p:has(img:only-child) {
+  max-width: 100%;
+}
 
 .More {
   margin-block-start: var(--space-huge);
