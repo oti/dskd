@@ -564,8 +564,8 @@ body > header > h1 {
   display: block;
   margin-block-start: var(--space-huge);
   margin-block-end: var(--space-small);
-  width: var(--space-small);
-  height: 1px;
+  width: var(--space-micro);
+  height: 2px;
   background-color: var(--color-text);
 }
 
