@@ -112,29 +112,30 @@ html(lang="ja")
       block main
 
     footer.Border
-      p.License
-        | このブログは越智（oti / otiext）が作り、
-        a(
-          href="https://creativecommons.org/licenses/by-nc/4.0/deed.ja",
-          rel="license noopener",
-          target="_blank"
-        ) CC BY-NC（クリエイティブコモンズライセンス、表示−非営利 4.0 国際）
-        | の元に公開しています。
+      .Halve
+        ul.Pages
+          each page in pages
+            - const ABOUT = id === page.id
+            li
+              a(href=`${page.dist}${page.id}.html`, class=ABOUT && "-current", aria-current=ABOUT && "page", rel=ABOUT && "author")= page.title
+          li
+            a(href=`${blog_url}${blog_feed}`, target="_blank", rel="noopener") RSS
+          //- li
+            a(
+              href=`https://twitter.com/${blog_twitter}`,
+              target="_blank",
+              rel="noopener"
+            )= `@${blog_twitter}`
+          //- li
+            address
+              a(href=`mailto:${blog_address}`)= blog_address
 
-      ul.Pages
-        li
-          a(href="/about.html", aria-current=id === "about" && "page")= `${blog_name}とは何か？`
-        li
-          a(href=`${blog_url}${blog_feed}`, target="_blank", rel="noopener") RSS
-        li
+        p.License
+          span © 越智
           a(
-            href=`https://twitter.com/${blog_twitter}`,
-            target="_blank",
-            rel="noopener"
-          )= `@${blog_twitter}`
-        li
-          address
-            a(href=`mailto:${blog_address}`)= blog_address
+            href="https://creativecommons.org/licenses/by-nc/4.0/deed.ja",
+            rel="license",
+          ) CC BY-NC
 
       p.Border
         a.Pagetop(href="#top") ページの先頭へ
