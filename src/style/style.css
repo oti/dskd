@@ -274,7 +274,7 @@ body > header > h1 {
   margin-block-start: var(--space-small);
   margin-block-end: var(--space-small);
   font-size: var(--font-size-tiny);
-  line-height: var(--line-height-huge);
+  line-height: var(--line-height-large);
 }
 .Post .frame {
   max-width: initial;
