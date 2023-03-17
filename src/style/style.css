@@ -519,7 +519,6 @@ body > header > h1 {
   display: flex;
   gap: var(--space-default);
   flex-wrap: wrap;
-  margin-block-start: var(--space-small);
   line-height: var(--line-height-medium);
 }
 .Pages address {
