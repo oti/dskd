@@ -540,6 +540,19 @@ body > header > h1 {
   line-height: var(--line-height-medium);
 }
 
+.BackButton {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: auto;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  background: transparent;
+  overflow: visible;
+}
+
 .Border::before {
   content: "";
   display: block;
