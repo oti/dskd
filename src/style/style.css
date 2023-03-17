@@ -535,7 +535,8 @@ body > header > h1 {
   line-height: var(--line-height-medium);
 }
 
-.Pagetop {
+.Nav {
+  margin-block-start: var(--space-huge);
   line-height: var(--line-height-medium);
 }
 
