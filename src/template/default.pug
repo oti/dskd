@@ -4,7 +4,7 @@
   const TAG = type === "tag"
   const YEAR = type === "year"
   const ARCHIVES = type === "archives"
-  const ABOUT = type === "about"
+  const ABOUT = id === "about"
   const blog_name = "dskd"
   const blog_url = "https://dskd.jp"
   const blog_description = "dskd はウェブ制作にまつわる雑記を主としたウェブログです。"
@@ -120,9 +120,9 @@ html(lang="ja")
       .Halve
         ul.Pages
           each page in pages
-            - const ABOUT = id === page.id
+            - const cr = id === page.id
             li
-              a(href=`${page.dist}${page.id}.html`, class=ABOUT && "-current", aria-current=ABOUT && "page", rel=ABOUT && "author")= page.title
+              a(href=`${page.dist}${page.id}.html`, class=cr && "-current", aria-current=cr && "page", rel=cr && "author")= page.title
           li
             a(href=`${blog_url}${blog_feed}`, target="_blank", rel="noopener") RSS
           //- li
