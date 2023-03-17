@@ -502,7 +502,7 @@ body > header > h1 {
   margin-block-start: var(--space-default);
 }
 .Post .Publish + p {
-  margin-block-start: var(--space-medium);
+  margin-block-start: var(--space-huge);
 }
 
 .More {
