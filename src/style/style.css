@@ -486,6 +486,12 @@ body > header > h1 {
   margin-block-start: var(--space-micro);
   line-height: var(--line-height-medium);
 }
+.Publish dd:nth-child(2) {
+  display: flex;
+  gap: var(--space-micro);
+  flex-wrap: wrap;
+}
+
 .Publish dd:nth-child(2)::after {
   content: "◦";
   margin-inline-start: var(--space-micro);
