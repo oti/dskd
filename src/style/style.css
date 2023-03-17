@@ -431,6 +431,7 @@ body > header > h1 {
 .Post .Information {
   padding: var(--space-tiny);
   border: 1px solid var(--color-text);
+  border-radius: 2px;
 }
 .Post .Information p {
   max-width: 100%;
