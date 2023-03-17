@@ -346,7 +346,7 @@ body > header > h1 {
   line-height: var(--line-height-default);
 }
 .Post hr::after {
-  content: "◦◦◦◦◦◦";
+  content: "◦◦◦◦◦◦◦◦◦";
 }
 .Post ul,
 .Post ol {
