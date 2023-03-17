@@ -1,4 +1,4 @@
-/*! style.css | MIT License */
+@import url(//fonts.googleapis.com/earlyaccess/notosansjp.css);
 
 :root {
   --color-background: #f1f2f3;
@@ -159,7 +159,7 @@ body {
   margin-inline-end: auto;
   padding: var(--space-default);
   max-inline-size: var(--size-body-inline);
-  font-family: arial, sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   color: var(--color-text);
   font-size: var(--font-size-default);
   background-color: var(--color-background);
