@@ -12,23 +12,23 @@ dskd は「ですけど」と読みます。「〜ですけど」が口癖なの
 
 ## わたしのこと
 
-ハンドルネームは越智、oti、otiext など。本名は伊藤です。
+1985 年度生まれ。ハンドルは越智、oti、otiext など。本名は伊藤です。
 
-1985 年度生まれのフロントエンドエンジニアです。2007 年 5 月からウェブ制作に従事しています。[2015 年 4 月から株式会社まぼろしに所属しています](https://maboroshi.biz)。
+2007 年 5 月からウェブ制作に従事しています。[2015 年 4 月から株式会社まぼろしに所属しています](https://maboroshi.biz)。
+
+また、個人事業主として[越智企画](https://otiext.com/)という屋号も持っています。
 
 ## dskd の他に作っている主なプロダクト
 
-[ktt](https://tkg.dskd.jp)
-ーー朝食べた TKG を掲載しているウェブサイトです。
+[decomoji](https://decomoji.dev) ーー Slack のリアクション機能で使えるカスタム絵文字セット「decomoji（デコモジ）」です。
 
-[decomoji](https://decomoji.dev)
-ーー Slack のリアクション機能で使えるカスタム絵文字セット「decomoji（デコモジ）」です。
+[デコモジファインダー](https://finder.decomoji.dev) ーー 前述のデコモジを検索、コレクションを共有できるウェブアプリです。
 
-[デコモジファインダー](https://finder.decomoji.dev)
-ーー前述のデコモジを検索、コレクションを共有できるウェブアプリです。
+[HEX Contrast Ratio Calculator](https://hex-crc.dskd.jp) ーー 2 色の HEX カラーセットからコントラスト比を計算し、WCAG2.1 が定める基準を達成しているかを検証するウェブアプリです。
 
-[HEX Contrast Ratio Calculator](https://hex-crc.dskd.jp)
-ーー 2 色の HEX カラーセットからコントラスト比を計算し、WCAG2.1 が定める基準を達成しているかを検証するウェブアプリです。
+[ktt](https://tkg.dskd.jp) ーー 朝食べた TKG を掲載しているウェブサイトです。
+
+[accrefs](https://accrefs.jp) ーー アクセシビリティの参考資料をまとめたウェブサイトです。
 
 ## 購読
 
@@ -39,7 +39,7 @@ dskd は「ですけど」と読みます。「〜ですけど」が口癖なの
 
 ## ライセンス
 
-特記事項が付随および明記されていない限りは[Creative Commons — Attribution-NonCommercial(CC BY-NC)](https://creativecommons.org/licenses/by-nc/4.0/deed.ja)の元で公開されています。
+特記事項が付随および明記されていない限りは[Creative Commons — Attribution-NonCommercial(CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/deed.ja)の元で公開されています。
 
 このライセンスでは*ページに特記事項がない*且つ*非営利目的に限り*このブログ内のデータを自由に使用することができます。
 
