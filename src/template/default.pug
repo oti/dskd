@@ -96,17 +96,17 @@ html(lang="ja")
         h1
           include _logo
       details.Mode
-        summary モードの変更
+        summary ダーク/ライト
         form#Switch
           label
-            input(name="switch", type="radio", value="-system")
-            span OSの設定に従う
+            input(name="switch", type="radio", value="-dark")
+            span ダーク
           label
             input(name="switch", type="radio", value="-light")
-            span ライトに固定する
+            span ライト
           label
-            input(name="switch", type="radio", value="-dark")
-            span ダークに固定する
+            input(name="switch", type="radio", value="-system")
+            span システム
 
     main
       block main
