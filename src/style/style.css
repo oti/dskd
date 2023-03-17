@@ -553,6 +553,12 @@ body > header > h1 {
   overflow: visible;
 }
 
+.Halve {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .Border::before {
   content: "";
   display: block;
