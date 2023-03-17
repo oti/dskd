@@ -75,9 +75,7 @@ html(lang="ja")
 
         SWITCH.addEventListener(
           "change",
-          ({ target }) => {
-            updateMode(target.value);
-          },
+          ({ target }) => updateMode(target.value),
           false
         );
 
@@ -85,6 +83,13 @@ html(lang="ja")
         const initModeName = MODE_LIST.includes(preferModeName) ? preferModeName : MODE_LIST[0];
         updateMode(initModeName);
         SWITCH.querySelector(`[value="${initModeName}"]`).setAttribute("checked", true);
+
+        const BACK = document.querySelector("#Back");
+        BACK.addEventListener(
+          "click",
+          () => history.back(),
+          false
+        )
       });
 
   body
@@ -137,7 +142,11 @@ html(lang="ja")
             rel="license",
           ) CC BY-NC
 
-      .Pagetop
+      .Nav.Halve
+        button.BackButton#Back
+          span(aria-hidden="true") #
+          | back
+
         a(href="#top")
           span(aria-hidden="true") #
           | top
