@@ -12,6 +12,7 @@ import {
   T_TAG,
   T_YEAR,
   TEMPLATE_MAP,
+  T_RSS,
 } from "./constant.mjs";
 
 const error = (error) => {
@@ -125,11 +126,28 @@ export const html = async (database) => {
       .catch(error);
   };
 
+  const createRss = async () => {
+    const filename = `${D_HOME}rss`;
+    const pugCompiler = await pug.compile(getExtendsString(T_RSS), {
+      filename,
+      pretty: true,
+    });
+    await fs
+      .writeFile(
+        `${filename}.xml`,
+        pugCompiler({
+          ...database,
+        })
+      )
+      .catch(error);
+  };
+
   return Promise.all([
     ...(await createIndividualHtml()),
     ...(await createTagHtml()),
     ...(await createYearHtml()),
     await createArchivesHtml(),
     await createHomeHtml(),
+    await createRss(),
   ]);
 };
