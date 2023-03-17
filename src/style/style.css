@@ -57,7 +57,7 @@
   --color-table-border: #000000;
   --color-table-caption: #000000;
   --color-table-stripe: #121317;
-  --color-blockquote-background: rgba(255, 255, 255, 0.25);
+  --color-blockquote-background: var(--color-sub);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -400,9 +400,10 @@ body > header > h1 {
 .Post blockquote {
   margin-block-start: var(--space-small);
   margin-block-end: var(--space-small);
+  margin-inline-start: calc(var(--space-default) * -1);
+  margin-inline-end: calc(var(--space-default) * -1);
   padding: var(--space-default);
-  border-radius: 3px;
-  border-left: 3px solid var(--color-sub);
+  border-radius: 2px;
   background-color: var(--color-blockquote-background);
 }
 .Post blockquote p {
