@@ -1,7 +1,6 @@
 import fs from "fs/promises";
 import { marked } from "marked";
 import pug from "pug";
-import pkg from "../package.json" assert { type: "json" };
 import {
   D_ARCHIVE,
   D_HOME,
