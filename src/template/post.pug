@@ -3,7 +3,7 @@ extends default
 block main
   -
     const escaped_title = encodeURIComponent(title)
-    const escaped_permalink = encodeURIComponent(`${blog_url}${archives_base}${posts_base}${id}.html`)
+    const escaped_permalink = encodeURIComponent(`${blog_url}${posts_dir}${id}.html`)
     const tw_href = `https://twitter.com/intent/tweet?text=${escaped_title}&url=${escaped_permalink}&via=dskd_jp&related=otiext`
     const fb_href = `https://www.facebook.com/share.php?u=${escaped_permalink}`
     const hb_href = `http://b.hatena.ne.jp/my/add.confirm?title=${escaped_title}&url=${escaped_permalink}`
@@ -33,9 +33,9 @@ block main
     ul.Neighbor
       if newer
         li
-          a(href=`${archives_base}${posts_base}${newer.id}.html`)= newer.title
+          a(href=`${posts_dir}${newer.id}.html`)= newer.title
           span （ひとつ未来）
       if older
         li
-          a(href=`${archives_base}${posts_base}${older.id}.html`)= older.title
+          a(href=`${posts_dir}${older.id}.html`)= older.title
           span （ひとつ過去）

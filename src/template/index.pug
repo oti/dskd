@@ -2,7 +2,7 @@ extends default
 
 block main
   -
-    const heading = HOME ? '最近の記事' : desc
+    const heading = HOME ? 'latest' : `[${title}]`
     const items = HOME
         ? posts.slice(0,5) //- indexでは5件だけ出力する
         : ARCHIVES
@@ -18,22 +18,22 @@ block main
     ul.Posts
       each item in items
         li
-          a(href=`${archives_base}${posts_base}${item.id}.html`)= item.title
+          a(href=`${posts_dir}${item.id}.html`)= item.title
           +publish(item.datetime, item.tag, title)
 
     if HOME
       p.More
-        a(href=`${archives_base}${posts_base}`) archives
+        a(href=`${posts_dir}`) archives
 
   section.Border
     h2.Secondary.Invisible 年
     ol.Pages(reversed)
-      each year, i in Object.keys(years).sort((a, b) => b.localeCompare(a))
+      each year in Object.keys(years).sort((a, b) => b.localeCompare(a))
         li
           a(
-            class=title === Number(year) && "-current",
-            href=`${archives_base}${years_base}${year}.html`,
-            aria-current=title === Number(year) && "page"
+            class=title === year && "-current",
+            href=`${years_dir}${year}.html`,
+            aria-current=title === year && "page"
           )= year
 
   section.Space
@@ -43,6 +43,6 @@ block main
         li
           a(
             class=title === tag && "-current",
-            href=`${archives_base}${tags_base}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`,
+            href=`${tags_dir}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`,
             aria-current=title === tag && "page"
           )= tag

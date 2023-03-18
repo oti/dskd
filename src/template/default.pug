@@ -13,10 +13,10 @@
   const blog_feed = "/feed"
   const blog_twitter = "dskd_jp"
   const contribute = "https://github.com/oti/dskd/blob/master/src/md/post/"
-  const archives_base = "/archives/"
-  const posts_base = ""
-  const tags_base = "tags/"
-  const years_base = "years/"
+  const archives_dir = "/archives"
+  const posts_dir = `${archives_dir}/`
+  const tags_dir = `${archives_dir}/tags/`
+  const years_dir = `${archives_dir}/years/`
   const metaTitle = HOME ? blog_name : `${title} - ${blog_name}`
   const description = HOME
     ? blog_description
@@ -28,14 +28,14 @@
           ? `${title}年の記事一覧`
           : desc
   const url = POST
-    ? `${blog_url}${archives_base}${posts_base}${id}.html`
+    ? `${blog_url}${posts_dir}${id}.html`
     : TAG
-      ? `${blog_url}${archives_base}${tags_base}${String(title).toLowerCase().replace(/[ .-]/g, "_")}.html`
+      ? `${blog_url}${tags_dir}${title.toLowerCase().replace(/[ .-]/g, "_")}.html`
       : YEAR
-        ? `${blog_url}${archives_base}${years_base}${String(title).toLowerCase().replace(/[ .-]/g, "_")}.html`
+        ? `${blog_url}${years_dir}${title}.html`
         : HOME
           ? blog_url
-          : page_permalink
+          : undefined
   const og_image = cover ? `${cover}?${version}` : `/image/og-image.webp?${version}`
 
 include mixin/publish
@@ -124,7 +124,7 @@ html(lang="ja")
             li
               a(href=`${page.dist}${page.id}.html`, class=cr && "-current", aria-current=cr && "page", rel=cr && "author")= page.title
           li
-            a(href=`${blog_url}${blog_feed}`, target="_blank", rel="noopener") RSS
+            a(href=`${blog_url}${blog_feed}`, target="_blank") RSS
           //- li
             a(
               href=`https://twitter.com/${blog_twitter}`,

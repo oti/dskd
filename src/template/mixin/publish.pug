@@ -19,5 +19,5 @@ mixin publish(time, tags, title)
       else
         dd
           a(
-            href=`${archives_base}${tags_base}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`
+            href=`${tags_dir}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`
           )= tag
