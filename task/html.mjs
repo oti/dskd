@@ -19,15 +19,6 @@ const error = (error) => {
   throw error;
 };
 
-const getExtendsString = (type) => {
-  // 実際に書き出されるディレクトリからの相対パスを extends で指定する必要がある
-  const template = TEMPLATE_MAP[type];
-  if (!template) {
-    throw new Error("type 値が正しくありません");
-  }
-  return `extends ${template}\n`;
-};
-
 export const html = async (database) => {
   await Promise.all(
     [D_TAG, D_YEAR].map(
@@ -38,7 +29,7 @@ export const html = async (database) => {
   const createIndividualHtml = async () =>
     [...database.posts, ...database.pages].map(async (item) => {
       const filename = `dist${item.dist}${item.id}`;
-      const pugCompiler = pug.compile(getExtendsString(item.type), {
+      const pugCompiler = pug.compile(`extends ${TEMPLATE_MAP[item.type]}\n`, {
         filename,
         pretty: true,
       });
@@ -57,10 +48,13 @@ export const html = async (database) => {
   const createTagHtml = async () =>
     Object.keys(database.tags).map(async (tag) => {
       const filename = `${D_TAG}${tag.toLowerCase().replace(/[ .-]/g, "_")}`;
-      const pugCompiler = await pug.compile(getExtendsString(T_TAG), {
-        filename,
-        pretty: true,
-      });
+      const pugCompiler = await pug.compile(
+        `extends ${TEMPLATE_MAP[T_TAG]}\n`,
+        {
+          filename,
+          pretty: true,
+        }
+      );
       return await fs
         .writeFile(
           `${filename}.html`,
@@ -76,10 +70,13 @@ export const html = async (database) => {
   const createYearHtml = async () =>
     Object.keys(database.years).map(async (year) => {
       const filename = `${D_YEAR}${year}`;
-      const pugCompiler = await pug.compile(getExtendsString(T_YEAR), {
-        filename,
-        pretty: true,
-      });
+      const pugCompiler = await pug.compile(
+        `extends ${TEMPLATE_MAP[T_YEAR]}\n`,
+        {
+          filename,
+          pretty: true,
+        }
+      );
       return await fs.writeFile(
         `${filename}.html`,
         pugCompiler({
@@ -92,10 +89,13 @@ export const html = async (database) => {
 
   const createArchivesHtml = async () => {
     const filename = `${D_ARCHIVE}index`;
-    const pugCompiler = await pug.compile(getExtendsString(T_ARCHIVES), {
-      filename,
-      pretty: true,
-    });
+    const pugCompiler = await pug.compile(
+      `extends ${TEMPLATE_MAP[T_ARCHIVES]}\n`,
+      {
+        filename,
+        pretty: true,
+      }
+    );
     await fs
       .writeFile(
         `${filename}.html`,
@@ -110,7 +110,7 @@ export const html = async (database) => {
 
   const createHomeHtml = async () => {
     const filename = `${D_HOME}index`;
-    const pugCompiler = await pug.compile(getExtendsString(T_HOME), {
+    const pugCompiler = await pug.compile(`extends ${TEMPLATE_MAP[T_HOME]}\n`, {
       filename,
       pretty: true,
     });
@@ -127,7 +127,7 @@ export const html = async (database) => {
 
   const createRss = async () => {
     const filename = `${D_HOME}rss`;
-    const pugCompiler = await pug.compile(getExtendsString(T_RSS), {
+    const pugCompiler = await pug.compile(`extends ${TEMPLATE_MAP[T_RSS]}\n`, {
       filename,
       pretty: true,
     });
