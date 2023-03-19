@@ -10,7 +10,7 @@ export const D_YEAR = "dist/archives/years/";
 export const S_MD = "src/md/**/*.md";
 
 // T: type
-export const T_ARCHIVES = "archives";
+export const T_ARCHIVE = "archives";
 export const T_HOME = "home";
 export const T_PAGE = "page";
 export const T_POST = "post";
@@ -19,7 +19,7 @@ export const T_TAG = "tag";
 export const T_YEAR = "year";
 
 export const TEMPLATE_MAP = {
-  [T_ARCHIVES]: "../../src/template/index",
+  [T_ARCHIVE]: "../../src/template/index",
   [T_HOME]: "../src/template/index",
   [T_PAGE]: "../src/template/page",
   [T_POST]: "../../src/template/post",
@@ -37,9 +37,11 @@ export const CONFIGS = {
   BLOG_DESC: "dskd は越智による個人ウェブサイトです。",
   BLOG_FAVICON: "/favicon.svg",
   BLOG_NAME: "dskd",
+  BLOG_OGP: "/image/og-image.webp",
   BLOG_TOUCH_ICON: "/image/apple-touch-icon.webp",
+  BLOG_TWITTER: "dskd_jp",
   BLOG_URL: "https://dskd.jp",
-  T_ARCHIVES,
+  T_ARCHIVE,
   T_HOME,
   T_PAGE,
   T_POST,
@@ -48,9 +50,8 @@ export const CONFIGS = {
   T_YEAR,
   // U: URL
   U_FEED: "/feed",
-  U_ARCHIVE: "/archives/",
-  U_PAGE: "/archives/",
+  U_PAGE: "/",
   U_POST: "/archives/",
-  U_TAGS: "/archives/tags/",
-  U_YEARS: "/archives/years/",
+  U_TAG: "/archives/tags/",
+  U_YEAR: "/archives/years/",
 };

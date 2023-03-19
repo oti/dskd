@@ -6,7 +6,7 @@ import {
   D_HOME,
   D_TAG,
   D_YEAR,
-  T_ARCHIVES,
+  T_ARCHIVE,
   T_HOME,
   T_TAG,
   T_YEAR,
@@ -85,7 +85,7 @@ export const html = async (database) => {
   const createArchivesHtml = async () => {
     const filename = `${D_ARCHIVE}index`;
     const pugCompiler = await pug.compile(
-      `extends ${TEMPLATE_MAP[T_ARCHIVES]}\n`,
+      `extends ${TEMPLATE_MAP[T_ARCHIVE]}\n`,
       {
         filename,
       }
@@ -94,7 +94,7 @@ export const html = async (database) => {
       .writeFile(
         `${filename}.html`,
         pugCompiler({
-          type: T_ARCHIVES,
+          type: T_ARCHIVE,
           title: "Archives",
           ...database,
         })
