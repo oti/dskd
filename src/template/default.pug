@@ -4,11 +4,11 @@
   const isPost = type === T_POST
   const isTag = type === T_TAG
   const isYear = type === T_YEAR
-  const isArchives = type === T_ARCHIVE
+  const isArchive = type === T_ARCHIVE
   const metaTitle = isHome ? BLOG_NAME : `${title} - ${BLOG_NAME}`
   const description = isHome
     ? BLOG_DESC
-    : isArchives
+    : isArchive
     ? "dskd の全記事一覧"
     : isTag
     ? `${title}タグの記事一覧`

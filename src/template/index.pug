@@ -5,7 +5,7 @@ block main
     const heading = isHome ? 'latest' : `[${title}]`
     const items = isHome
         ? posts.slice(0,5) //- indexでは5件だけ出力する
-        : isArchives
+        : isArchive
           ? posts
           : isTag
             ? tags[title]
@@ -23,7 +23,7 @@ block main
 
     if isHome
       p.More
-        a(href=`${U_POST}`) archives
+        a(href=`${U_POST}`) Archives
 
   section.Border
     h2.Secondary.Invisible 年
