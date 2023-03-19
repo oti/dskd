@@ -12,6 +12,8 @@ import {
   T_YEAR,
   TEMPLATE_MAP,
   T_RSS,
+  D_POST,
+  D_PAGE,
 } from "./constant.mjs";
 
 const error = (error) => {
@@ -28,7 +30,7 @@ export const html = async (database) => {
 
   const createIndividualHtml = async () =>
     [...database.posts, ...database.pages].map(async (item) => {
-      const filename = `dist${item.dist}${item.id}`;
+      const filename = `${item.type === "post" ? D_POST : D_PAGE}${item.id}`;
       const pugCompiler = pug.compile(`extends ${TEMPLATE_MAP[item.type]}\n`, {
         filename,
         pretty: true,
