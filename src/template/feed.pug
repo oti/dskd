@@ -6,24 +6,24 @@ rss(
   xmlns:creativeCommons="http://blogs.law.harvard.edu/tech/creativeCommonsRssModule"
 )
   channel
-    title dskd
-    link https://dskd.jp
-    description= "<![CDATA[dskd はウェブ制作にまつわる雑記を主としたウェブログです。]]>"
+    title= BLOG_NAME
+    link= U_BLOG
+    description= `<![CDATA[${BLOG_DESC}]]>`
     language ja-JP
     pubdate= new Date()
     lastbuilddate= new Date()
     docs http://blogs.law.harvard.edu/tech/rss
-    generator oti
+    generator= BLOG_AUTHOR_EN
     managingeditor
-    webmaster 越智 otiext@gmail.com
-    atom:link(href="https://dskd.jp/feed", rel="self", type="application/rss+xml")/
+    webmaster= `${BLOG_AUTHOR} ${BLOG_ADDRESS}`
+    atom:link(href=`${BLOG_URL}${U_FEED}`, rel="self", type="application/rss+xml")/
     creativeCommons:license https://creativecommons.org/licenses/by-nc/4.0/deed.ja
 
     each post, i in posts
       item
         title= post.title
-        link= `https://dskd.jp${post.dist}${post.id}.html`
+        link= `${BLOG_URL}${U_POST}${post.id}.html`
         description= post.desc
         pubdate= new Date(post.datetime)
-        guid(isPermaLink="true")= `https://dskd.jp${post.dist}${post.id}.html`
+        guid(isPermaLink="true")= `${BLOG_URL}${U_POST}${post.id}.html`
         //- content:encoded=('<![CDATA['+post.marked+']]>')

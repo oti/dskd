@@ -11,7 +11,7 @@ import {
   T_TAG,
   T_YEAR,
   TEMPLATE_MAP,
-  T_RSS,
+  T_FEED,
   D_POST,
   D_PAGE,
 } from "./constant.mjs";
@@ -118,9 +118,9 @@ export const html = async (database) => {
       .catch(error);
   };
 
-  const createRss = async () => {
-    const filename = `${D_HOME}rss`;
-    const pugCompiler = await pug.compile(`extends ${TEMPLATE_MAP[T_RSS]}\n`, {
+  const createFeed = async () => {
+    const filename = `${D_HOME}feed`;
+    const pugCompiler = await pug.compile(`extends ${TEMPLATE_MAP[T_FEED]}\n`, {
       filename,
       pretty: true,
     });
@@ -140,6 +140,6 @@ export const html = async (database) => {
     ...(await createYearHtml()),
     await createArchivesHtml(),
     await createHomeHtml(),
-    await createRss(),
+    await createFeed(),
   ]);
 };
