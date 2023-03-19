@@ -21,6 +21,7 @@ export const T_FEED = "feed";
 export const T_TAG = "tag";
 export const T_YEAR = "year";
 
+// pug string が dist/* に書き出されたとした場合のテンプレートへの相対パス。pwd や __direname ではないので注意
 export const TEMPLATE_MAP = {
   [T_ARCHIVE]: "../../src/template/index",
   [T_HOME]: "../src/template/index",
@@ -31,7 +32,7 @@ export const TEMPLATE_MAP = {
   [T_YEAR]: "../../../src/template/index",
 };
 
-// Pugテンプレート向け
+// Pugテンプレートから参照する設定
 export const CONFIGS = {
   BLOG_ADDRESS: "otiext@gmail.com",
   BLOG_AUTHOR: "越智",
