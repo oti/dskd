@@ -11,7 +11,6 @@ const id =
     .map((filepath) => Number(path.parse(filepath).name))
     .reduce((a, b) => Math.max(a, b)) + 1;
 const body = `---
-dist: "/archives/"
 type: "post"
 cover: null
 id: ${id}
