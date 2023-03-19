@@ -1,3 +1,4 @@
+import { CONFIGS } from "./constant.mjs";
 import pkg from "../package.json" assert { type: "json" };
 
 export const database = async (matters) => {
@@ -61,6 +62,7 @@ export const database = async (matters) => {
     pages,
     tags,
     years,
+    ...CONFIGS,
     version: pkg.version,
   });
 };
