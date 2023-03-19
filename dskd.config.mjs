@@ -58,5 +58,8 @@ export const CONFIGS = {
   U_POST: "/archives/",
   U_TAG: "/archives/tags/",
   U_YEAR: "/archives/years/",
-  version: pkg.version,
+  version:
+    pkg && pkg.version
+      ? pkg.version
+      : new Date().getTime().toString().substr(0, 9),
 };
