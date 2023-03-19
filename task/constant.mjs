@@ -1,6 +1,8 @@
 // D: dist
 export const D_ARCHIVE = "dist/archives/";
 export const D_HOME = "dist/";
+export const D_PAGE = "dist/";
+export const D_POST = "dist/archives/";
 export const D_TAG = "dist/archives/tags/";
 export const D_YEAR = "dist/archives/years/";
 
@@ -24,4 +26,20 @@ export const TEMPLATE_MAP = {
   [T_RSS]: "../src/template/rss",
   [T_TAG]: "../../../src/template/index",
   [T_YEAR]: "../../../src/template/index",
+};
+
+export const CONFIGS = {
+  D_ARCHIVE,
+  D_HOME,
+  D_PAGE,
+  D_POST,
+  D_TAG,
+  D_YEAR,
+  T_ARCHIVES,
+  T_HOME,
+  T_PAGE,
+  T_POST,
+  T_RSS,
+  T_TAG,
+  T_YEAR,
 };
