@@ -28,13 +28,17 @@ export const TEMPLATE_MAP = {
   [T_YEAR]: "../../../src/template/index",
 };
 
+// Pugテンプレート向け
 export const CONFIGS = {
-  D_ARCHIVE,
-  D_HOME,
-  D_PAGE,
-  D_POST,
-  D_TAG,
-  D_YEAR,
+  BLOG_ADDRESS: "otiext@gmail.com",
+  BLOG_AUTHOR: "越智",
+  BLOG_AUTHOR_EN: "oti",
+  BLOG_CONTRIBUTE: "https://github.com/oti/dskd/blob/master/src/md/post/",
+  BLOG_DESC: "dskd は越智による個人ウェブサイトです。",
+  BLOG_FAVICON: "/favicon.svg",
+  BLOG_NAME: "dskd",
+  BLOG_TOUCH_ICON: "/image/apple-touch-icon.webp",
+  BLOG_URL: "https://dskd.jp",
   T_ARCHIVES,
   T_HOME,
   T_PAGE,
@@ -42,4 +46,11 @@ export const CONFIGS = {
   T_RSS,
   T_TAG,
   T_YEAR,
+  // U: URL
+  U_FEED: "/feed",
+  U_ARCHIVE: "/archives/",
+  U_PAGE: "/archives/",
+  U_POST: "/archives/",
+  U_TAGS: "/archives/tags/",
+  U_YEARS: "/archives/years/",
 };
