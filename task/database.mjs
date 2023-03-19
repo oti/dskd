@@ -1,4 +1,4 @@
-import { CONFIGS } from "../dskd.config.js";
+import { CONFIGS } from "../dskd.config.mjs";
 
 export const database = async (matters) => {
   const posts = matters

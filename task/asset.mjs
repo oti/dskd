@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import fg from "fast-glob";
 import path from "path";
-import { S_ASSET } from "../dskd.config.js";
+import { S_ASSET } from "../dskd.config.mjs";
 
 export const asset = async () =>
   (await fg(S_ASSET)).map(async (source) => {

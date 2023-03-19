@@ -14,7 +14,7 @@ import {
   TEMPLATE_MAP,
   D_POST,
   D_PAGE,
-} from "../dskd.config.js";
+} from "../dskd.config.mjs";
 
 const error = (error) => {
   console.log(error);
