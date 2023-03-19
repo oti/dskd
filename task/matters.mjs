@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import fg from "fast-glob";
 import matter from "gray-matter";
-import { S_MD } from "./constant.mjs";
+import { S_MD } from "../dskd.config.js";
 
 export const matters = async () =>
   Promise.all(

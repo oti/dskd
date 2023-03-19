@@ -10,11 +10,11 @@ import {
   T_HOME,
   T_TAG,
   T_YEAR,
-  TEMPLATE_MAP,
   T_FEED,
+  TEMPLATE_MAP,
   D_POST,
   D_PAGE,
-} from "./constant.mjs";
+} from "../dskd.config.js";
 
 const error = (error) => {
   console.log(error);
