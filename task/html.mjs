@@ -23,7 +23,7 @@ const error = (error) => {
 
 export const html = async (database) => {
   await Promise.all(
-    [D_TAG, D_YEAR].map(
+    [D_POST, D_TAG, D_YEAR].map(
       async (dir) => await fs.mkdir(dir, { recursive: true }).catch(error)
     )
   );
@@ -33,7 +33,6 @@ export const html = async (database) => {
       const filename = `${item.type === "post" ? D_POST : D_PAGE}${item.id}`;
       const pugCompiler = pug.compile(`extends ${TEMPLATE_MAP[item.type]}\n`, {
         filename,
-        pretty: true,
       });
       return await fs
         .writeFile(
@@ -52,10 +51,7 @@ export const html = async (database) => {
       const filename = `${D_TAG}${tag.toLowerCase().replace(/[ .-]/g, "_")}`;
       const pugCompiler = await pug.compile(
         `extends ${TEMPLATE_MAP[T_TAG]}\n`,
-        {
-          filename,
-          pretty: true,
-        }
+        { filename }
       );
       return await fs
         .writeFile(
@@ -74,10 +70,7 @@ export const html = async (database) => {
       const filename = `${D_YEAR}${year}`;
       const pugCompiler = await pug.compile(
         `extends ${TEMPLATE_MAP[T_YEAR]}\n`,
-        {
-          filename,
-          pretty: true,
-        }
+        { filename }
       );
       return await fs.writeFile(
         `${filename}.html`,
@@ -95,7 +88,6 @@ export const html = async (database) => {
       `extends ${TEMPLATE_MAP[T_ARCHIVES]}\n`,
       {
         filename,
-        pretty: true,
       }
     );
     await fs
@@ -114,7 +106,6 @@ export const html = async (database) => {
     const filename = `${D_HOME}index`;
     const pugCompiler = await pug.compile(`extends ${TEMPLATE_MAP[T_HOME]}\n`, {
       filename,
-      pretty: true,
     });
     await fs
       .writeFile(
