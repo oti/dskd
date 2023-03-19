@@ -2,19 +2,24 @@ extends default
 
 block main
   -
-    const heading = isHome ? 'latest' : `[${title}]`
     const items = isHome
         ? posts.slice(0,5) //- indexでは5件だけ出力する
         : isArchive
-          ? posts
-          : isTag
-            ? tags[title]
-            : isYear
-              ? years[title]
-              : []
+        ? posts
+        : isTag
+        ? tags[title]
+        : isYear
+        ? years[title]
+        : []
 
   section.Border
-    h2(class=isHome ? "Invisible" : "Primary")= heading
+    if isHome
+      h2(class="Invisible") latest
+    else
+      h2(class="Primary")
+        span(aria-hidden="true") [
+        | #{title}
+        span(aria-hidden="true") ]
     ul.Posts
       each item in items
         li
