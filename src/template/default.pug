@@ -1,42 +1,33 @@
 -
-  const HOME = type === "home"
-  const POST = type === "post"
-  const TAG = type === "tag"
-  const YEAR = type === "year"
-  const ARCHIVES = type === "archives"
-  const ABOUT = id === "about"
-  const blog_name = "dskd"
-  const blog_url = "https://dskd.jp"
-  const blog_description = "dskd はウェブ制作にまつわる雑記を主としたウェブログです。"
-  const blog_author = "越智"
-  const blog_address = "otiext@gmail.com"
-  const blog_feed = "/feed"
-  const blog_twitter = "dskd_jp"
-  const contribute = "https://github.com/oti/dskd/blob/master/src/md/post/"
-  const archives_dir = "/archives"
-  const posts_dir = `${archives_dir}/`
-  const tags_dir = `${archives_dir}/tags/`
-  const years_dir = `${archives_dir}/years/`
-  const metaTitle = HOME ? blog_name : `${title} - ${blog_name}`
-  const description = HOME
-    ? blog_description
-    : ARCHIVES
-      ? "全記事一覧"
-      : TAG
-        ? `${title}タグの記事一覧`
-        : YEAR
-          ? `${title}年の記事一覧`
-          : desc
-  const url = POST
-    ? `${blog_url}${posts_dir}${id}.html`
-    : TAG
-      ? `${blog_url}${tags_dir}${title.toLowerCase().replace(/[ .-]/g, "_")}.html`
-      : YEAR
-        ? `${blog_url}${years_dir}${title}.html`
-        : HOME
-          ? blog_url
-          : undefined
-  const og_image = cover ? `${cover}?${version}` : `/image/og-image.webp?${version}`
+  const isHome = type === T_HOME
+  const isPage = type === T_PAGE
+  const isPost = type === T_POST
+  const isTag = type === T_TAG
+  const isYear = type === T_YEAR
+  const isArchives = type === T_ARCHIVE
+  const metaTitle = isHome ? BLOG_NAME : `${title} - ${BLOG_NAME}`
+  const description = isHome
+    ? BLOG_DESC
+    : isArchives
+    ? "dskd の全記事一覧"
+    : isTag
+    ? `${title}タグの記事一覧`
+    : isYear
+    ? `${title}年の記事一覧`
+    : desc
+  const canonical = isHome
+    ? BLOG_URL
+    : isPage
+    ? `${BLOG_URL}${U_PAGE}${id}.html`
+    : isPost
+    ? `${BLOG_URL}${U_POST}${id}.html`
+    : isTag
+    ? `${BLOG_URL}${U_TAG}${title.toLowerCase().replace(/[ .-]/g, "_")}.html`
+    : isYear
+    ? `${BLOG_URL}${U_YEAR}${title}.html`
+    : BLOG_URL
+
+  const ogImage = cover ? `${cover}` : `${BLOG_OGP}`
 
 include mixin/publish
 
@@ -47,20 +38,20 @@ html(lang="ja")
     meta(content="viewport-fit=cover, width=device-width", name="viewport")
     title= metaTitle
     meta(content=description, name="description")
-    link(rel="image_src", href=og_image)
-    link(rel="icon", href=`/favicon.svg?${version}`, type="image/svg+xml")
+    link(rel="image_src", href=`ogImage?${version}`)
+    link(rel="icon", href=`${BLOG_FAVICON}?${version}`, type="image/svg+xml")
     link(
       rel="apple-touch-icon",
       sizes="180x180",
-      href=`/image/apple-touch-icon.webp?${version}`
+      href=`${BLOG_TOUCH_ICON}?${version}`
     )
     link(
       href=`/style/style.css?${version}`,
       rel="stylesheet",
       media="only screen"
     )
-    link(href="/feed", rel="alternate", type="application/rss+xml")
-    link(href=url, rel="canonical")
+    link(href=U_FEED, rel="alternate", type="application/rss+xml")
+    link(href=canonical, rel="canonical")
     script.
       document.addEventListener("DOMContentLoaded", () => {
         const HTML = document.documentElement;
@@ -94,14 +85,14 @@ html(lang="ja")
 
   body
     header.Header
-      if POST || ABOUT
+      if isPost || isPage
         nav
           include _logo
       else
         h1
           include _logo
       details.Mode
-        summary ダーク/ライト
+        summary カラーモード
         form#Switch
           label
             input(name="switch", type="radio", value="-dark")
@@ -111,7 +102,7 @@ html(lang="ja")
             span ライト
           label
             input(name="switch", type="radio", value="-system")
-            span システム
+            span OS
 
     main
       block main
@@ -122,18 +113,9 @@ html(lang="ja")
           each page in pages
             - const cr = id === page.id
             li
-              a(href=`${page.dist}${page.id}.html`, class=cr && "-current", aria-current=cr && "page", rel=cr && "author")= page.title
+              a(href=`${U_PAGE}${page.id}.html`, class=cr && "-current", aria-current=cr && "page", rel=cr && "author")= page.title
           li
-            a(href=`${blog_url}${blog_feed}`, target="_blank") RSS
-          //- li
-            a(
-              href=`https://twitter.com/${blog_twitter}`,
-              target="_blank",
-              rel="noopener"
-            )= `@${blog_twitter}`
-          //- li
-            address
-              a(href=`mailto:${blog_address}`)= blog_address
+            a(href=`${BLOG_URL}${U_FEED}`, target="_blank") RSS
 
         p.License
           span © 越智

@@ -2,28 +2,28 @@ extends default
 
 block main
   -
-    const heading = HOME ? 'latest' : `[${title}]`
-    const items = HOME
+    const heading = isHome ? 'latest' : `[${title}]`
+    const items = isHome
         ? posts.slice(0,5) //- indexでは5件だけ出力する
-        : ARCHIVES
+        : isArchives
           ? posts
-          : TAG
+          : isTag
             ? tags[title]
-            : YEAR
+            : isYear
               ? years[title]
               : []
 
   section.Border
-    h2(class=HOME ? "Invisible" : "Primary")= heading
+    h2(class=isHome ? "Invisible" : "Primary")= heading
     ul.Posts
       each item in items
         li
-          a(href=`${posts_dir}${item.id}.html`)= item.title
+          a(href=`${U_POST}${item.id}.html`)= item.title
           +publish(item.datetime, item.tag, title)
 
-    if HOME
+    if isHome
       p.More
-        a(href=`${posts_dir}`) archives
+        a(href=`${U_POST}`) archives
 
   section.Border
     h2.Secondary.Invisible 年
@@ -32,7 +32,7 @@ block main
         li
           a(
             class=title === year && "-current",
-            href=`${years_dir}${year}.html`,
+            href=`${U_YEAR}${year}.html`,
             aria-current=title === year && "page"
           )= year
 
@@ -43,6 +43,6 @@ block main
         li
           a(
             class=title === tag && "-current",
-            href=`${tags_dir}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`,
+            href=`${U_TAG}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`,
             aria-current=title === tag && "page"
           )= tag

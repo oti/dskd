@@ -1,13 +1,5 @@
 mixin publish(time, tags, title)
-  -
-    //- const dtf = new Intl.DateTimeFormat('ja-JP', {
-    //-   year: 'numeric',
-    //-   month: 'narrow',
-    //-   day: 'numeric'
-    //- })
-    //- const date = new Date(time)
-    //- const pubdate = dtf.format(date)
-    const pubdate = time.split('T')[0]
+  - const pubdate = time.split('T')[0]
   dl.Publish
     dt.Invisible 公開日
     dd
@@ -19,5 +11,5 @@ mixin publish(time, tags, title)
       else
         dd
           a(
-            href=`${tags_dir}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`
+            href=`${U_TAG}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`
           )= tag
