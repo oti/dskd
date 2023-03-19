@@ -1,3 +1,5 @@
+import pkg from "../package.json" assert { type: "json" };
+
 // D: dist
 export const D_ARCHIVE = "dist/archives/";
 export const D_HOME = "dist/";
@@ -55,4 +57,5 @@ export const CONFIGS = {
   U_POST: "/archives/",
   U_TAG: "/archives/tags/",
   U_YEAR: "/archives/years/",
+  version: pkg.version,
 };
