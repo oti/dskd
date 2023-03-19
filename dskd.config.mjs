@@ -22,7 +22,7 @@ export const T_TAG = "tag";
 export const T_YEAR = "year";
 
 // pug string が dist/* に書き出されたとした場合のテンプレートへの相対パス。pwd や __direname ではないので注意
-export const TEMPLATE_MAP = {
+export const TEMPLATE = {
   [T_ARCHIVE]: "../../src/template/index",
   [T_HOME]: "../src/template/index",
   [T_PAGE]: "../src/template/page",
