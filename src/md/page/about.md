@@ -1,5 +1,4 @@
 ---
-dist: "/"
 type: "page"
 id: "about"
 title: "About"
