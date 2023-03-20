@@ -1,5 +1,5 @@
 mixin publish(time, tags, title)
-  - const pubdate = time.split('T')[0]
+  - const pubdate = time.split("T")[0];
   dl.Publish
     dt.Invisible 公開日
     dd
@@ -10,6 +10,4 @@ mixin publish(time, tags, title)
         dd= tag
       else
         dd
-          a(
-            href=`${U_TAG}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`
-          )= tag
+          a(href=`${U_TAG}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`)= tag

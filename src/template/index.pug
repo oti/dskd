@@ -14,11 +14,11 @@ block main
 
   section.Border
     if isHome
-      h2(class="Invisible") latest
+      h2.Invisible latest
     else
-      h2(class="Primary")
+      h2.Primary
         span(aria-hidden="true") [
-        | #{title}
+        | #{ title }
         span(aria-hidden="true") ]
     ul.Posts
       each item in items

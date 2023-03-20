@@ -64,11 +64,7 @@ html(lang="ja")
           HTML.classList.add(value);
         }
 
-        SWITCH.addEventListener(
-          "change",
-          ({ target }) => updateMode(target.value),
-          false
-        );
+        SWITCH.addEventListener("change", ({ target }) => updateMode(target.value), false);
 
         const preferModeName = localStorage.getItem("prefer-dskd-mode");
         const initModeName = MODE_LIST.includes(preferModeName) ? preferModeName : MODE_LIST[0];
@@ -76,11 +72,7 @@ html(lang="ja")
         SWITCH.querySelector(`[value="${initModeName}"]`).setAttribute("checked", true);
 
         const BACK = document.querySelector("#Back");
-        BACK.addEventListener(
-          "click",
-          () => history.back(),
-          false
-        )
+        BACK.addEventListener("click", () => history.back(), false);
       });
 
   body
@@ -111,9 +103,14 @@ html(lang="ja")
       .Halve
         ul.Pages
           each page in pages
-            - const cr = id === page.id
+            - const cr = id === page.id;
             li
-              a(href=`${U_PAGE}${page.id}.html`, class=cr && "-current", aria-current=cr && "page", rel=cr && "author")= page.title
+              a(
+                href=`${U_PAGE}${page.id}.html`,
+                class=cr && "-current",
+                aria-current=cr && "page",
+                rel=cr && "author"
+              )= page.title
           li
             a(href=`${BLOG_URL}${U_FEED}`, target="_blank") RSS
 
@@ -121,11 +118,11 @@ html(lang="ja")
           span © 越智
           a(
             href="https://creativecommons.org/licenses/by-nc/4.0/deed.ja",
-            rel="license",
+            rel="license"
           ) CC BY-NC
 
       .Nav.Halve
-        button.BackButton#Back
+        button#Back.BackButton
           span(aria-hidden="true") #
           | back
 

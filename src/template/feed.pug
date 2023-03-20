@@ -16,7 +16,11 @@ rss(
     generator= BLOG_AUTHOR_EN
     managingeditor
     webmaster= `${BLOG_AUTHOR} ${BLOG_ADDRESS}`
-    atom:link(href=`${BLOG_URL}${U_FEED}`, rel="self", type="application/rss+xml")/
+    atom:link(
+      href=`${BLOG_URL}${U_FEED}`,
+      rel="self",
+      type="application/rss+xml"
+    )/
     creativeCommons:license https://creativecommons.org/licenses/by-nc/4.0/deed.ja
 
     each post, i in posts
