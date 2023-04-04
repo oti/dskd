@@ -213,6 +213,10 @@ body > header > h1 {
   margin-inline-start: auto;
 }
 
+.-no-js .Mode {
+  display: none;
+}
+
 .Mode form {
   position: absolute;
   left: 0;

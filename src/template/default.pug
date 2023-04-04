@@ -32,7 +32,7 @@
 include mixin/publish
 
 doctype html
-html(lang="ja")
+html.-no-js(lang="ja")
   head
     meta(charset="UTF-8")
     meta(content="viewport-fit=cover, width=device-width", name="viewport")
@@ -53,6 +53,7 @@ html(lang="ja")
     link(href=U_FEED, rel="alternate", type="application/rss+xml")
     link(href=canonical, rel="canonical")
     script.
+      document.documentElement.classList.remove('-no-js');
       document.addEventListener("DOMContentLoaded", () => {
         const HTML = document.documentElement;
         const SWITCH = document.querySelector("#Switch");
