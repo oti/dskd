@@ -558,6 +558,10 @@ body > header > h1 {
   overflow: visible;
 }
 
+.-no-js .BackButton {
+  display: none;
+}
+
 .Halve {
   display: flex;
   flex-wrap: wrap;
