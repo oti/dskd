@@ -62,18 +62,23 @@ html.-no-js(lang="ja")
         const SWITCH = document.querySelector("#Switch");
         const MODE_LIST = [...SWITCH.querySelectorAll(`[name="switch"]`)].map((elem) => elem.value);
 
-        try {
-          const preferModeName = localStorage.getItem("prefer-dskd-mode");
-          const initModeName = MODE_LIST.includes(preferModeName) ? preferModeName : MODE_LIST[0];
+        function updateMode(value) {
+          localStorage.setItem("prefer-dskd-mode", value);
+          HTML.classList.remove(...MODE_LIST);
+          HTML.classList.add(value);
+        }
 
-          function updateMode(value) {
-            localStorage.setItem("prefer-dskd-mode", value);
-            HTML.classList.remove(...MODE_LIST);
-            HTML.classList.add(value);
-          }
-          updateMode(initModeName);
-          SWITCH.querySelector(`[value="${initModeName}"]`).setAttribute("checked", true);
+        function mountModeChanger(value) {
+          updateMode(value);
+
+          SWITCH.querySelector(`[value="${value}"]`).setAttribute("checked", true);
           SWITCH.addEventListener("change", ({ target }) => updateMode(target.value), false);
+        }
+
+        try {
+          const preferMode = localStorage.getItem("prefer-dskd-mode");
+          const initMode = MODE_LIST.includes(preferMode) ? preferMode : MODE_LIST[0];
+          mountModeChanger(initMode);
         } catch (e) {
           console.log(e);
           document.querySelector(".Mode").setAttribute("hidden", true);
