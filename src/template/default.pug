@@ -55,25 +55,29 @@ html.-no-js(lang="ja")
     script.
       document.documentElement.classList.remove('-no-js');
       document.addEventListener("DOMContentLoaded", () => {
+        const BACK = document.querySelector("#Back");
+        BACK.addEventListener("click", () => history.back(), false);
+
         const HTML = document.documentElement;
         const SWITCH = document.querySelector("#Switch");
         const MODE_LIST = [...SWITCH.querySelectorAll(`[name="switch"]`)].map((elem) => elem.value);
 
-        function updateMode(value) {
-          localStorage.setItem("prefer-dskd-mode", value);
-          HTML.classList.remove(...MODE_LIST);
-          HTML.classList.add(value);
+        try {
+          const preferModeName = localStorage.getItem("prefer-dskd-mode");
+          const initModeName = MODE_LIST.includes(preferModeName) ? preferModeName : MODE_LIST[0];
+
+          function updateMode(value) {
+            localStorage.setItem("prefer-dskd-mode", value);
+            HTML.classList.remove(...MODE_LIST);
+            HTML.classList.add(value);
+          }
+          updateMode(initModeName);
+          SWITCH.querySelector(`[value="${initModeName}"]`).setAttribute("checked", true);
+          SWITCH.addEventListener("change", ({ target }) => updateMode(target.value), false);
+        } catch (e) {
+          console.log(e);
+          document.querySelector(".Mode").setAttribute("hidden", true);
         }
-
-        SWITCH.addEventListener("change", ({ target }) => updateMode(target.value), false);
-
-        const preferModeName = localStorage.getItem("prefer-dskd-mode");
-        const initModeName = MODE_LIST.includes(preferModeName) ? preferModeName : MODE_LIST[0];
-        updateMode(initModeName);
-        SWITCH.querySelector(`[value="${initModeName}"]`).setAttribute("checked", true);
-
-        const BACK = document.querySelector("#Back");
-        BACK.addEventListener("click", () => history.back(), false);
       });
 
   body
