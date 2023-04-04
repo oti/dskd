@@ -328,6 +328,7 @@ body > header > h1 {
   background-color: var(--color-code);
 }
 .Post pre code {
+  padding-inline: 0;
   background-color: transparent;
 }
 .Post ins {
