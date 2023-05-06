@@ -56,11 +56,11 @@ export const database = async (matters) => {
     return memo;
   }, {});
 
-  return Promise.resolve({
+  return {
     posts,
     pages,
     tags,
     years,
     ...CONFIGS,
-  });
+  };
 };
