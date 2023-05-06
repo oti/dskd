@@ -17,7 +17,7 @@ import {
 } from "../dskd.config.mjs";
 
 const error = (error) => {
-  console.log(error);
+  console.error(error);
   throw error;
 };
 
