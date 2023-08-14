@@ -447,6 +447,9 @@ body > header > h1 {
 .Post .Information :last-child {
   margin-block-end: 0;
 }
+.Post .Information + details {
+  margin-block-start: var(--space-small);
+}
 
 .Share {
   display: flex;
