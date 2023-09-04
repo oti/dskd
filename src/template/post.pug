@@ -4,7 +4,7 @@ block main
   -
     const escaped_title = encodeURIComponent(title)
     const escaped_permalink = encodeURIComponent(`${BLOG_URL}${U_POST}${id}.html`)
-    const tw_href = `https://twitter.com/intent/tweet?text=${escaped_title}&url=${escaped_permalink}&via=dskd_jp&related=otiext`
+    const x_href = `https://x.com/intent/tweet?text=${escaped_title}&url=${escaped_permalink}&via=dskd_jp&related=otiext`
     const fb_href = `https://www.facebook.com/share.php?u=${escaped_permalink}`
     const hb_href = `http://b.hatena.ne.jp/my/add.confirm?title=${escaped_title}&url=${escaped_permalink}`
 
@@ -19,11 +19,11 @@ block main
     .Halve
       ul.Share
         li
-          a(href=tw_href) Twitter
+          a(href=x_href) Xでポスト
         li
-          a(href=fb_href) Facebook
+          a(href=fb_href) Facebookでシェア
         li
-          a(href=hb_href) はてブ
+          a(href=hb_href) はてブする
 
       ul.Contribute
         li
