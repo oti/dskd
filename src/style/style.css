@@ -500,7 +500,7 @@ body > header > h1 {
 .Post .Publish {
   margin-block-start: var(--space-default);
 }
-.Post .Publish + p {
+.Post .Publish + * {
   margin-block-start: var(--space-huge);
 }
 .Post p:has(img:only-child) {
