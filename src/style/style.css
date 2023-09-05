@@ -289,7 +289,7 @@ body > header > h1 {
   background-color: var(--color-mark);
 }
 .Post img {
-  max-width: 100%;
+  max-width: initial;
   height: auto;
   box-shadow: 0 0 0 1px var(--color-sub);
 }
@@ -405,7 +405,7 @@ body > header > h1 {
 }
 .Post blockquote p {
   margin: 0;
-  max-width: 100%;
+  max-width: initial;
 }
 .Post blockquote p + p {
   margin-block-start: 1em;
@@ -430,7 +430,7 @@ body > header > h1 {
   border-radius: 2px;
 }
 .Post .Information p {
-  max-width: 100%;
+  max-width: initial;
 }
 .Post .Information :first-child {
   margin-block-start: 0;
@@ -504,7 +504,7 @@ body > header > h1 {
   margin-block-start: var(--space-huge);
 }
 .Post p:has(img:only-child) {
-  max-width: 100%;
+  max-width: initial;
 }
 
 .More {
