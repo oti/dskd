@@ -6,9 +6,11 @@
   "license": "CC BY-NC",
   "author": "oti",
   "scripts": {
-    "build": "rm -rf dist && node task/build.mjs && npx prettier --write dist",
+    "build": "node task/build.mjs",
     "create-draft-post": "node task/draft-post.mjs",
+    "html": "node task/build.mjs --only-html",
     "markuplint": "markuplint 'dist/**/*.html'",
+    "prebuild": "rm -rf dist",
     "prepare": "husky install",
     "start": "npm run build && cd dist && python3 -m http.server 3000",
     "stylelint": "stylelint 'dist/**/*.css'",
