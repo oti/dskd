@@ -27,7 +27,7 @@
     ? `${BLOG_URL}${U_YEAR}${title}.html`
     : BLOG_URL
 
-  const ogImage = cover ? `${cover}` : `${BLOG_OGP}`
+  const ogImage = cover ? cover : `${BLOG_OGP}`
 
 include mixin/publish
 
@@ -38,7 +38,7 @@ html.-no-js(lang="ja")
     meta(content="viewport-fit=cover, width=device-width", name="viewport")
     title= metaTitle
     meta(content=description, name="description")
-    link(rel="image_src", href=`ogImage?${version}`)
+    link(rel="image_src", href=`${ogImage}?${version}`)
     link(rel="icon", href=`${BLOG_FAVICON}?${version}`, type="image/svg+xml")
     link(
       rel="apple-touch-icon",
