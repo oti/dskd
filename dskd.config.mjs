@@ -35,10 +35,10 @@ export const TEMPLATE = {
 // Pugテンプレートから参照する設定
 export const CONFIGS = {
   BLOG_ADDRESS: "otiext@gmail.com",
-  BLOG_AUTHOR: "越智",
+  BLOG_AUTHOR: "oti",
   BLOG_AUTHOR_EN: "oti",
   BLOG_CONTRIBUTE: "https://github.com/oti/dskd/blob/master/src/md/post/",
-  BLOG_DESC: "dskd は越智による個人ウェブサイトです。",
+  BLOG_DESC: "dskd は oti による個人ウェブサイトです。",
   BLOG_FAVICON: "/favicon.svg",
   BLOG_NAME: "dskd",
   BLOG_OGP: "/image/og-image.webp",
