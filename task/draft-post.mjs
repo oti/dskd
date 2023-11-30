@@ -24,7 +24,11 @@ tag:
 最高の書き出し
 `;
 
-fs.writeFile(`./src/md/post/${id}.md`, body).catch((error) => {
-  console.error(error);
-  throw error;
-});
+fs.writeFile(`./src/md/post/${id}.md`, body)
+  .then(() => {
+    console.log(`create: src/md/post/${id}.md`);
+  })
+  .catch((error) => {
+    console.error(error);
+    throw error;
+  });
