@@ -1,5 +1,6 @@
-script(type="module").
+script.
   document.documentElement.classList.remove('-no-js');
+script(type="module").
   document.querySelector("#Back").addEventListener("click", () => history.back(), false);
 
   const HTML = document.documentElement;
