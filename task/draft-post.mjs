@@ -29,6 +29,5 @@ fs.writeFile(`./src/md/post/${id}.md`, body)
     console.log(`create: src/md/post/${id}.md`);
   })
   .catch((error) => {
-    console.error(error);
-    throw error;
+    throw new Error(error);
   });
