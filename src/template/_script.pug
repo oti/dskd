@@ -1,32 +1,29 @@
-script.
+script(type="module").
   document.documentElement.classList.remove('-no-js');
-  document.addEventListener("DOMContentLoaded", () => {
-    const BACK = document.querySelector("#Back");
-    BACK.addEventListener("click", () => history.back(), false);
+  document.querySelector("#Back").addEventListener("click", () => history.back(), false);
 
-    const HTML = document.documentElement;
-    const SWITCH = document.querySelector("#Switch");
-    const MODE_LIST = [...SWITCH.querySelectorAll(`[name="switch"]`)].map((elem) => elem.value);
+  const HTML = document.documentElement;
+  const SWITCH = document.querySelector("#Switch");
+  const MODE_LIST = [...SWITCH.querySelectorAll(`[name="switch"]`)].map((elem) => elem.value);
 
-    function updateMode(value) {
-      localStorage.setItem("prefer-dskd-mode", value);
-      HTML.classList.remove(...MODE_LIST);
-      HTML.classList.add(value);
-    }
+  function updateMode(value) {
+    localStorage.setItem("prefer-dskd-mode", value);
+    HTML.classList.remove(...MODE_LIST);
+    HTML.classList.add(value);
+  }
 
-    function mountModeChanger(value) {
-      updateMode(value);
+  function mountModeChanger(value) {
+    updateMode(value);
 
-      SWITCH.querySelector(`[value="${value}"]`).setAttribute("checked", true);
-      SWITCH.addEventListener("change", ({ target }) => updateMode(target.value), false);
-    }
+    SWITCH.querySelector(`[value="${value}"]`).setAttribute("checked", true);
+    SWITCH.addEventListener("input", ({ target: { value }}) => updateMode(value), false);
+  }
 
-    try {
-      const preferMode = localStorage.getItem("prefer-dskd-mode");
-      const initMode = MODE_LIST.includes(preferMode) ? preferMode : MODE_LIST[0];
-      mountModeChanger(initMode);
-    } catch (e) {
-      console.log(e);
-      document.querySelector(".Mode").setAttribute("hidden", true);
-    }
-  });
+  try {
+    const preferMode = localStorage.getItem("prefer-dskd-mode");
+    const initMode = MODE_LIST.includes(preferMode) ? preferMode : MODE_LIST[0];
+    mountModeChanger(initMode);
+  } catch (e) {
+    console.log(e);
+    document.querySelector(".Mode").setAttribute("hidden", true);
+  }
