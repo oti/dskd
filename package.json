@@ -17,12 +17,12 @@
     "test": "npm run stylelint && npm run markuplint"
   },
   "devDependencies": {
-    "fast-glob": "^3.3.1",
+    "fast-glob": "^3.3.2",
     "gray-matter": "^4.0.3",
     "husky": "^8.0.3",
-    "marked": "^9.1.0",
-    "markuplint": "^3.13.0",
+    "marked": "^11.0.0",
+    "markuplint": "^3.15.0",
     "pug": "^3.0.2",
-    "stylelint": "^15.10.3"
+    "stylelint": "^15.11.0"
   }
 }
