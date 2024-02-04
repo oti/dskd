@@ -289,7 +289,7 @@ body > header > h1 {
   background-color: var(--color-mark);
 }
 .Post img {
-  max-width: initial;
+  max-width: 100%;
   height: auto;
   box-shadow: 0 0 0 1px var(--color-sub);
 }
