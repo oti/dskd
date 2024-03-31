@@ -19,13 +19,13 @@
   "devDependencies": {
     "fast-glob": "^3.3.2",
     "gray-matter": "^4.0.3",
-    "husky": "^9.0.10",
-    "marked": "^12.0.0",
-    "markuplint": "^4.0.0",
+    "husky": "^9.0.11",
+    "marked": "^12.0.1",
+    "markuplint": "^4.4.0",
     "prettier": "^3.2.5",
     "pretty-quick": "^4.0.0",
     "pug": "^3.0.2",
-    "stylelint": "^16.2.1"
+    "stylelint": "^16.3.1"
   },
   "volta": {
     "node": "20.11.1"
