@@ -24,7 +24,7 @@
     "markuplint": "^4.4.0",
     "prettier": "^3.2.5",
     "pretty-quick": "^4.0.0",
-    "pug": "^3.0.2",
+    "pug": "^3.0.3",
     "stylelint": "^16.3.1"
   },
   "volta": {
