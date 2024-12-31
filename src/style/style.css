@@ -74,6 +74,7 @@
     --color-table-border: #000000;
     --color-table-caption: #000000;
     --color-table-stripe: #121317;
+    --color-blockquote-background: var(--color-sub);
   }
 }
 
