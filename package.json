@@ -17,15 +17,15 @@
     "test": "npm run stylelint && npm run markuplint"
   },
   "devDependencies": {
-    "fast-glob": "^3.3.2",
+    "fast-glob": "^3.3.3",
     "gray-matter": "^4.0.3",
     "husky": "^9.1.7",
-    "marked": "^15.0.3",
-    "markuplint": "^4.11.4",
-    "prettier": "^3.4.2",
-    "pretty-quick": "^4.0.0",
+    "marked": "^15.0.7",
+    "markuplint": "^4.11.8",
+    "prettier": "^3.5.3",
+    "pretty-quick": "^4.1.1",
     "pug": "^3.0.3",
-    "stylelint": "^16.11.0"
+    "stylelint": "^16.17.0"
   },
   "volta": {
     "node": "22.11.0"
