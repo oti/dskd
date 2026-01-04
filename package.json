@@ -20,12 +20,12 @@
     "fast-glob": "^3.3.3",
     "gray-matter": "^4.0.3",
     "husky": "^9.1.7",
-    "marked": "^15.0.7",
-    "markuplint": "^4.11.8",
-    "prettier": "^3.5.3",
-    "pretty-quick": "^4.1.1",
+    "marked": "^17.0.1",
+    "markuplint": "^4.14.0",
+    "prettier": "^3.7.4",
+    "pretty-quick": "^4.2.2",
     "pug": "^3.0.3",
-    "stylelint": "^16.17.0"
+    "stylelint": "^16.26.1"
   },
   "volta": {
     "node": "22.11.0"
