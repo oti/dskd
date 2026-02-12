@@ -9,25 +9,16 @@
     "build": "node task/build.mjs",
     "create-draft-post": "node task/draft-post.mjs",
     "html": "node task/build.mjs --only-html",
-    "markuplint": "markuplint 'dist/**/*.html'",
     "prebuild": "rm -rf dist",
-    "prepare": "husky install",
     "start": "npm run build && cd dist && python3 -m http.server 3000",
-    "stylelint": "stylelint 'dist/**/*.css'",
-    "test": "npm run stylelint && npm run markuplint"
+    "test:css": "npx stylelint 'dist/**/*.css'",
+    "test:html": "npx markuplint 'dist/**/*.html'",
+    "test": "npm run test:css && npm run test:html"
   },
   "devDependencies": {
     "fast-glob": "^3.3.3",
     "gray-matter": "^4.0.3",
-    "husky": "^9.1.7",
-    "marked": "^17.0.1",
-    "markuplint": "^4.14.0",
-    "prettier": "^3.7.4",
-    "pretty-quick": "^4.2.2",
-    "pug": "^3.0.3",
-    "stylelint": "^16.26.1"
-  },
-  "volta": {
-    "node": "22.11.0"
+    "marked": "^17.0.2",
+    "pug": "^3.0.3"
   }
 }
