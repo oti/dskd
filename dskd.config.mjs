@@ -10,7 +10,12 @@ export const D_YEAR = "dist/archives/years/";
 
 // S: src
 export const S_MD = "src/md/**/*.md";
-export const S_ASSET = "src/({image,misc,style}/**/*|favicon.*)";
+export const S_ASSET = [
+  "src/image/**/*.*",
+  "src/misc/**/*.*",
+  "src/style/**/*.*",
+  "src/favicon.*",
+];
 
 // T: type
 export const T_ARCHIVE = "archives";
