@@ -32,8 +32,7 @@ const getJsonFromMarkdown = (filestring) => {
         const tuple = str.split(": ");
         return {
           ...memo,
-          // idだったらnumberにする
-          [tuple[0]]: tuple[0] === "id" ? Number(tuple[1]) : tuple[1],
+          [tuple[0]]: tuple[1],
         };
       }
     }, {});
