@@ -59,7 +59,7 @@ const getJsonFromMarkdown = (filestring) => {
 
 export const loader = async () =>
   Promise.all(
-    [...(await Array.fromAsync(await fs.glob(S_MD)))].map(async (filepath) =>
+    (await Array.fromAsync(await fs.glob(S_MD))).map(async (filepath) =>
       getJsonFromMarkdown(await fs.readFile(filepath, "utf8")),
     ),
   );

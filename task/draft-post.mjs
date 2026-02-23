@@ -6,7 +6,7 @@ const date = new Date(Date.now() + 9 * 60 * 60 * 1000);
 const datetime = date.toISOString().split(".")[0];
 
 const id =
-  [...(await Array.fromAsync(await fs.glob("src/md/post/*.md")))]
+  (await Array.fromAsync(await fs.glob("src/md/post/*.md")))
     .map((filepath) => Number(path.parse(filepath).name))
     .reduce((a, b) => Math.max(a, b)) + 1;
 const body = `---
