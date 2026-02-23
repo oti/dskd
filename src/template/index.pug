@@ -4,7 +4,7 @@ block main
   -
     const items = isHome
         ? posts.slice(0,5) //- indexでは5件だけ出力する
-        : isArchive
+        : isPostIndex
         ? posts
         : isTag
         ? tags[title]
@@ -28,7 +28,7 @@ block main
 
     if isHome
       p.More
-        a(href=`${U_POST}`) Archives
+        a(href=`${U_POST}`) All Ports
 
   section.Border
     h2.Secondary.Invisible 年

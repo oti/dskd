@@ -1,12 +1,12 @@
 import pkg from "./package.json" with { type: "json" };
 
 // D: dist
-export const D_ARCHIVE = "dist/archives/";
+export const D_POST_INDEX = "dist/posts/";
 export const D_HOME = "dist/";
 export const D_PAGE = "dist/";
-export const D_POST = "dist/archives/";
-export const D_TAG = "dist/archives/tags/";
-export const D_YEAR = "dist/archives/years/";
+export const D_POST = "dist/posts/";
+export const D_TAG = "dist/posts/tags/";
+export const D_YEAR = "dist/posts/years/";
 
 // S: src
 export const S_MD = "src/md/**/*.md";
@@ -18,7 +18,7 @@ export const S_ASSET = [
 ];
 
 // T: type
-export const T_ARCHIVE = "archives";
+export const T_POST_INDEX = "posts";
 export const T_HOME = "home";
 export const T_PAGE = "page";
 export const T_POST = "post";
@@ -28,7 +28,7 @@ export const T_YEAR = "year";
 
 // pug string が dist/* に書き出されたとした場合のテンプレートへの相対パス。pwd や __direname ではないので注意
 export const TEMPLATE = {
-  [T_ARCHIVE]: "../../src/template/index",
+  [T_POST_INDEX]: "../../src/template/index",
   [T_HOME]: "../src/template/index",
   [T_PAGE]: "../src/template/page",
   [T_POST]: "../../src/template/post",
@@ -50,7 +50,7 @@ export const CONFIGS = {
   BLOG_TOUCH_ICON: "/image/apple-touch-icon.webp",
   BLOG_TWITTER: "dskd_jp",
   BLOG_URL: "https://dskd.jp",
-  T_ARCHIVE,
+  T_POST_INDEX,
   T_HOME,
   T_PAGE,
   T_POST,
@@ -60,9 +60,9 @@ export const CONFIGS = {
   // U: URL
   U_FEED: "/feed",
   U_PAGE: "/",
-  U_POST: "/archives/",
-  U_TAG: "/archives/tags/",
-  U_YEAR: "/archives/years/",
+  U_POST: "/posts/",
+  U_TAG: "/posts/tags/",
+  U_YEAR: "/posts/years/",
   version:
     pkg && pkg.version
       ? pkg.version

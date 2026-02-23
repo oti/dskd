@@ -2,11 +2,11 @@ import fs from "node:fs/promises";
 import { marked } from "marked";
 import pug from "pug";
 import {
-  D_ARCHIVE,
+  D_POST_INDEX,
   D_HOME,
   D_TAG,
   D_YEAR,
-  T_ARCHIVE,
+  T_POST_INDEX,
   T_HOME,
   T_TAG,
   T_YEAR,
@@ -85,17 +85,17 @@ export const html = async (database) => {
       );
     });
 
-  const createArchives = async () => {
-    const filename = `${D_ARCHIVE}index`;
-    const pugCompiler = await pug.compile(`extends ${TEMPLATE[T_ARCHIVE]}`, {
+  const createPostIndex = async () => {
+    const filename = `${D_POST_INDEX}index`;
+    const pugCompiler = await pug.compile(`extends ${TEMPLATE[T_POST_INDEX]}`, {
       filename,
     });
     await fs
       .writeFile(
         `${filename}.html`,
         pugCompiler({
-          type: T_ARCHIVE,
-          title: "Archives",
+          type: T_POST_INDEX,
+          title: "Posts",
           ...database,
         }),
       )
@@ -138,7 +138,7 @@ export const html = async (database) => {
     ...(await createIndividual()),
     ...(await createTag()),
     ...(await createYear()),
-    await createArchives(),
+    await createPostIndex(),
     await createHome(),
     await createFeed(),
   ]);
