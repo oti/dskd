@@ -16,7 +16,7 @@
     "test": "npm run test:css && npm run test:html"
   },
   "devDependencies": {
-    "marked": "^17.0.2",
+    "marked": "^17.0.3",
     "pug": "^3.0.3"
   }
 }
