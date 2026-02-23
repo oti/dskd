@@ -42,7 +42,7 @@ const getJsonFromMarkdown = (filestring) => {
   const body_tmp = JSON.stringify(filestring).split("\\n").slice(1);
   const body = body_tmp
     .slice(body_tmp.findIndex((str) => str === "---") + 1)
-    .join("\\n");
+    .join("\n");
 
   // オブジェクトにして返す
   return {
