@@ -25,8 +25,8 @@ export const html = async (database) => {
   // 必要なディレクトリをあらかじめ作る
   await Promise.all(
     [D_POST, D_TAG, D_YEAR].map(
-      async (dir) => await fs.mkdir(dir, { recursive: true }).catch(error)
-    )
+      async (dir) => await fs.mkdir(dir, { recursive: true }).catch(error),
+    ),
   );
 
   const createIndividual = async () =>
@@ -43,10 +43,10 @@ export const html = async (database) => {
         .writeFile(
           `${filename}.html`,
           pugCompiler({
-            marked: marked.parse(item.content),
+            marked: marked.parse(item.body),
             ...item,
             ...database,
-          })
+          }),
         )
         .catch(error);
     });
@@ -64,7 +64,7 @@ export const html = async (database) => {
             type: T_TAG,
             title: tag,
             ...database,
-          })
+          }),
         )
         .catch(error);
     });
@@ -81,7 +81,7 @@ export const html = async (database) => {
           type: T_YEAR,
           title: year,
           ...database,
-        })
+        }),
       );
     });
 
@@ -97,7 +97,7 @@ export const html = async (database) => {
           type: T_ARCHIVE,
           title: "Archives",
           ...database,
-        })
+        }),
       )
       .catch(error);
   };
@@ -113,7 +113,7 @@ export const html = async (database) => {
         pugCompiler({
           type: T_HOME,
           ...database,
-        })
+        }),
       )
       .catch(error);
   };
@@ -129,7 +129,7 @@ export const html = async (database) => {
         `${filename}.xml`,
         pugCompiler({
           ...database,
-        })
+        }),
       )
       .catch(error);
   };

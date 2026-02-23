@@ -1,43 +1,35 @@
 import { CONFIGS } from "../dskd.config.mjs";
 
-export const database = async (matters) => {
-  const posts = matters
-    .filter((item) => item.data.type === "post")
+export const database = async (jsons) => {
+  const posts = jsons
+    .filter((item) => item.type === "post")
     // 記事は日付で降順ソートする
     .sort(
       (a, b) =>
-        Number(b.data.datetime.replace(/[-T:]/g, "")) -
-        Number(a.data.datetime.replace(/[-T:]/g, ""))
+        Number(b.datetime.replace(/[-T:]/g, "")) -
+        Number(a.datetime.replace(/[-T:]/g, "")),
     )
     .map((post, i, sorted) => {
       const older = sorted[i + 1];
       const newer = sorted[i - 1];
       return {
-        content: post.content,
-        ...post.data,
+        ...post,
         older: older
           ? {
-              id: older.data.id,
-              title: older.data.title,
+              id: older.id,
+              title: older.title,
             }
           : undefined,
         newer: newer
           ? {
-              id: newer.data.id,
-              title: newer.data.title,
+              id: newer.id,
+              title: newer.title,
             }
           : undefined,
       };
     });
 
-  const pages = matters
-    .filter((item) => item.data.type === "page")
-    .map((page) => {
-      return {
-        content: page.content,
-        ...page.data,
-      };
-    });
+  const pages = jsons.filter((item) => item.type === "page");
 
   const tags = posts
     .flatMap((post) => post.tag.map((tag) => ({ [tag]: post })))
