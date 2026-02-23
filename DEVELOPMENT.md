@@ -49,16 +49,10 @@ dskd では Netlify を使ってデプロイ、ホスティングしています
 
 ビルドは以下のモジュールに依存しています。
 
-- [fast-glob](https://github.com/mrmlnc/fast-glob)
-- [gray-matter](https://github.com/jonschlinkert/gray-matter)
 - [marked](https://github.com/markedjs/marked)
 - [pug](https://github.com/pugjs/pug)
 
-テスト実行は以下のモジュールに依存しています。
+テスト実行は以下のモジュールにを利用していますが、実行は npx で行い、依存モジュールとはしていません。
 
 - [markuplint](https://github.com/markuplint/markuplint)
 - [stylelint](https://github.com/stylelint/stylelint)
-
-git コミット時に prettier を実行するため husky を利用しています。
-
-- [husky](https://github.com/typicode/husky)
