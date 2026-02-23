@@ -13,3 +13,9 @@
   to = "/feed.xml"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/archives/*"
+  to = "/posts/:splat"
+  status = 200
+  force = true
