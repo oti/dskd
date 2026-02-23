@@ -1,4 +1,4 @@
-import { CONFIGS } from "./config.mjs";
+import { CONFIGS } from "../src/config.mjs";
 
 export const database = async (jsons) => {
   const posts = jsons

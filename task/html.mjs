@@ -14,7 +14,7 @@ import {
   TEMPLATE,
   D_POST,
   D_PAGE,
-} from "./config.mjs";
+} from "../src/config.mjs";
 
 const error = (error) => {
   console.error(error);
