@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import { S_MD } from "../src/config.mjs";
 
-// 決めうちのデータ読み込み処理
+// 決め打ちの読み込み処理
 const getJsonFromMarkdown = (filestring) => {
   // filestringからyamlをパースしてjson形式にする
   const yaml = filestring
@@ -20,7 +20,7 @@ const getJsonFromMarkdown = (filestring) => {
           tag: [],
         };
       }
-      // 値が`  - ` で始まる場合はmemo.tag[]に追加する
+      // 値が`  - `で始まる場合はmemo.tag[]に追加する
       else if (/^  - /.test(str)) {
         return {
           ...memo,
@@ -38,14 +38,19 @@ const getJsonFromMarkdown = (filestring) => {
     }, {});
 
   // 本文を抜き出す
-  const body_tmp = JSON.stringify(filestring).split("\\n").slice(1);
+  const body_tmp = JSON.stringify(filestring)
+    // 改行コードで分割する
+    .split("\\n")
+    // 先頭は`---`決め打ちなので配列を1つ詰める
+    .slice(1);
   const body = body_tmp
+    // 最初の`---`がyamlブロックの終わりなので詰める
     .slice(body_tmp.findIndex((str) => str === "---") + 1)
-    // 末尾のダブルクオーテーションを配列時点で取り除く
+    // ダブルクオーテーションのみの行を配列時点で取り除く
     .filter((str) => str !== '"')
-    // 改行コードを戻す
+    // 改行コードを戻して文字列化する
     .join("\n")
-    // バックスラッシュが混じってしまうので除去
+    // バックスラッシュが混じってしまうので取り除く
     .replace(/\\/g, "")
     // タブを戻す
     .replace(/\\t/g, "	");
