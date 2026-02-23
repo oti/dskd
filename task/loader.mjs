@@ -44,7 +44,9 @@ const getJsonFromMarkdown = (filestring) => {
     // 改行コードを戻す
     .join("\n")
     // ダブルクオーテーションの前にバックスラッシュが混じってしまうので除去
-    .replace(/\\"/g, '"');
+    .replace(/\\"/g, '"')
+    // タブを戻す
+    .replace(/\\t/g, "	");
 
   // オブジェクトにして返す
   return {
