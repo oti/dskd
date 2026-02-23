@@ -42,7 +42,10 @@ const getJsonFromMarkdown = (filestring) => {
   const body_tmp = JSON.stringify(filestring).split("\\n").slice(1);
   const body = body_tmp
     .slice(body_tmp.findIndex((str) => str === "---") + 1)
-    .join("\n");
+    // 改行コードを戻す
+    .join("\n")
+    // ダブルクオーテーションの前にバックスラッシュが混じってしまうので除去
+    .replace(/\\"/g, '"');
 
   // オブジェクトにして返す
   return {
