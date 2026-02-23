@@ -14,7 +14,7 @@ import {
   TEMPLATE,
   D_POST,
   D_PAGE,
-} from "../dskd.config.mjs";
+} from "./config.mjs";
 
 const error = (error) => {
   console.error(error);

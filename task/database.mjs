@@ -1,4 +1,4 @@
-import { CONFIGS } from "../dskd.config.mjs";
+import { CONFIGS } from "./config.mjs";
 
 export const database = async (jsons) => {
   const posts = jsons

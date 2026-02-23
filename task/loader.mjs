@@ -1,5 +1,5 @@
 import fs from "node:fs/promises";
-import { S_MD } from "../dskd.config.mjs";
+import { S_MD } from "./config.mjs";
 
 // 決めうちのデータ読み込み処理
 const getJsonFromMarkdown = (filestring) => {

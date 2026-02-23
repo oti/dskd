@@ -1,5 +1,5 @@
 import fs from "node:fs/promises";
-import { S_ASSET } from "../dskd.config.mjs";
+import { S_ASSET } from "./config.mjs";
 
 export const asset = async () =>
   [...(await Array.fromAsync(await fs.glob(S_ASSET)))].map(

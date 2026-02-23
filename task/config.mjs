@@ -1,4 +1,4 @@
-import pkg from "./package.json" with { type: "json" };
+import pkg from "../package.json" with { type: "json" };
 
 // D: dist
 export const D_POST_INDEX = "dist/posts/";
