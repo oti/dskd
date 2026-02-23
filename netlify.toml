@@ -17,6 +17,5 @@
 [[redirects]]
   from = "/archives/*"
   to = "/posts/:splat"
-  status = 301
-  force = false
-  query = {path = ":path"}
+  status = 200
+  force = true
