@@ -42,7 +42,7 @@ const getJsonFromMarkdown = (filestring) => {
   const body = body_tmp
     .slice(body_tmp.findIndex((str) => str === "---") + 1)
     // 末尾のダブルクオーテーションを配列時点で取り除く
-    .filter(str => str !== '"')
+    .filter((str) => str !== '"')
     // 改行コードを戻す
     .join("\n")
     // ダブルクオーテーションの前にバックスラッシュが混じってしまうので除去
