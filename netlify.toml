@@ -1,21 +1,21 @@
 [build]
-  publish = "dist/"
-  command = "npm run build"
+publish = "dist/"
+command = "npm run build"
 
 [[redirects]]
-  from = "/feed"
-  to = "/feed.xml"
-  status = 200
-  force = true
+from = "/feed"
+to = "/feed.xml"
+status = 200
+force = true
 
 [[redirects]]
-  from = "/feed/atom.xml"
-  to = "/feed.xml"
-  status = 200
-  force = true
+from = "/feed/atom.xml"
+to = "/feed.xml"
+status = 200
+force = true
 
 [[redirects]]
-  from = "/archives/*"
-  to = "/posts/:splat"
-  status = 200
-  force = true
+from = "/archives/*"
+to = "/posts/:splat"
+status = 200
+force = true

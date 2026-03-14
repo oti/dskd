@@ -5,9 +5,7 @@ export const database = async (jsons) => {
     .filter((item) => item.type === "post")
     // 記事は日付で降順ソートする
     .sort(
-      (a, b) =>
-        Number(b.datetime.replace(/[-T:]/g, "")) -
-        Number(a.datetime.replace(/[-T:]/g, "")),
+      (a, b) => Number(b.datetime.replace(/[-T:]/g, "")) - Number(a.datetime.replace(/[-T:]/g, "")),
     )
     .map((post, i, sorted) => {
       const older = sorted[i + 1];
