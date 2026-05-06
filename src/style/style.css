@@ -26,13 +26,13 @@
   --font-size-large: calc(var(--font-size-default) * 1.5);
   --font-size-huge: calc(var(--font-size-default) * 2);
 
-  --space-micro: 0.5rem;
+  --space-micro: calc(var(--space-default) / 2);
   --space-default: 1rem;
-  --space-tiny: 1.5rem;
-  --space-small: 2rem;
-  --space-medium: 4rem;
-  --space-large: 6rem;
-  --space-huge: 8rem;
+  --space-tiny: calc(var(--space-default) * 1.5);
+  --space-small: calc(var(--space-default) * 2);
+  --space-medium: calc(var(--space-default) * 4);
+  --space-large: calc(var(--space-default) * 6);
+  --space-huge: calc(var(--space-default) * 8);
 
   --line-height-default: 1;
   --line-height-tiny: 1.1;
