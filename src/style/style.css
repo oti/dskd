@@ -1,4 +1,5 @@
-@import url(//fonts.googleapis.com/earlyaccess/notosansjp.css);
+@import url(//cdn.jsdelivr.net/npm/gen-interface-jp@latest/300.css);
+@import url(//cdn.jsdelivr.net/npm/gen-interface-jp@latest/display-700.css);
 
 :root {
   --color-background: #f1f2f3;
@@ -160,10 +161,21 @@ body {
   margin-inline-end: auto;
   padding: var(--space-default);
   max-inline-size: var(--size-body-inline);
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "Gen Interface JP", sans-serif;
+  font-weight: 300;
   color: var(--color-text);
   font-size: var(--font-size-default);
   background-color: var(--color-background);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Gen Interface JP Display", sans-serif;
+  font-weight: 700;
 }
 
 img {
@@ -477,6 +489,8 @@ body > header > h1 {
   list-style: none;
 }
 .Posts > li > a {
+  font-family: "Gen Interface JP Display", sans-serif;
+  font-weight: 700;
   font-size: var(--font-size-large);
   font-weight: bold;
   line-height: var(--line-height-medium);
