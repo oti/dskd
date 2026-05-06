@@ -20,7 +20,7 @@
   --color-table-stripe: #eaecee;
   --color-blockquote-background: rgba(255, 255, 255, 0.6);
 
-  --font-size-default: 1rem;
+  --font-size-default: 1.125rem;
   --font-size-tiny: calc(var(--font-size-default) * 1.125);
   --font-size-small: calc(var(--font-size-default) * 1.25);
   --font-size-medium: calc(var(--font-size-default) * 1.375);
