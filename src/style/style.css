@@ -490,9 +490,8 @@ body > header > h1 {
 }
 .Posts > li > a {
   font-family: "Gen Interface JP Display", sans-serif;
-  font-weight: 700;
   font-size: var(--font-size-large);
-  font-weight: bold;
+  font-weight: 700;
   line-height: var(--line-height-medium);
 }
 
