@@ -10,7 +10,7 @@ YAML ブロックの書式はは記事ページとそれ以外とで異なりま
 
 ```yaml
 ---
-type: "post"                    // src/template/ 配下のテンプレート名
+type: "post"                    // ページの種類。post か page
 cover: null                     // 記事ごとの og:image 画像の絶対パス
 id: 0                           // 記事のファイル名となるユニークな値
 datetime: "2022-02-07T01:23:45" // 記事のタイムスタンプ
@@ -27,7 +27,7 @@ tag:                            // 記事に登録するタギング
 記事 md ファイルの雛形を自動生成するコマンドを用意しています。
 
 ```bash
-node task/draft-post.mjs
+npm run create-draft-post
 ```
 
 最新の記事 ID が自動で採番され `./src/md/post/` 配下に md ファイルが出力されます。ファイルを開いて思い思いの文章を書きましょう。

@@ -23,12 +23,12 @@ block main
     ul.Posts
       each item in items
         li
-          a(href=`${U_POST}${item.id}.html`)= item.title
+          a(href=`${U.post}${item.id}.html`)= item.title
           +publish(item.datetime, item.tag, title)
 
     if isHome
       p.More
-        a(href=`${U_POST}`) All Ports
+        a(href=`${U.post}`) All Ports
 
   section.Border
     h2.Secondary.Invisible 年
@@ -37,7 +37,7 @@ block main
         li
           a(
             class=title === year && "-current",
-            href=`${U_YEAR}${year}.html`,
+            href=`${U.year}${year}.html`,
             aria-current=title === year && "page"
           )= year
 
@@ -48,6 +48,6 @@ block main
         li
           a(
             class=title === tag && "-current",
-            href=`${U_TAG}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`,
+            href=`${U.tag}${slug(tag)}.html`,
             aria-current=title === tag && "page"
           )= tag

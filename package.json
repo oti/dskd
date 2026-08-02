@@ -1,14 +1,16 @@
 {
   "name": "dskd",
   "version": "9.27.0",
-  "description": "oti による個人ウェブサイト『dskd』の開発環境",
+  "private": true,
+  "description": "oti による個人ウェブサイト『dskd』の原稿とテンプレート",
   "keywords": [],
   "license": "CC BY-NC",
   "author": "oti",
+  "type": "module",
   "scripts": {
-    "build": "node task/build.mjs",
-    "create-draft-post": "node task/draft-post.mjs",
-    "html": "node task/build.mjs --only-html",
+    "build": "dskdius build",
+    "create-draft-post": "dskdius draft",
+    "html": "dskdius build --only-html",
     "prebuild": "rm -rf dist",
     "start": "npm run build && cd dist && python3 -m http.server 3000",
     "test:css": "npx stylelint 'dist/**/*.css'",
@@ -16,7 +18,6 @@
     "test": "npm run test:css && npm run test:html"
   },
   "devDependencies": {
-    "marked": "^18.0.7",
-    "pug": "^3.0.4"
+    "dskdius": "file:../dskdius"
   }
 }

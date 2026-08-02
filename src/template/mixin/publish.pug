@@ -3,11 +3,11 @@ mixin publish(time, tags, title)
   dl.Publish
     dt.Invisible 公開日
     dd
-      time(datetime=`${time}+09:00`)= pubdate
+      time(datetime=`${time}${site.timezone}`)= pubdate
     dt.Invisible タグ
     each tag in tags
       if title === tag
         dd= tag
       else
         dd
-          a(href=`${U_TAG}${tag.toLowerCase().replace(/[ .-]/g, '_')}.html`)= tag
+          a(href=`${U.tag}${slug(tag)}.html`)= tag

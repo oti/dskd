@@ -1,56 +1,60 @@
 -
-  const isHome = type === T_HOME
-  const isPage = type === T_PAGE
-  const isPost = type === T_POST
-  const isTag = type === T_TAG
-  const isYear = type === T_YEAR
-  const isPostIndex = type === T_POST_INDEX
-  const metaTitle = isHome ? BLOG_NAME : `${title} - ${BLOG_NAME}`
+  const isHome = type === "home"
+  const isPage = type === "page"
+  const isPost = type === "post"
+  const isTag = type === "tag"
+  const isYear = type === "year"
+  const isPostIndex = type === "posts"
+  const metaTitle = isHome ? site.name : `${title} - ${site.name}`
   const description = isHome
-    ? BLOG_DESC
+    ? site.desc
     : isPostIndex
-    ? "dskd の全記事一覧"
+    ? `${site.name} の全記事一覧`
     : isTag
     ? `${title}タグの記事一覧`
     : isYear
     ? `${title}年の記事一覧`
     : desc
   const canonical = isHome
-    ? BLOG_URL
+    ? site.url
     : isPage
-    ? `${BLOG_URL}${U_PAGE}${id}.html`
+    ? `${site.url}${U.page}${id}.html`
     : isPost
-    ? `${BLOG_URL}${U_POST}${id}.html`
+    ? `${site.url}${U.post}${id}.html`
     : isTag
-    ? `${BLOG_URL}${U_TAG}${title.toLowerCase().replace(/[ .-]/g, "_")}.html`
+    ? `${site.url}${U.tag}${slug(title)}.html`
     : isYear
-    ? `${BLOG_URL}${U_YEAR}${title}.html`
-    : BLOG_URL
+    ? `${site.url}${U.year}${title}.html`
+    : site.url
 
-  const ogImage = cover ? cover : `${BLOG_OGP}`
+  const ogImage = cover ? cover : site.extra.ogp
 
 include mixin/publish
 
 doctype html
-html.-no-js(lang="ja")
+html.-no-js(lang=site.lang)
   head
     meta(charset="UTF-8")
     meta(content="viewport-fit=cover, width=device-width", name="viewport")
     title= metaTitle
     meta(content=description, name="description")
-    link(rel="image_src", href=`${ogImage}?${version}`)
-    link(rel="icon", href=`${BLOG_FAVICON}?${version}`, type="image/svg+xml")
+    link(rel="image_src", href=`${ogImage}?${site.version}`)
+    link(
+      rel="icon",
+      href=`${site.extra.favicon}?${site.version}`,
+      type="image/svg+xml"
+    )
     link(
       rel="apple-touch-icon",
       sizes="180x180",
-      href=`${BLOG_TOUCH_ICON}?${version}`
+      href=`${site.extra.touchIcon}?${site.version}`
     )
     link(
-      href=`/style/style.css?${version}`,
+      href=`/style/style.css?${site.version}`,
       rel="stylesheet",
       media="only screen"
     )
-    link(href=U_FEED, rel="alternate", type="application/rss+xml")
+    link(href=U.feed, rel="alternate", type="application/rss+xml")
     link(href=canonical, rel="canonical")
     include _script
 
@@ -85,16 +89,16 @@ html.-no-js(lang="ja")
             - const cr = id === page.id;
             li
               a(
-                href=`${U_PAGE}${page.id}.html`,
+                href=`${U.page}${page.id}.html`,
                 class=cr && "-current",
                 aria-current=cr && "page",
                 rel=cr && "author"
               )= page.title
           li
-            a(href=`${BLOG_URL}${U_FEED}`, target="_blank") RSS
+            a(href=`${site.url}${U.feed}`, target="_blank") RSS
 
         p.License
-          span © #{BLOG_AUTHOR}
+          span © #{site.author}
           a(
             href="https://creativecommons.org/licenses/by-nc/4.0/deed.ja",
             rel="license"

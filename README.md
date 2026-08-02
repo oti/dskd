@@ -5,6 +5,8 @@ https://dskd.jp
 
 dskd はウェブ制作にまつわる雑記を主としたウェブログです。2010 年 12 月より公開。
 
+このリポジトリはウェブログの原稿・テンプレート・CSS を持ちます。ビルドシステムは [dskdius](https://github.com/oti/dskdius) として切り出してあります。
+
 ## ドキュメント
 
 - [開発](DEVELOPMENT.md)

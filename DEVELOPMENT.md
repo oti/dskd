@@ -1,12 +1,8 @@
 # 開発
 
-dskd は記事原稿を markdown で管理し、HTML を静的にビルドするブログ向け SSG です。
+dskd は記事原稿を markdown で管理し、HTML を静的にビルドしています。
 
-## コンセプト
-
-『小さなブログなら小さな環境で。』
-
-dskd は小さな開発環境を追い求めています。省ける処理は省き、シンプルで小さなビルドタスクになるようにしました。
+ビルドシステムは [dskdius](https://github.com/oti/dskdius) として切り出してあり、このリポジトリはその利用側です。原稿・テンプレート・CSS だけを持ちます。
 
 ## ローカル環境構築
 
@@ -17,13 +13,29 @@ npm start
 
 python3 でローカルサーバーが立ち上がるので**手動で** `localhost:3000` にアクセスしてください。
 
-### ブログ設定
+## dskdius の参照
 
-dskd.config.js に入出力のパスやウェブサイトのメタ情報を記述します。
+publish するまでの間、package.json は隣のディレクトリを直接参照しています。
 
-pug テンプレートから参照されるキーは `CONFIGS {}` に含めてください。
+```json
+"devDependencies": {
+  "dskdius": "file:../dskdius"
+}
+```
 
-### アセット
+そのため `/Users/oti/Sandobox/dskdius` を clone しておく必要があります。
+
+> [!IMPORTANT]
+> この指定のままだと GitHub Actions と Netlify では `npm ci` が壊れたシンボリックリンクを作り、`npm run build` が `dskdius: command not found` で落ちます。
+> npm に publish したら `"dskdius": "^1.0.0"` に、GitHub から入れるなら `"dskdius": "github:oti/dskdius"` に差し替えてください。
+
+## ブログ設定
+
+プロジェクトルートの [dskdius.config.js](dskdius.config.js) にサイトのメタ情報を記述します。
+
+書式と、テンプレートに渡る変数、ディレクトリ・URL の規約は [dskdius の README](https://github.com/oti/dskdius#readme) を参照してください。
+
+## アセット
 
 プリプロセッサーやトランスパイラーは利用しないハードコアスタイルです。
 
@@ -31,11 +43,9 @@ pug テンプレートから参照されるキーは `CONFIGS {}` に含めて�
 
 JavaScript はテンプレートか md ファイル内に直接記述してください。
 
-### テンプレート
+## テンプレート
 
-pug を利用しています。
-
-記事のメタ情報やブログの設定情報、年別リストやタグ別リストの情報が格納された巨大なオブジェクトを内部で受け取り、テンプレートで引き当てて HTML をビルドしています。
+[src/template/](src/template/) の pug です。dskdius はテーマを同梱しないので、見た目に関するものはすべてこのリポジトリにあります。
 
 ## デプロイ
 
@@ -45,14 +55,9 @@ pug を利用しています。
 
 dskd では Netlify を使ってデプロイ、ホスティングしています。
 
-## 依存モジュール
+## テスト
 
-ビルドは以下のモジュールに依存しています。
-
-- [marked](https://github.com/markedjs/marked)
-- [pug](https://github.com/pugjs/pug)
-
-テスト実行は以下のモジュールにを利用していますが、実行は npx で行い、依存モジュールとはしていません。
+出力された HTML と CSS を lint します。実行は npx で行い、依存モジュールとはしていません。
 
 - [markuplint](https://github.com/markuplint/markuplint)
 - [stylelint](https://github.com/stylelint/stylelint)

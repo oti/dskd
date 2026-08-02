@@ -6,18 +6,18 @@ rss(
   xmlns:creativeCommons="http://blogs.law.harvard.edu/tech/creativeCommonsRssModule"
 )
   channel
-    title= BLOG_NAME
-    link= BLOG_URL
-    description= `<![CDATA[${BLOG_DESC}]]>`
+    title= site.name
+    link= site.url
+    description= `<![CDATA[${site.desc}]]>`
     language ja-JP
     pubdate= new Date()
     lastbuilddate= new Date()
     docs http://blogs.law.harvard.edu/tech/rss
-    generator= BLOG_AUTHOR_EN
+    generator= site.extra.authorEn
     managingeditor
-    webmaster= `${BLOG_AUTHOR} ${BLOG_ADDRESS}`
+    webmaster= `${site.author} ${site.email}`
     atom:link(
-      href=`${BLOG_URL}${U_FEED}`,
+      href=`${site.url}${U.feed}`,
       rel="self",
       type="application/rss+xml"
     )/
@@ -26,8 +26,8 @@ rss(
     each post, i in posts
       item
         title= post.title
-        link= `${BLOG_URL}${U_POST}${post.id}.html`
+        link= `${site.url}${U.post}${post.id}.html`
         description= post.desc
         pubdate= new Date(post.datetime)
-        guid(isPermaLink="true")= `${BLOG_URL}${U_POST}${post.id}.html`
-        //- content:encoded=('<![CDATA['+post.marked+']]>')
+        guid(isPermaLink="true")= `${site.url}${U.post}${post.id}.html`
+        //- content:encoded=('<![CDATA['+post.content+']]>')

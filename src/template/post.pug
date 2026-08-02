@@ -3,8 +3,8 @@ extends default
 block main
   -
     const escaped_title = encodeURIComponent(title)
-    const escaped_permalink = encodeURIComponent(`${BLOG_URL}${U_POST}${id}.html`)
-    const x_href = `https://x.com/intent/tweet?text=${escaped_title}&url=${escaped_permalink}&via=dskd_jp&related=otiext`
+    const escaped_permalink = encodeURIComponent(`${site.url}${U.post}${id}.html`)
+    const x_href = `https://x.com/intent/tweet?text=${escaped_title}&url=${escaped_permalink}&via=${site.extra.twitter}&related=otiext`
     const fb_href = `https://www.facebook.com/share.php?u=${escaped_permalink}`
     const hb_href = `http://b.hatena.ne.jp/my/add.confirm?title=${escaped_title}&url=${escaped_permalink}`
 
@@ -13,7 +13,7 @@ block main
 
     +publish(datetime, tag, null)
 
-    != marked
+    != content
 
   .Border
     .Halve
@@ -27,15 +27,15 @@ block main
 
       ul.Contribute
         li
-          a(href=`${BLOG_CONTRIBUTE}${id}.md`) GitHub
+          a(href=`${site.extra.contribute}${id}.md`) GitHub
 
   .Border
     ul.Neighbor
       if newer
         li
-          a(href=`${U_POST}${newer.id}.html`)= newer.title
+          a(href=`${U.post}${newer.id}.html`)= newer.title
           span （ひとつ未来）
       if older
         li
-          a(href=`${U_POST}${older.id}.html`)= older.title
+          a(href=`${U.post}${older.id}.html`)= older.title
           span （ひとつ過去）
