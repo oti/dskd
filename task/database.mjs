@@ -3,10 +3,8 @@ import { CONFIGS } from "../src/config.mjs";
 export const database = async (jsons) => {
   const posts = jsons
     .filter((item) => item.type === "post")
-    // 記事は日付で降順ソートする
-    .sort(
-      (a, b) => Number(b.datetime.replace(/[-T:]/g, "")) - Number(a.datetime.replace(/[-T:]/g, "")),
-    )
+    // 記事は日付で降順ソートする（datetime は桁数固定の ISO 形式なので文字列比較でよい）
+    .sort((a, b) => b.datetime.localeCompare(a.datetime))
     .map((post, i, sorted) => {
       const older = sorted[i + 1];
       const newer = sorted[i - 1];
@@ -29,22 +27,16 @@ export const database = async (jsons) => {
 
   const pages = jsons.filter((item) => item.type === "page");
 
-  const tags = posts
-    .flatMap((post) => post.tag.map((tag) => ({ [tag]: post })))
-    .reduce((memo, pair) => {
-      Object.keys(pair).map((key) => {
-        memo[key] = memo[key] ? memo[key] : [];
-        memo[key].push(pair[key]);
-      });
-      return memo;
-    }, {});
+  // { タグ名: [記事, ...] }
+  const tags = Object.fromEntries(
+    [...new Set(posts.flatMap((post) => post.tag))].map((tag) => [
+      tag,
+      posts.filter((post) => post.tag.includes(tag)),
+    ]),
+  );
 
-  const years = posts.reduce((memo, post) => {
-    const year = post.datetime.split("-")[0];
-    memo[year] = memo[year] ? memo[year] : [];
-    memo[year].push(post);
-    return memo;
-  }, {});
+  // { 年: [記事, ...] }
+  const years = Object.groupBy(posts, (post) => post.datetime.split("-")[0]);
 
   return {
     posts,
