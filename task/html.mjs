@@ -16,18 +16,9 @@ import {
   D_PAGE,
 } from "../src/config.mjs";
 
-const error = (error) => {
-  console.error(error);
-  throw error;
-};
-
 export const html = async (database) => {
   // 必要なディレクトリをあらかじめ作る
-  await Promise.all(
-    [D_POST, D_TAG, D_YEAR].map(
-      async (dir) => await fs.mkdir(dir, { recursive: true }).catch(error),
-    ),
-  );
+  await Promise.all([D_POST, D_TAG, D_YEAR].map((dir) => fs.mkdir(dir, { recursive: true })));
 
   const createIndividual = async () =>
     [...database.posts, ...database.pages].map(async (item) => {
@@ -39,16 +30,14 @@ export const html = async (database) => {
       const pugCompiler = pug.compile(`extends ${TEMPLATE[item.type]}`, {
         filename,
       });
-      return await fs
-        .writeFile(
-          `${filename}.html`,
-          pugCompiler({
-            marked: marked.parse(item.body),
-            ...item,
-            ...database,
-          }),
-        )
-        .catch(error);
+      return await fs.writeFile(
+        `${filename}.html`,
+        pugCompiler({
+          marked: marked.parse(item.body),
+          ...item,
+          ...database,
+        }),
+      );
     });
 
   const createTag = async () =>
@@ -57,16 +46,14 @@ export const html = async (database) => {
       const pugCompiler = await pug.compile(`extends ${TEMPLATE[T_TAG]}`, {
         filename,
       });
-      return await fs
-        .writeFile(
-          `${filename}.html`,
-          pugCompiler({
-            type: T_TAG,
-            title: tag,
-            ...database,
-          }),
-        )
-        .catch(error);
+      return await fs.writeFile(
+        `${filename}.html`,
+        pugCompiler({
+          type: T_TAG,
+          title: tag,
+          ...database,
+        }),
+      );
     });
 
   const createYear = async () =>
@@ -90,16 +77,14 @@ export const html = async (database) => {
     const pugCompiler = await pug.compile(`extends ${TEMPLATE[T_POST_INDEX]}`, {
       filename,
     });
-    await fs
-      .writeFile(
-        `${filename}.html`,
-        pugCompiler({
-          type: T_POST_INDEX,
-          title: "Posts",
-          ...database,
-        }),
-      )
-      .catch(error);
+    await fs.writeFile(
+      `${filename}.html`,
+      pugCompiler({
+        type: T_POST_INDEX,
+        title: "Posts",
+        ...database,
+      }),
+    );
   };
 
   const createHome = async () => {
@@ -107,15 +92,13 @@ export const html = async (database) => {
     const pugCompiler = await pug.compile(`extends ${TEMPLATE[T_HOME]}`, {
       filename,
     });
-    await fs
-      .writeFile(
-        `${filename}.html`,
-        pugCompiler({
-          type: T_HOME,
-          ...database,
-        }),
-      )
-      .catch(error);
+    await fs.writeFile(
+      `${filename}.html`,
+      pugCompiler({
+        type: T_HOME,
+        ...database,
+      }),
+    );
   };
 
   const createFeed = async () => {
@@ -124,14 +107,12 @@ export const html = async (database) => {
       filename,
       pretty: true,
     });
-    await fs
-      .writeFile(
-        `${filename}.xml`,
-        pugCompiler({
-          ...database,
-        }),
-      )
-      .catch(error);
+    await fs.writeFile(
+      `${filename}.xml`,
+      pugCompiler({
+        ...database,
+      }),
+    );
   };
 
   return Promise.all([
