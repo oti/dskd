@@ -29,10 +29,14 @@ const getJsonFromMarkdown = (filestring) => {
       }
       // 値がtag関連でなければパースして返す
       else {
-        const tuple = str.split(": ");
+        // 値の中にコロンが含まれていてもよいので、最初の`: `だけで区切る
+        const separator = str.indexOf(": ");
+        const key = str.slice(0, separator);
+        const value = str.slice(separator + 2);
         return {
           ...memo,
-          [tuple[0]]: tuple[1],
+          // `null` は文字列にすると真値になってしまうので値として置く
+          [key]: value === "null" ? null : value,
         };
       }
     }, {});
