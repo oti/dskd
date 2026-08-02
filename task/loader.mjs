@@ -38,22 +38,16 @@ const getJsonFromMarkdown = (filestring) => {
     }, {});
 
   // 本文を抜き出す
-  const body_tmp = JSON.stringify(filestring)
+  const body_tmp = filestring
     // 改行コードで分割する
-    .split("\\n")
+    .split("\n")
     // 先頭は`---`決め打ちなので配列を1つ詰める
     .slice(1);
   const body = body_tmp
-    // 最初の`---`がyamlブロックの終わりなので詰める
+    // body_tmpでは最初の`---`がyamlブロックの終わりなので詰める
     .slice(body_tmp.findIndex((str) => str === "---") + 1)
-    // ダブルクオーテーションのみの行を配列時点で取り除く
-    .filter((str) => str !== '"')
-    // 改行コードを戻して文字列化する
-    .join("\n")
-    // バックスラッシュが混じってしまうので取り除く
-    .replace(/\\/g, "")
-    // タブを戻す
-    .replace(/\\t/g, "	");
+    // 改行コードで結合して返す
+    .join("\n");
 
   // オブジェクトにして返す
   return {
