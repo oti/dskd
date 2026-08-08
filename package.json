@@ -7,13 +7,13 @@
   "author": "oti",
   "scripts": {
     "build": "node task/build.mjs",
-    "create-draft-post": "node task/draft-post.mjs",
     "html": "node task/build.mjs --only-html",
     "prebuild": "rm -rf dist",
     "start": "npm run build && cd dist && python3 -m http.server 3000",
     "test:css": "npx stylelint 'dist/**/*.css'",
     "test:html": "npx markuplint 'dist/**/*.html'",
     "test": "npm run test:css && npm run test:html"
+    "create-draft-post": "node task/create-draft-post.mjs",
   },
   "devDependencies": {
     "marked": "^18.0.7",
