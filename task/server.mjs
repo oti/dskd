@@ -20,44 +20,50 @@ const MIME = {
   ".xml": "application/xml; charset=utf-8",
 };
 
-const readable = async (filepath) =>
-  await fs
-    .stat(filepath)
-    .then((stats) => stats.isFile())
-    .catch(() => false);
+// リクエストパスを取り出す。壊れた URL やパーセントエンコードはサーバーを落とさず 404 に倒す
+const toPathname = (url) => {
+  try {
+    return decodeURIComponent(new URL(url, "http://localhost").pathname);
+  } catch {
+    return null;
+  }
+};
 
 // dist 配下の実ファイルを探す。ディレクトリなら index.html、拡張子なしなら .html / .xml を試す
-const resolveFilepath = async (pathname) => {
-  const filepath = path.join(ROOT, path.normalize(decodeURIComponent(pathname)));
-  if (filepath !== ROOT && !filepath.startsWith(`${ROOT}${path.sep}`)) return null;
+const candidates = (pathname) => {
+  const filepath = path.join(ROOT, pathname);
+  if (filepath !== ROOT && !filepath.startsWith(`${ROOT}${path.sep}`)) return [];
 
-  const candidates = pathname.endsWith("/")
+  return pathname.endsWith("/")
     ? [path.join(filepath, "index.html")]
     : [filepath, `${filepath}.html`, `${filepath}.xml`, path.join(filepath, "index.html")];
+};
 
-  for (const candidate of candidates) {
-    if (await readable(candidate)) return candidate;
+// 候補を順に読んで最初に読めたものを返す。stat を挟まないのでディレクトリは EISDIR で自然に外れる
+const readFirst = async (pathname) => {
+  for (const filepath of candidates(pathname)) {
+    const body = await fs.readFile(filepath).catch(() => null);
+    if (body !== null) return { filepath, body };
   }
   return null;
 };
 
 http
   .createServer(async (req, res) => {
-    const { pathname } = new URL(req.url, `http://${req.headers.host}`);
-    const filepath = await resolveFilepath(pathname);
+    const pathname = toPathname(req.url);
+    const file = pathname === null ? null : await readFirst(pathname);
 
-    if (!filepath) {
+    if (file) {
+      res.writeHead(200, {
+        "cache-control": "no-store",
+        "content-type": MIME[path.extname(file.filepath)] ?? "application/octet-stream",
+      });
+      res.end(file.body);
+    } else {
       res.writeHead(404, { "content-type": MIME[".txt"] });
       res.end("404 Not Found\n");
-      console.log(`404 ${pathname}`);
-      return;
     }
 
-    res.writeHead(200, {
-      "cache-control": "no-store",
-      "content-type": MIME[path.extname(filepath)] ?? "application/octet-stream",
-    });
-    res.end(await fs.readFile(filepath));
-    console.log(`200 ${pathname}`);
+    console.log(`${res.statusCode} ${pathname ?? req.url}`);
   })
   .listen(PORT, () => console.log(`http://localhost:${PORT}/`));
