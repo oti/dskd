@@ -10,7 +10,7 @@
     "build:html": "node task/build.mjs --only-html",
     "create-draft-post": "node task/create-draft-post.mjs",
     "prebuild": "node task/clean.mjs",
-    "start": "npm run build && node task/server.mjs"
+    "start": "npm run build && node task/serve.mjs"
   },
   "devDependencies": {
     "marked": "^18.0.7",
