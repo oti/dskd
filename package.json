@@ -13,7 +13,7 @@
     "start": "npm run build && node task/serve.mjs"
   },
   "devDependencies": {
-    "marked": "^18.0.7",
+    "marked": "^18.0.11",
     "pug": "^3.0.4"
   }
 }
