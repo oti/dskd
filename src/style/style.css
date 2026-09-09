@@ -1,23 +1,26 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosansjp.css);
 
 :root {
-  --color-background: #f1f2f3;
-  --color-sub: #d9dce2;
-  --color-accent: #b8bed0;
-  --color-text: #1b1c1f;
-  --color-mark: #fff200;
-  --color-code: #ffffff;
-  --color-strong: #dd0000;
-  --color-frame: #ffffff;
-  --color-link: #336699;
+  /* 既定は OS 追従。.-light / .-dark で上書きする */
+  color-scheme: light dark;
+
+  --color-background: light-dark(#f1f2f3, #1b1c1f);
+  --color-sub: light-dark(#d9dce2, #2d3542);
+  --color-accent: light-dark(#b8bed0, #d9dce2);
+  --color-text: light-dark(#1b1c1f, #e3e3e4);
+  --color-mark: light-dark(#fff200, #9e0072);
+  --color-code: light-dark(#ffffff, #383f52);
+  --color-strong: light-dark(#dd0000, #ffa9a9);
+  --color-frame: light-dark(#ffffff, #36383f);
+  --color-link: light-dark(#336699, #88b0d8);
   --color-visited: var(--color-text);
   --color-hover: var(--color-text);
   --color-active: var(--color-text);
   --color-focus: var(--color-text);
-  --color-table-border: #d9dcdf;
-  --color-table-caption: #d9dcdf;
-  --color-table-stripe: #eaecee;
-  --color-blockquote-background: rgba(255, 255, 255, 0.6);
+  --color-table-border: light-dark(#d9dcdf, #000000);
+  --color-table-caption: light-dark(#d9dcdf, #000000);
+  --color-table-stripe: light-dark(#eaecee, #121317);
+  --color-blockquote-background: light-dark(rgba(255, 255, 255, 0.6), var(--color-sub));
 
   --font-size-default: 1rem;
   --font-size-tiny: calc(var(--font-size-default) * 1.125);
@@ -44,38 +47,12 @@
   --size-body-inline: 64rem;
 }
 
-.-dark {
-  --color-background: #1b1c1f;
-  --color-sub: #2d3542;
-  --color-accent: #d9dce2;
-  --color-text: #e3e3e4;
-  --color-mark: #9e0072;
-  --color-code: #383f52;
-  --color-strong: #ffa9a9;
-  --color-frame: #36383f;
-  --color-link: #88b0d8;
-  --color-table-border: #000000;
-  --color-table-caption: #000000;
-  --color-table-stripe: #121317;
-  --color-blockquote-background: var(--color-sub);
+:root.-light {
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  .-system {
-    --color-background: #1b1c1f;
-    --color-sub: #2d3542;
-    --color-accent: #d9dce2;
-    --color-text: #e3e3e4;
-    --color-mark: #9e0072;
-    --color-code: #383f52;
-    --color-strong: #ffa9a9;
-    --color-frame: #36383f;
-    --color-link: #88b0d8;
-    --color-table-border: #000000;
-    --color-table-caption: #000000;
-    --color-table-stripe: #121317;
-    --color-blockquote-background: var(--color-sub);
-  }
+:root.-dark {
+  color-scheme: dark;
 }
 
 *,
@@ -299,9 +276,12 @@ body > header > h1 {
   box-shadow: 0 0 0 1px var(--color-sub);
 }
 @media (prefers-color-scheme: dark) {
-  .Post img {
+  :root:not(.-light) .Post img {
     filter: brightness(85%);
   }
+}
+:root.-dark .Post img {
+  filter: brightness(85%);
 }
 .Post img.-post110 {
   float: inline-end;
@@ -424,9 +404,12 @@ body > header > h1 {
   width: 100%;
 }
 @media (prefers-color-scheme: dark) {
-  .Post iframe {
+  :root:not(.-light) .Post iframe {
     filter: brightness(85%);
   }
+}
+:root.-dark .Post iframe {
+  filter: brightness(85%);
 }
 .Post .Information {
   padding: var(--space-tiny);
