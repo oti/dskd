@@ -1,30 +1,43 @@
+-
+  const modeValues = COLOR_MODES.map((mode) => mode.value)
+
+//- 初回描画前にカラーモードを確定させるため、defer されないインラインスクリプトで同期実行する
 script.
-  document.documentElement.classList.remove('-no-js');
+  (() => {
+    const HTML = document.documentElement;
+    const COLOR_MODE_LIST = !{JSON.stringify(modeValues)};
+
+    HTML.classList.remove("-no-js");
+
+    try {
+      const colorMode = localStorage.getItem("#{COLOR_MODE_STORAGE_KEY}");
+      HTML.classList.add(COLOR_MODE_LIST.includes(colorMode) ? colorMode : COLOR_MODE_LIST[0]);
+    } catch (e) {
+      // localStorage が使えない環境ではモード切り替え UI を出さない
+      HTML.classList.add(COLOR_MODE_LIST[0], "-no-storage");
+    }
+  })();
+
 script(type="module").
   document.querySelector("#Back").addEventListener("click", () => history.back(), false);
 
   const HTML = document.documentElement;
-  const SWITCH = document.querySelector("#Switch");
-  const MODE_LIST = [...SWITCH.querySelectorAll(`[name="switch"]`)].map((elem) => elem.value);
+  const COLOR_MODE_LIST = !{JSON.stringify(modeValues)};
 
-  function updateMode(value) {
-    localStorage.setItem("prefer-dskd-mode", value);
-    HTML.classList.remove(...MODE_LIST);
-    HTML.classList.add(value);
-  }
-
-  function mountModeChanger(value) {
-    updateMode(value);
-
-    SWITCH.querySelector(`[value="${value}"]`).setAttribute("checked", true);
-    SWITCH.addEventListener("input", ({ target: { value }}) => updateMode(value), false);
-  }
-
-  try {
-    const preferMode = localStorage.getItem("prefer-dskd-mode");
-    const initMode = MODE_LIST.includes(preferMode) ? preferMode : MODE_LIST[0];
-    mountModeChanger(initMode);
-  } catch (e) {
-    console.log(e);
+  if (HTML.classList.contains("-no-storage")) {
     document.querySelector(".Mode").setAttribute("hidden", true);
+  } else {
+    const SWITCH = document.querySelector("#Switch");
+    const currentMode = COLOR_MODE_LIST.find((mode) => HTML.classList.contains(mode)) ?? COLOR_MODE_LIST[0];
+
+    SWITCH.querySelector(`[value="${currentMode}"]`).checked = true;
+    SWITCH.addEventListener(
+      "input",
+      ({ target: { value } }) => {
+        localStorage.setItem("#{COLOR_MODE_STORAGE_KEY}", value);
+        HTML.classList.remove(...COLOR_MODE_LIST);
+        HTML.classList.add(value);
+      },
+      false,
+    );
   }
