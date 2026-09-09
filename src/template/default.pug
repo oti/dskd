@@ -65,15 +65,10 @@ html.-no-js(lang="ja")
       details.Mode
         summary カラーモード
         form#Switch
-          label
-            input(name="switch", type="radio", value="-system")
-            span OS
-          label
-            input(name="switch", type="radio", value="-light")
-            span ライト
-          label
-            input(name="switch", type="radio", value="-dark")
-            span ダーク
+          each mode in COLOR_MODES
+            label
+              input(name="switch", type="radio", value=mode.value)
+              span= mode.label
 
     main
       block main
