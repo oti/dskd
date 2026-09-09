@@ -32,6 +32,14 @@ export const TEMPLATE = {
   [T_YEAR]: "../../../src/template/index",
 };
 
+// カラーモードの設定。value は html 要素の class 名と localStorage の値に使う
+export const COLOR_MODE_STORAGE_KEY = "prefers-dskd-mode";
+export const COLOR_MODES = [
+  { value: "-system", label: "OS" },
+  { value: "-light", label: "ライト" },
+  { value: "-dark", label: "ダーク" },
+];
+
 // Pugテンプレートから参照する設定
 export const CONFIGS = {
   BLOG_ADDRESS: "otiext@gmail.com",
@@ -45,6 +53,8 @@ export const CONFIGS = {
   BLOG_TOUCH_ICON: "/image/apple-touch-icon.webp",
   BLOG_TWITTER: "dskd_jp",
   BLOG_URL: "https://dskd.jp",
+  COLOR_MODE_STORAGE_KEY,
+  COLOR_MODES,
   T_POST_INDEX,
   T_HOME,
   T_PAGE,
